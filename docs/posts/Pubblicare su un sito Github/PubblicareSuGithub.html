@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Paolo Volterra">
 
-<title>Impara l’arte e mettila da parte – Paolo Volterra's website</title>
+<title>Come Pubblicare su un sito Github – Paolo Volterra’s website</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +21,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9f5c9c23445bc5f94e25b54ab2728645.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-9f5c9c23445bc5f94e25b54ab2728645.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,10 +103,11 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta name="twitter:title" content="Impara l’arte e mettila da parte – Paolo Volterra’s website">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Come Pubblicare su un sito Github – Paolo Volterra’s website">
+<meta name="twitter:description" content="miei appunti presi da diverse fonti">
+<meta name="twitter:image" content="https://paolovolterra.github.io/posts/Pubblicare su un sito Github/.immagini/Pasted image 20250111112443.png">
 <meta name="twitter:creator" content="@ghibbli">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -87,19 +123,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./til.qmd"> 
+    <a class="nav-link" href="../../til.qmd"> 
 <span class="menu-text">TIL</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./posts/CfAnonimizzati.html"> 
+    <a class="nav-link" href="../../posts/CfAnonimizzati.html"> 
 <span class="menu-text">Codici fiscali, GDPR &amp; Python</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./posts/MiniCds.html"> 
+    <a class="nav-link" href="../../posts/MiniCds.html"> 
 <span class="menu-text">Mini contratti di sviluppo</span></a>
   </li>  
 </ul>
@@ -119,13 +155,20 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Impara l’arte e mettila da parte</h1>
+<h1 class="title">Come Pubblicare su un sito Github</h1>
+<p class="subtitle lead">miei appunti presi da diverse fonti</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra </p>
+          </div>
+  </div>
     
   
     
@@ -136,10 +179,74 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Qui ora provo ad inserire il mio blog</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+<section id="come-pubblicare-su-un-sito-github" class="level1">
+<h1>Come Pubblicare su un sito Github</h1>
+<p>si lavora con 2 tipi di files: - yaml - qmd</p>
+<p><strong>devono essere configurati</strong> : - git - github</p>
+<section id="quarto" class="level2">
+<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> quarto create-project paolovolterra.github.io <span class="at">--type</span> website</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> quarto preview</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> quarto render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>INPUT: i qmd devono stare nella cartella post</li>
+<li>OUTPUT: gli output renderizzati da Quarto finiranno nella cartella docs</li>
+</ul>
+</section>
+<section id="github" class="level2">
+<h2 class="anchored" data-anchor-id="github">Github</h2>
+<section id="pagina-httpsgithub.compaolovolterrapaolovolterra.github.iosettingspages" class="level3">
+<h3 class="anchored" data-anchor-id="pagina-httpsgithub.compaolovolterrapaolovolterra.github.iosettingspages">pagina https://github.com/paolovolterra/paolovolterra.github.io/settings/pages</h3>
+<ul>
+<li><p>configurare il **main branch”</p></li>
+<li><p>creare un token per l’accesso automatico <a href="https://docs.github.com/en/organizations/managing-programmatic-access-to-your-organization/setting-a-personal-access-token-policy-for-your-organization#restricting-access-by-personal-access-tokens">HowTo</a></p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src=".immagini/Pasted image 20250111112443.png" class="img-fluid figure-img"></p>
+<figcaption>Pasted image 20250111112443</figcaption>
+</figure>
+</div>
+</section>
+<section id="git" class="level3">
+<h3 class="anchored" data-anchor-id="git">Git</h3>
+<ul>
+<li>git remote remove origin</li>
+<li>git add docs</li>
+<li>git remote add origin https://github.com/paolovolterra/paolovolterra.github.io</li>
+<li>git remote -v</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  https://github.com/paolovolterra/paolovolterra.github.io <span class="er">(</span><span class="ex">fetch</span><span class="kw">)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  https://github.com/paolovolterra/paolovolterra.github.io <span class="er">(</span><span class="ex">push</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="riferimenti" class="level2">
+<h2 class="anchored" data-anchor-id="riferimenti">Riferimenti</h2>
+<ul>
+<li><a href="https://aborruso.github.io/til/un-sito-in-quarto/">Il mio primo blog post</a>con Quarto [[Il mio primo blog post – aborruso’s website]]</li>
+<li><a href="https://ucsb-meds.github.io/creating-quarto-websites/">Creating your personal website using Quarto</a> con Quarto [[Creating your personal website using Quarto]]</li>
+<li><a href="https://quarto.org/docs/websites/">Creating a Website (dal sito ufficiale)</a></li>
+<li><a href="https://quarto.org/docs/websites/website-blog.html">Creating a Blog (dal sito ufficiale)</a></li>
+<li><a href="https://ucsb-meds.github.io/MEDS-installation-guide/">MEDS Computing Requirements &amp; Software Installation Guide</a> con RStudio</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src=".immagini/Pasted image 20250111120332.png" class="img-fluid figure-img"></p>
+<figcaption>Pasted image 20250111120036</figcaption>
+</figure>
+</div>
+</section>
+<section id="bibtex" class="level2">
+<h2 class="anchored" data-anchor-id="bibtex">Bibtex</h2>
+<p>https://www.getbibtex.com/</p>
+<p><span class="citation" data-cites="misc">@misc</span>{aborrusoPrimoBlog, author = {Andrea Borruso}, title = {{I}l mio primo blog post – aborruso’s website — aborruso.github.io}, howpublished = {}, year = {}, note = {[Accessed 11-01-2025]}, }</p>
+<p><span class="citation" data-cites="misc">@misc</span>{marvinschmittCreateYour, author = {Marvin Schmitt}, title = {{C}reate {Y}our {W}ebsite with {Q}uarto: {C}omplete {T}utorial and {T}emplate — marvinschmitt.com}, howpublished = {}, year = {}, note = {[Accessed 11-01-2025]}, }</p>
+<p><span class="citation" data-cites="misc">@misc</span>{adtariePersonalWebsite, author = {A.A. Wijaya}, title = {{P}ersonal {W}ebsite using {J}upyter {N}otebook and {Q}uarto – {F}oreland of {T}houghts — adtarie.net}, howpublished = {}, year = {}, note = {[Accessed 11-01-2025]}, }</p>
 
 
+</section>
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -577,7 +684,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
     <li class="nav-item compact">
-    <a class="nav-link" href="./blog.xml">
+    <a class="nav-link" href="../../blog.xml">
       <i class="bi bi-rss" role="img">
 </i> 
     </a>

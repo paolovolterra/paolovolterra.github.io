@@ -1,0 +1,32 @@
+project:
+  type: website
+  output-dir: docs 
+
+website:
+  site-url: https://paolovolterra.github.io
+  title: "Paolo Volterra's website"
+  page-navigation: true
+  back-to-top-navigation: true
+  twitter-card:
+    creator: "@ghibbli"
+  repo-actions: [edit, issue]
+  navbar:
+    background: "#75aadb"
+    search: true
+    title: false
+    left:
+      - href: index.qmd
+        text: Home
+      - href: til.qmd
+        text: TIL
+      - posts/CfAnonimizzati.qmd
+      - posts/MiniCds.qmd  
+  page-footer:
+    left: "Costruito con [quarto](https://quarto.org) 😍 | Contenuti in [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it)"
+    right:
+      - icon: twitter
+        href: https://twitter.com/@ghibbli
+      - icon: rss
+        href: blog.xml
+      - icon: github
+        href: https://github.com/paolovolterra/paolovolterra.github.io
