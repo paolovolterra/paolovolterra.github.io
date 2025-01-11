@@ -73,7 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-676018e50143d5b0444565c3706b2625.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ae061663f6c9d515d073a5e29c5c6025.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -143,12 +143,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#hashing-con-salt-privato" id="toc-hashing-con-salt-privato" class="nav-link active" data-scroll-target="#hashing-con-salt-privato">Hashing con Salt Privato</a></li>
+  <li><a href="#esempio" id="toc-esempio" class="nav-link" data-scroll-target="#esempio">Esempio</a></li>
+  <li><a href="#cifratura-simmetrica" id="toc-cifratura-simmetrica" class="nav-link" data-scroll-target="#cifratura-simmetrica">Cifratura Simmetrica</a></li>
+  <li><a href="#sostituzione-parziale" id="toc-sostituzione-parziale" class="nav-link" data-scroll-target="#sostituzione-parziale">Sostituzione Parziale</a></li>
+  <li><a href="#tokenizzazione" id="toc-tokenizzazione" class="nav-link" data-scroll-target="#tokenizzazione">Tokenizzazione</a></li>
+  <li><a href="#quale-tecnica-scegliere-per-pubblicare-un-elenco-di-codici-fiscali" id="toc-quale-tecnica-scegliere-per-pubblicare-un-elenco-di-codici-fiscali" class="nav-link" data-scroll-target="#quale-tecnica-scegliere-per-pubblicare-un-elenco-di-codici-fiscali">Quale tecnica scegliere per pubblicare un elenco di codici fiscali??</a></li>
+  <li><a href="#conclusione" id="toc-conclusione" class="nav-link" data-scroll-target="#conclusione">Conclusione</a></li>
+  <li><a href="#i-codici-fiscali-delle-imprese-sono-dati-sensibili" id="toc-i-codici-fiscali-delle-imprese-sono-dati-sensibili" class="nav-link" data-scroll-target="#i-codici-fiscali-delle-imprese-sono-dati-sensibili">i codici fiscali delle imprese sono dati sensibili?</a></li>
+  <li><a href="#come-è-composto-il-codice-fiscale" id="toc-come-è-composto-il-codice-fiscale" class="nav-link" data-scroll-target="#come-è-composto-il-codice-fiscale"><strong>Come è composto il codice fiscale</strong></a></li>
+  <li><a href="#cognome-3-lettere" id="toc-cognome-3-lettere" class="nav-link" data-scroll-target="#cognome-3-lettere">1. Cognome (3 lettere)</a></li>
+  <li><a href="#nome-3-lettere" id="toc-nome-3-lettere" class="nav-link" data-scroll-target="#nome-3-lettere">2. Nome (3 lettere)</a></li>
+  <li><a href="#data-di-nascita-e-sesso-6-caratteri" id="toc-data-di-nascita-e-sesso-6-caratteri" class="nav-link" data-scroll-target="#data-di-nascita-e-sesso-6-caratteri">3. Data di nascita e sesso (6 caratteri)</a></li>
+  <li><a href="#comune-o-stato-estero-di-nascita-4-caratteri" id="toc-comune-o-stato-estero-di-nascita-4-caratteri" class="nav-link" data-scroll-target="#comune-o-stato-estero-di-nascita-4-caratteri">4. Comune o Stato estero di nascita (4 caratteri)</a></li>
+  <li><a href="#carattere-di-controllo-1-carattere" id="toc-carattere-di-controllo-1-carattere" class="nav-link" data-scroll-target="#carattere-di-controllo-1-carattere">5. Carattere di controllo (1 carattere)</a></li>
+  <li><a href="#esempio-1" id="toc-esempio-1" class="nav-link" data-scroll-target="#esempio-1">Esempio</a></li>
+  <li><a href="#la-pseudoanomizzazione-di-rm501z" id="toc-la-pseudoanomizzazione-di-rm501z" class="nav-link" data-scroll-target="#la-pseudoanomizzazione-di-rm501z">La pseudoanomizzazione di <strong>R**M********501Z</strong></a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/CfAnonimizzati/CfAnonimizzati.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -158,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -197,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Aggiungo un salt univoco noto solo al titolare (es. data di nascita o un valore condiviso).</li>
 <li>Applico l’algoritmo di hashing.</li>
 </ul>
-<div id="22f8a090" class="cell" data-execution_count="1">
+<div id="1f4a7d00" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hashlib</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> anonimizza_cf(codice_fiscale, salt):        </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    dato <span class="op">=</span> codice_fiscale <span class="op">+</span> salt        </span>
@@ -227,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Pro: Garantisce riservatezza elevata; solo il titolare con la chiave può decifrare.</li>
 <li>Contro: Il titolare deve conservare la chiave.</li>
 </ul>
-<div id="4d1ceccb" class="cell" data-execution_count="2">
+<div id="41e6befc" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> cryptography.fernet <span class="im">import</span> Fernet</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Genera una chiave</span></span>
@@ -247,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>decrypted_cf <span class="op">=</span> cipher.decrypt(encrypted_cf).decode()</span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Codice decifrato:"</span>, decrypted_cf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Codice cifrato: b'gAAAAABngs7hTu3MbL4AkwsV6LXrB-nElW-dEnXUh0bJ7y5gLNLP6HFhw8k_LEHNavx0ksyEmIL8lXtC46AOmW4vMZcqRO9t_7eRumFthDCFoTfSa1hb80U='
+<pre><code>Codice cifrato: b'gAAAAABngvRSPo7L5sWBon8qylpKBovk3AzrFqtneu9sBb1x6mkjtS5hU0jkgrmLEbHmZk_p_Fx0ppcQZnH4im-MfyLYg17wiyFsdP0-MJb7Sa71FOu7j1I='
 Codice decifrato: RSSMRA80A01H501U</code></pre>
 </div>
 </div>
@@ -270,7 +293,7 @@ Sicurezza: Non condividere mai la chiave pubblicamente; è fondamentale per mant
 <li>Pro: Facile da implementare, leggibile dal titolare.</li>
 <li>Contro: Non è completamente sicuro contro reidentificazione.</li>
 </ul>
-<div id="94a08a0d" class="cell" data-execution_count="3">
+<div id="f5d4571a" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> anonimizza_cf_parziale(codice_fiscale):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Funzione per anonimizzare parzialmente un codice fiscale.</span></span>
@@ -307,7 +330,7 @@ I caratteri mascherati sono sostituiti da *.</code></pre>
 <li>Pro: Nessun dato sensibile è esposto.</li>
 <li>Contro: Richiede un sistema per mantenere il mapping.</li>
 </ul>
-<div id="c3e4a2be" class="cell" data-execution_count="4">
+<div id="529a0c36" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> uuid</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> anonimizza_cf_token(codice_fiscale):</span>
@@ -331,8 +354,8 @@ I caratteri mascherati sono sostituiti da *.</code></pre>
 <span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>cf_anonimizzato <span class="op">=</span> anonimizza_cf_token(codice_fiscale)</span>
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Codice Fiscale Anonimizzato:"</span>, cf_anonimizzato)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Mapping (da salvare): {'0c67f914': 'RSSMRA80A01H501U'}
-Codice Fiscale Anonimizzato: 0c67f914</code></pre>
+<pre><code>Mapping (da salvare): {'2219726d': 'RSSMRA80A01H501U'}
+Codice Fiscale Anonimizzato: 2219726d</code></pre>
 </div>
 </div>
 <p>Dettagli:</p>
@@ -900,7 +923,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/CfAnonimizzati/CfAnonimizzati.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/CfAnonimizzati/CfAnonimizzati.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

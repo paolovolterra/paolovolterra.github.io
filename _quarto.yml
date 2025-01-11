@@ -2,6 +2,10 @@ project:
   type: website
   output-dir: docs
 
+publish:
+  branch: main
+  message: "Aggiornamento sito generato con Quarto"
+
 website:
   site-url: https://paolovolterra.github.io
   title: "Paolo Volterra's website"
@@ -10,6 +14,7 @@ website:
   twitter-card:
     creator: "@ghibbli"
   repo-actions: [edit, issue]
+
   navbar:
     background: "#007a53"
     search: true
@@ -19,6 +24,7 @@ website:
         text: Home
       - posts.qmd
   repo-url: https://github.com/paolovolterra/paolovolterra.github.io
+
   page-footer:
     left: "Costruito con [quarto](https://quarto.org) 😍 | Contenuti in [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it)"
     right:
@@ -26,3 +32,12 @@ website:
         href: https://twitter.com/@ghibbli
       - icon: github
         href: https://github.com/paolovolterra/paolovolterra.github.io
+
+format:
+  html:
+    page-layout: full
+    sidebar: false
+    theme: 
+      - styles.scss
+    mainfont: Nunito
+    toc: true
