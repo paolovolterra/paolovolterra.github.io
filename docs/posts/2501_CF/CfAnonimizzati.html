@@ -209,7 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p>si può trasformare il codice fiscale in una forma che non sia immediatamente identificabile da altri, ma decifrabile solo dal titolare (ad esempio, attraverso una chiave o un algoritmo noto…)</p>
 </blockquote>
-<p><img src="./immagini/ProfessionalReport.webp" class="img-fluid"></p>
+<p><img src="immagini/ProfessionalReport.webp" class="img-fluid"></p>
 <p>Con la <strong>pseudonimizzazione a chiave privata</strong>, attraverso una di queste soluzioni</p>
 <ul>
 <li>Hashing con Salt Privato</li>
@@ -227,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Aggiungo un salt univoco noto solo al titolare (es. data di nascita o un valore condiviso).</li>
 <li>Applico l’algoritmo di hashing.</li>
 </ul>
-<div id="eb6f3ecd" class="cell" data-execution_count="1">
+<div id="2e96d82b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hashlib</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> anonimizza_cf(codice_fiscale, salt):        </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    dato <span class="op">=</span> codice_fiscale <span class="op">+</span> salt        </span>
@@ -257,7 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Pro: Garantisce riservatezza elevata; solo il titolare con la chiave può decifrare.</li>
 <li>Contro: Il titolare deve conservare la chiave.</li>
 </ul>
-<div id="cccd8b4d" class="cell" data-execution_count="2">
+<div id="67d6350a" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> cryptography.fernet <span class="im">import</span> Fernet</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Genera una chiave</span></span>
@@ -277,7 +277,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>decrypted_cf <span class="op">=</span> cipher.decrypt(encrypted_cf).decode()</span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Codice decifrato:"</span>, decrypted_cf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Codice cifrato: b'gAAAAABng5Xccwgr3JdQ_Yk8qtFLS051KyVvWjRNmsIJ2m8c_l3BlK5OiDfeA1WdaZTFp-mIMreL9kEfLh9-IUagcnUDXHJu2KlMqhzthePdPTf_oAf34hY='
+<pre><code>Codice cifrato: b'gAAAAABnhBxLHFCZk5VhY0aU5DynezF_fae-wiYgRFj0Za735pGPHOimQw5m9C-jv0k484V-3an1A3ppFMb3UbPNb23DahHgRpouA2WiaffGPTVdzk04uHQ='
 Codice decifrato: RSSMRA80A01H501U</code></pre>
 </div>
 </div>
@@ -300,7 +300,7 @@ Sicurezza: Non condividere mai la chiave pubblicamente; è fondamentale per mant
 <li>Pro: Facile da implementare, leggibile dal titolare.</li>
 <li>Contro: Non è completamente sicuro contro reidentificazione.</li>
 </ul>
-<div id="c998023a" class="cell" data-execution_count="3">
+<div id="63dac95e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> anonimizza_cf_parziale(codice_fiscale):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Funzione per anonimizzare parzialmente un codice fiscale.</span></span>
@@ -337,7 +337,7 @@ I caratteri mascherati sono sostituiti da *.</code></pre>
 <li>Pro: Nessun dato sensibile è esposto.</li>
 <li>Contro: Richiede un sistema per mantenere il mapping.</li>
 </ul>
-<div id="91c3769a" class="cell" data-execution_count="4">
+<div id="1c689a3c" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> uuid</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> anonimizza_cf_token(codice_fiscale):</span>
@@ -361,8 +361,8 @@ I caratteri mascherati sono sostituiti da *.</code></pre>
 <span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>cf_anonimizzato <span class="op">=</span> anonimizza_cf_token(codice_fiscale)</span>
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Codice Fiscale Anonimizzato:"</span>, cf_anonimizzato)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Mapping (da salvare): {'a075932c': 'RSSMRA80A01H501U'}
-Codice Fiscale Anonimizzato: a075932c</code></pre>
+<pre><code>Mapping (da salvare): {'22656f5e': 'RSSMRA80A01H501U'}
+Codice Fiscale Anonimizzato: 22656f5e</code></pre>
 </div>
 </div>
 <p>Dettagli:</p>
