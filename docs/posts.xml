@@ -4406,7 +4406,12 @@ Loading ITables v2.2.4 from the <code>init_notebook_mode</code> cell...
 <blockquote class="blockquote">
 <p>si può trasformare il codice fiscale in una forma che non sia immediatamente identificabile da altri, ma decifrabile solo dal titolare (ad esempio, attraverso una chiave o un algoritmo noto…)</p>
 </blockquote>
-<p><img src="https://paolovolterra.github.io/posts/2501_CF/immagini/ProfessionalReport.webp" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://paolovolterra.github.io/posts/2501_CF/immagini/ProfessionalReport.webp" class="img-fluid figure-img"></p>
+<figcaption>cover</figcaption>
+</figure>
+</div>
 <p>Con la <strong>pseudonimizzazione a chiave privata</strong>, attraverso una di queste soluzioni</p>
 <ul>
 <li>Hashing con Salt Privato</li>
@@ -4424,7 +4429,7 @@ Loading ITables v2.2.4 from the <code>init_notebook_mode</code> cell...
 <li>Aggiungo un salt univoco noto solo al titolare (es. data di nascita o un valore condiviso).</li>
 <li>Applico l’algoritmo di hashing.</li>
 </ul>
-<div id="63aae2ac" class="cell" data-execution_count="1">
+<div id="b8d0575e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> hashlib</span>
@@ -4468,7 +4473,7 @@ font-style: inherit;">return</span> hash_object.hexdigest()</span></code></pre><
 <li>Pro: Garantisce riservatezza elevata; solo il titolare con la chiave può decifrare.</li>
 <li>Contro: Il titolare deve conservare la chiave.</li>
 </ul>
-<div id="c0c30a6b" class="cell" data-execution_count="2">
+<div id="2d1ff623" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> cryptography.fernet <span class="im" style="color: #00769E;
@@ -4522,7 +4527,7 @@ font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Codice decifrato:"</span>, decrypted_cf)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Codice cifrato: b'gAAAAABnhB3Kb0z_aNR0gFVkP90nyNSJknv48CnMvesg8XpfaE6i1b4VQf4L1WPxdn4u9IpHH8zLEdnHADQD59GiHpTrj9I8-Tbm13XLX7IUHVQu7v8Avwc='
+<pre><code>Codice cifrato: b'gAAAAABnhB5kwO4iy_sSE4OYik6eKUOQ-6Dm7qTfOx-hzDgiYe_j2_sqerhljcGbE-ekbOzoSauVvTUjSHUoKxisd1_r49OCQ2xfGyn94CLxoyzz-FcId2M='
 Codice decifrato: RSSMRA80A01H501U</code></pre>
 </div>
 </div>
@@ -4545,7 +4550,7 @@ Sicurezza: Non condividere mai la chiave pubblicamente; è fondamentale per mant
 <li>Pro: Facile da implementare, leggibile dal titolare.</li>
 <li>Contro: Non è completamente sicuro contro reidentificazione.</li>
 </ul>
-<div id="636aefa6" class="cell" data-execution_count="3">
+<div id="2eee010a" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4642,7 +4647,7 @@ I caratteri mascherati sono sostituiti da *.</code></pre>
 <li>Pro: Nessun dato sensibile è esposto.</li>
 <li>Contro: Richiede un sistema per mantenere il mapping.</li>
 </ul>
-<div id="87c6066e" class="cell" data-execution_count="4">
+<div id="c493e930" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> uuid</span>
@@ -4712,8 +4717,8 @@ font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Codice Fiscale Anonimizzato:"</span>, cf_anonimizzato)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Mapping (da salvare): {'ad5e2ed2': 'RSSMRA80A01H501U'}
-Codice Fiscale Anonimizzato: ad5e2ed2</code></pre>
+<pre><code>Mapping (da salvare): {'97c03375': 'RSSMRA80A01H501U'}
+Codice Fiscale Anonimizzato: 97c03375</code></pre>
 </div>
 </div>
 <p>Dettagli:</p>
@@ -4944,7 +4949,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <guid>https://paolovolterra.github.io/posts/2506_Github/immagini/Sito con Quarto.html</guid>
-  <pubDate>Sun, 12 Jan 2025 19:53:44 GMT</pubDate>
+  <pubDate>Sun, 12 Jan 2025 19:56:18 GMT</pubDate>
 </item>
 </channel>
 </rss>
