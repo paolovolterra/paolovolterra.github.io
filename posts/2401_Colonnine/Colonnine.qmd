@@ -1,0 +1,519 @@
+---
+title: "Bonus colonnine domestiche"
+subtitle: "_Python applicato a dati pubblicati online_ "
+
+author: "Paolo Volterra"
+date: 2025-01-09
+created: 2025-01-12
+updated: 2025-01-12
+lang: it
+
+draft: false
+jupyter: "python3"
+execute:
+  freeze: true # con true blocco l'esecuzione degli script quando aggiorno il sito
+
+tags: [agevolazioni, Python, MIMIT]
+
+format:
+  html:
+    toc: true             # Abilita il sommario
+    toc-depth: 3          # Mostra fino al terzo livello di intestazioni
+    number-sections: true # Aggiunge numeri alle sezioni e sottosezioni
+    toc-location: right   # Posiziona il sommario a sinistra (o usa `right` per destra)
+    toc-title: "Indice"   # (Facoltativo) Titolo del sommario
+
+categories:
+  - agevolazioni
+  - Python
+  - opendata
+  - MIMIT
+
+# 1. quarto preview d:/paolovolterra.github.io/posts/2401_Colonnine/Colonnine.qmd
+# 2. quarto render d:/paolovolterra.github.io/posts/2401_Colonnine/Colonnine.qmd
+# 3. git add d:/paolovolterra.github.io/docs/posts/2401_Colonnine/Colonnine.html
+# 4. git status
+# 5. git add . (se hai rilevato altre modifiche e le voi introitare)
+# 6. git commit -m "Aggiornata la pagina: Colonnine"
+# 7. git pull origin main --rebase
+# 8. git push origin main
+# 9. git log
+
+---
+
+
+_Contributo a privati e condomini per l'acquisto e l'installazione di infrastrutture per la ricarica dei veicoli alimentati ad energia elettrica_
+
+Analisi realizzata con #opendata di [MIMIT](https://www.mimit.gov.it/it/incentivi/bonus-colonnine-domestiche), ISTAT e Opencup
+
+![]()./media/(bonus_colonnine_elettriche.jpg)
+
+Il bonus colonnine domestiche è un contributo pari all’80% del prezzo di acquisto e posa delle infrastrutture per la ricarica dei veicoli alimentati ad energia elettrica (come ad esempio colonnine o wall box).
+
+Il limite massimo del contributo è di 1.500 euro per gli utenti privati e fino a 8.000 euro in caso di installazione sulle parti comuni degli edifici condominiali.
+
+Possono beneficiare del contributo le persone fisiche residenti in Italia e i condomìni.
+
+Le risorse a disposizione sono pari a:
+
+- 40 milioni per 2022
+- 40 milioni per 2023
+- 20 milioni per 2024
+
+
+| file                                                                                                                                                                                                                              | numeri | righe |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ----- |
+| [Allegato_A_Decreto_di_concessione_annualita_2022_bcd.pdf](https://www.mimit.gov.it/it/normativa/decreti-direttoriali/decreto-direttoriale-20-novembre-2023-bonus-colonnine-domestiche-erogazione-contributi-2022)                | 561    | 545   |
+| [Allegato_Decreto_di_concessione_annualità_2023.pdf](https://www.mimit.gov.it/it/normativa/decreti-direttoriali/decreto-direttoriale-6-dicembre-2023-bonus-colonnine-domestiche-erogazione-contributi-2023)                       | 4992   | 4901  |
+| [Allegato_A_Decreto_di_concessione_nuova_apertura_2023.pdf](https://www.mimit.gov.it/it/normativa/decreti-direttoriali/decreto-direttoriale-9-maggio-2024-bonus-colonnine-domestiche-erogazione-contributi-nuova-riapertura-2023) | 939    | 939   |
+| [Allegato_A_EM_Decreto_di_concessione_annualita_2024.pdf](https://www.mimit.gov.it/it/normativa/decreti-direttoriali/decreto-direttoriale-del-9-dicembre-2024-bonus-colonnine-domestiche-erogazione-contributi-2024)              | 11485  | 11485 |
+
+
+# Analisi
+
+
+```{python}
+import pandas as pd
+import os
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+
+pd.set_option('display.float_format', lambda x: '%.2f' % x)
+```
+
+
+
+## Spese ad oggi ammesse e contributi complessivi concessi
+
+```{python}
+os.chdir('D:\\files\\csv\\Colonnine_elettriche')
+date_column = ['Data e ora presentazione domanda']
+combined_df =  pd.read_csv('combined.csv', parse_dates=date_column, dayfirst=False)
+combined_df[['Spese Ammesse (€)','Contributo Concesso (€)']].sum()
+```
+
+
+```{python}
+combined_df.describe()
+```
+
+
+## Boxplot contributi concessi
+
+```{python}
+# Rimuovi eventuali simboli di valuta e converti in numerico
+combined_df['Contributo Concesso (€)'] = combined_df['Contributo Concesso (€)'].replace('[€,]', '', regex=True).astype(float)
+
+# Rimuovi eventuali valori NaN
+combined_df_clean = combined_df.dropna(subset=['Contributo Concesso (€)'])
+
+# Genera il boxplot
+plt.figure(figsize=(10, 6))
+combined_df_clean['Contributo Concesso (€)'].plot(kind='box')
+plt.title('Boxplot dei Contributi Concessi (€)', fontsize=14)
+plt.ylabel('Contributi Concessi (€)', fontsize=12)
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.show()
+```
+
+## Histplot
+
+```{python}
+# Funzione per generare il grafico e calcolare i dati dinamicamente
+def plot_histogram_with_bins(data, column, bins=30):
+    # Rimuovi eventuali simboli di valuta e converti in numerico
+    data[column] = data[column].replace('[€,]', '', regex=True).astype(float)
+    data_clean = data.dropna(subset=[column])
+    
+    # Calcola l'istogramma con il numero di bin specificato
+    counts, bin_edges = np.histogram(data_clean[column], bins=bins)
+    
+    # Trova il bin con il conteggio maggiore
+    max_bin_index = counts.argmax()
+    max_bin_range = (bin_edges[max_bin_index], bin_edges[max_bin_index + 1])
+    max_bin_center = (max_bin_range[0] + max_bin_range[1]) / 2
+    
+    # Stampa i risultati
+    print(f"Numero di bin: {bins}")
+    print(f"Il bin con il conteggio massimo è tra {max_bin_range[0]:,.2f} e {max_bin_range[1]:,.2f}.")
+    print(f"Il valore centrale di questo bin è: {max_bin_center:,.2f}.")
+    print(f"Il conteggio massimo è di {counts[max_bin_index]}.")
+    
+    # Genera l'istogramma
+    plt.figure(figsize=(10, 6))
+    sns.histplot(data=data_clean, x=column, kde=True, bins=bins)
+    plt.title(f'Distribuzione di {column} - {bins} Bin', fontsize=14)
+    plt.xlabel(column, fontsize=12)
+    plt.ylabel('Frequenza', fontsize=12)
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    
+    # Evidenzia il bin con il conteggio maggiore
+    plt.axvspan(max_bin_range[0], max_bin_range[1], color='orange', alpha=0.3, label='Bin con conteggio massimo')
+    plt.axvline(max_bin_center, color='red', linestyle='--', label=f'Valore centrale: {max_bin_center:,.2f}')
+    plt.legend()
+    plt.show()
+
+# Esempio di utilizzo
+plot_histogram_with_bins(combined_df, 'Contributo Concesso (€)', bins=50)
+
+```
+
+
+
+
+## merge con Opencup localizzazione
+
+
+```{python}
+
+import os
+os.chdir('D:/duckdb/files/Opencup')
+import duckdb
+conn = duckdb.connect()
+
+
+conn.execute("CREATE TABLE OpenCup_Localizzazione AS SELECT * FROM 'OpenCup_Localizzazione.parquet';")
+
+conn.register('df2', combined_df)
+
+query = """SELECT a.*, b.* FROM  df2 a LEFT JOIN OpenCup_Localizzazione b ON a.CUP = b.CUP ;"""
+result2 = conn.execute(query).df()
+
+result2 = result2[['CUP', 'CODICE_REGIONE','REGIONE','SIGLA_PROVINCIA',  'COMUNE', 'N.',
+       'ID Domanda', 'Data e ora presentazione domanda',
+       'Soggetto richiedente', 'Codice fiscale', 'Spese Ammesse (€)',
+       'Contributo Concesso (€)']]
+
+result2.head()
+
+```
+
+### per regione
+
+```{python}
+result2['REGIONE'].count()
+```
+
+
+```{python}
+result2_grouped = result2.groupby(['REGIONE', 'CODICE_REGIONE']).size().reset_index(name='COUNT') # Raggruppa per REGIONE e seleziona CODICE_REGIONE
+result2_grouped_sorted = result2_grouped.sort_values(by='CODICE_REGIONE', ascending=True) # Ordina per CODICE_REGIONE (non per COUNT)
+print(result2_grouped_sorted[['REGIONE','COUNT']]) # Mostra il risultato
+```
+
+
+
+```{python}
+# Raggruppa i dati per COMUNE e conta le occorrenze
+comuni_count = result2.groupby('COMUNE').size()
+
+# Calcola le frequenze: quanti comuni hanno lo stesso numero di occorrenze
+frequenza_comuni = comuni_count.value_counts().sort_index()
+
+# Converte in DataFrame
+frequenza_comuni_df = frequenza_comuni.reset_index()
+frequenza_comuni_df.columns = ['Occorrenze', 'Numero di Comuni']
+
+# Raggruppa per intervalli di occorrenze (opzionale, per esempio in gruppi di 10)
+frequenza_comuni_df['Intervalli'] = pd.cut(frequenza_comuni_df['Occorrenze'], bins=range(0, frequenza_comuni_df['Occorrenze'].max() + 10, 10), right=False)
+
+# Raggruppa per intervalli (se applicabile)
+raggruppati = frequenza_comuni_df.groupby('Intervalli')['Numero di Comuni'].sum().reset_index()
+
+# Mostra il risultato
+raggruppati
+```
+
+
+```{python}
+import pandas as pd
+
+# Raggruppa i dati per COMUNE e conta le occorrenze
+comuni_count = result2.groupby('COMUNE').size()
+
+# Calcola le frequenze: quanti comuni hanno lo stesso numero di occorrenze
+frequenza_comuni = comuni_count.value_counts().sort_index()
+
+# Converte in DataFrame
+frequenza_comuni_df = frequenza_comuni.reset_index()
+frequenza_comuni_df.columns = ['Occorrenze', 'Numero di Comuni']
+
+# Raggruppa per intervalli di occorrenze
+frequenza_comuni_df['Intervalli'] = pd.cut(frequenza_comuni_df['Occorrenze'], 
+                                           bins=range(0, frequenza_comuni_df['Occorrenze'].max() + 10, 10), 
+                                           right=False)
+
+# raggruppati = frequenza_comuni_df.groupby('Intervalli')['Numero di Comuni'].sum().reset_index()
+# raggruppati = raggruppati[raggruppati['Numero di Comuni'] > 0]
+```
+
+
+```{python}
+raggruppati = frequenza_comuni_df.groupby('Intervalli', observed=True)['Numero di Comuni'].sum().reset_index()
+print(raggruppati)
+```
+
+
+```{python}
+import matplotlib.pyplot as plt
+
+# Crea il grafico a barre
+plt.figure(figsize=(10, 6))
+plt.bar(raggruppati['Intervalli'].astype(str), raggruppati['Numero di Comuni'])
+
+# Personalizza il grafico
+plt.title('Distribuzione dei Comuni per Intervalli di Occorrenze', fontsize=16)
+plt.xlabel('Intervalli di Occorrenze', fontsize=12)
+plt.ylabel('Numero di Comuni', fontsize=12)
+plt.xticks(rotation=45, ha='right')  # Ruota le etichette sull'asse x per leggibilità
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+
+# Mostra il grafico
+plt.tight_layout()
+plt.show()
+
+```
+
+
+```{python}
+# Raggruppa i dati per COMUNE e conta le occorrenze
+comuni_count = result2.groupby('COMUNE').size()
+
+# Filtra i comuni con un numero di occorrenze inferiore o uguale a 10
+comuni_max_10 = comuni_count[comuni_count >= 400].index.unique()
+
+# Mostra i comuni unici
+print(comuni_max_10)
+
+```
+
+
+```{python}
+# Calcola il numero di occorrenze per ogni comune
+comuni_count = result2.groupby('COMUNE').size().reset_index()
+comuni_count.columns = ['COMUNE', 'Occorrenze']
+
+# Aggiungi una colonna per gli intervalli
+comuni_count['Intervalli'] = pd.cut(comuni_count['Occorrenze'], 
+                                    bins=range(0, comuni_count['Occorrenze'].max() + 10, 10), 
+                                    right=False)
+
+# Raggruppa i comuni per intervalli
+comuni_per_intervallo = comuni_count.groupby('Intervalli')['COMUNE'].unique().reset_index()
+
+# Mostra il risultato
+print(comuni_per_intervallo)
+
+```
+
+
+```{python}
+# Calcola il numero di occorrenze per ogni comune
+comuni_count = result2.groupby('COMUNE').size().reset_index()
+comuni_count.columns = ['COMUNE', 'Occorrenze']
+
+# Aggiungi una colonna per gli intervalli
+comuni_count['Intervalli'] = pd.cut(comuni_count['Occorrenze'], 
+                                    bins=range(0, comuni_count['Occorrenze'].max() + 10, 10), 
+                                    right=False)
+
+# Raggruppa i comuni per intervalli, escludendo i raggruppamenti con valore 0
+comuni_per_intervallo = comuni_count.groupby('Intervalli').filter(lambda x: x['Occorrenze'].sum() > 0)
+
+# Raggruppa nuovamente per intervalli e ottieni i comuni unici
+comuni_per_intervallo = comuni_per_intervallo.groupby('Intervalli')['COMUNE'].unique().reset_index()
+
+# Mostra il risultato
+(comuni_per_intervallo)
+
+```
+
+
+```{python}
+# Importa le librerie necessarie
+import pandas as pd
+
+# Calcola il numero di occorrenze per ogni comune
+comuni_count = result2.groupby('COMUNE').size().reset_index()
+comuni_count.columns = ['COMUNE', 'Occorrenze']
+
+# Aggiungi una colonna per gli intervalli
+comuni_count['Intervalli'] = pd.cut(comuni_count['Occorrenze'], 
+                                    bins=range(0, comuni_count['Occorrenze'].max() + 10, 10), 
+                                    right=False)
+
+# Raggruppa per intervalli e ottieni i comuni unici
+comuni_per_intervallo = comuni_count.groupby('Intervalli', observed=False)['COMUNE'].unique().reset_index()
+
+# Filtra per rimuovere intervalli con liste vuote
+comuni_per_intervallo = comuni_per_intervallo[comuni_per_intervallo['COMUNE'].str.len() > 0]
+
+# Mostra il risultato
+(comuni_per_intervallo)
+```
+
+## mappa Italia
+
+
+```{python}
+import geopandas as gpd
+```
+
+
+```{python}
+comuni = result2.groupby('COMUNE')['COMUNE'].count().reset_index(name='count')
+df1 = gpd.read_file('D:/files/csv/Shapefile/Limiti01012023_g/Com01012023_g/Com01012023_g_WGS84.shp')
+df1['COMUNE'] = df1['COMUNE'].str.upper()
+merged_gdf = df1.merge(comuni, left_on='COMUNE', right_on='COMUNE', how='inner')
+# merged_gdf.to_csv('D:\\files\\csv\\Colonnine_elettriche\\merged.csv', sep='|', index = False)
+```
+
+```{python}
+ax = merged_gdf.plot(
+    column='count',  # Usa la colonna 'count' per definire i colori
+    cmap='tab10',  # Scegli una mappa di colori
+    figsize=(12, 12),  # Imposta la dimensione
+    legend=False  # Mostra la legenda
+)
+ax.axis('off')
+plt.savefig(f"D:/Italia.png", dpi=300, bbox_inches='tight', pad_inches=0.1)
+plt.show()
+```
+
+```{python}
+comuni = result2.groupby('COMUNE')['COMUNE'].count().reset_index(name='count')
+df1 = gpd.read_file('D:/files/csv/Shapefile/Limiti01012023_g/Com01012023_g/Com01012023_g_WGS84.shp')
+df1['COMUNE'] = df1['COMUNE'].str.upper()
+merged_gdf = df1.merge(comuni, left_on='COMUNE', right_on='COMUNE', how='left')
+```
+
+
+## singole regioni
+
+
+```{python}
+for i in range(1, 21):
+    # Filtra temporaneamente il DataFrame per ogni valore di COD_REG
+    temp_gdf = merged_gdf.query('COD_REG == @i')
+    
+    # Crea una nuova figura per ogni grafico
+    fig, ax = plt.subplots(figsize=(10, 10))
+    
+    # Traccia il confine (opzionale, usa temp_gdf o merged_gdf per i bordi)
+    temp_gdf.plot(ax=ax, color='black', linewidth=5)
+    
+    # Traccia la mappa colorata in base alla colonna 'count'
+    temp_gdf.plot(column='count', cmap='Reds', ax=ax, legend=False, missing_kwds={
+            "color": "white",  # Colore per i NaN
+            "edgecolor": "black",  # Contorno nero
+            "linewidth": 1
+        })
+    
+    # Aggiungi titolo e dettagli
+    ax.set_title(f"Regione COD_REG = {i}", fontsize=16)
+    ax.axis('off')  # Mantieni gli assi visibili (è già il comportamento predefinito)
+    
+    # Mostra la figura
+    plt.show()
+```
+
+## in azzurro con legenda range
+
+```{python}
+import matplotlib.pyplot as plt
+
+for i in range(1, 21):
+    # Filtra temporaneamente il DataFrame per ogni valore di COD_REG
+    temp_gdf = merged_gdf.query('COD_REG == @i')
+    
+    # Crea una nuova figura per ogni grafico
+    fig, ax = plt.subplots(figsize=(10, 10))
+    
+    # Traccia la mappa colorata in base alla colonna 'count'
+    temp_gdf.plot(
+        column='count',
+        cmap='Blues',
+        ax=ax,
+        legend=True,
+        edgecolor="grey",  # Colore del contorno
+        linewidth=1,  # Spessore del contorno
+        missing_kwds={
+            "color": "white",  # Colore per i NaN
+            "edgecolor": "grey",  # Contorno nero per i NaN
+            "linewidth": 0.5  # Spessore coerente anche per i NaN
+        }
+    )
+    
+    # Aggiungi titolo e dettagli
+    ax.set_title(f"Regione COD_REG = {i}", fontsize=16)
+    ax.axis('off')  # Rimuovi assi per un aspetto più pulito
+    
+    # Mostra la figura
+    plt.show()
+
+```
+
+## comuni presenti (in verde) o assenti
+
+```{python}
+comuni = result2.groupby('COMUNE')['COMUNE'].count().reset_index(name='count')
+df1 = gpd.read_file('D:/files/csv/Shapefile/Limiti01012023_g/Com01012023_g/Com01012023_g_WGS84.shp')
+df1['COMUNE'] = df1['COMUNE'].str.upper()
+merged_gdf = df1.merge(comuni, left_on='COMUNE', right_on='COMUNE', how='left')
+# merged_gdf.to_csv('D:\\files\\csv\\20241212_Colonnine elettriche\\merged.csv', sep='|', index = False)
+
+for i in range(1, 21):
+    # Filtra temporaneamente il DataFrame per ogni valore di COD_REG
+    temp_gdf = merged_gdf.query('COD_REG == @i')
+    
+    # Crea una nuova figura per ogni grafico
+    fig, ax = plt.subplots(figsize=(10, 10))
+    
+    # Poligoni con valori NaN (bianco con contorno nero)
+    temp_gdf[temp_gdf['count'].isna()].plot(
+        ax=ax,
+        color='white',       # Colore interno bianco
+        edgecolor='black',   # Contorno nero
+        linewidth=1          # Spessore contorno uniforme
+    )
+    
+    # Poligoni con valori validi (verde con contorno nero)
+    temp_gdf[temp_gdf['count'].notna()].plot(
+        ax=ax,
+        color='green',       # Colore interno verde
+        edgecolor='black',   # Contorno nero
+        linewidth=1          # Spessore contorno uniforme
+    )
+    
+    # Aggiungi titolo e dettagli
+    ax.set_title(f"Regione COD_REG = {i}", fontsize=16)
+    ax.axis('off')  # Rimuovi gli assi per un aspetto più pulito
+    
+    # Salva l'immagine con il nome del valore COD_REG
+    # plt.savefig(f"D:/cod_reg_{i}.png", dpi=300, bbox_inches='tight')
+    
+    # Chiudi la figura per liberare memoria
+    # plt.close(fig)
+    plt.show()
+```
+
+
+## Inquiry
+
+```{python}
+from itables import init_notebook_mode
+init_notebook_mode(all_interactive=True)
+from itables import show
+
+show(
+    result2[['CUP', 'REGIONE', 'SIGLA_PROVINCIA', 'COMUNE','Data e ora presentazione domanda', 'Spese Ammesse (€)', 'Contributo Concesso (€)']],
+    layout={"top1": "searchPanes"},
+    searchPanes={"layout": "columns-3", "cascadePanes": True, "columns": [1,2]},
+)
+
+
+# result2.query('SIGLA_PROVINCIA=="ME"').sort_values(by='Data e ora presentazione domanda')
+```
+
+
