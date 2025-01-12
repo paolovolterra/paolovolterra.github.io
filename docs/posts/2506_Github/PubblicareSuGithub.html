@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.40">
@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Paolo Volterra">
-<meta name="dcterms.date" content="2025-01-10">
 
 <title>Come Pubblicare su un sito Github – Paolo Volterra’s website</title>
 <style>
@@ -89,27 +88,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
   }
 }</script>
 
 
+<link rel="stylesheet" href="styles.css">
 <meta name="twitter:title" content="Come Pubblicare su un sito Github – Paolo Volterra’s website">
 <meta name="twitter:description" content="miei appunti presi da diverse fonti">
-<meta name="twitter:image" content="https://paolovolterra.github.io/posts/2506_Github/immagini/20250111112443.png">
+<meta name="twitter:image" content="https://paolovolterra.github.io/posts/2506_Github/immagini/2020250111120332.png">
 <meta name="twitter:creator" content="@ghibbli">
-<meta name="twitter:image-height" content="626">
-<meta name="twitter:image-width" content="1150">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -124,8 +122,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <span class="navbar-title">Paolo Volterra’s website</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -151,20 +149,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">In questa pagina</h2>
    
   <ul>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto">Quarto</a></li>
-  <li><a href="#github" id="toc-github" class="nav-link" data-scroll-target="#github">Github</a>
+  <li><a href="#aggiornare-solo-una-pagina" id="toc-aggiornare-solo-una-pagina" class="nav-link active" data-scroll-target="#aggiornare-solo-una-pagina">Aggiornare solo una pagina</a>
   <ul class="collapse">
-  <li><a href="#pagina-httpsgithub.compaolovolterrapaolovolterra.github.iosettingspages" id="toc-pagina-httpsgithub.compaolovolterrapaolovolterra.github.iosettingspages" class="nav-link" data-scroll-target="#pagina-httpsgithub.compaolovolterrapaolovolterra.github.iosettingspages">pagina https://github.com/paolovolterra/paolovolterra.github.io/settings/pages</a></li>
-  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git">Git</a></li>
-  <li><a href="#git-banches" id="toc-git-banches" class="nav-link" data-scroll-target="#git-banches">Git banches</a></li>
+  <li><a href="#flusso-di-lavoro-ottimizzato" id="toc-flusso-di-lavoro-ottimizzato" class="nav-link" data-scroll-target="#flusso-di-lavoro-ottimizzato">Flusso di lavoro ottimizzato</a></li>
+  <li><a href="#se-ci-sono-altri-file-modificati" id="toc-se-ci-sono-altri-file-modificati" class="nav-link" data-scroll-target="#se-ci-sono-altri-file-modificati">Se ci sono altri file modificati</a></li>
   </ul></li>
   <li><a href="#riferimenti" id="toc-riferimenti" class="nav-link" data-scroll-target="#riferimenti">Riferimenti</a></li>
   <li><a href="#bibtex" id="toc-bibtex" class="nav-link" data-scroll-target="#bibtex">Bibtex</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2506_Github/PubblicareSuGithub.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2506_Github/PubblicareSuGithub.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
@@ -185,18 +181,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta column-page-left">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
     <div class="quarto-title-meta-contents">
              <p>Paolo Volterra </p>
           </div>
   </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 10, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -206,42 +196,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>si lavora con 2 tipi di files: - yaml - qmd</p>
-<p><strong>devono essere configurati</strong> : - git - github</p>
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> quarto create-project paolovolterra.github.io <span class="at">--type</span> website</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> quarto preview</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> quarto render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Premessa: un immenso grazie a Chatgpt</em></p>
+<p>si lavora con molti tipi di files: yaml, qmd, css, …</p>
+<p><strong>devono essere precedentemente configurati</strong> :</p>
 <ul>
-<li>INPUT: i qmd devono stare nella cartella post</li>
-<li>OUTPUT: gli output renderizzati da Quarto finiranno nella cartella docs</li>
+<li>git</li>
+<li>github</li>
 </ul>
-</section>
-<section id="github" class="level2">
-<h2 class="anchored" data-anchor-id="github">Github</h2>
-<section id="pagina-httpsgithub.compaolovolterrapaolovolterra.github.iosettingspages" class="level3">
-<h3 class="anchored" data-anchor-id="pagina-httpsgithub.compaolovolterrapaolovolterra.github.iosettingspages">pagina https://github.com/paolovolterra/paolovolterra.github.io/settings/pages</h3>
+<p>un esempio impattante:</p>
 <ul>
-<li><p>configurare il **main branch”</p></li>
-<li><p>creare un token per l’accesso automatico <a href="https://docs.github.com/en/organizations/managing-programmatic-access-to-your-organization/setting-a-personal-access-token-policy-for-your-organization#restricting-access-by-personal-access-tokens">HowTo</a></p></li>
+<li>sposto il progetto in un’altra cartella locale</li>
 </ul>
-<p><img src="./immagini/20250111112443.png" class="img-fluid"></p>
+<hr>
+<section id="aggiornare-solo-una-pagina" class="level2">
+<h2 class="anchored" data-anchor-id="aggiornare-solo-una-pagina">Aggiornare solo una pagina</h2>
+<p>Non è necessario specificare manualmente il file <code>.qmd</code> in tutti i comandi, ma devi farlo nei comandi <code>quarto render</code> o <code>quarto preview</code>. Gli altri comandi possono lavorare con un approccio più generico, come <code>git add .</code>, per includere tutte le modifiche.</p>
+<ol type="1">
+<li>quarto preview d:/paolovolterra.github.io/posts/202508_RNA/RNA.qmd</li>
+<li>quarto render d:/paolovolterra.github.io/posts/202508_RNA/RNA.qmd</li>
+<li>git add d:/paolovolterra.github.io/docs/posts/202508_RNA/RNA.html</li>
+<li><ol start="5" type="1">
+<li>git status</li>
+</ol></li>
+<li>git add . (se hai rilevato altre modifiche e le voi introitare)</li>
+<li>git commit -m “Aggiornata la pagina: RNA”</li>
+<li>git pull origin main –rebase</li>
+<li>git push origin main</li>
+<li>git log</li>
+</ol>
+<section id="flusso-di-lavoro-ottimizzato" class="level3">
+<h3 class="anchored" data-anchor-id="flusso-di-lavoro-ottimizzato">Flusso di lavoro ottimizzato</h3>
+<p>Se modifichi un solo file <code>.qmd</code> (ad esempio, <code>RNA.qmd</code>), puoi seguire questo flusso semplificato:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render d:/paolovolterra.github.io/posts/202508_RNA/RNA.qmd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add d:/paolovolterra.github.io/docs/posts/202508_RNA/RNA.html</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Aggiornata la pagina: RNA"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull origin main <span class="at">--rebase</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>Genera l’output dal file modificato</li>
+<li>Aggiungi i file modificati</li>
+<li>Crea il commit</li>
+<li>Sincronizza con il repository remoto</li>
+</ol>
 </section>
-<section id="git" class="level3">
-<h3 class="anchored" data-anchor-id="git">Git</h3>
-<ul>
-<li>git remote remove origin</li>
-<li>git add docs</li>
-<li>git remote add origin https://github.com/paolovolterra/paolovolterra.github.io</li>
-<li>git remote -v</li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  https://github.com/paolovolterra/paolovolterra.github.io <span class="er">(</span><span class="ex">fetch</span><span class="kw">)</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  https://github.com/paolovolterra/paolovolterra.github.io <span class="er">(</span><span class="ex">push</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="git-banches" class="level3">
-<h3 class="anchored" data-anchor-id="git-banches">Git banches</h3>
+<section id="se-ci-sono-altri-file-modificati" class="level3">
+<h3 class="anchored" data-anchor-id="se-ci-sono-altri-file-modificati">Se ci sono altri file modificati</h3>
+<p>(es. <code>posts.html</code>, <code>sitemap.xml</code>), questi potrebbero essere stati rigenerati automaticamente da Quarto. Per gestire anche questi file:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Aggiornati file generati automaticamente"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Se vuoi evitare di eseguire manualmente questi comandi per ogni file, puoi creare uno script Bash o Batch.</p>
 </section>
 </section>
 <section id="riferimenti" class="level2">
@@ -265,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -309,12 +313,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiato!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copiato!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -691,7 +695,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2506_Github/PubblicareSuGithub.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2506_Github/PubblicareSuGithub.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

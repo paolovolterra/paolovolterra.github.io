@@ -2,67 +2,85 @@
 title: "Come Pubblicare su un sito Github"
 subtitle: "miei appunti presi da diverse fonti"
 draft: false
-format: html
+
 created: 2025-01-11
-date: 2025-01-10
+updated: 2025-01-12
+lang: it
+tags: [Quarto, Github]
 author: Paolo Volterra
-website:
-  page-navigation: true
 
 categories:
   - Github
   - Quarto
   - Python
+
+format:
+  html:
+    toc: true
+    css: styles.css
 ---
 
+_Premessa: un immenso grazie a Chatgpt_
 
-si lavora con 2 tipi di files:
-- yaml
-- qmd
 
-**devono essere configurati** :
+si lavora con molti tipi di files: yaml, qmd, css, ...
+
+
+**devono essere precedentemente configurati** :
+
 - git
 - github
 
+un esempio impattante:
 
+- sposto il progetto in un'altra cartella locale
 
-## Quarto
+---
+
+## Aggiornare solo una pagina
+
+Non è necessario specificare manualmente il file `.qmd` in tutti i comandi, ma devi farlo nei comandi `quarto render` o `quarto preview`. Gli altri comandi possono lavorare con un approccio più generico, come `git add .`, per includere tutte le modifiche.
+
+1. quarto preview d:/paolovolterra.github.io/posts/202508_RNA/RNA.qmd
+2. quarto render d:/paolovolterra.github.io/posts/202508_RNA/RNA.qmd
+3. git add d:/paolovolterra.github.io/docs/posts/202508_RNA/RNA.html
+4. 5. git status
+5. git add . (se hai rilevato altre modifiche e le voi introitare)
+6. git commit -m "Aggiornata la pagina: RNA"
+7. git pull origin main --rebase
+8. git push origin main
+9. git log
+
+### Flusso di lavoro ottimizzato
+
+Se modifichi un solo file `.qmd` (ad esempio, `RNA.qmd`), puoi seguire questo flusso semplificato:
 
 ```bash
-
-- quarto create-project paolovolterra.github.io --type website
-- quarto preview
-- quarto render
+quarto render d:/paolovolterra.github.io/posts/202508_RNA/RNA.qmd
+git add d:/paolovolterra.github.io/docs/posts/202508_RNA/RNA.html
+git commit -m "Aggiornata la pagina: RNA"
+git pull origin main --rebase
+git push origin main
 
 ```
 
-- INPUT: i qmd devono stare nella cartella post
-- OUTPUT: gli output renderizzati da Quarto finiranno nella cartella docs
+1. Genera l'output dal file modificato
+2. Aggiungi i file modificati
+3. Crea il commit
+4. Sincronizza con il repository remoto
 
-## Github
 
-
-### pagina https://github.com/paolovolterra/paolovolterra.github.io/settings/pages 
-
-- configurare il **main branch"
-
-- creare un token per l'accesso automatico [HowTo](https://docs.github.com/en/organizations/managing-programmatic-access-to-your-organization/setting-a-personal-access-token-policy-for-your-organization#restricting-access-by-personal-access-tokens) 
-
-![](./immagini/20250111112443.png)
-
-### Git
-- git remote remove origin
-- git add docs
-- git remote add origin https://github.com/paolovolterra/paolovolterra.github.io
-- git remote -v
+### Se ci sono altri file modificati 
+(es. `posts.html`, `sitemap.xml`), questi potrebbero essere stati rigenerati automaticamente da Quarto. Per gestire anche questi file:
 
 ```bash
-origin  https://github.com/paolovolterra/paolovolterra.github.io (fetch)
-origin  https://github.com/paolovolterra/paolovolterra.github.io (push)
+git add .
+git commit -m "Aggiornati file generati automaticamente"
+git push origin main
+
 ```
 
-
-### Git banches
+Se vuoi evitare di eseguire manualmente questi comandi per ogni file, puoi creare uno script Bash o Batch.
 
 
 ## Riferimenti
