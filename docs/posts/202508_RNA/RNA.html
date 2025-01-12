@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <link rel="stylesheet" href="styles.css">
 <meta name="twitter:title" content="Registro Nazionale degli Aiuti di Stato – Paolo Volterra’s website">
-<meta name="twitter:description" content="_Gli ultimi aiuti di stato registrati sul sito deputato alla">
+<meta name="twitter:description" content="trasparenza e controllo sugli aiuti pubblici concessi in conformità alla normativa europea sugli aiuti di Stato">
 <meta name="twitter:creator" content="@ghibbli">
 <meta name="twitter:card" content="summary">
 </head>
@@ -177,12 +177,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Registro Nazionale degli Aiuti di Stato</h1>
-<p class="subtitle lead">_Gli ultimi aiuti di stato registrati sul sito deputato alla</p>
+<p class="subtitle lead"><em>trasparenza e controllo sugli aiuti pubblici concessi in conformità alla normativa europea sugli aiuti di Stato</em></p>
   <div class="quarto-categories">
     <div class="quarto-category">agevolazioni</div>
     <div class="quarto-category">Invitalia</div>
     <div class="quarto-category">Python</div>
     <div class="quarto-category">RNA</div>
+    <div class="quarto-category">opendata</div>
   </div>
   </div>
 
@@ -212,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Il <strong>Registro Nazionale degli Aiuti di Stato</strong> #RNA è uno strumento gestito dal Ministero delle Imprese e del Made in Italy (ex Ministero dello Sviluppo Economico - MiSE), che permette di raccogliere, monitorare e pubblicare informazioni relative agli aiuti di Stato concessi alle imprese e agli enti in Italia. È stato istituito per assicurare maggiore trasparenza e controllo sugli aiuti pubblici concessi in conformità alla normativa europea sugli aiuti di Stato.</p>
+<p>Il <strong>Registro Nazionale degli Aiuti di Stato</strong> #RNA è uno strumento gestito dal Ministero delle Imprese e del Made in Italy (ex Ministero dello Sviluppo Economico - MiSE), che permette di raccogliere, monitorare e pubblicare informazioni relative agli aiuti di Stato concessi alle imprese e agli enti in Italia.</p>
 <section id="obiettivi-principali" class="level3">
 <h3 class="anchored" data-anchor-id="obiettivi-principali">Obiettivi principali:</h3>
 <ol type="1">
@@ -248,7 +249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="analisi-sullxml-più-recente">Analisi sull’xml più recente</h2>
 <section id="quanti-aiuti-contiene" class="level3">
 <h3 class="anchored" data-anchor-id="quanti-aiuti-contiene">Quanti aiuti contiene</h3>
-<div id="ad17e00b" class="cell" data-execution_count="2">
+<div id="a7327892" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT * FROM 'OpenData_Aiuti_2025_01.parquet'"</span>).df()</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df.shape</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -258,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="quali-misure-hanno-più-aiuti" class="level3">
 <h3 class="anchored" data-anchor-id="quali-misure-hanno-più-aiuti">Quali misure hanno più aiuti</h3>
-<div id="dbc87207" class="cell" data-execution_count="3">
+<div id="2ac883c0" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(misura) MISURA, count(CAR), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 10"</span>).df()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -355,7 +356,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="quali-concedenti-hanno-più-aiuti" class="level3">
 <h3 class="anchored" data-anchor-id="quali-concedenti-hanno-più-aiuti">Quali concedenti hanno più aiuti</h3>
-<div id="34169014" class="cell" data-execution_count="4">
+<div id="a44559a7" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(concedente) CONCEDENTE, count(CAR), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 10"</span>).df()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -452,7 +453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="gli-aiuti-in-ordine-di-valore-nominale" class="level3">
 <h3 class="anchored" data-anchor-id="gli-aiuti-in-ordine-di-valore-nominale">Gli aiuti in ordine di valore nominale €</h3>
-<div id="bdafa323" class="cell" data-execution_count="5">
+<div id="8b8eced8" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(concedente) CONCEDENTE, count(CAR), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 3 desc limit 10"</span>).df()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -549,7 +550,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="gli-aiuti-concessi-da-invitalia" class="level3">
 <h3 class="anchored" data-anchor-id="gli-aiuti-concessi-da-invitalia">Gli aiuti concessi da Invitalia</h3>
-<div id="b00375c9" class="cell" data-execution_count="6">
+<div id="155a95af" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(misura) MISURA, count(CAR), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet' where concedente like '%INVI%' group by 1 order by 3 desc limit 10"</span>).df()</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
