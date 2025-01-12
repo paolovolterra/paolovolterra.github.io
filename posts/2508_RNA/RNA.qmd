@@ -1,0 +1,222 @@
+---
+title: "Registro Nazionale degli Aiuti di Stato"
+subtitle: "_trasparenza e controllo sugli aiuti pubblici concessi in conformità alla normativa europea sugli aiuti di Stato_ "
+draft: false
+
+created: 2025-01-12
+updated: 2025-01-12
+lang: it
+tags: [agevolazioni, Invitalia, Python, RNA, opendata]
+author: "Paolo Volterra"
+
+format:
+  html:
+    toc: true             # Abilita il sommario
+    toc-depth: 3          # Mostra fino al terzo livello di intestazioni
+    number-sections: true # Aggiunge numeri alle sezioni e sottosezioni
+    toc-location: right   # Posiziona il sommario a sinistra (o usa `right` per destra)
+    toc-title: "Indice"   # (Facoltativo) Titolo del sommario
+
+categories:
+  - agevolazioni
+  - Invitalia
+  - Python
+  - RNA
+  - opendata
+  
+jupyter: "python3"
+execute:
+  freeze: true # con true blocco l'esecuzione degli script quando aggiorno solo il testo
+
+---
+
+<!-- 
+1. quarto preview d:/paolovolterra.github.io/posts/2508_RNA/RNA.qmd
+2. quarto render d:/paolovolterra.github.io/posts/2508_RNA/RNA.qmd
+3. git add d:/paolovolterra.github.io/docs/posts/2508_RNA/RNA.html
+4. git status
+5. git add . (se hai rilevato altre modifiche e le voi introitare)
+6. git commit -m "Aggiornata la pagina: RNA"
+7. git pull origin main --rebase
+8. git push origin main
+9. git log
+-->
+
+
+Il [**Registro Nazionale degli Aiuti di Stato**](https://www.rna.gov.it/) #RNA è uno strumento gestito dal Ministero delle Imprese e del Made in Italy (ex Ministero dello Sviluppo Economico - MiSE), che permette di raccogliere, monitorare e pubblicare informazioni relative agli aiuti di Stato concessi alle imprese e agli enti in Italia. 
+
+![](./media/01.png)
+
+# Obiettivi principali:
+1. **Trasparenza**: Pubblicare i dettagli degli aiuti concessi, garantendo che le informazioni siano accessibili a cittadini e imprese.
+2. **Monitoraggio**: Assicurare che i limiti sugli aiuti stabiliti dalla normativa europea siano rispettati.
+3. **Controllo**: Evitare il superamento delle soglie del regime "de minimis" e la concessione di aiuti incompatibili con le regole dell’Unione Europea.
+
+# La realizzazione
+
+Il #RNA è stato realizzato come parte di un'importante azione di sistema cofinanziata dall'Unione Europea. In particolare, il progetto ha beneficiato di risorse pari a **17.715.920,01 euro**, assegnate nell'ambito del **Programma Operativo Complementare al PON Governance e Capacità Istituzionale 2014-2020**. 
+
+La progettazione e la realizzazione di una prima versione prototipale del Registro sono state completate nel 2016, con un investimento di **2.652.236,00 euro**. 
+
+Il #RNA è operativo dal 12 agosto 2017 e rappresenta uno strumento fondamentale per garantire la trasparenza e il controllo degli aiuti di Stato concessi in Italia. 
+
+
+# Informazioni contenute nel Registro:
+Il #RNA include informazioni come:
+- Identità del beneficiario (nome, partita IVA, codice fiscale).
+- Tipo di aiuto concesso (contributo a fondo perduto, credito d’imposta, agevolazione fiscale, ecc.).
+- Importo e intensità dell’aiuto.
+- Riferimenti alla normativa e al regime di aiuti in base al quale è stato concesso.
+- Ente erogatore.
+
+
+# Normativa di riferimento:
+Il #RNA è disciplinato dal **Decreto Legge n. 123/2017**, che stabilisce obblighi per le amministrazioni pubbliche e i soggetti che gestiscono misure di aiuto. L'obiettivo è garantire che tutti gli aiuti siano comunicati e registrati.
+
+# Accesso al Registro:
+Il #RNA è consultabile tramite una piattaforma online, accessibile sia dagli enti pubblici che dagli operatori economici. 
+
+Alcune informazioni, per motivi di riservatezza, potrebbero essere soggette a limitazioni.
+
+
+# Controlli sul "de minimis":
+Il #RNA permette di verificare se un’impresa ha superato la soglia prevista dal regime "de minimis" (200.000 euro nell’arco di tre esercizi finanziari, salvo eccezioni per alcuni settori).
+
+---
+
+Oltre all'interrogazione online, #RNA permette il [download degli #opendata](https://www.rna.gov.it/open-data/aiuti)
+
+![](./media/04.png)
+
+
+# Gli opendata RNA in xml
+
+#RNA aggiorna costantemente il propsio DB conn le segnalazioni dovute dai mittenti normativamente previsti.
+
+Le date degli [opendata XML messi a disposizione](https://www.rna.gov.it/open-data/aiuti) corrispondono al mese della variabile "DATA_CONCESSIONE" contenuta in ognuno di loro
+
+RNA riceve però anche informazioni datate e quindi aggiorna tutto.
+
+Potenzialmente, quindi, **tutti** gli XML andrebbero riscaricati ...
+
+Di seguito, ad esempio, gli ultimi 3 file parquet del 2024 da me realizzati, la data di mia aggiornamento e i df.shape
+
+## OpenData_Aiuti_2024_12.parquet
+- 20250111 (107273, 21)
+- 20250105 (105454, 21)
+- 20250101 (100270, 21)
+- 20241221 (91504, 21)
+- 20241214 (36363, 21)
+- 20241207 (16243, 21)
+
+## OpenData_Aiuti_2024_11.parquet
+- 20250111 (141510, 21)
+- 20250107 (141523, 21)
+- 20241201 (136061, 21)
+- 20241130 (115693, 21)
+- 20241124 (115693, 21)
+- 20241117 (19701, 21)
+- 20241110 (19701, 21)
+
+## OpenData_Aiuti_2024_10.parquet
+- 20250107 (238465, 21)
+- 20241110 (238076, 21)
+- 20241101 (122656, 21)
+- 20241029 (122656, 21)
+- 20241026 (59146, 21)
+- 20241019 (59146, 21)
+
+
+
+# Analisi sull'xml più recente
+
+Appresso riporto alcune sintesi dell'ultimo XML -> parquet da me prodotto
+
+
+```{python}
+#| echo: false
+import pyarrow.parquet as pq # pip install pyarrow
+import pandas as pd
+import glob
+import duckdb
+pd.set_option('display.max_rows', None)
+import os
+os.chdir('D:/duckdb/files/RNA2/')
+# import cudf
+pd.set_option('display.max_colwidth', 500)
+
+con = duckdb.connect()
+con.execute("PRAGMA threads=8") # enable automatic query parallelization
+con.execute("PRAGMA enable_object_cache") # enable caching of parquet metadata
+
+#pd.set_option('display.max_rows', None)
+
+pd.options.display.float_format = '{:,}'.format
+
+# pd.options.display.float_format = '{:.2f}'.format
+```
+
+## Quanti aiuti contiene
+
+```{python}
+df = con.execute("SELECT * FROM 'OpenData_Aiuti_2025_01.parquet'").df()
+df.shape
+```
+
+## Quali misure hanno più aiuti
+
+```{python}
+df = con.execute("SELECT upper(misura) MISURA, count(CAR) CONCESSIONI, \
+  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI \
+    FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 10").df()
+df
+```
+
+## Quali concedenti hanno più aiuti
+
+```{python}
+df = con.execute("SELECT upper(concedente) CONCEDENTE, count(CAR) CONCESSIONI, \
+  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI \
+    FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 10").df()
+df
+```
+
+## Gli aiuti in ordine di valore nominale €
+
+```{python}
+df = con.execute("SELECT upper(concedente) CONCEDENTE, count(CAR) CONCESSIONI, \
+  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI \
+    FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 3 desc limit 10").df()
+df
+```
+
+## valori raggruppati per data 
+```{python}
+df = con.execute("SELECT CONCESSIONE, count(CAR) CONCESSIONI, \
+  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI \
+    FROM 'OpenData_Aiuti_2025_01.parquet' \
+      group by 1 order by 1 desc").df()
+df
+```
+
+---
+## Analisi per concedente
+
+### Gli aiuti concessi da Invitalia
+
+```{python}
+df = con.execute("SELECT upper(misura) MISURA, count(CAR) CONCESSIONI, \
+  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI \
+    FROM 'OpenData_Aiuti_2025_01.parquet' where concedente like '%INVI%' \
+      group by 1 order by 3 desc limit 10").df()
+df
+```
+
+### valori raggruppati per data 
+```{python}
+df = con.execute("SELECT CONCESSIONE, count(CAR) CONCESSIONI, \
+  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI \
+    FROM 'OpenData_Aiuti_2025_01.parquet' where concedente like '%INVI%' \
+      group by 1 order by 1 desc").df()
+df
+```

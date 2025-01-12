@@ -126,484 +126,6 @@
   <pubDate>Sat, 11 Jan 2025 23:00:00 GMT</pubDate>
 </item>
 <item>
-  <title>Registro Nazionale degli Aiuti di Stato</title>
-  <dc:creator>Paolo Volterra</dc:creator>
-  <link>https://paolovolterra.github.io/posts/202508_RNA/RNA.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Il <a href="https://www.rna.gov.it/"><strong>Registro Nazionale degli Aiuti di Stato</strong></a> #RNA è uno strumento gestito dal Ministero delle Imprese e del Made in Italy (ex Ministero dello Sviluppo Economico - MiSE), che permette di raccogliere, monitorare e pubblicare informazioni relative agli aiuti di Stato concessi alle imprese e agli enti in Italia.</p>
-<p><img src="https://paolovolterra.github.io/posts/202508_RNA/media/01.png" class="img-fluid"></p>
-<section id="obiettivi-principali" class="level3">
-<h3 class="anchored" data-anchor-id="obiettivi-principali">Obiettivi principali:</h3>
-<ol type="1">
-<li><strong>Trasparenza</strong>: Pubblicare i dettagli degli aiuti concessi, garantendo che le informazioni siano accessibili a cittadini e imprese.</li>
-<li><strong>Monitoraggio</strong>: Assicurare che i limiti sugli aiuti stabiliti dalla normativa europea siano rispettati.</li>
-<li><strong>Controllo</strong>: Evitare il superamento delle soglie del regime “de minimis” e la concessione di aiuti incompatibili con le regole dell’Unione Europea.</li>
-</ol>
-</section>
-<section id="la-realizzazione" class="level3">
-<h3 class="anchored" data-anchor-id="la-realizzazione">La realizzazione</h3>
-<p>Il #RNA è stato realizzato come parte di un’importante azione di sistema cofinanziata dall’Unione Europea. In particolare, il progetto ha beneficiato di risorse pari a <strong>17.715.920,01 euro</strong>, assegnate nell’ambito del <strong>Programma Operativo Complementare al PON Governance e Capacità Istituzionale 2014-2020</strong>.</p>
-<p>La progettazione e la realizzazione di una prima versione prototipale del Registro sono state completate nel 2016, con un investimento di <strong>2.652.236,00 euro</strong>.</p>
-<p>Il #RNA è operativo dal 12 agosto 2017 e rappresenta uno strumento fondamentale per garantire la trasparenza e il controllo degli aiuti di Stato concessi in Italia.</p>
-</section>
-<section id="informazioni-contenute-nel-registro" class="level3">
-<h3 class="anchored" data-anchor-id="informazioni-contenute-nel-registro">Informazioni contenute nel Registro:</h3>
-<p>Il #RNA include informazioni come: - Identità del beneficiario (nome, partita IVA, codice fiscale). - Tipo di aiuto concesso (contributo a fondo perduto, credito d’imposta, agevolazione fiscale, ecc.). - Importo e intensità dell’aiuto. - Riferimenti alla normativa e al regime di aiuti in base al quale è stato concesso. - Ente erogatore.</p>
-</section>
-<section id="normativa-di-riferimento" class="level3">
-<h3 class="anchored" data-anchor-id="normativa-di-riferimento">Normativa di riferimento:</h3>
-<p>Il #RNA è disciplinato dal <strong>Decreto Legge n.&nbsp;123/2017</strong>, che stabilisce obblighi per le amministrazioni pubbliche e i soggetti che gestiscono misure di aiuto. L’obiettivo è garantire che tutti gli aiuti siano comunicati e registrati.</p>
-</section>
-<section id="accesso-al-registro" class="level3">
-<h3 class="anchored" data-anchor-id="accesso-al-registro">Accesso al Registro:</h3>
-<p>Il #RNA è consultabile tramite una piattaforma online, accessibile sia dagli enti pubblici che dagli operatori economici.</p>
-<p>Alcune informazioni, per motivi di riservatezza, potrebbero essere soggette a limitazioni.</p>
-</section>
-<section id="controlli-sul-de-minimis" class="level3">
-<h3 class="anchored" data-anchor-id="controlli-sul-de-minimis">Controlli sul “de minimis”:</h3>
-<p>Il #RNA permette di verificare se un’impresa ha superato la soglia prevista dal regime “de minimis” (200.000 euro nell’arco di tre esercizi finanziari, salvo eccezioni per alcuni settori).</p>
-<hr>
-<p>Oltre all’interrogazione online, #RNA permette il <a href="https://www.rna.gov.it/open-data/aiuti">download degli #opendata</a></p>
-<p><img src="https://paolovolterra.github.io/posts/202508_RNA/media/04.png" class="img-fluid"></p>
-</section>
-<section id="analisi-sullxml-più-recente" class="level2">
-<h2 class="anchored" data-anchor-id="analisi-sullxml-più-recente">Analisi sull’xml più recente</h2>
-<section id="quanti-aiuti-contiene" class="level3">
-<h3 class="anchored" data-anchor-id="quanti-aiuti-contiene">Quanti aiuti contiene</h3>
-<div id="27a19201" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">df <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"SELECT * FROM 'OpenData_Aiuti_2025_01.parquet'"</span>).df()</span>
-<span id="cb1-2">df.shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>(4520, 21)</code></pre>
-</div>
-</div>
-</section>
-<section id="quali-misure-hanno-più-aiuti" class="level3">
-<h3 class="anchored" data-anchor-id="quali-misure-hanno-più-aiuti">Quali misure hanno più aiuti</h3>
-<div id="601af857" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">df <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"SELECT upper(misura) MISURA, count(CAR), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 10"</span>).df()</span>
-<span id="cb3-2">df</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">MISURA</th>
-<th data-quarto-table-cell-role="th">count(CAR)</th>
-<th data-quarto-table-cell-role="th">sum(CAST(NOMINALE AS INTEGER))</th>
-<th data-quarto-table-cell-role="th">sum(CAST(AIUTO AS INTEGER))</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>FONDO DI GARANZIA PER LE PICCOLE E MEDIE IMPRESE</td>
-<td>1968</td>
-<td>255,839,016.0</td>
-<td>16,826,417.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>REGOLAMENTO PER I FONDI INTERPROFESSIONALI PER LA FORMAZIONE CONTINUA PER LA CONCESSIONI DI AIUTI DI STATO ESENTATI AI SENSI DEL REGOLAMENTO CE N.651/2014 E IN REGIME DE MINIMIS AI SENSI DEL REGOLAMENTO CE N.1407/2013</td>
-<td>1562</td>
-<td>5,649,132.0</td>
-<td>5,484,626.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>BANDO VOUCHER TRANSIZIONE DIGITALE ED ECOLOGICA E PER SISTEMI DI SICUREZZA 2024</td>
-<td>97</td>
-<td>586,960.0</td>
-<td>586,960.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>PNRR, M1C3 INVESTIMENTI 4.2.1; 4.2.2 AVVISO PUBBLICO EX ARTT. 1 E 4 DL 152/2021</td>
-<td>79</td>
-<td>5,176,411.0</td>
-<td>4,636,411.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>CREDITO D'ESERCIZIO</td>
-<td>74</td>
-<td>1,659,000.0</td>
-<td>68,097.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>BANDO PER CONTRIBUTI PER LA TRANSIZIONE DIGITALE ED ECOLOGICA DELLE IMPRESE ANNO 2024-2025</td>
-<td>37</td>
-<td>138,827.0</td>
-<td>138,827.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>INVESTIMENTI SOSTENIBILI 4.0 (PN RIC 2021-2027)</td>
-<td>36</td>
-<td>30,234,444.0</td>
-<td>19,391,190.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
-<td>PI ARTIGIANATO</td>
-<td>35</td>
-<td>500,507.0</td>
-<td>538,507.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
-<td>COVID-19: FONDO DI GARANZIA PMI - MODIFICA SA.56966, SA.57625, SA.59655</td>
-<td>30</td>
-<td>94,030.0</td>
-<td>94,030.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>APPROVAZIONE AVVISO BANDO DOTE IMPRESA COLLOCAMENTO MIRATO - FONDO 2022</td>
-<td>28</td>
-<td>244,546.0</td>
-<td>244,546.0</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-</section>
-<section id="quali-concedenti-hanno-più-aiuti" class="level3">
-<h3 class="anchored" data-anchor-id="quali-concedenti-hanno-più-aiuti">Quali concedenti hanno più aiuti</h3>
-<div id="8ff7d38b" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">df <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"SELECT upper(concedente) CONCEDENTE, count(CAR), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 10"</span>).df()</span>
-<span id="cb4-2">df</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">CONCEDENTE</th>
-<th data-quarto-table-cell-role="th">count(CAR)</th>
-<th data-quarto-table-cell-role="th">sum(CAST(NOMINALE AS INTEGER))</th>
-<th data-quarto-table-cell-role="th">sum(CAST(AIUTO AS INTEGER))</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>BANCA DEL MEZZOGIORNO MEDIOCREDITO CENTRALE S.P.A.</td>
-<td>1998</td>
-<td>255,933,046.0</td>
-<td>16,920,447.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>FONDER</td>
-<td>881</td>
-<td>1,520,065.0</td>
-<td>1,427,843.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>FONARCOM</td>
-<td>219</td>
-<td>384,867.0</td>
-<td>384,867.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>FONDO FOR.TE</td>
-<td>156</td>
-<td>879,118.0</td>
-<td>879,118.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>REGIONE SICILIANA - DIPARTIMENTO ATTIVITA' PRODUTTIVE</td>
-<td>111</td>
-<td>2,684,025.0</td>
-<td>871,858.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>FONDIMPRESA</td>
-<td>103</td>
-<td>2,044,845.0</td>
-<td>2,044,845.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>FONDO ARTIGIANATO FORMAZIONE</td>
-<td>102</td>
-<td>693,014.0</td>
-<td>622,305.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
-<td>CAMERA DI COMMERCIO, INDUSTRIA, ARTIGIANATO E AGRICOLTURA DELLA TOSCANA NORD OVEST</td>
-<td>97</td>
-<td>586,960.0</td>
-<td>586,960.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
-<td>AGENZIA NAZIONALE PER L'ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D'IMPRESA SPA - INVITALIA (05678721001)</td>
-<td>81</td>
-<td>5,584,086.0</td>
-<td>4,808,253.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>INVITALIA - AGENZIA NAZIONALE PER L'ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D'IMPRESA S.P.A.</td>
-<td>71</td>
-<td>34,794,624.0</td>
-<td>23,580,585.0</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-</section>
-<section id="gli-aiuti-in-ordine-di-valore-nominale" class="level3">
-<h3 class="anchored" data-anchor-id="gli-aiuti-in-ordine-di-valore-nominale">Gli aiuti in ordine di valore nominale €</h3>
-<div id="ba87ef37" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">df <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"SELECT upper(concedente) CONCEDENTE, count(CAR), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 3 desc limit 10"</span>).df()</span>
-<span id="cb5-2">df</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">CONCEDENTE</th>
-<th data-quarto-table-cell-role="th">count(CAR)</th>
-<th data-quarto-table-cell-role="th">sum(CAST(NOMINALE AS INTEGER))</th>
-<th data-quarto-table-cell-role="th">sum(CAST(AIUTO AS INTEGER))</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>BANCA DEL MEZZOGIORNO MEDIOCREDITO CENTRALE S.P.A.</td>
-<td>1998</td>
-<td>255,933,046.0</td>
-<td>16,920,447.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>GSE - GESTORE SERVIZI ENERGETICI S.P.A.</td>
-<td>10</td>
-<td>43,488,060.0</td>
-<td>24,501,008.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>INVITALIA - AGENZIA NAZIONALE PER L'ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D'IMPRESA S.P.A.</td>
-<td>71</td>
-<td>34,794,624.0</td>
-<td>23,580,585.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>MINISTERO DELLE IMPRESE E DEL MADE IN ITALY - DIPARTIMENTO PER LE POLITICHE PER LE IMPRESE - DIREZIONE GENERALE PER GLI INCENTIVI ALLE IMPRESE</td>
-<td>43</td>
-<td>19,699,510.0</td>
-<td>14,552,950.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>AGENZIA NAZIONALE PER L'ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D'IMPRESA SPA - INVITALIA (05678721001)</td>
-<td>81</td>
-<td>5,584,086.0</td>
-<td>4,808,253.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>GSE GESTORE SERVIZI ENERGETICI S.P.A.</td>
-<td>19</td>
-<td>3,990,326.0</td>
-<td>3,990,326.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>INAIL - DIREZIONE CENTRALE PREVENZIONE</td>
-<td>33</td>
-<td>2,783,035.0</td>
-<td>2,121,624.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
-<td>REGIONE SICILIANA - DIPARTIMENTO ATTIVITA' PRODUTTIVE</td>
-<td>111</td>
-<td>2,684,025.0</td>
-<td>871,858.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
-<td>UNIVERSIT DEGLI STUDI DI NAPOLI FEDERICO II</td>
-<td>16</td>
-<td>2,114,354.0</td>
-<td>1,356,686.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>FONDIMPRESA</td>
-<td>103</td>
-<td>2,044,845.0</td>
-<td>2,044,845.0</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-</section>
-<section id="gli-aiuti-concessi-da-invitalia" class="level3">
-<h3 class="anchored" data-anchor-id="gli-aiuti-concessi-da-invitalia">Gli aiuti concessi da Invitalia</h3>
-<div id="05add35c" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">df <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"SELECT upper(misura) MISURA, count(CAR), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet' where concedente like '%INVI%' group by 1 order by 3 desc limit 10"</span>).df()</span>
-<span id="cb6-2">df</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">MISURA</th>
-<th data-quarto-table-cell-role="th">count(CAR)</th>
-<th data-quarto-table-cell-role="th">sum(CAST(NOMINALE AS INTEGER))</th>
-<th data-quarto-table-cell-role="th">sum(CAST(AIUTO AS INTEGER))</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>INVESTIMENTI SOSTENIBILI 4.0 (PN RIC 2021-2027)</td>
-<td>36</td>
-<td>30,234,444.0</td>
-<td>19,391,190.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>PNRR, M1C3 INVESTIMENTI 4.2.1; 4.2.2 AVVISO PUBBLICO EX ARTT. 1 E 4 DL 152/2021</td>
-<td>79</td>
-<td>5,176,411.0</td>
-<td>4,636,411.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>FONDO PER IL SOSTEGNO ALLA TRANSIZIONE INDUSTRIALE</td>
-<td>4</td>
-<td>3,131,066.0</td>
-<td>3,131,066.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>NIT0 - NUOVE IMPRESE A TASSO ZERO</td>
-<td>6</td>
-<td>409,946.0</td>
-<td>207,143.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>4:2:5 FONDO ROTATIVO IMPRESE (FRI) PER IL SOSTEGNO ALLE IMPRESE E GLI INVESTIMENTI DI SVILUPPO</td>
-<td>2</td>
-<td>407,675.0</td>
-<td>171,842.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>RESTO AL SUD</td>
-<td>12</td>
-<td>347,925.0</td>
-<td>342,667.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>SMART&amp;START - RIORDINO DEGLI INTERVENTI DI SOSTEGNO ALLA NASCITA E ALLO SVILUPPO DI START-UP INNOVATIVE IN TUTTO IL TERRITORIO NAZIONALE - VERSIONE MODIFICATA DAL CODICE CE SA.55753</td>
-<td>2</td>
-<td>309,576.0</td>
-<td>204,666.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
-<td>INTERVENTO AGEVOLATIVO PER LA BREVETTAZIONE E LA VALORIZZAZIONE ECONOMICA DEI BREVETTI A FAVORE DI MICRO PICCOLE E MEDIE IMPRESE</td>
-<td>3</td>
-<td>289,067.0</td>
-<td>231,253.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
-<td>FONDO A SOSTEGNO DELLE PICCOLE E MEDIE IMPRESE CREATIVE</td>
-<td>7</td>
-<td>67,600.0</td>
-<td>67,600.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>AGEVOLAZIONI NEL CRATERE SISMICO AQUILANO MISURA II" PROGRAMMI DI INVESTIMENTO FINALIZZATI ALLA VALORIZZAZIONE E COMMERCIALIZZAZIONE DEI PRODOTTI DI ECCELLENZA DEL TERRITORIO"</td>
-<td>1</td>
-<td>5,000.0</td>
-<td>5,000.0</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-
-
-</section>
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a> ]]></description>
-  <category>agevolazioni</category>
-  <category>Invitalia</category>
-  <category>Python</category>
-  <category>RNA</category>
-  <category>opendata</category>
-  <guid>https://paolovolterra.github.io/posts/202508_RNA/RNA.html</guid>
-  <pubDate>Sat, 11 Jan 2025 23:00:00 GMT</pubDate>
-</item>
-<item>
   <title>Il tech in banca</title>
   <dc:creator>Paolo Volterra</dc:creator>
   <link>https://paolovolterra.github.io/posts/2506_IAInBanca/IaBanca.html</link>
@@ -1473,7 +995,7 @@ font-style: inherit;">git</span> push origin main</span></code></pre></div>
   <category>Quarto</category>
   <category>Python</category>
   <guid>https://paolovolterra.github.io/posts/2506_Github/PubblicareSuGithub.html</guid>
-  <pubDate>Sun, 12 Jan 2025 10:22:55 GMT</pubDate>
+  <pubDate>Sun, 12 Jan 2025 11:22:11 GMT</pubDate>
 </item>
 <item>
   <title>Pubblicare su un sito Github</title>
@@ -1560,7 +1082,771 @@ font-style: inherit;">)</span></span></code></pre></div>
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <guid>https://paolovolterra.github.io/posts/2506_Github/immagini/Sito con Quarto.html</guid>
-  <pubDate>Sun, 12 Jan 2025 10:22:55 GMT</pubDate>
+  <pubDate>Sun, 12 Jan 2025 11:22:11 GMT</pubDate>
+</item>
+<item>
+  <title>Registro Nazionale degli Aiuti di Stato</title>
+  <dc:creator>Paolo Volterra</dc:creator>
+  <link>https://paolovolterra.github.io/posts/2508_RNA/RNA.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<!-- 
+1. quarto preview d:/paolovolterra.github.io/posts/2508_RNA/RNA.qmd
+2. quarto render d:/paolovolterra.github.io/posts/2508_RNA/RNA.qmd
+3. git add d:/paolovolterra.github.io/docs/posts/2508_RNA/RNA.html
+4. git status
+5. git add . (se hai rilevato altre modifiche e le voi introitare)
+6. git commit -m "Aggiornata la pagina: RNA"
+7. git pull origin main --rebase
+8. git push origin main
+9. git log
+-->
+<p>Il <a href="https://www.rna.gov.it/"><strong>Registro Nazionale degli Aiuti di Stato</strong></a> #RNA è uno strumento gestito dal Ministero delle Imprese e del Made in Italy (ex Ministero dello Sviluppo Economico - MiSE), che permette di raccogliere, monitorare e pubblicare informazioni relative agli aiuti di Stato concessi alle imprese e agli enti in Italia.</p>
+<p><img src="https://paolovolterra.github.io/posts/2508_RNA/media/01.png" class="img-fluid"></p>
+<section id="obiettivi-principali" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Obiettivi principali:</h1>
+<ol type="1">
+<li><strong>Trasparenza</strong>: Pubblicare i dettagli degli aiuti concessi, garantendo che le informazioni siano accessibili a cittadini e imprese.</li>
+<li><strong>Monitoraggio</strong>: Assicurare che i limiti sugli aiuti stabiliti dalla normativa europea siano rispettati.</li>
+<li><strong>Controllo</strong>: Evitare il superamento delle soglie del regime “de minimis” e la concessione di aiuti incompatibili con le regole dell’Unione Europea.</li>
+</ol>
+</section>
+<section id="la-realizzazione" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> La realizzazione</h1>
+<p>Il #RNA è stato realizzato come parte di un’importante azione di sistema cofinanziata dall’Unione Europea. In particolare, il progetto ha beneficiato di risorse pari a <strong>17.715.920,01 euro</strong>, assegnate nell’ambito del <strong>Programma Operativo Complementare al PON Governance e Capacità Istituzionale 2014-2020</strong>.</p>
+<p>La progettazione e la realizzazione di una prima versione prototipale del Registro sono state completate nel 2016, con un investimento di <strong>2.652.236,00 euro</strong>.</p>
+<p>Il #RNA è operativo dal 12 agosto 2017 e rappresenta uno strumento fondamentale per garantire la trasparenza e il controllo degli aiuti di Stato concessi in Italia.</p>
+</section>
+<section id="informazioni-contenute-nel-registro" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Informazioni contenute nel Registro:</h1>
+<p>Il #RNA include informazioni come: - Identità del beneficiario (nome, partita IVA, codice fiscale). - Tipo di aiuto concesso (contributo a fondo perduto, credito d’imposta, agevolazione fiscale, ecc.). - Importo e intensità dell’aiuto. - Riferimenti alla normativa e al regime di aiuti in base al quale è stato concesso. - Ente erogatore.</p>
+</section>
+<section id="normativa-di-riferimento" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Normativa di riferimento:</h1>
+<p>Il #RNA è disciplinato dal <strong>Decreto Legge n.&nbsp;123/2017</strong>, che stabilisce obblighi per le amministrazioni pubbliche e i soggetti che gestiscono misure di aiuto. L’obiettivo è garantire che tutti gli aiuti siano comunicati e registrati.</p>
+</section>
+<section id="accesso-al-registro" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Accesso al Registro:</h1>
+<p>Il #RNA è consultabile tramite una piattaforma online, accessibile sia dagli enti pubblici che dagli operatori economici.</p>
+<p>Alcune informazioni, per motivi di riservatezza, potrebbero essere soggette a limitazioni.</p>
+</section>
+<section id="controlli-sul-de-minimis" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Controlli sul “de minimis”:</h1>
+<p>Il #RNA permette di verificare se un’impresa ha superato la soglia prevista dal regime “de minimis” (200.000 euro nell’arco di tre esercizi finanziari, salvo eccezioni per alcuni settori).</p>
+<hr>
+<p>Oltre all’interrogazione online, #RNA permette il <a href="https://www.rna.gov.it/open-data/aiuti">download degli #opendata</a></p>
+<p><img src="https://paolovolterra.github.io/posts/2508_RNA/media/04.png" class="img-fluid"></p>
+</section>
+<section id="gli-opendata-rna-in-xml" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Gli opendata RNA in xml</h1>
+<p>#RNA aggiorna costantemente il propsio DB conn le segnalazioni dovute dai mittenti normativamente previsti.</p>
+<p>Le date degli <a href="https://www.rna.gov.it/open-data/aiuti">opendata XML messi a disposizione</a> corrispondono al mese della variabile “DATA_CONCESSIONE” contenuta in ognuno di loro</p>
+<p>RNA riceve però anche informazioni datate e quindi aggiorna tutto.</p>
+<p>Potenzialmente, quindi, <strong>tutti</strong> gli XML andrebbero riscaricati …</p>
+<p>Di seguito, ad esempio, gli ultimi 3 file parquet del 2024 da me realizzati, la data di mia aggiornamento e i df.shape</p>
+<section id="opendata_aiuti_2024_12.parquet" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="opendata_aiuti_2024_12.parquet"><span class="header-section-number">7.1</span> OpenData_Aiuti_2024_12.parquet</h2>
+<ul>
+<li>20250111 (107273, 21)</li>
+<li>20250105 (105454, 21)</li>
+<li>20250101 (100270, 21)</li>
+<li>20241221 (91504, 21)</li>
+<li>20241214 (36363, 21)</li>
+<li>20241207 (16243, 21)</li>
+</ul>
+</section>
+<section id="opendata_aiuti_2024_11.parquet" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="opendata_aiuti_2024_11.parquet"><span class="header-section-number">7.2</span> OpenData_Aiuti_2024_11.parquet</h2>
+<ul>
+<li>20250111 (141510, 21)</li>
+<li>20250107 (141523, 21)</li>
+<li>20241201 (136061, 21)</li>
+<li>20241130 (115693, 21)</li>
+<li>20241124 (115693, 21)</li>
+<li>20241117 (19701, 21)</li>
+<li>20241110 (19701, 21)</li>
+</ul>
+</section>
+<section id="opendata_aiuti_2024_10.parquet" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="opendata_aiuti_2024_10.parquet"><span class="header-section-number">7.3</span> OpenData_Aiuti_2024_10.parquet</h2>
+<ul>
+<li>20250107 (238465, 21)</li>
+<li>20241110 (238076, 21)</li>
+<li>20241101 (122656, 21)</li>
+<li>20241029 (122656, 21)</li>
+<li>20241026 (59146, 21)</li>
+<li>20241019 (59146, 21)</li>
+</ul>
+</section>
+</section>
+<section id="analisi-sullxml-più-recente" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Analisi sull’xml più recente</h1>
+<p>Appresso riporto alcune sintesi dell’ultimo XML -&gt; parquet da me prodotto</p>
+<section id="quanti-aiuti-contiene" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="quanti-aiuti-contiene"><span class="header-section-number">8.1</span> Quanti aiuti contiene</h2>
+<div id="4fa60672" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"SELECT * FROM 'OpenData_Aiuti_2025_01.parquet'"</span>).df()</span>
+<span id="cb1-2">df.shape</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>(4520, 21)</code></pre>
+</div>
+</div>
+</section>
+<section id="quali-misure-hanno-più-aiuti" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="quali-misure-hanno-più-aiuti"><span class="header-section-number">8.2</span> Quali misure hanno più aiuti</h2>
+<div id="e3fce8a2" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"SELECT upper(misura) MISURA, count(CAR) CONCESSIONI, </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-2"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-3"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 10"</span>).df()</span>
+<span id="cb3-4">df</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">MISURA</th>
+<th data-quarto-table-cell-role="th">CONCESSIONI</th>
+<th data-quarto-table-cell-role="th">NOMINALE</th>
+<th data-quarto-table-cell-role="th">AIUTI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>FONDO DI GARANZIA PER LE PICCOLE E MEDIE IMPRESE</td>
+<td>1968</td>
+<td>255,839,016.0</td>
+<td>16,826,417.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>REGOLAMENTO PER I FONDI INTERPROFESSIONALI PER LA FORMAZIONE CONTINUA PER LA CONCESSIONI DI AIUTI DI STATO ESENTATI AI SENSI DEL REGOLAMENTO CE N.651/2014 E IN REGIME DE MINIMIS AI SENSI DEL REGOLAMENTO CE N.1407/2013</td>
+<td>1562</td>
+<td>5,649,132.0</td>
+<td>5,484,626.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>BANDO VOUCHER TRANSIZIONE DIGITALE ED ECOLOGICA E PER SISTEMI DI SICUREZZA 2024</td>
+<td>97</td>
+<td>586,960.0</td>
+<td>586,960.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>PNRR, M1C3 INVESTIMENTI 4.2.1; 4.2.2 AVVISO PUBBLICO EX ARTT. 1 E 4 DL 152/2021</td>
+<td>79</td>
+<td>5,176,411.0</td>
+<td>4,636,411.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>CREDITO D'ESERCIZIO</td>
+<td>74</td>
+<td>1,659,000.0</td>
+<td>68,097.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>BANDO PER CONTRIBUTI PER LA TRANSIZIONE DIGITALE ED ECOLOGICA DELLE IMPRESE ANNO 2024-2025</td>
+<td>37</td>
+<td>138,827.0</td>
+<td>138,827.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>INVESTIMENTI SOSTENIBILI 4.0 (PN RIC 2021-2027)</td>
+<td>36</td>
+<td>30,234,444.0</td>
+<td>19,391,190.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>PI ARTIGIANATO</td>
+<td>35</td>
+<td>500,507.0</td>
+<td>538,507.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>COVID-19: FONDO DI GARANZIA PMI - MODIFICA SA.56966, SA.57625, SA.59655</td>
+<td>30</td>
+<td>94,030.0</td>
+<td>94,030.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>APPROVAZIONE AVVISO BANDO DOTE IMPRESA COLLOCAMENTO MIRATO - FONDO 2022</td>
+<td>28</td>
+<td>244,546.0</td>
+<td>244,546.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="quali-concedenti-hanno-più-aiuti" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="quali-concedenti-hanno-più-aiuti"><span class="header-section-number">8.3</span> Quali concedenti hanno più aiuti</h2>
+<div id="3d111886" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"SELECT upper(concedente) CONCEDENTE, count(CAR) CONCESSIONI, </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb4-2"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb4-3"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 10"</span>).df()</span>
+<span id="cb4-4">df</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">CONCEDENTE</th>
+<th data-quarto-table-cell-role="th">CONCESSIONI</th>
+<th data-quarto-table-cell-role="th">NOMINALE</th>
+<th data-quarto-table-cell-role="th">AIUTI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>BANCA DEL MEZZOGIORNO MEDIOCREDITO CENTRALE S.P.A.</td>
+<td>1998</td>
+<td>255,933,046.0</td>
+<td>16,920,447.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>FONDER</td>
+<td>881</td>
+<td>1,520,065.0</td>
+<td>1,427,843.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>FONARCOM</td>
+<td>219</td>
+<td>384,867.0</td>
+<td>384,867.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>FONDO FOR.TE</td>
+<td>156</td>
+<td>879,118.0</td>
+<td>879,118.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>REGIONE SICILIANA - DIPARTIMENTO ATTIVITA' PRODUTTIVE</td>
+<td>111</td>
+<td>2,684,025.0</td>
+<td>871,858.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>FONDIMPRESA</td>
+<td>103</td>
+<td>2,044,845.0</td>
+<td>2,044,845.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>FONDO ARTIGIANATO FORMAZIONE</td>
+<td>102</td>
+<td>693,014.0</td>
+<td>622,305.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>CAMERA DI COMMERCIO, INDUSTRIA, ARTIGIANATO E AGRICOLTURA DELLA TOSCANA NORD OVEST</td>
+<td>97</td>
+<td>586,960.0</td>
+<td>586,960.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>AGENZIA NAZIONALE PER L'ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D'IMPRESA SPA - INVITALIA (05678721001)</td>
+<td>81</td>
+<td>5,584,086.0</td>
+<td>4,808,253.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>INVITALIA - AGENZIA NAZIONALE PER L'ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D'IMPRESA S.P.A.</td>
+<td>71</td>
+<td>34,794,624.0</td>
+<td>23,580,585.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="gli-aiuti-in-ordine-di-valore-nominale" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="gli-aiuti-in-ordine-di-valore-nominale"><span class="header-section-number">8.4</span> Gli aiuti in ordine di valore nominale €</h2>
+<div id="769b1c52" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"SELECT upper(concedente) CONCEDENTE, count(CAR) CONCESSIONI, </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb5-2"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb5-3"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 3 desc limit 10"</span>).df()</span>
+<span id="cb5-4">df</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">CONCEDENTE</th>
+<th data-quarto-table-cell-role="th">CONCESSIONI</th>
+<th data-quarto-table-cell-role="th">NOMINALE</th>
+<th data-quarto-table-cell-role="th">AIUTI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>BANCA DEL MEZZOGIORNO MEDIOCREDITO CENTRALE S.P.A.</td>
+<td>1998</td>
+<td>255,933,046.0</td>
+<td>16,920,447.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>GSE - GESTORE SERVIZI ENERGETICI S.P.A.</td>
+<td>10</td>
+<td>43,488,060.0</td>
+<td>24,501,008.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>INVITALIA - AGENZIA NAZIONALE PER L'ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D'IMPRESA S.P.A.</td>
+<td>71</td>
+<td>34,794,624.0</td>
+<td>23,580,585.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>MINISTERO DELLE IMPRESE E DEL MADE IN ITALY - DIPARTIMENTO PER LE POLITICHE PER LE IMPRESE - DIREZIONE GENERALE PER GLI INCENTIVI ALLE IMPRESE</td>
+<td>43</td>
+<td>19,699,510.0</td>
+<td>14,552,950.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>AGENZIA NAZIONALE PER L'ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D'IMPRESA SPA - INVITALIA (05678721001)</td>
+<td>81</td>
+<td>5,584,086.0</td>
+<td>4,808,253.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>GSE GESTORE SERVIZI ENERGETICI S.P.A.</td>
+<td>19</td>
+<td>3,990,326.0</td>
+<td>3,990,326.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>INAIL - DIREZIONE CENTRALE PREVENZIONE</td>
+<td>33</td>
+<td>2,783,035.0</td>
+<td>2,121,624.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>REGIONE SICILIANA - DIPARTIMENTO ATTIVITA' PRODUTTIVE</td>
+<td>111</td>
+<td>2,684,025.0</td>
+<td>871,858.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>UNIVERSIT DEGLI STUDI DI NAPOLI FEDERICO II</td>
+<td>16</td>
+<td>2,114,354.0</td>
+<td>1,356,686.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>FONDIMPRESA</td>
+<td>103</td>
+<td>2,044,845.0</td>
+<td>2,044,845.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="valori-raggruppati-per-data" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="valori-raggruppati-per-data"><span class="header-section-number">8.5</span> valori raggruppati per data</h2>
+<div id="2f8f4bbc" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"SELECT CONCESSIONE, count(CAR) CONCESSIONI, </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb6-2"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb6-3"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    FROM 'OpenData_Aiuti_2025_01.parquet' </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb6-4"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">      group by 1 order by 1 desc"</span>).df()</span>
+<span id="cb6-5">df</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">CONCESSIONE</th>
+<th data-quarto-table-cell-role="th">CONCESSIONI</th>
+<th data-quarto-table-cell-role="th">NOMINALE</th>
+<th data-quarto-table-cell-role="th">AIUTI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2025-01-10</td>
+<td>1956</td>
+<td>225,006,633.0</td>
+<td>17,667,677.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2025-01-09</td>
+<td>1146</td>
+<td>29,757,570.0</td>
+<td>21,616,680.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2025-01-08</td>
+<td>297</td>
+<td>13,854,520.0</td>
+<td>11,472,341.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2025-01-07</td>
+<td>904</td>
+<td>83,763,955.0</td>
+<td>34,630,706.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2025-01-06</td>
+<td>5</td>
+<td>50,002.0</td>
+<td>50,002.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2025-01-05</td>
+<td>1</td>
+<td>14,493.0</td>
+<td>14,493.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2025-01-04</td>
+<td>3</td>
+<td>6,220.0</td>
+<td>6,220.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>2025-01-03</td>
+<td>88</td>
+<td>689,342.0</td>
+<td>633,539.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>2025-01-02</td>
+<td>120</td>
+<td>38,997,416.0</td>
+<td>22,144,828.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="analisi-per-concedente" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="analisi-per-concedente"><span class="header-section-number">8.6</span> Analisi per concedente</h2>
+<section id="gli-aiuti-concessi-da-invitalia" class="level3" data-number="8.6.1">
+<h3 data-number="8.6.1" class="anchored" data-anchor-id="gli-aiuti-concessi-da-invitalia"><span class="header-section-number">8.6.1</span> Gli aiuti concessi da Invitalia</h3>
+<div id="31bff903" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"SELECT upper(misura) MISURA, count(CAR) CONCESSIONI, </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb7-2"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb7-3"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    FROM 'OpenData_Aiuti_2025_01.parquet' where concedente like '%INVI%' </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb7-4"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">      group by 1 order by 3 desc limit 10"</span>).df()</span>
+<span id="cb7-5">df</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">MISURA</th>
+<th data-quarto-table-cell-role="th">CONCESSIONI</th>
+<th data-quarto-table-cell-role="th">NOMINALE</th>
+<th data-quarto-table-cell-role="th">AIUTI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>INVESTIMENTI SOSTENIBILI 4.0 (PN RIC 2021-2027)</td>
+<td>36</td>
+<td>30,234,444.0</td>
+<td>19,391,190.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>PNRR, M1C3 INVESTIMENTI 4.2.1; 4.2.2 AVVISO PUBBLICO EX ARTT. 1 E 4 DL 152/2021</td>
+<td>79</td>
+<td>5,176,411.0</td>
+<td>4,636,411.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>FONDO PER IL SOSTEGNO ALLA TRANSIZIONE INDUSTRIALE</td>
+<td>4</td>
+<td>3,131,066.0</td>
+<td>3,131,066.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>NIT0 - NUOVE IMPRESE A TASSO ZERO</td>
+<td>6</td>
+<td>409,946.0</td>
+<td>207,143.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>4:2:5 FONDO ROTATIVO IMPRESE (FRI) PER IL SOSTEGNO ALLE IMPRESE E GLI INVESTIMENTI DI SVILUPPO</td>
+<td>2</td>
+<td>407,675.0</td>
+<td>171,842.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>RESTO AL SUD</td>
+<td>12</td>
+<td>347,925.0</td>
+<td>342,667.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>SMART&amp;START - RIORDINO DEGLI INTERVENTI DI SOSTEGNO ALLA NASCITA E ALLO SVILUPPO DI START-UP INNOVATIVE IN TUTTO IL TERRITORIO NAZIONALE - VERSIONE MODIFICATA DAL CODICE CE SA.55753</td>
+<td>2</td>
+<td>309,576.0</td>
+<td>204,666.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>INTERVENTO AGEVOLATIVO PER LA BREVETTAZIONE E LA VALORIZZAZIONE ECONOMICA DEI BREVETTI A FAVORE DI MICRO PICCOLE E MEDIE IMPRESE</td>
+<td>3</td>
+<td>289,067.0</td>
+<td>231,253.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>FONDO A SOSTEGNO DELLE PICCOLE E MEDIE IMPRESE CREATIVE</td>
+<td>7</td>
+<td>67,600.0</td>
+<td>67,600.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>AGEVOLAZIONI NEL CRATERE SISMICO AQUILANO MISURA II" PROGRAMMI DI INVESTIMENTO FINALIZZATI ALLA VALORIZZAZIONE E COMMERCIALIZZAZIONE DEI PRODOTTI DI ECCELLENZA DEL TERRITORIO"</td>
+<td>1</td>
+<td>5,000.0</td>
+<td>5,000.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="valori-raggruppati-per-data-1" class="level3" data-number="8.6.2">
+<h3 data-number="8.6.2" class="anchored" data-anchor-id="valori-raggruppati-per-data-1"><span class="header-section-number">8.6.2</span> valori raggruppati per data</h3>
+<div id="56011f97" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"SELECT CONCESSIONE, count(CAR) CONCESSIONI, </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb8-2"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb8-3"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    FROM 'OpenData_Aiuti_2025_01.parquet' where concedente like '%INVI%' </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb8-4"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">      group by 1 order by 1 desc"</span>).df()</span>
+<span id="cb8-5">df</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">CONCESSIONE</th>
+<th data-quarto-table-cell-role="th">CONCESSIONI</th>
+<th data-quarto-table-cell-role="th">NOMINALE</th>
+<th data-quarto-table-cell-role="th">AIUTI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2025-01-10</td>
+<td>20</td>
+<td>631,420.0</td>
+<td>495,439.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2025-01-09</td>
+<td>2</td>
+<td>309,576.0</td>
+<td>204,666.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2025-01-08</td>
+<td>14</td>
+<td>4,021,859.0</td>
+<td>3,656,132.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2025-01-07</td>
+<td>116</td>
+<td>35,415,855.0</td>
+<td>24,032,601.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a> ]]></description>
+  <category>agevolazioni</category>
+  <category>Invitalia</category>
+  <category>Python</category>
+  <category>RNA</category>
+  <category>opendata</category>
+  <guid>https://paolovolterra.github.io/posts/2508_RNA/RNA.html</guid>
+  <pubDate>Sun, 12 Jan 2025 11:22:11 GMT</pubDate>
 </item>
 </channel>
 </rss>
