@@ -107,7 +107,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
-<link rel="stylesheet" href="styles.css">
 <meta name="twitter:title" content="Fondo per il sostegno alla transizione industriale – Paolo Volterra’s website">
 <meta name="twitter:description" content="FTI">
 <meta name="twitter:image" content="https://paolovolterra.github.io/posts/2504_FTI/media/cover.png">
@@ -155,13 +154,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">Indice</h2>
    
   <ul>
-  <li><a href="#obiettivi-dello-studio" id="toc-obiettivi-dello-studio" class="nav-link active" data-scroll-target="#obiettivi-dello-studio">obiettivi dello studio</a></li>
-  <li><a href="#opendata-sul-registro-nazionale-degli-aiuti-di-stato" id="toc-opendata-sul-registro-nazionale-degli-aiuti-di-stato" class="nav-link" data-scroll-target="#opendata-sul-registro-nazionale-degli-aiuti-di-stato">Opendata sul registro Nazionale degli Aiuti di Stato</a></li>
-  <li><a href="#analisi-pdf" id="toc-analisi-pdf" class="nav-link" data-scroll-target="#analisi-pdf">analisi PDF</a></li>
-  <li><a href="#fonti" id="toc-fonti" class="nav-link" data-scroll-target="#fonti">Fonti</a></li>
+  <li><a href="#obiettivi-dello-studio" id="toc-obiettivi-dello-studio" class="nav-link active" data-scroll-target="#obiettivi-dello-studio"><span class="header-section-number">1</span> obiettivi dello studio</a></li>
+  <li><a href="#opendata-sul-registro-nazionale-degli-aiuti-di-stato" id="toc-opendata-sul-registro-nazionale-degli-aiuti-di-stato" class="nav-link" data-scroll-target="#opendata-sul-registro-nazionale-degli-aiuti-di-stato"><span class="header-section-number">2</span> Opendata sul registro Nazionale degli Aiuti di Stato</a></li>
+  <li><a href="#analisi-pdf" id="toc-analisi-pdf" class="nav-link" data-scroll-target="#analisi-pdf"><span class="header-section-number">3</span> analisi PDF</a></li>
+  <li><a href="#fonti" id="toc-fonti" class="nav-link" data-scroll-target="#fonti"><span class="header-section-number">4</span> Fonti</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2504_FTI/FTI.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -213,21 +212,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <p>Il Fondo per il sostegno alla transizione industriale si rivolge alle imprese che investono nella tutela ambientale e ha l’obiettivo di favorire l’adeguamento del sistema produttivo italiano alle politiche UE sulla lotta ai cambiamenti climatici.</p>
-<section id="obiettivi-dello-studio" class="level2">
-<h2 class="anchored" data-anchor-id="obiettivi-dello-studio">obiettivi dello studio</h2>
+<section id="obiettivi-dello-studio" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="obiettivi-dello-studio"><span class="header-section-number">1</span> obiettivi dello studio</h2>
 <ul>
 <li>estrazione dati da PDF</li>
 <li>elaborazione #opendata</li>
 <li>ETL con groupby vari</li>
 </ul>
 </section>
-<section id="opendata-sul-registro-nazionale-degli-aiuti-di-stato" class="level2">
-<h2 class="anchored" data-anchor-id="opendata-sul-registro-nazionale-degli-aiuti-di-stato">Opendata sul registro Nazionale degli Aiuti di Stato</h2>
+<section id="opendata-sul-registro-nazionale-degli-aiuti-di-stato" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="opendata-sul-registro-nazionale-degli-aiuti-di-stato"><span class="header-section-number">2</span> Opendata sul registro Nazionale degli Aiuti di Stato</h2>
 <ul>
 <li>CAR: 27929</li>
 <li>Significant Aid: 110221</li>
 </ul>
-<div id="e30d1f5c" class="cell" data-execution_count="1">
+<div id="272717f9" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyarrow.parquet <span class="im">as</span> pq</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> duckdb</span>
@@ -240,10 +239,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>pd.options.display.float_format <span class="op">=</span> <span class="st">'</span><span class="sc">{:,}</span><span class="st">'</span>.<span class="bu">format</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span>(con.execute(<span class="st">"SELECT * FROM '*.parquet' where CAR = '27929' order by concessione desc"</span>).df())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="b71ad845" class="cell" data-execution_count="2">
+<div id="57517a22" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'DES_TIPO_BENEFICIARIO'</span>, <span class="st">'REGIONE'</span>, </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="st">'SETTORE_ATTIVITA'</span>,<span class="st">'NOMINALE'</span>, <span class="st">'AIUTO'</span>]].sample(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="32">
 <div>
 
 
@@ -260,22 +259,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">18</td>
-<td>Grande impresa</td>
-<td>Lombardia</td>
-<td>C.20.2</td>
-<td>1,360,000.0</td>
-<td>1,360,000.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">23</td>
-<td>Grande impresa</td>
-<td>Piemonte</td>
-<td>C.20.1</td>
-<td>424,282.15</td>
-<td>424,282.15</td>
-</tr>
-<tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
 <td>PMI</td>
 <td>Toscana</td>
@@ -284,36 +267,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>853,211.0</td>
 </tr>
 <tr class="even">
+<td data-quarto-table-cell-role="th">12</td>
+<td>Grande impresa</td>
+<td>Piemonte</td>
+<td>C.24.5</td>
+<td>1,164,732.31</td>
+<td>1,164,732.31</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>Grande impresa</td>
+<td>Lombardia</td>
+<td>C.20.2</td>
+<td>1,360,000.0</td>
+<td>1,360,000.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">26</td>
+<td>Grande impresa</td>
+<td>Friuli-Venezia Giulia</td>
+<td>C.28.2</td>
+<td>60,000.0</td>
+<td>60,000.0</td>
+</tr>
+<tr class="odd">
 <td data-quarto-table-cell-role="th">29</td>
 <td>Grande impresa</td>
 <td>Marche</td>
 <td>C.20.1</td>
 <td>913,545.0</td>
 <td>913,545.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">20</td>
-<td>Grande impresa</td>
-<td>Veneto</td>
-<td>C.17.1</td>
-<td>243,183.6</td>
-<td>243,183.6</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">28</td>
-<td>Grande impresa</td>
-<td>Marche</td>
-<td>C.20.1</td>
-<td>532,901.25</td>
-<td>532,901.25</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">25</td>
-<td>Grande impresa</td>
-<td>Veneto</td>
-<td>C.20.4</td>
-<td>406,800.0</td>
-<td>406,800.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">35</td>
@@ -324,20 +307,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>228,183.75</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">16</td>
+<td data-quarto-table-cell-role="th">2</td>
 <td>Grande impresa</td>
-<td>Campania</td>
-<td>C.22.2</td>
-<td>1,024,740.0</td>
-<td>1,024,740.0</td>
+<td>Lombardia</td>
+<td>C.21.1</td>
+<td>1,072,542.6</td>
+<td>1,072,542.6</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">33</td>
+<td data-quarto-table-cell-role="th">6</td>
+<td>PMI</td>
+<td>Toscana</td>
+<td>C.13.3</td>
+<td>324,800.0</td>
+<td>324,800.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">36</td>
+<td>Grande impresa</td>
+<td>Puglia</td>
+<td>C.10.7</td>
+<td>829,199.55</td>
+<td>829,199.55</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">32</td>
 <td>Grande impresa</td>
 <td>Piemonte</td>
 <td>C.13.1</td>
-<td>420,080.0</td>
-<td>420,080.0</td>
+<td>158,400.0</td>
+<td>158,400.0</td>
 </tr>
 </tbody>
 </table>
@@ -345,19 +344,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="c73776a1" class="cell" data-execution_count="3">
+<div id="298615bb" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'NOMINALE'</span>, <span class="st">'AIUTO'</span>]].<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>NOMINALE   33,142,352.72
 AIUTO      33,142,352.72
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="504f8994" class="cell" data-execution_count="4">
+<div id="bb1ff722" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'CONCESSIONE'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>)).sort_values(by<span class="op">=</span> <span class="st">'CONCESSIONE'</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="34">
 <div>
 
 
@@ -437,11 +436,11 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="9878e5d6" class="cell" data-execution_count="5">
+<div id="9ad1161a" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'REGIONE'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="35">
 <div>
 
 
@@ -521,11 +520,11 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="3a8a7687" class="cell" data-execution_count="6">
+<div id="f2872b6e" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'DES_TIPO_BENEFICIARIO'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="36">
 <div>
 
 
@@ -563,11 +562,11 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="28ed0990" class="cell" data-execution_count="7">
+<div id="933cc1d4" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'DES_PROCEDIMENTO'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="37">
 <div>
 
 
@@ -599,11 +598,11 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="7ae4aef9" class="cell" data-execution_count="8">
+<div id="6f069775" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'DESSETTORE_ATTIVITA_OBIETTIVO'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="38">
 <div>
 
 
@@ -653,11 +652,11 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="3ec176b5" class="cell" data-execution_count="9">
+<div id="b63f904a" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'SETTORE_ATTIVITA'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="39">
 <div>
 
 
@@ -779,11 +778,11 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="0f446101" class="cell" data-execution_count="10">
+<div id="f22fe391" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'DES_STRUMENTO'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="40">
 <div>
 
 
@@ -816,8 +815,8 @@ dtype: float64</code></pre>
 </div>
 </div>
 </section>
-<section id="analisi-pdf" class="level2">
-<h2 class="anchored" data-anchor-id="analisi-pdf">analisi PDF</h2>
+<section id="analisi-pdf" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="analisi-pdf"><span class="header-section-number">3</span> analisi PDF</h2>
 <p>attualmente sono state pubblicate</p>
 <ul>
 <li><p><a href="https://www.mimit.gov.it/images/stories/documenti/FONDO_TRANSIZIONE_INDUSTRIALE_GRADUATORIA.pdf">Pubblicata la graduatoria ai sensi del decreto direttoriale 30.08.2023</a></p></li>
@@ -826,8 +825,8 @@ dtype: float64</code></pre>
 <li><p>“D:_TRANSIZIONE_INDUSTRIALE_Graduatoria24072024_def.pdf”</p></li>
 </ul>
 </section>
-<section id="fonti" class="level2">
-<h2 class="anchored" data-anchor-id="fonti">Fonti</h2>
+<section id="fonti" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="fonti"><span class="header-section-number">4</span> Fonti</h2>
 <ul>
 <li><a href="https://www.mimit.gov.it/it/incentivi/fondo-per-il-sostegno-alla-transizione-industriale-pnrr">Fondo per il sostegno alla transizione industriale – PNRR</a></li>
 <li><a href="https://www.invitalia.it/cosa-facciamo/sosteniamo-grandi-investimenti/fondo-transizione-industriale">Fondo transizione industriale</a></li>
