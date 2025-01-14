@@ -9,7 +9,7 @@
 <meta name="author" content="Paolo Volterra">
 <meta name="dcterms.date" content="2025-01-09">
 
-<title>Fondo Transizione Industriale – Paolo Volterra’s website</title>
+<title>Fondo per il sostegno alla transizione industriale – Paolo Volterra's website</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,10 +22,44 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -68,10 +102,13 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="styles.css">
-<meta name="twitter:title" content="Fondo Transizione Industriale – Paolo Volterra’s website">
+<meta name="twitter:title" content="Fondo per il sostegno alla transizione industriale – Paolo Volterra’s website">
 <meta name="twitter:description" content="FTI">
 <meta name="twitter:image" content="https://paolovolterra.github.io/posts/2504_FTI/media/cover.png">
 <meta name="twitter:creator" content="@ghibbli">
@@ -121,7 +158,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#fonti" id="toc-fonti" class="nav-link active" data-scroll-target="#fonti">Fonti</a></li>
+  <li><a href="#obiettivi-dello-studio" id="toc-obiettivi-dello-studio" class="nav-link active" data-scroll-target="#obiettivi-dello-studio">obiettivi dello studio</a></li>
+  <li><a href="#opendata-sul-registro-nazionale-degli-aiuti-di-stato" id="toc-opendata-sul-registro-nazionale-degli-aiuti-di-stato" class="nav-link" data-scroll-target="#opendata-sul-registro-nazionale-degli-aiuti-di-stato">Opendata sul registro Nazionale degli Aiuti di Stato</a></li>
+  <li><a href="#analisi-pdf" id="toc-analisi-pdf" class="nav-link" data-scroll-target="#analisi-pdf">analisi PDF</a></li>
+  <li><a href="#fonti" id="toc-fonti" class="nav-link" data-scroll-target="#fonti">Fonti</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2504_FTI/FTI.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -130,7 +170,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Fondo Transizione Industriale</h1>
+<h1 class="title">Fondo per il sostegno alla transizione industriale</h1>
 <p class="subtitle lead">FTI</p>
   <div class="quarto-categories">
     <div class="quarto-category">Invitalia</div>
@@ -173,12 +213,632 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 <p>Il Fondo per il sostegno alla transizione industriale si rivolge alle imprese che investono nella tutela ambientale e ha l’obiettivo di favorire l’adeguamento del sistema produttivo italiano alle politiche UE sulla lotta ai cambiamenti climatici.</p>
+<section id="obiettivi-dello-studio" class="level2">
+<h2 class="anchored" data-anchor-id="obiettivi-dello-studio">obiettivi dello studio</h2>
+<ul>
+<li>estrazione dati da PDF</li>
+<li>elaborazione #opendata</li>
+<li>ETL con groupby vari</li>
+</ul>
+</section>
+<section id="opendata-sul-registro-nazionale-degli-aiuti-di-stato" class="level2">
+<h2 class="anchored" data-anchor-id="opendata-sul-registro-nazionale-degli-aiuti-di-stato">Opendata sul registro Nazionale degli Aiuti di Stato</h2>
+<ul>
+<li>CAR: 27929</li>
+<li>Significant Aid: 110221</li>
+</ul>
+<div id="e30d1f5c" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyarrow.parquet <span class="im">as</span> pq</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> duckdb</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>os.chdir(<span class="st">'D:/duckdb/files/RNA2/'</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>con <span class="op">=</span> duckdb.<span class="ex">connect</span>()</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>con.execute(<span class="st">"PRAGMA threads=8"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>con.execute(<span class="st">"PRAGMA enable_object_cache"</span>) </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>pd.options.display.float_format <span class="op">=</span> <span class="st">'</span><span class="sc">{:,}</span><span class="st">'</span>.<span class="bu">format</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span>(con.execute(<span class="st">"SELECT * FROM '*.parquet' where CAR = '27929' order by concessione desc"</span>).df())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="b71ad845" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'DES_TIPO_BENEFICIARIO'</span>, <span class="st">'REGIONE'</span>, </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="st">'SETTORE_ATTIVITA'</span>,<span class="st">'NOMINALE'</span>, <span class="st">'AIUTO'</span>]].sample(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">DES_TIPO_BENEFICIARIO</th>
+<th data-quarto-table-cell-role="th">REGIONE</th>
+<th data-quarto-table-cell-role="th">SETTORE_ATTIVITA</th>
+<th data-quarto-table-cell-role="th">NOMINALE</th>
+<th data-quarto-table-cell-role="th">AIUTO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>Grande impresa</td>
+<td>Lombardia</td>
+<td>C.20.2</td>
+<td>1,360,000.0</td>
+<td>1,360,000.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">23</td>
+<td>Grande impresa</td>
+<td>Piemonte</td>
+<td>C.20.1</td>
+<td>424,282.15</td>
+<td>424,282.15</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>PMI</td>
+<td>Toscana</td>
+<td>C.13.3</td>
+<td>853,211.0</td>
+<td>853,211.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">29</td>
+<td>Grande impresa</td>
+<td>Marche</td>
+<td>C.20.1</td>
+<td>913,545.0</td>
+<td>913,545.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>Grande impresa</td>
+<td>Veneto</td>
+<td>C.17.1</td>
+<td>243,183.6</td>
+<td>243,183.6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">28</td>
+<td>Grande impresa</td>
+<td>Marche</td>
+<td>C.20.1</td>
+<td>532,901.25</td>
+<td>532,901.25</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25</td>
+<td>Grande impresa</td>
+<td>Veneto</td>
+<td>C.20.4</td>
+<td>406,800.0</td>
+<td>406,800.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">35</td>
+<td>Grande impresa</td>
+<td>Puglia</td>
+<td>C.10.7</td>
+<td>228,183.75</td>
+<td>228,183.75</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>Grande impresa</td>
+<td>Campania</td>
+<td>C.22.2</td>
+<td>1,024,740.0</td>
+<td>1,024,740.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">33</td>
+<td>Grande impresa</td>
+<td>Piemonte</td>
+<td>C.13.1</td>
+<td>420,080.0</td>
+<td>420,080.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="c73776a1" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'NOMINALE'</span>, <span class="st">'AIUTO'</span>]].<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>NOMINALE   33,142,352.72
+AIUTO      33,142,352.72
+dtype: float64</code></pre>
+</div>
+</div>
+<div id="504f8994" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'CONCESSIONE'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>)).sort_values(by<span class="op">=</span> <span class="st">'CONCESSIONE'</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">CF_COUNT</th>
+<th data-quarto-table-cell-role="th">NOMINALE_SUM</th>
+<th data-quarto-table-cell-role="th">AIUTO_SUM</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">CONCESSIONE</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2025-01-08</td>
+<td>4</td>
+<td>3,131,064.8</td>
+<td>3,131,064.8</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2024-12-21</td>
+<td>6</td>
+<td>3,605,143.65</td>
+<td>3,605,143.65</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2024-12-20</td>
+<td>5</td>
+<td>7,576,305.32</td>
+<td>7,576,305.32</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2024-12-16</td>
+<td>1</td>
+<td>3,581,357.84</td>
+<td>3,581,357.84</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2024-12-10</td>
+<td>3</td>
+<td>3,751,060.0</td>
+<td>3,751,060.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2024-12-09</td>
+<td>9</td>
+<td>5,340,643.82</td>
+<td>5,340,643.82</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2024-12-04</td>
+<td>3</td>
+<td>2,014,706.25</td>
+<td>2,014,706.25</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2024-12-02</td>
+<td>3</td>
+<td>903,980.0</td>
+<td>903,980.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2024-11-21</td>
+<td>5</td>
+<td>3,238,091.04</td>
+<td>3,238,091.04</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="9878e5d6" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'REGIONE'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">CF_COUNT</th>
+<th data-quarto-table-cell-role="th">NOMINALE_SUM</th>
+<th data-quarto-table-cell-role="th">AIUTO_SUM</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">REGIONE</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Campania</td>
+<td>2</td>
+<td>2,391,060.0</td>
+<td>2,391,060.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Emilia-Romagna</td>
+<td>1</td>
+<td>3,581,357.84</td>
+<td>3,581,357.84</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Friuli-Venezia Giulia</td>
+<td>3</td>
+<td>1,708,200.0</td>
+<td>1,708,200.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Lombardia</td>
+<td>6</td>
+<td>7,688,611.2</td>
+<td>7,688,611.2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Marche</td>
+<td>3</td>
+<td>2,014,706.25</td>
+<td>2,014,706.25</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Piemonte</td>
+<td>12</td>
+<td>6,410,735.52</td>
+<td>6,410,735.52</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Puglia</td>
+<td>4</td>
+<td>1,918,557.48</td>
+<td>1,918,557.48</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Toscana</td>
+<td>3</td>
+<td>1,773,474.0</td>
+<td>1,773,474.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Veneto</td>
+<td>5</td>
+<td>5,655,650.43</td>
+<td>5,655,650.43</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="3a8a7687" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'DES_TIPO_BENEFICIARIO'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">CF_COUNT</th>
+<th data-quarto-table-cell-role="th">NOMINALE_SUM</th>
+<th data-quarto-table-cell-role="th">AIUTO_SUM</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">DES_TIPO_BENEFICIARIO</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Grande impresa</td>
+<td>36</td>
+<td>31,368,878.72</td>
+<td>31,368,878.72</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">PMI</td>
+<td>3</td>
+<td>1,773,474.0</td>
+<td>1,773,474.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="28ed0990" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'DES_PROCEDIMENTO'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">CF_COUNT</th>
+<th data-quarto-table-cell-role="th">NOMINALE_SUM</th>
+<th data-quarto-table-cell-role="th">AIUTO_SUM</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">DES_PROCEDIMENTO</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Esenzione</td>
+<td>39</td>
+<td>33,142,352.72</td>
+<td>33,142,352.72</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="7ae4aef9" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'DESSETTORE_ATTIVITA_OBIETTIVO'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">CF_COUNT</th>
+<th data-quarto-table-cell-role="th">NOMINALE_SUM</th>
+<th data-quarto-table-cell-role="th">AIUTO_SUM</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">DESSETTORE_ATTIVITA_OBIETTIVO</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Aiuti alla Formazione (art.31)</td>
+<td>1</td>
+<td>6,654.0</td>
+<td>6,654.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Aiuti per la tutela dell'ambiente | Aiuti agli investimenti a favore di misure di efficienza energetica diverse da quelle relative agli edifici (art. 38)</td>
+<td>14</td>
+<td>15,937,638.44</td>
+<td>15,937,638.44</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Aiuti per la tutela dell'ambiente | Aiuti agli investimenti per l'uso efficiente delle risorse e per il sostegno alla transizione verso un'economia circolare (art. 47)</td>
+<td>13</td>
+<td>10,183,108.06</td>
+<td>10,183,108.06</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Aiuti per la tutela dell'ambiente | Aiuti agli investimenti per la promozione di energia da fonti rinnovabili, di idrogeno rinnovabile e di cogenerazione ad alto rendimento (art. 41)</td>
+<td>11</td>
+<td>7,014,952.22</td>
+<td>7,014,952.22</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="3ec176b5" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'SETTORE_ATTIVITA'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">CF_COUNT</th>
+<th data-quarto-table-cell-role="th">NOMINALE_SUM</th>
+<th data-quarto-table-cell-role="th">AIUTO_SUM</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">SETTORE_ATTIVITA</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">C.10.5</td>
+<td>1</td>
+<td>1,319,533.56</td>
+<td>1,319,533.56</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">C.10.7</td>
+<td>4</td>
+<td>1,918,557.48</td>
+<td>1,918,557.48</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">C.13.1</td>
+<td>3</td>
+<td>903,980.0</td>
+<td>903,980.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">C.13.3</td>
+<td>3</td>
+<td>1,773,474.0</td>
+<td>1,773,474.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">C.17.1</td>
+<td>2</td>
+<td>2,078,823.82</td>
+<td>2,078,823.82</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">C.20.1</td>
+<td>6</td>
+<td>3,161,526.25</td>
+<td>3,161,526.25</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">C.20.2</td>
+<td>1</td>
+<td>1,360,000.0</td>
+<td>1,360,000.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">C.20.4</td>
+<td>1</td>
+<td>406,800.0</td>
+<td>406,800.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">C.21.1</td>
+<td>4</td>
+<td>3,131,064.8</td>
+<td>3,131,064.8</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">C.22.2</td>
+<td>2</td>
+<td>2,391,060.0</td>
+<td>2,391,060.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">C.23.1</td>
+<td>1</td>
+<td>3,197,546.4</td>
+<td>3,197,546.4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">C.23.5</td>
+<td>1</td>
+<td>3,581,357.84</td>
+<td>3,581,357.84</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">C.24.1</td>
+<td>2</td>
+<td>3,170,026.6100000003</td>
+<td>3,170,026.6100000003</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">C.24.5</td>
+<td>2</td>
+<td>1,208,732.31</td>
+<td>1,208,732.31</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">C.28.1</td>
+<td>3</td>
+<td>1,831,669.65</td>
+<td>1,831,669.65</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">C.28.2</td>
+<td>3</td>
+<td>1,708,200.0</td>
+<td>1,708,200.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="0f446101" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'DES_STRUMENTO'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">CF_COUNT</th>
+<th data-quarto-table-cell-role="th">NOMINALE_SUM</th>
+<th data-quarto-table-cell-role="th">AIUTO_SUM</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">DES_STRUMENTO</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Sovvenzione/Contributo in conto interessi</td>
+<td>39</td>
+<td>33,142,352.72</td>
+<td>33,142,352.72</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="analisi-pdf" class="level2">
+<h2 class="anchored" data-anchor-id="analisi-pdf">analisi PDF</h2>
+<p>attualmente sono state pubblicate</p>
+<ul>
+<li><p><a href="https://www.mimit.gov.it/images/stories/documenti/FONDO_TRANSIZIONE_INDUSTRIALE_GRADUATORIA.pdf">Pubblicata la graduatoria ai sensi del decreto direttoriale 30.08.2023</a></p></li>
+<li><p><a href="https://www.mimit.gov.it/images/stories/IncentiviImprese_Normativa/FONDO_TRANSIZIONE_INDUSTRIALE_Graduatoria24072024_def.pdf">Scorrimento graduatoria</a></p></li>
+<li><p>“D:8R9_TRANSIZIONE_INDUSTRIALE_GRADUATORIA.pdf”</p></li>
+<li><p>“D:_TRANSIZIONE_INDUSTRIALE_Graduatoria24072024_def.pdf”</p></li>
+</ul>
+</section>
 <section id="fonti" class="level2">
 <h2 class="anchored" data-anchor-id="fonti">Fonti</h2>
 <ul>
-<li><a href="https://www.mimit.gov.it/it/incentivi/fondo-per-il-sostegno-alla-transizione-industriale-pnrr&amp;ved=2ahUKEwjFy_qw9vCKAxXQgf0HHTCxItoQFnoECBIQAQ&amp;usg=AOvVaw1Gb5Z1AtUXiOtalvIm5J9v">Fondo per il sostegno alla transizione industriale – PNRR</a></li>
+<li><a href="https://www.mimit.gov.it/it/incentivi/fondo-per-il-sostegno-alla-transizione-industriale-pnrr">Fondo per il sostegno alla transizione industriale – PNRR</a></li>
 <li><a href="https://www.invitalia.it/cosa-facciamo/sosteniamo-grandi-investimenti/fondo-transizione-industriale">Fondo transizione industriale</a></li>
-<li></li>
+<li><a href="https://www.mimit.gov.it/it/notizie-stampa/mimit-al-via-dal-5-febbraio-lo-sportello-per-accedere-al-fondo-per-il-sostegno-alla-transizione-industriale">Al via dal 5 febbraio lo sportello per accedere al Fondo per il sostegno alla transizione industriale</a></li>
+<li><a href="https://www.mimit.gov.it/it/incentivi/fondo-per-il-sostegno-alla-transizione-industriale">Fondo per il sostegno alla transizione industriale</a></li>
+<li><a href="https://www.mimit.gov.it/it/normativa/decreti-interministeriali/decreto-interministeriale-21-ottobre-2022-fondo-per-il-sostegno-alla-transizione-industriale">Decreto interministeriale 21 ottobre 2022 - Fondo per il sostegno alla transizione industriale</a></li>
+<li><a href="https://www.mimit.gov.it/it/normativa/decreti-direttoriali/decreto-direttoriale-30-agosto-2023-fondo-transizione-industriale-termini-e-modalita-presentazione-domande">Decreto direttoriale 30 agosto 2023</a></li>
+<li><a href="https://www.mimit.gov.it/it/normativa/decreti-interministeriali/decreto-interministeriale-21-ottobre-2022-fondo-per-il-sostegno-alla-transizione-industriale">Decreto interministeriale 21 ottobre 2022</a>&nbsp;</li>
+<li><a href="https://www.gazzettaufficiale.it/eli/id/2021/12/31/21G00256/sg">Legge 30 dicembre 2021, n.&nbsp;234</a>, articolo 1, comma 478 e 479 - Bilancio Di Previsione dello Stato per l’anno finanziario 2022 e Bilancio Pluriennale per il triennio 2022-2024</li>
+<li><a href="https://www.mimit.gov.it/images/stories/normativa/dm_21_ottobre_2022.pdf">Decreto interministeriale 21 ottobre 2022 - Fondo per il sostegno alla transizione industriale</a></li>
+<li><a href="https://www.invitalia.it/cosa-facciamo/sosteniamo-grandi-investimenti/fondo-transizione-industriale">Fondo transizione industriale</a></li>
 </ul>
 
 
