@@ -1,10 +1,10 @@
 ---
-title: "Fondo Transizione Industriale"
+title: "	Fondo per il sostegno alla transizione industriale"
 subtitle: "FTI"
 draft: false
 date: 2025-01-09
 created: 2025-01-09
-tags: [Invitalia,FTI, Agevolazioni]
+tags: [Invitalia,FTI, Agevolazioni,SA,CAR, PNRR]
 author: "Paolo Volterra"
 format:
   html:
@@ -23,11 +23,111 @@ categories:
 
 Il Fondo per il sostegno alla transizione industriale si rivolge alle imprese che investono nella tutela ambientale e ha l’obiettivo di favorire l’adeguamento del sistema produttivo italiano alle politiche UE sulla lotta ai cambiamenti climatici.
 
+## obiettivi dello studio
+
+- estrazione dati da PDF
+- elaborazione #opendata
+- ETL con groupby vari
+
+
+
+
+## Opendata sul registro Nazionale degli Aiuti di Stato
+
+- CAR: 27929
+- Significant Aid: 110221
+
+```{python}
+import pyarrow.parquet as pq
+import pandas as pd
+import duckdb
+import os
+os.chdir('D:/duckdb/files/RNA2/')
+
+con = duckdb.connect()
+con.execute("PRAGMA threads=8")
+con.execute("PRAGMA enable_object_cache") 
+pd.options.display.float_format = '{:,}'.format
+df =(con.execute("SELECT * FROM '*.parquet' where CAR = '27929' order by concessione desc").df())
+
+
+```
+```{python}
+df[['DES_TIPO_BENEFICIARIO', 'REGIONE', 
+'SETTORE_ATTIVITA','NOMINALE', 'AIUTO']].sample(10)
+```
+
+```{python}
+df[['NOMINALE', 'AIUTO']].sum()
+```
+
+```{python}
+df.groupby('CONCESSIONE').agg(CF_COUNT=('CF', 'count'),
+    NOMINALE_SUM=('NOMINALE', 'sum'),
+    AIUTO_SUM=('AIUTO', 'sum')).sort_values(by= 'CONCESSIONE', ascending = False)
+```
+
+```{python}
+df.groupby('REGIONE').agg(CF_COUNT=('CF', 'count'),
+    NOMINALE_SUM=('NOMINALE', 'sum'),
+    AIUTO_SUM=('AIUTO', 'sum'))
+```
+
+```{python}
+df.groupby('DES_TIPO_BENEFICIARIO').agg(CF_COUNT=('CF', 'count'),
+    NOMINALE_SUM=('NOMINALE', 'sum'),
+    AIUTO_SUM=('AIUTO', 'sum'))
+```
+
+```{python}
+df.groupby('DES_PROCEDIMENTO').agg(CF_COUNT=('CF', 'count'),
+    NOMINALE_SUM=('NOMINALE', 'sum'),
+    AIUTO_SUM=('AIUTO', 'sum'))
+```
+
+```{python}
+df.groupby('DESSETTORE_ATTIVITA_OBIETTIVO').agg(CF_COUNT=('CF', 'count'),
+    NOMINALE_SUM=('NOMINALE', 'sum'),
+    AIUTO_SUM=('AIUTO', 'sum'))
+```
+
+```{python}
+df.groupby('SETTORE_ATTIVITA').agg(CF_COUNT=('CF', 'count'),
+    NOMINALE_SUM=('NOMINALE', 'sum'),
+    AIUTO_SUM=('AIUTO', 'sum'))
+```
+
+
+```{python}
+df.groupby('DES_STRUMENTO').agg(CF_COUNT=('CF', 'count'),
+    NOMINALE_SUM=('NOMINALE', 'sum'),
+    AIUTO_SUM=('AIUTO', 'sum'))
+```
+
+
+## analisi PDF 
+
+attualmente sono state pubblicate 
+
+- [Pubblicata la graduatoria ai sensi del decreto direttoriale 30.08.2023](https://www.mimit.gov.it/images/stories/documenti/FONDO_TRANSIZIONE_INDUSTRIALE_GRADUATORIA.pdf)
+- [Scorrimento graduatoria](https://www.mimit.gov.it/images/stories/IncentiviImprese_Normativa/FONDO_TRANSIZIONE_INDUSTRIALE_Graduatoria24072024_def.pdf)
+
+
+- "D:\Zotero\storage\JNXQG8R9\FONDO_TRANSIZIONE_INDUSTRIALE_GRADUATORIA.pdf" 
+- "D:\Zotero\storage\TRIAYRK7\FONDO_TRANSIZIONE_INDUSTRIALE_Graduatoria24072024_def.pdf"
+
 
 
 
 ## Fonti
 
-- [Fondo per il sostegno alla transizione industriale – PNRR](https://www.mimit.gov.it/it/incentivi/fondo-per-il-sostegno-alla-transizione-industriale-pnrr&ved=2ahUKEwjFy_qw9vCKAxXQgf0HHTCxItoQFnoECBIQAQ&usg=AOvVaw1Gb5Z1AtUXiOtalvIm5J9v)
+- [Fondo per il sostegno alla transizione industriale – PNRR](https://www.mimit.gov.it/it/incentivi/fondo-per-il-sostegno-alla-transizione-industriale-pnrr)
 - [Fondo transizione industriale](https://www.invitalia.it/cosa-facciamo/sosteniamo-grandi-investimenti/fondo-transizione-industriale)
-- 
+- [Al via dal 5 febbraio lo sportello per accedere al Fondo per il sostegno alla transizione industriale](https://www.mimit.gov.it/it/notizie-stampa/mimit-al-via-dal-5-febbraio-lo-sportello-per-accedere-al-fondo-per-il-sostegno-alla-transizione-industriale)
+- [Fondo per il sostegno alla transizione industriale](https://www.mimit.gov.it/it/incentivi/fondo-per-il-sostegno-alla-transizione-industriale)
+- [Decreto interministeriale 21 ottobre 2022 - Fondo per il sostegno alla transizione industriale](https://www.mimit.gov.it/it/normativa/decreti-interministeriali/decreto-interministeriale-21-ottobre-2022-fondo-per-il-sostegno-alla-transizione-industriale)
+- [Decreto direttoriale 30 agosto 2023](https://www.mimit.gov.it/it/normativa/decreti-direttoriali/decreto-direttoriale-30-agosto-2023-fondo-transizione-industriale-termini-e-modalita-presentazione-domande)
+- [Decreto interministeriale 21 ottobre 2022](https://www.mimit.gov.it/it/normativa/decreti-interministeriali/decreto-interministeriale-21-ottobre-2022-fondo-per-il-sostegno-alla-transizione-industriale) 
+- [Legge 30 dicembre 2021, n. 234](https://www.gazzettaufficiale.it/eli/id/2021/12/31/21G00256/sg), articolo 1, comma 478 e 479 - Bilancio Di Previsione dello Stato per l’anno finanziario 2022 e Bilancio Pluriennale per il triennio 2022-2024
+- [Decreto interministeriale 21 ottobre 2022 - Fondo per il sostegno alla transizione industriale](https://www.mimit.gov.it/images/stories/normativa/dm_21_ottobre_2022.pdf)
+- [Fondo transizione industriale](https://www.invitalia.it/cosa-facciamo/sosteniamo-grandi-investimenti/fondo-transizione-industriale)
