@@ -1,6 +1,6 @@
 ---
 title: "Come Pubblicare su un sito Github"
-subtitle: "miei appunti presi da diverse fonti"
+subtitle: "_miei appunti presi da diverse fonti_"
 draft: false
 
 date: 2025-01-11
@@ -40,18 +40,23 @@ un esempio impattante:
 
 ---
 
-## Aggiornare solo una pagina
+## I comandi basilari
 
 Non è necessario specificare manualmente il file `.qmd` in tutti i comandi, ma devi farlo nei comandi `quarto render` o `quarto preview`. Gli altri comandi possono lavorare con un approccio più generico, come `git add .`, per includere tutte le modifiche.
 
 1. quarto preview d:/paolovolterra.github.io/posts/202508_RNA/RNA.qmd
 2. quarto render d:/paolovolterra.github.io/posts/202508_RNA/RNA.qmd
+
 3. git add d:/paolovolterra.github.io/docs/posts/202508_RNA/RNA.html
-4. 5. git status
-5. git add . (se hai rilevato altre modifiche e le voi introitare)
+4. git add . (se hai rilevato altre modifiche e le voi introitare)
+
+5. git status
+
 6. git commit -m "Aggiornata la pagina: RNA"
+
 7. git pull origin main --rebase
 8. git push origin main
+
 9. git log
 
 ### Flusso di lavoro ottimizzato

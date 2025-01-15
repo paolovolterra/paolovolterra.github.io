@@ -152,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">In questa pagina</h2>
    
   <ul>
-  <li><a href="#aggiornare-solo-una-pagina" id="toc-aggiornare-solo-una-pagina" class="nav-link active" data-scroll-target="#aggiornare-solo-una-pagina">Aggiornare solo una pagina</a>
+  <li><a href="#i-comandi-basilari" id="toc-i-comandi-basilari" class="nav-link active" data-scroll-target="#i-comandi-basilari">I comandi basilari</a>
   <ul class="collapse">
   <li><a href="#flusso-di-lavoro-ottimizzato" id="toc-flusso-di-lavoro-ottimizzato" class="nav-link" data-scroll-target="#flusso-di-lavoro-ottimizzato">Flusso di lavoro ottimizzato</a></li>
   <li><a href="#se-ci-sono-altri-file-modificati" id="toc-se-ci-sono-altri-file-modificati" class="nav-link" data-scroll-target="#se-ci-sono-altri-file-modificati">Se ci sono altri file modificati</a></li>
@@ -168,7 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Come Pubblicare su un sito Github</h1>
-<p class="subtitle lead">miei appunti presi da diverse fonti</p>
+<p class="subtitle lead"><em>miei appunti presi da diverse fonti</em></p>
   <div class="quarto-categories">
     <div class="quarto-category">Github</div>
     <div class="quarto-category">Quarto</div>
@@ -220,21 +220,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>sposto il progetto in un’altra cartella locale</li>
 </ul>
 <hr>
-<section id="aggiornare-solo-una-pagina" class="level2">
-<h2 class="anchored" data-anchor-id="aggiornare-solo-una-pagina">Aggiornare solo una pagina</h2>
+<section id="i-comandi-basilari" class="level2">
+<h2 class="anchored" data-anchor-id="i-comandi-basilari">I comandi basilari</h2>
 <p>Non è necessario specificare manualmente il file <code>.qmd</code> in tutti i comandi, ma devi farlo nei comandi <code>quarto render</code> o <code>quarto preview</code>. Gli altri comandi possono lavorare con un approccio più generico, come <code>git add .</code>, per includere tutte le modifiche.</p>
 <ol type="1">
-<li>quarto preview d:/paolovolterra.github.io/posts/202508_RNA/RNA.qmd</li>
-<li>quarto render d:/paolovolterra.github.io/posts/202508_RNA/RNA.qmd</li>
-<li>git add d:/paolovolterra.github.io/docs/posts/202508_RNA/RNA.html</li>
-<li><ol start="5" type="1">
-<li>git status</li>
-</ol></li>
-<li>git add . (se hai rilevato altre modifiche e le voi introitare)</li>
-<li>git commit -m “Aggiornata la pagina: RNA”</li>
-<li>git pull origin main –rebase</li>
-<li>git push origin main</li>
-<li>git log</li>
+<li><p>quarto preview d:/paolovolterra.github.io/posts/202508_RNA/RNA.qmd</p></li>
+<li><p>quarto render d:/paolovolterra.github.io/posts/202508_RNA/RNA.qmd</p></li>
+<li><p>git add d:/paolovolterra.github.io/docs/posts/202508_RNA/RNA.html</p></li>
+<li><p>git add . (se hai rilevato altre modifiche e le voi introitare)</p></li>
+<li><p>git status</p></li>
+<li><p>git commit -m “Aggiornata la pagina: RNA”</p></li>
+<li><p>git pull origin main –rebase</p></li>
+<li><p>git push origin main</p></li>
+<li><p>git log</p></li>
 </ol>
 <section id="flusso-di-lavoro-ottimizzato" class="level3">
 <h3 class="anchored" data-anchor-id="flusso-di-lavoro-ottimizzato">Flusso di lavoro ottimizzato</h3>

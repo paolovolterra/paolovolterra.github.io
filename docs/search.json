@@ -133,200 +133,32 @@
     "text": "Misure di Contrasto:\n\nLe normative antiriciclaggio vengono continuamente aggiornate per includere le attività suscettibili di essere utilizzate per il riciclaggio.\nLa collaborazione tra le FIU è essenziale per lo scambio di informazioni e il contrasto del riciclaggio a livello internazionale.\nL’adeguata verifica della clientela è un obbligo fondamentale per tutti i soggetti coinvolti nel sistema finanziario.\nL’uso di tecnologie come gli smart contract può essere utile per intercettare le operazioni anomale nella finanza decentralizzata."
   },
   {
-    "objectID": "posts/2506_Github/immagini/Sito con Quarto.html",
-    "href": "posts/2506_Github/immagini/Sito con Quarto.html",
-    "title": "Pubblicare su un sito Github",
+    "objectID": "posts/2506_Github/PubblicareSuGithub.html",
+    "href": "posts/2506_Github/PubblicareSuGithub.html",
+    "title": "Come Pubblicare su un sito Github",
     "section": "",
-    "text": "si lavora con 2 tipi di files: - yaml - qmd\ndevono essere configurati : - git - github\n\n\n\n- quarto create-project paolovolterra.github.io --type website\n- quarto preview\n- quarto render\n\n\nINPUT: i qmd devono stare nella cartella post\nOUTPUT: gli output renderizzati da Quarto finiranno nella cartella docs\n\n\n\n\n\n\n\nconfigurare il **main branch”\ncreare un token per l’accesso automatico HowTo\n\n![[Pasted image 20250111112443.png]]\n\n\n\n\ngit remote remove origin\ngit add docs\ngit remote add origin https://github.com/paolovolterra/paolovolterra.github.io\ngit remote -v\n\norigin  https://github.com/paolovolterra/paolovolterra.github.io (fetch)\norigin  https://github.com/paolovolterra/paolovolterra.github.io (push)\n\n\n\n\n\nIl mio primo blog postcon Quarto [[Il mio primo blog post – aborruso’s website]]\nCreating your personal website using Quarto con Quarto [[Creating your personal website using Quarto]]\nCreating a Website (dal sito ufficiale)\nCreating a Blog (dal sito ufficiale)\nMEDS Computing Requirements & Software Installation Guide con RStudio\n\n![[Pasted image 20250111120036.png|200]] ![[Pasted image 20250111120332.png|200]] ## Bibtex https://www.getbibtex.com/\n@misc{aborrusoPrimoBlog, author = {Andrea Borruso}, title = {{I}l mio primo blog post – aborruso’s website — aborruso.github.io}, howpublished = {}, year = {}, note = {[Accessed 11-01-2025]}, }\n@misc{marvinschmittCreateYour, author = {Marvin Schmitt}, title = {{C}reate {Y}our {W}ebsite with {Q}uarto: {C}omplete {T}utorial and {T}emplate — marvinschmitt.com}, howpublished = {}, year = {}, note = {[Accessed 11-01-2025]}, }\n@misc{adtariePersonalWebsite, author = {A.A. Wijaya}, title = {{P}ersonal {W}ebsite using {J}upyter {N}otebook and {Q}uarto – {F}oreland of {T}houghts — adtarie.net}, howpublished = {}, year = {}, note = {[Accessed 11-01-2025]}, }"
+    "text": "Premessa: un immenso grazie a Chatgpt\nsi lavora con molti tipi di files: yaml, qmd, css, …\ndevono essere precedentemente configurati :\nun esempio impattante:"
   },
   {
-    "objectID": "posts/2506_Github/immagini/Sito con Quarto.html#quarto",
-    "href": "posts/2506_Github/immagini/Sito con Quarto.html#quarto",
-    "title": "Pubblicare su un sito Github",
-    "section": "",
-    "text": "- quarto create-project paolovolterra.github.io --type website\n- quarto preview\n- quarto render\n\n\nINPUT: i qmd devono stare nella cartella post\nOUTPUT: gli output renderizzati da Quarto finiranno nella cartella docs"
+    "objectID": "posts/2506_Github/PubblicareSuGithub.html#i-comandi-basilari",
+    "href": "posts/2506_Github/PubblicareSuGithub.html#i-comandi-basilari",
+    "title": "Come Pubblicare su un sito Github",
+    "section": "I comandi basilari",
+    "text": "I comandi basilari\nNon è necessario specificare manualmente il file .qmd in tutti i comandi, ma devi farlo nei comandi quarto render o quarto preview. Gli altri comandi possono lavorare con un approccio più generico, come git add ., per includere tutte le modifiche.\n\nquarto preview d:/paolovolterra.github.io/posts/202508_RNA/RNA.qmd\nquarto render d:/paolovolterra.github.io/posts/202508_RNA/RNA.qmd\ngit add d:/paolovolterra.github.io/docs/posts/202508_RNA/RNA.html\ngit add . (se hai rilevato altre modifiche e le voi introitare)\ngit status\ngit commit -m “Aggiornata la pagina: RNA”\ngit pull origin main –rebase\ngit push origin main\ngit log\n\n\nFlusso di lavoro ottimizzato\nSe modifichi un solo file .qmd (ad esempio, RNA.qmd), puoi seguire questo flusso semplificato:\nquarto render d:/paolovolterra.github.io/posts/202508_RNA/RNA.qmd\ngit add d:/paolovolterra.github.io/docs/posts/202508_RNA/RNA.html\ngit commit -m \"Aggiornata la pagina: RNA\"\ngit pull origin main --rebase\ngit push origin main\n\nGenera l’output dal file modificato\nAggiungi i file modificati\nCrea il commit\nSincronizza con il repository remoto\n\n\n\nSe ci sono altri file modificati\n(es. posts.html, sitemap.xml), questi potrebbero essere stati rigenerati automaticamente da Quarto. Per gestire anche questi file:\ngit add .\ngit commit -m \"Aggiornati file generati automaticamente\"\ngit push origin main\nSe vuoi evitare di eseguire manualmente questi comandi per ogni file, puoi creare uno script Bash o Batch."
   },
   {
-    "objectID": "posts/2506_Github/immagini/Sito con Quarto.html#github",
-    "href": "posts/2506_Github/immagini/Sito con Quarto.html#github",
-    "title": "Pubblicare su un sito Github",
-    "section": "",
-    "text": "configurare il **main branch”\ncreare un token per l’accesso automatico HowTo\n\n![[Pasted image 20250111112443.png]]\n\n\n\n\ngit remote remove origin\ngit add docs\ngit remote add origin https://github.com/paolovolterra/paolovolterra.github.io\ngit remote -v\n\norigin  https://github.com/paolovolterra/paolovolterra.github.io (fetch)\norigin  https://github.com/paolovolterra/paolovolterra.github.io (push)"
+    "objectID": "posts/2506_Github/PubblicareSuGithub.html#riferimenti",
+    "href": "posts/2506_Github/PubblicareSuGithub.html#riferimenti",
+    "title": "Come Pubblicare su un sito Github",
+    "section": "Riferimenti",
+    "text": "Riferimenti\n\nIl mio primo blog postcon Quarto [[Il mio primo blog post – aborruso’s website]]\nCreating your personal website using Quarto con Quarto [[Creating your personal website using Quarto]]\nCreating a Website (dal sito ufficiale)\nCreating a Blog (dal sito ufficiale)\nMEDS Computing Requirements & Software Installation Guide con RStudio"
   },
   {
-    "objectID": "posts/2506_Github/immagini/Sito con Quarto.html#riferimenti",
-    "href": "posts/2506_Github/immagini/Sito con Quarto.html#riferimenti",
-    "title": "Pubblicare su un sito Github",
-    "section": "",
-    "text": "Il mio primo blog postcon Quarto [[Il mio primo blog post – aborruso’s website]]\nCreating your personal website using Quarto con Quarto [[Creating your personal website using Quarto]]\nCreating a Website (dal sito ufficiale)\nCreating a Blog (dal sito ufficiale)\nMEDS Computing Requirements & Software Installation Guide con RStudio\n\n![[Pasted image 20250111120036.png|200]] ![[Pasted image 20250111120332.png|200]] ## Bibtex https://www.getbibtex.com/\n@misc{aborrusoPrimoBlog, author = {Andrea Borruso}, title = {{I}l mio primo blog post – aborruso’s website — aborruso.github.io}, howpublished = {}, year = {}, note = {[Accessed 11-01-2025]}, }\n@misc{marvinschmittCreateYour, author = {Marvin Schmitt}, title = {{C}reate {Y}our {W}ebsite with {Q}uarto: {C}omplete {T}utorial and {T}emplate — marvinschmitt.com}, howpublished = {}, year = {}, note = {[Accessed 11-01-2025]}, }\n@misc{adtariePersonalWebsite, author = {A.A. Wijaya}, title = {{P}ersonal {W}ebsite using {J}upyter {N}otebook and {Q}uarto – {F}oreland of {T}houghts — adtarie.net}, howpublished = {}, year = {}, note = {[Accessed 11-01-2025]}, }"
-  },
-  {
-    "objectID": "posts/2504_FTI/FTI.html",
-    "href": "posts/2504_FTI/FTI.html",
-    "title": "Fondo per il sostegno alla transizione industriale",
-    "section": "",
-    "text": "cover\nIl Fondo per il sostegno alla transizione industriale si rivolge alle imprese che investono nella tutela ambientale e ha l’obiettivo di favorire l’adeguamento del sistema produttivo italiano alle politiche UE sulla lotta ai cambiamenti climatici."
-  },
-  {
-    "objectID": "posts/2504_FTI/FTI.html#obiettivi-dello-studio",
-    "href": "posts/2504_FTI/FTI.html#obiettivi-dello-studio",
-    "title": "Fondo per il sostegno alla transizione industriale",
-    "section": "1 obiettivi dello studio",
-    "text": "1 obiettivi dello studio\n\nestrazione dati da PDF\nelaborazione #opendata\nETL con groupby vari"
-  },
-  {
-    "objectID": "posts/2504_FTI/FTI.html#opendata-sul-registro-nazionale-degli-aiuti-di-stato",
-    "href": "posts/2504_FTI/FTI.html#opendata-sul-registro-nazionale-degli-aiuti-di-stato",
-    "title": "Fondo per il sostegno alla transizione industriale",
-    "section": "2 Opendata sul registro Nazionale degli Aiuti di Stato",
-    "text": "2 Opendata sul registro Nazionale degli Aiuti di Stato\n\nCAR: 27929\nSignificant Aid: 110221\n\n\nimport pyarrow.parquet as pq\nimport pandas as pd\nimport duckdb\nimport os\nos.chdir('D:/duckdb/files/RNA2/')\n\ncon = duckdb.connect()\ncon.execute(\"PRAGMA threads=8\")\ncon.execute(\"PRAGMA enable_object_cache\") \npd.options.display.float_format = '{:,}'.format\ndf =(con.execute(\"SELECT * FROM '*.parquet' where CAR = '27929' order by concessione desc\").df())\n\n\ndf[['DES_TIPO_BENEFICIARIO', 'REGIONE', \n'SETTORE_ATTIVITA','NOMINALE', 'AIUTO']].sample(10)\n\n\n\n\n\n\n\n\nDES_TIPO_BENEFICIARIO\nREGIONE\nSETTORE_ATTIVITA\nNOMINALE\nAIUTO\n\n\n\n\n8\nPMI\nToscana\nC.13.3\n853,211.0\n853,211.0\n\n\n12\nGrande impresa\nPiemonte\nC.24.5\n1,164,732.31\n1,164,732.31\n\n\n18\nGrande impresa\nLombardia\nC.20.2\n1,360,000.0\n1,360,000.0\n\n\n26\nGrande impresa\nFriuli-Venezia Giulia\nC.28.2\n60,000.0\n60,000.0\n\n\n29\nGrande impresa\nMarche\nC.20.1\n913,545.0\n913,545.0\n\n\n35\nGrande impresa\nPuglia\nC.10.7\n228,183.75\n228,183.75\n\n\n2\nGrande impresa\nLombardia\nC.21.1\n1,072,542.6\n1,072,542.6\n\n\n6\nPMI\nToscana\nC.13.3\n324,800.0\n324,800.0\n\n\n36\nGrande impresa\nPuglia\nC.10.7\n829,199.55\n829,199.55\n\n\n32\nGrande impresa\nPiemonte\nC.13.1\n158,400.0\n158,400.0\n\n\n\n\n\n\n\n\ndf[['NOMINALE', 'AIUTO']].sum()\n\nNOMINALE   33,142,352.72\nAIUTO      33,142,352.72\ndtype: float64\n\n\n\ndf.groupby('CONCESSIONE').agg(CF_COUNT=('CF', 'count'),\n    NOMINALE_SUM=('NOMINALE', 'sum'),\n    AIUTO_SUM=('AIUTO', 'sum')).sort_values(by= 'CONCESSIONE', ascending = False)\n\n\n\n\n\n\n\n\nCF_COUNT\nNOMINALE_SUM\nAIUTO_SUM\n\n\nCONCESSIONE\n\n\n\n\n\n\n\n2025-01-08\n4\n3,131,064.8\n3,131,064.8\n\n\n2024-12-21\n6\n3,605,143.65\n3,605,143.65\n\n\n2024-12-20\n5\n7,576,305.32\n7,576,305.32\n\n\n2024-12-16\n1\n3,581,357.84\n3,581,357.84\n\n\n2024-12-10\n3\n3,751,060.0\n3,751,060.0\n\n\n2024-12-09\n9\n5,340,643.82\n5,340,643.82\n\n\n2024-12-04\n3\n2,014,706.25\n2,014,706.25\n\n\n2024-12-02\n3\n903,980.0\n903,980.0\n\n\n2024-11-21\n5\n3,238,091.04\n3,238,091.04\n\n\n\n\n\n\n\n\ndf.groupby('REGIONE').agg(CF_COUNT=('CF', 'count'),\n    NOMINALE_SUM=('NOMINALE', 'sum'),\n    AIUTO_SUM=('AIUTO', 'sum'))\n\n\n\n\n\n\n\n\nCF_COUNT\nNOMINALE_SUM\nAIUTO_SUM\n\n\nREGIONE\n\n\n\n\n\n\n\nCampania\n2\n2,391,060.0\n2,391,060.0\n\n\nEmilia-Romagna\n1\n3,581,357.84\n3,581,357.84\n\n\nFriuli-Venezia Giulia\n3\n1,708,200.0\n1,708,200.0\n\n\nLombardia\n6\n7,688,611.2\n7,688,611.2\n\n\nMarche\n3\n2,014,706.25\n2,014,706.25\n\n\nPiemonte\n12\n6,410,735.52\n6,410,735.52\n\n\nPuglia\n4\n1,918,557.48\n1,918,557.48\n\n\nToscana\n3\n1,773,474.0\n1,773,474.0\n\n\nVeneto\n5\n5,655,650.43\n5,655,650.43\n\n\n\n\n\n\n\n\ndf.groupby('DES_TIPO_BENEFICIARIO').agg(CF_COUNT=('CF', 'count'),\n    NOMINALE_SUM=('NOMINALE', 'sum'),\n    AIUTO_SUM=('AIUTO', 'sum'))\n\n\n\n\n\n\n\n\nCF_COUNT\nNOMINALE_SUM\nAIUTO_SUM\n\n\nDES_TIPO_BENEFICIARIO\n\n\n\n\n\n\n\nGrande impresa\n36\n31,368,878.72\n31,368,878.72\n\n\nPMI\n3\n1,773,474.0\n1,773,474.0\n\n\n\n\n\n\n\n\ndf.groupby('DES_PROCEDIMENTO').agg(CF_COUNT=('CF', 'count'),\n    NOMINALE_SUM=('NOMINALE', 'sum'),\n    AIUTO_SUM=('AIUTO', 'sum'))\n\n\n\n\n\n\n\n\nCF_COUNT\nNOMINALE_SUM\nAIUTO_SUM\n\n\nDES_PROCEDIMENTO\n\n\n\n\n\n\n\nEsenzione\n39\n33,142,352.72\n33,142,352.72\n\n\n\n\n\n\n\n\ndf.groupby('DESSETTORE_ATTIVITA_OBIETTIVO').agg(CF_COUNT=('CF', 'count'),\n    NOMINALE_SUM=('NOMINALE', 'sum'),\n    AIUTO_SUM=('AIUTO', 'sum'))\n\n\n\n\n\n\n\n\nCF_COUNT\nNOMINALE_SUM\nAIUTO_SUM\n\n\nDESSETTORE_ATTIVITA_OBIETTIVO\n\n\n\n\n\n\n\nAiuti alla Formazione (art.31)\n1\n6,654.0\n6,654.0\n\n\nAiuti per la tutela dell'ambiente | Aiuti agli investimenti a favore di misure di efficienza energetica diverse da quelle relative agli edifici (art. 38)\n14\n15,937,638.44\n15,937,638.44\n\n\nAiuti per la tutela dell'ambiente | Aiuti agli investimenti per l'uso efficiente delle risorse e per il sostegno alla transizione verso un'economia circolare (art. 47)\n13\n10,183,108.06\n10,183,108.06\n\n\nAiuti per la tutela dell'ambiente | Aiuti agli investimenti per la promozione di energia da fonti rinnovabili, di idrogeno rinnovabile e di cogenerazione ad alto rendimento (art. 41)\n11\n7,014,952.22\n7,014,952.22\n\n\n\n\n\n\n\n\ndf.groupby('SETTORE_ATTIVITA').agg(CF_COUNT=('CF', 'count'),\n    NOMINALE_SUM=('NOMINALE', 'sum'),\n    AIUTO_SUM=('AIUTO', 'sum'))\n\n\n\n\n\n\n\n\nCF_COUNT\nNOMINALE_SUM\nAIUTO_SUM\n\n\nSETTORE_ATTIVITA\n\n\n\n\n\n\n\nC.10.5\n1\n1,319,533.56\n1,319,533.56\n\n\nC.10.7\n4\n1,918,557.48\n1,918,557.48\n\n\nC.13.1\n3\n903,980.0\n903,980.0\n\n\nC.13.3\n3\n1,773,474.0\n1,773,474.0\n\n\nC.17.1\n2\n2,078,823.82\n2,078,823.82\n\n\nC.20.1\n6\n3,161,526.25\n3,161,526.25\n\n\nC.20.2\n1\n1,360,000.0\n1,360,000.0\n\n\nC.20.4\n1\n406,800.0\n406,800.0\n\n\nC.21.1\n4\n3,131,064.8\n3,131,064.8\n\n\nC.22.2\n2\n2,391,060.0\n2,391,060.0\n\n\nC.23.1\n1\n3,197,546.4\n3,197,546.4\n\n\nC.23.5\n1\n3,581,357.84\n3,581,357.84\n\n\nC.24.1\n2\n3,170,026.6100000003\n3,170,026.6100000003\n\n\nC.24.5\n2\n1,208,732.31\n1,208,732.31\n\n\nC.28.1\n3\n1,831,669.65\n1,831,669.65\n\n\nC.28.2\n3\n1,708,200.0\n1,708,200.0\n\n\n\n\n\n\n\n\ndf.groupby('DES_STRUMENTO').agg(CF_COUNT=('CF', 'count'),\n    NOMINALE_SUM=('NOMINALE', 'sum'),\n    AIUTO_SUM=('AIUTO', 'sum'))\n\n\n\n\n\n\n\n\nCF_COUNT\nNOMINALE_SUM\nAIUTO_SUM\n\n\nDES_STRUMENTO\n\n\n\n\n\n\n\nSovvenzione/Contributo in conto interessi\n39\n33,142,352.72\n33,142,352.72"
-  },
-  {
-    "objectID": "posts/2504_FTI/FTI.html#analisi-pdf",
-    "href": "posts/2504_FTI/FTI.html#analisi-pdf",
-    "title": "Fondo per il sostegno alla transizione industriale",
-    "section": "3 analisi PDF",
-    "text": "3 analisi PDF\nattualmente sono state pubblicate\n\nPubblicata la graduatoria ai sensi del decreto direttoriale 30.08.2023\nScorrimento graduatoria\n“D:8R9_TRANSIZIONE_INDUSTRIALE_GRADUATORIA.pdf”\n“D:_TRANSIZIONE_INDUSTRIALE_Graduatoria24072024_def.pdf”"
-  },
-  {
-    "objectID": "posts/2504_FTI/FTI.html#fonti",
-    "href": "posts/2504_FTI/FTI.html#fonti",
-    "title": "Fondo per il sostegno alla transizione industriale",
-    "section": "4 Fonti",
-    "text": "4 Fonti\n\nFondo per il sostegno alla transizione industriale – PNRR\nFondo transizione industriale\nAl via dal 5 febbraio lo sportello per accedere al Fondo per il sostegno alla transizione industriale\nFondo per il sostegno alla transizione industriale\nDecreto interministeriale 21 ottobre 2022 - Fondo per il sostegno alla transizione industriale\nDecreto direttoriale 30 agosto 2023\nDecreto interministeriale 21 ottobre 2022 \nLegge 30 dicembre 2021, n. 234, articolo 1, comma 478 e 479 - Bilancio Di Previsione dello Stato per l’anno finanziario 2022 e Bilancio Pluriennale per il triennio 2022-2024\nDecreto interministeriale 21 ottobre 2022 - Fondo per il sostegno alla transizione industriale\nFondo transizione industriale"
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html",
-    "href": "posts/2501_CF/CfAnonimizzati.html",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "",
-    "text": "si può trasformare il codice fiscale in una forma che non sia immediatamente identificabile da altri, ma decifrabile solo dal titolare (ad esempio, attraverso una chiave o un algoritmo noto…)\nCon la pseudonimizzazione a chiave privata, attraverso una di queste soluzioni\nsi può trasformare il codice fiscale in una forma che non è immediatamente identificabile da altri, ma che può essere decifrata dal titolare (ad esempio, attraverso una chiave o un algoritmo noto solo a lui)."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#hashing-con-salt-privato",
-    "href": "posts/2501_CF/CfAnonimizzati.html#hashing-con-salt-privato",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "1 Hashing con Salt Privato",
-    "text": "1 Hashing con Salt Privato\nL’hashing crea una stringa univoca dal codice fiscale utilizzando un algoritmo crittografico (es. SHA-256). Il salt privato (una stringa univoca aggiunta al dato originale) rende l’hash interpretabile solo dal titolare.\n\nProcedura:\n\nAggiungo un salt univoco noto solo al titolare (es. data di nascita o un valore condiviso).\nApplico l’algoritmo di hashing.\n\n\nimport hashlib\ndef anonimizza_cf(codice_fiscale, salt):        \n    dato = codice_fiscale + salt        \n    hash_object = hashlib.sha256(dato.encode())    \n    return hash_object.hexdigest()"
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#esempio",
-    "href": "posts/2501_CF/CfAnonimizzati.html#esempio",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "2 Esempio",
-    "text": "2 Esempio\n\ncodice_fiscale = “RSSMRA80A01H501U”\nsalt = “01/01/1980” # Salt privato conosciuto dal titolare\nhash_cf = anonimizza_cf(codice_fiscale, salt)\nPro: Non è possibile risalire al codice fiscale senza il salt.\nContro: Il titolare deve conoscere o avere accesso al salt."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#cifratura-simmetrica",
-    "href": "posts/2501_CF/CfAnonimizzati.html#cifratura-simmetrica",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "3 Cifratura Simmetrica",
-    "text": "3 Cifratura Simmetrica\nLa cifratura simmetrica utilizza un algoritmo come AES per codificare il codice fiscale. Il titolare può decifrare il codice con una chiave segreta condivisa.\nProcedura:\n\nScelgo un algoritmo di cifratura (es. AES).\nUso una chiave segreta condivisa (es. una password).\nCripto il codice fiscale\nFornisco il dato criptato al titolare.\nPro: Garantisce riservatezza elevata; solo il titolare con la chiave può decifrare.\nContro: Il titolare deve conservare la chiave.\n\n\nfrom cryptography.fernet import Fernet\n\n# Genera una chiave\nkey = Fernet.generate_key()\n\n# Crea un oggetto Fernet con la chiave generata\ncipher = Fernet(key)\n\n# Codice fiscale da cifrare\ncodice_fiscale = \"RSSMRA80A01H501U\"\n\n# Cifra il codice fiscale\nencrypted_cf = cipher.encrypt(codice_fiscale.encode())\nprint(\"Codice cifrato:\", encrypted_cf)\n\n# Decifra il codice fiscale\ndecrypted_cf = cipher.decrypt(encrypted_cf).decode()\nprint(\"Codice decifrato:\", decrypted_cf)\n\nCodice cifrato: b'gAAAAABnhtbSy9_1MqjP-mTfbmsUVEiutQFQ24CltGA6Jh-iVSSA5d_q2pGfE00Trf4dKh_4VOqgYJ6UdBsrit1uj4sNK7gC8ykaT-V2gc11diHqVWZQyOM='\nCodice decifrato: RSSMRA80A01H501U\n\n\nRisultato\nEseguendo il codice, otterrai l’output:\nCodice cifrato: una stringa cifrata in base64 (non leggibile direttamente).\nCodice decifrato: il valore originale del codice fiscale (RSSMRA80A01H501U).\nNote importanti:\nGestione della chiave: La chiave generata (key) deve essere conservata in modo sicuro se hai bisogno di decifrare i dati in futuro.\nSicurezza: Non condividere mai la chiave pubblicamente; è fondamentale per mantenere i dati al sicuro."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#sostituzione-parziale",
-    "href": "posts/2501_CF/CfAnonimizzati.html#sostituzione-parziale",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "4 Sostituzione Parziale",
-    "text": "4 Sostituzione Parziale\nSostituisco parte del codice fiscale con caratteri generici, mantenendo solo alcune informazioni identificative per il titolare.\nEsempio:\n\nCodice fiscale: RSSMRA80A01H501U\nAnonimizzato: RM80__**U\nInterpretazione: Mantieni iniziali e anno di nascita per rendere il codice interpretabile dal titolare.\nPro: Facile da implementare, leggibile dal titolare.\nContro: Non è completamente sicuro contro reidentificazione.\n\n\ndef anonimizza_cf_parziale(codice_fiscale):\n    \"\"\"\n    Funzione per anonimizzare parzialmente un codice fiscale.\n    Mantiene visibili solo i primi 3 caratteri, i caratteri 6 e 7, \n    e gli ultimi 4 caratteri.\n    \"\"\"\n    return f\"{codice_fiscale[:3]}***{codice_fiscale[6:8]}******{codice_fiscale[-4:]}\"\n\n# Codice fiscale da anonimizzare\ncodice_fiscale = \"RSSMRA80A01H501U\"\n\n# Anonimizzazione parziale\ncf_anonimizzato = anonimizza_cf_parziale(codice_fiscale)\nprint(\"Codice Fiscale Anonimizzato:\", cf_anonimizzato)\n\nCodice Fiscale Anonimizzato: RSS***80******501U\n\n\nSpiegazione:\ncodice_fiscale[:3]: Prende i primi 3 caratteri.\ncodice_fiscale[6:8]: Prende i caratteri dalla posizione 6 alla posizione 7 inclusa.\ncodice_fiscale[-4:]: Prende gli ultimi 4 caratteri.\nI caratteri mascherati sono sostituiti da *."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#tokenizzazione",
-    "href": "posts/2501_CF/CfAnonimizzati.html#tokenizzazione",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "5 Tokenizzazione",
-    "text": "5 Tokenizzazione\n\nSostituisco il codice fiscale con un identificatore univoco casuale (token). Solo il titolare o un sistema può ricondurre il token al codice originale.\nEsempio:\n\nCodice fiscale: RSSMRA80A01H501U\nToken: ABC12345XYZ\nTabella di mapping (conservata separatamente): ABC12345XYZ -&gt; RSSMRA80A01H501U\nPro: Nessun dato sensibile è esposto.\nContro: Richiede un sistema per mantenere il mapping.\n\n\nimport uuid\n\ndef anonimizza_cf_token(codice_fiscale):\n    \"\"\"\n    Funzione per anonimizzare un codice fiscale utilizzando un token UUID.\n    \"\"\"\n    # Genera un token unico (primi 8 caratteri di un UUID)\n    token = str(uuid.uuid4())[:8]\n    \n    # Crea un mapping tra il token e il codice fiscale\n    mapping = {token: codice_fiscale}\n    print(\"Mapping (da salvare):\", mapping)\n    \n    # Ritorna il token\n    return token\n\n# Codice fiscale da anonimizzare\ncodice_fiscale = \"RSSMRA80A01H501U\"\n\n# Anonimizzazione con token\ncf_anonimizzato = anonimizza_cf_token(codice_fiscale)\nprint(\"Codice Fiscale Anonimizzato:\", cf_anonimizzato)\n\nMapping (da salvare): {'7fe7cc63': 'RSSMRA80A01H501U'}\nCodice Fiscale Anonimizzato: 7fe7cc63\n\n\nDettagli:\nUUID Token: La funzione genera un identificatore unico (uuid.uuid4) e ne utilizza i primi 8 caratteri come token per rappresentare il codice fiscale.\nMapping: Salva il mapping tra il token e il codice fiscale originale. Questo mapping deve essere conservato in modo sicuro (es. database) per consentire una futura deanonimizzazione.\nRitorno: Il token viene restituito come codice anonimo.\nNota Importante\nIl mapping è temporaneo nel codice fornito. Per un'applicazione reale, è essenziale salvare il mapping in un archivio persistente (come un database o un file) per potervi accedere successivamente.\nSicurezza: Considera l'accesso controllato al mapping per prevenire abusi e garantire la privacy degli utenti."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#quale-tecnica-scegliere-per-pubblicare-un-elenco-di-codici-fiscali",
-    "href": "posts/2501_CF/CfAnonimizzati.html#quale-tecnica-scegliere-per-pubblicare-un-elenco-di-codici-fiscali",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "6 Quale tecnica scegliere per pubblicare un elenco di codici fiscali??",
-    "text": "6 Quale tecnica scegliere per pubblicare un elenco di codici fiscali??\nDipende dal contesto:\n\nPer alta sicurezza: Cifratura simmetrica o hashing con salt.\nPer facilità d’uso: Sostituzione parziale.\nPer sistemi centralizzati: Tokenizzazione.\n\n\nSe il codice fiscale deve essere stampato per il titolare (ad esempio in un report o un documento) occorre considerare contemporaneamente:\n\nl’interpretabilità per il titolare\nla riservatezza\n\nLa Sostituzione Parziale mantiene solo alcune parti identificative del codice fiscale, come le iniziali e un suffisso significativo. Questo metodo è semplice e leggibile (anche dagli altri, però).\nRSS80*__501U\nIl codice fiscale Anonimizzato con Hashing e Salt Privato utilizza l’hashing per creare un codice unico che il titolare può interpretare solo conoscendo il salt.\n\ncodice_fiscale = “RSSMRA80A01H501U”\nsalt = “01/01/1980” # Il salt può essere condiviso solo con il titolare\nCodice Fiscale Anonimizzato: 9F4E8D12\n\nLa Cifratura Simmetrica (Stampabile e Decifrabile Solo dal Titolare) produce un codice stampabile e leggibile, decifrabile solo con la chiave privata.\n\ncodice_fiscale = “RSSMRA80A01H501U”\nCodice Fiscale Anonimizzato: gAAAAABlcO9Z8H\nIl titolare può decifrare l’intero codice fiscale utilizzando la chiave segreta.\n\nLa Tokenizzazione genera un token casuale per anonimizzare il codice fiscale, con un mapping separato conservato nel sistema.\n\ncodice_fiscale = “RSSMRA80A01H501U”\ncf_anonimizzato = anonimizza_cf_token(codice_fiscale)\nprint(“Codice Fiscale Anonimizzato:”, cf_anonimizzato)\n\nOutput:\n\nMapping (da salvare): {‘1a2b3c4d’: ‘RSSMRA80A01H501U’}\nCodice Fiscale Anonimizzato: 1a2b3c4d"
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#conclusione",
-    "href": "posts/2501_CF/CfAnonimizzati.html#conclusione",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "7 Conclusione",
-    "text": "7 Conclusione\n\nLeggibile direttamente dal titolare: sostituzione parziale o tokenizzazione.\nMaggiore sicurezza: hashing con salt o cifratura simmetrica."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#i-codici-fiscali-delle-imprese-sono-dati-sensibili",
-    "href": "posts/2501_CF/CfAnonimizzati.html#i-codici-fiscali-delle-imprese-sono-dati-sensibili",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "8 i codici fiscali delle imprese sono dati sensibili?",
-    "text": "8 i codici fiscali delle imprese sono dati sensibili?\nIl codice fiscale di un’impresa è considerato un dato personale, ma non rientra nella categoria dei dati sensibili.\nSecondo il Regolamento Generale sulla Protezione dei Dati (GDPR), i dati personali sono informazioni che identificano o rendono identificabile una persona fisica, come il nome, l’indirizzo o il codice fiscale.\nI dati sensibili, invece, includono informazioni che rivelano l’origine razziale o etnica, le opinioni politiche, le convinzioni religiose o filosofiche, l’appartenenza sindacale, dati genetici, dati biometrici, dati relativi alla salute o alla vita sessuale o all’orientamento sessuale di una persona (Commissione Europea)\nÈ importante notare che il codice fiscale di una ditta individuale, essendo associato a una persona giuridica, non è soggetto alle stesse tutele previste per i dati personali delle persone fisiche.\nTuttavia, l’utilizzo del codice fiscale deve avvenire nel rispetto delle normative vigenti in materia di protezione dei dati."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#come-è-composto-il-codice-fiscale",
-    "href": "posts/2501_CF/CfAnonimizzati.html#come-è-composto-il-codice-fiscale",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "9 Come è composto il codice fiscale",
-    "text": "9 Come è composto il codice fiscale\nIl codice fiscale italiano è composto da 16 caratteri alfanumerici, che rappresentano una combinazione di lettere e numeri, e viene calcolato sulla base dei dati anagrafici del soggetto. La sua struttura è la seguente:"
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#cognome-3-lettere",
-    "href": "posts/2501_CF/CfAnonimizzati.html#cognome-3-lettere",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "10 1. Cognome (3 lettere)",
-    "text": "10 1. Cognome (3 lettere)\n\nLe prime tre lettere sono prese dal cognome:\nVengono usate le prime tre consonanti.\nSe il cognome ha meno di tre consonanti, si usano le vocali per arrivare a tre lettere.\nSe il cognome ha meno di tre lettere, si aggiunge la lettera “X”."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#nome-3-lettere",
-    "href": "posts/2501_CF/CfAnonimizzati.html#nome-3-lettere",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "11 2. Nome (3 lettere)",
-    "text": "11 2. Nome (3 lettere)\n\nLe successive tre lettere derivano dal nome:\nSi prendono le prime tre consonanti.\nSe il nome ha più di tre consonanti, si prendono la prima, la terza e la quarta.\nSe il nome ha meno di tre consonanti, si completano con le vocali.\nAnche in questo caso, se il nome ha meno di tre lettere, si aggiunge la “X”."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#data-di-nascita-e-sesso-6-caratteri",
-    "href": "posts/2501_CF/CfAnonimizzati.html#data-di-nascita-e-sesso-6-caratteri",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "12 3. Data di nascita e sesso (6 caratteri)",
-    "text": "12 3. Data di nascita e sesso (6 caratteri)\n\nAnno di nascita (2 cifre): le ultime due cifre dell’anno (es. 1990 → 90).\nMese di nascita (1 lettera): ogni mese è rappresentato da una lettera:\nGennaio: A, Febbraio: B, Marzo: C, Aprile: D, Maggio: E, Giugno: H, Luglio: L, Agosto: M, Settembre: P, Ottobre: R, Novembre: S, Dicembre: T.\nGiorno di nascita e sesso (2 cifre):\nPer gli uomini si usa il giorno di nascita (es. 05 → 05).\nPer le donne, al giorno si aggiunge 40 (es. 05 → 45)."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#comune-o-stato-estero-di-nascita-4-caratteri",
-    "href": "posts/2501_CF/CfAnonimizzati.html#comune-o-stato-estero-di-nascita-4-caratteri",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "13 4. Comune o Stato estero di nascita (4 caratteri)",
-    "text": "13 4. Comune o Stato estero di nascita (4 caratteri)\n\nÈ rappresentato da un codice numerico o alfanumerico, assegnato a ogni comune italiano o stato estero."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#carattere-di-controllo-1-carattere",
-    "href": "posts/2501_CF/CfAnonimizzati.html#carattere-di-controllo-1-carattere",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "14 5. Carattere di controllo (1 carattere)",
-    "text": "14 5. Carattere di controllo (1 carattere)\n\nL’ultimo carattere è un carattere di controllo, calcolato secondo un algoritmo basato su tutti i caratteri precedenti. Serve a verificare la correttezza del codice fiscale."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#esempio-1",
-    "href": "posts/2501_CF/CfAnonimizzati.html#esempio-1",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "15 Esempio",
-    "text": "15 Esempio\nUna persona nata il 15 marzo 1990 a Roma, di sesso femminile, con cognome “Rossi” e nome “Maria”:\n\nCognome: ROS → ROS\nNome: MAR → MAR\nAnno di nascita: 90\nMese: C (marzo)\nGiorno e sesso: 55 (15 + 40)\nComune: H501 (Roma)\nCodice di controllo: calcolato come “Z” (esempio).\n\nCodice fiscale: ROSMAR90C55H501Z"
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#la-pseudoanomizzazione-di-rm501z",
-    "href": "posts/2501_CF/CfAnonimizzati.html#la-pseudoanomizzazione-di-rm501z",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "16 La pseudoanomizzazione di R**M********501Z",
-    "text": "16 La pseudoanomizzazione di R**M********501Z\nIl punto 4 è una parte “delicata”: i codici dei comuni sono univoci; non sono univoci se si rimuove la lettera iniziale e si considerano solo le cifre.\nI codici dei comuni italiani sono composti da una lettera (che identifica la provincia) seguita da un numero a tre cifre (che identifica il comune all’interno della provincia).\nIl codice fiscale contiene il codice catastale (noto anche come codice Belfiore) del luogo di nascita\nLa combinazione completa (es. “H501” per Roma) è univoca, ma se si considera solo la parte numerica (es. “501”), ci potrebbero essere più comuni con lo stesso numero in province diverse:\n\nRoma ha il codice H501.\nTorino ha il codice L501.\n\nSe togliamo la lettera, rimarrebbe solo 501, che non è più sufficiente per distinguere i comuni.\nSiamo al sicuro così? Apparentemente, si!"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Impara l’arte e mettila da parte",
-    "section": "",
-    "text": "GitHub\n  \n  \n    \n     LinkedIn\n  \n\n\n\nAnno nuovo, vita nuova\nCol 2025 riprendo a scrivere il mio blog, iniziato in R duramte il covid\nMotivo?\nPrimo: gratitudine per tanti filantropi che gratuitamente hanno messo online nel tempo tante informazioni che mi hanno permesso di progredire\nSecondo: dove ti giri, gli esempi sono basati sugli stessi dati (Titanic, Boston, carte di credito, iris, cancer…). Voglio andare oltre il copia/incolla\nTerzo: gli esempi sono sempre basati su dati retail, mentre nessuno spiega usando dati imprese (più difficili da trovare, anche perchè vanno acquistati). Userò quindi gli #opendata\nQuarto: molte persono desistono dall’approfondire tecnicalities che richiedono tempo e voglia per essere trovate, capite e applicate. Se penso a quanto tempo ho dedicato ad evolvere … ( e poi tutta questa mia conoscenza/esperienza andrà persa, prima o poi)\nPerchè un data scientist al contrario?\nSono laureato in economia, master in marketing. Non sono partito dalla formazione che può avere uno statistico od un ingegnere che poi le deve applicare nel lavoro in un mondo magari ostico al suo interesse\nHo una preparazione economica che ho voluto potenziare con soluzioni tecniche. Spesso vedo persone che si fermano se non hanno il dato pronto. Io me lo vado a costruire.\n\nQuando hai dato lo stesso consiglio 3 volte, scrivi un post (David Robinson).\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "posts.html",
-    "href": "posts.html",
-    "title": "Il mio Blog",
-    "section": "",
-    "text": "Pubblicare su un sito Github\n\n\n\n\n\n\n\n\n\n\n\nPaolo Volterra\n\n\n\n\n\n\n\n\n\n\n\n\nIl rischio nei finanziamenti e nelle agevolazioni\n\n\nanalisi delle ultime pubblicazioni ufficiali\n\n\n\nAI\n\n\nbanche\n\n\nrisk\n\n\nBankit\n\n\nlavoro\n\n\n\n\n\n\n\n\n\nJan 12, 2025\n\n\nPaolo Volterra\n\n\n\n\n\n\n\n\n\n\n\n\nRegistro Nazionale degli Aiuti di Stato\n\n\ntrasparenza e controllo sugli aiuti pubblici concessi in conformità alla normativa europea sugli aiuti di Stato \n\n\n\nagevolazioni\n\n\nInvitalia\n\n\nPython\n\n\nRNA\n\n\nopendata\n\n\n\n\n\n\n\n\n\nJan 12, 2025\n\n\nPaolo Volterra\n\n\n\n\n\n\n\n\n\n\n\n\nCome Pubblicare su un sito Github\n\n\nmiei appunti presi da diverse fonti\n\n\n\nGithub\n\n\nQuarto\n\n\nPython\n\n\n\n\n\n\n\n\n\nJan 11, 2025\n\n\nPaolo Volterra\n\n\n\n\n\n\n\n\n\n\n\n\nIl tech in banca\n\n\nCon l’IA sono a rischio tutti i lavori che comportano attività di routine e ripetitive. L’IA trasformerà il lavoro\n\n\n\nAI\n\n\ntech\n\n\nbanche\n\n\nBankit\n\n\nlavoro\n\n\n\n\n\n\n\n\n\nJan 10, 2025\n\n\nPaolo Volterra\n\n\n\n\n\n\n\n\n\n\n\n\nFondo per il sostegno alla transizione industriale\n\n\nFTI\n\n\n\nInvitalia\n\n\nAgevolazioni\n\n\nImprese\n\n\nPNRR\n\n\n\n\n\n\n\n\n\nJan 9, 2025\n\n\nPaolo Volterra\n\n\n\n\n\n\n\n\n\n\n\n\nBonus colonnine domestiche\n\n\nPython applicato a dati pubblicati online \n\n\n\nAgevolazioni\n\n\nPython\n\n\nOpendata\n\n\nMIMIT\n\n\n\n\n\n\n\n\n\nJan 9, 2025\n\n\nPaolo Volterra\n\n\n\n\n\n\n\n\n\n\n\n\nMini contratti di sviluppo\n\n\nuna nuova opportunità per le pMI, mutuata dai più rilevanti Contratti di Sviluppo\n\n\n\nInvitalia\n\n\nCdS\n\n\nagevolazioni\n\n\nimprese\n\n\n\n\n\n\n\n\n\nJan 8, 2025\n\n\nPaolo Volterra\n\n\n\n\n\n\n\n\n\n\n\n\nCodici fiscali, GDPR & Python\n\n\ncome anonimizzare un codice fiscale\n\n\n\nGDPR\n\n\nPython\n\n\nOpendata\n\n\n\n\n\n\n\n\n\nJan 3, 2025\n\n\nPaolo Volterra\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "objectID": "posts/2506_Github/PubblicareSuGithub.html#bibtex",
+    "href": "posts/2506_Github/PubblicareSuGithub.html#bibtex",
+    "title": "Come Pubblicare su un sito Github",
+    "section": "Bibtex",
+    "text": "Bibtex\nhttps://www.getbibtex.com/\n@misc{aborrusoPrimoBlog, author = {Andrea Borruso}, title = {{I}l mio primo blog post – aborruso’s website — aborruso.github.io}, howpublished = {}, year = {}, note = {[Accessed 11-01-2025]}, }\n@misc{marvinschmittCreateYour, author = {Marvin Schmitt}, title = {{C}reate {Y}our {W}ebsite with {Q}uarto: {C}omplete {T}utorial and {T}emplate — marvinschmitt.com}, howpublished = {}, year = {}, note = {[Accessed 11-01-2025]}, }\n@misc{adtariePersonalWebsite, author = {A.A. Wijaya}, title = {{P}ersonal {W}ebsite using {J}upyter {N}otebook and {Q}uarto – {F}oreland of {T}houghts — adtarie.net}, howpublished = {}, year = {}, note = {[Accessed 11-01-2025]}, }"
   },
   {
     "objectID": "posts/2503_MiniCds/MiniCds.html",
@@ -364,32 +196,179 @@
     "text": "Fonti\n\nhttps://www.pnric.gov.it/opportunities/mini-contratti-di-sviluppo\nhttps://www.invitalia.it/cosa-facciamo/sosteniamo-grandi-investimenti/mini-contratto-di-sviluppo\nhttps://www.mimit.gov.it/it/normativa/decreti-ministeriali/decreto-ministeriale-12-agosto-2024-nuovo-regime-di-aiuti-mini-contratti-di-sviluppo\nhttps://www.mimit.gov.it/it/notizie-stampa/mimit-al-via-dal-5-febbraio-lo-sportello-per-accedere-ai-mini-contratti-di-sviluppo\nMini Contratti di Sviluppo 2025: domanda incentivi dal 5 febbraio"
   },
   {
-    "objectID": "posts/2506_Github/PubblicareSuGithub.html",
-    "href": "posts/2506_Github/PubblicareSuGithub.html",
-    "title": "Come Pubblicare su un sito Github",
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "Il mio Blog",
     "section": "",
-    "text": "Premessa: un immenso grazie a Chatgpt\nsi lavora con molti tipi di files: yaml, qmd, css, …\ndevono essere precedentemente configurati :\nun esempio impattante:"
+    "text": "Il rischio nei finanziamenti e nelle agevolazioni\n\n\nanalisi delle ultime pubblicazioni ufficiali\n\n\n\nAI\n\n\nbanche\n\n\nrisk\n\n\nBankit\n\n\nlavoro\n\n\n\n\n\n\n\n\n\nJan 12, 2025\n\n\nPaolo Volterra\n\n\n\n\n\n\n\n\n\n\n\n\nRegistro Nazionale degli Aiuti di Stato\n\n\ntrasparenza e controllo sugli aiuti pubblici concessi in conformità alla normativa europea sugli aiuti di Stato \n\n\n\nagevolazioni\n\n\nInvitalia\n\n\nPython\n\n\nRNA\n\n\nopendata\n\n\n\n\n\n\n\n\n\nJan 12, 2025\n\n\nPaolo Volterra\n\n\n\n\n\n\n\n\n\n\n\n\nCome Pubblicare su un sito Github\n\n\nmiei appunti presi da diverse fonti\n\n\n\nGithub\n\n\nQuarto\n\n\nPython\n\n\n\n\n\n\n\n\n\nJan 11, 2025\n\n\nPaolo Volterra\n\n\n\n\n\n\n\n\n\n\n\n\nIl tech in banca\n\n\nCon l’IA sono a rischio tutti i lavori che comportano attività di routine e ripetitive. L’IA trasformerà il lavoro \n\n\n\nAI\n\n\nTech\n\n\nBanche\n\n\nBankit\n\n\nLavoro\n\n\n\n\n\n\n\n\n\nJan 10, 2025\n\n\nPaolo Volterra\n\n\n\n\n\n\n\n\n\n\n\n\nFondo per il sostegno alla transizione industriale\n\n\nFTI\n\n\n\nInvitalia\n\n\nAgevolazioni\n\n\nImprese\n\n\nPNRR\n\n\n\n\n\n\n\n\n\nJan 9, 2025\n\n\nPaolo Volterra\n\n\n\n\n\n\n\n\n\n\n\n\nBonus colonnine domestiche\n\n\nPython applicato a dati pubblicati online \n\n\n\nAgevolazioni\n\n\nPython\n\n\nOpendata\n\n\nMIMIT\n\n\n\n\n\n\n\n\n\nJan 9, 2025\n\n\nPaolo Volterra\n\n\n\n\n\n\n\n\n\n\n\n\nMini contratti di sviluppo\n\n\nuna nuova opportunità per le pMI, mutuata dai più rilevanti Contratti di Sviluppo\n\n\n\nInvitalia\n\n\nCdS\n\n\nagevolazioni\n\n\nimprese\n\n\n\n\n\n\n\n\n\nJan 8, 2025\n\n\nPaolo Volterra\n\n\n\n\n\n\n\n\n\n\n\n\nCodici fiscali, GDPR & Python\n\n\ncome anonimizzare un codice fiscale\n\n\n\nGDPR\n\n\nPython\n\n\nOpendata\n\n\n\n\n\n\n\n\n\nJan 3, 2025\n\n\nPaolo Volterra\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
-    "objectID": "posts/2506_Github/PubblicareSuGithub.html#aggiornare-solo-una-pagina",
-    "href": "posts/2506_Github/PubblicareSuGithub.html#aggiornare-solo-una-pagina",
-    "title": "Come Pubblicare su un sito Github",
-    "section": "Aggiornare solo una pagina",
-    "text": "Aggiornare solo una pagina\nNon è necessario specificare manualmente il file .qmd in tutti i comandi, ma devi farlo nei comandi quarto render o quarto preview. Gli altri comandi possono lavorare con un approccio più generico, come git add ., per includere tutte le modifiche.\n\nquarto preview d:/paolovolterra.github.io/posts/202508_RNA/RNA.qmd\nquarto render d:/paolovolterra.github.io/posts/202508_RNA/RNA.qmd\ngit add d:/paolovolterra.github.io/docs/posts/202508_RNA/RNA.html\n\ngit status\n\ngit add . (se hai rilevato altre modifiche e le voi introitare)\ngit commit -m “Aggiornata la pagina: RNA”\ngit pull origin main –rebase\ngit push origin main\ngit log\n\n\nFlusso di lavoro ottimizzato\nSe modifichi un solo file .qmd (ad esempio, RNA.qmd), puoi seguire questo flusso semplificato:\nquarto render d:/paolovolterra.github.io/posts/202508_RNA/RNA.qmd\ngit add d:/paolovolterra.github.io/docs/posts/202508_RNA/RNA.html\ngit commit -m \"Aggiornata la pagina: RNA\"\ngit pull origin main --rebase\ngit push origin main\n\nGenera l’output dal file modificato\nAggiungi i file modificati\nCrea il commit\nSincronizza con il repository remoto\n\n\n\nSe ci sono altri file modificati\n(es. posts.html, sitemap.xml), questi potrebbero essere stati rigenerati automaticamente da Quarto. Per gestire anche questi file:\ngit add .\ngit commit -m \"Aggiornati file generati automaticamente\"\ngit push origin main\nSe vuoi evitare di eseguire manualmente questi comandi per ogni file, puoi creare uno script Bash o Batch."
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Impara l’arte e mettila da parte",
+    "section": "",
+    "text": "GitHub\n  \n  \n    \n     LinkedIn\n  \n\n\n\nAnno nuovo, vita nuova\nCol 2025 riprendo a scrivere il mio blog, iniziato in R durante il covid\nMotivo?\nPrimo: gratitudine per tanti filantropi che gratuitamente hanno messo online nel tempo tante informazioni che mi hanno permesso di progredire\nSecondo: dove ti giri, gli esempi sono basati sugli stessi dati (Titanic, Boston, carte di credito, iris, cancer…). Voglio andare oltre il copia/incolla\nTerzo: gli esempi sono sempre basati su dati retail, mentre nessuno spiega usando dati imprese (più difficili da trovare, anche perchè vanno acquistati) Userò quindi gli #opendata\nQuarto: molte persono desistono dall’approfondire tecnicalities che richiedono tempo e voglia per essere trovate, capite e applicate Se penso a quanto tempo ho dedicato ad evolvere … ( e poi tutta questa mia conoscenza/esperienza andrà persa, prima o poi)\nPerchè un data scientist al contrario?\nSono laureato in economia, master in marketing Non sono partito dalla formazione che può avere uno statistico od un ingegnere che poi le deve applicare nel lavoro in un campo magari ostico al suo interesse\nHo una preparazione economica che ho voluto potenziare con soluzioni tecniche. Spesso vedo persone che si fermano se non hanno il dato pronto. Io me lo vado a costruire\nOgni tanto scriverò pensieri ad alta voce\n\nQuando hai dato lo stesso consiglio 3 volte, scrivi un post (David Robinson)\n\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "posts/2506_Github/PubblicareSuGithub.html#riferimenti",
-    "href": "posts/2506_Github/PubblicareSuGithub.html#riferimenti",
-    "title": "Come Pubblicare su un sito Github",
-    "section": "Riferimenti",
-    "text": "Riferimenti\n\nIl mio primo blog postcon Quarto [[Il mio primo blog post – aborruso’s website]]\nCreating your personal website using Quarto con Quarto [[Creating your personal website using Quarto]]\nCreating a Website (dal sito ufficiale)\nCreating a Blog (dal sito ufficiale)\nMEDS Computing Requirements & Software Installation Guide con RStudio"
+    "objectID": "posts/2501_CF/CfAnonimizzati.html",
+    "href": "posts/2501_CF/CfAnonimizzati.html",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "",
+    "text": "anonimizzazione di dati\ngestione di immagini in formato base64\n\n\nsi può trasformare il codice fiscale in una forma che non sia immediatamente identificabile da altri, ma decifrabile solo dal titolare (ad esempio, attraverso una chiave o un algoritmo noto…)\n\n\n\n\ncover\n\n\nCon la pseudonimizzazione a chiave privata, attraverso una di queste soluzioni\n\nHashing con Salt Privato\nCifratura Simmetrica\nSostituzione Parziale\nTokenizzazione\n\nsi può trasformare il codice fiscale in una forma che non è immediatamente identificabile da altri, ma che può essere decifrata dal titolare (ad esempio, attraverso una chiave o un algoritmo noto solo a lui)."
   },
   {
-    "objectID": "posts/2506_Github/PubblicareSuGithub.html#bibtex",
-    "href": "posts/2506_Github/PubblicareSuGithub.html#bibtex",
-    "title": "Come Pubblicare su un sito Github",
-    "section": "Bibtex",
-    "text": "Bibtex\nhttps://www.getbibtex.com/\n@misc{aborrusoPrimoBlog, author = {Andrea Borruso}, title = {{I}l mio primo blog post – aborruso’s website — aborruso.github.io}, howpublished = {}, year = {}, note = {[Accessed 11-01-2025]}, }\n@misc{marvinschmittCreateYour, author = {Marvin Schmitt}, title = {{C}reate {Y}our {W}ebsite with {Q}uarto: {C}omplete {T}utorial and {T}emplate — marvinschmitt.com}, howpublished = {}, year = {}, note = {[Accessed 11-01-2025]}, }\n@misc{adtariePersonalWebsite, author = {A.A. Wijaya}, title = {{P}ersonal {W}ebsite using {J}upyter {N}otebook and {Q}uarto – {F}oreland of {T}houghts — adtarie.net}, howpublished = {}, year = {}, note = {[Accessed 11-01-2025]}, }"
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#obiettivi-dello-studio",
+    "href": "posts/2501_CF/CfAnonimizzati.html#obiettivi-dello-studio",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "",
+    "text": "anonimizzazione di dati\ngestione di immagini in formato base64\n\n\nsi può trasformare il codice fiscale in una forma che non sia immediatamente identificabile da altri, ma decifrabile solo dal titolare (ad esempio, attraverso una chiave o un algoritmo noto…)\n\n\n\n\ncover\n\n\nCon la pseudonimizzazione a chiave privata, attraverso una di queste soluzioni\n\nHashing con Salt Privato\nCifratura Simmetrica\nSostituzione Parziale\nTokenizzazione\n\nsi può trasformare il codice fiscale in una forma che non è immediatamente identificabile da altri, ma che può essere decifrata dal titolare (ad esempio, attraverso una chiave o un algoritmo noto solo a lui)."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#hashing-con-salt-privato",
+    "href": "posts/2501_CF/CfAnonimizzati.html#hashing-con-salt-privato",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "2 Hashing con Salt Privato",
+    "text": "2 Hashing con Salt Privato\nL’hashing crea una stringa univoca dal codice fiscale utilizzando un algoritmo crittografico (es. SHA-256). Il salt privato (una stringa univoca aggiunta al dato originale) rende l’hash interpretabile solo dal titolare.\n\nProcedura:\n\nAggiungo un salt univoco noto solo al titolare (es. data di nascita o un valore condiviso).\nApplico l’algoritmo di hashing.\n\n\nimport hashlib\ndef anonimizza_cf(codice_fiscale, salt):        \n    dato = codice_fiscale + salt        \n    hash_object = hashlib.sha256(dato.encode())    \n    return hash_object.hexdigest()"
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#esempio",
+    "href": "posts/2501_CF/CfAnonimizzati.html#esempio",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "3 Esempio",
+    "text": "3 Esempio\n\ncodice_fiscale = “RSSMRA80A01H501U”\nsalt = “01/01/1980” # Salt privato conosciuto dal titolare\nhash_cf = anonimizza_cf(codice_fiscale, salt)\nPro: Non è possibile risalire al codice fiscale senza il salt.\nContro: Il titolare deve conoscere o avere accesso al salt."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#cifratura-simmetrica",
+    "href": "posts/2501_CF/CfAnonimizzati.html#cifratura-simmetrica",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "4 Cifratura Simmetrica",
+    "text": "4 Cifratura Simmetrica\nLa cifratura simmetrica utilizza un algoritmo come AES per codificare il codice fiscale. Il titolare può decifrare il codice con una chiave segreta condivisa.\nProcedura:\n\nScelgo un algoritmo di cifratura (es. AES).\nUso una chiave segreta condivisa (es. una password).\nCripto il codice fiscale\nFornisco il dato criptato al titolare.\nPro: Garantisce riservatezza elevata; solo il titolare con la chiave può decifrare.\nContro: Il titolare deve conservare la chiave.\n\n\nfrom cryptography.fernet import Fernet\n\n# Genera una chiave\nkey = Fernet.generate_key()\n\n# Crea un oggetto Fernet con la chiave generata\ncipher = Fernet(key)\n\n# Codice fiscale da cifrare\ncodice_fiscale = \"RSSMRA80A01H501U\"\n\n# Cifra il codice fiscale\nencrypted_cf = cipher.encrypt(codice_fiscale.encode())\nprint(\"Codice cifrato:\", encrypted_cf)\n\n# Decifra il codice fiscale\ndecrypted_cf = cipher.decrypt(encrypted_cf).decode()\nprint(\"Codice decifrato:\", decrypted_cf)\n\nCodice cifrato: b'gAAAAABnh0hqGbGW9gY_x1KANKF84pzSWk69midDZavgwhOiJOB9jv9yFUOKSKyy--0N0260ncp2Q3zpYr4AsQtX_XkEKtmxtSF6in93nBFFif2hcZQa_XY='\nCodice decifrato: RSSMRA80A01H501U\n\n\nRisultato\nEseguendo il codice, otterrai l’output:\nCodice cifrato: una stringa cifrata in base64 (non leggibile direttamente).\nCodice decifrato: il valore originale del codice fiscale (RSSMRA80A01H501U).\nNote importanti:\nGestione della chiave: La chiave generata (key) deve essere conservata in modo sicuro se hai bisogno di decifrare i dati in futuro.\nSicurezza: Non condividere mai la chiave pubblicamente; è fondamentale per mantenere i dati al sicuro."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#sostituzione-parziale",
+    "href": "posts/2501_CF/CfAnonimizzati.html#sostituzione-parziale",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "5 Sostituzione Parziale",
+    "text": "5 Sostituzione Parziale\nSostituisco parte del codice fiscale con caratteri generici, mantenendo solo alcune informazioni identificative per il titolare.\nEsempio:\n\nCodice fiscale: RSSMRA80A01H501U\nAnonimizzato: RM80__**U\nInterpretazione: Mantieni iniziali e anno di nascita per rendere il codice interpretabile dal titolare.\nPro: Facile da implementare, leggibile dal titolare.\nContro: Non è completamente sicuro contro reidentificazione.\n\n\ndef anonimizza_cf_parziale(codice_fiscale):\n    \"\"\"\n    Funzione per anonimizzare parzialmente un codice fiscale.\n    Mantiene visibili solo i primi 3 caratteri, i caratteri 6 e 7, \n    e gli ultimi 4 caratteri.\n    \"\"\"\n    return f\"{codice_fiscale[:3]}***{codice_fiscale[6:8]}******{codice_fiscale[-4:]}\"\n\n# Codice fiscale da anonimizzare\ncodice_fiscale = \"RSSMRA80A01H501U\"\n\n# Anonimizzazione parziale\ncf_anonimizzato = anonimizza_cf_parziale(codice_fiscale)\nprint(\"Codice Fiscale Anonimizzato:\", cf_anonimizzato)\n\nCodice Fiscale Anonimizzato: RSS***80******501U\n\n\nSpiegazione:\ncodice_fiscale[:3]: Prende i primi 3 caratteri.\ncodice_fiscale[6:8]: Prende i caratteri dalla posizione 6 alla posizione 7 inclusa.\ncodice_fiscale[-4:]: Prende gli ultimi 4 caratteri.\nI caratteri mascherati sono sostituiti da *."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#tokenizzazione",
+    "href": "posts/2501_CF/CfAnonimizzati.html#tokenizzazione",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "6 Tokenizzazione",
+    "text": "6 Tokenizzazione\n\nSostituisco il codice fiscale con un identificatore univoco casuale (token). Solo il titolare o un sistema può ricondurre il token al codice originale.\nEsempio:\n\nCodice fiscale: RSSMRA80A01H501U\nToken: ABC12345XYZ\nTabella di mapping (conservata separatamente): ABC12345XYZ -&gt; RSSMRA80A01H501U\nPro: Nessun dato sensibile è esposto.\nContro: Richiede un sistema per mantenere il mapping.\n\n\nimport uuid\n\ndef anonimizza_cf_token(codice_fiscale):\n    \"\"\"\n    Funzione per anonimizzare un codice fiscale utilizzando un token UUID.\n    \"\"\"\n    # Genera un token unico (primi 8 caratteri di un UUID)\n    token = str(uuid.uuid4())[:8]\n    \n    # Crea un mapping tra il token e il codice fiscale\n    mapping = {token: codice_fiscale}\n    print(\"Mapping (da salvare):\", mapping)\n    \n    # Ritorna il token\n    return token\n\n# Codice fiscale da anonimizzare\ncodice_fiscale = \"RSSMRA80A01H501U\"\n\n# Anonimizzazione con token\ncf_anonimizzato = anonimizza_cf_token(codice_fiscale)\nprint(\"Codice Fiscale Anonimizzato:\", cf_anonimizzato)\n\nMapping (da salvare): {'b649fd0c': 'RSSMRA80A01H501U'}\nCodice Fiscale Anonimizzato: b649fd0c\n\n\nDettagli:\nUUID Token: La funzione genera un identificatore unico (uuid.uuid4) e ne utilizza i primi 8 caratteri come token per rappresentare il codice fiscale.\nMapping: Salva il mapping tra il token e il codice fiscale originale. Questo mapping deve essere conservato in modo sicuro (es. database) per consentire una futura deanonimizzazione.\nRitorno: Il token viene restituito come codice anonimo.\nNota Importante\nIl mapping è temporaneo nel codice fornito. Per un'applicazione reale, è essenziale salvare il mapping in un archivio persistente (come un database o un file) per potervi accedere successivamente.\nSicurezza: Considera l'accesso controllato al mapping per prevenire abusi e garantire la privacy degli utenti."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#quale-tecnica-scegliere-per-pubblicare-un-elenco-di-codici-fiscali",
+    "href": "posts/2501_CF/CfAnonimizzati.html#quale-tecnica-scegliere-per-pubblicare-un-elenco-di-codici-fiscali",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "7 Quale tecnica scegliere per pubblicare un elenco di codici fiscali??",
+    "text": "7 Quale tecnica scegliere per pubblicare un elenco di codici fiscali??\nDipende dal contesto:\n\nPer alta sicurezza: Cifratura simmetrica o hashing con salt.\nPer facilità d’uso: Sostituzione parziale.\nPer sistemi centralizzati: Tokenizzazione.\n\n\nSe il codice fiscale deve essere stampato per il titolare (ad esempio in un report o un documento) occorre considerare contemporaneamente:\n\nl’interpretabilità per il titolare\nla riservatezza\n\nLa Sostituzione Parziale mantiene solo alcune parti identificative del codice fiscale, come le iniziali e un suffisso significativo. Questo metodo è semplice e leggibile (anche dagli altri, però).\nRSS80*__501U\nIl codice fiscale Anonimizzato con Hashing e Salt Privato utilizza l’hashing per creare un codice unico che il titolare può interpretare solo conoscendo il salt.\n\ncodice_fiscale = “RSSMRA80A01H501U”\nsalt = “01/01/1980” # Il salt può essere condiviso solo con il titolare\nCodice Fiscale Anonimizzato: 9F4E8D12\n\nLa Cifratura Simmetrica (Stampabile e Decifrabile Solo dal Titolare) produce un codice stampabile e leggibile, decifrabile solo con la chiave privata.\n\ncodice_fiscale = “RSSMRA80A01H501U”\nCodice Fiscale Anonimizzato: gAAAAABlcO9Z8H\nIl titolare può decifrare l’intero codice fiscale utilizzando la chiave segreta.\n\nLa Tokenizzazione genera un token casuale per anonimizzare il codice fiscale, con un mapping separato conservato nel sistema.\n\ncodice_fiscale = “RSSMRA80A01H501U”\ncf_anonimizzato = anonimizza_cf_token(codice_fiscale)\nprint(“Codice Fiscale Anonimizzato:”, cf_anonimizzato)\n\nOutput:\n\nMapping (da salvare): {‘1a2b3c4d’: ‘RSSMRA80A01H501U’}\nCodice Fiscale Anonimizzato: 1a2b3c4d"
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#conclusione",
+    "href": "posts/2501_CF/CfAnonimizzati.html#conclusione",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "8 Conclusione",
+    "text": "8 Conclusione\n\nLeggibile direttamente dal titolare: sostituzione parziale o tokenizzazione.\nMaggiore sicurezza: hashing con salt o cifratura simmetrica."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#i-codici-fiscali-delle-imprese-sono-dati-sensibili",
+    "href": "posts/2501_CF/CfAnonimizzati.html#i-codici-fiscali-delle-imprese-sono-dati-sensibili",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "9 i codici fiscali delle imprese sono dati sensibili?",
+    "text": "9 i codici fiscali delle imprese sono dati sensibili?\nIl codice fiscale di un’impresa è considerato un dato personale, ma non rientra nella categoria dei dati sensibili.\nSecondo il Regolamento Generale sulla Protezione dei Dati (GDPR), i dati personali sono informazioni che identificano o rendono identificabile una persona fisica, come il nome, l’indirizzo o il codice fiscale.\nI dati sensibili, invece, includono informazioni che rivelano l’origine razziale o etnica, le opinioni politiche, le convinzioni religiose o filosofiche, l’appartenenza sindacale, dati genetici, dati biometrici, dati relativi alla salute o alla vita sessuale o all’orientamento sessuale di una persona (Commissione Europea)\nÈ importante notare che il codice fiscale di una ditta individuale, essendo associato a una persona giuridica, non è soggetto alle stesse tutele previste per i dati personali delle persone fisiche.\nTuttavia, l’utilizzo del codice fiscale deve avvenire nel rispetto delle normative vigenti in materia di protezione dei dati."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#come-è-composto-il-codice-fiscale",
+    "href": "posts/2501_CF/CfAnonimizzati.html#come-è-composto-il-codice-fiscale",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "10 Come è composto il codice fiscale",
+    "text": "10 Come è composto il codice fiscale\nIl codice fiscale italiano è composto da 16 caratteri alfanumerici, che rappresentano una combinazione di lettere e numeri, e viene calcolato sulla base dei dati anagrafici del soggetto. La sua struttura è la seguente:"
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#cognome-3-lettere",
+    "href": "posts/2501_CF/CfAnonimizzati.html#cognome-3-lettere",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "11 1. Cognome (3 lettere)",
+    "text": "11 1. Cognome (3 lettere)\n\nLe prime tre lettere sono prese dal cognome:\nVengono usate le prime tre consonanti.\nSe il cognome ha meno di tre consonanti, si usano le vocali per arrivare a tre lettere.\nSe il cognome ha meno di tre lettere, si aggiunge la lettera “X”."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#nome-3-lettere",
+    "href": "posts/2501_CF/CfAnonimizzati.html#nome-3-lettere",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "12 2. Nome (3 lettere)",
+    "text": "12 2. Nome (3 lettere)\n\nLe successive tre lettere derivano dal nome:\nSi prendono le prime tre consonanti.\nSe il nome ha più di tre consonanti, si prendono la prima, la terza e la quarta.\nSe il nome ha meno di tre consonanti, si completano con le vocali.\nAnche in questo caso, se il nome ha meno di tre lettere, si aggiunge la “X”."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#data-di-nascita-e-sesso-6-caratteri",
+    "href": "posts/2501_CF/CfAnonimizzati.html#data-di-nascita-e-sesso-6-caratteri",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "13 3. Data di nascita e sesso (6 caratteri)",
+    "text": "13 3. Data di nascita e sesso (6 caratteri)\n\nAnno di nascita (2 cifre): le ultime due cifre dell’anno (es. 1990 → 90).\nMese di nascita (1 lettera): ogni mese è rappresentato da una lettera:\nGennaio: A, Febbraio: B, Marzo: C, Aprile: D, Maggio: E, Giugno: H, Luglio: L, Agosto: M, Settembre: P, Ottobre: R, Novembre: S, Dicembre: T.\nGiorno di nascita e sesso (2 cifre):\nPer gli uomini si usa il giorno di nascita (es. 05 → 05).\nPer le donne, al giorno si aggiunge 40 (es. 05 → 45)."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#comune-o-stato-estero-di-nascita-4-caratteri",
+    "href": "posts/2501_CF/CfAnonimizzati.html#comune-o-stato-estero-di-nascita-4-caratteri",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "14 4. Comune o Stato estero di nascita (4 caratteri)",
+    "text": "14 4. Comune o Stato estero di nascita (4 caratteri)\n\nÈ rappresentato da un codice numerico o alfanumerico, assegnato a ogni comune italiano o stato estero."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#carattere-di-controllo-1-carattere",
+    "href": "posts/2501_CF/CfAnonimizzati.html#carattere-di-controllo-1-carattere",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "15 5. Carattere di controllo (1 carattere)",
+    "text": "15 5. Carattere di controllo (1 carattere)\n\nL’ultimo carattere è un carattere di controllo, calcolato secondo un algoritmo basato su tutti i caratteri precedenti. Serve a verificare la correttezza del codice fiscale."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#esempio-1",
+    "href": "posts/2501_CF/CfAnonimizzati.html#esempio-1",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "16 Esempio",
+    "text": "16 Esempio\nUna persona nata il 15 marzo 1990 a Roma, di sesso femminile, con cognome “Rossi” e nome “Maria”:\n\nCognome: ROS → ROS\nNome: MAR → MAR\nAnno di nascita: 90\nMese: C (marzo)\nGiorno e sesso: 55 (15 + 40)\nComune: H501 (Roma)\nCodice di controllo: calcolato come “Z” (esempio).\n\nCodice fiscale: ROSMAR90C55H501Z"
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#la-pseudoanomizzazione-di-rm501z",
+    "href": "posts/2501_CF/CfAnonimizzati.html#la-pseudoanomizzazione-di-rm501z",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "17 La pseudoanomizzazione di R**M********501Z",
+    "text": "17 La pseudoanomizzazione di R**M********501Z\nIl punto 4 è una parte “delicata”: i codici dei comuni sono univoci; non sono univoci se si rimuove la lettera iniziale e si considerano solo le cifre.\nI codici dei comuni italiani sono composti da una lettera (che identifica la provincia) seguita da un numero a tre cifre (che identifica il comune all’interno della provincia).\nIl codice fiscale contiene il codice catastale (noto anche come codice Belfiore) del luogo di nascita\nLa combinazione completa (es. “H501” per Roma) è univoca, ma se si considera solo la parte numerica (es. “501”), ci potrebbero essere più comuni con lo stesso numero in province diverse:\n\nRoma ha il codice H501.\nTorino ha il codice L501.\n\nSe togliamo la lettera, rimarrebbe solo 501, che non è più sufficiente per distinguere i comuni.\nSiamo al sicuro così? Apparentemente, si!"
+  },
+  {
+    "objectID": "posts/2504_FTI/FTI.html",
+    "href": "posts/2504_FTI/FTI.html",
+    "title": "Fondo per il sostegno alla transizione industriale",
+    "section": "",
+    "text": "cover\nIl Fondo per il sostegno alla transizione industriale si rivolge alle imprese che investono nella tutela ambientale e ha l’obiettivo di favorire l’adeguamento del sistema produttivo italiano alle politiche UE sulla lotta ai cambiamenti climatici."
+  },
+  {
+    "objectID": "posts/2504_FTI/FTI.html#obiettivi-dello-studio",
+    "href": "posts/2504_FTI/FTI.html#obiettivi-dello-studio",
+    "title": "Fondo per il sostegno alla transizione industriale",
+    "section": "1 obiettivi dello studio",
+    "text": "1 obiettivi dello studio\n\nestrazione dati da PDF\nelaborazione #opendata\nETL con groupby vari"
+  },
+  {
+    "objectID": "posts/2504_FTI/FTI.html#opendata-sul-registro-nazionale-degli-aiuti-di-stato",
+    "href": "posts/2504_FTI/FTI.html#opendata-sul-registro-nazionale-degli-aiuti-di-stato",
+    "title": "Fondo per il sostegno alla transizione industriale",
+    "section": "2 Opendata sul registro Nazionale degli Aiuti di Stato",
+    "text": "2 Opendata sul registro Nazionale degli Aiuti di Stato\n\nCAR: 27929\nSignificant Aid: 110221\n\n\nimport pyarrow.parquet as pq\nimport pandas as pd\nimport duckdb\nimport os\nos.chdir('D:/duckdb/files/RNA2/')\n\ncon = duckdb.connect()\ncon.execute(\"PRAGMA threads=8\")\ncon.execute(\"PRAGMA enable_object_cache\") \npd.options.display.float_format = '{:,}'.format\ndf =(con.execute(\"SELECT * FROM '*.parquet' where CAR = '27929' order by concessione desc\").df())\n\n\ndf[['DES_TIPO_BENEFICIARIO', 'REGIONE', \n'SETTORE_ATTIVITA','NOMINALE', 'AIUTO']].sample(10)\n\n\n\n\n\n\n\n\nDES_TIPO_BENEFICIARIO\nREGIONE\nSETTORE_ATTIVITA\nNOMINALE\nAIUTO\n\n\n\n\n8\nPMI\nToscana\nC.13.3\n853,211.0\n853,211.0\n\n\n12\nGrande impresa\nPiemonte\nC.24.5\n1,164,732.31\n1,164,732.31\n\n\n18\nGrande impresa\nLombardia\nC.20.2\n1,360,000.0\n1,360,000.0\n\n\n26\nGrande impresa\nFriuli-Venezia Giulia\nC.28.2\n60,000.0\n60,000.0\n\n\n29\nGrande impresa\nMarche\nC.20.1\n913,545.0\n913,545.0\n\n\n35\nGrande impresa\nPuglia\nC.10.7\n228,183.75\n228,183.75\n\n\n2\nGrande impresa\nLombardia\nC.21.1\n1,072,542.6\n1,072,542.6\n\n\n6\nPMI\nToscana\nC.13.3\n324,800.0\n324,800.0\n\n\n36\nGrande impresa\nPuglia\nC.10.7\n829,199.55\n829,199.55\n\n\n32\nGrande impresa\nPiemonte\nC.13.1\n158,400.0\n158,400.0\n\n\n\n\n\n\n\n\ndf[['NOMINALE', 'AIUTO']].sum()\n\nNOMINALE   33,142,352.72\nAIUTO      33,142,352.72\ndtype: float64\n\n\n\ndf.groupby('CONCESSIONE').agg(CF_COUNT=('CF', 'count'),\n    NOMINALE_SUM=('NOMINALE', 'sum'),\n    AIUTO_SUM=('AIUTO', 'sum')).sort_values(by= 'CONCESSIONE', ascending = False)\n\n\n\n\n\n\n\n\nCF_COUNT\nNOMINALE_SUM\nAIUTO_SUM\n\n\nCONCESSIONE\n\n\n\n\n\n\n\n2025-01-08\n4\n3,131,064.8\n3,131,064.8\n\n\n2024-12-21\n6\n3,605,143.65\n3,605,143.65\n\n\n2024-12-20\n5\n7,576,305.32\n7,576,305.32\n\n\n2024-12-16\n1\n3,581,357.84\n3,581,357.84\n\n\n2024-12-10\n3\n3,751,060.0\n3,751,060.0\n\n\n2024-12-09\n9\n5,340,643.82\n5,340,643.82\n\n\n2024-12-04\n3\n2,014,706.25\n2,014,706.25\n\n\n2024-12-02\n3\n903,980.0\n903,980.0\n\n\n2024-11-21\n5\n3,238,091.04\n3,238,091.04\n\n\n\n\n\n\n\n\ndf.groupby('REGIONE').agg(CF_COUNT=('CF', 'count'),\n    NOMINALE_SUM=('NOMINALE', 'sum'),\n    AIUTO_SUM=('AIUTO', 'sum'))\n\n\n\n\n\n\n\n\nCF_COUNT\nNOMINALE_SUM\nAIUTO_SUM\n\n\nREGIONE\n\n\n\n\n\n\n\nCampania\n2\n2,391,060.0\n2,391,060.0\n\n\nEmilia-Romagna\n1\n3,581,357.84\n3,581,357.84\n\n\nFriuli-Venezia Giulia\n3\n1,708,200.0\n1,708,200.0\n\n\nLombardia\n6\n7,688,611.2\n7,688,611.2\n\n\nMarche\n3\n2,014,706.25\n2,014,706.25\n\n\nPiemonte\n12\n6,410,735.52\n6,410,735.52\n\n\nPuglia\n4\n1,918,557.48\n1,918,557.48\n\n\nToscana\n3\n1,773,474.0\n1,773,474.0\n\n\nVeneto\n5\n5,655,650.43\n5,655,650.43\n\n\n\n\n\n\n\n\ndf.groupby('DES_TIPO_BENEFICIARIO').agg(CF_COUNT=('CF', 'count'),\n    NOMINALE_SUM=('NOMINALE', 'sum'),\n    AIUTO_SUM=('AIUTO', 'sum'))\n\n\n\n\n\n\n\n\nCF_COUNT\nNOMINALE_SUM\nAIUTO_SUM\n\n\nDES_TIPO_BENEFICIARIO\n\n\n\n\n\n\n\nGrande impresa\n36\n31,368,878.72\n31,368,878.72\n\n\nPMI\n3\n1,773,474.0\n1,773,474.0\n\n\n\n\n\n\n\n\ndf.groupby('DES_PROCEDIMENTO').agg(CF_COUNT=('CF', 'count'),\n    NOMINALE_SUM=('NOMINALE', 'sum'),\n    AIUTO_SUM=('AIUTO', 'sum'))\n\n\n\n\n\n\n\n\nCF_COUNT\nNOMINALE_SUM\nAIUTO_SUM\n\n\nDES_PROCEDIMENTO\n\n\n\n\n\n\n\nEsenzione\n39\n33,142,352.72\n33,142,352.72\n\n\n\n\n\n\n\n\ndf.groupby('DESSETTORE_ATTIVITA_OBIETTIVO').agg(CF_COUNT=('CF', 'count'),\n    NOMINALE_SUM=('NOMINALE', 'sum'),\n    AIUTO_SUM=('AIUTO', 'sum'))\n\n\n\n\n\n\n\n\nCF_COUNT\nNOMINALE_SUM\nAIUTO_SUM\n\n\nDESSETTORE_ATTIVITA_OBIETTIVO\n\n\n\n\n\n\n\nAiuti alla Formazione (art.31)\n1\n6,654.0\n6,654.0\n\n\nAiuti per la tutela dell'ambiente | Aiuti agli investimenti a favore di misure di efficienza energetica diverse da quelle relative agli edifici (art. 38)\n14\n15,937,638.44\n15,937,638.44\n\n\nAiuti per la tutela dell'ambiente | Aiuti agli investimenti per l'uso efficiente delle risorse e per il sostegno alla transizione verso un'economia circolare (art. 47)\n13\n10,183,108.06\n10,183,108.06\n\n\nAiuti per la tutela dell'ambiente | Aiuti agli investimenti per la promozione di energia da fonti rinnovabili, di idrogeno rinnovabile e di cogenerazione ad alto rendimento (art. 41)\n11\n7,014,952.22\n7,014,952.22\n\n\n\n\n\n\n\n\ndf.groupby('SETTORE_ATTIVITA').agg(CF_COUNT=('CF', 'count'),\n    NOMINALE_SUM=('NOMINALE', 'sum'),\n    AIUTO_SUM=('AIUTO', 'sum'))\n\n\n\n\n\n\n\n\nCF_COUNT\nNOMINALE_SUM\nAIUTO_SUM\n\n\nSETTORE_ATTIVITA\n\n\n\n\n\n\n\nC.10.5\n1\n1,319,533.56\n1,319,533.56\n\n\nC.10.7\n4\n1,918,557.48\n1,918,557.48\n\n\nC.13.1\n3\n903,980.0\n903,980.0\n\n\nC.13.3\n3\n1,773,474.0\n1,773,474.0\n\n\nC.17.1\n2\n2,078,823.82\n2,078,823.82\n\n\nC.20.1\n6\n3,161,526.25\n3,161,526.25\n\n\nC.20.2\n1\n1,360,000.0\n1,360,000.0\n\n\nC.20.4\n1\n406,800.0\n406,800.0\n\n\nC.21.1\n4\n3,131,064.8\n3,131,064.8\n\n\nC.22.2\n2\n2,391,060.0\n2,391,060.0\n\n\nC.23.1\n1\n3,197,546.4\n3,197,546.4\n\n\nC.23.5\n1\n3,581,357.84\n3,581,357.84\n\n\nC.24.1\n2\n3,170,026.6100000003\n3,170,026.6100000003\n\n\nC.24.5\n2\n1,208,732.31\n1,208,732.31\n\n\nC.28.1\n3\n1,831,669.65\n1,831,669.65\n\n\nC.28.2\n3\n1,708,200.0\n1,708,200.0\n\n\n\n\n\n\n\n\ndf.groupby('DES_STRUMENTO').agg(CF_COUNT=('CF', 'count'),\n    NOMINALE_SUM=('NOMINALE', 'sum'),\n    AIUTO_SUM=('AIUTO', 'sum'))\n\n\n\n\n\n\n\n\nCF_COUNT\nNOMINALE_SUM\nAIUTO_SUM\n\n\nDES_STRUMENTO\n\n\n\n\n\n\n\nSovvenzione/Contributo in conto interessi\n39\n33,142,352.72\n33,142,352.72"
+  },
+  {
+    "objectID": "posts/2504_FTI/FTI.html#analisi-pdf",
+    "href": "posts/2504_FTI/FTI.html#analisi-pdf",
+    "title": "Fondo per il sostegno alla transizione industriale",
+    "section": "3 analisi PDF",
+    "text": "3 analisi PDF\nattualmente sono state pubblicate\n\nPubblicata la graduatoria ai sensi del decreto direttoriale 30.08.2023\nScorrimento graduatoria\n“D:8R9_TRANSIZIONE_INDUSTRIALE_GRADUATORIA.pdf”\n“D:_TRANSIZIONE_INDUSTRIALE_Graduatoria24072024_def.pdf”"
+  },
+  {
+    "objectID": "posts/2504_FTI/FTI.html#fonti",
+    "href": "posts/2504_FTI/FTI.html#fonti",
+    "title": "Fondo per il sostegno alla transizione industriale",
+    "section": "4 Fonti",
+    "text": "4 Fonti\n\nFondo per il sostegno alla transizione industriale – PNRR\nFondo transizione industriale\nAl via dal 5 febbraio lo sportello per accedere al Fondo per il sostegno alla transizione industriale\nFondo per il sostegno alla transizione industriale\nDecreto interministeriale 21 ottobre 2022 - Fondo per il sostegno alla transizione industriale\nDecreto direttoriale 30 agosto 2023\nDecreto interministeriale 21 ottobre 2022 \nLegge 30 dicembre 2021, n. 234, articolo 1, comma 478 e 479 - Bilancio Di Previsione dello Stato per l’anno finanziario 2022 e Bilancio Pluriennale per il triennio 2022-2024\nDecreto interministeriale 21 ottobre 2022 - Fondo per il sostegno alla transizione industriale\nFondo transizione industriale"
   },
   {
     "objectID": "posts/2506_IAInBanca/IaBanca.html",
