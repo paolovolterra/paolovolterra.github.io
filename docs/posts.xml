@@ -5256,7 +5256,7 @@ Loading ITables v2.2.4 from the <code>init_notebook_mode</code> cell...
 <li>Aggiungo un salt univoco noto solo al titolare (es. data di nascita o un valore condiviso).</li>
 <li>Applico l’algoritmo di hashing.</li>
 </ul>
-<div id="5b56462a" class="cell" data-execution_count="1">
+<div id="5425fe24" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> hashlib</span>
@@ -5300,7 +5300,7 @@ font-style: inherit;">return</span> hash_object.hexdigest()</span></code></pre><
 <li>Pro: Garantisce riservatezza elevata; solo il titolare con la chiave può decifrare.</li>
 <li>Contro: Il titolare deve conservare la chiave.</li>
 </ul>
-<div id="438555ee" class="cell" data-execution_count="2">
+<div id="242319c9" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> cryptography.fernet <span class="im" style="color: #00769E;
@@ -5354,7 +5354,7 @@ font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Codice decifrato:"</span>, decrypted_cf)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Codice cifrato: b'gAAAAABnh0qrIWIWawoFOF6Y4zHVgJDCcc43ojuVGUHNf1QI9p8u4wBajp4g3Rym3neFCpO9A1J-eg9Rwd8XuHSGkKi9tGtte7oqf2xSJBLfWjLB7rm4kIM='
+<pre><code>Codice cifrato: b'gAAAAABnh0sKKrqCjE_rtgr9w1qpEQw5A2aD40JdXeEm-oMLAAWbSJdE4p02m10GlaV0bZh7dPqqKZ1hW1N44MigVH1ImIdyeEZs4KUlpjA9h6K1DAACpgA='
 Codice decifrato: RSSMRA80A01H501U</code></pre>
 </div>
 </div>
@@ -5377,7 +5377,7 @@ Sicurezza: Non condividere mai la chiave pubblicamente; è fondamentale per mant
 <li>Pro: Facile da implementare, leggibile dal titolare.</li>
 <li>Contro: Non è completamente sicuro contro reidentificazione.</li>
 </ul>
-<div id="bd1f33d9" class="cell" data-execution_count="3">
+<div id="d239c7ce" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -5474,7 +5474,7 @@ I caratteri mascherati sono sostituiti da *.</code></pre>
 <li>Pro: Nessun dato sensibile è esposto.</li>
 <li>Contro: Richiede un sistema per mantenere il mapping.</li>
 </ul>
-<div id="c1155dbe" class="cell" data-execution_count="4">
+<div id="31d38e3f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> uuid</span>
@@ -5544,8 +5544,8 @@ font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Codice Fiscale Anonimizzato:"</span>, cf_anonimizzato)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Mapping (da salvare): {'62ff4071': 'RSSMRA80A01H501U'}
-Codice Fiscale Anonimizzato: 62ff4071</code></pre>
+<pre><code>Mapping (da salvare): {'70b8720b': 'RSSMRA80A01H501U'}
+Codice Fiscale Anonimizzato: 70b8720b</code></pre>
 </div>
 </div>
 <p>Dettagli:</p>
