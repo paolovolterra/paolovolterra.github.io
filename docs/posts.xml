@@ -5226,7 +5226,7 @@ Loading ITables v2.2.4 from the <code>init_notebook_mode</code> cell...
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://paolovolterra.github.io/posts/2501_CF/immagini/CF.png" class="img-fluid figure-img"></p>
-<figcaption>cover</figcaption>
+<figcaption>immagine</figcaption>
 </figure>
 </div>
 <section id="obiettivi-dello-studio" class="level2" data-number="1">
@@ -5256,7 +5256,7 @@ Loading ITables v2.2.4 from the <code>init_notebook_mode</code> cell...
 <li>Aggiungo un salt univoco noto solo al titolare (es. data di nascita o un valore condiviso).</li>
 <li>Applico l’algoritmo di hashing.</li>
 </ul>
-<div id="d7cd92c7" class="cell" data-execution_count="1">
+<div id="f06134f9" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> hashlib</span>
@@ -5300,7 +5300,7 @@ font-style: inherit;">return</span> hash_object.hexdigest()</span></code></pre><
 <li>Pro: Garantisce riservatezza elevata; solo il titolare con la chiave può decifrare.</li>
 <li>Contro: Il titolare deve conservare la chiave.</li>
 </ul>
-<div id="6cc445ab" class="cell" data-execution_count="2">
+<div id="337d2ce0" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> cryptography.fernet <span class="im" style="color: #00769E;
@@ -5354,7 +5354,7 @@ font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Codice decifrato:"</span>, decrypted_cf)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Codice cifrato: b'gAAAAABnh1GKIebd18ST7bPcZPKtYamDQud1CIcSGgY7I4t1fxIeT2DOC5myL6DwA21jF_AueqUbZbWfZhOG5iJQk3eG91gzhR_Bmcr73hCZaL09H7hA4Sc='
+<pre><code>Codice cifrato: b'gAAAAABnh1JPqYPQ9BD82MSm-nhkqTaHDiDrPhoQJ9FRb-50e0FMlQrADWs7gPR8EOKOH3wgKre1P4PoXT6Hk6E0uYBwIWwWu7DEth1v7bpc15AklDogKFE='
 Codice decifrato: RSSMRA80A01H501U</code></pre>
 </div>
 </div>
@@ -5377,7 +5377,7 @@ Sicurezza: Non condividere mai la chiave pubblicamente; è fondamentale per mant
 <li>Pro: Facile da implementare, leggibile dal titolare.</li>
 <li>Contro: Non è completamente sicuro contro reidentificazione.</li>
 </ul>
-<div id="f424c79b" class="cell" data-execution_count="3">
+<div id="5ae811bd" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -5474,7 +5474,7 @@ I caratteri mascherati sono sostituiti da *.</code></pre>
 <li>Pro: Nessun dato sensibile è esposto.</li>
 <li>Contro: Richiede un sistema per mantenere il mapping.</li>
 </ul>
-<div id="8dae9f42" class="cell" data-execution_count="4">
+<div id="2e3a8be0" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> uuid</span>
@@ -5544,8 +5544,8 @@ font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Codice Fiscale Anonimizzato:"</span>, cf_anonimizzato)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Mapping (da salvare): {'c8f80db9': 'RSSMRA80A01H501U'}
-Codice Fiscale Anonimizzato: c8f80db9</code></pre>
+<pre><code>Mapping (da salvare): {'b218adb6': 'RSSMRA80A01H501U'}
+Codice Fiscale Anonimizzato: b218adb6</code></pre>
 </div>
 </div>
 <p>Dettagli:</p>
