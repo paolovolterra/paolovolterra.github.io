@@ -415,7 +415,7 @@ Conclusione
 <p>Appresso riporto alcune sintesi dell’ultimo XML -&gt; parquet da me prodotto</p>
 <section id="quanti-aiuti-contiene" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="quanti-aiuti-contiene"><span class="header-section-number">9.1</span> Quanti aiuti contiene</h2>
-<div id="90a6443c" class="cell" data-execution_count="2">
+<div id="d2e458fb" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">df <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
@@ -457,7 +457,7 @@ font-style: inherit;">"SELECT count(distinct(CF)), count((CF)), count(distinct(C
 </section>
 <section id="quali-misure-hanno-più-aiuti" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="quali-misure-hanno-più-aiuti"><span class="header-section-number">9.2</span> Quali misure hanno più aiuti</h2>
-<div id="0f5724a0" class="cell" data-execution_count="3">
+<div id="2b65e079" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">df <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
@@ -629,7 +629,7 @@ font-style: inherit;">"SELECT upper(misura) MISURA, count(CAR) CONCESSIONI, sum(
 <section id="quali-concedenti-hanno-più-aiuti" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="quali-concedenti-hanno-più-aiuti"><span class="header-section-number">9.3</span> Quali concedenti hanno più aiuti</h2>
 <p>purtroppo il nome del concedente è scritto in modi diversi</p>
-<div id="cf7b5d34" class="cell" data-execution_count="4">
+<div id="195d986e" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">df <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
@@ -730,7 +730,7 @@ font-style: inherit;">"SELECT upper(concedente) CONCEDENTE, count(CAR) CONCESSIO
 </section>
 <section id="gli-aiuti-in-ordine-di-valore-nominale" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="gli-aiuti-in-ordine-di-valore-nominale"><span class="header-section-number">9.4</span> Gli aiuti in ordine di valore nominale €</h2>
-<div id="62015b2b" class="cell" data-execution_count="5">
+<div id="e8e7149c" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">df <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
@@ -831,7 +831,7 @@ font-style: inherit;">"SELECT upper(concedente) CONCEDENTE, count(CAR) CONCESSIO
 </section>
 <section id="valori-raggruppati-per-data" class="level2" data-number="9.5">
 <h2 data-number="9.5" class="anchored" data-anchor-id="valori-raggruppati-per-data"><span class="header-section-number">9.5</span> valori raggruppati per data</h2>
-<div id="88c0df55" class="cell" data-execution_count="6">
+<div id="7e304917" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">df <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
@@ -1022,7 +1022,7 @@ font-style: inherit;">"SELECT CONCESSIONE, count(CAR) CONCESSIONI, sum(cast(NOMI
 </div>
 <section id="valori-raggruppati-per-regione" class="level3" data-number="9.5.1">
 <h3 data-number="9.5.1" class="anchored" data-anchor-id="valori-raggruppati-per-regione"><span class="header-section-number">9.5.1</span> valori raggruppati per regione</h3>
-<div id="7977403c" class="cell" data-execution_count="7">
+<div id="a2ef219c" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">df <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
@@ -1123,7 +1123,7 @@ font-style: inherit;">"SELECT upper(REGIONE) REGIONE, count(CAR), sum(cast(NOMIN
 </section>
 <section id="valori-raggruppati-per-ateco" class="level3" data-number="9.5.2">
 <h3 data-number="9.5.2" class="anchored" data-anchor-id="valori-raggruppati-per-ateco"><span class="header-section-number">9.5.2</span> valori raggruppati per ATECO</h3>
-<div id="b9f8d7d7" class="cell" data-execution_count="8">
+<div id="2e0f7178" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">df <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
@@ -1224,7 +1224,7 @@ font-style: inherit;">"SELECT upper(SETTORE_ATTIVITA) SETTORE_ATTIVITA, count(CA
 </section>
 <section id="valori-raggruppati-per-strumento" class="level3" data-number="9.5.3">
 <h3 data-number="9.5.3" class="anchored" data-anchor-id="valori-raggruppati-per-strumento"><span class="header-section-number">9.5.3</span> valori raggruppati per strumento</h3>
-<div id="8970dbb9" class="cell" data-execution_count="9">
+<div id="4558f3e5" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">df <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
@@ -1325,7 +1325,7 @@ font-style: inherit;">"SELECT upper(DES_STRUMENTO) STRUMENTO, count(CAR), sum(ca
 </section>
 <section id="gli-importi-più-grandi" class="level3" data-number="9.5.4">
 <h3 data-number="9.5.4" class="anchored" data-anchor-id="gli-importi-più-grandi"><span class="header-section-number">9.5.4</span> gli importi più grandi</h3>
-<div id="1c7c21d6" class="cell" data-execution_count="10">
+<div id="b7f96018" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">df <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
@@ -1547,7 +1547,7 @@ font-style: inherit;">"SELECT IMPRESA, REGIONE, CONCEDENTE, MISURA, NOMINALE, AI
 <li>INVITALIA - AGENZIA NAZIONALE PER L’ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D’IMPRESA S.P.A.</li>
 <li>AGENZIA NAZIONALE PER L’ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D’IMPRESA SPA - INVITALIA (05678721001)</li>
 </ul>
-<div id="fedf079d" class="cell" data-execution_count="11">
+<div id="62e9a1f3" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">df <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
@@ -1648,7 +1648,7 @@ font-style: inherit;">"SELECT upper(misura) MISURA, count(CAR) CONCESSIONI, sum(
 </section>
 <section id="valori-raggruppati-per-data-1" class="level3" data-number="9.6.2">
 <h3 data-number="9.6.2" class="anchored" data-anchor-id="valori-raggruppati-per-data-1"><span class="header-section-number">9.6.2</span> valori raggruppati per data</h3>
-<div id="fbbd28fa" class="cell" data-execution_count="12">
+<div id="a5e6a724" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">df <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> con.execute(<span class="st" style="color: #20794D;
@@ -6153,7 +6153,7 @@ Loading ITables v2.2.4 from the <code>init_notebook_mode</code> cell...
 <li>Aggiungo un salt univoco noto solo al titolare (es. data di nascita o un valore condiviso).</li>
 <li>Applico l’algoritmo di hashing.</li>
 </ul>
-<div id="374fc9f9" class="cell" data-execution_count="1">
+<div id="ac02b195" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> hashlib</span>
@@ -6197,7 +6197,7 @@ font-style: inherit;">return</span> hash_object.hexdigest()</span></code></pre><
 <li>Pro: Garantisce riservatezza elevata; solo il titolare con la chiave può decifrare.</li>
 <li>Contro: Il titolare deve conservare la chiave.</li>
 </ul>
-<div id="54744727" class="cell" data-execution_count="2">
+<div id="99432eb4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> cryptography.fernet <span class="im" style="color: #00769E;
@@ -6251,7 +6251,7 @@ font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Codice decifrato:"</span>, decrypted_cf)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Codice cifrato: b'gAAAAABnlbzPWnf1SDX6hUWIX91Moqbk-UMh5CXcjcxcIykkK6rVR0NRgpgLcAaCTPu8PiIcD2mptWkjjd_3lSydCIBFFON8LWolmXUCiVZmdkyvCM4kzr4='
+<pre><code>Codice cifrato: b'gAAAAABnlb8lK_6xAml7L-1EBlTKVFA7T2cyGoIWfuVKjtjrEmYPI9_pQbuhQlmlgocbxtCGUskOVB88xe-KxMPAKQu0vee1PYtUU3gM0XNcYuYQBVT8YZU='
 Codice decifrato: RSSMRA80A01H501U</code></pre>
 </div>
 </div>
@@ -6274,7 +6274,7 @@ Sicurezza: Non condividere mai la chiave pubblicamente; è fondamentale per mant
 <li>Pro: Facile da implementare, leggibile dal titolare.</li>
 <li>Contro: Non è completamente sicuro contro reidentificazione.</li>
 </ul>
-<div id="f1111426" class="cell" data-execution_count="3">
+<div id="b4d06af1" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -6371,7 +6371,7 @@ I caratteri mascherati sono sostituiti da *.</code></pre>
 <li>Pro: Nessun dato sensibile è esposto.</li>
 <li>Contro: Richiede un sistema per mantenere il mapping.</li>
 </ul>
-<div id="b7870526" class="cell" data-execution_count="4">
+<div id="e138c59e" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> uuid</span>
@@ -6441,8 +6441,8 @@ font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Codice Fiscale Anonimizzato:"</span>, cf_anonimizzato)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Mapping (da salvare): {'660df509': 'RSSMRA80A01H501U'}
-Codice Fiscale Anonimizzato: 660df509</code></pre>
+<pre><code>Mapping (da salvare): {'0003fb0b': 'RSSMRA80A01H501U'}
+Codice Fiscale Anonimizzato: 0003fb0b</code></pre>
 </div>
 </div>
 <p>Dettagli:</p>
@@ -6590,653 +6590,6 @@ Sicurezza: Considera l'accesso controllato al mapping per prevenire abusi e gara
   <category>Opendata</category>
   <guid>https://paolovolterra.github.io/posts/2501_CF/CfAnonimizzati.html</guid>
   <pubDate>Thu, 02 Jan 2025 23:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Le aziende B Corp in Italia sono 303 e fatturano di più dei competitor - ESG News</title>
-  <dc:creator>[[mariagiovanna.lahoz]] </dc:creator>
-  <link>https://paolovolterra.github.io/posts/2509_BCorp/ignorare/Le aziende B Corp in Italia sono 303 e fatturano di più dei competitor - ESG News.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>A settembre 2024 il movimento delle <a href="https://esgnews.it/tag/b-corp/">B Corp</a> italiane ha superato il traguardo delle <strong>300 aziende certificate</strong>: sono infatti 303 le B Corp attive oggi nel nostro Paese, il 13% in più rispetto alla fine del 2023. Di queste, oltre il 30% è attivo nel <strong>settore manifatturiero</strong>, a cui seguono attività professionali e scientifiche, <strong>servizi di informazione e comunicazione e commercio</strong>. A livello territoriale, cresce il Nord-Ovest (45,9%), seguito dal Nord-Est (30,1%) e dal Centro-Sud (24%).&nbsp;</p>
-<p>Per sottolineare questo traguardo, anche in occasione del primo anno di operations, <strong>B Lab Italia</strong>, l’organizzazione non profit che coordina il movimento delle B Corp nel nostro paese, presenta una <strong>ricerca nazionale</strong>, realizzata dal Research Department di <a href="https://esgnews.it/societa/intesa-sanpaolo/">Intesa Sanpaolo</a>, che ha analizzato <strong>l’evoluzione delle B Corp in Italia da un punto di vista economico-patrimoniale</strong>, confrontando l’andamento di 210 aziende certificate B Corp rispetto a un campione di 15mila imprese non B Corp, dal 2019 al 2022.</p>
-<p>Secondo lo studio, a livello di performance, i risultati economico-patrimoniali delle B Corp mostrano un insieme di imprese strategicamente dinamiche, con un andamento del <strong>fatturato</strong> che presenta una <strong>crescita pari al 32,4%</strong> in termini mediani rispetto al 2019, <strong>superiore rispetto al 19%</strong> registrato dalle <strong>imprese non B Corp</strong>. Una dinamica che si associa al <strong>miglioramento della produttività:</strong> il valore aggiunto per addetto, è passata da 62 mila euro a 69 mila euro per addetto tra il 2019 e il 2022 (rispetto a un totale di 62 mila euro per le aziende non B Corp nel 2022), unito a un <strong>rafforzamento patrimoniale</strong> con un peso del patrimonio netto su attivo che si è attestato, nel 2022, al 35,4%. A livello di EBITDA margin, nel 2022, il&nbsp;rapporto tra margine operativo lordo e ricavi&nbsp;per le B Corp è risultato pari al 10%, rispetto all’8,5% per le altre imprese.&nbsp;</p>
-<p>Inoltre, la ricerca evidenzia come le B Corp riconoscano maggiormente&nbsp;<strong>il valore del capitale umano</strong>, ridistribuendo maggiore ricchezza tra i lavoratori rispetto alle altre imprese: tra le B Corp il costo del lavoro mediano per addetto nel 2022 è pari a 44.000 euro, rispetto a 39.000 euro per le altre imprese.</p>
-<p>“Le B Corp hanno registrato una crescita rilevante interessando in modo trasversale tutto il tessuto imprenditoriale italiano dal manifatturiero, ai servizi e il commercio. Lo studio che abbiamo realizzato, mettendo a confronto 200 B Corp con un campione omogeneo per classe dimensionale e macrosettore, evidenzia come queste imprese siano cresciute di più e raggiungano livelli di marginalità e patrimonializzazione più elevati. Le B Corp manifatturiere presentano, inoltre, un posizionamento migliore in termini innovazione e internazionalizzazione, in sinergia con la maggiore attenzione alla sostenibilità sociale ed ambientale.”ha commentato <strong>Sara Giusti</strong>, Economista nell’Ufficio Regional Research, Research Department, Intesa Sanpaolo.</p>
-<p>L’analisi mostra infatti come le Certified B Corp sostengano maggiori investimenti in leve strategiche per il futuro rispetto alle non-B Corp.&nbsp;Tra le aziende del settore manifatturiero, per esempio, la quota di imprese internazionalizzate è pari al 44,7%. Lo stesso vale per la richiesta di brevetti (31,6% contro il 13,5%) e per i marchi registrati (34,5% contro il 18,1%), oltre che per l’ottenimento di certificazioni ambientali (44,7% contro il 17,9%).</p>
-<p>“La ricerca realizzata da Intesa Sanpaolo conferma il ruolo pionieristico svolto dalle Certified B Corp nel panorama imprenditoriale italiano. La B Corp Community continua a rappresentare un Paese particolarmente virtuoso in termini di innovazione, lungimiranza, crescita e creazione di valore condiviso. Un continuo impegno e una crescita che non si arresta: festeggiamo oggi il traguardo delle oltre 300 B Corp attive in Italia, che occupano oltre 28.000 persone in 17 industrie diverse, generando un fatturato che supera i 15,1 miliardi di euro”. Un risultato straordinario, a uno solo anno dalla nascita di B Lab Italia, che ci rende orgogliosi e ci dà la spinta per continuare a lavorare per un futuro sempre più inclusivo e rigenerativo”, ha commentato <strong>Anna Puccio,</strong> Managing Director di B Lab Italia.</p>
-
-
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <guid>https://paolovolterra.github.io/posts/2509_BCorp/ignorare/Le aziende B Corp in Italia sono 303 e fatturano di più dei competitor - ESG News.html</guid>
-  <pubDate>Sun, 26 Jan 2025 04:40:44 GMT</pubDate>
-</item>
-<item>
-  <title>Ricerca Nazionale sulle Società Benefit 2024 - Società Benefit</title>
-  <dc:creator>[[NATIVA S.r.l. Società Benefit]]</dc:creator>
-  <link>https://paolovolterra.github.io/posts/2509_BCorp/ignorare/Ricerca Nazionale sulle Società Benefit 2024 - Società Benefit.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>La Ricerca Nazionale sulle Società Benefit 2024 si pone l’obiettivo di studiare il nuovo modello imprenditoriale che integra gli obiettivi di profitto con il perseguimento di benefici comuni per la società e l’ambiente. L’obiettivo della Parte 1 è quello di analizzare per la prima volta l’evoluzione economico-patrimoniale delle Società Benefit e confrontarne l’andamento con quello di un insieme di aziende tradizionali appartenenti agli stessi settori e classi dimensionali. A questo si aggiunge un’analisi strutturale descrittiva dell’universo delle Società Benefit in Italia.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.societabenefit.net/client-assets/content/ricerca-2024/card-ricerca-sb-2.png" class="img-fluid figure-img"></p>
-<figcaption>Ricerca Nazionale sulle Società Benefit 2024</figcaption>
-</figure>
-</div>
-<section id="scopo-della-ricerca" class="level2">
-<h2 class="anchored" data-anchor-id="scopo-della-ricerca">SCOPO DELLA RICERCA</h2>
-<p>La Ricerca Nazionale sulle Società Benefit 2024 si pone l’obiettivo di studiare il nuovo modello imprenditoriale che <strong>integra gli obiettivi di profitto con il perseguimento di benefici comuni per la società e l’ambiente.</strong></p>
-<p>L’obiettivo della <strong>Parte 1</strong> è quello di analizzare per la prima volta l’evoluzione economico-patrimoniale delle Società Benefit e confrontarne l’andamento con quello di un insieme di aziende tradizionali appartenenti agli stessi settori e classi dimensionali. A questo si aggiunge un’analisi strutturale descrittiva dell’universo delle Società Benefit in Italia.</p>
-<p>La <strong>Parte 2</strong> analizza per la prima volta gli statuti di tutte le Società Benefit italiane, al fine di individuare le finalità specifiche di beneficio comune in essi contenute, di categorizzarle secondo uno standard internazionale e di verificarne la materialità.<br>
-Misura dunque il contenuto, l’estensione e la rilevanza degli impegni formalmente assunti negli statuti nei confronti delle persone, delle comunità e dell’ambiente.</p>
-</section>
-<section id="parte" class="level2">
-<h2 class="anchored" data-anchor-id="parte">PARTE</h2>
-</section>
-<section id="società-benefit-un-ecosistema-dinamico-e-in-crescita" class="level2">
-<h2 class="anchored" data-anchor-id="società-benefit-un-ecosistema-dinamico-e-in-crescita">SOCIETÀ BENEFIT: UN ECOSISTEMA DINAMICO E IN CRESCITA</h2>
-<p>La fotografia che emerge è quella di un gruppo di aziende dinamiche, con <strong>fatturati in crescita più rapida e performance economiche superiori rispetto alle non-benefit.</strong></p>
-<p>Il maggiore grado di investimento in leve strategiche per il futuro conferma una delle caratteristiche principali delle Benefit, ovvero quella di <strong>operare con una visione di lungo termine.</strong></p>
-<p>Con <strong>3.619 Società Benefit</strong> a fine 2023 (<strong>+37,8%</strong> rispetto all’anno precedente), la diffusione del fenomeno si conferma essere in forte accelerazione.</p>
-<p>Risultati che esprimono il ruolo significativo delle Società Benefit come <strong>un’evoluzione promettente nel panorama imprenditoriale</strong> e una concreta espressione di innovazione. L’integrazione degli obiettivi di lucro con l’impegno a promuovere benefici comuni per la società e l’ambiente mira a creare un valore aggiunto che potrebbe avere un impatto positivo su diversi settori economici e, in ultima analisi, sull’intero Sistema Paese.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.societabenefit.net/client-assets/content/ricerca-2024/dinamica.jpg" class="img-fluid figure-img"></p>
-<figcaption>DINAMICA</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-<section id="investimento-in-leve-strategiche-per-il-futuro" class="level2">
-<h2 class="anchored" data-anchor-id="investimento-in-leve-strategiche-per-il-futuro">INVESTIMENTO IN LEVE STRATEGICHE PER IL FUTURO</h2>
-<p>Tra le aziende manifatturiere, le Società Benefit sono caratterizzate da un maggiore grado di internazionalizzazione, di richiesta di brevetti, di marchi registrati a livello internazionale e di certificazioni ambientali.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.societabenefit.net/client-assets/content/ricerca-2024/strategie-3.jpg" class="img-fluid figure-img"></p>
-<figcaption>INVESTIMENTO</figcaption>
-</figure>
-</div>
-</section>
-<section id="parte-1" class="level2">
-<h2 class="anchored" data-anchor-id="parte-1">PARTE</h2>
-</section>
-<section id="gli-statuti-ai-raggi-x" class="level2">
-<h2 class="anchored" data-anchor-id="gli-statuti-ai-raggi-x">GLI STATUTI AI RAGGI X</h2>
-<p>La prima analisi di tutti gli statuti delle Società Benefit, svolta anche tramite il supporto dell’intelligenza artificiale, ha individuato <strong>18.618 finalità specifiche</strong> di beneficio comune, con una distribuzione <strong>media di 5,8 finalità</strong> per azienda.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.societabenefit.net/client-assets/content/ricerca-2024/p2-statuti.jpg" class="img-fluid figure-img"></p>
-<figcaption>STATUTI</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-<section id="la-postura-delle-società-benefit" class="level2">
-<h2 class="anchored" data-anchor-id="la-postura-delle-società-benefit">LA POSTURA DELLE SOCIETÀ BENEFIT</h2>
-<p>La suddivisione delle finalità per aree SASB fa emergere la <strong><em>postura imprenditoriale</em></strong> delle Società Benefit, che si esplicita in <strong>senso di appartenenza al territorio, consapevolezza organizzativa</strong> e orientamento all’<strong>equità</strong>.<br>
-Il <strong>32,5%</strong> delle finalità è incentrato sull’impatto verso la <strong>comunità locale e il territorio</strong>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.societabenefit.net/client-assets/content/ricerca-2024/p2-postura.jpg" class="img-fluid figure-img"></p>
-<figcaption>LA POSTURA DELLE SOCIETÀ BENEFIT</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-<section id="finalità-di-beneficio-comune---top-10" class="level2">
-<h2 class="anchored" data-anchor-id="finalità-di-beneficio-comune---top-10">FINALITÀ DI BENEFICIO COMUNE - TOP 10</h2>
-<p>Il <strong>ranking delle categorie delle finalità</strong> offre uno spaccato di come le Società Benefit decidano di impegnarsi a esprimere il proprio impatto positivo verso gli stakeholder.<br>
-Più della metà delle finalità <strong>(51,9%)</strong> si focalizza su impegni nell’area sociale, seguita da ambiente <strong>(25,6%)</strong> e governance <strong>(22,1%)</strong>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.societabenefit.net/client-assets/content/ricerca-2024/p2-ranking.png" class="img-fluid figure-img"></p>
-<figcaption>ranking</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-<section id="la-materialità-delle-finalità" class="level2">
-<h2 class="anchored" data-anchor-id="la-materialità-delle-finalità">LA MATERIALITÀ DELLE FINALITÀ</h2>
-<p><strong>8 Società Benefit su 10 (il 78,0%)</strong> hanno indicato <strong>almeno una finalità specifica di beneficio comune materiale</strong>, dimostrando consapevolezza su quali siano i fattori critici globali per aumentare l’impatto nel proprio settore. Il dato aumenta al crescere della dimensione aziendale. A queste finalità materiali (<strong>in media 2 per ogni azienda</strong>), le Società Benefit ne aggiungono altre che meglio interpretano la propria specifica vocazione e che ritengono rilevanti per il particolare contesto economico, sociale e ambientale in cui operano.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.societabenefit.net/client-assets/content/ricerca-2024/p2-finalita.png" class="img-fluid figure-img"></p>
-<figcaption>FINALITÀ</figcaption>
-</figure>
-</div>
-</section>
-<section id="area" class="level2">
-<h2 class="anchored" data-anchor-id="area">AREA</h2>
-
-
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <guid>https://paolovolterra.github.io/posts/2509_BCorp/ignorare/Ricerca Nazionale sulle Società Benefit 2024 - Società Benefit.html</guid>
-  <pubDate>Sun, 26 Jan 2025 04:40:44 GMT</pubDate>
-</item>
-<item>
-  <title>Società Benefit: le imprese italiane stanno diventando più sostenibili?</title>
-  <dc:creator>[[Benedetta Torsello]]</dc:creator>
-  <link>https://paolovolterra.github.io/posts/2509_BCorp/ignorare/Società Benefit le imprese italiane stanno diventando più sostenibili 1.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="seguici-su" class="level3">
-<h3 class="anchored" data-anchor-id="seguici-su">Seguici su:</h3>
-<p>Come definire un’azienda che <strong>oltre a generare profitti produce un impatto positivo a favore </strong>non solo** degli azionisti**, ma anche dell’ambiente e di tutta la comunità? Nel 2011 un <a href="https://hbr.org/2011/11/the-for-benefit-enterprise">articolo</a> della Harvard Business Review, annunciando un cambiamento epocale per il sistema capitalistico tradizione, le definiva Benefit Corporation, oggi meglio conosciute in Italia come Società Benefit.</p>
-<p>Anche dette a <em>double purpose</em> – ovvero a doppia finalità –, le Società Benefit sono imprese che, oltre allo scopo di dividere gli utili, <strong>perseguono una o più finalità di beneficio comune e operano in modo responsabile</strong>, sostenibile e trasparente nei confronti di persone, ambiente e stakeholder, impegnandosi a valutare sin dal proprio statuto il loro impatto.</p>
-<section id="una-ricerca-racconta-le-società-benefit-italiane" class="level5">
-<h5 class="anchored" data-anchor-id="una-ricerca-racconta-le-società-benefit-italiane"><strong>UNA RICERCA RACCONTA LE SOCIETÀ BENEFIT ITALIANE</strong></h5>
-<p>Oggi in Italia le Società Benefit sono 4353, stando a quanto riportato dall’Osservatorio sulle Società Benefit di Camera di commercio di Brindisi e Taranto – Infocamere (dati relativi a settembre 2024). Il numero è in aumento esponenziale, come emerge dalla <a href="https://www.societabenefit.net/ricerca-nazionale-sulle-societa-benefit-2024/?_gl=1*uha12y*_up*MQ..*_ga*MzExNzc2NDMwLjE3MjYyMTA4Mzk.*_ga_Z7L61HJ458*MTcyNjIxMDgzOC4xLjAuMTcyNjIxMDgzOC4wLjAuMA..">Ricerca Nazionale sulle Società Benefit 2024</a>, uno studio che <strong>per la prima volta analizza l’evoluzione di questo fenomeno</strong> – in primis culturale e sociale – anche da un punto di vista economico-patrimoniale.</p>
-<p>La ricerca, realizzata da un team di esperti, ha coinvolto <a href="https://nativalab.com/">Nativa</a>, il Research Department di Intesa Sanpaolo, InfoCamere, il Dipartimento di Scienze Economiche e Aziendali dell’Università di Padova, la Camera di commercio di Brindisi-Taranto e Assobenefit. Nello studio, il panorama italiano delle società benefit emerge grazie al <strong>confronto tra l’andamento delle Benefit con quello di un insieme di aziende tradizionali</strong> appartenenti agli stessi settori e di equiparabili classi dimensionali.</p>
-</section>
-<section id="nativa-un-precedente-unico-in-europa" class="level5">
-<h5 class="anchored" data-anchor-id="nativa-un-precedente-unico-in-europa"><strong>NATIVA, UN PRECEDENTE UNICO IN EUROPA</strong></h5>
-<p>A parlarci della ricerca sulle Società Benefit italiane sono Paolo Di Cesare, co-founder di Nativa, e Silvia Zanazzi, chief regeneration scientist. «<strong>Nel modello mainstream di impresa ci sono decenni e decenni di studi, tentativi ed errori</strong> – esordisce Di Cesare – tutti finalizzati alla massimizzazione del profitto». Per le Società Benefit invece non esiste un percorso ben tracciato e quindi lo studio nasce dall’esigenza di riflettere su come si stanno sviluppando oggi in Italia questo tipo di imprese.</p>
-<p>La nascita di Nativa, come vi avevamo raccontato tempo fa in un <a href="https://www.italiachecambia.org/2019/05/nativa-b-corp-business-puo-cambiare-mondo-io-faccio-cosi-248/">articolo</a>, precorre i tempi e in un certo senso scrive la storia di questo nuovo modo di fare impresa, non solo nel nostro paese, ma in tutta Europa. Prima Società Benefit nel vecchio continente, da oltre dieci anni Nativa supporta alcune delle più importanti aziende italiane ed europee in una radicale evoluzione del proprio business, <strong>accelerandone la transizione verso modelli che mettano al centro la sostenibilità e la rigenerazione.</strong></p>
-<p>Quando nel 2012 Eric Ezechieli e Paolo Di Cesare fondarono&nbsp;Nativa, nello statuto aziendale, ispirandosi al modello legislativo statunitense – il Maryland in particolare fu il primo stato a regolamentarle – inserirono <strong>tra gli obiettivi quello di generare felicità per tutte le persone che ne facevano parte</strong>, oltre che dividere utili tra i soci. Questa dicitura venne inizialmente rifiutata poiché secondo il Codice Civile italiano (Art. 2247),&nbsp;lo scopo di un’azienda è solo quello di dividerne gli utili.&nbsp;Solo dopo svariati tentativi lo statuto venne approvato e nacque Nativa.</p>
-<p>«Grazie ai nostri sforzi e alla collaborazione con un team guidato dal senatore italiano Mauro Del Barba, <strong>l’Italia è stata il primo Stato sovrano al mondo ad aver introdotto la legge sulle Società Benefit</strong> con la Legge di Stabilità del 2016», ribadisce il co-fondatore di Nativa. Le Benefit Corporation sono state successivamente introdotte anche in Colombia (2018), Porto Rico (2018), Ecuador (2019), Canada – British Columbia (2019), Francia (2019, nella forma di Société à Mission), Perù (2020), Ruanda (2021), Spagna (2022), Panama (2022) e San Marino (2023).</p>
-<blockquote class="blockquote">
-<p>Oggi non è più concepibile un modello imprenditoriale che non tenga conto delle ricadute ambientali e sociali</p>
-</blockquote>
-<p>Per Paolo Di Cesare Nativa è «una creatura un po’ particolare che applica un concetto di impresa che ha tante ispirazioni nel passato – primo fra tutti il modello imprenditoriale di Adriano Olivetti – e ne avrà anche nel futuro, ma sostanzialmente nuovo che cerchiamo di sviluppare giorno per giorno». Nativa si occupa di strategia di sostenibilità: ovvero affianca le aziende che vogliano modificare il proprio business <strong>perseguendo un modello di impresa non estrattivo ma rigenerativo</strong>.</p>
-<p>«Quello che ci chiediamo ogni volta è <strong>se un’azienda è in grado di creare un valore sociale, economico e ambientale</strong> sistematicamente superiore al valore economico, sociale e ambientale di cui ha bisogno per esistere», sottolinea Di Cesare. «Oggi non è più concepibile un modello imprenditoriale che non tenga conto delle ricadute ambientali e sociali. O quasi. Sulla mia scrivania ho sempre le foto dei più potenti CEO delle aziende del fossile mondiale [sorride, ndr]. Mi aiuta a ricordare che dietro a questo modello da smantellare, ci sono degli esseri umani, anche se è difficile crederlo».</p>
-</section>
-<section id="perche-le-società-benefit-crescono-di-più" class="level5">
-<h5 class="anchored" data-anchor-id="perche-le-società-benefit-crescono-di-più"><strong>PERCHE LE SOCIETÀ BENEFIT CRESCONO DI PIÙ</strong></h5>
-<p>Ai fini della ricerca sul tessuto imprenditoriale nazionale, è stato scelto un campione di imprese benefit da mettere a confronto con un insieme di aziende non benefit omogeneo per macro-settore e classe dimensionale. <strong>Il periodo analizzato comprende il quadriennio 2019-2022</strong>, mentre l’analisi è stata possibile incrociando il database anagrafico sviluppato dalla Camera di Commercio di Taranto e Infocamere con quello a disposizione di Intesa Sanpaolo (dati ISID – Intesa Sanpaolo Integrated Database).</p>
-<p>«L’universo imprenditoriale italiano è fatto soprattutto da piccole e medie aziende – commenta Di Cesare – e questo si riflette anche nel panorama delle Società Benefit in termini di numerosità. Tra le Società Benefit, le micro imprese rappresentano l’1×1000 di tutte le aziende italiane. Passando alle piccole e alle grandi, si parla rispettivamente del 2×1000 e dell’1,6%. Ciò significa che <strong>l’incidenza sulle grandi imprese è maggiore rispetto alle piccole</strong> e che un cambiamento culturale profondo sta facendosi sempre più spazio».</p>
-<p>Dalla ricerca emerge quanto il panorama delle società benefit italiane sia caratterizzato da dinamicità, internazionalizzazione e una costante crescita. Dai dati emerge che tra il 2019 e il 2022 <strong>le Società Benefit hanno registrato un aumento del fatturato del +37% in termini mediani</strong>, più del doppio rispetto alle imprese non-benefit (+18%). Oggi le Società Benefit rappresentano ancora una nicchia rispetto al totale delle imprese italiane (1,23×1000), ma il trend di crescita è in continua accelerazione dal 2016, anno di introduzione della legge italiana che ne ha regolamentato lo status giuridico.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.italiachecambia.org/wp-content/uploads/2025/01/Societa-Benefit-per-settore-Ricerca-Nazionale-sulle-Societa-Benefit-2024-1024x681.jpg" class="img-fluid figure-img"></p>
-<figcaption>Societa Benefit per settore Ricerca Nazionale sulle Societa Benefit 2024</figcaption>
-</figure>
-</div>
-<p>Società Benefit per settore</p>
-<p>Stando ai dati, <strong>le Società Benefi, concentrate soprattutto nel nord Italia, riconoscono maggiormente il valore del capitale umano</strong> – il costo del lavoro medio per addetto di è 41.000 euro contro 38.000 –, ridistribuendo dunque di più la ricchezza tra i lavoratori. Le Società Benefit sono in netto vantaggio rispetto al vecchio modo di fare impresa anche per quanto riguarda i livelli di internazionalizzazione, la richiesta di brevetti (il 24% contro il 13%), i marchi registrati a livello internazionale (il 35% contro il 19%) e l’ottenimento di certificazioni ambientali (il 35% contro il18%).</p>
-<p>Tra il 2020-2021 <strong>il numero delle Società Benefit è raddoppiato</strong> – da 805 nel 2020 a 1.697 nel 2021 – e i loro addetti sono passati da 18.000 nel 2020 a ben 98.000 nel 2021 (+433%). In quegli anni molte aziende hanno iniziato a riflettere maggiormente sul proprio impatto sociale e ambientale. In un certo senso la pandemia ha coadiuvato un fenomeno preesistente, anche se sottotraccia.</p>
-</section>
-<section id="quali-sono-le-prinicpali-finalità-delle-società-benefit" class="level5">
-<h5 class="anchored" data-anchor-id="quali-sono-le-prinicpali-finalità-delle-società-benefit"><strong>QUALI SONO LE PRINICPALI FINALITÀ DELLE SOCIETÀ BENEFIT</strong></h5>
-<p>La seconda parte della ricerca invece è dedicata a un’analisi delle finalità delle Società Benefit. «Per la prima volta, anche grazie all’utilizzo di strumenti di intelligenza artificiale applicati all’analisi testuale, è stato possibile <strong>analizzare in modo sistemico gli statuti di tutte le Società Benefit italiane</strong> (3.619 a fine 2023), identificando le 18.618 finalità specifiche di beneficio comune, in media 5,8 per azienda», spiega Silvia Zanazzi.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.italiachecambia.org/wp-content/uploads/2025/01/Costo-del-lavoro-Ricerca-Nazionale-sulle-Societa-Benefit-2024-1024x812.jpg" class="img-fluid figure-img"></p>
-<figcaption>Costo del lavoro Ricerca Nazionale sulle Societa Benefit 2024</figcaption>
-</figure>
-</div>
-<p>Costo del lavoro</p>
-<p>Dalla classificazione generale emerge che il 32,5% delle finalità verte sul capitale sociale, mettendo in luce <strong>il forte legame del tessuto imprenditoriale italiano con il territorio e le comunità in cui operano</strong>. Seguono le finalità relative all’innovazione del modello di business (24,4%) e alle politiche di gestione del capitale umano (17,6%), che incidono sull’equità, sull’organizzazione del lavoro, sul benessere e la valorizzazione delle persone.</p>
-<p>Per finire con quelle legate all’area leadership e governance (13,4%) e quelle relative all’impatto ambientale (12,2%), con una percentuale relativamente bassa che fotografa la maggior appartenenza delle società benefit al settore dei servizi, in cui gli impatti ambientali sono soprattutto indiretti. Tra le Società Benefit, <strong>circa 8 su 10 (il 78,0%) hanno indicato almeno una finalità specifica di beneficio comune materiale</strong>, dove la materialità indica quanto un certo tema influenza le performance di sostenibilità dell’azienda in uno specifico settore.</p>
-<p>«La vocazione di un’impresa, per utilizzare un’espressione di Olivetti, può essere molto diversa da quella delle altre. Ragionare su come passare da un modello estrattivo a uno rigenerativo richiede un grande sforzo di ridefinizione», conclude il co-fondatore di Nativa. «<strong>Il maggiore ostacolo? Il cambiamento. Ma quello che mi conforta è che sta avvenendo</strong>, giorno dopo giorno».</p>
-
-
-</section>
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <guid>https://paolovolterra.github.io/posts/2509_BCorp/ignorare/Società Benefit le imprese italiane stanno diventando più sostenibili 1.html</guid>
-  <pubDate>Sun, 26 Jan 2025 04:40:44 GMT</pubDate>
-</item>
-<item>
-  <title>Società Benefit: le imprese italiane stanno diventando più sostenibili?</title>
-  <dc:creator>[[Benedetta Torsello]]</dc:creator>
-  <link>https://paolovolterra.github.io/posts/2509_BCorp/ignorare/Società Benefit le imprese italiane stanno diventando più sostenibili.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="seguici-su" class="level3">
-<h3 class="anchored" data-anchor-id="seguici-su">Seguici su:</h3>
-<p>Come definire un’azienda che <strong>oltre a generare profitti produce un impatto positivo a favore </strong>non solo** degli azionisti**, ma anche dell’ambiente e di tutta la comunità? Nel 2011 un <a href="https://hbr.org/2011/11/the-for-benefit-enterprise">articolo</a> della Harvard Business Review, annunciando un cambiamento epocale per il sistema capitalistico tradizione, le definiva Benefit Corporation, oggi meglio conosciute in Italia come Società Benefit.</p>
-<p>Anche dette a <em>double purpose</em> – ovvero a doppia finalità –, le Società Benefit sono imprese che, oltre allo scopo di dividere gli utili, <strong>perseguono una o più finalità di beneficio comune e operano in modo responsabile</strong>, sostenibile e trasparente nei confronti di persone, ambiente e stakeholder, impegnandosi a valutare sin dal proprio statuto il loro impatto.</p>
-<section id="una-ricerca-racconta-le-società-benefit-italiane" class="level5">
-<h5 class="anchored" data-anchor-id="una-ricerca-racconta-le-società-benefit-italiane"><strong>UNA RICERCA RACCONTA LE SOCIETÀ BENEFIT ITALIANE</strong></h5>
-<p>Oggi in Italia le Società Benefit sono 4353, stando a quanto riportato dall’Osservatorio sulle Società Benefit di Camera di commercio di Brindisi e Taranto – Infocamere (dati relativi a settembre 2024). Il numero è in aumento esponenziale, come emerge dalla <a href="https://www.societabenefit.net/ricerca-nazionale-sulle-societa-benefit-2024/?_gl=1*uha12y*_up*MQ..*_ga*MzExNzc2NDMwLjE3MjYyMTA4Mzk.*_ga_Z7L61HJ458*MTcyNjIxMDgzOC4xLjAuMTcyNjIxMDgzOC4wLjAuMA..">Ricerca Nazionale sulle Società Benefit 2024</a>, uno studio che <strong>per la prima volta analizza l’evoluzione di questo fenomeno</strong> – in primis culturale e sociale – anche da un punto di vista economico-patrimoniale.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.italiachecambia.org/wp-content/uploads/2025/01/Paolo-Di-Cesare-Co-founder-di-NATIVA-1024x681.jpg" class="img-fluid figure-img"></p>
-<figcaption>Paolo Di Cesare Co founder di NATIVA</figcaption>
-</figure>
-</div>
-<p>Paolo Di Cesare, co-fondatore di Nativa</p>
-<p>La ricerca, realizzata da un team di esperti, ha coinvolto <a href="https://nativalab.com/">Nativa</a>, il Research Department di Intesa Sanpaolo, InfoCamere, il Dipartimento di Scienze Economiche e Aziendali dell’Università di Padova, la Camera di commercio di Brindisi-Taranto e Assobenefit. Nello studio, il panorama italiano delle società benefit emerge grazie al <strong>confronto tra l’andamento delle Benefit con quello di un insieme di aziende tradizionali</strong> appartenenti agli stessi settori e di equiparabili classi dimensionali.</p>
-</section>
-<section id="nativa-un-precedente-unico-in-europa" class="level5">
-<h5 class="anchored" data-anchor-id="nativa-un-precedente-unico-in-europa"><strong>NATIVA, UN PRECEDENTE UNICO IN EUROPA</strong></h5>
-<p>A parlarci della ricerca sulle Società Benefit italiane sono Paolo Di Cesare, co-founder di Nativa, e Silvia Zanazzi, chief regeneration scientist. «<strong>Nel modello mainstream di impresa ci sono decenni e decenni di studi, tentativi ed errori</strong> – esordisce Di Cesare – tutti finalizzati alla massimizzazione del profitto». Per le Società Benefit invece non esiste un percorso ben tracciato e quindi lo studio nasce dall’esigenza di riflettere su come si stanno sviluppando oggi in Italia questo tipo di imprese.</p>
-<p>La nascita di Nativa, come vi avevamo raccontato tempo fa in un <a href="https://www.italiachecambia.org/2019/05/nativa-b-corp-business-puo-cambiare-mondo-io-faccio-cosi-248/">articolo</a>, precorre i tempi e in un certo senso scrive la storia di questo nuovo modo di fare impresa, non solo nel nostro paese, ma in tutta Europa. Prima Società Benefit nel vecchio continente, da oltre dieci anni Nativa supporta alcune delle più importanti aziende italiane ed europee in una radicale evoluzione del proprio business, <strong>accelerandone la transizione verso modelli che mettano al centro la sostenibilità e la rigenerazione.</strong></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.italiachecambia.org/wp-content/uploads/2025/01/Il-team-di-NATIVA-1024x681.jpg" class="img-fluid figure-img"></p>
-<figcaption>Il team di NATIVA</figcaption>
-</figure>
-</div>
-<p>Il team di Nativa</p>
-<p>Quando nel 2012 Eric Ezechieli e Paolo Di Cesare fondarono&nbsp;Nativa, nello statuto aziendale, ispirandosi al modello legislativo statunitense – il Maryland in particolare fu il primo stato a regolamentarle – inserirono <strong>tra gli obiettivi quello di generare felicità per tutte le persone che ne facevano parte</strong>, oltre che dividere utili tra i soci. Questa dicitura venne inizialmente rifiutata poiché secondo il Codice Civile italiano (Art. 2247),&nbsp;lo scopo di un’azienda è solo quello di dividerne gli utili.&nbsp;Solo dopo svariati tentativi lo statuto venne approvato e nacque Nativa.</p>
-<p>«Grazie ai nostri sforzi e alla collaborazione con un team guidato dal senatore italiano Mauro Del Barba, <strong>l’Italia è stata il primo Stato sovrano al mondo ad aver introdotto la legge sulle Società Benefit</strong> con la Legge di Stabilità del 2016», ribadisce il co-fondatore di Nativa. Le Benefit Corporation sono state successivamente introdotte anche in Colombia (2018), Porto Rico (2018), Ecuador (2019), Canada – British Columbia (2019), Francia (2019, nella forma di Société à Mission), Perù (2020), Ruanda (2021), Spagna (2022), Panama (2022) e San Marino (2023).</p>
-<blockquote class="blockquote">
-<p>Oggi non è più concepibile un modello imprenditoriale che non tenga conto delle ricadute ambientali e sociali</p>
-</blockquote>
-<p>Per Paolo Di Cesare Nativa è «una creatura un po’ particolare che applica un concetto di impresa che ha tante ispirazioni nel passato – primo fra tutti il modello imprenditoriale di Adriano Olivetti – e ne avrà anche nel futuro, ma sostanzialmente nuovo che cerchiamo di sviluppare giorno per giorno». Nativa si occupa di strategia di sostenibilità: ovvero affianca le aziende che vogliano modificare il proprio business <strong>perseguendo un modello di impresa non estrattivo ma rigenerativo</strong>.</p>
-<p>«Quello che ci chiediamo ogni volta è <strong>se un’azienda è in grado di creare un valore sociale, economico e ambientale</strong> sistematicamente superiore al valore economico, sociale e ambientale di cui ha bisogno per esistere», sottolinea Di Cesare. «Oggi non è più concepibile un modello imprenditoriale che non tenga conto delle ricadute ambientali e sociali. O quasi. Sulla mia scrivania ho sempre le foto dei più potenti CEO delle aziende del fossile mondiale [sorride, ndr]. Mi aiuta a ricordare che dietro a questo modello da smantellare, ci sono degli esseri umani, anche se è difficile crederlo».</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.italiachecambia.org/wp-content/uploads/2025/01/Silvioa-Zanazzi-Chief-Regeneration-Scientist-1024x681.jpg" class="img-fluid figure-img"></p>
-<figcaption>Silvioa Zanazzi Chief Regeneration Scientist</figcaption>
-</figure>
-</div>
-<p>Silvia Zanazzi, Chief Regeneration Scientist di Nativa</p>
-</section>
-<section id="perche-le-società-benefit-crescono-di-più" class="level5">
-<h5 class="anchored" data-anchor-id="perche-le-società-benefit-crescono-di-più"><strong>PERCHE LE SOCIETÀ BENEFIT CRESCONO DI PIÙ</strong></h5>
-<p>Ai fini della ricerca sul tessuto imprenditoriale nazionale, è stato scelto un campione di imprese benefit da mettere a confronto con un insieme di aziende non benefit omogeneo per macro-settore e classe dimensionale. <strong>Il periodo analizzato comprende il quadriennio 2019-2022</strong>, mentre l’analisi è stata possibile incrociando il database anagrafico sviluppato dalla Camera di Commercio di Taranto e Infocamere con quello a disposizione di Intesa Sanpaolo (dati ISID – Intesa Sanpaolo Integrated Database).</p>
-<p>«L’universo imprenditoriale italiano è fatto soprattutto da piccole e medie aziende – commenta Di Cesare – e questo si riflette anche nel panorama delle Società Benefit in termini di numerosità. Tra le Società Benefit, le micro imprese rappresentano l’1×1000 di tutte le aziende italiane. Passando alle piccole e alle grandi, si parla rispettivamente del 2×1000 e dell’1,6%. Ciò significa che <strong>l’incidenza sulle grandi imprese è maggiore rispetto alle piccole</strong> e che un cambiamento culturale profondo sta facendosi sempre più spazio».</p>
-<p>Dalla ricerca emerge quanto il panorama delle società benefit italiane sia caratterizzato da dinamicità, internazionalizzazione e una costante crescita. Dai dati emerge che tra il 2019 e il 2022 <strong>le Società Benefit hanno registrato un aumento del fatturato del +37% in termini mediani</strong>, più del doppio rispetto alle imprese non-benefit (+18%). Oggi le Società Benefit rappresentano ancora una nicchia rispetto al totale delle imprese italiane (1,23×1000), ma il trend di crescita è in continua accelerazione dal 2016, anno di introduzione della legge italiana che ne ha regolamentato lo status giuridico.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.italiachecambia.org/wp-content/uploads/2025/01/Societa-Benefit-per-settore-Ricerca-Nazionale-sulle-Societa-Benefit-2024-1024x681.jpg" class="img-fluid figure-img"></p>
-<figcaption>Societa Benefit per settore Ricerca Nazionale sulle Societa Benefit 2024</figcaption>
-</figure>
-</div>
-<p>Società Benefit per settore</p>
-<p>Stando ai dati, <strong>le Società Benefi, concentrate soprattutto nel nord Italia, riconoscono maggiormente il valore del capitale umano</strong> – il costo del lavoro medio per addetto di è 41.000 euro contro 38.000 –, ridistribuendo dunque di più la ricchezza tra i lavoratori. Le Società Benefit sono in netto vantaggio rispetto al vecchio modo di fare impresa anche per quanto riguarda i livelli di internazionalizzazione, la richiesta di brevetti (il 24% contro il 13%), i marchi registrati a livello internazionale (il 35% contro il 19%) e l’ottenimento di certificazioni ambientali (il 35% contro il18%).</p>
-<p>Tra il 2020-2021 <strong>il numero delle Società Benefit è raddoppiato</strong> – da 805 nel 2020 a 1.697 nel 2021 – e i loro addetti sono passati da 18.000 nel 2020 a ben 98.000 nel 2021 (+433%). In quegli anni molte aziende hanno iniziato a riflettere maggiormente sul proprio impatto sociale e ambientale. In un certo senso la pandemia ha coadiuvato un fenomeno preesistente, anche se sottotraccia.</p>
-</section>
-<section id="quali-sono-le-prinicpali-finalità-delle-società-benefit" class="level5">
-<h5 class="anchored" data-anchor-id="quali-sono-le-prinicpali-finalità-delle-società-benefit"><strong>QUALI SONO LE PRINICPALI FINALITÀ DELLE SOCIETÀ BENEFIT</strong></h5>
-<p>La seconda parte della ricerca invece è dedicata a un’analisi delle finalità delle Società Benefit. «Per la prima volta, anche grazie all’utilizzo di strumenti di intelligenza artificiale applicati all’analisi testuale, è stato possibile <strong>analizzare in modo sistemico gli statuti di tutte le Società Benefit italiane</strong> (3.619 a fine 2023), identificando le 18.618 finalità specifiche di beneficio comune, in media 5,8 per azienda», spiega Silvia Zanazzi.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.italiachecambia.org/wp-content/uploads/2025/01/Costo-del-lavoro-Ricerca-Nazionale-sulle-Societa-Benefit-2024-1024x812.jpg" class="img-fluid figure-img"></p>
-<figcaption>Costo del lavoro Ricerca Nazionale sulle Societa Benefit 2024</figcaption>
-</figure>
-</div>
-<p>Costo del lavoro</p>
-<p>Dalla classificazione generale emerge che il 32,5% delle finalità verte sul capitale sociale, mettendo in luce <strong>il forte legame del tessuto imprenditoriale italiano con il territorio e le comunità in cui operano</strong>. Seguono le finalità relative all’innovazione del modello di business (24,4%) e alle politiche di gestione del capitale umano (17,6%), che incidono sull’equità, sull’organizzazione del lavoro, sul benessere e la valorizzazione delle persone.</p>
-<p>Per finire con quelle legate all’area leadership e governance (13,4%) e quelle relative all’impatto ambientale (12,2%), con una percentuale relativamente bassa che fotografa la maggior appartenenza delle società benefit al settore dei servizi, in cui gli impatti ambientali sono soprattutto indiretti. Tra le Società Benefit, <strong>circa 8 su 10 (il 78,0%) hanno indicato almeno una finalità specifica di beneficio comune materiale</strong>, dove la materialità indica quanto un certo tema influenza le performance di sostenibilità dell’azienda in uno specifico settore.</p>
-<p>«La vocazione di un’impresa, per utilizzare un’espressione di Olivetti, può essere molto diversa da quella delle altre. Ragionare su come passare da un modello estrattivo a uno rigenerativo richiede un grande sforzo di ridefinizione», conclude il co-fondatore di Nativa. «<strong>Il maggiore ostacolo? Il cambiamento. Ma quello che mi conforta è che sta avvenendo</strong>, giorno dopo giorno».</p>
-
-
-</section>
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <guid>https://paolovolterra.github.io/posts/2509_BCorp/ignorare/Società Benefit le imprese italiane stanno diventando più sostenibili.html</guid>
-  <pubDate>Sun, 26 Jan 2025 04:40:44 GMT</pubDate>
-</item>
-<item>
-  <title>Le Società Benefit e B-Corp</title>
-  <link>https://paolovolterra.github.io/posts/2509_BCorp/ignorare/BCorp.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<div id="cell-3" class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">url <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'https://www.societabenefit.net/elenco-delle-societa-benefit/'</span></span></code></pre></div>
-</div>
-<div id="cell-4" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> bs4 <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> BeautifulSoup</span>
-<span id="cb2-2"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> requests</span>
-<span id="cb2-3"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> re</span>
-<span id="cb2-4"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> pandas <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> pd</span>
-<span id="cb2-5"></span>
-<span id="cb2-6"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># URL della pagina web</span></span>
-<span id="cb2-7">url <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'https://www.societabenefit.net/elenco-delle-societa-benefit/'</span></span>
-<span id="cb2-8"></span>
-<span id="cb2-9"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Scaricare il contenuto della pagina web</span></span>
-<span id="cb2-10">response <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> requests.get(url)</span>
-<span id="cb2-11">response.raise_for_status()  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Verifica eventuali errori nella richiesta</span></span>
-<span id="cb2-12">html_content <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> response.text</span></code></pre></div>
-</div>
-<div id="cell-5" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"></span>
-<span id="cb3-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Analizzare il contenuto HTML</span></span>
-<span id="cb3-3">soup <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> BeautifulSoup(html_content, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'html.parser'</span>)</span>
-<span id="cb3-4"></span>
-<span id="cb3-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Estrarre le informazioni dalla classe "entry"</span></span>
-<span id="cb3-6">entries <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> soup.find_all(class_<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"entry"</span>)</span>
-<span id="cb3-7"></span>
-<span id="cb3-8"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Estrarre i nomi delle aziende e i dettagli</span></span>
-<span id="cb3-9">companies_details <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> []</span>
-<span id="cb3-10"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> entry <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> entries:</span>
-<span id="cb3-11">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Estrarre il nome dell'azienda</span></span>
-<span id="cb3-12">    label <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> entry.find(class_<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"label"</span>)</span>
-<span id="cb3-13">    company_name <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> label.get_text(strip<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>) <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> label <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">else</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Nome non trovato"</span></span>
-<span id="cb3-14">    </span>
-<span id="cb3-15">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Estrarre il contenuto delle finalità</span></span>
-<span id="cb3-16">    content <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> entry.find(class_<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"contenuto-desc"</span>)</span>
-<span id="cb3-17">    objectives <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> content.get_text(strip<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>) <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> content <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">else</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Dettagli non trovati"</span></span>
-<span id="cb3-18">    </span>
-<span id="cb3-19">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Aggiungere ai risultati</span></span>
-<span id="cb3-20">    companies_details.append({<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Azienda"</span>: company_name, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Finalità"</span>: objectives})</span>
-<span id="cb3-21"></span>
-<span id="cb3-22"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Creare un DataFrame</span></span>
-<span id="cb3-23">df <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> pd.DataFrame(companies_details)</span></code></pre></div>
-</div>
-<div id="cell-6" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Analizzare il contenuto HTML</span></span>
-<span id="cb4-2">soup <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> BeautifulSoup(html_content, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'html.parser'</span>)</span>
-<span id="cb4-3"></span>
-<span id="cb4-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Estrarre le informazioni dalla classe "entry"</span></span>
-<span id="cb4-5">entries <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> soup.find_all(class_<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"entry"</span>)</span>
-<span id="cb4-6"></span>
-<span id="cb4-7"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Estrarre i nomi delle aziende, i dettagli e i link</span></span>
-<span id="cb4-8">companies_details <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> []</span>
-<span id="cb4-9"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> entry <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> entries:</span>
-<span id="cb4-10">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Estrarre il nome dell'azienda</span></span>
-<span id="cb4-11">    label <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> entry.find(class_<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"label"</span>)</span>
-<span id="cb4-12">    company_name <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> label.get_text(strip<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>) <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> label <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">else</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Nome non trovato"</span></span>
-<span id="cb4-13">    </span>
-<span id="cb4-14">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Estrarre il contenuto delle finalità</span></span>
-<span id="cb4-15">    content <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> entry.find(class_<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"contenuto-desc"</span>)</span>
-<span id="cb4-16">    objectives <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> content.get_text(strip<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>) <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> content <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">else</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Dettagli non trovati"</span></span>
-<span id="cb4-17">        </span>
-<span id="cb4-18">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Aggiungere ai risultati</span></span>
-<span id="cb4-19">    companies_details.append({<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Azienda"</span>: company_name, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Finalità"</span>: objectives})</span>
-<span id="cb4-20"></span>
-<span id="cb4-21"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Creare un DataFrame</span></span>
-<span id="cb4-22">df <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> pd.DataFrame(companies_details)</span></code></pre></div>
-</div>
-<div id="cell-7" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">df</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Azienda</th>
-<th data-quarto-table-cell-role="th">Finalità</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>012factory SpA Soc. Benefit</td>
-<td>Le seguenti specifiche finalità di beneficio c...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>101 Solutions Srl Società Benefit</td>
-<td>In qualità di Società Benefit, ai sensi e per ...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>1010 One Object One Owner S.B. S.R.L.</td>
-<td>Ai sensi e per gli effetti della legge 28 dice...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>24Bottles Società Benefit Srl</td>
-<td>IN QUALITA' DI SOCIETA' BENEFIT, AI SENSI E PE...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>2MLAB S.A.S. SOCIETA' BENEFIT DI MANGHI MARCO ...</td>
-<td>AI SENSI E PER GLI EFFETTI DELLA LEGGE 28 DICE...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">776</td>
-<td>Yves Rocher Italia Srl Società Benefit</td>
-<td>In qualità di Società Benefit, ai sensi e per ...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">777</td>
-<td>ZEF SRL SB Unipersonale</td>
-<td>In linea con quanto disposto dall’articolo 1, ...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">778</td>
-<td>Zelato di a.z. srl società benefit</td>
-<td>Art. 4 = In qualità di Società Benefit, ai sen...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">779</td>
-<td>Zoppis Srl Società Benefit</td>
-<td>La Società ritiene che il momento storico in c...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">780</td>
-<td>Zordan Srl SB e B Corp®</td>
-<td>La società - entro i limiti e con le modalità ...</td>
-</tr>
-</tbody>
-</table>
-
-<p>781 rows × 2 columns</p>
-</div>
-</div>
-</div>
-<div id="cell-8" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">df.to_csv(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'D:/ElencoBenefit.csv'</span>, index<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">False</span>, sep<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'</span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">\t</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'</span>)</span></code></pre></div>
-</div>
-
-
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <guid>https://paolovolterra.github.io/posts/2509_BCorp/ignorare/BCorp.html</guid>
-  <pubDate>Sun, 26 Jan 2025 04:40:44 GMT</pubDate>
 </item>
 </channel>
 </rss>
