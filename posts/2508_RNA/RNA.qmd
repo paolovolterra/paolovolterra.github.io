@@ -4,8 +4,10 @@ subtitle: "_trasparenza e controllo sugli aiuti pubblici concessi in conformità
 draft: false
 
 date: 2025-01-12
+date-format: long #"MMMM DD, YYYY" # "`r format(Sys.Date(), '%B %d, %Y')`"
+#date-format: "MMM D, YYYY"
 created: 2025-01-12
-updated: 2025-01-12
+updated: today
 lang: it
 tags: [agevolazioni, Invitalia, Python, RNA, Opendata]
 author: "Paolo Volterra"
@@ -163,7 +165,8 @@ pd.options.display.float_format = '{:,}'.format
 ## Quanti aiuti contiene
 
 ```{python}
-con.execute("SELECT count(distinct(CF)), count((CF)), count(distinct(CAR)),count(distinct(CONCEDENTE)), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet'").df()
+df = con.execute("SELECT count(distinct(CF)), count((CF)), count(distinct(CAR)),count(distinct(CONCEDENTE)), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet'").df()
+df
 ```
 
 ## Quali misure hanno più aiuti
