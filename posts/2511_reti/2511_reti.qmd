@@ -1,0 +1,59 @@
+---
+title: "I contratti di rete"
+subtitle: "_prova_ "
+draft: true
+
+date: 2025-01-17
+created: 2025-01-17
+updated: 2025-01-17
+lang: it
+tags:
+    - PMI
+    - Python
+
+author: "Paolo Volterra"
+
+format:
+  html:
+    toc: true             # Abilita il sommario
+    toc-depth: 3          # Mostra fino al terzo livello di intestazioni
+    number-sections: true # Aggiunge numeri alle sezioni e sottosezioni
+    toc-location: right   # Posiziona il sommario a sinistra (o usa `right` per destra)
+    toc-title: "Indice"   # (Facoltativo) Titolo del sommario
+    
+    code-fold: true  # Permette di piegare il codice (opzionale)
+
+categories:
+  - PDF
+  - AI
+  - Python
+
+jupyter: "python3"
+execute:
+  echo: true        # Mostra il codice nei blocchi
+  eval: false       # Non esegue il codice
+
+# 1. quarto preview d:/paolovolterra.github.io/posts/2508_RNA/RNA.qmd
+# 2. quarto render d:/paolovolterra.github.io/posts/2508_RNA/RNA.qmd
+# 3. git add d:/paolovolterra.github.io/docs/posts/2508_RNA/RNA.html
+# 4. git status
+# 5. git add . (se hai rilevato altre modifiche e le voi introitare)
+# 6. git commit -m "Aggiornata la pagina: RNA"
+# 7. git pull origin main --rebase
+# 8. git push origin main
+# 9. git log
+---
+
+# [Contratti di Rete](https://www.registroimprese.it/contratti-di-rete)
+![](https://www.registroimprese.it/RegistroImprese-theme/images/ri-logo.jpg)
+
+
+
+```{python}
+import pandas as pd
+import os
+os.chdir('D:\\Zotero\\storage\\67U4AHBK')
+elenco = pd.read_excel('statistiche.xls', sheet_name='Elenco', dtype='object', parse_dates=['data atto'])
+elenco['data atto'] = pd.to_datetime(elenco['data atto'], format='%Y/%m/%d')
+elenco.head()
+```

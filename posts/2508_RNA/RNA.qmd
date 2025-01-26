@@ -94,7 +94,7 @@ Oltre all'interrogazione online, #RNA permette il [download degli #opendata](htt
 
 # Gli opendata RNA in xml
 
-#RNA aggiorna costantemente il propsio DB conn le segnalazioni dovute dai mittenti normativamente previsti.
+#RNA aggiorna costantemente il proprio DB conn le segnalazioni dovute dai mittenti normativamente previsti.
 
 Le date degli [opendata XML messi a disposizione](https://www.rna.gov.it/open-data/aiuti) corrispondono al mese della variabile "DATA_CONCESSIONE" contenuta in ognuno di loro
 
@@ -129,6 +129,7 @@ Di seguito, ad esempio, gli ultimi 3 file parquet del 2024 da me realizzati, la 
 - 20241026 (59146, 21)
 - 20241019 (59146, 21)
 
+Non ho ancora verificato se la data è quella di concessione o quella di registrazione in RNA
 
 
 # Analisi sull'xml più recente
@@ -162,64 +163,86 @@ pd.options.display.float_format = '{:,}'.format
 ## Quanti aiuti contiene
 
 ```{python}
-df = con.execute("SELECT * FROM 'OpenData_Aiuti_2025_01.parquet'").df()
-df.shape
+con.execute("SELECT count(distinct(CF)), count((CF)), count(distinct(CAR)),count(distinct(CONCEDENTE)), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet'").df()
 ```
 
 ## Quali misure hanno più aiuti
 
 ```{python}
-df = con.execute("SELECT upper(misura) MISURA, count(CAR) CONCESSIONI, \
-  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI \
-    FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 10").df()
+df = con.execute("SELECT upper(misura) MISURA, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 20").df()
 df
 ```
 
 ## Quali concedenti hanno più aiuti
 
+purtroppo il nome del concedente è scritto in modi diversi
+
 ```{python}
-df = con.execute("SELECT upper(concedente) CONCEDENTE, count(CAR) CONCESSIONI, \
-  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI \
-    FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 10").df()
+df = con.execute("SELECT upper(concedente) CONCEDENTE, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 10").df()
 df
 ```
 
 ## Gli aiuti in ordine di valore nominale €
 
 ```{python}
-df = con.execute("SELECT upper(concedente) CONCEDENTE, count(CAR) CONCESSIONI, \
-  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI \
-    FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 3 desc limit 10").df()
+df = con.execute("SELECT upper(concedente) CONCEDENTE, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 3 desc limit 10").df()
 df
 ```
 
 ## valori raggruppati per data 
 ```{python}
-df = con.execute("SELECT CONCESSIONE, count(CAR) CONCESSIONI, \
-  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI \
-    FROM 'OpenData_Aiuti_2025_01.parquet' \
-      group by 1 order by 1 desc").df()
+df = con.execute("SELECT CONCESSIONE, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 1 desc").df()
 df
 ```
+
+### valori raggruppati per regione 
+```{python}
+df = con.execute("SELECT upper(REGIONE) REGIONE, count(CAR), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 3 desc limit 10").df()
+df
+```
+
+### valori raggruppati per ATECO 
+```{python}
+df = con.execute("SELECT upper(SETTORE_ATTIVITA) SETTORE_ATTIVITA, count(CAR), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 3 desc limit 10").df()
+df
+```
+
+### valori raggruppati per strumento 
+```{python}
+df = con.execute("SELECT upper(DES_STRUMENTO) STRUMENTO, count(CAR), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 10").df()
+df
+```
+
+
+
+### gli importi più grandi 
+```{python}
+df = con.execute("SELECT IMPRESA, REGIONE, CONCEDENTE, MISURA, NOMINALE, AIUTO FROM 'OpenData_Aiuti_2025_01.parquet' order by 5 desc limit 20").df()
+df
+```
+
 
 ---
 ## Analisi per concedente
 
-### Gli aiuti concessi da Invitalia
+Il nome del concedente viene scritto in modi diversi; non c' il suo codice fiscale o la sua P.IVA
+
+### Un esempio: gli aiuti concessi da Invitalia
+- INVITALIA - AGENZIA NAZIONALE PER L'ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D'IMPRESA S.P.A.
+- AGENZIA NAZIONALE PER L'ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D'IMPRESA SPA - INVITALIA (05678721001)
+
 
 ```{python}
-df = con.execute("SELECT upper(misura) MISURA, count(CAR) CONCESSIONI, \
-  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI \
-    FROM 'OpenData_Aiuti_2025_01.parquet' where concedente like '%INVI%' \
-      group by 1 order by 3 desc limit 10").df()
+df = con.execute("SELECT upper(misura) MISURA, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' where concedente like '%INVI%' group by 1 order by 3 desc limit 10").df()
 df
 ```
 
 ### valori raggruppati per data 
 ```{python}
-df = con.execute("SELECT CONCESSIONE, count(CAR) CONCESSIONI, \
-  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI \
-    FROM 'OpenData_Aiuti_2025_01.parquet' where concedente like '%INVI%' \
-      group by 1 order by 1 desc").df()
+df = con.execute("SELECT CONCESSIONE, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' where concedente like '%INVI%' group by 1 order by 1 desc").df()
 df
 ```
+
+
+
+
