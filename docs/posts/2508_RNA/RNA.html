@@ -103,10 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
-
-
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-
 
 
 <meta name="twitter:title" content="Registro Nazionale degli Aiuti di Stato – Paolo Volterra’s website">
@@ -178,10 +175,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#quali-misure-hanno-più-aiuti" id="toc-quali-misure-hanno-più-aiuti" class="nav-link" data-scroll-target="#quali-misure-hanno-più-aiuti"><span class="header-section-number">9.2</span> Quali misure hanno più aiuti</a></li>
   <li><a href="#quali-concedenti-hanno-più-aiuti" id="toc-quali-concedenti-hanno-più-aiuti" class="nav-link" data-scroll-target="#quali-concedenti-hanno-più-aiuti"><span class="header-section-number">9.3</span> Quali concedenti hanno più aiuti</a></li>
   <li><a href="#gli-aiuti-in-ordine-di-valore-nominale" id="toc-gli-aiuti-in-ordine-di-valore-nominale" class="nav-link" data-scroll-target="#gli-aiuti-in-ordine-di-valore-nominale"><span class="header-section-number">9.4</span> Gli aiuti in ordine di valore nominale €</a></li>
-  <li><a href="#valori-raggruppati-per-data" id="toc-valori-raggruppati-per-data" class="nav-link" data-scroll-target="#valori-raggruppati-per-data"><span class="header-section-number">9.5</span> valori raggruppati per data</a></li>
+  <li><a href="#valori-raggruppati-per-data" id="toc-valori-raggruppati-per-data" class="nav-link" data-scroll-target="#valori-raggruppati-per-data"><span class="header-section-number">9.5</span> valori raggruppati per data</a>
+  <ul class="collapse">
+  <li><a href="#valori-raggruppati-per-regione" id="toc-valori-raggruppati-per-regione" class="nav-link" data-scroll-target="#valori-raggruppati-per-regione"><span class="header-section-number">9.5.1</span> valori raggruppati per regione</a></li>
+  <li><a href="#valori-raggruppati-per-ateco" id="toc-valori-raggruppati-per-ateco" class="nav-link" data-scroll-target="#valori-raggruppati-per-ateco"><span class="header-section-number">9.5.2</span> valori raggruppati per ATECO</a></li>
+  <li><a href="#valori-raggruppati-per-strumento" id="toc-valori-raggruppati-per-strumento" class="nav-link" data-scroll-target="#valori-raggruppati-per-strumento"><span class="header-section-number">9.5.3</span> valori raggruppati per strumento</a></li>
+  <li><a href="#gli-importi-più-grandi" id="toc-gli-importi-più-grandi" class="nav-link" data-scroll-target="#gli-importi-più-grandi"><span class="header-section-number">9.5.4</span> gli importi più grandi</a></li>
+  </ul></li>
   <li><a href="#analisi-per-concedente" id="toc-analisi-per-concedente" class="nav-link" data-scroll-target="#analisi-per-concedente"><span class="header-section-number">9.6</span> Analisi per concedente</a>
   <ul class="collapse">
-  <li><a href="#gli-aiuti-concessi-da-invitalia" id="toc-gli-aiuti-concessi-da-invitalia" class="nav-link" data-scroll-target="#gli-aiuti-concessi-da-invitalia"><span class="header-section-number">9.6.1</span> Gli aiuti concessi da Invitalia</a></li>
+  <li><a href="#un-esempio-gli-aiuti-concessi-da-invitalia" id="toc-un-esempio-gli-aiuti-concessi-da-invitalia" class="nav-link" data-scroll-target="#un-esempio-gli-aiuti-concessi-da-invitalia"><span class="header-section-number">9.6.1</span> Un esempio: gli aiuti concessi da Invitalia</a></li>
   <li><a href="#valori-raggruppati-per-data-1" id="toc-valori-raggruppati-per-data-1" class="nav-link" data-scroll-target="#valori-raggruppati-per-data-1"><span class="header-section-number">9.6.2</span> valori raggruppati per data</a></li>
   </ul></li>
   </ul></li>
@@ -276,7 +279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="gli-opendata-rna-in-xml" class="level1" data-number="8">
 <h1 data-number="8"><span class="header-section-number">8</span> Gli opendata RNA in xml</h1>
-<p>#RNA aggiorna costantemente il propsio DB conn le segnalazioni dovute dai mittenti normativamente previsti.</p>
+<p>#RNA aggiorna costantemente il proprio DB conn le segnalazioni dovute dai mittenti normativamente previsti.</p>
 <p>Le date degli <a href="https://www.rna.gov.it/open-data/aiuti">opendata XML messi a disposizione</a> corrispondono al mese della variabile “DATA_CONCESSIONE” contenuta in ognuno di loro</p>
 <p>RNA riceve però anche informazioni datate e quindi aggiorna tutto.</p>
 <p>Potenzialmente, quindi, <strong>tutti</strong> gli XML andrebbero riscaricati …</p>
@@ -314,6 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>20241026 (59146, 21)</li>
 <li>20241019 (59146, 21)</li>
 </ul>
+<p>Non ho ancora verificato se la data è quella di concessione o quella di registrazione in RNA</p>
 </section>
 </section>
 <section id="analisi-sullxml-più-recente" class="level1" data-number="9">
@@ -321,21 +325,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Appresso riporto alcune sintesi dell’ultimo XML -&gt; parquet da me prodotto</p>
 <section id="quanti-aiuti-contiene" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="quanti-aiuti-contiene"><span class="header-section-number">9.1</span> Quanti aiuti contiene</h2>
-<div id="3d6bbdf3" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT * FROM 'OpenData_Aiuti_2025_01.parquet'"</span>).df()</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df.shape</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8792ed57" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>con.execute(<span class="st">"SELECT count(distinct(CF)), count((CF)), count(distinct(CAR)),count(distinct(CONCEDENTE)), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet'"</span>).df()</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>(12191, 21)</code></pre>
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">count(DISTINCT CF)</th>
+<th data-quarto-table-cell-role="th">count(CF)</th>
+<th data-quarto-table-cell-role="th">count(DISTINCT CAR)</th>
+<th data-quarto-table-cell-role="th">count(DISTINCT CONCEDENTE)</th>
+<th data-quarto-table-cell-role="th">sum(CAST(NOMINALE AS INTEGER))</th>
+<th data-quarto-table-cell-role="th">sum(CAST(AIUTO AS INTEGER))</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>64638</td>
+<td>69734</td>
+<td>348</td>
+<td>283</td>
+<td>2,170,151,358.0</td>
+<td>694,805,067.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
 </div>
 </div>
 </section>
 <section id="quali-misure-hanno-più-aiuti" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="quali-misure-hanno-più-aiuti"><span class="header-section-number">9.2</span> Quali misure hanno più aiuti</h2>
-<div id="0c9ccd1c" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(misura) MISURA, count(CAR) CONCESSIONI, </span><span class="ch">\</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="st">  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI </span><span class="ch">\</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 10"</span>).df()</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="861e0ac8" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(misura) MISURA, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 20"</span>).df()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
@@ -353,73 +382,143 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>FONDO DI GARANZIA PER LE PICCOLE E MEDIE IMPRESE</td>
-<td>6320</td>
-<td>800,586,767.0</td>
-<td>53,942,817.0</td>
+<td>ESONERO DAL VERSAMENTO DEI CONTRIBUTI PREVIDENZIALI PER ASSUNZIONI DI DONNE LAVORATRICI NEL BIENNIO 2021 - 2022 (ART. 1 COMMI 16 - 19 L. 178/2020)</td>
+<td>26226</td>
+<td>55,388,921.0</td>
+<td>55,388,921.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>REGOLAMENTO PER I FONDI INTERPROFESSIONALI PER LA FORMAZIONE CONTINUA PER LA CONCESSIONI DI AIUTI DI STATO ESENTATI AI SENSI DEL REGOLAMENTO CE N.651/2014 E IN REGIME DE MINIMIS AI SENSI DEL REGOLAMENTO CE N.1407/2013</td>
-<td>2966</td>
-<td>10,643,900.0</td>
-<td>10,441,583.0</td>
+<td>ESONERO DAL VERSAMENTO DEI CONTRIBUTI PREVIDENZIALI PER NUOVE ASSUNZIONI/TRASFORMAZIONI A TEMPO INDETERMINATO NEL BIENNIO 2021 - 2022 (ART. 1 COMMI 10 - 15 L. 178/2020)</td>
+<td>22584</td>
+<td>163,684,963.0</td>
+<td>163,684,963.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
+<td>FONDO DI GARANZIA PER LE PICCOLE E MEDIE IMPRESE</td>
+<td>10841</td>
+<td>1,411,736,729.0</td>
+<td>93,951,428.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>REGOLAMENTO PER I FONDI INTERPROFESSIONALI PER LA FORMAZIONE CONTINUA PER LA CONCESSIONI DI AIUTI DI STATO ESENTATI AI SENSI DEL REGOLAMENTO CE N.651/2014 E IN REGIME DE MINIMIS AI SENSI DEL REGOLAMENTO CE N.1407/2013</td>
+<td>4230</td>
+<td>19,004,008.0</td>
+<td>18,684,426.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>PROGETTI INTEGRATI DI FILIERA 2023-2025</td>
+<td>199</td>
+<td>6,238,490.0</td>
+<td>6,238,490.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>NUOVA SABATINI - FINANZIAMENTI PER L'ACQUISTO DI NUOVI MACCHINARI, IMPIANTI E ATTREZZATURE DA PARTE DELLE PICCOLE E MEDIE IMPRESE - VERSIONE MODIFICATA DA CODICE CE SA.47180</td>
+<td>187</td>
+<td>2,854,290.0</td>
+<td>2,854,290.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>FVG DGR 1987/2022 - CRITERI E MODALIT PER CONCESSIONE DI GARANZIE E CONTRIBUZIONI INTEGRATIVE A FAVORE DELLE IMPRESE COLPITE DALL'AUMENTO DEI PREZZI DEL GAS E DELL'ENERGIA ELETTRICA IN ATTUAZIONE DELL'ART 2, CC 6, 7, 8 E 9, DELLA LR 15/2022</td>
+<td>166</td>
+<td>169,926.0</td>
+<td>93,255.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
 <td>BANDO DIGITAL EXPORT 2024-2025</td>
 <td>152</td>
 <td>2,167,102.0</td>
 <td>2,167,102.0</td>
 </tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>PI ARTIGIANATO</td>
+<td>152</td>
+<td>4,611,403.0</td>
+<td>2,877,409.0</td>
+</tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<td data-quarto-table-cell-role="th">9</td>
+<td>AIUTI AI CENTRI DI TRASFERIMENTO TECNOLOGICO</td>
+<td>148</td>
+<td>3,943,324.0</td>
+<td>2,847,782.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>DIRETTIVA PER LA PRESENTAZIONE DELLE RICHIESTE DI CONTRIBUTO PER L'ADATTAMENTO DEL POSTO DI LAVORO E DI INCENTIVI ALL'ASSUNZIONE DEI DISABILI. DALL'ANNO 2019</td>
+<td>116</td>
+<td>245,852.0</td>
+<td>245,852.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>SCOPERTA IMPRENDITORIALE</td>
+<td>110</td>
+<td>28,175,834.0</td>
+<td>12,459,569.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>INCENTIVI PER L'INTERNAZIONALIZZAZIONE - ANNO 2024</td>
+<td>106</td>
+<td>800,005.0</td>
+<td>800,005.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>APPROVAZIONE AVVISO BANDO DOTE IMPRESA COLLOCAMENTO MIRATO - FONDO 2022</td>
+<td>100</td>
+<td>749,493.0</td>
+<td>749,493.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
 <td>ACADEMY DI FILIERA DEL PIEMONTE, AI SENSI DELLA DIRETTIVA REGIONALE ACADEMY DI FILIERA DEL PIEMONTE PERIODO 2023-2026 DI CUI ALLA D.G.R. N. 5-7231/2023/XI DEL 17/07/2023.</td>
 <td>98</td>
 <td>329,797.0</td>
 <td>329,797.0</td>
 </tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
 <td>BANDO VOUCHER TRANSIZIONE DIGITALE ED ECOLOGICA E PER SISTEMI DI SICUREZZA 2024</td>
 <td>97</td>
 <td>586,960.0</td>
 <td>586,960.0</td>
 </tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>FVG DGR 1987/2022 - CRITERI E MODALIT PER CONCESSIONE DI GARANZIE E CONTRIBUZIONI INTEGRATIVE A FAVORE DELLE IMPRESE COLPITE DALL'AUMENTO DEI PREZZI DEL GAS E DELL'ENERGIA ELETTRICA IN ATTUAZIONE DELL'ART 2, CC 6, 7, 8 E 9, DELLA LR 15/2022</td>
-<td>93</td>
-<td>85,211.0</td>
-<td>40,524.0</td>
-</tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>APPROVAZIONE AVVISO BANDO DOTE IMPRESA COLLOCAMENTO MIRATO - FONDO 2022</td>
+<td data-quarto-table-cell-role="th">16</td>
+<td>PR FESR LIGURIA 2021 - 2027. INTERVENTI DI SOSTEGNO ALLACCESSO AL CREDITO A FAVORE DEL COMPARTO ARTIGIANATO</td>
 <td>84</td>
-<td>609,821.0</td>
-<td>609,821.0</td>
+<td>2,154,258.0</td>
+<td>2,154,258.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
-<td>PNRR, M1C3 INVESTIMENTI 4.2.1; 4.2.2 AVVISO PUBBLICO EX ARTT. 1 E 4 DL 152/2021</td>
-<td>79</td>
-<td>5,176,411.0</td>
-<td>4,636,411.0</td>
+<td data-quarto-table-cell-role="th">17</td>
+<td>AVVISO PUBBLICO ISI 2023</td>
+<td>84</td>
+<td>7,967,853.0</td>
+<td>6,550,255.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
-<td>CREDITO D'ESERCIZIO</td>
-<td>76</td>
-<td>1,699,500.0</td>
-<td>69,876.0</td>
+<td data-quarto-table-cell-role="th">18</td>
+<td>GARANZIE DEI CONFIDI ALLE PMI</td>
+<td>84</td>
+<td>5,952,400.0</td>
+<td>108,620.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>AIUTI AI CENTRI DI TRASFERIMENTO TECNOLOGICO</td>
-<td>76</td>
-<td>1,963,965.0</td>
-<td>1,474,157.0</td>
+<td data-quarto-table-cell-role="th">19</td>
+<td>CREDITO D'ESERCIZIO</td>
+<td>80</td>
+<td>1,775,500.0</td>
+<td>72,914.0</td>
 </tr>
 </tbody>
 </table>
@@ -430,11 +529,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="quali-concedenti-hanno-più-aiuti" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="quali-concedenti-hanno-più-aiuti"><span class="header-section-number">9.3</span> Quali concedenti hanno più aiuti</h2>
-<div id="0a74cca8" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(concedente) CONCEDENTE, count(CAR) CONCESSIONI, </span><span class="ch">\</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="st">  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI </span><span class="ch">\</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 10"</span>).df()</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>purtroppo il nome del concedente è scritto in modi diversi</p>
+<div id="670fd6ce" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(concedente) CONCEDENTE, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 10"</span>).df()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
@@ -452,73 +550,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>BANCA DEL MEZZOGIORNO MEDIOCREDITO CENTRALE S.P.A.</td>
-<td>6350</td>
-<td>800,680,797.0</td>
-<td>54,036,847.0</td>
+<td>INPS</td>
+<td>48861</td>
+<td>219,382,824.0</td>
+<td>219,382,824.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>FONDER</td>
-<td>980</td>
-<td>1,584,995.0</td>
-<td>1,492,773.0</td>
+<td>BANCA DEL MEZZOGIORNO MEDIOCREDITO CENTRALE S.P.A.</td>
+<td>10913</td>
+<td>1,412,038,367.0</td>
+<td>94,253,066.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>FONARCOM</td>
-<td>639</td>
-<td>1,241,677.0</td>
-<td>1,241,677.0</td>
+<td>FONDER</td>
+<td>1075</td>
+<td>1,696,590.0</td>
+<td>1,604,368.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>FONDO FOR.TE</td>
-<td>350</td>
-<td>2,405,081.0</td>
-<td>2,405,081.0</td>
+<td>FONARCOM</td>
+<td>1046</td>
+<td>2,034,550.0</td>
+<td>2,034,550.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>FONDOPROFESSIONI</td>
-<td>224</td>
-<td>109,301.0</td>
-<td>107,726.0</td>
+<td>FONDO FOR.TE</td>
+<td>604</td>
+<td>3,788,200.0</td>
+<td>3,788,200.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
-<td>FONCOOP</td>
-<td>222</td>
-<td>999,709.0</td>
-<td>999,709.0</td>
+<td>MINISTERO DELLE IMPRESE E DEL MADE IN ITALY - DIPARTIMENTO PER LE POLITICHE PER LE IMPRESE - DIREZIONE GENERALE PER GLI INCENTIVI ALLE IMPRESE</td>
+<td>385</td>
+<td>70,233,640.0</td>
+<td>39,848,413.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
-<td>FONDIMPRESA</td>
-<td>213</td>
-<td>2,380,459.0</td>
-<td>2,380,459.0</td>
+<td>FONDO ARTIGIANATO FORMAZIONE</td>
+<td>343</td>
+<td>2,446,972.0</td>
+<td>2,284,967.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
-<td>FONDO ARTIGIANATO FORMAZIONE</td>
-<td>209</td>
-<td>1,525,258.0</td>
-<td>1,433,164.0</td>
+<td>FONDOPROFESSIONI</td>
+<td>330</td>
+<td>159,544.0</td>
+<td>156,394.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
-<td>REGIONE SICILIANA - DIPARTIMENTO ATTIVITA' PRODUTTIVE</td>
-<td>165</td>
-<td>6,171,229.0</td>
-<td>2,548,341.0</td>
+<td>FONDIMPRESA</td>
+<td>284</td>
+<td>5,746,174.0</td>
+<td>5,746,174.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
-<td>UNIONE REGIONALE CAMERE DI COMMERCIO EMILIA-ROMAGNA</td>
-<td>153</td>
-<td>2,171,552.0</td>
-<td>2,171,552.0</td>
+<td>REGIONE SICILIANA - DIPARTIMENTO ATTIVITA' PRODUTTIVE</td>
+<td>252</td>
+<td>8,273,995.0</td>
+<td>4,446,912.0</td>
 </tr>
 </tbody>
 </table>
@@ -529,11 +627,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="gli-aiuti-in-ordine-di-valore-nominale" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="gli-aiuti-in-ordine-di-valore-nominale"><span class="header-section-number">9.4</span> Gli aiuti in ordine di valore nominale €</h2>
-<div id="fa8f9166" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(concedente) CONCEDENTE, count(CAR) CONCESSIONI, </span><span class="ch">\</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="st">  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI </span><span class="ch">\</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 3 desc limit 10"</span>).df()</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="24c13d5e" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(concedente) CONCEDENTE, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 3 desc limit 10"</span>).df()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
@@ -552,72 +648,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
 <td>BANCA DEL MEZZOGIORNO MEDIOCREDITO CENTRALE S.P.A.</td>
-<td>6350</td>
-<td>800,680,797.0</td>
-<td>54,036,847.0</td>
+<td>10913</td>
+<td>1,412,038,367.0</td>
+<td>94,253,066.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>GSE - GESTORE SERVIZI ENERGETICI S.P.A.</td>
-<td>29</td>
-<td>131,688,142.0</td>
-<td>98,390,521.0</td>
+<td>INPS</td>
+<td>48861</td>
+<td>219,382,824.0</td>
+<td>219,382,824.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>MINISTERO DELLE IMPRESE E DEL MADE IN ITALY - DIPARTIMENTO PER LE POLITICHE PER LE IMPRESE - DIREZIONE GENERALE PER GLI INCENTIVI ALLE IMPRESE</td>
-<td>97</td>
-<td>47,530,270.0</td>
-<td>25,847,874.0</td>
+<td>GSE - GESTORE SERVIZI ENERGETICI S.P.A.</td>
+<td>38</td>
+<td>168,846,651.0</td>
+<td>133,940,095.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>INVITALIA - AGENZIA NAZIONALE PER L'ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D'IMPRESA S.P.A.</td>
-<td>120</td>
-<td>38,172,159.0</td>
-<td>25,674,390.0</td>
+<td>MINISTERO DELLE IMPRESE E DEL MADE IN ITALY - DIPARTIMENTO PER LE POLITICHE PER LE IMPRESE - DIREZIONE GENERALE PER GLI INCENTIVI ALLE IMPRESE</td>
+<td>385</td>
+<td>70,233,640.0</td>
+<td>39,848,413.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>AGENZIA NAZIONALE PER L'ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D'IMPRESA SPA - INVITALIA (05678721001)</td>
-<td>87</td>
-<td>7,372,303.0</td>
-<td>6,596,470.0</td>
+<td>INVITALIA - AGENZIA NAZIONALE PER L'ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D'IMPRESA S.P.A.</td>
+<td>195</td>
+<td>63,856,521.0</td>
+<td>49,695,136.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
-<td>GESTORE DEI SERVIZI ENERGETICI GSE S.P.A.</td>
-<td>27</td>
-<td>6,667,403.0</td>
-<td>6,667,403.0</td>
+<td>REGIONE AUTONOMA FRIULI VENEZIA GIULIA - DIREZIONE CENTRALE ATTIVIT PRODUTTIVE</td>
+<td>56</td>
+<td>17,600,542.0</td>
+<td>2,464,260.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
 <td>REGIONE PIEMONTE - DIREZIONE AGRICOLTURA E CIBO</td>
-<td>8</td>
-<td>6,637,701.0</td>
-<td>139,093.0</td>
+<td>16</td>
+<td>13,874,951.0</td>
+<td>283,838.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
-<td>REGIONE SICILIANA - DIPARTIMENTO ATTIVITA' PRODUTTIVE</td>
-<td>165</td>
-<td>6,171,229.0</td>
-<td>2,548,341.0</td>
+<td>INAIL - DIREZIONE CENTRALE PREVENZIONE</td>
+<td>133</td>
+<td>11,715,994.0</td>
+<td>9,457,645.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
-<td>INAIL - DIREZIONE CENTRALE PREVENZIONE</td>
-<td>68</td>
-<td>5,718,239.0</td>
-<td>4,624,871.0</td>
+<td>GSE GESTORE SERVIZI ENERGETICI S.P.A.</td>
+<td>53</td>
+<td>9,630,960.0</td>
+<td>9,630,960.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
-<td>REGIONE EMILIA-ROMAGNA - GIUNTA REGIONALE - DIREZIONE GENERALE AGRICOLTURA, CACCIA E PESCA</td>
-<td>14</td>
-<td>4,936,699.0</td>
-<td>2,666,531.0</td>
+<td>REGIONE SICILIANA - DIPARTIMENTO ATTIVITA' PRODUTTIVE</td>
+<td>252</td>
+<td>8,273,995.0</td>
+<td>4,446,912.0</td>
 </tr>
 </tbody>
 </table>
@@ -628,12 +724,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="valori-raggruppati-per-data" class="level2" data-number="9.5">
 <h2 data-number="9.5" class="anchored" data-anchor-id="valori-raggruppati-per-data"><span class="header-section-number">9.5</span> valori raggruppati per data</h2>
-<div id="5fc12a1c" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT CONCESSIONE, count(CAR) CONCESSIONI, </span><span class="ch">\</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="st">  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI </span><span class="ch">\</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM 'OpenData_Aiuti_2025_01.parquet' </span><span class="ch">\</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">      group by 1 order by 1 desc"</span>).df()</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="79c46faa" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT CONCESSIONE, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 1 desc"</span>).df()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 
@@ -651,108 +744,663 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>2025-01-17</td>
-<td>2889</td>
-<td>275,320,409.0</td>
-<td>20,719,853.0</td>
+<td>2025-01-25</td>
+<td>186</td>
+<td>2,832,591.0</td>
+<td>2,832,591.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>2025-01-16</td>
-<td>508</td>
-<td>26,071,947.0</td>
-<td>16,431,180.0</td>
+<td>2025-01-24</td>
+<td>40561</td>
+<td>549,721,643.0</td>
+<td>255,624,681.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>2025-01-15</td>
-<td>871</td>
-<td>14,170,112.0</td>
-<td>9,071,271.0</td>
+<td>2025-01-23</td>
+<td>12044</td>
+<td>64,630,318.0</td>
+<td>43,899,080.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>2025-01-14</td>
-<td>2680</td>
-<td>314,215,135.0</td>
-<td>42,085,881.0</td>
+<td>2025-01-22</td>
+<td>540</td>
+<td>26,271,526.0</td>
+<td>22,178,599.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>2025-01-13</td>
-<td>403</td>
-<td>87,779,725.0</td>
-<td>73,735,612.0</td>
+<td>2025-01-21</td>
+<td>2713</td>
+<td>331,291,523.0</td>
+<td>37,542,807.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
+<td>2025-01-20</td>
+<td>543</td>
+<td>24,518,724.0</td>
+<td>20,168,543.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2025-01-19</td>
+<td>8</td>
+<td>367,150.0</td>
+<td>352,471.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>2025-01-18</td>
+<td>1</td>
+<td>591.0</td>
+<td>591.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>2025-01-17</td>
+<td>3515</td>
+<td>305,226,163.0</td>
+<td>42,079,939.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>2025-01-16</td>
+<td>613</td>
+<td>33,948,924.0</td>
+<td>20,552,987.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>2025-01-15</td>
+<td>903</td>
+<td>16,130,176.0</td>
+<td>9,901,280.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>2025-01-14</td>
+<td>2706</td>
+<td>314,542,929.0</td>
+<td>43,349,464.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>2025-01-13</td>
+<td>444</td>
+<td>88,150,742.0</td>
+<td>74,013,825.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
 <td>2025-01-11</td>
 <td>28</td>
 <td>1,553,365.0</td>
 <td>1,218,458.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
+<td data-quarto-table-cell-role="th">14</td>
 <td>2025-01-10</td>
-<td>2074</td>
-<td>235,638,184.0</td>
-<td>24,067,169.0</td>
+<td>2082</td>
+<td>235,928,390.0</td>
+<td>24,285,611.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
+<td data-quarto-table-cell-role="th">15</td>
 <td>2025-01-09</td>
-<td>1208</td>
-<td>30,432,328.0</td>
-<td>22,153,770.0</td>
+<td>1217</td>
+<td>30,758,108.0</td>
+<td>22,411,101.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
+<td data-quarto-table-cell-role="th">16</td>
 <td>2025-01-08</td>
-<td>312</td>
-<td>14,017,443.0</td>
-<td>11,590,656.0</td>
+<td>381</td>
+<td>14,875,031.0</td>
+<td>12,448,244.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
+<td data-quarto-table-cell-role="th">17</td>
 <td>2025-01-07</td>
-<td>947</td>
-<td>86,181,374.0</td>
-<td>35,738,012.0</td>
+<td>976</td>
+<td>86,895,547.0</td>
+<td>36,452,185.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">10</td>
+<td data-quarto-table-cell-role="th">18</td>
 <td>2025-01-06</td>
 <td>5</td>
 <td>50,002.0</td>
 <td>50,002.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">11</td>
+<td data-quarto-table-cell-role="th">19</td>
 <td>2025-01-05</td>
 <td>1</td>
 <td>14,493.0</td>
 <td>14,493.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">12</td>
+<td data-quarto-table-cell-role="th">20</td>
 <td>2025-01-04</td>
 <td>23</td>
 <td>520,966.0</td>
 <td>520,966.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">13</td>
+<td data-quarto-table-cell-role="th">21</td>
 <td>2025-01-03</td>
 <td>119</td>
 <td>2,474,278.0</td>
 <td>2,401,855.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">14</td>
+<td data-quarto-table-cell-role="th">22</td>
 <td>2025-01-02</td>
-<td>123</td>
-<td>39,327,816.0</td>
-<td>22,420,685.0</td>
+<td>125</td>
+<td>39,448,178.0</td>
+<td>22,505,294.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="valori-raggruppati-per-regione" class="level3" data-number="9.5.1">
+<h3 data-number="9.5.1" class="anchored" data-anchor-id="valori-raggruppati-per-regione"><span class="header-section-number">9.5.1</span> valori raggruppati per regione</h3>
+<div id="1d4bde72" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(REGIONE) REGIONE, count(CAR), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 3 desc limit 10"</span>).df()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">REGIONE</th>
+<th data-quarto-table-cell-role="th">count(CAR)</th>
+<th data-quarto-table-cell-role="th">sum(CAST(NOMINALE AS INTEGER))</th>
+<th data-quarto-table-cell-role="th">sum(CAST(AIUTO AS INTEGER))</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>LOMBARDIA</td>
+<td>9853</td>
+<td>430,360,558.0</td>
+<td>187,173,043.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>CAMPANIA</td>
+<td>8595</td>
+<td>233,888,452.0</td>
+<td>68,864,122.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>PIEMONTE</td>
+<td>4469</td>
+<td>168,120,965.0</td>
+<td>40,080,617.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>VENETO</td>
+<td>5663</td>
+<td>165,270,224.0</td>
+<td>34,454,747.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>PUGLIA</td>
+<td>5657</td>
+<td>149,024,669.0</td>
+<td>42,437,952.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>LAZIO</td>
+<td>5541</td>
+<td>145,867,747.0</td>
+<td>34,996,171.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>SICILIA</td>
+<td>6996</td>
+<td>140,900,321.0</td>
+<td>41,256,943.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>EMILIA-ROMAGNA</td>
+<td>4330</td>
+<td>129,348,620.0</td>
+<td>41,887,384.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>TOSCANA</td>
+<td>3728</td>
+<td>111,009,852.0</td>
+<td>29,418,797.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>FRIULI-VENEZIA GIULIA</td>
+<td>1682</td>
+<td>85,476,015.0</td>
+<td>47,643,507.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="valori-raggruppati-per-ateco" class="level3" data-number="9.5.2">
+<h3 data-number="9.5.2" class="anchored" data-anchor-id="valori-raggruppati-per-ateco"><span class="header-section-number">9.5.2</span> valori raggruppati per ATECO</h3>
+<div id="b00648d0" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(SETTORE_ATTIVITA) SETTORE_ATTIVITA, count(CAR), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 3 desc limit 10"</span>).df()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">SETTORE_ATTIVITA</th>
+<th data-quarto-table-cell-role="th">count(CAR)</th>
+<th data-quarto-table-cell-role="th">sum(CAST(NOMINALE AS INTEGER))</th>
+<th data-quarto-table-cell-role="th">sum(CAST(AIUTO AS INTEGER))</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>D.35.1</td>
+<td>191</td>
+<td>119,181,366.0</td>
+<td>61,951,260.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>F.41.2</td>
+<td>2422</td>
+<td>99,214,751.0</td>
+<td>16,476,033.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>D.35.2</td>
+<td>24</td>
+<td>89,985,930.0</td>
+<td>85,777,626.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>H.49.4</td>
+<td>1415</td>
+<td>75,521,756.0</td>
+<td>9,866,819.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>F.43.2</td>
+<td>2538</td>
+<td>60,539,930.0</td>
+<td>12,002,881.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>I.56.1</td>
+<td>4019</td>
+<td>60,023,419.0</td>
+<td>18,136,229.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>I.55.1</td>
+<td>853</td>
+<td>55,530,060.0</td>
+<td>13,547,730.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>G.46.4</td>
+<td>1269</td>
+<td>54,155,607.0</td>
+<td>7,686,270.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>L.68.2</td>
+<td>336</td>
+<td>53,094,397.0</td>
+<td>5,056,470.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>G.46.7</td>
+<td>1008</td>
+<td>53,014,690.0</td>
+<td>6,459,020.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="valori-raggruppati-per-strumento" class="level3" data-number="9.5.3">
+<h3 data-number="9.5.3" class="anchored" data-anchor-id="valori-raggruppati-per-strumento"><span class="header-section-number">9.5.3</span> valori raggruppati per strumento</h3>
+<div id="9ec4e1eb" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(DES_STRUMENTO) STRUMENTO, count(CAR), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 10"</span>).df()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">STRUMENTO</th>
+<th data-quarto-table-cell-role="th">count(CAR)</th>
+<th data-quarto-table-cell-role="th">sum(CAST(NOMINALE AS INTEGER))</th>
+<th data-quarto-table-cell-role="th">sum(CAST(AIUTO AS INTEGER))</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>AGEVOLAZIONE FISCALE O ESENZIONE FISCALE</td>
+<td>49072</td>
+<td>224,467,187.0</td>
+<td>223,858,183.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>GARANZIA (SE DEL CASO CON UN RIFERIMENTO ALLA DECISIONE DELLA COMMISSIONE (10))</td>
+<td>11167</td>
+<td>1,428,795,416.0</td>
+<td>95,183,179.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>SOVVENZIONE/CONTRIBUTO IN CONTO INTERESSI</td>
+<td>8509</td>
+<td>328,997,978.0</td>
+<td>252,914,769.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>PRESTITO/ANTICIPO RIMBORSABILE</td>
+<td>347</td>
+<td>77,238,547.0</td>
+<td>16,406,340.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>SCONTO PER PARTECIPAZIONE A INIZIATIVE PROGRAMMATE (CATEGORIA: SOVVENZIONE/CONTRIBUTO IN CONTO INTERESSI)</td>
+<td>199</td>
+<td>6,238,490.0</td>
+<td>6,238,490.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>EROGAZIONE SERVIZI (CATEGORIA: SOVVENZIONE/CONTRIBUTO IN CONTO INTERESSI)</td>
+<td>122</td>
+<td>1,639,360.0</td>
+<td>1,291,019.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>MISURA PER IL FINANZIAMENTO DEL RISCHIO</td>
+<td>68</td>
+<td>5,993,043.0</td>
+<td>4,803,133.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>CONTRIBUTO A FONDO PERDUTO (CATEGORIA: SOVVENZIONE/CONTRIBUTO IN CONTO INTERESSI)</td>
+<td>61</td>
+<td>4,285,471.0</td>
+<td>3,004,116.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>CONTO CAPITALE A FONDO PERDUTO (CATEGORIA: MISURA PER IL FINANZIAMENTO DEL RISCHIO)</td>
+<td>50</td>
+<td>4,665,239.0</td>
+<td>3,748,496.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>SCONTO SUL CANONE DI CONNETTIVIT (CATEGORIA: SOVVENZIONE/CONTRIBUTO IN CONTO INTERESSI)</td>
+<td>39</td>
+<td>60,150.0</td>
+<td>60,150.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="gli-importi-più-grandi" class="level3" data-number="9.5.4">
+<h3 data-number="9.5.4" class="anchored" data-anchor-id="gli-importi-più-grandi"><span class="header-section-number">9.5.4</span> gli importi più grandi</h3>
+<div id="c73ebe1f" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT IMPRESA, REGIONE, CONCEDENTE, MISURA, NOMINALE, AIUTO FROM 'OpenData_Aiuti_2025_01.parquet' order by 5 desc limit 20"</span>).df()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">IMPRESA</th>
+<th data-quarto-table-cell-role="th">REGIONE</th>
+<th data-quarto-table-cell-role="th">CONCEDENTE</th>
+<th data-quarto-table-cell-role="th">MISURA</th>
+<th data-quarto-table-cell-role="th">NOMINALE</th>
+<th data-quarto-table-cell-role="th">AIUTO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>BIOWASTE CH4 LEGNANO S.R.L.</td>
+<td>Lombardia</td>
+<td>GSE - GESTORE SERVIZI ENERGETICI S.P.A.</td>
+<td>Decreto 2 marzo 2018: Promozione delluso del biometano e degli altri biocarburanti avanzati nel settore dei trasporti (GU n.65 del 19/3/2018)</td>
+<td>32,489,271.33</td>
+<td>32,489,271.33</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>ENIBIOCH4IN QUADRUVIUM - S.R.L. SOCIETA' AGRICOLA</td>
+<td>Friuli-Venezia Giulia</td>
+<td>GSE - GESTORE SERVIZI ENERGETICI S.P.A.</td>
+<td>Decreto 2 marzo 2018: Promozione delluso del biometano e degli altri biocarburanti avanzati nel settore dei trasporti (GU n.65 del 19/3/2018)</td>
+<td>27,020,243.99</td>
+<td>27,020,243.99</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>AMBIENTE &amp; RISORSE SRL</td>
+<td>Lombardia</td>
+<td>GSE - GESTORE SERVIZI ENERGETICI S.P.A.</td>
+<td>Decreto 2 marzo 2018: Promozione delluso del biometano e degli altri biocarburanti avanzati nel settore dei trasporti (GU n.65 del 19/3/2018)</td>
+<td>25,720,673.14</td>
+<td>25,720,673.14</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>SOCIETA' AGRICOLA LORENZO S.S. DI ODETTO ALEX E LUCA</td>
+<td>Piemonte</td>
+<td>GSE - GESTORE SERVIZI ENERGETICI S.P.A.</td>
+<td>Incentivazione dell'energia prodotta da impianti a biogas da reflui e materie derivanti dalle aziende agricole realizzatrici</td>
+<td>10,122,866.0</td>
+<td>5,568,880.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>SAN GIORGIO DI CONTI GIORGIO &amp; C. S.S. SOCIETA' AGRICOLA</td>
+<td>Lombardia</td>
+<td>GSE - GESTORE SERVIZI ENERGETICI S.P.A.</td>
+<td>Incentivazione dell'energia prodotta da impianti a biogas da reflui e materie derivanti dalle aziende agricole realizzatrici</td>
+<td>8,859,626.0</td>
+<td>4,873,935.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>AZ.AGRIC. CORTAZZA DI RIBONI GIOVANNI E LUIGI SOCIETA' AGRICOLA S S.</td>
+<td>Lombardia</td>
+<td>GSE - GESTORE SERVIZI ENERGETICI S.P.A.</td>
+<td>Incentivazione dell'energia prodotta da impianti a biogas da reflui e materie derivanti dalle aziende agricole realizzatrici</td>
+<td>8,859,626.0</td>
+<td>4,873,935.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>SOCIETA' AGRICOLA LE GAZZE</td>
+<td>Lombardia</td>
+<td>GSE - GESTORE SERVIZI ENERGETICI S.P.A.</td>
+<td>Incentivazione dell'energia prodotta da impianti a biogas da reflui e materie derivanti dalle aziende agricole realizzatrici</td>
+<td>8,859,626.0</td>
+<td>4,873,935.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>BELLINI ANTONIO E FACCHI ANNA SOCIETA' AGRICOLA S.S.</td>
+<td>Lombardia</td>
+<td>GSE - GESTORE SERVIZI ENERGETICI S.P.A.</td>
+<td>Incentivazione dell'energia prodotta da impianti a biogas da reflui e materie derivanti dalle aziende agricole realizzatrici</td>
+<td>8,859,626.0</td>
+<td>4,873,935.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>SOCIETA' AGRICOLA LANFREDI SOCIETA' SEMPLICE</td>
+<td>Lombardia</td>
+<td>GSE - GESTORE SERVIZI ENERGETICI S.P.A.</td>
+<td>Incentivazione dell'energia prodotta da impianti a biogas da reflui e materie derivanti dalle aziende agricole realizzatrici</td>
+<td>8,859,626.0</td>
+<td>4,775,453.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>SECCAMANI GIOVANNI, CRISTOFORO E ANTONIO SOCIETA' AGRICOLA S.S.</td>
+<td>Lombardia</td>
+<td>GSE - GESTORE SERVIZI ENERGETICI S.P.A.</td>
+<td>Incentivazione dell'energia prodotta da impianti a biogas da reflui e materie derivanti dalle aziende agricole realizzatrici</td>
+<td>8,401,979.0</td>
+<td>4,622,170.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>SCOGLIO DELLA GALEA</td>
+<td>Calabria</td>
+<td>INVITALIA - AGENZIA NAZIONALE PER L'ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D'IMPRESA S.P.A.</td>
+<td>Contratti di sviluppo di cui all'articolo 43 del decreto-legge 25 giugno 2008, n.112, convertito dalla legge 6 agosto 2008, n. 133 (adeguamento GBER e proroga 2026)</td>
+<td>7,100,824.97</td>
+<td>7,100,824.97</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>AZIMUT - BENETTI S.P.A.</td>
+<td>Liguria, Piemonte, Toscana</td>
+<td>MINISTERO DELLE IMPRESE E DEL MADE IN ITALY - DIPARTIMENTO PER LE POLITICHE PER LE IMPRESE - DIREZIONE GENERALE PER GLI INCENTIVI ALLE IMPRESE</td>
+<td>Green New Deal</td>
+<td>6,108,075.0</td>
+<td>871,919.6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>AZIMUT - BENETTI S.P.A.</td>
+<td>Liguria, Piemonte, Toscana</td>
+<td>MINISTERO DELLE IMPRESE E DEL MADE IN ITALY - DIPARTIMENTO PER LE POLITICHE PER LE IMPRESE - DIREZIONE GENERALE PER GLI INCENTIVI ALLE IMPRESE</td>
+<td>Green New Deal</td>
+<td>5,891,925.0</td>
+<td>954,225.64</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>CASEIFICI GRANTERRE</td>
+<td>Emilia-Romagna</td>
+<td>INVITALIA - AGENZIA NAZIONALE PER L'ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D'IMPRESA S.P.A.</td>
+<td>Contratti di sviluppo agroindustriali - 2023</td>
+<td>5,659,164.0</td>
+<td>5,659,164.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>CAMPIDANO AGROZOOTECNICA SOCIETA' AGRICOLA A R.L.</td>
+<td>Sardegna</td>
+<td>GSE - GESTORE SERVIZI ENERGETICI S.P.A.</td>
+<td>Incentivazione dell'energia prodotta da impianti a biogas da reflui e materie derivanti dalle aziende agricole realizzatrici</td>
+<td>5,408,350.0</td>
+<td>3,005,000.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>ERMETIKA S.R.L.</td>
+<td>Puglia</td>
+<td>BANCA DEL MEZZOGIORNO MEDIOCREDITO CENTRALE S.P.A.</td>
+<td>Fondo di garanzia per le piccole e medie imprese</td>
+<td>5,000,000.0</td>
+<td>208,005.41</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>EUROPEAN DEVELOPMENT S.R.L.</td>
+<td>Lazio</td>
+<td>BANCA DEL MEZZOGIORNO MEDIOCREDITO CENTRALE S.P.A.</td>
+<td>Fondo di garanzia per le piccole e medie imprese</td>
+<td>5,000,000.0</td>
+<td>1,549,526.47</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>FITEX BIDCO S.R.L.</td>
+<td>Lombardia</td>
+<td>BANCA DEL MEZZOGIORNO MEDIOCREDITO CENTRALE S.P.A.</td>
+<td>Fondo di garanzia per le piccole e medie imprese</td>
+<td>5,000,000.0</td>
+<td>644,829.11</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>METAN AIR &amp; ELETTROGAS S.R.L.</td>
+<td>Puglia</td>
+<td>BANCA DEL MEZZOGIORNO MEDIOCREDITO CENTRALE S.P.A.</td>
+<td>Fondo di garanzia per le piccole e medie imprese</td>
+<td>4,900,000.0</td>
+<td>1,095,668.51</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>EAST END STUDIOS S.R.L.</td>
+<td>Lombardia</td>
+<td>BANCA DEL MEZZOGIORNO MEDIOCREDITO CENTRALE S.P.A.</td>
+<td>Fondo di garanzia per le piccole e medie imprese</td>
+<td>4,455,648.96</td>
+<td>238,765.01</td>
 </tr>
 </tbody>
 </table>
@@ -762,17 +1410,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 </section>
+</section>
 <section id="analisi-per-concedente" class="level2" data-number="9.6">
 <h2 data-number="9.6" class="anchored" data-anchor-id="analisi-per-concedente"><span class="header-section-number">9.6</span> Analisi per concedente</h2>
-<section id="gli-aiuti-concessi-da-invitalia" class="level3" data-number="9.6.1">
-<h3 data-number="9.6.1" class="anchored" data-anchor-id="gli-aiuti-concessi-da-invitalia"><span class="header-section-number">9.6.1</span> Gli aiuti concessi da Invitalia</h3>
-<div id="ce2764c3" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(misura) MISURA, count(CAR) CONCESSIONI, </span><span class="ch">\</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="st">  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI </span><span class="ch">\</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM 'OpenData_Aiuti_2025_01.parquet' where concedente like '%INVI%' </span><span class="ch">\</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">      group by 1 order by 3 desc limit 10"</span>).df()</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<p>Il nome del concedente viene scritto in modi diversi; non c’ il suo codice fiscale o la sua P.IVA</p>
+<section id="un-esempio-gli-aiuti-concessi-da-invitalia" class="level3" data-number="9.6.1">
+<h3 data-number="9.6.1" class="anchored" data-anchor-id="un-esempio-gli-aiuti-concessi-da-invitalia"><span class="header-section-number">9.6.1</span> Un esempio: gli aiuti concessi da Invitalia</h3>
+<ul>
+<li>INVITALIA - AGENZIA NAZIONALE PER L’ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D’IMPRESA S.P.A.</li>
+<li>AGENZIA NAZIONALE PER L’ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D’IMPRESA SPA - INVITALIA (05678721001)</li>
+</ul>
+<div id="998c60a2" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(misura) MISURA, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' where concedente like '%INVI%' group by 1 order by 3 desc limit 10"</span>).df()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
 <div>
 
 
@@ -796,66 +1447,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
+<td>CONTRATTI DI SVILUPPO DI CUI ALL'ARTICOLO 43 DEL DECRETO-LEGGE 25 GIUGNO 2008, N.112, CONVERTITO DALLA LEGGE 6 AGOSTO 2008, N. 133 (ADEGUAMENTO GBER E PROROGA 2026)</td>
+<td>3</td>
+<td>11,711,081.0</td>
+<td>11,711,081.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>FONDO PER IL SOSTEGNO ALLA TRANSIZIONE INDUSTRIALE</td>
+<td>7</td>
+<td>7,656,088.0</td>
+<td>7,656,088.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>CONTRATTI DI SVILUPPO AGROINDUSTRIALI - 2023</td>
+<td>1</td>
+<td>5,659,164.0</td>
+<td>5,659,164.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
 <td>PNRR, M1C3 INVESTIMENTI 4.2.1; 4.2.2 AVVISO PUBBLICO EX ARTT. 1 E 4 DL 152/2021</td>
 <td>79</td>
 <td>5,176,411.0</td>
 <td>4,636,411.0</td>
 </tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>FONDO PER IL SOSTEGNO ALLA TRANSIZIONE INDUSTRIALE</td>
-<td>4</td>
-<td>3,131,066.0</td>
-<td>3,131,066.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>NIT0 - NUOVE IMPRESE A TASSO ZERO</td>
-<td>21</td>
-<td>2,740,165.0</td>
-<td>1,335,785.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>4:2:5 FONDO ROTATIVO IMPRESE (FRI) PER IL SOSTEGNO ALLE IMPRESE E GLI INVESTIMENTI DI SVILUPPO</td>
-<td>8</td>
-<td>2,195,892.0</td>
-<td>1,960,059.0</td>
-</tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
-<td>RESTO AL SUD</td>
-<td>34</td>
-<td>974,008.0</td>
-<td>958,940.0</td>
+<td>NIT0 - NUOVE IMPRESE A TASSO ZERO</td>
+<td>36</td>
+<td>4,861,633.0</td>
+<td>2,415,521.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
-<td>INTERVENTO AGEVOLATIVO PER LA BREVETTAZIONE E LA VALORIZZAZIONE ECONOMICA DEI BREVETTI A FAVORE DI MICRO PICCOLE E MEDIE IMPRESE</td>
-<td>7</td>
-<td>650,780.0</td>
-<td>520,623.0</td>
+<td>4:2:5 FONDO ROTATIVO IMPRESE (FRI) PER IL SOSTEGNO ALLE IMPRESE E GLI INVESTIMENTI DI SVILUPPO</td>
+<td>10</td>
+<td>2,429,892.0</td>
+<td>2,194,059.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
-<td>SMART&amp;START - RIORDINO DEGLI INTERVENTI DI SOSTEGNO ALLA NASCITA E ALLO SVILUPPO DI START-UP INNOVATIVE IN TUTTO IL TERRITORIO NAZIONALE - VERSIONE MODIFICATA DAL CODICE CE SA.55753</td>
-<td>2</td>
-<td>309,576.0</td>
-<td>204,666.0</td>
+<td>RESTO AL SUD</td>
+<td>56</td>
+<td>1,639,741.0</td>
+<td>1,613,911.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
-<td>FONDO A SOSTEGNO DELLE PICCOLE E MEDIE IMPRESE CREATIVE</td>
-<td>14</td>
-<td>119,120.0</td>
-<td>119,120.0</td>
+<td>MAGGIORAZIONE DEL CONTRIBUTO PER L'ACQUISTO DI VEICOLI DI CATEGORIA M1 DA PARTE DEI TITOLARI DI LICENZE DI TAXI E DI SOGGETTI AUTORIZZATI ALL'ESERCIZIO DEL SERVIZIO DI NOLEGGIO CON CONDUCENTE ("ECOBONUS TAXI")</td>
+<td>29</td>
+<td>963,429.0</td>
+<td>358,000.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
-<td>AGEVOLAZIONI NEL CRATERE SISMICO AQUILANO MISURA II" PROGRAMMI DI INVESTIMENTO FINALIZZATI ALLA VALORIZZAZIONE E COMMERCIALIZZAZIONE DEI PRODOTTI DI ECCELLENZA DEL TERRITORIO"</td>
-<td>2</td>
-<td>13,000.0</td>
-<td>13,000.0</td>
+<td>INTERVENTO AGEVOLATIVO PER LA BREVETTAZIONE E LA VALORIZZAZIONE ECONOMICA DEI BREVETTI A FAVORE DI MICRO PICCOLE E MEDIE IMPRESE</td>
+<td>8</td>
+<td>679,245.0</td>
+<td>543,395.0</td>
 </tr>
 </tbody>
 </table>
@@ -866,13 +1517,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="valori-raggruppati-per-data-1" class="level3" data-number="9.6.2">
 <h3 data-number="9.6.2" class="anchored" data-anchor-id="valori-raggruppati-per-data-1"><span class="header-section-number">9.6.2</span> valori raggruppati per data</h3>
-<div id="d9b686ee" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT CONCESSIONE, count(CAR) CONCESSIONI, </span><span class="ch">\</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">  sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI </span><span class="ch">\</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM 'OpenData_Aiuti_2025_01.parquet' where concedente like '%INVI%' </span><span class="ch">\</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="st">      group by 1 order by 1 desc"</span>).df()</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div id="b13e8e51" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT CONCESSIONE, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' where concedente like '%INVI%' group by 1 order by 1 desc"</span>).df()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 
 
@@ -889,62 +1537,97 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
+<td>2025-01-24</td>
+<td>10</td>
+<td>287,310.0</td>
+<td>282,777.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2025-01-23</td>
+<td>4</td>
+<td>1,808,445.0</td>
+<td>1,699,898.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2025-01-22</td>
+<td>47</td>
+<td>18,047,651.0</td>
+<td>16,968,552.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2025-01-21</td>
+<td>13</td>
+<td>5,512,491.0</td>
+<td>5,046,747.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2025-01-20</td>
+<td>1</td>
+<td>28,465.0</td>
+<td>22,772.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
 <td>2025-01-17</td>
 <td>3</td>
 <td>185,000.0</td>
 <td>72,492.0</td>
 </tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>2025-01-16</td>
-<td>5</td>
-<td>413,664.0</td>
-<td>218,834.0</td>
-</tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<td data-quarto-table-cell-role="th">6</td>
+<td>2025-01-16</td>
+<td>7</td>
+<td>647,664.0</td>
+<td>452,834.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
 <td>2025-01-15</td>
 <td>16</td>
 <td>407,978.0</td>
 <td>401,896.0</td>
 </tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
 <td>2025-01-14</td>
 <td>11</td>
 <td>516,138.0</td>
 <td>383,999.0</td>
 </tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
 <td>2025-01-13</td>
 <td>20</td>
 <td>3,642,972.0</td>
 <td>2,804,801.0</td>
 </tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
 <td>2025-01-10</td>
 <td>20</td>
 <td>631,420.0</td>
 <td>495,439.0</td>
 </tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
 <td>2025-01-09</td>
 <td>2</td>
 <td>309,576.0</td>
 <td>204,666.0</td>
 </tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
 <td>2025-01-08</td>
 <td>14</td>
 <td>4,021,859.0</td>
 <td>3,656,132.0</td>
 </tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
 <td>2025-01-07</td>
 <td>116</td>
 <td>35,415,855.0</td>
