@@ -1,0 +1,12 @@
+{
+  "hash": "e740c62e4e23238c3cb8bac1d708625e",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"I contratti di rete\"\nsubtitle: \"_prova_ \"\ndraft: true\n\ndate: 2025-01-17\ncreated: 2025-01-17\nupdated: 2025-01-17\nlang: it\ntags:\n    - PMI\n    - Python\n\nauthor: \"Paolo Volterra\"\n\nformat:\n  html:\n    toc: true             # Abilita il sommario\n    toc-depth: 3          # Mostra fino al terzo livello di intestazioni\n    number-sections: true # Aggiunge numeri alle sezioni e sottosezioni\n    toc-location: right   # Posiziona il sommario a sinistra (o usa `right` per destra)\n    toc-title: \"Indice\"   # (Facoltativo) Titolo del sommario\n    \n    code-fold: true  # Permette di piegare il codice (opzionale)\n\ncategories:\n  - PDF\n  - AI\n  - Python\n\njupyter: \"python3\"\nexecute:\n  echo: true        # Mostra il codice nei blocchi\n  eval: false       # Non esegue il codice\n\n# 1. quarto preview d:/paolovolterra.github.io/posts/2508_RNA/RNA.qmd\n# 2. quarto render d:/paolovolterra.github.io/posts/2508_RNA/RNA.qmd\n# 3. git add d:/paolovolterra.github.io/docs/posts/2508_RNA/RNA.html\n# 4. git status\n# 5. git add . (se hai rilevato altre modifiche e le voi introitare)\n# 6. git commit -m \"Aggiornata la pagina: RNA\"\n# 7. git pull origin main --rebase\n# 8. git push origin main\n# 9. git log\n---\n\n\n\n\n# [Contratti di Rete](https://www.registroimprese.it/contratti-di-rete)\n![](https://www.registroimprese.it/RegistroImprese-theme/images/ri-logo.jpg)\n\n::: {#4e1ee00d .cell execution_count=1}\n``` {.python .cell-code}\nimport pandas as pd\nimport os\nos.chdir('D:\\\\Zotero\\\\storage\\\\67U4AHBK')\nelenco = pd.read_excel('statistiche.xls', sheet_name='Elenco', dtype='object', parse_dates=['data atto'])\nelenco['data atto'] = pd.to_datetime(elenco['data atto'], format='%Y/%m/%d')\nelenco.head()\n```\n:::\n\n\n",
+    "supporting": [
+      "2511_reti_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

@@ -1,7 +1,15 @@
 project:
   type: website
+  preview:
+    port: 3434
+    browser: true
+    watch-inputs: true
+    timeout: 3600
   output-dir: docs
 
+execute:
+  freeze: auto
+  
 publish:
   branch: main
   message: "Aggiornamento sito generato con Quarto"

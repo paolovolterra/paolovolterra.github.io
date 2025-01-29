@@ -1,0 +1,157 @@
+---
+title: "Difference-in-Differences e Propensity Score Matching"
+subtitle: "_due tecniche comuni di analisi causale_ "
+author: "Paolo Volterra"
+date: 2025-01-26
+created: 2025-01-12
+updated: 2025-01-12
+lang: it
+draft: false                # Pubblica il documento
+jupyter: "python3"          # Specifica il kernel Python
+execute:
+  freeze: true              # Congela l'esecuzione degli script
+tags: [statistica, Python]
+
+format:
+  html:
+    toc: true               # Abilita il sommario
+    toc-depth: 3            # Mostra fino al terzo livello di intestazioni
+    number-sections: true   # Aggiunge numeri alle sezioni e sottosezioni
+    toc-location: right     # Posiziona il sommario a destra
+    toc-title: "Indice"     # Titolo del sommario
+
+categories:
+  - statistica
+  - Python
+---
+
+Il Difference-in-Differences (DiD) e il Propensity Score Matching (PSM) sono due tecniche comuni di analisi causale. 
+
+Puoi combinarle o usarle separatamente per stimare gli effetti di un trattamento.
+
+#DiD e #PSM sono frequentemente utilizzate negli studi sulle imprese per valutare gli effetti causali di interventi o politiche. 
+
+Queste tecniche sono  applicate per isolare l'impatto di specifiche iniziative.
+
+
+## Difference-in-Differences (DiD)
+Il DiD confronta l'andamento dei risultati tra un gruppo trattato e un gruppo di controllo prima e dopo un evento/treatment. I passi principali sono:
+
+- Dividi i dati in gruppi trattati e di controllo.
+- Calcola le differenze nei risultati prima e dopo il trattamento per entrambi i gruppi.
+- La differenza di queste differenze rappresenta l'effetto del trattamento.
+
+## Esempio in Python
+Supponiamo di avere un dataset con le colonne group (trattato/controllo), time (pre/post), e outcome.
+
+
+```{python}
+import pandas as pd
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
+
+# Dataset simulato
+data = pd.DataFrame({
+    'group': [0, 0, 0, 1, 1, 1, 0, 0, 1, 1],
+    'time': [0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+    'outcome': [5, 7, 6, 12, 5, 15, 6, 8, 5, 14]
+})
+
+# Aggiunta interazione trattato-tempo
+data['group_time'] = data['group'] * data['time']
+
+# Regressione DiD
+model = smf.ols('outcome ~ group + time + group_time', data=data).fit()
+print(model.summary())
+
+# Effetto del trattamento
+treatment_effect = model.params['group_time']
+print(f"Effetto stimato del trattamento: {treatment_effect}")
+```
+
+
+## Propensity Score Matching (PSM)
+Il PSM abbina le unità trattate con quelle di controllo che hanno una probabilità simile di ricevere il trattamento, basata su variabili osservabili. È utile per ridurre il bias di selezione.
+
+Esempio in Python
+Supponiamo di avere un dataset con le colonne treatment, outcome, e alcune variabili predittive (X1, X2).
+
+```{python}
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import NearestNeighbors
+
+# Dataset simulato
+data = pd.DataFrame({
+    'treatment': [1, 0, 1, 0, 1, 0, 1, 0],
+    'outcome': [10, 5, 12, 6, 11, 4, 13, 7],
+    'X1': [3, 2, 4, 2, 3, 1, 5, 2],
+    'X2': [7, 6, 8, 5, 7, 4, 9, 5]
+})
+
+# Calcolo del propensity score
+X = data[['X1', 'X2']]
+y = data['treatment']
+logit = LogisticRegression()
+data['propensity_score'] = logit.fit(X, y).predict_proba(X)[:, 1]
+
+# Matching usando i Nearest Neighbors
+treated = data[data['treatment'] == 1]
+control = data[data['treatment'] == 0]
+nn = NearestNeighbors(n_neighbors=1)
+nn.fit(control[['propensity_score']])
+distances, indices = nn.kneighbors(treated[['propensity_score']])
+
+# Creazione del dataset abbinato
+matched_control = control.iloc[indices.flatten()].reset_index(drop=True)
+matched_treated = treated.reset_index(drop=True)
+
+# Unire i dati con suffissi
+matched_data = pd.concat([matched_treated, matched_control], axis=1, keys=["treated", "control"])
+matched_data.columns = [f"{col[0]}_{col[1]}" for col in matched_data.columns]
+
+# Calcolo della differenza negli outcome
+effect = matched_data['treated_outcome'].mean() - matched_data['control_outcome'].mean()
+print(f"Effetto stimato del trattamento: {effect}")
+
+
+```
+
+## cosa significa 6.5?
+
+Quando il codice restituisce un valore come Effetto stimato del trattamento: 6.5, significa che l'effetto medio del trattamento (cioè la differenza media tra il gruppo trattato e il gruppo di controllo in termini di un determinato outcome) è pari a 6.5 unità
+
+In termini pratici:
+
+Il gruppo trattato ha ricevuto un trattamento o intervento specifico.
+Il gruppo di controllo non ha ricevuto il trattamento, ma viene utilizzato come punto di riferimento per capire cosa sarebbe successo al gruppo trattato in assenza del trattamento.
+6.5 indica che, in media:
+
+Il trattamento ha aumentato (o ridotto) l'outcome del gruppo trattato di 6.5 unità rispetto al gruppo di controllo.
+Un esempio pratico
+Supponiamo che tu stia valutando l'effetto di un programma di formazione aziendale sulla produttività dei dipendenti, e l'outcome misurato sia il numero di unità prodotte.
+
+Il gruppo trattato (dipendenti che hanno partecipato al corso) ha una produttività media di 15 unità.
+Il gruppo di controllo (dipendenti che non hanno partecipato) ha una produttività media di 8.5 unità.
+L'effetto stimato del trattamento è: 
+
+15−8.5=6.5
+
+L'intervento ha aumentato la produttività di 6.5 unità, in media.
+
+##Limiti e considerazioni
+- Causalità: L'effetto stimato assume che tutti i bias di selezione e le - differenze osservabili/non osservabili tra i due gruppi siano correttamente - gestiti (ad esempio, con il Propensity Score Matching o un disegno - sperimentale ben fatto).
+- Significatività statistica: È importante verificare se l'effetto stimato è - statisticamente significativo (es. con un test statistico).
+- Unità di misura: Assicurati che il risultato sia chiaro in termini dell'outcome misurato (es. unità prodotte, reddito, vendite, ecc.).
+
+
+## Librerie utili:
+
+- statsmodels: Per la regressione del DiD.
+- sklearn: Per calcolare il propensity score e abbinare i dati.
+- causalinference: Per analisi causali.
+- econml: Per metodi avanzati di stima degli effetti causali.
+
+
+
+
