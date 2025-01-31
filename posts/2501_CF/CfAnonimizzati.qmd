@@ -346,4 +346,199 @@ La combinazione completa (es. “H501” per Roma) è univoca, ma se si consider
 
 Se togliamo la lettera, rimarrebbe solo **501**, che non è più sufficiente per distinguere i comuni.
 
-Siamo al sicuro così? Apparentemente, si!
+
+## L'hash di una parola è sempre lo stesso?
+
+Se una parola non l'abbiamo mai dichiarata in chiaro, l'hash soprebbe essere inattaccabile.
+Ma se da qualche altra parte la parola è stata pubblicata, abbiamo un problema.
+Mi spiego:
+"df37f9bd1129720eb09c8fb2c70201c58612e5546cba99235cba4d6af8072b00" è l'hash SHA-256 univoco di "roSSi" e differisce da tutte le altre eventuali combinazioni:
+
+| Parola | SHA-256 |
+|--------|------------------------------------------------------------------|
+| ROSSI  | c3ae8397a9b549bcb3f59dac761585227ee3ee6320e4719957a844e35a4ff50e |
+| rossi  | 30cc6dd8ef8458e679e13ae3bf3f634cace9810e2eea03318b16e011385f93b8 |
+| RosSi  | 92272e94fa44b8a6eb53d63528b75bf6e7d43f30e2143b2f6523f3c2f94e2b6f |
+| roSSi  | df37f9bd1129720eb09c8fb2c70201c58612e5546cba99609769e57c03d09a58 |
+| ROSSi  | 7e88d9c1e14ea00a4e760122d890854d7a7cfd8c95cb3dd85d48d5c9c2536eaa |
+
+Se non altero  la parola iniziale ad es con maiuscole/minuscole, punteggiatua iniziale/finale, numeri al posto delle lettere, avrò sempre lo stesso hash
+   - L'hash di una parola è sempre lo stesso se uso lo stesso algoritmo e la stessa parola in input
+   - Se cambio anche solo un carattere (anche la maiuscola/minuscola), l'hash cambia completamente 
+
+Se applico una funzione di hash all'intero record (ad esempio `"ROSSI|100|"` e `"ROSSI|200|"`), perdo però la possibilità di fare analisi esplorativa dei dati #EDA sulla prima colonna. Questo perché l'hash trasforma tutto il record in un valore unico e non permette di ricostruire le singole parti.
+
+### Soluzioni possibili
+1. **Hash solo della seconda colonna**  
+   - Mantengola prima colonna in chiaro per l'EDA e applico l'hash solo alle altre colonne
+   - Esempio:
+     ```
+     | Nome  | Valore Hashato |
+     |-------|--------------------------------------------------|
+     | ROSSI | dffb7c5d43b1a469f7d1a93c3d4e72af68d83a5b3f401cd7 |
+     | ROSSI | a2ef4857c9d2c8b67e2f3a5dbf2b6c1d4e8a9e7c3b01f9a2 |
+     ```
+
+2. **Tokenizzazione delle colonne separata**  
+   - Hash ogni colonna separatamente e poi unisci gli hash.  
+   - Ad esempio, invece di hashare `"ROSSI|100|"`, faccio
+     ```python
+     hash1 = hashlib.sha256("ROSSI".encode()).hexdigest()
+     hash2 = hashlib.sha256("100".encode()).hexdigest()
+     record_hash = f"{hash1}|{hash2}"
+     ```
+     Così posso ancora analizzare la distribuzione dei nomi.
+
+3. **Usare una funzione hash reversibile per la prima colonna**  
+   - Se la privacy non è un problema critico, potrei usare una funzione di codifica invece di un hash per la prima colonna (come Base64 o un ID numerico anonimo).
+
+4. **Hash parziale**  
+   - Se voglio anonimizzare ma mantenere qualche analisi, posso troncare l'hash (ad esempio, usare solo i primi 8 caratteri).
+
+Se l'obiettivo è proteggere i dati mantenendo l'analizzabilità, la scelta migliore è hashare solo le colonne sensibili e lasciare le chiavi utili per l'EDA in chiaro.
+
+Es: una tabella con **10 colonne**, ma solo **5 contengono dati sensibili**
+
+La soluzione migliore per mantenere la possibilità di fare #EDA è **hashare solo le colonne critiche** lasciando in chiaro quelle che servono per l'analisi.
+
+### **Soluzione consigliata: Hashare solo le colonne sensibili**
+1. **Mantieni in chiaro le colonne non sensibili**  
+   - Es. **Categoria**, **Data**, **Regione**, **Prodotto**, **Quantità**  
+
+2. **Hasha le colonne sensibili con SHA-256**  
+   - Es. **Nome**, **Codice fiscale**, **Email**, **Telefono**, **Indirizzo**  
+
+3. **Mantener gli hash separati** per ogni colonna invece di fare un hash dell’intero record.  
+   - Così si può ancora fare ricerche e raggruppamenti sulle colonne non sensibili.
+
+
+
+### **Esempio di implementazione in Python**
+```python
+import pandas as pd
+import hashlib
+
+# Simuliamo un dataset con 10 colonne, di cui 5 sensibili
+df = pd.DataFrame({
+    "ID": [1, 2, 3],
+    "Nome": ["Mario Rossi", "Luca Bianchi", "Giulia Verdi"],
+    "Codice Fiscale": ["RSSMRA80A01H501Z", "BNCLCU85B12F205X", "VRDGLI90C20H501Z"],
+    "Email": ["mario@mail.com", "luca@mail.com", "giulia@mail.com"],
+    "Telefono": ["3331234567", "3209876543", "3921112233"],
+    "Indirizzo": ["Via Roma 1", "Piazza Duomo 2", "Viale Marconi 3"],
+    "Categoria": ["A", "B", "A"],
+    "Regione": ["Lombardia", "Lazio", "Toscana"],
+    "Prodotto": ["PC", "Tablet", "Smartphone"],
+    "Quantità": [10, 5, 8]
+})
+
+# Funzione per hashare solo le colonne critiche
+def hash_column(value):
+    return hashlib.sha256(value.encode()).hexdigest() if pd.notna(value) else value
+
+# Colonne critiche da anonimizzare
+columns_to_hash = ["Nome", "Codice Fiscale", "Email", "Telefono", "Indirizzo"]
+
+# Applichiamo l'hashing solo alle colonne sensibili
+for col in columns_to_hash:
+    df[col] = df[col].astype(str).apply(hash_column)
+
+# Mostrare il dataframe anonimo
+import ace_tools as tools
+tools.display_dataframe_to_user(name="Tabella anonimizzata", dataframe=df)
+
+
+### **Vantaggi di questo approccio**
+✅ **EDA è ancora possibile** su **Categoria, Regione, Prodotto, Quantità**  
+✅ **Non si può risalire ai dati originali** senza conoscere i valori iniziali  
+✅ **Raggruppamenti e analisi sono ancora fattibili** sulle colonne in chiaro  
+✅ **Privacy garantita** perché le informazioni sensibili sono criptate  
+
+
+
+### **Se devo anche unire dati tra tabelle (Join)**
+Se devo fare **join tra dataset** e le colonne sensibili sono chiavi, **uso sempre lo stesso algoritmo di hash**, così l’unione sarà ancora possibile.
+
+Ad esempio, se in due tabelle compare la colonna **Codice Fiscale**, hasho sempre nello stesso modo, così posso ancora unirle.
+
+
+Ci sono **diversi modi di fare hashing**, a seconda dell'algoritmo e dell'uso specifico. Ecco una panoramica delle principali categorie e algoritmi:
+
+---
+
+## **1. Funzioni di hash crittografiche** 🔒
+Queste funzioni sono progettate per essere sicure e resistenti alle collisioni.
+
+| Algoritmo  | Output (bit) | Velocità | Sicurezza |
+|------------|-------------|----------|------------|
+| **MD5** | 128 | Veloce 🚀 | Non sicuro ❌ (facili collisioni) |
+| **SHA-1** | 160 | Medio ⚡ | Obsoleto ❌ (collisioni trovate) |
+| **SHA-256** | 256 | Lento ⏳ | Sicuro ✅ |
+| **SHA-512** | 512 | Più lento 🐌 | Molto sicuro ✅✅ |
+| **BLAKE2** | Variabile | Veloce 🚀 | Sicuro ✅ |
+| **SHA-3** | Variabile | Medio ⚡ | Alternativa moderna ✅ |
+
+📌 **Quando usarli?**  
+- **SHA-256 o SHA-512** per anonimizzare dati  
+- **BLAKE2** per efficienza  
+- **MD5/SHA-1** solo per checksum e NON per sicurezza  
+
+---
+
+## **2. Funzioni hash per password** 🔑
+Queste funzioni sono progettate per essere lente e resistenti agli attacchi brute-force.
+
+| Algoritmo  | Caratteristiche |
+|------------|----------------|
+| **bcrypt** | Lento, con salting, usato in sicurezza |
+| **scrypt** | Più resistente a attacchi hardware |
+| **PBKDF2** | Sicuro, ma meno efficiente rispetto a bcrypt/scrypt |
+| **Argon2** | Il più sicuro oggi, vincitore del PHC (Password Hashing Competition) |
+
+📌 **Quando usarli?**  
+- **bcrypt/scrypt** per salvare password  
+- **Argon2** per la massima sicurezza  
+
+---
+
+## **3. Funzioni hash per strutture dati** 🗂️
+Queste funzioni sono usate in database, tabelle hash e strutture dati.
+
+| Algoritmo  | Usi |
+|------------|----------------|
+| **Python `hash()`** | Per dizionari e set, cambia a ogni esecuzione! |
+| **MurmurHash** | Veloce e ottimo per database |
+| **CityHash / FarmHash** | Ottimizzati per grandi dataset |
+| **xxHash** | Molto veloce e leggero |
+
+📌 **Quando usarli?**  
+- **Dizionari e database** per indicizzazione veloce  
+- **Bloom filters** per verifiche rapide  
+
+---
+
+## **4. Hashing non crittografico per compressione** 🔄
+Questi algoritmi sono usati per ridurre il numero di bit mantenendo una distribuzione uniforme.
+
+| Algoritmo | Usi |
+|-----------|----------------|
+| **CRC32** | Controllo errori nei file |
+| **Adler-32** | Veloce, ma meno sicuro |
+| **FNV-1a** | Usato in alcune tabelle hash |
+
+📌 **Quando usarli?**  
+- **Checksum su file** (MD5/SHA-1 sono comunque preferibili)  
+- **Compressione rapida** senza esigenze di sicurezza  
+
+---
+
+### **🛠 Quale usare?**
+- **Per proteggere dati sensibili** → SHA-256, SHA-512, BLAKE2  
+- **Per salvare password** → bcrypt, scrypt, Argon2  
+- **Per strutture dati e database** → MurmurHash, xxHash  
+- **Per verificare integrità file** → CRC32, SHA-1  
+
+
+
+
+
