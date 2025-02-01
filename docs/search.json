@@ -385,158 +385,151 @@
     "text": "immagine"
   },
   {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#obiettivi-dello-studio",
-    "href": "posts/2501_CF/CfAnonimizzati.html#obiettivi-dello-studio",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "0.1 obiettivi dello studio",
-    "text": "0.1 obiettivi dello studio\n\nanonimizzazione di dati\ngestione di immagini in formato base64\n\n\nsi può trasformare il codice fiscale in una forma che non sia immediatamente identificabile da altri, ma decifrabile solo dal titolare (ad esempio, attraverso una chiave o un algoritmo noto…)\n\nCon la pseudonimizzazione a chiave privata, attraverso una di queste soluzioni\n\nHashing con Salt Privato\nCifratura Simmetrica\nSostituzione Parziale\nTokenizzazione\n\nsi può trasformare il codice fiscale in una forma che non è immediatamente identificabile da altri, ma che può essere decifrata dal titolare (ad esempio, attraverso una chiave o un algoritmo noto solo a lui)."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#hashing-con-salt-privato",
-    "href": "posts/2501_CF/CfAnonimizzati.html#hashing-con-salt-privato",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "0.2 Hashing con Salt Privato",
-    "text": "0.2 Hashing con Salt Privato\nL’hashing crea una stringa univoca dal codice fiscale utilizzando un algoritmo crittografico (es. SHA-256). Il salt privato (una stringa univoca aggiunta al dato originale) rende l’hash interpretabile solo dal titolare.\n\nProcedura:\n\nAggiungo un salt univoco noto solo al titolare (es. data di nascita o un valore condiviso).\nApplico l’algoritmo di hashing.\n\n\nimport hashlib\ndef anonimizza_cf(codice_fiscale, salt):        \n    dato = codice_fiscale + salt        \n    hash_object = hashlib.sha256(dato.encode())    \n    return hash_object.hexdigest()"
-  },
-  {
     "objectID": "posts/2501_CF/CfAnonimizzati.html#esempio",
     "href": "posts/2501_CF/CfAnonimizzati.html#esempio",
     "title": "Codici fiscali, GDPR & Python",
-    "section": "0.3 Esempio",
-    "text": "0.3 Esempio\n\ncodice_fiscale = “RSSMRA80A01H501U”\nsalt = “01/01/1980” # Salt privato conosciuto dal titolare\nhash_cf = anonimizza_cf(codice_fiscale, salt)\nPro: Non è possibile risalire al codice fiscale senza il salt.\nContro: Il titolare deve conoscere o avere accesso al salt."
+    "section": "2.1 Esempio",
+    "text": "2.1 Esempio\n\ncodice_fiscale = “RSSMRA80A01H501U”\nsalt = “01/01/1980” # Salt privato conosciuto dal titolare\nhash_cf = anonimizza_cf(codice_fiscale, salt)\nPro: Non è possibile risalire al codice fiscale senza il salt.\nContro: Il titolare deve conoscere o avere accesso al salt."
   },
   {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#cifratura-simmetrica",
-    "href": "posts/2501_CF/CfAnonimizzati.html#cifratura-simmetrica",
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#risultato",
+    "href": "posts/2501_CF/CfAnonimizzati.html#risultato",
     "title": "Codici fiscali, GDPR & Python",
-    "section": "0.4 Cifratura Simmetrica",
-    "text": "0.4 Cifratura Simmetrica\nLa cifratura simmetrica utilizza un algoritmo come AES per codificare il codice fiscale. Il titolare può decifrare il codice con una chiave segreta condivisa.\nProcedura:\n\nScelgo un algoritmo di cifratura (es. AES).\nUso una chiave segreta condivisa (es. una password).\nCripto il codice fiscale\nFornisco il dato criptato al titolare.\nPro: Garantisce riservatezza elevata; solo il titolare con la chiave può decifrare.\nContro: Il titolare deve conservare la chiave.\n\n\nfrom cryptography.fernet import Fernet\n\n# Genera una chiave\nkey = Fernet.generate_key()\n\n# Crea un oggetto Fernet con la chiave generata\ncipher = Fernet(key)\n\n# Codice fiscale da cifrare\ncodice_fiscale = \"RSSMRA80A01H501U\"\n\n# Cifra il codice fiscale\nencrypted_cf = cipher.encrypt(codice_fiscale.encode())\nprint(\"Codice cifrato:\", encrypted_cf)\n\n# Decifra il codice fiscale\ndecrypted_cf = cipher.decrypt(encrypted_cf).decode()\nprint(\"Codice decifrato:\", decrypted_cf)\n\nCodice cifrato: b'gAAAAABnnqruF2_g70eX0_CRj517-rqoIxmr2bq3z-g5sHC6pqEVuOqQiNG7X88hhPAeZQObH7_nJpox4sFSUeY2oAij7bztl-u-L8RGKV1vY2Eb0z-wqps='\nCodice decifrato: RSSMRA80A01H501U\n\n\nRisultato\nEseguendo il codice, otterrai l’output:\nCodice cifrato: una stringa cifrata in base64 (non leggibile direttamente).\nCodice decifrato: il valore originale del codice fiscale (RSSMRA80A01H501U).\nNote importanti:\nGestione della chiave: La chiave generata (key) deve essere conservata in modo sicuro se hai bisogno di decifrare i dati in futuro.\nSicurezza: Non condividere mai la chiave pubblicamente; è fondamentale per mantenere i dati al sicuro."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#sostituzione-parziale",
-    "href": "posts/2501_CF/CfAnonimizzati.html#sostituzione-parziale",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "0.5 Sostituzione Parziale",
-    "text": "0.5 Sostituzione Parziale\nSostituisco parte del codice fiscale con caratteri generici, mantenendo solo alcune informazioni identificative per il titolare.\nEsempio:\n\nCodice fiscale: RSSMRA80A01H501U\nAnonimizzato: RM80__**U\nInterpretazione: Mantieni iniziali e anno di nascita per rendere il codice interpretabile dal titolare.\nPro: Facile da implementare, leggibile dal titolare.\nContro: Non è completamente sicuro contro reidentificazione.\n\n\ndef anonimizza_cf_parziale(codice_fiscale):\n    \"\"\"\n    Funzione per anonimizzare parzialmente un codice fiscale.\n    Mantiene visibili solo i primi 3 caratteri, i caratteri 6 e 7, \n    e gli ultimi 4 caratteri.\n    \"\"\"\n    return f\"{codice_fiscale[:3]}***{codice_fiscale[6:8]}******{codice_fiscale[-4:]}\"\n\n# Codice fiscale da anonimizzare\ncodice_fiscale = \"RSSMRA80A01H501U\"\n\n# Anonimizzazione parziale\ncf_anonimizzato = anonimizza_cf_parziale(codice_fiscale)\nprint(\"Codice Fiscale Anonimizzato:\", cf_anonimizzato)\n\nCodice Fiscale Anonimizzato: RSS***80******501U\n\n\nSpiegazione:\ncodice_fiscale[:3]: Prende i primi 3 caratteri.\ncodice_fiscale[6:8]: Prende i caratteri dalla posizione 6 alla posizione 7 inclusa.\ncodice_fiscale[-4:]: Prende gli ultimi 4 caratteri.\nI caratteri mascherati sono sostituiti da *."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#tokenizzazione",
-    "href": "posts/2501_CF/CfAnonimizzati.html#tokenizzazione",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "0.6 Tokenizzazione",
-    "text": "0.6 Tokenizzazione\n\nSostituisco il codice fiscale con un identificatore univoco casuale (token). Solo il titolare o un sistema può ricondurre il token al codice originale.\nEsempio:\n\nCodice fiscale: RSSMRA80A01H501U\nToken: ABC12345XYZ\nTabella di mapping (conservata separatamente): ABC12345XYZ -&gt; RSSMRA80A01H501U\nPro: Nessun dato sensibile è esposto.\nContro: Richiede un sistema per mantenere il mapping.\n\n\nimport uuid\n\ndef anonimizza_cf_token(codice_fiscale):\n    \"\"\"\n    Funzione per anonimizzare un codice fiscale utilizzando un token UUID.\n    \"\"\"\n    # Genera un token unico (primi 8 caratteri di un UUID)\n    token = str(uuid.uuid4())[:8]\n    \n    # Crea un mapping tra il token e il codice fiscale\n    mapping = {token: codice_fiscale}\n    print(\"Mapping (da salvare):\", mapping)\n    \n    # Ritorna il token\n    return token\n\n# Codice fiscale da anonimizzare\ncodice_fiscale = \"RSSMRA80A01H501U\"\n\n# Anonimizzazione con token\ncf_anonimizzato = anonimizza_cf_token(codice_fiscale)\nprint(\"Codice Fiscale Anonimizzato:\", cf_anonimizzato)\n\nMapping (da salvare): {'4440bbc9': 'RSSMRA80A01H501U'}\nCodice Fiscale Anonimizzato: 4440bbc9\n\n\nDettagli:\nUUID Token: La funzione genera un identificatore unico (uuid.uuid4) e ne utilizza i primi 8 caratteri come token per rappresentare il codice fiscale.\nMapping: Salva il mapping tra il token e il codice fiscale originale. Questo mapping deve essere conservato in modo sicuro (es. database) per consentire una futura deanonimizzazione.\nRitorno: Il token viene restituito come codice anonimo.\nNota Importante\nIl mapping è temporaneo nel codice fornito. Per un'applicazione reale, è essenziale salvare il mapping in un archivio persistente (come un database o un file) per potervi accedere successivamente.\nSicurezza: Considera l'accesso controllato al mapping per prevenire abusi e garantire la privacy degli utenti."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#quale-tecnica-scegliere-per-pubblicare-un-elenco-di-codici-fiscali",
-    "href": "posts/2501_CF/CfAnonimizzati.html#quale-tecnica-scegliere-per-pubblicare-un-elenco-di-codici-fiscali",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "0.7 Quale tecnica scegliere per pubblicare un elenco di codici fiscali??",
-    "text": "0.7 Quale tecnica scegliere per pubblicare un elenco di codici fiscali??\nDipende dal contesto:\n\nPer alta sicurezza: Cifratura simmetrica o hashing con salt.\nPer facilità d’uso: Sostituzione parziale.\nPer sistemi centralizzati: Tokenizzazione.\n\n\nSe il codice fiscale deve essere stampato per il titolare (ad esempio in un report o un documento) occorre considerare contemporaneamente:\n\nl’interpretabilità per il titolare\nla riservatezza\n\nLa Sostituzione Parziale mantiene solo alcune parti identificative del codice fiscale, come le iniziali e un suffisso significativo. Questo metodo è semplice e leggibile (anche dagli altri, però).\nRSS80*__501U\nIl codice fiscale Anonimizzato con Hashing e Salt Privato utilizza l’hashing per creare un codice unico che il titolare può interpretare solo conoscendo il salt.\n\ncodice_fiscale = “RSSMRA80A01H501U”\nsalt = “01/01/1980” # Il salt può essere condiviso solo con il titolare\nCodice Fiscale Anonimizzato: 9F4E8D12\n\nLa Cifratura Simmetrica (Stampabile e Decifrabile Solo dal Titolare) produce un codice stampabile e leggibile, decifrabile solo con la chiave privata.\n\ncodice_fiscale = “RSSMRA80A01H501U”\nCodice Fiscale Anonimizzato: gAAAAABlcO9Z8H\nIl titolare può decifrare l’intero codice fiscale utilizzando la chiave segreta.\n\nLa Tokenizzazione genera un token casuale per anonimizzare il codice fiscale, con un mapping separato conservato nel sistema.\n\ncodice_fiscale = “RSSMRA80A01H501U”\ncf_anonimizzato = anonimizza_cf_token(codice_fiscale)\nprint(“Codice Fiscale Anonimizzato:”, cf_anonimizzato)\n\nOutput:\n\nMapping (da salvare): {‘1a2b3c4d’: ‘RSSMRA80A01H501U’}\nCodice Fiscale Anonimizzato: 1a2b3c4d"
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#conclusione",
-    "href": "posts/2501_CF/CfAnonimizzati.html#conclusione",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "0.8 Conclusione",
-    "text": "0.8 Conclusione\n\nLeggibile direttamente dal titolare: sostituzione parziale o tokenizzazione.\nMaggiore sicurezza: hashing con salt o cifratura simmetrica."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#i-codici-fiscali-delle-imprese-sono-dati-sensibili",
-    "href": "posts/2501_CF/CfAnonimizzati.html#i-codici-fiscali-delle-imprese-sono-dati-sensibili",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "0.9 i codici fiscali delle imprese sono dati sensibili?",
-    "text": "0.9 i codici fiscali delle imprese sono dati sensibili?\nIl codice fiscale di un’impresa è considerato un dato personale, ma non rientra nella categoria dei dati sensibili.\nSecondo il Regolamento Generale sulla Protezione dei Dati (GDPR), i dati personali sono informazioni che identificano o rendono identificabile una persona fisica, come il nome, l’indirizzo o il codice fiscale.\nI dati sensibili, invece, includono informazioni che rivelano l’origine razziale o etnica, le opinioni politiche, le convinzioni religiose o filosofiche, l’appartenenza sindacale, dati genetici, dati biometrici, dati relativi alla salute o alla vita sessuale o all’orientamento sessuale di una persona (Commissione Europea)\nÈ importante notare che il codice fiscale di una ditta individuale, essendo associato a una persona giuridica, non è soggetto alle stesse tutele previste per i dati personali delle persone fisiche.\nTuttavia, l’utilizzo del codice fiscale deve avvenire nel rispetto delle normative vigenti in materia di protezione dei dati."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#come-è-composto-il-codice-fiscale",
-    "href": "posts/2501_CF/CfAnonimizzati.html#come-è-composto-il-codice-fiscale",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "0.10 Come è composto il codice fiscale",
-    "text": "0.10 Come è composto il codice fiscale\nIl codice fiscale italiano è composto da 16 caratteri alfanumerici, che rappresentano una combinazione di lettere e numeri, e viene calcolato sulla base dei dati anagrafici del soggetto. La sua struttura è la seguente:"
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#cognome-3-lettere",
-    "href": "posts/2501_CF/CfAnonimizzati.html#cognome-3-lettere",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "0.11 1. Cognome (3 lettere)",
-    "text": "0.11 1. Cognome (3 lettere)\n\nLe prime tre lettere sono prese dal cognome:\nVengono usate le prime tre consonanti.\nSe il cognome ha meno di tre consonanti, si usano le vocali per arrivare a tre lettere.\nSe il cognome ha meno di tre lettere, si aggiunge la lettera “X”."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#nome-3-lettere",
-    "href": "posts/2501_CF/CfAnonimizzati.html#nome-3-lettere",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "0.12 2. Nome (3 lettere)",
-    "text": "0.12 2. Nome (3 lettere)\n\nLe successive tre lettere derivano dal nome:\nSi prendono le prime tre consonanti.\nSe il nome ha più di tre consonanti, si prendono la prima, la terza e la quarta.\nSe il nome ha meno di tre consonanti, si completano con le vocali.\nAnche in questo caso, se il nome ha meno di tre lettere, si aggiunge la “X”."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#data-di-nascita-e-sesso-6-caratteri",
-    "href": "posts/2501_CF/CfAnonimizzati.html#data-di-nascita-e-sesso-6-caratteri",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "0.13 3. Data di nascita e sesso (6 caratteri)",
-    "text": "0.13 3. Data di nascita e sesso (6 caratteri)\n\nAnno di nascita (2 cifre): le ultime due cifre dell’anno (es. 1990 → 90).\nMese di nascita (1 lettera): ogni mese è rappresentato da una lettera:\nGennaio: A, Febbraio: B, Marzo: C, Aprile: D, Maggio: E, Giugno: H, Luglio: L, Agosto: M, Settembre: P, Ottobre: R, Novembre: S, Dicembre: T.\nGiorno di nascita e sesso (2 cifre):\nPer gli uomini si usa il giorno di nascita (es. 05 → 05).\nPer le donne, al giorno si aggiunge 40 (es. 05 → 45)."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#comune-o-stato-estero-di-nascita-4-caratteri",
-    "href": "posts/2501_CF/CfAnonimizzati.html#comune-o-stato-estero-di-nascita-4-caratteri",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "0.14 4. Comune o Stato estero di nascita (4 caratteri)",
-    "text": "0.14 4. Comune o Stato estero di nascita (4 caratteri)\n\nÈ rappresentato da un codice numerico o alfanumerico, assegnato a ogni comune italiano o stato estero."
-  },
-  {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#carattere-di-controllo-1-carattere",
-    "href": "posts/2501_CF/CfAnonimizzati.html#carattere-di-controllo-1-carattere",
-    "title": "Codici fiscali, GDPR & Python",
-    "section": "0.15 5. Carattere di controllo (1 carattere)",
-    "text": "0.15 5. Carattere di controllo (1 carattere)\n\nL’ultimo carattere è un carattere di controllo, calcolato secondo un algoritmo basato su tutti i caratteri precedenti. Serve a verificare la correttezza del codice fiscale."
+    "section": "3.1 Risultato",
+    "text": "3.1 Risultato\nEseguendo il codice, otterrai l’output:\nCodice cifrato: una stringa cifrata in base64 (non leggibile direttamente).\nCodice decifrato: il valore originale del codice fiscale (RSSMRA80A01H501U).\nNote importanti:\nGestione della chiave: La chiave generata (key) deve essere conservata in modo sicuro se hai bisogno di decifrare i dati in futuro.\nSicurezza: Non condividere mai la chiave pubblicamente; è fondamentale per mantenere i dati al sicuro."
   },
   {
     "objectID": "posts/2501_CF/CfAnonimizzati.html#esempio-1",
     "href": "posts/2501_CF/CfAnonimizzati.html#esempio-1",
     "title": "Codici fiscali, GDPR & Python",
-    "section": "0.16 Esempio",
-    "text": "0.16 Esempio\nUna persona nata il 15 marzo 1990 a Roma, di sesso femminile, con cognome “Rossi” e nome “Maria”:\n\nCognome: ROS → ROS\nNome: MAR → MAR\nAnno di nascita: 90\nMese: C (marzo)\nGiorno e sesso: 55 (15 + 40)\nComune: H501 (Roma)\nCodice di controllo: calcolato come “Z” (esempio).\n\nCodice fiscale: ROSMAR90C55H501Z"
+    "section": "4.1 Esempio:",
+    "text": "4.1 Esempio:\n\nCodice fiscale: RSSMRA80A01H501U\nAnonimizzato: RM80__**U\nInterpretazione: Mantieni iniziali e anno di nascita per rendere il codice interpretabile dal titolare.\nPro: Facile da implementare, leggibile dal titolare.\nContro: Non è completamente sicuro contro reidentificazione.\n\n\ndef anonimizza_cf_parziale(codice_fiscale):\n    \"\"\"\n    Funzione per anonimizzare parzialmente un codice fiscale.\n    Mantiene visibili solo i primi 3 caratteri, i caratteri 6 e 7, \n    e gli ultimi 4 caratteri.\n    \"\"\"\n    return f\"{codice_fiscale[:3]}***{codice_fiscale[6:8]}******{codice_fiscale[-4:]}\"\n\n# Codice fiscale da anonimizzare\ncodice_fiscale = \"RSSMRA80A01H501U\"\n\n# Anonimizzazione parziale\ncf_anonimizzato = anonimizza_cf_parziale(codice_fiscale)\nprint(\"Codice Fiscale Anonimizzato:\", cf_anonimizzato)\n\nCodice Fiscale Anonimizzato: RSS***80******501U\n\n\nSpiegazione:\ncodice_fiscale[:3]: Prende i primi 3 caratteri.\ncodice_fiscale[6:8]: Prende i caratteri dalla posizione 6 alla posizione 7 inclusa.\ncodice_fiscale[-4:]: Prende gli ultimi 4 caratteri.\nI caratteri mascherati sono sostituiti da *."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#esempio-2",
+    "href": "posts/2501_CF/CfAnonimizzati.html#esempio-2",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "5.1 Esempio:",
+    "text": "5.1 Esempio:\n\nCodice fiscale: RSSMRA80A01H501U\nToken: ABC12345XYZ\nTabella di mapping (conservata separatamente): ABC12345XYZ -&gt; RSSMRA80A01H501U\nPro: Nessun dato sensibile è esposto.\nContro: Richiede un sistema per mantenere il mapping.\n\n\nimport uuid\n\ndef anonimizza_cf_token(codice_fiscale):\n    \"\"\"\n    Funzione per anonimizzare un codice fiscale utilizzando un token UUID.\n    \"\"\"\n    # Genera un token unico (primi 8 caratteri di un UUID)\n    token = str(uuid.uuid4())[:8]\n    \n    # Crea un mapping tra il token e il codice fiscale\n    mapping = {token: codice_fiscale}\n    print(\"Mapping (da salvare):\", mapping)\n    \n    # Ritorna il token\n    return token\n\n# Codice fiscale da anonimizzare\ncodice_fiscale = \"RSSMRA80A01H501U\"\n\n# Anonimizzazione con token\ncf_anonimizzato = anonimizza_cf_token(codice_fiscale)\nprint(\"Codice Fiscale Anonimizzato:\", cf_anonimizzato)\n\nMapping (da salvare): {'b7e928b6': 'RSSMRA80A01H501U'}\nCodice Fiscale Anonimizzato: b7e928b6"
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#dettagli",
+    "href": "posts/2501_CF/CfAnonimizzati.html#dettagli",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "5.2 Dettagli:",
+    "text": "5.2 Dettagli:\nUUID Token: La funzione genera un identificatore unico (uuid.uuid4) e ne utilizza i primi 8 caratteri come token per rappresentare il codice fiscale.\nMapping: Salva il mapping tra il token e il codice fiscale originale. Questo mapping deve essere conservato in modo sicuro (es. database) per consentire una futura deanonimizzazione.\nRitorno: Il token viene restituito come codice anonimo.\nNota Importante\nIl mapping è temporaneo nel codice fornito. Per un'applicazione reale, è essenziale salvare il mapping in un archivio persistente (come un database o un file) per potervi accedere successivamente.\nSicurezza: Considera l'accesso controllato al mapping per prevenire abusi e garantire la privacy degli utenti."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#quale-tecnica-scegliere-per-pubblicare-un-elenco-di-codici-fiscali",
+    "href": "posts/2501_CF/CfAnonimizzati.html#quale-tecnica-scegliere-per-pubblicare-un-elenco-di-codici-fiscali",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "5.3 Quale tecnica scegliere per pubblicare un elenco di codici fiscali??",
+    "text": "5.3 Quale tecnica scegliere per pubblicare un elenco di codici fiscali??\nDipende dal contesto:\n\nPer alta sicurezza: Cifratura simmetrica o hashing con salt.\nPer facilità d’uso: Sostituzione parziale.\nPer sistemi centralizzati: Tokenizzazione.\n\n\nSe il codice fiscale deve essere stampato per il titolare (ad esempio in un report o un documento) occorre considerare contemporaneamente:\n\nl’interpretabilità per il titolare\nla riservatezza\n\nLa Sostituzione Parziale mantiene solo alcune parti identificative del codice fiscale, come le iniziali e un suffisso significativo. Questo metodo è semplice e leggibile (anche dagli altri, però).\nRSS80*__501U\nIl codice fiscale Anonimizzato con Hashing e Salt Privato utilizza l’hashing per creare un codice unico che il titolare può interpretare solo conoscendo il salt.\n\ncodice_fiscale = “RSSMRA80A01H501U”\nsalt = “01/01/1980” # Il salt può essere condiviso solo con il titolare\nCodice Fiscale Anonimizzato: 9F4E8D12\n\nLa Cifratura Simmetrica (Stampabile e Decifrabile Solo dal Titolare) produce un codice stampabile e leggibile, decifrabile solo con la chiave privata.\n\ncodice_fiscale = “RSSMRA80A01H501U”\nCodice Fiscale Anonimizzato: gAAAAABlcO9Z8H\nIl titolare può decifrare l’intero codice fiscale utilizzando la chiave segreta.\n\nLa Tokenizzazione genera un token casuale per anonimizzare il codice fiscale, con un mapping separato conservato nel sistema.\n\ncodice_fiscale = “RSSMRA80A01H501U”\ncf_anonimizzato = anonimizza_cf_token(codice_fiscale)\nprint(“Codice Fiscale Anonimizzato:”, cf_anonimizzato)\n\nOutput:\n\nMapping (da salvare): {‘1a2b3c4d’: ‘RSSMRA80A01H501U’}\nCodice Fiscale Anonimizzato: 1a2b3c4d"
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#conclusione",
+    "href": "posts/2501_CF/CfAnonimizzati.html#conclusione",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "5.4 Conclusione",
+    "text": "5.4 Conclusione\n\nLeggibile direttamente dal titolare: sostituzione parziale o tokenizzazione.\nMaggiore sicurezza: hashing con salt o cifratura simmetrica."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#i-codici-fiscali-delle-imprese-sono-dati-sensibili",
+    "href": "posts/2501_CF/CfAnonimizzati.html#i-codici-fiscali-delle-imprese-sono-dati-sensibili",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "5.5 i codici fiscali delle imprese sono dati sensibili?",
+    "text": "5.5 i codici fiscali delle imprese sono dati sensibili?\nIl codice fiscale di un’impresa è considerato un dato personale, ma non rientra nella categoria dei dati sensibili.\nSecondo il Regolamento Generale sulla Protezione dei Dati (GDPR), i dati personali sono informazioni che identificano o rendono identificabile una persona fisica, come il nome, l’indirizzo o il codice fiscale.\nI dati sensibili, invece, includono informazioni che rivelano l’origine razziale o etnica, le opinioni politiche, le convinzioni religiose o filosofiche, l’appartenenza sindacale, dati genetici, dati biometrici, dati relativi alla salute o alla vita sessuale o all’orientamento sessuale di una persona (Commissione Europea)\nÈ importante notare che il codice fiscale di una ditta individuale, essendo associato a una persona giuridica, non è soggetto alle stesse tutele previste per i dati personali delle persone fisiche.\nTuttavia, l’utilizzo del codice fiscale deve avvenire nel rispetto delle normative vigenti in materia di protezione dei dati."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#come-è-composto-il-codice-fiscale",
+    "href": "posts/2501_CF/CfAnonimizzati.html#come-è-composto-il-codice-fiscale",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "5.6 Come è composto il codice fiscale",
+    "text": "5.6 Come è composto il codice fiscale\nIl codice fiscale italiano è composto da 16 caratteri alfanumerici, che rappresentano una combinazione di lettere e numeri, e viene calcolato sulla base dei dati anagrafici del soggetto. La sua struttura è la seguente:"
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#cognome-3-lettere",
+    "href": "posts/2501_CF/CfAnonimizzati.html#cognome-3-lettere",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "5.7 1. Cognome (3 lettere)",
+    "text": "5.7 1. Cognome (3 lettere)\n\nLe prime tre lettere sono prese dal cognome:\nVengono usate le prime tre consonanti.\nSe il cognome ha meno di tre consonanti, si usano le vocali per arrivare a tre lettere.\nSe il cognome ha meno di tre lettere, si aggiunge la lettera “X”."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#nome-3-lettere",
+    "href": "posts/2501_CF/CfAnonimizzati.html#nome-3-lettere",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "5.8 2. Nome (3 lettere)",
+    "text": "5.8 2. Nome (3 lettere)\n\nLe successive tre lettere derivano dal nome:\nSi prendono le prime tre consonanti.\nSe il nome ha più di tre consonanti, si prendono la prima, la terza e la quarta.\nSe il nome ha meno di tre consonanti, si completano con le vocali.\nAnche in questo caso, se il nome ha meno di tre lettere, si aggiunge la “X”."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#data-di-nascita-e-sesso-6-caratteri",
+    "href": "posts/2501_CF/CfAnonimizzati.html#data-di-nascita-e-sesso-6-caratteri",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "5.9 3. Data di nascita e sesso (6 caratteri)",
+    "text": "5.9 3. Data di nascita e sesso (6 caratteri)\n\nAnno di nascita (2 cifre): le ultime due cifre dell’anno (es. 1990 → 90).\nMese di nascita (1 lettera): ogni mese è rappresentato da una lettera:\nGennaio: A, Febbraio: B, Marzo: C, Aprile: D, Maggio: E, Giugno: H, Luglio: L, Agosto: M, Settembre: P, Ottobre: R, Novembre: S, Dicembre: T.\nGiorno di nascita e sesso (2 cifre):\nPer gli uomini si usa il giorno di nascita (es. 05 → 05).\nPer le donne, al giorno si aggiunge 40 (es. 05 → 45)."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#comune-o-stato-estero-di-nascita-4-caratteri",
+    "href": "posts/2501_CF/CfAnonimizzati.html#comune-o-stato-estero-di-nascita-4-caratteri",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "5.10 4. Comune o Stato estero di nascita (4 caratteri)",
+    "text": "5.10 4. Comune o Stato estero di nascita (4 caratteri)\n\nÈ rappresentato da un codice numerico o alfanumerico, assegnato a ogni comune italiano o stato estero."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#carattere-di-controllo-1-carattere",
+    "href": "posts/2501_CF/CfAnonimizzati.html#carattere-di-controllo-1-carattere",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "5.11 5. Carattere di controllo (1 carattere)",
+    "text": "5.11 5. Carattere di controllo (1 carattere)\n\nL’ultimo carattere è un carattere di controllo, calcolato secondo un algoritmo basato su tutti i caratteri precedenti. Serve a verificare la correttezza del codice fiscale."
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#esempio-3",
+    "href": "posts/2501_CF/CfAnonimizzati.html#esempio-3",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "5.12 Esempio",
+    "text": "5.12 Esempio\nUna persona nata il 15 marzo 1990 a Roma, di sesso femminile, con cognome “Rossi” e nome “Maria”:\n\nCognome: ROS → ROS\nNome: MAR → MAR\nAnno di nascita: 90\nMese: C (marzo)\nGiorno e sesso: 55 (15 + 40)\nComune: H501 (Roma)\nCodice di controllo: calcolato come “Z” (esempio).\n\nCodice fiscale: ROSMAR90C55H501Z"
   },
   {
     "objectID": "posts/2501_CF/CfAnonimizzati.html#la-pseudoanomizzazione-di-rm501z",
     "href": "posts/2501_CF/CfAnonimizzati.html#la-pseudoanomizzazione-di-rm501z",
     "title": "Codici fiscali, GDPR & Python",
-    "section": "0.17 La pseudoanomizzazione di R**M********501Z",
-    "text": "0.17 La pseudoanomizzazione di R**M********501Z\nIl punto 4 è una parte “delicata”: i codici dei comuni sono univoci; non sono univoci se si rimuove la lettera iniziale e si considerano solo le cifre.\nI codici dei comuni italiani sono composti da una lettera (che identifica la provincia) seguita da un numero a tre cifre (che identifica il comune all’interno della provincia).\nIl codice fiscale contiene il codice catastale (noto anche come codice Belfiore) del luogo di nascita\nLa combinazione completa (es. “H501” per Roma) è univoca, ma se si considera solo la parte numerica (es. “501”), ci potrebbero essere più comuni con lo stesso numero in province diverse:\n\nRoma ha il codice H501.\nTorino ha il codice L501.\n\nSe togliamo la lettera, rimarrebbe solo 501, che non è più sufficiente per distinguere i comuni."
+    "section": "5.13 La pseudoanomizzazione di R**M********501Z",
+    "text": "5.13 La pseudoanomizzazione di R**M********501Z\nIl punto 4 è una parte “delicata”: i codici dei comuni sono univoci; non sono univoci se si rimuove la lettera iniziale e si considerano solo le cifre.\nI codici dei comuni italiani sono composti da una lettera (che identifica la provincia) seguita da un numero a tre cifre (che identifica il comune all’interno della provincia).\nIl codice fiscale contiene il codice catastale (noto anche come codice Belfiore) del luogo di nascita\nLa combinazione completa (es. “H501” per Roma) è univoca, ma se si considera solo la parte numerica (es. “501”), ci potrebbero essere più comuni con lo stesso numero in province diverse:\n\nRoma ha il codice H501.\nTorino ha il codice L501.\n\nSe togliamo la lettera, rimarrebbe solo 501, che non è più sufficiente per distinguere i comuni."
   },
   {
     "objectID": "posts/2501_CF/CfAnonimizzati.html#lhash-di-una-parola-è-sempre-lo-stesso",
     "href": "posts/2501_CF/CfAnonimizzati.html#lhash-di-una-parola-è-sempre-lo-stesso",
     "title": "Codici fiscali, GDPR & Python",
-    "section": "0.18 L’hash di una parola è sempre lo stesso?",
-    "text": "0.18 L’hash di una parola è sempre lo stesso?\nSe una parola non l’abbiamo mai dichiarata in chiaro, l’hash soprebbe essere inattaccabile. Ma se da qualche altra parte la parola è stata pubblicata, abbiamo un problema. Mi spiego: “df37f9bd1129720eb09c8fb2c70201c58612e5546cba99235cba4d6af8072b00” è l’hash SHA-256 univoco di “roSSi” e differisce da tutte le altre eventuali combinazioni:\n\n\n\n\n\n\n\nParola\nSHA-256\n\n\n\n\nROSSI\nc3ae8397a9b549bcb3f59dac761585227ee3ee6320e4719957a844e35a4ff50e\n\n\nrossi\n30cc6dd8ef8458e679e13ae3bf3f634cace9810e2eea03318b16e011385f93b8\n\n\nRosSi\n92272e94fa44b8a6eb53d63528b75bf6e7d43f30e2143b2f6523f3c2f94e2b6f\n\n\nroSSi\ndf37f9bd1129720eb09c8fb2c70201c58612e5546cba99609769e57c03d09a58\n\n\nROSSi\n7e88d9c1e14ea00a4e760122d890854d7a7cfd8c95cb3dd85d48d5c9c2536eaa\n\n\n\nSe non altero la parola iniziale ad es con maiuscole/minuscole, punteggiatua iniziale/finale, numeri al posto delle lettere, avrò sempre lo stesso hash - L’hash di una parola è sempre lo stesso se uso lo stesso algoritmo e la stessa parola in input - Se cambio anche solo un carattere (anche la maiuscola/minuscola), l’hash cambia completamente\nSe applico una funzione di hash all’intero record (ad esempio \"ROSSI|100|\" e \"ROSSI|200|\"), perdo però la possibilità di fare analisi esplorativa dei dati #EDA sulla prima colonna. Questo perché l’hash trasforma tutto il record in un valore unico e non permette di ricostruire le singole parti.\n\n0.18.1 Soluzioni possibili\n\nHash solo della seconda colonna\n\nMantengola prima colonna in chiaro per l’EDA e applico l’hash solo alle altre colonne\nEsempio:\n| Nome  | Valore Hashato |\n|-------|--------------------------------------------------|\n| ROSSI | dffb7c5d43b1a469f7d1a93c3d4e72af68d83a5b3f401cd7 |\n| ROSSI | a2ef4857c9d2c8b67e2f3a5dbf2b6c1d4e8a9e7c3b01f9a2 |\n\nTokenizzazione delle colonne separata\n\nHash ogni colonna separatamente e poi unisci gli hash.\n\nAd esempio, invece di hashare \"ROSSI|100|\", faccio\nhash1 = hashlib.sha256(\"ROSSI\".encode()).hexdigest()\nhash2 = hashlib.sha256(\"100\".encode()).hexdigest()\nrecord_hash = f\"{hash1}|{hash2}\"\nCosì posso ancora analizzare la distribuzione dei nomi.\n\nUsare una funzione hash reversibile per la prima colonna\n\nSe la privacy non è un problema critico, potrei usare una funzione di codifica invece di un hash per la prima colonna (come Base64 o un ID numerico anonimo).\n\nHash parziale\n\nSe voglio anonimizzare ma mantenere qualche analisi, posso troncare l’hash (ad esempio, usare solo i primi 8 caratteri).\n\n\nSe l’obiettivo è proteggere i dati mantenendo l’analizzabilità, la scelta migliore è hashare solo le colonne sensibili e lasciare le chiavi utili per l’EDA in chiaro.\nEs: una tabella con 10 colonne, ma solo 5 contengono dati sensibili\nLa soluzione migliore per mantenere la possibilità di fare #EDA è hashare solo le colonne critiche lasciando in chiaro quelle che servono per l’analisi.\n\n\n0.18.2 Soluzione consigliata: Hashare solo le colonne sensibili\n\nMantieni in chiaro le colonne non sensibili\n\nEs. Categoria, Data, Regione, Prodotto, Quantità\n\nHasha le colonne sensibili con SHA-256\n\nEs. Nome, Codice fiscale, Email, Telefono, Indirizzo\n\nMantener gli hash separati per ogni colonna invece di fare un hash dell’intero record.\n\nCosì si può ancora fare ricerche e raggruppamenti sulle colonne non sensibili.\n\n\n\n\n0.18.3 Esempio di implementazione in Python\n```python import pandas as pd import hashlib"
+    "section": "5.14 L’hash di una parola è sempre lo stesso?",
+    "text": "5.14 L’hash di una parola è sempre lo stesso?\nSe una parola non l’abbiamo mai dichiarata in chiaro, l’hash soprebbe essere inattaccabile. Ma se da qualche altra parte la parola è stata pubblicata, abbiamo un problema. Mi spiego: “df37f9bd1129720eb09c8fb2c70201c58612e5546cba99235cba4d6af8072b00” è l’hash SHA-256 univoco di “roSSi” e differisce da tutte le altre eventuali combinazioni:\n\n\n\n\n\n\n\nParola\nSHA-256\n\n\n\n\nROSSI\nc3ae8397a9b549bcb3f59dac761585227ee3ee6320e4719957a844e35a4ff50e\n\n\nrossi\n30cc6dd8ef8458e679e13ae3bf3f634cace9810e2eea03318b16e011385f93b8\n\n\nRosSi\n92272e94fa44b8a6eb53d63528b75bf6e7d43f30e2143b2f6523f3c2f94e2b6f\n\n\nroSSi\ndf37f9bd1129720eb09c8fb2c70201c58612e5546cba99609769e57c03d09a58\n\n\nROSSi\n7e88d9c1e14ea00a4e760122d890854d7a7cfd8c95cb3dd85d48d5c9c2536eaa\n\n\n\nSe non altero la parola iniziale ad es con maiuscole/minuscole, punteggiatua iniziale/finale, numeri al posto delle lettere, avrò sempre lo stesso hash - L’hash di una parola è sempre lo stesso se uso lo stesso algoritmo e la stessa parola in input - Se cambio anche solo un carattere (anche la maiuscola/minuscola), l’hash cambia completamente\nSe applico una funzione di hash all’intero record (ad esempio \"ROSSI|100|\" e \"ROSSI|200|\"), perdo però la possibilità di fare analisi esplorativa dei dati #EDA sulla prima colonna. Questo perché l’hash trasforma tutto il record in un valore unico e non permette di ricostruire le singole parti.\n\n5.14.1 Soluzioni possibili\n\nHash solo della seconda colonna\n\nMantengola prima colonna in chiaro per l’EDA e applico l’hash solo alle altre colonne\nEsempio:\n| Nome  | Valore Hashato |\n|-------|--------------------------------------------------|\n| ROSSI | dffb7c5d43b1a469f7d1a93c3d4e72af68d83a5b3f401cd7 |\n| ROSSI | a2ef4857c9d2c8b67e2f3a5dbf2b6c1d4e8a9e7c3b01f9a2 |\n\nTokenizzazione delle colonne separata\n\nHash ogni colonna separatamente e poi unisci gli hash.\n\nAd esempio, invece di hashare \"ROSSI|100|\", faccio\nhash1 = hashlib.sha256(\"ROSSI\".encode()).hexdigest()\nhash2 = hashlib.sha256(\"100\".encode()).hexdigest()\nrecord_hash = f\"{hash1}|{hash2}\"\nCosì posso ancora analizzare la distribuzione dei nomi.\n\nUsare una funzione hash reversibile per la prima colonna\n\nSe la privacy non è un problema critico, potrei usare una funzione di codifica invece di un hash per la prima colonna (come Base64 o un ID numerico anonimo).\n\nHash parziale\n\nSe voglio anonimizzare ma mantenere qualche analisi, posso troncare l’hash (ad esempio, usare solo i primi 8 caratteri).\n\n\nSe l’obiettivo è proteggere i dati mantenendo l’analizzabilità, la scelta migliore è hashare solo le colonne sensibili e lasciare le chiavi utili per l’EDA in chiaro.\nEs: una tabella con 10 colonne, ma solo 5 contengono dati sensibili\nLa soluzione migliore per mantenere la possibilità di fare #EDA è hashare solo le colonne critiche lasciando in chiaro quelle che servono per l’analisi.\n\n\n5.14.2 Soluzione consigliata: Hashare solo le colonne sensibili\n\nMantieni in chiaro le colonne non sensibili\n\nEs. Categoria, Data, Regione, Prodotto, Quantità\n\nHasha le colonne sensibili con SHA-256\n\nEs. Nome, Codice fiscale, Email, Telefono, Indirizzo\n\nMantener gli hash separati per ogni colonna invece di fare un hash dell’intero record.\n\nCosì si può ancora fare ricerche e raggruppamenti sulle colonne non sensibili.\n\n\n\n\n5.14.3 Esempio di implementazione in Python\nimport pandas as pd\nimport hashlib\n\n# Simuliamo un dataset con 10 colonne, di cui 5 sensibili\n\ndf = pd.DataFrame({\n    \"ID\": [1, 2, 3],\n    \"Nome\": [\"Mario Rossi\", \"Luca Bianchi\", \"Giulia Verdi\"],\n    \"Codice Fiscale\": [\"RSSMRA80A01H501Z\", \"BNCLCU85B12F205X\", \"VRDGLI90C20H501Z\"],\n    \"Email\": [\"mario@mail.com\", \"luca@mail.com\", \"giulia@mail.com\"],\n    \"Telefono\": [\"3331234567\", \"3209876543\", \"3921112233\"],\n    \"Indirizzo\": [\"Via Roma 1\", \"Piazza Duomo 2\", \"Viale Marconi 3\"],\n    \"Categoria\": [\"A\", \"B\", \"A\"],\n    \"Regione\": [\"Lombardia\", \"Lazio\", \"Toscana\"],\n    \"Prodotto\": [\"PC\", \"Tablet\", \"Smartphone\"],\n    \"Quantità\": [10, 5, 8]\n})\n\n\n# Funzione per hashare solo le colonne critiche\ndef hash_column(value):\n    return hashlib.sha256(value.encode()).hexdigest() if pd.notna(value) else value\n\n# Colonne critiche da anonimizzare\ncolumns_to_hash = [\"Nome\", \"Codice Fiscale\", \"Email\", \"Telefono\", \"Indirizzo\"]\n\n# Applichiamo l'hashing solo alle colonne sensibili\nfor col in columns_to_hash:\n    df[col] = df[col].astype(str).apply(hash_column)\n\n# Mostrare il dataframe anonimo\nimport ace_tools as tools\ntools.display_dataframe_to_user(name=\"Tabella anonimizzata\", dataframe=df)\n\n\n5.14.4 Vantaggi di questo approccio\n✅ EDA è ancora possibile su Categoria, Regione, Prodotto, Quantità\n✅ Non si può risalire ai dati originali senza conoscere i valori iniziali\n✅ Raggruppamenti e analisi sono ancora fattibili sulle colonne in chiaro\n✅ Privacy garantita perché le informazioni sensibili sono criptate\n\n\n5.14.5 Se devo anche unire dati tra tabelle (Join)\nSe devo fare join tra dataset e le colonne sensibili sono chiavi, uso sempre lo stesso algoritmo di hash, così l’unione sarà ancora possibile.\nAd esempio, se in due tabelle compare la colonna Codice Fiscale, hasho sempre nello stesso modo, così posso ancora unirle.\nCi sono diversi modi di fare hashing, a seconda dell’algoritmo e dell’uso specifico. Ecco una panoramica delle principali categorie e algoritmi:"
   },
   {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#funzioni-di-hash-crittografiche",
-    "href": "posts/2501_CF/CfAnonimizzati.html#funzioni-di-hash-crittografiche",
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#quando-usarli",
+    "href": "posts/2501_CF/CfAnonimizzati.html#quando-usarli",
     "title": "Codici fiscali, GDPR & Python",
-    "section": "5.1 1. Funzioni di hash crittografiche 🔒",
-    "text": "5.1 1. Funzioni di hash crittografiche 🔒\nQueste funzioni sono progettate per essere sicure e resistenti alle collisioni.\n\n\n\nAlgoritmo\nOutput (bit)\nVelocità\nSicurezza\n\n\n\n\nMD5\n128\nVeloce 🚀\nNon sicuro ❌ (facili collisioni)\n\n\nSHA-1\n160\nMedio ⚡\nObsoleto ❌ (collisioni trovate)\n\n\nSHA-256\n256\nLento ⏳\nSicuro ✅\n\n\nSHA-512\n512\nPiù lento 🐌\nMolto sicuro ✅✅\n\n\nBLAKE2\nVariabile\nVeloce 🚀\nSicuro ✅\n\n\nSHA-3\nVariabile\nMedio ⚡\nAlternativa moderna ✅\n\n\n\n📌 Quando usarli?\n- SHA-256 o SHA-512 per anonimizzare dati\n- BLAKE2 per efficienza\n- MD5/SHA-1 solo per checksum e NON per sicurezza"
+    "section": "6.1 📌 Quando usarli?",
+    "text": "6.1 📌 Quando usarli?\n\nSHA-256 o SHA-512 per anonimizzare dati\n\nBLAKE2 per efficienza\n\nMD5/SHA-1 solo per checksum e NON per sicurezza"
   },
   {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#funzioni-hash-per-password",
-    "href": "posts/2501_CF/CfAnonimizzati.html#funzioni-hash-per-password",
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#quando-usarli-1",
+    "href": "posts/2501_CF/CfAnonimizzati.html#quando-usarli-1",
     "title": "Codici fiscali, GDPR & Python",
-    "section": "5.2 2. Funzioni hash per password 🔑",
-    "text": "5.2 2. Funzioni hash per password 🔑\nQueste funzioni sono progettate per essere lente e resistenti agli attacchi brute-force.\n\n\n\n\n\n\n\nAlgoritmo\nCaratteristiche\n\n\n\n\nbcrypt\nLento, con salting, usato in sicurezza\n\n\nscrypt\nPiù resistente a attacchi hardware\n\n\nPBKDF2\nSicuro, ma meno efficiente rispetto a bcrypt/scrypt\n\n\nArgon2\nIl più sicuro oggi, vincitore del PHC (Password Hashing Competition)\n\n\n\n📌 Quando usarli?\n- bcrypt/scrypt per salvare password\n- Argon2 per la massima sicurezza"
+    "section": "7.1 📌 Quando usarli?",
+    "text": "7.1 📌 Quando usarli?\n\nbcrypt/scrypt per salvare password\n\nArgon2 per la massima sicurezza"
   },
   {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#funzioni-hash-per-strutture-dati",
-    "href": "posts/2501_CF/CfAnonimizzati.html#funzioni-hash-per-strutture-dati",
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#quando-usarli-2",
+    "href": "posts/2501_CF/CfAnonimizzati.html#quando-usarli-2",
     "title": "Codici fiscali, GDPR & Python",
-    "section": "5.3 3. Funzioni hash per strutture dati 🗂️",
-    "text": "5.3 3. Funzioni hash per strutture dati 🗂️\nQueste funzioni sono usate in database, tabelle hash e strutture dati.\n\n\n\nAlgoritmo\nUsi\n\n\n\n\nPython hash()\nPer dizionari e set, cambia a ogni esecuzione!\n\n\nMurmurHash\nVeloce e ottimo per database\n\n\nCityHash / FarmHash\nOttimizzati per grandi dataset\n\n\nxxHash\nMolto veloce e leggero\n\n\n\n📌 Quando usarli?\n- Dizionari e database per indicizzazione veloce\n- Bloom filters per verifiche rapide"
+    "section": "8.1 📌 Quando usarli?",
+    "text": "8.1 📌 Quando usarli?\n\nDizionari e database per indicizzazione veloce\n\nBloom filters per verifiche rapide"
   },
   {
-    "objectID": "posts/2501_CF/CfAnonimizzati.html#hashing-non-crittografico-per-compressione",
-    "href": "posts/2501_CF/CfAnonimizzati.html#hashing-non-crittografico-per-compressione",
+    "objectID": "posts/2501_CF/CfAnonimizzati.html#quando-usarli-3",
+    "href": "posts/2501_CF/CfAnonimizzati.html#quando-usarli-3",
     "title": "Codici fiscali, GDPR & Python",
-    "section": "5.4 4. Hashing non crittografico per compressione 🔄",
-    "text": "5.4 4. Hashing non crittografico per compressione 🔄\nQuesti algoritmi sono usati per ridurre il numero di bit mantenendo una distribuzione uniforme.\n\n\n\nAlgoritmo\nUsi\n\n\n\n\nCRC32\nControllo errori nei file\n\n\nAdler-32\nVeloce, ma meno sicuro\n\n\nFNV-1a\nUsato in alcune tabelle hash\n\n\n\n📌 Quando usarli?\n- Checksum su file (MD5/SHA-1 sono comunque preferibili)\n- Compressione rapida senza esigenze di sicurezza\n\n\n5.4.1 🛠 Quale usare?\n\nPer proteggere dati sensibili → SHA-256, SHA-512, BLAKE2\n\nPer salvare password → bcrypt, scrypt, Argon2\n\nPer strutture dati e database → MurmurHash, xxHash\n\nPer verificare integrità file → CRC32, SHA-1"
+    "section": "9.1 📌 Quando usarli?",
+    "text": "9.1 📌 Quando usarli?\n\nChecksum su file (MD5/SHA-1 sono comunque preferibili)\n\nCompressione rapida senza esigenze di sicurezza"
   },
   {
     "objectID": "posts/2504_FTI/FTI.html",
@@ -634,7 +627,7 @@
     "href": "posts/2508_RNA/RNA.html#quali-misure-hanno-più-aiuti",
     "title": "Registro Nazionale degli Aiuti di Stato",
     "section": "9.2 Quali misure hanno più aiuti",
-    "text": "9.2 Quali misure hanno più aiuti\n\ndf = con.execute(\"SELECT upper(misura) MISURA, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 20\").df()\ndf\n\n\n\n\n\n\n\n\nMISURA\nCONCESSIONI\nNOMINALE\nAIUTI\n\n\n\n\n0\nESONERO DAL VERSAMENTO DEI CONTRIBUTI PREVIDENZIALI PER NUOVE ASSUNZIONI/TRASFORMAZIONI A TEMPO INDETERMINATO NEL BIENNIO 2021 - 2022 (ART. 1 COMMI 10 - 15 L. 178/2020)\n118427\n881,173,792.0\n881,173,792.0\n\n\n1\nESONERO DAL VERSAMENTO DEI CONTRIBUTI PREVIDENZIALI PER L'ASSUNZIONE DI GIOVANI LAVORATORI ( ART. 1 COMMA 10-15 L. 178/2020 - ART. 1 COMMA 297 L. 197/2022)\n75758\n393,090,967.0\n393,090,967.0\n\n\n2\nESONERO DAL VERSAMENTO DEI CONTRIBUTI PREVIDENZIALI PER ASSUNZIONI DI DONNE LAVORATRICI DAL 1 LUGLIO 2022 ( ART. 1 , COMMI 16-19 L.178/2020 -ART. 1 COMMA 298 L.197/2022)\n33952\n97,152,474.0\n97,152,474.0\n\n\n3\nESONERO DAL VERSAMENTO DEI CONTRIBUTI PREVIDENZIALI PER ASSUNZIONI DI DONNE LAVORATRICI NEL BIENNIO 2021 - 2022 (ART. 1 COMMI 16 - 19 L. 178/2020)\n26226\n55,388,921.0\n55,388,921.0\n\n\n4\nFONDO DI GARANZIA PER LE PICCOLE E MEDIE IMPRESE\n14840\n1,936,694,115.0\n127,643,013.0\n\n\n5\nREGOLAMENTO PER I FONDI INTERPROFESSIONALI PER LA FORMAZIONE CONTINUA PER LA CONCESSIONI DI AIUTI DI STATO ESENTATI AI SENSI DEL REGOLAMENTO CE N.651/2014 E IN REGIME DE MINIMIS AI SENSI DEL REGOLAMENTO CE N.1407/2013\n6056\n30,848,386.0\n30,437,253.0\n\n\n6\nNUOVA SABATINI - FINANZIAMENTI PER L'ACQUISTO DI NUOVI MACCHINARI, IMPIANTI E ATTREZZATURE DA PARTE DELLE PICCOLE E MEDIE IMPRESE - VERSIONE MODIFICATA DA CODICE CE SA.47180\n2502\n36,236,339.0\n36,236,339.0\n\n\n7\nVOUCHER DIGITALIZZAZIONE 2024\n536\n8,670,819.0\n8,670,819.0\n\n\n8\nPROGETTI INTEGRATI DI FILIERA 2023-2025\n449\n14,386,187.0\n14,386,187.0\n\n\n9\nBANDO FIERE INTERNAZIONALI - ANNO 2024 (24FI)\n249\n505,600.0\n505,600.0\n\n\n10\n[TITOLO II - CAPO 1, 2, 3, 4, 5, 6] REGOLAMENTO REGIONALE DELLA PUGLIA PER GLI AIUTI IN ESENZIONE (REG. REGIONALE N. 17 DEL 30/09/2014-BURP 06/10/2014) - AIUTI A FINALITÀ REGIONALE\n224\n20,505,184.0\n20,505,184.0\n\n\n11\nFVG – DGR 1987/2022 - CRITERI E MODALITÀ PER CONCESSIONE DI GARANZIE E CONTRIBUZIONI INTEGRATIVE A FAVORE DELLE IMPRESE COLPITE DALL'AUMENTO DEI PREZZI DEL GAS E DELL'ENERGIA ELETTRICA IN ATTUAZIONE DELL'ART 2, CC 6, 7, 8 E 9, DELLA LR 15/2022\n210\n219,846.0\n119,276.0\n\n\n12\nPIÙ ARTIGIANATO\n200\n5,752,767.0\n4,018,773.0\n\n\n13\nAIUTI AI CENTRI DI TRASFERIMENTO TECNOLOGICO\n186\n5,239,738.0\n3,595,064.0\n\n\n14\nBANDO “DIGITAL EXPORT 2024-2025”\n152\n2,167,102.0\n2,167,102.0\n\n\n15\nAPPROVAZIONE AVVISO BANDO DOTE IMPRESA COLLOCAMENTO MIRATO - FONDO 2022\n152\n1,162,010.0\n1,162,010.0\n\n\n16\nGARANZIE DEI CONFIDI ALLE PMI\n134\n10,485,400.0\n310,750.0\n\n\n17\nRER - DGR 412/2024 - ISTITUZIONE DEL REGIME DI AIUTI DI IMPORTANZA MINORE («DE MINIMIS») PER FORMAZIONE RIVOLTA ALLE IMPRESE OPERANTI NEL TERRITORIO DELLA REGIONE EMILIA-ROMAGNA AI SENSI DEL REGOLAMENTO (UE) 2023/2831 APPROVAZIONE DISPOSIZIONI\n134\n143,824.0\n143,824.0\n\n\n18\nAVVISO PUBBLICO ISI 2023\n123\n11,525,926.0\n9,446,582.0\n\n\n19\nBANDO PER CONTRIBUTI ALLE MICRO, PICCOLE E MEDIE IMPRESE PER L'ATTIVAZIONE DI PERCORSI DI ALTERNANZA SCUOLA – LAVORO – A.S. 2023/2024 - AGEF 2410\n122\n103,800.0\n103,800.0"
+    "text": "9.2 Quali misure hanno più aiuti\n\ndf = con.execute(\"SELECT upper(misura) MISURA, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 20\").df()\ndf\n\n\n\n\n\n\n\n\nMISURA\nCONCESSIONI\nNOMINALE\nAIUTI\n\n\n\n\n0\nESONERO DAL VERSAMENTO DEI CONTRIBUTI PREVIDENZIALI PER NUOVE ASSUNZIONI/TRASFORMAZIONI A TEMPO INDETERMINATO NEL BIENNIO 2021 - 2022 (ART. 1 COMMI 10 - 15 L. 178/2020)\n118427\n881,173,792.0\n881,173,792.0\n\n\n1\nESONERO DAL VERSAMENTO DEI CONTRIBUTI PREVIDENZIALI PER L'ASSUNZIONE DI GIOVANI LAVORATORI ( ART. 1 COMMA 10-15 L. 178/2020 - ART. 1 COMMA 297 L. 197/2022)\n75758\n393,090,967.0\n393,090,967.0\n\n\n2\nESONERO DAL VERSAMENTO DEI CONTRIBUTI PREVIDENZIALI PER ASSUNZIONI DI DONNE LAVORATRICI DAL 1 LUGLIO 2022 ( ART. 1 , COMMI 16-19 L.178/2020 -ART. 1 COMMA 298 L.197/2022)\n33952\n97,152,474.0\n97,152,474.0\n\n\n3\nESONERO DAL VERSAMENTO DEI CONTRIBUTI PREVIDENZIALI PER ASSUNZIONI DI DONNE LAVORATRICI NEL BIENNIO 2021 - 2022 (ART. 1 COMMI 16 - 19 L. 178/2020)\n26226\n55,388,921.0\n55,388,921.0\n\n\n4\nFONDO DI GARANZIA PER LE PICCOLE E MEDIE IMPRESE\n14840\n1,936,694,115.0\n127,643,013.0\n\n\n5\nREGOLAMENTO PER I FONDI INTERPROFESSIONALI PER LA FORMAZIONE CONTINUA PER LA CONCESSIONI DI AIUTI DI STATO ESENTATI AI SENSI DEL REGOLAMENTO CE N.651/2014 E IN REGIME DE MINIMIS AI SENSI DEL REGOLAMENTO CE N.1407/2013\n6056\n30,848,386.0\n30,437,253.0\n\n\n6\nNUOVA SABATINI - FINANZIAMENTI PER L'ACQUISTO DI NUOVI MACCHINARI, IMPIANTI E ATTREZZATURE DA PARTE DELLE PICCOLE E MEDIE IMPRESE - VERSIONE MODIFICATA DA CODICE CE SA.47180\n2502\n36,236,339.0\n36,236,339.0\n\n\n7\nVOUCHER DIGITALIZZAZIONE 2024\n536\n8,670,819.0\n8,670,819.0\n\n\n8\nPROGETTI INTEGRATI DI FILIERA 2023-2025\n449\n14,386,187.0\n14,386,187.0\n\n\n9\nBANDO FIERE INTERNAZIONALI - ANNO 2024 (24FI)\n249\n505,600.0\n505,600.0\n\n\n10\n[TITOLO II - CAPO 1, 2, 3, 4, 5, 6] REGOLAMENTO REGIONALE DELLA PUGLIA PER GLI AIUTI IN ESENZIONE (REG. REGIONALE N. 17 DEL 30/09/2014-BURP 06/10/2014) - AIUTI A FINALITÀ REGIONALE\n224\n20,505,184.0\n20,505,184.0\n\n\n11\nFVG – DGR 1987/2022 - CRITERI E MODALITÀ PER CONCESSIONE DI GARANZIE E CONTRIBUZIONI INTEGRATIVE A FAVORE DELLE IMPRESE COLPITE DALL'AUMENTO DEI PREZZI DEL GAS E DELL'ENERGIA ELETTRICA IN ATTUAZIONE DELL'ART 2, CC 6, 7, 8 E 9, DELLA LR 15/2022\n210\n219,846.0\n119,276.0\n\n\n12\nPIÙ ARTIGIANATO\n200\n5,752,767.0\n4,018,773.0\n\n\n13\nAIUTI AI CENTRI DI TRASFERIMENTO TECNOLOGICO\n186\n5,239,738.0\n3,595,064.0\n\n\n14\nAPPROVAZIONE AVVISO BANDO DOTE IMPRESA COLLOCAMENTO MIRATO - FONDO 2022\n152\n1,162,010.0\n1,162,010.0\n\n\n15\nBANDO “DIGITAL EXPORT 2024-2025”\n152\n2,167,102.0\n2,167,102.0\n\n\n16\nRER - DGR 412/2024 - ISTITUZIONE DEL REGIME DI AIUTI DI IMPORTANZA MINORE («DE MINIMIS») PER FORMAZIONE RIVOLTA ALLE IMPRESE OPERANTI NEL TERRITORIO DELLA REGIONE EMILIA-ROMAGNA AI SENSI DEL REGOLAMENTO (UE) 2023/2831 APPROVAZIONE DISPOSIZIONI\n134\n143,824.0\n143,824.0\n\n\n17\nGARANZIE DEI CONFIDI ALLE PMI\n134\n10,485,400.0\n310,750.0\n\n\n18\nAVVISO PUBBLICO ISI 2023\n123\n11,525,926.0\n9,446,582.0\n\n\n19\nBANDO PER CONTRIBUTI ALLE MICRO, PICCOLE E MEDIE IMPRESE PER L'ATTIVAZIONE DI PERCORSI DI ALTERNANZA SCUOLA – LAVORO – A.S. 2023/2024 - AGEF 2410\n122\n103,800.0\n103,800.0"
   },
   {
     "objectID": "posts/2508_RNA/RNA.html#quali-concedenti-hanno-più-aiuti",

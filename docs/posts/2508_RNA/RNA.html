@@ -73,7 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ae061663f6c9d515d073a5e29c5c6025.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-53ef3259dd6d5244b152f028264fb04f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -131,7 +131,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
@@ -325,7 +325,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Appresso riporto alcune sintesi dell’ultimo XML -&gt; parquet da me prodotto</p>
 <section id="quanti-aiuti-contiene" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="quanti-aiuti-contiene"><span class="header-section-number">9.1</span> Quanti aiuti contiene</h2>
-<div id="f8f7a007" class="cell" data-execution_count="2">
+<div id="bbd017a9" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT count(distinct(CF)), count((CF)), count(distinct(CAR)),count(distinct(CONCEDENTE)), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet'"</span>).df()</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -363,7 +363,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="quali-misure-hanno-più-aiuti" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="quali-misure-hanno-più-aiuti"><span class="header-section-number">9.2</span> Quali misure hanno più aiuti</h2>
-<div id="2efa7ea7" class="cell" data-execution_count="3">
+<div id="94a32063" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(misura) MISURA, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 20"</span>).df()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -481,31 +481,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">14</td>
-<td>BANDO “DIGITAL EXPORT 2024-2025”</td>
-<td>152</td>
-<td>2,167,102.0</td>
-<td>2,167,102.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">15</td>
 <td>APPROVAZIONE AVVISO BANDO DOTE IMPRESA COLLOCAMENTO MIRATO - FONDO 2022</td>
 <td>152</td>
 <td>1,162,010.0</td>
 <td>1,162,010.0</td>
 </tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>BANDO “DIGITAL EXPORT 2024-2025”</td>
+<td>152</td>
+<td>2,167,102.0</td>
+<td>2,167,102.0</td>
+</tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">16</td>
-<td>GARANZIE DEI CONFIDI ALLE PMI</td>
-<td>134</td>
-<td>10,485,400.0</td>
-<td>310,750.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">17</td>
 <td>RER - DGR 412/2024 - ISTITUZIONE DEL REGIME DI AIUTI DI IMPORTANZA MINORE («DE MINIMIS») PER FORMAZIONE RIVOLTA ALLE IMPRESE OPERANTI NEL TERRITORIO DELLA REGIONE EMILIA-ROMAGNA AI SENSI DEL REGOLAMENTO (UE) 2023/2831 APPROVAZIONE DISPOSIZIONI</td>
 <td>134</td>
 <td>143,824.0</td>
 <td>143,824.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>GARANZIE DEI CONFIDI ALLE PMI</td>
+<td>134</td>
+<td>10,485,400.0</td>
+<td>310,750.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">18</td>
@@ -531,7 +531,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="quali-concedenti-hanno-più-aiuti" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="quali-concedenti-hanno-più-aiuti"><span class="header-section-number">9.3</span> Quali concedenti hanno più aiuti</h2>
 <p>purtroppo il nome del concedente è scritto in modi diversi</p>
-<div id="cb52463a" class="cell" data-execution_count="4">
+<div id="69f53401" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(concedente) CONCEDENTE, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 10"</span>).df()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -628,7 +628,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="gli-aiuti-in-ordine-di-valore-nominale" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="gli-aiuti-in-ordine-di-valore-nominale"><span class="header-section-number">9.4</span> Gli aiuti in ordine di valore nominale €</h2>
-<div id="8365e3cc" class="cell" data-execution_count="5">
+<div id="3d2130af" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(concedente) CONCEDENTE, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 3 desc limit 10"</span>).df()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -725,7 +725,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="valori-raggruppati-per-data" class="level2" data-number="9.5">
 <h2 data-number="9.5" class="anchored" data-anchor-id="valori-raggruppati-per-data"><span class="header-section-number">9.5</span> valori raggruppati per data</h2>
-<div id="ab530dea" class="cell" data-execution_count="6">
+<div id="dbd22995" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT CONCESSIONE, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 1 desc"</span>).df()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
@@ -954,7 +954,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="valori-raggruppati-per-regione" class="level3" data-number="9.5.1">
 <h3 data-number="9.5.1" class="anchored" data-anchor-id="valori-raggruppati-per-regione"><span class="header-section-number">9.5.1</span> valori raggruppati per regione</h3>
-<div id="960e50c7" class="cell" data-execution_count="7">
+<div id="5809dcb4" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(REGIONE) REGIONE, count(CAR), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 3 desc limit 10"</span>).df()</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -1051,7 +1051,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="valori-raggruppati-per-ateco" class="level3" data-number="9.5.2">
 <h3 data-number="9.5.2" class="anchored" data-anchor-id="valori-raggruppati-per-ateco"><span class="header-section-number">9.5.2</span> valori raggruppati per ATECO</h3>
-<div id="51734bf6" class="cell" data-execution_count="8">
+<div id="ebb03a77" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(SETTORE_ATTIVITA) SETTORE_ATTIVITA, count(CAR), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 3 desc limit 10"</span>).df()</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
@@ -1148,7 +1148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="valori-raggruppati-per-strumento" class="level3" data-number="9.5.3">
 <h3 data-number="9.5.3" class="anchored" data-anchor-id="valori-raggruppati-per-strumento"><span class="header-section-number">9.5.3</span> valori raggruppati per strumento</h3>
-<div id="4a45191c" class="cell" data-execution_count="9">
+<div id="fea13661" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(DES_STRUMENTO) STRUMENTO, count(CAR), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 10"</span>).df()</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
@@ -1245,7 +1245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="gli-importi-più-grandi" class="level3" data-number="9.5.4">
 <h3 data-number="9.5.4" class="anchored" data-anchor-id="gli-importi-più-grandi"><span class="header-section-number">9.5.4</span> gli importi più grandi</h3>
-<div id="7e3ebf23" class="cell" data-execution_count="10">
+<div id="9aeca4f3" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT IMPRESA, REGIONE, CONCEDENTE, MISURA, NOMINALE, AIUTO FROM 'OpenData_Aiuti_2025_01.parquet' order by 5 desc limit 20"</span>).df()</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
@@ -1463,7 +1463,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>INVITALIA - AGENZIA NAZIONALE PER L’ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D’IMPRESA S.P.A.</li>
 <li>AGENZIA NAZIONALE PER L’ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D’IMPRESA SPA - INVITALIA (05678721001)</li>
 </ul>
-<div id="924c37b4" class="cell" data-execution_count="11">
+<div id="8f70f052" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(misura) MISURA, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' where concedente like '%INVI%' group by 1 order by 3 desc limit 10"</span>).df()</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
@@ -1560,7 +1560,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="valori-raggruppati-per-data-1" class="level3" data-number="9.6.2">
 <h3 data-number="9.6.2" class="anchored" data-anchor-id="valori-raggruppati-per-data-1"><span class="header-section-number">9.6.2</span> valori raggruppati per data</h3>
-<div id="0652312f" class="cell" data-execution_count="12">
+<div id="96467b02" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT CONCESSIONE, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' where concedente like '%INVI%' group by 1 order by 1 desc"</span>).df()</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
