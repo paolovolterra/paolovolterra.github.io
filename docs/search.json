@@ -721,45 +721,66 @@
     "text": "Oltre DID e PSM\nCi sono diverse tecniche più moderne rispetto al Difference-in-Differences (DiD) e al Propensity Score Matching (PSM), che sfruttano i progressi nell’analisi dei dati, il machine learning e la causal inference.\nQueste tecniche sono particolarmente utili se: - Hai dataset complessi, con molte covariate o relazioni non lineari - Vuoi stime robuste agli errori modellistici - Devi gestire trattamenti eterogenei o bias di selezione complessi\n\n1. Synthetic Control Method (SCM)\nIl metodo del controllo sintetico crea un “gruppo di controllo sintetico” combinando una serie di unità non trattate che approssimano le caratteristiche del gruppo trattato. Questo approccio è particolarmente utile quando c’è solo un’unità trattata (es., una singola azienda o paese).\n\nVantaggi:\n\nPermette analisi causali robuste in contesti con una sola unità trattata.\nMinimizza il bias di selezione.\n\nLibreria Python:\n\nsynthdid o implementazioni in R.\n\n\n\n\n2. Double Machine Learning (DML)\nIl DML combina tecniche di machine learning (come alberi decisionali, reti neurali o boosting) con stima degli effetti causali. È utile per affrontare problemi di endogeneità e per gestire dataset con molte variabili.\n\nVantaggi:\n\nMigliora la previsione dei propensity score e degli outcome.\nRende le stime meno sensibili ai modelli parametrici tradizionali.\n\nLibreria Python:\n\neconml sviluppata da Microsoft, che fornisce implementazioni di DML e altre tecniche causali.\n\n\n\n\n3. Causal Forests\nI causal forests, basati sui Random Forests, sono progettati per stimare gli effetti causali eterogenei. Possono fornire stime degli effetti del trattamento individualizzati.\n\nVantaggi:\n\nAdatto per stimare effetti del trattamento variabili su subpopolazioni.\nNon richiede ipotesi parametriche.\n\nLibreria Python:\n\ngrf (in R, ma può essere adattata per Python).\n\n\n\n\n4. Bayesian Structural Time Series (BSTS)\nQuesta tecnica utilizza modelli bayesiani per stimare effetti causali, in particolare quando si analizzano serie temporali. È simile al Synthetic Control Method ma con un’implementazione bayesiana.\n\nVantaggi:\n\nInclude incertezza direttamente nelle stime.\nEfficace per analisi di serie temporali.\n\nLibreria Python:\n\npybsts.\n\n\n\n\n5. Generalized Random Forests (GRF)\nUn’evoluzione dei causal forests, i GRF sono progettati per stimare una vasta gamma di parametri econometrici, inclusi effetti medi del trattamento, effetti eterogenei e persino parametri strutturali.\n\nVantaggi:\n\nFlessibilità nell’analisi causale e nella stima di effetti eterogenei.\nMigliora le stime con regressori complessi.\n\nLibreria Python:\n\neconml e grf (implementato in R).\n\n\n\n\n6. Instrumental Variable (IV) Methods with Machine Learning\nLe variabili strumentali combinate con il machine learning (ad esempio, Double Machine Learning con IV) migliorano l’identificazione di effetti causali nei contesti in cui c’è endogeneità.\n\nVantaggi:\n\nRiduce i problemi di endogeneità.\nUsa modelli di machine learning per migliorare le previsioni delle variabili.\n\nLibreria Python:\n\neconml.\n\n\n\n\n7. Neural Causal Models\nQuesti modelli utilizzano reti neurali per stimare effetti causali, con particolare enfasi sulle relazioni non lineari e sulla complessità strutturale dei dati.\n\nVantaggi:\n\nEstremamente flessibili e adattabili a grandi dataset.\nPossono modellare relazioni non lineari tra trattamento, covariate e outcome.\n\nLibreria Python:\n\ncausalnex per modelli causali basati su grafi.\nImplementazioni personalizzate con TensorFlow o PyTorch.\n\n\n\n\n8. Targeted Maximum Likelihood Estimation (TMLE)\nIl TMLE è un metodo semi-parametrico che ottimizza la stima degli effetti causali, correggendo i bias residui in modelli non parametrici.\n\nVantaggi:\n\nFornisce stime causali efficienti e robuste.\nBasato su approcci statistici formali.\n\nLibreria Python:\n\nzEpid per analisi epidemiologiche e causali.\n\n\n\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "posts/2515_Quarto/Quarto.html",
-    "href": "posts/2515_Quarto/Quarto.html",
+    "objectID": "posts/2515_Quarto/Quarto.html#default",
+    "href": "posts/2515_Quarto/Quarto.html#default",
     "title": "Utilizzare Quarto",
-    "section": "",
-    "text": "## come\nIl progetto si può creare da terminale, con RStudio, VSCode, Positron, PCharm, ecc. Si può fare tutto anche con notepad e terminale Da terminale però si capisce meglio cosa succede “sotto il cofano”: - entri in una cartella dedicata e scrivi quarto create project - il prompt guida la scelta per indicare - il tipo di progetto, - la sottocartella dove inserire il tutto, - il titolo del progetto, - l’IDE da utilizzare\nIl progetto più semplice è default o manuscript Ci sono poi altri tipi di progetto che non sono riportati nella scelta da terminale: - dashboard - presentation revealjs — reveal.js (HTML), pptx — PowerPoint (MS Office), beamer — Beamer (LaTeX/PDF) - …\nA questo punto Quarto costruisce la struttura del progetto, in base al tipo di progEtto selezionato - se si sceglie default Quarto costruisce 2 soli file principali - _quarto.yml → File di configurazione generale del progetto - File .qmd → Documento principale (di norma index.qmd)\nNegli altri casi costruisce file utili al caso - per manuscript references.bib - per site about.qmd, style.css\nD:. ├───manoscritto │ _quarto.yml │ index.qmd │ references.bib │ ├───sito prova │ _quarto.yml │ index.qmd │ about.qmd │ styles.css │ └───default _quarto.yml prova.qmd\nPer il preview scrivo quarto preview da terminal Per il rendering scrivo quarto render da terminal\nQuarto costruirà prima la struttura di output (cartelle e files) e poi mostrerà l’output su browser. La cartella di output inizia con _ (es.: _manuscript _site) La porta è random ma può essere settata inserendo le informazioni nel preambolo YAML del .qmd Anche la dir di output può essere settata.\nQuesto è il risultato:\nD:. ├───manoscritto │ │ _quarto.yml │ │ index.qmd │ │ references.bib │ │ styles.scss │ │ MCC.css │ │ styles.css │ │ │ ├───.quarto │ │ ├───preview │ │ │ lock │ │ │ │ │ ├───xref │ │ │ INDEX │ │ │ 2f91f2fd │ │ │ 550746bb │ │ │ 3f709881 │ │ │ 4d0e549a │ │ │ │ │ └───idx │ └───_manuscript │ │ index.html │ │ index.docx │ │ │ └───site_libs │ ├───clipboard │ │ clipboard.min.js │ │ │ ├───quarto-html │ │ quarto.js │ │ popper.min.js │ │ tippy.umd.min.js │ │ anchor.min.js │ │ tippy.css │ │ quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css │ │ │ └───bootstrap │ bootstrap.min.js │ bootstrap-icons.css │ bootstrap-a1ff8711b79ae3724c050874b28d9907.min.css │ bootstrap-icons.woff │ ├───sito prova │ _quarto.yml │ index.qmd │ about.qmd │ styles.css │ MCC.css │ styles.scss │ ├───default │ _quarto.yml │ prova.qmd │ styles.scss │ MCC.css │ styles.css │ └───mybook │ _quarto.yml │ index.qmd │ intro.qmd │ summary.qmd │ references.qmd │ cover.png │ references.bib │ styles.scss │ MCC.css │ styles.css │ ├───.quarto │ ├───preview │ │ lock │ │ │ ├───idx │ │ index.qmd.json │ │ intro.qmd.json │ │ summary.qmd.json │ │ references.qmd.json │ │ │ ├───xref │ │ INDEX │ │ d7202488 │ │ 5f634940 │ │ e68c4dcb │ │ 1066ac5e │ │ │ └───cites │ index.json │ └───_book │ index.html │ intro.html │ search.json │ summary.html │ references.html │ └───site_libs ├───quarto-nav │ quarto-nav.js │ headroom.min.js │ ├───clipboard │ clipboard.min.js │ ├───quarto-search │ autocomplete.umd.js │ fuse.min.js │ quarto-search.js │ ├───quarto-html │ quarto.js │ popper.min.js │ tippy.umd.min.js │ anchor.min.js │ tippy.css │ quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css │ └───bootstrap bootstrap.min.js bootstrap-icons.css bootstrap-icons.woff bootstrap-8da5b4427184b79ecddefad3d342027e.min.css"
+    "section": "3.1 default",
+    "text": "3.1 default"
   },
   {
-    "objectID": "posts/2515_Quarto/Quarto.html#personalizzazione",
-    "href": "posts/2515_Quarto/Quarto.html#personalizzazione",
+    "objectID": "posts/2515_Quarto/Quarto.html#presentazione",
+    "href": "posts/2515_Quarto/Quarto.html#presentazione",
     "title": "Utilizzare Quarto",
-    "section": "1 Personalizzazione",
-    "text": "1 Personalizzazione\nil link al css va in _quarto.yml"
+    "section": "3.2 presentazione",
+    "text": "3.2 presentazione"
   },
   {
-    "objectID": "posts/2515_Quarto/Quarto.html#tipi-di-progetto",
-    "href": "posts/2515_Quarto/Quarto.html#tipi-di-progetto",
+    "objectID": "posts/2515_Quarto/Quarto.html#manoscritto",
+    "href": "posts/2515_Quarto/Quarto.html#manoscritto",
     "title": "Utilizzare Quarto",
-    "section": "2 tipi di progetto",
-    "text": "2 tipi di progetto\n\n2.1 default\n \n\n\n2.2 presentazione\n\n\n2.3 manoscritto\n \n\n\n\n|700\n\n\n\n\n2.4 Sito\n\n\n\nsito|700\n\n\n\n\n\n|700\n\n\n\n\n2.5 libro\n\n\n\n|700\n\n\n\n\n2.6 dashboard"
+    "section": "3.3 manoscritto",
+    "text": "3.3 manoscritto\n \n\n\n\n|700"
+  },
+  {
+    "objectID": "posts/2515_Quarto/Quarto.html#sito",
+    "href": "posts/2515_Quarto/Quarto.html#sito",
+    "title": "Utilizzare Quarto",
+    "section": "3.4 Sito",
+    "text": "3.4 Sito\n\n\n\nsito|700\n\n\n\n\n\n|700"
+  },
+  {
+    "objectID": "posts/2515_Quarto/Quarto.html#libro",
+    "href": "posts/2515_Quarto/Quarto.html#libro",
+    "title": "Utilizzare Quarto",
+    "section": "3.5 libro",
+    "text": "3.5 libro\n\n\n\n|700"
+  },
+  {
+    "objectID": "posts/2515_Quarto/Quarto.html#dashboard",
+    "href": "posts/2515_Quarto/Quarto.html#dashboard",
+    "title": "Utilizzare Quarto",
+    "section": "3.6 dashboard",
+    "text": "3.6 dashboard"
   },
   {
     "objectID": "posts/2515_Quarto/Quarto.html#file-_quarto.yml",
     "href": "posts/2515_Quarto/Quarto.html#file-_quarto.yml",
     "title": "Utilizzare Quarto",
-    "section": "3 file _quarto.yml",
-    "text": "3 file _quarto.yml\n\n\n\n|700"
+    "section": "3.7 file _quarto.yml",
+    "text": "3.7 file _quarto.yml\n\n\n\n|700"
   },
   {
     "objectID": "posts/2515_Quarto/Quarto.html#file-.qmd",
     "href": "posts/2515_Quarto/Quarto.html#file-.qmd",
     "title": "Utilizzare Quarto",
-    "section": "4 file .qmd",
-    "text": "4 file .qmd\n\n\n\n|700"
+    "section": "3.8 file .qmd",
+    "text": "3.8 file .qmd\n\n\n\n|700"
   },
   {
     "objectID": "posts/2515_Quarto/Quarto.html#esempi-di-codice",
     "href": "posts/2515_Quarto/Quarto.html#esempi-di-codice",
     "title": "Utilizzare Quarto",
-    "section": "5 Esempi di codice",
-    "text": "5 Esempi di codice\n\n1️⃣ Python\n\n```{python} import numpy as np print(np.array([1, 2, 3])) ```\n\n2️⃣ R\n\n```{r} summary(cars) ```\n\n3️⃣ Julia\n\n```{julia} using Statistics mean([1, 2, 3, 4, 5]) ```\n\n4️⃣ Observable JavaScript\n\n```{ojs} Plot.lineY([1, 2, 3, 4, 5]) ```\n\nEsempio in Bash\n\n```{bash} echo \"Hello from Bash!\" ```\n\nEsempio in SQL\n\n```{sql} SELECT * FROM my_table; ```"
+    "section": "3.9 Esempi di codice",
+    "text": "3.9 Esempi di codice\n\n1️⃣ Python\n\n```{python} import numpy as np print(np.array([1, 2, 3])) ```\n\n2️⃣ R\n\n```{r} summary(cars) ```\n\n3️⃣ Julia\n\n```{julia} using Statistics mean([1, 2, 3, 4, 5]) ```\n\n4️⃣ Observable JavaScript\n\n```{ojs} Plot.lineY([1, 2, 3, 4, 5]) ```\n\nEsempio in Bash\n\n```{bash} echo \"Hello from Bash!\" ```\n\nEsempio in SQL\n\n```{sql} SELECT * FROM my_table; ```"
   }
 ]
