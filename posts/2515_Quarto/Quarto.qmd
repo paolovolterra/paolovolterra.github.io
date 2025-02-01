@@ -20,15 +20,15 @@ categories:
 
 ---
 
+
 ![](https://quarto.org/quarto.png)
 
 
-- creare progetti ([presentazioni](https://quarto.org/docs/presentations/), [siti](https://quarto.org/docs/websites/), [libri](https://quarto.org/docs/books/), [manoscritti](https://quarto.org/docs/manuscripts/), dashboard, documenti [confluence](https://quarto.org/docs/publishing/confluence.html)condivisi, ...) )
+- creare progetti ([presentazioni](https://quarto.org/docs/presentations/), [siti](https://quarto.org/docs/websites/), [libri](https://quarto.org/docs/books/), [manoscritti](https://quarto.org/docs/manuscripts/), dashboard, documenti [confluence](https://quarto.org/docs/publishing/confluence.html) condivisi, ...) )
 - inserire codice **Python** (`python`) ,**R** (`r`), **Julia** (`julia`), **Observable JavaScript** (`ojs`), **Bash**, **C**, **C++**, **SQL**, **Stan**,, **Fortran** e altri, se installi i kernel appropriati
 - [pubblicare](https://quarto.org/docs/publishing/) i risultati su  [Quarto Pub](https://quartopub.com/)  (serve login; questo è il [mio](https://paolovolterra.quarto.pub/)), [github](https://github.com/) (serve login, configurazione e [GIT](https://git-scm.com/); questo è il [mio](https://paolovolterra.github.io/) ), [Hugo](https://gohugo.io/), ecC. ogni sito ha proprie modalità per interfacciarsi e pubblicare; occorre studiarsele.
 
-![](https://gohugo.io/)
-## come
+# come
 
 Il progetto si può creare da terminale, con RStudio, VSCode, Positron, PCharm, ecc.
 Si può fare tutto anche con notepad e terminale
@@ -45,7 +45,7 @@ Da terminale però si capisce meglio cosa succede "sotto il cofano":
 Il progetto più semplice è default o manuscript
 Ci sono poi altri tipi di progetto che non sono riportati nella scelta da terminale:
 - dashboard
-- presentation `revealjs` — [reveal.js](https://quarto.org/docs/presentations/revealjs/) (HTML), `pptx` — [PowerPoint](https://quarto.org/docs/presentations/powerpoint.html) (MS Office), `beamer` — [Beamer](https://quarto.org/docs/presentations/beamer.html) (LaTeX/PDF)
+- presentationi  [reveal.js](https://quarto.org/docs/presentations/revealjs/) (HTML),  [PowerPoint](https://quarto.org/docs/presentations/powerpoint.html) (MS Office),  [Beamer](https://quarto.org/docs/presentations/beamer.html) (LaTeX/PDF)
 - ...
 
 A questo punto Quarto costruisce la struttura del progetto, in base al tipo di progEtto selezionato
@@ -61,6 +61,7 @@ Negli altri casi costruisce file utili al caso
 tree /F
 ```
 
+```
 D:.
 ├───manoscritto
 │       _quarto.yml
@@ -76,6 +77,8 @@ D:.
 └───default
         _quarto.yml
         prova.qmd
+
+```
 
 Per il preview scrivo  `quarto preview` da terminal
 Per il rendering scrivo `quarto render` da terminal
@@ -99,7 +102,7 @@ Questo è il risultato:
 ```
 tree /F
 ```
-
+```
 D:.
 ├───manoscritto
 │   │   _quarto.yml
@@ -223,44 +226,44 @@ D:.
                     bootstrap-icons.css
                     bootstrap-icons.woff
                     bootstrap-8da5b4427184b79ecddefad3d342027e.min.css
+```
 
-
-## Personalizzazione
+# Personalizzazione
 
 il link al css va in `_quarto.yml`
 
 
 ---
 
-## tipi di progetto
-### default
+# tipi di progetto
+## default
 
 ![](./media/Pasted%20image%2020250131192626.png)
 ![](media/Pasted%20image%2020250131192930.png)
 
 
-### presentazione
+## presentazione
 
 
-### manoscritto
+## manoscritto
 
 ![manoscritto|700](media/Pasted%20image%2020250131191238.png)
 ![|700](media/Pasted%20image%2020250131192013.png)
 
 ![|700](media/Pasted%20image%2020250201233334.png)
 
-### Sito
+## Sito
 
 ![sito|700](media/Pasted%20image%2020250131191811.png)
 
 ![|700](media/Pasted%20image%2020250131191927.png)
 
-### libro
+## libro
 
 ![|700](media/Pasted%20image%2020250201233255.png)
 
 
-### dashboard
+## dashboard
 
 
 
