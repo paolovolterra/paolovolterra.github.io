@@ -104,10 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
-
-
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-
 
 
 <link rel="stylesheet" href="../../MCC.css">
@@ -245,7 +242,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>CAR: 27929</li>
 <li>Significant Aid: 110221</li>
 </ul>
-<div id="255ac105" class="cell" data-execution_count="1">
+<div id="c777e1f5" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyarrow.parquet <span class="im">as</span> pq</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> duckdb</span>
@@ -258,7 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>pd.options.display.float_format <span class="op">=</span> <span class="st">'</span><span class="sc">{:,}</span><span class="st">'</span>.<span class="bu">format</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span>(con.execute(<span class="st">"SELECT * FROM '*.parquet' where CAR = '27929' order by concessione desc"</span>).df())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="fc63d88b" class="cell" data-execution_count="2">
+<div id="bdb66c44" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'DES_TIPO_BENEFICIARIO'</span>, <span class="st">'REGIONE'</span>, </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="st">'SETTORE_ATTIVITA'</span>,<span class="st">'NOMINALE'</span>, <span class="st">'AIUTO'</span>]].sample(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -278,7 +275,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">14</td>
+<td data-quarto-table-cell-role="th">10</td>
+<td>PMI</td>
+<td>Toscana</td>
+<td>C.13.3</td>
+<td>324,800.0</td>
+<td>324,800.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">23</td>
+<td>Grande impresa</td>
+<td>Veneto</td>
+<td>C.17.1</td>
+<td>243,183.6</td>
+<td>243,183.6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">17</td>
 <td>Grande impresa</td>
 <td>Lombardia</td>
 <td>C.23.1</td>
@@ -286,76 +299,60 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>3,197,546.4</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">11</td>
-<td>Grande impresa</td>
-<td>Veneto</td>
-<td>C.24.1</td>
-<td>1,685,026.61</td>
-<td>1,685,026.61</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">31</td>
-<td>Grande impresa</td>
-<td>Piemonte</td>
-<td>C.13.1</td>
-<td>325,500.0</td>
-<td>325,500.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">34</td>
+<td data-quarto-table-cell-role="th">38</td>
 <td>Grande impresa</td>
 <td>Puglia</td>
 <td>C.10.7</td>
-<td>854,520.18</td>
-<td>854,520.18</td>
+<td>228,183.75</td>
+<td>228,183.75</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">36</td>
-<td>Grande impresa</td>
-<td>Puglia</td>
-<td>C.10.7</td>
-<td>829,199.55</td>
-<td>829,199.55</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">24</td>
+<td data-quarto-table-cell-role="th">26</td>
 <td>Grande impresa</td>
 <td>Piemonte</td>
 <td>C.20.1</td>
-<td>444,440.25</td>
-<td>444,440.25</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">20</td>
-<td>Grande impresa</td>
-<td>Veneto</td>
-<td>C.17.1</td>
-<td>243,183.6</td>
-<td>243,183.6</td>
+<td>424,282.15</td>
+<td>424,282.15</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">35</td>
+<td data-quarto-table-cell-role="th">20</td>
 <td>Grande impresa</td>
-<td>Puglia</td>
-<td>C.10.7</td>
-<td>228,183.75</td>
-<td>228,183.75</td>
+<td>Campania</td>
+<td>C.22.2</td>
+<td>1,024,740.0</td>
+<td>1,024,740.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">18</td>
-<td>Grande impresa</td>
-<td>Lombardia</td>
-<td>C.20.2</td>
-<td>1,360,000.0</td>
-<td>1,360,000.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">15</td>
 <td>Grande impresa</td>
 <td>Emilia-Romagna</td>
 <td>C.23.5</td>
 <td>3,581,357.84</td>
 <td>3,581,357.84</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Grande impresa</td>
+<td>Lombardia</td>
+<td>C.21.1</td>
+<td>303,518.7</td>
+<td>303,518.7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">34</td>
+<td>Grande impresa</td>
+<td>Piemonte</td>
+<td>C.13.1</td>
+<td>158,400.0</td>
+<td>158,400.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">25</td>
+<td>Grande impresa</td>
+<td>Friuli-Venezia Giulia</td>
+<td>C.28.2</td>
+<td>1,594,200.0</td>
+<td>1,594,200.0</td>
 </tr>
 </tbody>
 </table>
@@ -363,15 +360,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="79ddd90d" class="cell" data-execution_count="3">
+<div id="608cff32" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'NOMINALE'</span>, <span class="st">'AIUTO'</span>]].<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>NOMINALE   33,142,352.72
-AIUTO      33,142,352.72
+<pre><code>NOMINALE   37,667,374.32000001
+AIUTO      37,667,374.32000001
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="9b6eb83a" class="cell" data-execution_count="4">
+<div id="e4b9bbb9" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'CONCESSIONE'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>)).sort_values(by<span class="op">=</span> <span class="st">'CONCESSIONE'</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -396,54 +393,60 @@ dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
+<td data-quarto-table-cell-role="th">2025-01-21</td>
+<td>3</td>
+<td>4,525,021.6</td>
+<td>4,525,021.6</td>
+</tr>
+<tr class="even">
 <td data-quarto-table-cell-role="th">2025-01-08</td>
 <td>4</td>
 <td>3,131,064.8</td>
 <td>3,131,064.8</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td data-quarto-table-cell-role="th">2024-12-21</td>
 <td>6</td>
 <td>3,605,143.65</td>
 <td>3,605,143.65</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td data-quarto-table-cell-role="th">2024-12-20</td>
 <td>5</td>
 <td>7,576,305.32</td>
 <td>7,576,305.32</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td data-quarto-table-cell-role="th">2024-12-16</td>
 <td>1</td>
 <td>3,581,357.84</td>
 <td>3,581,357.84</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td data-quarto-table-cell-role="th">2024-12-10</td>
 <td>3</td>
 <td>3,751,060.0</td>
 <td>3,751,060.0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td data-quarto-table-cell-role="th">2024-12-09</td>
 <td>9</td>
 <td>5,340,643.82</td>
 <td>5,340,643.82</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td data-quarto-table-cell-role="th">2024-12-04</td>
 <td>3</td>
 <td>2,014,706.25</td>
 <td>2,014,706.25</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td data-quarto-table-cell-role="th">2024-12-02</td>
 <td>3</td>
 <td>903,980.0</td>
 <td>903,980.0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td data-quarto-table-cell-role="th">2024-11-21</td>
 <td>5</td>
 <td>3,238,091.04</td>
@@ -455,7 +458,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="d9921fe7" class="cell" data-execution_count="5">
+<div id="0b2c46c8" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'REGIONE'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -523,9 +526,9 @@ dtype: float64</code></pre>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Toscana</td>
-<td>3</td>
-<td>1,773,474.0</td>
-<td>1,773,474.0</td>
+<td>6</td>
+<td>6,298,495.6</td>
+<td>6,298,495.6</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Veneto</td>
@@ -539,7 +542,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="05e687fc" class="cell" data-execution_count="6">
+<div id="17cfa2ed" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'DES_TIPO_BENEFICIARIO'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -565,9 +568,9 @@ dtype: float64</code></pre>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Grande impresa</td>
-<td>36</td>
-<td>31,368,878.72</td>
-<td>31,368,878.72</td>
+<td>39</td>
+<td>35,893,900.32</td>
+<td>35,893,900.32</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">PMI</td>
@@ -581,7 +584,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="37fb4435" class="cell" data-execution_count="7">
+<div id="05f6bdfc" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'DES_PROCEDIMENTO'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -607,9 +610,9 @@ dtype: float64</code></pre>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Esenzione</td>
-<td>39</td>
-<td>33,142,352.72</td>
-<td>33,142,352.72</td>
+<td>42</td>
+<td>37,667,374.32</td>
+<td>37,667,374.32</td>
 </tr>
 </tbody>
 </table>
@@ -617,7 +620,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="0d1f6f3c" class="cell" data-execution_count="8">
+<div id="45f106b4" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'DESSETTORE_ATTIVITA_OBIETTIVO'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -649,21 +652,21 @@ dtype: float64</code></pre>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Aiuti per la tutela dell'ambiente | Aiuti agli investimenti a favore di misure di efficienza energetica diverse da quelle relative agli edifici (art. 38)</td>
-<td>14</td>
-<td>15,937,638.44</td>
-<td>15,937,638.44</td>
+<td>15</td>
+<td>17,605,376.44</td>
+<td>17,605,376.44</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Aiuti per la tutela dell'ambiente | Aiuti agli investimenti per l'uso efficiente delle risorse e per il sostegno alla transizione verso un'economia circolare (art. 47)</td>
-<td>13</td>
-<td>10,183,108.06</td>
-<td>10,183,108.06</td>
+<td>14</td>
+<td>11,275,491.66</td>
+<td>11,275,491.66</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Aiuti per la tutela dell'ambiente | Aiuti agli investimenti per la promozione di energia da fonti rinnovabili, di idrogeno rinnovabile e di cogenerazione ad alto rendimento (art. 41)</td>
-<td>11</td>
-<td>7,014,952.22</td>
-<td>7,014,952.22</td>
+<td>12</td>
+<td>8,779,852.22</td>
+<td>8,779,852.22</td>
 </tr>
 </tbody>
 </table>
@@ -671,7 +674,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="d6c75c48" class="cell" data-execution_count="9">
+<div id="72bf43d1" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'SETTORE_ATTIVITA'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -757,9 +760,9 @@ dtype: float64</code></pre>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">C.23.1</td>
-<td>1</td>
-<td>3,197,546.4</td>
-<td>3,197,546.4</td>
+<td>4</td>
+<td>7,722,568.0</td>
+<td>7,722,568.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">C.23.5</td>
@@ -797,7 +800,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="44e70c61" class="cell" data-execution_count="10">
+<div id="7feeb530" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'DES_STRUMENTO'</span>).agg(CF_COUNT<span class="op">=</span>(<span class="st">'CF'</span>, <span class="st">'count'</span>),</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    NOMINALE_SUM<span class="op">=</span>(<span class="st">'NOMINALE'</span>, <span class="st">'sum'</span>),</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    AIUTO_SUM<span class="op">=</span>(<span class="st">'AIUTO'</span>, <span class="st">'sum'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -823,9 +826,9 @@ dtype: float64</code></pre>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Sovvenzione/Contributo in conto interessi</td>
-<td>39</td>
-<td>33,142,352.72</td>
-<td>33,142,352.72</td>
+<td>42</td>
+<td>37,667,374.32</td>
+<td>37,667,374.32</td>
 </tr>
 </tbody>
 </table>
