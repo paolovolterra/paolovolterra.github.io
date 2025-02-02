@@ -40,7 +40,7 @@ Da terminale però si capisce meglio cosa succede "sotto il cofano":
 	- il titolo del progetto,
 	- l'IDE da utilizzare
 
-![|700](media/Pasted%20image%2020250131193127.png)
+![](media/Pasted%20image%2020250131193127.png)
 
 Il progetto più semplice è default o manuscript
 Ci sono poi altri tipi di progetto che non sono riportati nella scelta da terminale:
@@ -57,11 +57,9 @@ Negli altri casi costruisce file utili al caso
 - per manuscript `references.bib`
 - per site `about.qmd, style.css`
 
-```
+```{bash}
 tree /F
-```
 
-```
 D:.
 ├───manoscritto
 │       _quarto.yml
@@ -88,8 +86,9 @@ La cartella di output inizia con `_` (es.: \_manuscript \_site)
 La porta è random ma può essere settata inserendo le informazioni nel preambolo YAML del .qmd
 Anche la dir di output può essere settata.
 
-```
-#| esempio per manuscript
+```{bash}
+
+# esempio per manuscript
 
 project:
   type: manuscript
@@ -99,10 +98,9 @@ project:
 ```
 
 Questo è il risultato:
-```
+```{bash}
 tree /F
-```
-```
+
 D:.
 ├───manoscritto
 │   │   _quarto.yml
@@ -236,6 +234,7 @@ il link al css va in `_quarto.yml`
 ---
 
 # tipi di progetto
+
 ## default
 
 ![](./media/Pasted%20image%2020250131192626.png)
@@ -247,41 +246,38 @@ il link al css va in `_quarto.yml`
 
 ## manoscritto
 
-![manoscritto|700](media/Pasted%20image%2020250131191238.png)
-![|700](media/Pasted%20image%2020250131192013.png)
+![manoscritto](media/Pasted%20image%2020250131191238.png)
+![](media/Pasted%20image%2020250131192013.png)
 
-![|700](media/Pasted%20image%2020250201233334.png)
+![](media/Pasted%20image%2020250201233334.png)
 
 ## Sito
 
-![sito|700](media/Pasted%20image%2020250131191811.png)
+![sito](media/Pasted%20image%2020250131191811.png)
 
-![|700](media/Pasted%20image%2020250131191927.png)
+![](media/Pasted%20image%2020250131191927.png)
 
 ## libro
 
-![|700](media/Pasted%20image%2020250201233255.png)
+![](media/Pasted%20image%2020250201233255.png)
 
 
 ## dashboard
 
 
+# file \_quarto.yml
+
+
+![](media/Pasted%20image%2020250131205407.png)
+
+
+# file .qmd
+
+![](media/Pasted%20image%2020250131205701.png)
 
 
 
-## file \_quarto.yml
-
-
-![|700](media/Pasted%20image%2020250131205407.png)
-
-
-## file .qmd
-
-![|700](media/Pasted%20image%2020250131205701.png)
-
-
-
-## Esempi di codice
+# Esempi di codice
 
 - **1️⃣ Python**
 

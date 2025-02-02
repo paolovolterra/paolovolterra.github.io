@@ -129,10 +129,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#sito" id="toc-sito" class="nav-link" data-scroll-target="#sito"><span class="header-section-number">3.4</span> Sito</a></li>
   <li><a href="#libro" id="toc-libro" class="nav-link" data-scroll-target="#libro"><span class="header-section-number">3.5</span> libro</a></li>
   <li><a href="#dashboard" id="toc-dashboard" class="nav-link" data-scroll-target="#dashboard"><span class="header-section-number">3.6</span> dashboard</a></li>
-  <li><a href="#file-_quarto.yml" id="toc-file-_quarto.yml" class="nav-link" data-scroll-target="#file-_quarto.yml"><span class="header-section-number">3.7</span> file _quarto.yml</a></li>
-  <li><a href="#file-.qmd" id="toc-file-.qmd" class="nav-link" data-scroll-target="#file-.qmd"><span class="header-section-number">3.8</span> file .qmd</a></li>
-  <li><a href="#esempi-di-codice" id="toc-esempi-di-codice" class="nav-link" data-scroll-target="#esempi-di-codice"><span class="header-section-number">3.9</span> Esempi di codice</a></li>
   </ul></li>
+  <li><a href="#file-_quarto.yml" id="toc-file-_quarto.yml" class="nav-link" data-scroll-target="#file-_quarto.yml"><span class="header-section-number">4</span> file _quarto.yml</a></li>
+  <li><a href="#file-.qmd" id="toc-file-.qmd" class="nav-link" data-scroll-target="#file-.qmd"><span class="header-section-number">5</span> file .qmd</a></li>
+  <li><a href="#esempi-di-codice" id="toc-esempi-di-codice" class="nav-link" data-scroll-target="#esempi-di-codice"><span class="header-section-number">6</span> Esempi di codice</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2515_Quarto/Quarto.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
@@ -183,17 +183,13 @@ ul.task-list li input[type="checkbox"] {
 <section id="come" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> come</h1>
 <p>Il progetto si può creare da terminale, con RStudio, VSCode, Positron, PCharm, ecc. Si può fare tutto anche con notepad e terminale Da terminale però si capisce meglio cosa succede “sotto il cofano”: - entri in una cartella dedicata e scrivi <code>quarto create project</code> - il prompt guida la scelta per indicare - il tipo di progetto, - la sottocartella dove inserire il tutto, - il titolo del progetto, - l’IDE da utilizzare</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="media/Pasted image 20250131193127.png" class="img-fluid figure-img"></p>
-<figcaption>|700</figcaption>
-</figure>
-</div>
+<p><img src="media/Pasted image 20250131193127.png" class="img-fluid"></p>
 <p>Il progetto più semplice è default o manuscript Ci sono poi altri tipi di progetto che non sono riportati nella scelta da terminale: - dashboard - presentationi <a href="https://quarto.org/docs/presentations/revealjs/">reveal.js</a>&nbsp;(HTML), &nbsp;<a href="https://quarto.org/docs/presentations/powerpoint.html">PowerPoint</a>&nbsp;(MS Office), &nbsp;<a href="https://quarto.org/docs/presentations/beamer.html">Beamer</a>&nbsp;(LaTeX/PDF) - …</p>
 <p>A questo punto Quarto costruisce la struttura del progetto, in base al tipo di progEtto selezionato - se si sceglie <code>default</code> Quarto costruisce 2 soli file <strong>principali</strong> - <strong><code>_quarto.yml</code></strong> → File di configurazione generale del progetto - <strong>File <code>.qmd</code></strong> → Documento principale (di norma <code>index.qmd</code>)</p>
 <p>Negli altri casi costruisce file utili al caso - per manuscript <code>references.bib</code> - per site <code>about.qmd, style.css</code></p>
-<pre><code>tree /F</code></pre>
-<pre><code>D:.
+<pre class="{bash}"><code>tree /F
+
+D:.
 ├───manoscritto
 │       _quarto.yml
 │       index.qmd
@@ -211,7 +207,8 @@ ul.task-list li input[type="checkbox"] {
 </code></pre>
 <p>Per il preview scrivo <code>quarto preview</code> da terminal Per il rendering scrivo <code>quarto render</code> da terminal</p>
 <p>Quarto costruirà prima la struttura di output (cartelle e files) e poi mostrerà l’output su browser. La cartella di output inizia con <code>_</code> (es.: _manuscript _site) La porta è random ma può essere settata inserendo le informazioni nel preambolo YAML del .qmd Anche la dir di output può essere settata.</p>
-<pre><code>#| esempio per manuscript
+<pre class="{bash}"><code>
+# esempio per manuscript
 
 project:
   type: manuscript
@@ -219,8 +216,9 @@ project:
     port: 4200
     browser: false</code></pre>
 <p>Questo è il risultato:</p>
-<pre><code>tree /F</code></pre>
-<pre><code>D:.
+<pre class="{bash}"><code>tree /F
+
+D:.
 ├───manoscritto
 │   │   _quarto.yml
 │   │   index.qmd
@@ -360,61 +358,37 @@ project:
 </section>
 <section id="manoscritto" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="manoscritto"><span class="header-section-number">3.3</span> manoscritto</h2>
-<p><img src="media/Pasted image 20250131191238.png" class="img-fluid" alt="manoscritto|700"> <img src="media/Pasted image 20250131192013.png" class="img-fluid" alt="|700"></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="media/Pasted image 20250201233334.png" class="img-fluid figure-img"></p>
-<figcaption>|700</figcaption>
-</figure>
-</div>
+<p><img src="media/Pasted image 20250131191238.png" class="img-fluid" alt="manoscritto"> <img src="media/Pasted image 20250131192013.png" class="img-fluid"></p>
+<p><img src="media/Pasted image 20250201233334.png" class="img-fluid"></p>
 </section>
 <section id="sito" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="sito"><span class="header-section-number">3.4</span> Sito</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="media/Pasted image 20250131191811.png" class="img-fluid figure-img"></p>
-<figcaption>sito|700</figcaption>
+<figcaption>sito</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="media/Pasted image 20250131191927.png" class="img-fluid figure-img"></p>
-<figcaption>|700</figcaption>
-</figure>
-</div>
+<p><img src="media/Pasted image 20250131191927.png" class="img-fluid"></p>
 </section>
 <section id="libro" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="libro"><span class="header-section-number">3.5</span> libro</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="media/Pasted image 20250201233255.png" class="img-fluid figure-img"></p>
-<figcaption>|700</figcaption>
-</figure>
-</div>
+<p><img src="media/Pasted image 20250201233255.png" class="img-fluid"></p>
 </section>
 <section id="dashboard" class="level2" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="dashboard"><span class="header-section-number">3.6</span> dashboard</h2>
 </section>
-<section id="file-_quarto.yml" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="file-_quarto.yml"><span class="header-section-number">3.7</span> file _quarto.yml</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="media/Pasted image 20250131205407.png" class="img-fluid figure-img"></p>
-<figcaption>|700</figcaption>
-</figure>
-</div>
 </section>
-<section id="file-.qmd" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="file-.qmd"><span class="header-section-number">3.8</span> file .qmd</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="media/Pasted image 20250131205701.png" class="img-fluid figure-img"></p>
-<figcaption>|700</figcaption>
-</figure>
-</div>
+<section id="file-_quarto.yml" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> file _quarto.yml</h1>
+<p><img src="media/Pasted image 20250131205407.png" class="img-fluid"></p>
 </section>
-<section id="esempi-di-codice" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="esempi-di-codice"><span class="header-section-number">3.9</span> Esempi di codice</h2>
+<section id="file-.qmd" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> file .qmd</h1>
+<p><img src="media/Pasted image 20250131205701.png" class="img-fluid"></p>
+</section>
+<section id="esempi-di-codice" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Esempi di codice</h1>
 <ul>
 <li><strong>1️⃣ Python</strong></li>
 </ul>
@@ -441,7 +415,6 @@ project:
 <p><code>```{sql} SELECT * FROM my_table; ```</code></p>
 
 
-</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
