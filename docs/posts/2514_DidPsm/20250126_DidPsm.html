@@ -232,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="esempio-in-python" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="esempio-in-python"><span class="header-section-number">2</span> Esempio in Python</h2>
 <p>Supponiamo di avere un dataset con le colonne group (trattato/controllo), time (pre/post), e outcome.</p>
-<div id="38144f57" class="cell" data-execution_count="1">
+<div id="53abd9ad" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
@@ -261,7 +261,7 @@ Dep. Variable:                outcome   R-squared:                       0.957
 Model:                            OLS   Adj. R-squared:                  0.936
 Method:                 Least Squares   F-statistic:                     44.66
 Date:                Sun, 02 Feb 2025   Prob (F-statistic):           0.000169
-Time:                        19:44:38   Log-Likelihood:                -11.494
+Time:                        19:58:20   Log-Likelihood:                -11.494
 No. Observations:                  10   AIC:                             30.99
 Df Residuals:                       6   BIC:                             32.20
 Df Model:                           3                                         
@@ -296,7 +296,7 @@ Effetto stimato del trattamento: 6.833333333333329</code></pre>
 <h2 data-number="3" class="anchored" data-anchor-id="propensity-score-matching-psm"><span class="header-section-number">3</span> Propensity Score Matching (PSM)</h2>
 <p>Il PSM abbina le unità trattate con quelle di controllo che hanno una probabilità simile di ricevere il trattamento, basata su variabili osservabili. È utile per ridurre il bias di selezione.</p>
 <p>Esempio in Python Supponiamo di avere un dataset con le colonne treatment, outcome, e alcune variabili predittive (X1, X2).</p>
-<div id="dee0eb7d" class="cell" data-execution_count="2">
+<div id="6185cd62" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> NearestNeighbors</span>
