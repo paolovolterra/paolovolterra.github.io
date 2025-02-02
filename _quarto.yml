@@ -22,20 +22,17 @@ website:
   twitter-card:
     creator: "@ghibbli"
   repo-actions: [edit, issue]
-
-
-
-
-
   navbar:
-    background: primary
-#   background: "#007a53"
-    search: true
-    title: "Paolo Volterra's website"
     left:
       - href: index.qmd
         text: Home
-      - posts.qmd
+      - about.qmd
+    title: "Paolo Volterra's website"
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
   repo-url: https://github.com/paolovolterra/paolovolterra.github.io
 
   page-footer:
@@ -45,12 +42,3 @@ website:
         href: https://twitter.com/@ghibbli
       - icon: github
         href: https://github.com/paolovolterra/paolovolterra.github.io
-
-format:
-  html:
-    page-layout: full
-    sidebar: false
-    theme: 
-      - styles.scss
-    mainfont: Nunito
-    toc: true
