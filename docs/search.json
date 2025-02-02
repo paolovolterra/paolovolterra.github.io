@@ -214,7 +214,7 @@
     "href": "posts/2501_CF/CfAnonimizzati.html#esempio-2",
     "title": "Codici fiscali, GDPR & Python",
     "section": "5.1 Esempio:",
-    "text": "5.1 Esempio:\n\nCodice fiscale: RSSMRA80A01H501U\nToken: ABC12345XYZ\nTabella di mapping (conservata separatamente): ABC12345XYZ -&gt; RSSMRA80A01H501U\nPro: Nessun dato sensibile è esposto.\nContro: Richiede un sistema per mantenere il mapping.\n\n\nimport uuid\n\ndef anonimizza_cf_token(codice_fiscale):\n    \"\"\"\n    Funzione per anonimizzare un codice fiscale utilizzando un token UUID.\n    \"\"\"\n    # Genera un token unico (primi 8 caratteri di un UUID)\n    token = str(uuid.uuid4())[:8]\n    \n    # Crea un mapping tra il token e il codice fiscale\n    mapping = {token: codice_fiscale}\n    print(\"Mapping (da salvare):\", mapping)\n    \n    # Ritorna il token\n    return token\n\n# Codice fiscale da anonimizzare\ncodice_fiscale = \"RSSMRA80A01H501U\"\n\n# Anonimizzazione con token\ncf_anonimizzato = anonimizza_cf_token(codice_fiscale)\nprint(\"Codice Fiscale Anonimizzato:\", cf_anonimizzato)\n\nMapping (da salvare): {'e323c333': 'RSSMRA80A01H501U'}\nCodice Fiscale Anonimizzato: e323c333"
+    "text": "5.1 Esempio:\n\nCodice fiscale: RSSMRA80A01H501U\nToken: ABC12345XYZ\nTabella di mapping (conservata separatamente): ABC12345XYZ -&gt; RSSMRA80A01H501U\nPro: Nessun dato sensibile è esposto.\nContro: Richiede un sistema per mantenere il mapping.\n\n\nimport uuid\n\ndef anonimizza_cf_token(codice_fiscale):\n    \"\"\"\n    Funzione per anonimizzare un codice fiscale utilizzando un token UUID.\n    \"\"\"\n    # Genera un token unico (primi 8 caratteri di un UUID)\n    token = str(uuid.uuid4())[:8]\n    \n    # Crea un mapping tra il token e il codice fiscale\n    mapping = {token: codice_fiscale}\n    print(\"Mapping (da salvare):\", mapping)\n    \n    # Ritorna il token\n    return token\n\n# Codice fiscale da anonimizzare\ncodice_fiscale = \"RSSMRA80A01H501U\"\n\n# Anonimizzazione con token\ncf_anonimizzato = anonimizza_cf_token(codice_fiscale)\nprint(\"Codice Fiscale Anonimizzato:\", cf_anonimizzato)\n\nMapping (da salvare): {'326abf82': 'RSSMRA80A01H501U'}\nCodice Fiscale Anonimizzato: 326abf82"
   },
   {
     "objectID": "posts/2501_CF/CfAnonimizzati.html#dettagli",
@@ -719,5 +719,12 @@
     "title": "Utilizzare Quarto",
     "section": "3.6 dashboard",
     "text": "3.6 dashboard"
+  },
+  {
+    "objectID": "posts/2501_CF/CfAnonimizzati.html",
+    "href": "posts/2501_CF/CfAnonimizzati.html",
+    "title": "Codici fiscali, GDPR & Python",
+    "section": "",
+    "text": "anonimizzazione di dati\ngestione di immagini in formato base64\ninserire immagini in base64\n\n\n\nsi può trasformare il codice fiscale in una forma che non sia immediatamente identificabile da altri, ma decifrabile solo dal titolare (ad esempio, attraverso una chiave o un algoritmo noto…)\n\nCon la pseudonimizzazione a chiave privata, attraverso una di queste soluzioni\n\nHashing con Salt Privato\nCifratura Simmetrica\nSostituzione Parziale\nTokenizzazione\n\nsi può trasformare il codice fiscale in una forma che non è immediatamente identificabile da altri, ma che può essere decifrata dal titolare (ad esempio, attraverso una chiave o un algoritmo noto solo a lui)."
   }
 ]
