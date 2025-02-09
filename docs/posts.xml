@@ -60,6 +60,170 @@
 
 
 <p><img src="https://quarto.org/quarto.png" class="img-fluid"></p>
+<section id="quarto-cosè-e-a-cosa-serve" class="level3" data-number="0.0.1">
+<h3 data-number="0.0.1" class="anchored" data-anchor-id="quarto-cosè-e-a-cosa-serve"><span class="header-section-number">0.0.1</span> <strong>Quarto: Cos’è e a cosa serve?</strong></h3>
+<p><strong>Quarto</strong> è un sistema open-source per la creazione di documenti dinamici, report scientifici, presentazioni, siti web e libri utilizzando <strong>Markdown avanzato</strong> e <strong>blocco di codice eseguibile</strong>. È il successore di <strong>R Markdown</strong> ed è progettato per essere indipendente dal linguaggio di programmazione, supportando <strong>Python, R, Julia e ObservableJS</strong>.</p>
+<hr>
+</section>
+<section id="funzionalità-principali-di-quarto" class="level2" data-number="0.1">
+<h2 data-number="0.1" class="anchored" data-anchor-id="funzionalità-principali-di-quarto"><span class="header-section-number">0.1</span> <strong>🛠️ Funzionalità principali di Quarto</strong></h2>
+<ol type="1">
+<li><strong>Markdown Esteso (<code>.qmd</code>)</strong>
+<ul>
+<li>Basato su Markdown, ma con supporto per codice eseguibile.</li>
+<li>Include funzionalità avanzate come <strong>bibliografie, LaTeX, cross-referencing</strong>.</li>
+</ul></li>
+<li><strong>Esecuzione di codice (Python, R, Julia, ObservableJS)</strong>
+<ul>
+<li>Permette di integrare ed eseguire codice all’interno di un documento.<br>
+</li>
+<li>L’output (grafici, tabelle, statistiche) viene incluso automaticamente.</li>
+</ul></li>
+<li><strong>Supporto per più formati di output</strong>
+<ul>
+<li>📄 <strong>HTML</strong> (per blog, siti web, dashboard)<br>
+</li>
+<li>📊 <strong>PDF</strong> (con LaTeX)<br>
+</li>
+<li>📜 <strong>Word</strong><br>
+</li>
+<li>🎞 <strong>Presentazioni</strong> (PowerPoint, Reveal.js, Beamer)<br>
+</li>
+<li>📚 <strong>Libri e documentazione</strong></li>
+</ul></li>
+<li><strong>Interattività</strong>
+<ul>
+<li>Supporta <strong>Shiny, ObservableJS e widgets interattivi</strong>.</li>
+<li>Perfetto per <strong>dashboard dinamiche</strong> e documenti interattivi.</li>
+</ul></li>
+<li><strong>Automazione e Reproducibility</strong>
+<ul>
+<li>Può essere utilizzato in <strong>Data Science e Finanza</strong> per report aggiornabili in automatico.</li>
+<li>Perfetto per <strong>analisi economiche, finanziarie e report aziendali</strong>.</li>
+</ul></li>
+<li><strong>Gestione YAML per configurazione avanzata</strong>
+<ul>
+<li>Consente di definire <strong>metadati, opzioni di rendering e layout</strong>.</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+<section id="differenza-tra-quarto-e-jupyter-notebook" class="level2" data-number="0.2">
+<h2 data-number="0.2" class="anchored" data-anchor-id="differenza-tra-quarto-e-jupyter-notebook"><span class="header-section-number">0.2</span> <strong>📌 Differenza tra Quarto e Jupyter Notebook</strong></h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 43%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Caratteristica</strong></th>
+<th><strong>Jupyter Notebook (<code>.ipynb</code>)</strong></th>
+<th><strong>Quarto (<code>.qmd</code>)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Formato file</strong></td>
+<td>JSON con codice e output</td>
+<td>Markdown + codice eseguibile</td>
+</tr>
+<tr class="even">
+<td><strong>Modificabile con Git</strong></td>
+<td>Difficile da versionare</td>
+<td>Facile da usare con Git</td>
+</tr>
+<tr class="odd">
+<td><strong>Output</strong></td>
+<td>Solo interattivo</td>
+<td>HTML, PDF, Word, PPT, ecc.</td>
+</tr>
+<tr class="even">
+<td><strong>Uso ideale</strong></td>
+<td>Data Science esplorativa</td>
+<td>Report, articoli scientifici, presentazioni</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="come-installare-quarto" class="level2" data-number="0.3">
+<h2 data-number="0.3" class="anchored" data-anchor-id="come-installare-quarto"><span class="header-section-number">0.3</span> <strong>🖥️ Come installare Quarto</strong></h2>
+<p>Puoi installarlo con:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Per Windows, Mac e Linux</span></span>
+<span id="cb1-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">https://quarto.org/docs/get-started/</span></span></code></pre></div>
+<p>Oppure, se usi Conda:</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">conda</span> install <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-c</span> conda-forge quarto</span></code></pre></div>
+<p>Esegui un test con:</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">quarto</span> check</span></code></pre></div>
+</section>
+<section id="quarto-usa-qmd-e-non-md" class="level2" data-number="0.4">
+<h2 data-number="0.4" class="anchored" data-anchor-id="quarto-usa-qmd-e-non-md"><span class="header-section-number">0.4</span> Quarto usa qmd e non md</h2>
+<ul>
+<li><strong><code>.md</code></strong> è un file Markdown tradizionale, usato principalmente per documentazione semplice.</li>
+<li><strong><code>.qmd</code></strong> è un file Markdown esteso per <strong>Quarto</strong>, che permette di eseguire codice, generare report interattivi e produrre output in più formati.</li>
+</ul>
+<p>Ecco la tabella completa con le differenze tra <strong><code>.md</code></strong> e <strong><code>.qmd</code></strong>:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 36%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Caratteristica</strong></th>
+<th><strong>.md (Markdown)</strong></th>
+<th><strong>.qmd (Quarto Markdown)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Linguaggio base</strong></td>
+<td>Markdown standard</td>
+<td>Markdown con estensioni per Quarto</td>
+</tr>
+<tr class="even">
+<td><strong>Obiettivo</strong></td>
+<td>Formattazione di testo semplice, spesso usato per documentazione, README, blog</td>
+<td>Creazione di documenti scientifici, report interattivi, presentazioni</td>
+</tr>
+<tr class="odd">
+<td><strong>Supporto per codice</strong></td>
+<td>Supporta solo evidenziazione del codice con ``<code>| Supporta blocchi di codice eseguibili (Python, R, Julia, ecc.) | | **Esecuzione di codice** | No, solo visualizzazione | Sì, può eseguire codice e mostrare output | | **Supporto YAML**      | Facoltativo (usato per metadata in alcuni casi) | Sì, il front matter YAML è essenziale per la configurazione | | **Compilazione**       | Non necessita di compilazione, può essere letto direttamente | Necessita di</code>quarto render` per generare output in HTML, PDF, Word, ecc.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Funzionalità avanzate</strong></td>
+<td>Markdown standard</td>
+<td>Supporta LaTeX, bibliografie, cross-referencing, interattività con Shiny, ObservableJS</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="quando-usare-quarto" class="level2" data-number="0.5">
+<h2 data-number="0.5" class="anchored" data-anchor-id="quando-usare-quarto"><span class="header-section-number">0.5</span> <strong>📌 Quando usare Quarto?</strong></h2>
+<ul>
+<li>Per <strong>report finanziari e analisi economiche</strong> (può integrare dati aggiornati automaticamente).</li>
+<li>Per <strong>presentazioni su innovazione e AI</strong> (come il tuo intervento all’OPEN INNOVATION SUMMIT 2024).</li>
+<li>Per creare <strong>documentazione bancaria e normativa</strong> con output in PDF, HTML o Word.</li>
+</ul>
+<hr>
+</section>
+<section id="finalità" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Finalità</h1>
 <ul>
 <li>creare
 <ul>
@@ -75,8 +239,9 @@
 <li>inserire codice <strong>Python</strong> (<code>python</code>) ,<strong>R</strong> (<code>r</code>), <strong>Julia</strong> (<code>julia</code>), <strong>Observable JavaScript</strong> (<code>ojs</code>), <strong>Bash</strong>, <strong>C</strong>, <strong>C++</strong>, <strong>SQL</strong>, <strong>Stan</strong>,, <strong>Fortran</strong> e altri, se installi i kernel appropriati</li>
 <li><a href="https://quarto.org/docs/publishing/">pubblicare</a> i risultati su <a href="https://quartopub.com/">Quarto Pub</a> (serve login; questo è il <a href="https://paolovolterra.quarto.pub/">mio</a>), <a href="https://github.com/">github</a> (serve login, configurazione e <a href="https://git-scm.com/">GIT</a>; questo è il <a href="https://paolovolterra.github.io/">mio</a> ), <a href="https://gohugo.io/">Hugo</a>, ecC. ogni sito ha proprie modalità per interfacciarsi e pubblicare; occorre studiarsele.</li>
 </ul>
-<section id="come" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> come</h1>
+</section>
+<section id="come" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> come</h1>
 <p>Il progetto si può creare da terminale, con RStudio, VSCode, Positron, PCharm, ecc. Si può fare tutto anche con notepad e terminale Da terminale però si capisce meglio cosa succede “sotto il cofano”: - entri in una cartella dedicata e scrivi <code>quarto create project</code> - il prompt guida la scelta per indicare - il tipo di progetto, - la sottocartella dove inserire il tutto, - il titolo del progetto, - l’IDE da utilizzare</p>
 <p><img src="https://paolovolterra.github.io/posts/2515_Quarto/media/Pasted image 20250131193127.png" class="img-fluid"></p>
 <p>Il progetto più semplice è default o manuscript Ci sono poi altri tipi di progetto che non sono riportati nella scelta da terminale: - dashboard - presentationi <a href="https://quarto.org/docs/presentations/revealjs/">reveal.js</a>&nbsp;(HTML), &nbsp;<a href="https://quarto.org/docs/presentations/powerpoint.html">PowerPoint</a>&nbsp;(MS Office), &nbsp;<a href="https://quarto.org/docs/presentations/beamer.html">Beamer</a>&nbsp;(LaTeX/PDF) - …</p>
@@ -237,27 +402,27 @@ D:.
                     bootstrap-icons.woff
                     bootstrap-8da5b4427184b79ecddefad3d342027e.min.css</code></pre>
 </section>
-<section id="personalizzazione" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Personalizzazione</h1>
+<section id="personalizzazione" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Personalizzazione</h1>
 <p>il link al css va in <code>_quarto.yml</code></p>
 <hr>
 </section>
-<section id="tipi-di-progetto" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> tipi di progetto</h1>
-<section id="default" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="default"><span class="header-section-number">3.1</span> default</h2>
+<section id="tipi-di-progetto" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> tipi di progetto</h1>
+<section id="default" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="default"><span class="header-section-number">4.1</span> default</h2>
 <p><img src="https://paolovolterra.github.io/posts/2515_Quarto/media/Pasted image 20250131192626.png" class="img-fluid"> <img src="https://paolovolterra.github.io/posts/2515_Quarto/media/Pasted image 20250131192930.png" class="img-fluid"></p>
 </section>
-<section id="presentazione" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="presentazione"><span class="header-section-number">3.2</span> presentazione</h2>
+<section id="presentazione" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="presentazione"><span class="header-section-number">4.2</span> presentazione</h2>
 </section>
-<section id="manoscritto" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="manoscritto"><span class="header-section-number">3.3</span> manoscritto</h2>
+<section id="manoscritto" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="manoscritto"><span class="header-section-number">4.3</span> manoscritto</h2>
 <p><img src="https://paolovolterra.github.io/posts/2515_Quarto/media/Pasted image 20250131191238.png" class="img-fluid" alt="manoscritto"> <img src="https://paolovolterra.github.io/posts/2515_Quarto/media/Pasted image 20250131192013.png" class="img-fluid"></p>
 <p><img src="https://paolovolterra.github.io/posts/2515_Quarto/media/Pasted image 20250201233334.png" class="img-fluid"></p>
 </section>
-<section id="sito" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="sito"><span class="header-section-number">3.4</span> Sito</h2>
+<section id="sito" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="sito"><span class="header-section-number">4.4</span> Sito</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://paolovolterra.github.io/posts/2515_Quarto/media/Pasted image 20250131191811.png" class="img-fluid figure-img"></p>
@@ -266,24 +431,24 @@ D:.
 </div>
 <p><img src="https://paolovolterra.github.io/posts/2515_Quarto/media/Pasted image 20250131191927.png" class="img-fluid"></p>
 </section>
-<section id="libro" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="libro"><span class="header-section-number">3.5</span> libro</h2>
+<section id="libro" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="libro"><span class="header-section-number">4.5</span> libro</h2>
 <p><img src="https://paolovolterra.github.io/posts/2515_Quarto/media/Pasted image 20250201233255.png" class="img-fluid"></p>
 </section>
-<section id="dashboard" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="dashboard"><span class="header-section-number">3.6</span> dashboard</h2>
+<section id="dashboard" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="dashboard"><span class="header-section-number">4.6</span> dashboard</h2>
 </section>
 </section>
-<section id="file-_quarto.yml" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> file _quarto.yml</h1>
+<section id="file-_quarto.yml" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> file _quarto.yml</h1>
 <p><img src="https://paolovolterra.github.io/posts/2515_Quarto/media/Pasted image 20250131205407.png" class="img-fluid"></p>
 </section>
-<section id="file-.qmd" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> file .qmd</h1>
+<section id="file-.qmd" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> file .qmd</h1>
 <p><img src="https://paolovolterra.github.io/posts/2515_Quarto/media/Pasted image 20250131205701.png" class="img-fluid"></p>
 </section>
-<section id="esempi-di-codice" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Esempi di codice</h1>
+<section id="esempi-di-codice" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Esempi di codice</h1>
 <ul>
 <li><strong>1️⃣ Python</strong></li>
 </ul>
@@ -309,8 +474,8 @@ D:.
 </ul>
 <p><code>```{sql} SELECT * FROM my_table; ```</code></p>
 </section>
-<section id="siti-interessanti" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Siti interessanti</h1>
+<section id="siti-interessanti" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Siti interessanti</h1>
 <ul>
 <li>https://ivelasq.quarto.pub/building-a-blog-with-quarto/lets-build-a-quarto-blog/</li>
 <li>https://samanthacsik.github.io/posts/2022-10-24-quarto-blogs/</li>
@@ -8038,6 +8203,2726 @@ font-style: inherit;">=</span>df)</span></code></pre></div>
   <category>base64</category>
   <guid>https://paolovolterra.github.io/posts/2501_CFs/CfAnonimi.html</guid>
   <pubDate>Thu, 02 Jan 2025 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Untitled</title>
+  <link>https://paolovolterra.github.io/posts/25_17_FSC/FSC.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div id="729133c9" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> pandas <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> pd</span>
+<span id="cb1-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> plt</span>
+<span id="cb1-3"></span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Definizione degli anni (2014-2036 con tolleranza N+2)</span></span>
+<span id="cb1-5">anni <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2014</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2036</span>))</span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Distribuzione dei fondi (importi fittizi in milioni di euro)</span></span>
+<span id="cb1-8">anticipazioni_fsc <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">70</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">80</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">90</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]</span>
+<span id="cb1-9">fondi_fsc <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">70</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">90</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">120</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">110</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">90</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">70</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]</span>
+<span id="cb1-10">fondi_fesr <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">40</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">80</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">110</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">90</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">70</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">40</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]</span>
+<span id="cb1-11">fondi_pnrr <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">40</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">90</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">120</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">130</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">140</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">120</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">80</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">40</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]</span>
+<span id="cb1-12">rimborso_fsc <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">40</span>, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">40</span>, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]</span>
+<span id="cb1-13">fondi_privati <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">70</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">90</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">110</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">80</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">40</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]</span>
+<span id="cb1-14">finanziamenti_brevi <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">40</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">40</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]</span>
+<span id="cb1-15">finanziamenti_lunghi <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">40</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">70</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">80</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">90</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">110</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">90</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">80</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">70</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">40</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>]</span>
+<span id="cb1-16"></span>
+<span id="cb1-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Creazione del DataFrame</span></span>
+<span id="cb1-18">cronoprogramma <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pd.DataFrame({</span>
+<span id="cb1-19">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anno'</span>: anni,</span>
+<span id="cb1-20">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anticipazioni FSC'</span>: anticipazioni_fsc,</span>
+<span id="cb1-21">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi Ordinari FSC'</span>: fondi_fsc,</span>
+<span id="cb1-22">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi FESR'</span>: fondi_fesr,</span>
+<span id="cb1-23">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi PNRR'</span>: fondi_pnrr,</span>
+<span id="cb1-24">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Rimborso Anticipazioni FSC'</span>: rimborso_fsc,</span>
+<span id="cb1-25">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi Privati'</span>: fondi_privati,</span>
+<span id="cb1-26">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Finanziamenti Bancari Breve Termine'</span>: finanziamenti_brevi,</span>
+<span id="cb1-27">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Finanziamenti Bancari Lungo Termine'</span>: finanziamenti_lunghi</span>
+<span id="cb1-28">})</span>
+<span id="cb1-29"></span>
+<span id="cb1-30"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># **📌 Salva il cronoprogramma in un file CSV**</span></span>
+<span id="cb1-31">cronoprogramma.to_csv(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cronoprogramma_finanziamenti.csv"</span>, index<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>)</span>
+<span id="cb1-32"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Tabella salvata come 'cronoprogramma_finanziamenti.csv'"</span>)</span>
+<span id="cb1-33"></span>
+<span id="cb1-34"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># **📌 Creazione del grafico a barre sovrapposte**</span></span>
+<span id="cb1-35">plt.figure(figsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">12</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>))</span>
+<span id="cb1-36"></span>
+<span id="cb1-37"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Aggiunta delle barre per i vari fondi</span></span>
+<span id="cb1-38">plt.bar(cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anno'</span>], cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anticipazioni FSC'</span>], label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anticipazioni FSC'</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'blue'</span>)</span>
+<span id="cb1-39">plt.bar(cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anno'</span>], cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi Ordinari FSC'</span>], bottom<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anticipazioni FSC'</span>], label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi Ordinari FSC'</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'green'</span>)</span>
+<span id="cb1-40">plt.bar(cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anno'</span>], cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi FESR'</span>], bottom<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anticipazioni FSC'</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi Ordinari FSC'</span>], label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi FESR'</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'red'</span>)</span>
+<span id="cb1-41">plt.bar(cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anno'</span>], cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi PNRR'</span>], bottom<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anticipazioni FSC'</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi Ordinari FSC'</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi FESR'</span>], label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi PNRR'</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'purple'</span>)</span>
+<span id="cb1-42">plt.bar(cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anno'</span>], cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi Privati'</span>], bottom<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>cronoprogramma[[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anticipazioni FSC'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi Ordinari FSC'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi FESR'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi PNRR'</span>]].<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>(axis<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>), label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi Privati'</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'brown'</span>)</span>
+<span id="cb1-43">plt.bar(cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anno'</span>], cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Finanziamenti Bancari Breve Termine'</span>], bottom<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>cronoprogramma[[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anticipazioni FSC'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi Ordinari FSC'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi FESR'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi PNRR'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi Privati'</span>]].<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>(axis<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>), label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Finanziamenti Bancari Breve Termine'</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'cyan'</span>)</span>
+<span id="cb1-44">plt.bar(cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anno'</span>], cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Finanziamenti Bancari Lungo Termine'</span>], bottom<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>cronoprogramma[[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anticipazioni FSC'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi Ordinari FSC'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi FESR'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi PNRR'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondi Privati'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Finanziamenti Bancari Breve Termine'</span>]].<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>(axis<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>), label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Finanziamenti Bancari Lungo Termine'</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'darkorange'</span>)</span>
+<span id="cb1-45"></span>
+<span id="cb1-46"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Aggiunta dei rimborsi FSC come barre negative</span></span>
+<span id="cb1-47">plt.bar(cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anno'</span>], cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Rimborso Anticipazioni FSC'</span>], label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Rimborso FSC'</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'orange'</span>)</span>
+<span id="cb1-48"></span>
+<span id="cb1-49"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># **📌 Aggiunta delle linee verticali per i cicli di programmazione con tolleranza (N+2)**</span></span>
+<span id="cb1-50">cicli_ue <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2014</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2022</span>), (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2021</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2029</span>), (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2028</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2036</span>)]</span>
+<span id="cb1-51"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> start, end <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> cicli_ue:</span>
+<span id="cb1-52">    plt.axvline(x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>start, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'black'</span>, linestyle<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'--'</span>, linewidth<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Inizio ciclo UE'</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> start <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2014</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>)</span>
+<span id="cb1-53">    plt.axvline(x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>end, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'black'</span>, linestyle<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'--'</span>, linewidth<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fine ciclo UE + Tolleranza'</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> end <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2022</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>)</span>
+<span id="cb1-54"></span>
+<span id="cb1-55"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Aggiunta della scadenza del PNRR (2026, senza tolleranza)</span></span>
+<span id="cb1-56">plt.axvline(x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2026</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'grey'</span>, linestyle<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'-.'</span>, linewidth<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Scadenza PNRR'</span>)</span>
+<span id="cb1-57"></span>
+<span id="cb1-58"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Impostazione degli assi e della legenda</span></span>
+<span id="cb1-59">plt.xticks(cronoprogramma[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anno'</span>], rotation<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">45</span>)</span>
+<span id="cb1-60">plt.xlabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anno'</span>)</span>
+<span id="cb1-61">plt.ylabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Importo (€)'</span>)</span>
+<span id="cb1-62">plt.title(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Cronoprogramma con Fondi Pubblici, Privati e Finanziamenti Bancari'</span>)</span>
+<span id="cb1-63">plt.legend()</span>
+<span id="cb1-64">plt.grid(axis<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'y'</span>, linestyle<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'--'</span>, alpha<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.7</span>)</span>
+<span id="cb1-65"></span>
+<span id="cb1-66"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># **📌 Mostra il grafico**</span></span>
+<span id="cb1-67">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tabella salvata come 'cronoprogramma_finanziamenti.csv'</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://paolovolterra.github.io/posts/25_17_FSC/FSC_files/figure-html/cell-2-output-2.png" width="965" height="617" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="bfd4ff75" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">cronoprogramma</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Anno</th>
+<th data-quarto-table-cell-role="th">Anticipazioni FSC</th>
+<th data-quarto-table-cell-role="th">Fondi Ordinari FSC</th>
+<th data-quarto-table-cell-role="th">Fondi FESR</th>
+<th data-quarto-table-cell-role="th">Fondi PNRR</th>
+<th data-quarto-table-cell-role="th">Rimborso Anticipazioni FSC</th>
+<th data-quarto-table-cell-role="th">Fondi Privati</th>
+<th data-quarto-table-cell-role="th">Finanziamenti Bancari Breve Termine</th>
+<th data-quarto-table-cell-role="th">Finanziamenti Bancari Lungo Termine</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2014</td>
+<td>50</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2015</td>
+<td>70</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2016</td>
+<td>80</td>
+<td>30</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2017</td>
+<td>90</td>
+<td>50</td>
+<td>20</td>
+<td>10</td>
+<td>0</td>
+<td>10</td>
+<td>30</td>
+<td>30</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2018</td>
+<td>60</td>
+<td>70</td>
+<td>30</td>
+<td>20</td>
+<td>0</td>
+<td>20</td>
+<td>40</td>
+<td>40</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2019</td>
+<td>50</td>
+<td>90</td>
+<td>40</td>
+<td>40</td>
+<td>0</td>
+<td>30</td>
+<td>50</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2020</td>
+<td>30</td>
+<td>100</td>
+<td>60</td>
+<td>60</td>
+<td>-10</td>
+<td>50</td>
+<td>60</td>
+<td>60</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>2021</td>
+<td>0</td>
+<td>120</td>
+<td>80</td>
+<td>90</td>
+<td>-20</td>
+<td>70</td>
+<td>50</td>
+<td>70</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>2022</td>
+<td>0</td>
+<td>110</td>
+<td>100</td>
+<td>120</td>
+<td>-30</td>
+<td>90</td>
+<td>40</td>
+<td>80</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>2023</td>
+<td>0</td>
+<td>100</td>
+<td>110</td>
+<td>130</td>
+<td>-40</td>
+<td>100</td>
+<td>30</td>
+<td>90</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>2024</td>
+<td>0</td>
+<td>90</td>
+<td>100</td>
+<td>140</td>
+<td>-50</td>
+<td>110</td>
+<td>20</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>2025</td>
+<td>0</td>
+<td>70</td>
+<td>90</td>
+<td>120</td>
+<td>-50</td>
+<td>100</td>
+<td>10</td>
+<td>110</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>2026</td>
+<td>0</td>
+<td>50</td>
+<td>70</td>
+<td>100</td>
+<td>-40</td>
+<td>80</td>
+<td>0</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>2027</td>
+<td>0</td>
+<td>30</td>
+<td>50</td>
+<td>80</td>
+<td>-30</td>
+<td>60</td>
+<td>0</td>
+<td>90</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>2028</td>
+<td>0</td>
+<td>20</td>
+<td>40</td>
+<td>60</td>
+<td>-20</td>
+<td>40</td>
+<td>0</td>
+<td>80</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>2029</td>
+<td>0</td>
+<td>10</td>
+<td>20</td>
+<td>40</td>
+<td>-10</td>
+<td>30</td>
+<td>0</td>
+<td>70</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>2030</td>
+<td>0</td>
+<td>0</td>
+<td>10</td>
+<td>20</td>
+<td>0</td>
+<td>20</td>
+<td>0</td>
+<td>60</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>2031</td>
+<td>0</td>
+<td>0</td>
+<td>5</td>
+<td>10</td>
+<td>0</td>
+<td>10</td>
+<td>0</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>2032</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>40</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>2033</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>30</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>2034</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">21</td>
+<td>2035</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="e84ceca3" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">cronoprogramma.groupby(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Anno'</span>).<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Anticipazioni FSC</th>
+<th data-quarto-table-cell-role="th">Fondi Ordinari FSC</th>
+<th data-quarto-table-cell-role="th">Fondi FESR</th>
+<th data-quarto-table-cell-role="th">Fondi PNRR</th>
+<th data-quarto-table-cell-role="th">Rimborso Anticipazioni FSC</th>
+<th data-quarto-table-cell-role="th">Fondi Privati</th>
+<th data-quarto-table-cell-role="th">Finanziamenti Bancari Breve Termine</th>
+<th data-quarto-table-cell-role="th">Finanziamenti Bancari Lungo Termine</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Anno</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2014</td>
+<td>50</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2015</td>
+<td>70</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2016</td>
+<td>80</td>
+<td>30</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2017</td>
+<td>90</td>
+<td>50</td>
+<td>20</td>
+<td>10</td>
+<td>0</td>
+<td>10</td>
+<td>30</td>
+<td>30</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2018</td>
+<td>60</td>
+<td>70</td>
+<td>30</td>
+<td>20</td>
+<td>0</td>
+<td>20</td>
+<td>40</td>
+<td>40</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2019</td>
+<td>50</td>
+<td>90</td>
+<td>40</td>
+<td>40</td>
+<td>0</td>
+<td>30</td>
+<td>50</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2020</td>
+<td>30</td>
+<td>100</td>
+<td>60</td>
+<td>60</td>
+<td>-10</td>
+<td>50</td>
+<td>60</td>
+<td>60</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2021</td>
+<td>0</td>
+<td>120</td>
+<td>80</td>
+<td>90</td>
+<td>-20</td>
+<td>70</td>
+<td>50</td>
+<td>70</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2022</td>
+<td>0</td>
+<td>110</td>
+<td>100</td>
+<td>120</td>
+<td>-30</td>
+<td>90</td>
+<td>40</td>
+<td>80</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2023</td>
+<td>0</td>
+<td>100</td>
+<td>110</td>
+<td>130</td>
+<td>-40</td>
+<td>100</td>
+<td>30</td>
+<td>90</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2024</td>
+<td>0</td>
+<td>90</td>
+<td>100</td>
+<td>140</td>
+<td>-50</td>
+<td>110</td>
+<td>20</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2025</td>
+<td>0</td>
+<td>70</td>
+<td>90</td>
+<td>120</td>
+<td>-50</td>
+<td>100</td>
+<td>10</td>
+<td>110</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2026</td>
+<td>0</td>
+<td>50</td>
+<td>70</td>
+<td>100</td>
+<td>-40</td>
+<td>80</td>
+<td>0</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2027</td>
+<td>0</td>
+<td>30</td>
+<td>50</td>
+<td>80</td>
+<td>-30</td>
+<td>60</td>
+<td>0</td>
+<td>90</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2028</td>
+<td>0</td>
+<td>20</td>
+<td>40</td>
+<td>60</td>
+<td>-20</td>
+<td>40</td>
+<td>0</td>
+<td>80</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2029</td>
+<td>0</td>
+<td>10</td>
+<td>20</td>
+<td>40</td>
+<td>-10</td>
+<td>30</td>
+<td>0</td>
+<td>70</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2030</td>
+<td>0</td>
+<td>0</td>
+<td>10</td>
+<td>20</td>
+<td>0</td>
+<td>20</td>
+<td>0</td>
+<td>60</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2031</td>
+<td>0</td>
+<td>0</td>
+<td>5</td>
+<td>10</td>
+<td>0</td>
+<td>10</td>
+<td>0</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2032</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>40</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2033</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>30</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2034</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2035</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="fondi-comunitari-nazionali-regionali-bancari-privati" class="level1">
+<h1>Fondi comunitari, nazionali, regionali, bancari, privati</h1>
+<p><em>come si concicliano?</em></p>
+<section id="lanticipazione-del-fondo-per-lo-sviluppo-e-la-coesione-fsc" class="level2">
+<h2 class="anchored" data-anchor-id="lanticipazione-del-fondo-per-lo-sviluppo-e-la-coesione-fsc">l’anticipazione del Fondo per lo sviluppo e la Coesione (FSC)</h2>
+<p>L’anticipazione del Fondo per lo Sviluppo e la Coesione (FSC) si riferisce all’assegnazione anticipata di risorse finanziarie, provenienti dalla programmazione FSC 2021-2027, a favore di amministrazioni centrali, regioni o province autonome. Queste anticipazioni sono destinate a finanziare interventi che possono essere avviati immediatamente o a completare progetti già in corso, garantendo così una rapida attuazione delle politiche di coesione economica, sociale e territoriale.</p>
+<p>Ad esempio, la Delibera CIPESS n.&nbsp;79/2021 ha disposto un’assegnazione complessiva di circa 2,6 miliardi di euro a favore di regioni e province autonome, utilizzando in parte le risorse FSC 2014-2020 e in parte quelle della programmazione 2021-2027. Queste risorse sono state destinate a interventi immediatamente cantierabili o al completamento di progetti esistenti. PROGRAMMAZIONEECONOMICA.GOV.IT</p>
+<p>Un ulteriore esempio è rappresentato dalla Delibera CIPESS n.&nbsp;1/2022, che ha assegnato, a titolo di anticipazione, circa 4,68 miliardi di euro al Ministero delle Infrastrutture e della Mobilità Sostenibili per il finanziamento di opere strategiche e interventi locali, con l’obiettivo di promuovere la mobilità sostenibile e migliorare le infrastrutture nel Paese. PROGRAMMAZIONEECONOMICA.GOV.IT</p>
+<p>Queste anticipazioni consentono di accelerare l’implementazione di progetti strategici, contribuendo al riequilibrio economico e sociale tra le diverse aree del Paese, in linea con le finalità del FSC.</p>
+</section>
+<section id="perchè-si-usa-lanticipazione-invece-dei-fondi-previsti" class="level2">
+<h2 class="anchored" data-anchor-id="perchè-si-usa-lanticipazione-invece-dei-fondi-previsti">perchè si usa l’anticipazione invece dei fondi previsti?</h2>
+<p>L’uso dell’<strong>anticipazione</strong> del Fondo per lo Sviluppo e la Coesione (FSC) invece dei fondi già previsti dipende da diversi motivi tecnici, burocratici e strategici. Ecco le principali ragioni:</p>
+<section id="accelerazione-della-spesa-pubblica-e-degli-investimenti" class="level3">
+<h3 class="anchored" data-anchor-id="accelerazione-della-spesa-pubblica-e-degli-investimenti">1. <strong>Accelerazione della Spesa Pubblica e degli Investimenti</strong></h3>
+<ul>
+<li>I fondi FSC sono soggetti a lunghi processi di programmazione e approvazione da parte delle autorità nazionali ed europee.</li>
+<li>L’anticipazione consente di sbloccare immediatamente risorse finanziarie per progetti già avviati o cantierabili, evitando ritardi dovuti alla burocrazia.</li>
+</ul>
+</section>
+<section id="superamento-dei-vincoli-della-programmazione-pluriennale" class="level3">
+<h3 class="anchored" data-anchor-id="superamento-dei-vincoli-della-programmazione-pluriennale">2. <strong>Superamento dei Vincoli della Programmazione Pluriennale</strong></h3>
+<ul>
+<li>Il FSC è assegnato su <strong>cicli pluriennali</strong> (es. 2014-2020, 2021-2027) e la ripartizione delle risorse avviene gradualmente.</li>
+<li>L’anticipazione permette di usare una parte delle risorse future per progetti urgenti senza aspettare la completa definizione della programmazione.</li>
+</ul>
+</section>
+<section id="miglioramento-del-tasso-di-attuazione-della-spesa" class="level3">
+<h3 class="anchored" data-anchor-id="miglioramento-del-tasso-di-attuazione-della-spesa">3. <strong>Miglioramento del Tasso di Attuazione della Spesa</strong></h3>
+<ul>
+<li>Spesso i fondi strutturali e di coesione registrano un basso tasso di utilizzo a causa della complessità delle procedure.</li>
+<li>Attraverso l’anticipazione, si garantisce che le risorse vengano spese tempestivamente, riducendo il rischio di perdere finanziamenti a causa di ritardi.</li>
+</ul>
+</section>
+<section id="supporto-a-progetti-in-corso-o-completamento-di-opere" class="level3">
+<h3 class="anchored" data-anchor-id="supporto-a-progetti-in-corso-o-completamento-di-opere">4. <strong>Supporto a Progetti in Corso o Completamento di Opere</strong></h3>
+<ul>
+<li>Alcuni progetti finanziati dal FSC rischiano di bloccarsi per mancanza di fondi immediati.</li>
+<li>L’anticipazione consente di coprire temporaneamente i costi fino all’effettiva assegnazione delle risorse ordinarie.</li>
+</ul>
+</section>
+<section id="allineamento-con-altri-fondi-pnrr-e-bilancio-nazionale" class="level3">
+<h3 class="anchored" data-anchor-id="allineamento-con-altri-fondi-pnrr-e-bilancio-nazionale">5. <strong>Allineamento con Altri Fondi (PNRR e Bilancio Nazionale)</strong></h3>
+<ul>
+<li>In alcuni casi, l’anticipazione viene utilizzata per integrare risorse del <strong>PNRR</strong> o del bilancio statale, garantendo coerenza tra le varie fonti di finanziamento.</li>
+<li>Questo è fondamentale per evitare che progetti strategici subiscano stop a causa della frammentazione dei finanziamenti.</li>
+</ul>
+</section>
+<section id="conclusione" class="level3">
+<h3 class="anchored" data-anchor-id="conclusione"><strong>Conclusione</strong></h3>
+<p>L’anticipazione del FSC è quindi uno <strong>strumento flessibile e strategico</strong> che permette di sbloccare risorse in tempi più rapidi rispetto ai meccanismi tradizionali. Questo consente di accelerare investimenti cruciali, evitare ritardi amministrativi e garantire il raggiungimento degli obiettivi di sviluppo territoriale, infrastrutturale ed economico.</p>
+</section>
+</section>
+<section id="come-funziona-liter-di-gestione-di-fondi-e-anticipazioni-in-modo-che-nel-tempo-si-allineino" class="level2">
+<h2 class="anchored" data-anchor-id="come-funziona-liter-di-gestione-di-fondi-e-anticipazioni-in-modo-che-nel-tempo-si-allineino">come funziona l’iter di gestione di fondi e anticipazioni in modo che nel tempo si allineino</h2>
+<section id="iter-di-gestione-dei-fondi-fsc-e-delle-anticipazioni-meccanismo-di-allineamento-nel-tempo" class="level3">
+<h3 class="anchored" data-anchor-id="iter-di-gestione-dei-fondi-fsc-e-delle-anticipazioni-meccanismo-di-allineamento-nel-tempo"><strong>Iter di gestione dei Fondi FSC e delle Anticipazioni: Meccanismo di Allineamento nel Tempo</strong></h3>
+<p>Per garantire che i <strong>fondi ordinari del FSC</strong> e le <strong>anticipazioni</strong> si allineino nel tempo senza creare squilibri finanziari, il processo segue un iter articolato, che coinvolge diverse fasi di <strong>programmazione, attuazione e rendicontazione</strong>.</p>
+<hr>
+</section>
+</section>
+<section id="programmazione-e-pianificazione-dei-fondi-fsc" class="level2">
+<h2 class="anchored" data-anchor-id="programmazione-e-pianificazione-dei-fondi-fsc"><strong>1️⃣ Programmazione e Pianificazione dei Fondi FSC</strong></h2>
+<ol type="1">
+<li><strong>Definizione della programmazione pluriennale</strong>
+<ul>
+<li>Il Governo italiano, insieme alle <strong>Regioni e Province Autonome</strong>, stabilisce le priorità di investimento per il ciclo FSC (es. 2021-2027).<br>
+</li>
+<li>La programmazione viene approvata dal <strong>Comitato Interministeriale per la Programmazione Economica e lo Sviluppo Sostenibile (CIPESS)</strong>.<br>
+</li>
+<li>Le risorse vengono suddivise tra macro-aree tematiche (infrastrutture, digitalizzazione, transizione verde, ecc.).</li>
+</ul></li>
+<li><strong>Ripartizione delle risorse e assegnazione ai progetti</strong>
+<ul>
+<li>Le amministrazioni centrali e regionali definiscono i progetti da finanziare.<br>
+</li>
+<li>Le risorse vengono <strong>assegnate progressivamente</strong> in base ai tempi di realizzazione e alla capacità di spesa dei soggetti attuatori.</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+<section id="richiesta-e-concessione-dellanticipazione" class="level2">
+<h2 class="anchored" data-anchor-id="richiesta-e-concessione-dellanticipazione"><strong>2️⃣ Richiesta e Concessione dell’Anticipazione</strong></h2>
+<ol start="3" type="1">
+<li><strong>Richiesta di anticipazione</strong>
+<ul>
+<li>Se un progetto necessita di fondi immediati, la Regione o l’Ente interessato può richiedere un’<strong>anticipazione</strong> sui fondi FSC futuri.<br>
+</li>
+<li>La richiesta deve essere motivata e dimostrare la capacità di spesa immediata.</li>
+</ul></li>
+<li><strong>Approvazione da parte del CIPESS e Ministero dell’Economia e delle Finanze (MEF)</strong>
+<ul>
+<li>Il CIPESS approva la richiesta e assegna le risorse in <strong>via provvisoria</strong>.<br>
+</li>
+<li>Il MEF verifica la disponibilità di fondi nel bilancio dello Stato e autorizza l’erogazione.</li>
+</ul></li>
+<li><strong>Erogazione dell’anticipazione</strong>
+<ul>
+<li>L’anticipazione viene versata all’ente beneficiario, che può utilizzarla per avviare il progetto.</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+<section id="gestione-e-monitoraggio-dellallineamento" class="level2">
+<h2 class="anchored" data-anchor-id="gestione-e-monitoraggio-dellallineamento"><strong>3️⃣ Gestione e Monitoraggio dell’Allineamento</strong></h2>
+<ol start="6" type="1">
+<li><strong>Monitoraggio della spesa e rendicontazione</strong>
+<ul>
+<li>Gli enti devono dimostrare di aver speso i fondi anticipati per gli scopi dichiarati.<br>
+</li>
+<li>Il <strong>Sistema Nazionale di Monitoraggio</strong> traccia lo stato di avanzamento dei progetti.</li>
+</ul></li>
+<li><strong>Allineamento con i fondi ordinari FSC</strong>
+<ul>
+<li>Quando le risorse FSC previste per quel ciclo diventano disponibili, si procede a un <strong>conguaglio finanziario</strong>.<br>
+</li>
+<li>L’anticipazione viene <strong>scalata dalle risorse ordinarie</strong>, evitando sovrapposizioni di finanziamento.</li>
+</ul></li>
+<li><strong>Rendicontazione finale e chiusura finanziaria</strong>
+<ul>
+<li>L’ente beneficiario presenta un bilancio finale.<br>
+</li>
+<li>Se l’anticipazione è stata spesa correttamente, il progetto viene ufficialmente chiuso.<br>
+</li>
+<li>Se vi sono risorse non utilizzate, possono essere riallocate.</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+<section id="meccanismi-di-equilibrio-per-evitare-disallineamenti" class="level2">
+<h2 class="anchored" data-anchor-id="meccanismi-di-equilibrio-per-evitare-disallineamenti"><strong>🔄 Meccanismi di Equilibrio per Evitare Disallineamenti</strong></h2>
+<ul>
+<li><strong>Vincoli di destinazione</strong> → Le anticipazioni devono essere utilizzate solo per spese strettamente collegate ai progetti FSC.<br>
+</li>
+<li><strong>Controlli periodici</strong> → Il MEF e il Dipartimento per la Coesione effettuano verifiche per garantire l’equilibrio tra anticipazioni e fondi ordinari.<br>
+</li>
+<li><strong>Clausole di compensazione</strong> → Se una Regione riceve un’anticipazione ma poi non utilizza i fondi, può subire <strong>riduzioni nelle assegnazioni future</strong>.<br>
+</li>
+<li><strong>Flessibilità</strong> → Se le risorse ordinarie FSC subiscono ritardi, è possibile prevedere ulteriori anticipazioni per evitare blocchi.</li>
+</ul>
+<hr>
+<section id="conclusione-1" class="level3">
+<h3 class="anchored" data-anchor-id="conclusione-1"><strong>📌 Conclusione</strong></h3>
+<p>Il sistema di gestione delle anticipazioni FSC è strutturato per garantire che nel tempo non si creino squilibri finanziari. Il monitoraggio continuo e i meccanismi di compensazione permettono di evitare il rischio di <strong>spese non coperte</strong> o di <strong>progetti bloccati</strong>.</p>
+<p>👉 <strong>Vuoi approfondire un caso specifico di allineamento o un settore particolare di spesa (es. infrastrutture, digitale, PNRR)?</strong></p>
+<p><img src="https://paolovolterra.github.io/posts/25_17_FSC/media/467a54ab-6d5f-443c-b40e-156fba14661f.png" class="img-fluid"></p>
+<p>Il grafico mostra l’evoluzione nel tempo delle anticipazioni FSC (linea blu) e dei fondi ordinari FSC (linea verde) dal 2024 al 2030.</p>
+<p>Interpretazione del grafico: Anticipazioni iniziali elevate (2024-2026) → Nei primi anni, i fondi ordinari non sono ancora disponibili, quindi si fa ricorso alle anticipazioni per avviare i progetti. Graduale riduzione delle anticipazioni (2027-2029) → Man mano che i fondi ordinari FSC vengono erogati, si riduce la necessità di anticipazioni. Pieno allineamento (2030) → Alla fine del ciclo di programmazione, i fondi ordinari coprono completamente il fabbisogno, azzerando la necessità di anticipazioni. Questo modello consente di mantenere un flusso continuo di finanziamenti, evitando blocchi nei progetti e garantendo un uso efficiente delle risorse nel tempo.</p>
+</section>
+</section>
+<section id="perchè-hai-usato-un-tempo-così-lungo" class="level2">
+<h2 class="anchored" data-anchor-id="perchè-hai-usato-un-tempo-così-lungo">perchè hai usato un tempo così lungo?</h2>
+<p>Ho utilizzato un periodo <strong>lungo (2024-2030)</strong> perché il <strong>Fondo per lo Sviluppo e la Coesione (FSC)</strong> è strutturato su <strong>cicli pluriennali di programmazione</strong> (tipicamente <strong>7 anni</strong>, es. 2014-2020, 2021-2027). Le anticipazioni servono a coprire i primi anni, in attesa della piena operatività dei fondi ordinari.</p>
+<section id="perché-un-orizzonte-di-6-7-anni-è-realistico" class="level3">
+<h3 class="anchored" data-anchor-id="perché-un-orizzonte-di-6-7-anni-è-realistico"><strong>Perché un orizzonte di 6-7 anni è realistico?</strong></h3>
+<ol type="1">
+<li><strong>Programmazione FSC e tempi di assegnazione</strong>
+<ul>
+<li>I fondi vengono programmati con una visione di <strong>medio-lungo periodo</strong>.</li>
+<li>L’assegnazione effettiva spesso avviene <strong>con ritardi di 2-3 anni</strong> rispetto all’inizio del ciclo.</li>
+</ul></li>
+<li><strong>Ritardi nella spesa e nel finanziamento</strong>
+<ul>
+<li>Le risorse FSC vengono spese gradualmente nel tempo (es. il FSC 2014-2020 si è chiuso solo nel 2023).<br>
+</li>
+<li>Le anticipazioni vengono richieste nei primi anni per garantire <strong>liquidità immediata</strong>.</li>
+</ul></li>
+<li><strong>Allineamento progressivo</strong>
+<ul>
+<li>Nei primi anni: <strong>più anticipazioni, meno fondi ordinari</strong>.<br>
+</li>
+<li>Dopo 3-4 anni: <strong>inizia l’erogazione dei fondi FSC ordinari</strong>.<br>
+</li>
+<li>Verso la fine del ciclo: <strong>le anticipazioni si azzerano e restano solo i fondi ordinari</strong>.</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+<section id="vuoi-che-faccia-una-simulazione-su-un-periodo-più-breve" class="level3">
+<h3 class="anchored" data-anchor-id="vuoi-che-faccia-una-simulazione-su-un-periodo-più-breve"><strong>Vuoi che faccia una simulazione su un periodo più breve?</strong></h3>
+<p>Posso modificare il grafico considerando un <strong>ciclo di 3-4 anni</strong> per mostrarti un’anticipazione di breve periodo! 🚀</p>
+<p><img src="https://paolovolterra.github.io/posts/25_17_FSC/media/output.png" class="img-fluid"></p>
+<p>Il grafico mostra l’andamento dei finanziamenti per un progetto di lungo periodo (2024-2038) che attraversa più cicli di programmazione FSC e FESR.</p>
+<p>Interpretazione del grafico: Fase iniziale (2024-2026) → Uso delle anticipazioni FSC (blu)</p>
+<p>Nei primi anni, i fondi ordinari non sono ancora disponibili, quindi vengono utilizzate anticipazioni FSC per avviare il progetto. Fase di finanziamento principale (2027-2032) → Fondi ordinari FSC (verde) e FESR (rosso)</p>
+<p>Dopo l’azzeramento delle anticipazioni, entrano in gioco i fondi ordinari FSC, che coprono la maggior parte della spesa. I fondi FESR si attivano in parallelo per cofinanziare il progetto. Fase di chiusura (2033-2038) → Riduzione graduale dei finanziamenti</p>
+<p>I fondi FSC e FESR iniziano a calare, segnalando l’approssimarsi della conclusione del progetto. Verso il 2038, i finanziamenti si azzerano progressivamente. 📌 Cosa evidenzia questo esempio? L’uso strategico delle anticipazioni per avviare il progetto senza aspettare i fondi ordinari. L’alternanza tra FSC e FESR per garantire un finanziamento continuo. Un ciclo multi-programmazione, con il progetto che supera un singolo ciclo FSC (2021-2027) e continua nei successivi.</p>
+<p><img src="https://paolovolterra.github.io/posts/25_17_FSC/media/output3.png" class="img-fluid"></p>
+<p>Ecco il grafico che rappresenta il finanziamento di un Contratto di Sviluppo dal 2014 al 2038, sfruttando FSC e FESR su più cicli di programmazione.</p>
+<p>🔍 Analisi del grafico: Fase di avvio (2014-2020):</p>
+<p>Il progetto parte con anticipazioni FSC (blu) perché i fondi ordinari non sono ancora erogabili. Gradualmente, dal 2017, iniziano ad arrivare i primi fondi FSC ordinari (verde). Il FESR (rosso) inizia a cofinanziare il progetto dal 2016, con un contributo crescente. Fase di pieno finanziamento (2021-2030):</p>
+<p>Con la chiusura del ciclo 2014-2020, le anticipazioni FSC si azzerano. I fondi ordinari FSC e FESR coprono il progetto, con il picco tra il 2025 e il 2028. Il finanziamento FESR rimane elevato fino al 2030, quando inizia a calare. Fase di chiusura (2031-2038):</p>
+<p>I fondi FSC si riducono gradualmente, finanziando solo gli ultimi interventi. Il FESR continua a supportare la chiusura del progetto, ma con importi decrescenti. Dal 2038, il finanziamento termina completamente. 📌 Conclusioni: ✔️ Gestione equilibrata del finanziamento → Si evitano interruzioni nei lavori. ✔️ Utilizzo strategico delle anticipazioni FSC → Per avviare il progetto prima dell’arrivo dei fondi ordinari. ✔️ Integrazione tra FSC e FESR → I due fondi lavorano in sinergia per garantire un finanziamento costante.</p>
+<p>I Fondi Anticipati dal FSC Saranno Rimborsati dagli Altri Fondi? La risposta dipende da come viene strutturato il finanziamento del progetto e da quali meccanismi di compensazione sono previsti tra FSC, FESR e altre fonti di finanziamento pubblico. Vediamo i possibili scenari:</p>
+<p>📌 1. Rimborso Diretto delle Anticipazioni FSC da Parte di Altri Fondi In alcuni casi, le anticipazioni FSC possono essere compensate con l’arrivo successivo di fondi europei (FESR) o nazionali (PNRR, bilancio statale, risorse regionali). Questo meccanismo è previsto quando i fondi FSC vengono anticipati per coprire ritardi burocratici di altri finanziamenti già assegnati ma non ancora erogabili. Esempio: Un progetto di infrastruttura riceve anticipazioni FSC nei primi anni. Dopo il 2025, con l’arrivo dei fondi FESR e PNRR, parte di queste anticipazioni viene scalata o rimborsata. 📌 2. Nessun Rimborso, ma Solo Sostituzione Progressiva Spesso, il FSC anticipa fondi che non vengono rimborsati, ma vengono progressivamente sostituiti dai fondi ordinari del FSC stesso o dal FESR. In questo caso, la spesa iniziale viene coperta con anticipazioni FSC, ma quando arrivano i fondi definitivi, questi prendono il posto delle anticipazioni, senza un vero e proprio rimborso. Esempio: Il FSC finanzia un progetto con 200 milioni di anticipazioni nel 2024-2026. Nel 2027-2028 arrivano i fondi FSC ordinari e coprono il costo del progetto senza bisogno di rimborsi. 📌 3. Cofinanziamento senza Rimborso Se un progetto viene finanziato con FSC + FESR, le anticipazioni FSC non vengono rimborsate, ma il progetto continua ad essere finanziato con una combinazione di fondi. Qui, il FESR entra in gioco per coprire parte della spesa, senza restituire le anticipazioni FSC, ma riducendo la necessità di ulteriori fondi FSC nei cicli successivi. Esempio: Nel 2024-2026, il FSC anticipa 150 milioni. Dal 2027 in poi, il FESR copre progressivamente una quota maggiore, ma senza rimborsare direttamente le anticipazioni FSC. 📌 4. Rimborso Parziale in Caso di Sostituzione con Fondi PNRR o Bilancio Nazionale In alcuni casi, i fondi anticipati dal FSC possono essere rimborsati da risorse del PNRR o da fondi nazionali se il progetto viene riclassificato. Esempio: Un progetto avviato con FSC viene successivamente trasferito sotto il PNRR. Il MEF può decidere di rimborsare una parte delle anticipazioni FSC con risorse PNRR. 🔍 Conclusione: Il Rimborso Dipende dal Tipo di Progetto e dalla Fonte di Finanziamento ✔️ Se i fondi FSC coprono ritardi di FESR/PNRR: potrebbero essere rimborsati. ✔️ Se il FSC finanzia direttamente il progetto: le anticipazioni vengono solo sostituite dai fondi ordinari. ✔️ Se il progetto ha cofinanziamenti (FSC + FESR): il rimborso non avviene, ma si riduce la necessità di ulteriori fondi FSC.</p>
+</section>
+</section>
+<section id="perchè-il-fsc-non-è-stato-rimborsato-totalmente" class="level2">
+<h2 class="anchored" data-anchor-id="perchè-il-fsc-non-è-stato-rimborsato-totalmente">perchè il fsc non è stato rimborsato totalmente?</h2>
+<p>Il <strong>FSC non è stato rimborsato totalmente</strong> per diversi motivi strutturali e strategici legati alla gestione dei fondi pubblici. Ecco le principali spiegazioni:</p>
+<hr>
+<section id="non-tutte-le-anticipazioni-sono-destinate-al-rimborso" class="level3">
+<h3 class="anchored" data-anchor-id="non-tutte-le-anticipazioni-sono-destinate-al-rimborso"><strong>📌 1. Non Tutte le Anticipazioni Sono Destinate al Rimborso</strong></h3>
+<ul>
+<li>Le anticipazioni FSC <strong>non sempre sono considerate prestiti</strong>, ma piuttosto un modo per <strong>anticipare risorse che in parte rimarranno a carico del FSC stesso</strong>.<br>
+</li>
+<li><strong>Scenario tipico:</strong>
+<ul>
+<li>Se un progetto è finanziato con <strong>FSC + FESR + PNRR</strong>, alcuni fondi FSC vengono <strong>effettivamente rimborsati</strong>, ma <strong>altri rimangono come quota definitiva</strong>.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="i-rimborsi-dipendono-dalla-struttura-del-cofinanziamento" class="level3">
+<h3 class="anchored" data-anchor-id="i-rimborsi-dipendono-dalla-struttura-del-cofinanziamento"><strong>📌 2. I Rimborsi Dipendono Dalla Struttura del Cofinanziamento</strong></h3>
+<ul>
+<li>Il <strong>FSC</strong> può finanziare un progetto insieme a <strong>FESR e PNRR</strong>, ma <strong>non necessariamente nella stessa proporzione nel tempo</strong>.</li>
+<li>Se il FESR o il PNRR <strong>coprono nuove fasi del progetto</strong>, questo <strong>non significa che le anticipazioni FSC vengano interamente restituite</strong>.</li>
+<li><strong>Esempio pratico:</strong>
+<ul>
+<li>Se nel 2024-2026 il FSC ha anticipato 780 milioni, ma solo <strong>450 milioni vengono rimborsati</strong>, significa che <strong>330 milioni rimangono stabilmente finanziati dal FSC</strong>.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="alcune-anticipazioni-sono-trasformate-in-contributi-a-fondo-perduto" class="level3">
+<h3 class="anchored" data-anchor-id="alcune-anticipazioni-sono-trasformate-in-contributi-a-fondo-perduto"><strong>📌 3. Alcune Anticipazioni Sono Trasformate in Contributi a Fondo Perduto</strong></h3>
+<ul>
+<li>In alcuni casi, i fondi anticipati dal FSC <strong>non vengono rimborsati direttamente</strong>, ma vengono <strong>trasformati in una componente a fondo perduto</strong>, soprattutto se il progetto è considerato di <strong>rilevanza strategica nazionale</strong>.</li>
+<li><strong>Settori tipici:</strong>
+<ul>
+<li>Grandi infrastrutture<br>
+</li>
+<li>Progetti di sviluppo industriale<br>
+</li>
+<li>Investimenti in transizione ecologica</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="il-pnrr-e-il-fesr-sono-vincolati-a-specifiche-spese" class="level3">
+<h3 class="anchored" data-anchor-id="il-pnrr-e-il-fesr-sono-vincolati-a-specifiche-spese"><strong>📌 4. Il PNRR e il FESR Sono Vincolati a Specifiche Spese</strong></h3>
+<ul>
+<li>Il <strong>PNRR e il FESR</strong> devono finanziare <strong>spese specifiche</strong> e <strong>non sempre</strong> possono coprire retroattivamente i costi anticipati dal FSC.</li>
+<li>Questo significa che <strong>una parte delle anticipazioni FSC rimane in carico al fondo stesso</strong>, senza essere rimborsata.</li>
+</ul>
+<hr>
+</section>
+<section id="conclusione-il-rimborso-parziale-è-una-scelta-strategica" class="level3">
+<h3 class="anchored" data-anchor-id="conclusione-il-rimborso-parziale-è-una-scelta-strategica"><strong>🔍 Conclusione: Il Rimborso Parziale è una Scelta Strategica</strong></h3>
+<p>✔️ <strong>Parte delle anticipazioni FSC viene restituita</strong>, ma un’altra parte rimane nel progetto come finanziamento definitivo.<br>
+✔️ <strong>Il PNRR e il FESR sostituiscono il FSC, ma non necessariamente rimborsano tutto il pregresso.</strong><br>
+✔️ <strong>Alcuni fondi FSC vengono trasformati in finanziamenti a fondo perduto.</strong></p>
+<p>👉 <strong>Vuoi simulare un caso con il rimborso totale delle anticipazioni FSC?</strong> 🚀</p>
+</section>
+</section>
+<section id="usa-lesempio-che-parte-dal-2014-e-costa-complessivamente-1000-euro.-dammi-grafico-e-tabella-con-valori-negativi-per-i-rimborsi-delle-anticipazioni" class="level2">
+<h2 class="anchored" data-anchor-id="usa-lesempio-che-parte-dal-2014-e-costa-complessivamente-1000-euro.-dammi-grafico-e-tabella-con-valori-negativi-per-i-rimborsi-delle-anticipazioni">usa l’esempio che parte dal 2014 e costa complessivamente 1000 euro. dammi grafico e tabella con valori negativi per i rimborsi delle anticipazioni</h2>
+<p>Cronoprogramma Con Costo Totale 1000€</p>
+<p>Cronoprogramma Con Finanziamenti, Rimborsi E Cicli Di Programmazione</p>
+<p>Ho generato il cronoprogramma con un costo totale di 1000€, includendo: ✔️ Tabella con i valori dettagliati (anticipazioni FSC, fondi FSC ordinari, FESR, PNRR e rimborsi). ✔️ Grafico a barre sovrapposte con linee verticali per i cicli settennali dell’UE (2021, 2028) e la scadenza del PNRR (2026).</p>
+<p>Ora puoi vedere chiaramente quando e come i fondi vengono erogati e rimborsati. Fammi sapere se vuoi modifiche o altre visualizzazioni! 🚀 ​​</p>
+<p>Hai detto: asse ascisse con numeri interi linee verticali coincidenti con le date min max dei cicli ChatGPT ha detto: Cronoprogramma Con Finanziamenti, Rimborsi E Cicli Di Programmazione</p>
+<p>Ecco il grafico aggiornato, con: ✔️ Asse delle ascisse con numeri interi, migliorando la leggibilità. ✔️ Linee verticali corrispondenti esattamente all’inizio e alla fine dei cicli UE (2014-2020, 2021-2027, 2028-2034). ✔️ Linea per la scadenza del PNRR (2026).</p>
+<p>Ora il grafico rappresenta con precisione i cicli di finanziamento e come si sovrappongono nel tempo. Se vuoi altre migliorie o personalizzazioni, fammelo sapere! 🚀 ​​</p>
+<p>Hai detto: i cicli hanno un periodo di tolleranza (5+2?) il costo del progetto è noto dall’inizio e si può programmare quanto assorbirà nel tempo? ChatGPT ha detto: 📌 I Cicli di Programmazione e la Tolleranza Temporale (5+2) I cicli settennali dei fondi europei (come il FESR) seguono una logica di “N+2” (prima era “N+3”), il che significa che:</p>
+<p>I fondi stanziati in un ciclo (es. 2014-2020) possono essere spesi fino a due anni dopo la fine del ciclo, cioè fino al 2022. Il ciclo 2021-2027 avrà risorse utilizzabili fino al 2029. Il ciclo 2028-2034 potrebbe estendersi fino al 2036, se manterrà la stessa regola. Questo periodo di tolleranza consente flessibilità nella spesa, riducendo il rischio di perdere fondi a causa di ritardi amministrativi.</p>
+<p>📌 Il Costo del Progetto è Noto dall’Inizio? Sì, in teoria il costo complessivo del progetto è noto dall’inizio, ma con alcune considerazioni:</p>
+<p>La pianificazione iniziale stabilisce un budget globale (es. 1000 milioni di € nel nostro esempio). L’assorbimento delle risorse varia nel tempo, dipendendo da: Disponibilità dei fondi (FSC, FESR, PNRR) Avanzamento del progetto (studi, appalti, realizzazione) Eventuali imprevisti (ritardi burocratici, costi aggiuntivi, nuove fonti di finanziamento) Gli enti programmano l’assorbimento nel tempo, ma con possibilità di variazione. 📌 È Possibile Pianificare Quanto un Progetto Assorbirà Ogni Anno? ✔️ Sì, in larga misura. L’assorbimento dei fondi può essere programmato in base a:</p>
+<p>Il fabbisogno del progetto (spese di progettazione, cantierizzazione, realizzazione) Le disponibilità finanziarie (arrivo dei fondi UE e nazionali) Il periodo di spesa autorizzato (sfruttando il meccanismo “5+2”) 📌 Quindi, un progetto può essere strutturato per assorbire fondi FSC all’inizio e poi utilizzare FESR e PNRR nei cicli successivi, sfruttando la tolleranza “N+2”.</p>
+<p>📌 Vuoi che modifichi il cronoprogramma per tener conto della tolleranza nei cicli? Posso adattare il grafico per mostrare che i fondi di un ciclo vengono assorbiti anche nei due anni successivi, rendendo più realistica la distribuzione nel tempo. 🚀</p>
+<p>Hai detto: si ChatGPT ha detto: Cronoprogramma Con Periodo Di Tolleranza (N+2)</p>
+<p>Cronoprogramma Con Periodo Di Tolleranza (N+2) Per I Cicli Di Programmazione</p>
+<p>Ho aggiornato il cronoprogramma e il grafico a barre sovrapposte per includere la tolleranza N+2 nei cicli di programmazione UE. Ora puoi vedere chiaramente che:</p>
+<p>✔️ I cicli settennali UE (2014-2020, 2021-2027, 2028-2034) si estendono di due anni (N+2), fino a 2022, 2029 e 2036. ✔️ I fondi FESR vengono assorbiti anche dopo la fine del ciclo principale, sfruttando la tolleranza. ✔️ Il PNRR ha una scadenza rigida (2026), senza tolleranza. ✔️ Il rimborso delle anticipazioni FSC è distribuito negli anni successivi.</p>
+<p>Ora il grafico rappresenta in modo più realistico come un progetto può pianificare l’assorbimento dei fondi nel tempo. Fammi sapere se vuoi altre modifiche o approfondimenti! 🚀 ​​</p>
+<p>Hai detto: nel grafico inserisci i fondi privati e i fondi anticipati a breve o a lungo termine dalle banche ChatGPT ha detto: Cronoprogramma Con Fondi Privati E Finanziamenti Bancari</p>
+<p>Cronoprogramma Con Fondi Privati E Finanziamenti Bancari (Breve E Lungo Termine)</p>
+<p>Ho aggiornato il cronoprogramma e il grafico includendo: ✔️ Fondi Privati (brown) → Capitale privato investito nel progetto. ✔️ Finanziamenti Bancari a Breve Termine (cyan) → Prestiti con durata breve per anticipare spese. ✔️ Finanziamenti Bancari a Lungo Termine (dark orange) → Prestiti con durata pluriennale.</p>
+<p>Ora il grafico mostra tutte le fonti di finanziamento, inclusi i contributi pubblici, i finanziamenti privati e bancari, evidenziando anche le restituzioni delle anticipazioni FSC.</p>
+<p>Se vuoi altre personalizzazioni o un’analisi più dettagliata, fammelo sapere! 🚀 ​​</p>
+<p>Hai detto: dammi lo script python per realizzare il grafico e la tabella ChatGPT ha detto: Ecco lo script Python per generare il cronoprogramma con fondi pubblici, privati e bancari, includendo il grafico a barre sovrapposte e la tabella dei dati.</p>
+</section>
+<section id="se-a-livello-di-progetto-liter-è-complesso-a-livello-regionale-nazionale-comunitario-è-ancora-più-complesso-in-quanto-le-risorse-devono-concigliarsi-con-le-misure-missioni-e-obiettivi" class="level2">
+<h2 class="anchored" data-anchor-id="se-a-livello-di-progetto-liter-è-complesso-a-livello-regionale-nazionale-comunitario-è-ancora-più-complesso-in-quanto-le-risorse-devono-concigliarsi-con-le-misure-missioni-e-obiettivi">se a livello di progetto l’iter è complesso, a livello regionale nazionale comunitario è ancora più complesso in quanto le risorse devono concigliarsi con le misure missioni e obiettivi</h2>
+<section id="la-complessità-delliter-a-livello-regionale-nazionale-e-comunitario" class="level3">
+<h3 class="anchored" data-anchor-id="la-complessità-delliter-a-livello-regionale-nazionale-e-comunitario"><strong>📌 La Complessità dell’Iter a Livello Regionale, Nazionale e Comunitario</strong></h3>
+<p>Se <strong>a livello di singolo progetto</strong> l’iter di gestione dei fondi è complesso (anticipazioni, rimborsi, cofinanziamenti), <strong>a livello di programmazione regionale, nazionale e comunitaria</strong> la complessità <strong>aumenta esponenzialmente</strong>.<br>
+Questo perché le risorse devono essere <strong>armonizzate con misure, missioni e obiettivi strategici</strong>, sia nel breve che nel lungo periodo.</p>
+<hr>
+</section>
+</section>
+<section id="complessità-della-programmazione-pluriennale" class="level2">
+<h2 class="anchored" data-anchor-id="complessità-della-programmazione-pluriennale"><strong>📌 1. Complessità della Programmazione Pluriennale</strong></h2>
+<p>A livello <strong>comunitario, nazionale e regionale</strong>, le risorse devono essere <strong>pianificate e distribuite</strong> nel tempo, rispettando: ✔️ <strong>Cicli di programmazione UE (7+2 anni)</strong> per i fondi strutturali (FESR, FSE+).<br>
+✔️ <strong>Vincoli e scadenze rigide</strong> per strumenti come il <strong>PNRR</strong> (2026).<br>
+✔️ <strong>Fondi FSC senza ciclo predefinito</strong>, ma che devono coordinarsi con altri strumenti.<br>
+✔️ <strong>Bilanci nazionali e regionali</strong>, che prevedono spese annuali.</p>
+<p>Tutte queste fonti devono essere <strong>coerenti tra loro</strong> per evitare sovrapposizioni o fondi non spesi.</p>
+<hr>
+</section>
+<section id="necessità-di-conciliarsi-con-misure-missioni-e-obiettivi" class="level2">
+<h2 class="anchored" data-anchor-id="necessità-di-conciliarsi-con-misure-missioni-e-obiettivi"><strong>📌 2. Necessità di Conciliarsi con Misure, Missioni e Obiettivi</strong></h2>
+<p>La spesa pubblica non può essere casuale: deve <strong>rispondere a strategie definite</strong> a livello UE, nazionale e regionale.</p>
+<section id="a.-struttura-della-programmazione-ue-stato-regioni" class="level3">
+<h3 class="anchored" data-anchor-id="a.-struttura-della-programmazione-ue-stato-regioni"><strong>A. Struttura della Programmazione (UE, Stato, Regioni)</strong></h3>
+<p>🔹 <strong>A livello comunitario</strong> → I fondi UE sono assegnati a <strong>priorità strategiche</strong> (es. digitalizzazione, transizione ecologica, inclusione sociale).<br>
+🔹 <strong>A livello nazionale</strong> → I fondi vengono <strong>ripartiti in Programmi Operativi</strong> e Piani Nazionali (PNRR, FSC).<br>
+🔹 <strong>A livello regionale</strong> → I fondi si traducono in <strong>Programmi Operativi Regionali (POR)</strong> e progetti concreti.</p>
+<p>⚠️ <strong>Sfida</strong>: A ogni livello, i piani devono essere coerenti con quelli superiori per evitare il disallineamento dei finanziamenti.</p>
+<hr>
+</section>
+<section id="b.-collegamento-tra-missioni-misure-e-obiettivi" class="level3">
+<h3 class="anchored" data-anchor-id="b.-collegamento-tra-missioni-misure-e-obiettivi"><strong>B. Collegamento tra Missioni, Misure e Obiettivi</strong></h3>
+<p>Ogni <strong>fondo e programma</strong> deve essere collegato a <strong>specifici obiettivi</strong>. Ad esempio:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 40%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Livello</strong></th>
+<th><strong>Strumento di Pianificazione</strong></th>
+<th><strong>Esempio di Obiettivo</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>UE</strong></td>
+<td>Politiche di Coesione 2021-2027</td>
+<td>Aumentare la digitalizzazione</td>
+</tr>
+<tr class="even">
+<td><strong>Italia</strong></td>
+<td>PNRR, FSC, Bilancio Nazionale</td>
+<td>Potenziare le reti ferroviarie</td>
+</tr>
+<tr class="odd">
+<td><strong>Regione</strong></td>
+<td>Programmi Operativi Regionali</td>
+<td>Creare poli di innovazione</td>
+</tr>
+<tr class="even">
+<td><strong>Progetto</strong></td>
+<td>Contratti di Sviluppo, Investimenti locali</td>
+<td>Costruire un hub tecnologico</td>
+</tr>
+</tbody>
+</table>
+<p>💡 <strong>Ogni fondo deve rispettare la missione a cui è destinato</strong>:<br>
+- Se un progetto è finanziato dal <strong>PNRR</strong>, deve <strong>contribuire agli obiettivi del PNRR</strong>.<br>
+- Se usa fondi FESR, deve <strong>rispettare i target UE 2021-2027</strong>.</p>
+<p>⚠️ <strong>Sfida</strong>: Evitare che risorse siano allocate a progetti fuori strategia o che le misure si sovrappongano.</p>
+<hr>
+</section>
+</section>
+<section id="coordinamento-tra-le-diverse-fonti-di-finanziamento" class="level2">
+<h2 class="anchored" data-anchor-id="coordinamento-tra-le-diverse-fonti-di-finanziamento"><strong>📌 3. Coordinamento tra le Diverse Fonti di Finanziamento</strong></h2>
+<p>Uno dei problemi più critici è la <strong>sovrapposizione e il coordinamento</strong> tra le diverse fonti:</p>
+<p>✔️ <strong>Evitare il doppio finanziamento</strong> → Un progetto non può ricevere <strong>sia PNRR che FSC per le stesse spese</strong>.<br>
+✔️ <strong>Garantire continuità</strong> → Se il PNRR si chiude nel 2026, bisogna <strong>prevedere un passaggio ai fondi strutturali UE</strong>.<br>
+✔️ <strong>Monitorare la spesa in tempo reale</strong> → Serve <strong>un sistema centralizzato</strong> per tenere traccia di quanto è stato speso e quanto rimane.</p>
+<p>⚠️ <strong>Sfida</strong>: Gli enti devono gestire strumenti diversi con <strong>regole, tempistiche e vincoli differenti</strong>.</p>
+<hr>
+</section>
+<section id="simulazione-di-allocazione-fondi-tra-misure-e-obiettivi" class="level2">
+<h2 class="anchored" data-anchor-id="simulazione-di-allocazione-fondi-tra-misure-e-obiettivi"><strong>📌 4. Simulazione di Allocazione Fondi tra Misure e Obiettivi</strong></h2>
+<p>📊 <strong>Vuoi che realizzi un’analisi visiva (es. grafico a barre, diagramma di flusso) per mostrare come i fondi devono essere allocati tra missioni e misure?</strong><br>
+Posso creare una <strong>simulazione di allocazione fondi tra livelli UE, nazionali e regionali</strong> per evidenziare la complessità della programmazione! 🚀</p>
+</section>
+<section id="come-si-fa-allora-a-costruire-una-misura-si-parte-dalla-misura-e-poi-si-cercano-i-fondi-coerenti-o-si-parte-dagli-obiettivi-per-costruire-alla-fine-una-misura" class="level2">
+<h2 class="anchored" data-anchor-id="come-si-fa-allora-a-costruire-una-misura-si-parte-dalla-misura-e-poi-si-cercano-i-fondi-coerenti-o-si-parte-dagli-obiettivi-per-costruire-alla-fine-una-misura">come si fa allora a costruire una misura? si parte dalla misura e poi si cercano i fondi coerenti o si parte dagli obiettivi per costruire alla fine una misura?</h2>
+<section id="come-si-costruisce-una-misura-di-finanziamento" class="level3">
+<h3 class="anchored" data-anchor-id="come-si-costruisce-una-misura-di-finanziamento"><strong>📌 Come si Costruisce una Misura di Finanziamento?</strong></h3>
+<p>La costruzione di una <strong>misura di finanziamento</strong> (ad esempio una misura del PNRR o un’azione all’interno di un Programma Operativo Regionale - POR) può seguire <strong>due approcci principali</strong>:</p>
+<p>1️⃣ <strong>Approccio “Top-Down” (Obiettivi → Misura → Fondi)</strong><br>
+2️⃣ <strong>Approccio “Bottom-Up” (Fondi → Misura → Obiettivi)</strong></p>
+<p>L’approccio usato dipende dal contesto e dalla fonte di finanziamento. Vediamo nel dettaglio entrambi i casi.</p>
+<hr>
+</section>
+</section>
+<section id="approccio-top-down-dagli-obiettivi-alle-misure" class="level2">
+<h2 class="anchored" data-anchor-id="approccio-top-down-dagli-obiettivi-alle-misure"><strong>📌 1. Approccio “Top-Down” → Dagli Obiettivi alle Misure</strong></h2>
+<p>Questo approccio è tipico delle <strong>strategie di lungo termine</strong> e dei <strong>piani comunitari e nazionali</strong> (es. <strong>Fondi UE, PNRR, FSC</strong>).<br>
+Si parte da <strong>grandi obiettivi strategici</strong> e si costruiscono misure ad hoc.</p>
+<p>🔹 <strong>Fasi principali:</strong> 1. <strong>Definizione degli obiettivi generali</strong> → Es. “Digitalizzare la PA entro il 2027”<br>
+2. <strong>Identificazione delle missioni</strong> → Es. “Migliorare i servizi digitali per le imprese”<br>
+3. <strong>Creazione della misura</strong> → Es. “Finanziamenti per la transizione al cloud nelle PA locali”<br>
+4. <strong>Individuazione delle fonti di finanziamento</strong> → Es. “PNRR, FESR, FSC”</p>
+<p>✔️ <strong>Vantaggi</strong>:<br>
+- Coerenza con la programmazione strategica<br>
+- Ottimizzazione delle risorse in base agli obiettivi di policy<br>
+- Facile integrazione con altre iniziative</p>
+<p>⚠️ <strong>Svantaggi</strong>:<br>
+- Lento da attivare (richiede pianificazione politica e negoziati)<br>
+- Rischio di poca flessibilità se i fondi disponibili non coprono le reali necessità</p>
+<section id="esempio-di-approccio-top-down-pnrr" class="level3">
+<h3 class="anchored" data-anchor-id="esempio-di-approccio-top-down-pnrr"><strong>📌 Esempio di Approccio “Top-Down” (PNRR)</strong></h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong>Fase</strong></th>
+<th><strong>Esempio PNRR</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Obiettivo generale</td>
+<td>Transizione digitale</td>
+</tr>
+<tr class="even">
+<td>Missione</td>
+<td>PA Digitale</td>
+</tr>
+<tr class="odd">
+<td>Misura</td>
+<td>Fondo per la digitalizzazione delle PMI</td>
+</tr>
+<tr class="even">
+<td>Fondi</td>
+<td>PNRR, FESR</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="approccio-bottom-up-dai-fondi-alle-misure" class="level2">
+<h2 class="anchored" data-anchor-id="approccio-bottom-up-dai-fondi-alle-misure"><strong>📌 2. Approccio “Bottom-Up” → Dai Fondi alle Misure</strong></h2>
+<p>Questo approccio è più <strong>pragmatico</strong> e tipico dei <strong>livelli regionali e locali</strong>, dove si parte dalle risorse disponibili e si costruiscono misure operative.</p>
+<p>🔹 <strong>Fasi principali:</strong> 1. <strong>Analisi delle risorse disponibili</strong> → Es. “Abbiamo 200 milioni di FESR per innovazione”<br>
+2. <strong>Definizione dei bisogni territoriali</strong> → Es. “Le PMI locali hanno bisogno di supporto per il digitale”<br>
+3. <strong>Creazione di una misura compatibile con i fondi</strong> → Es. “Voucher digitalizzazione PMI”<br>
+4. <strong>Allineamento con gli obiettivi strategici</strong> → Es. “La misura rientra nella strategia UE 2021-2027”</p>
+<p>✔️ <strong>Vantaggi</strong>:<br>
+- Più rapido ed efficace (si parte da risorse già assegnate)<br>
+- Maggiore adattabilità ai bisogni locali<br>
+- Più semplice da implementare</p>
+<p>⚠️ <strong>Svantaggi</strong>:<br>
+- Rischio di creare misure non completamente in linea con le strategie di lungo periodo<br>
+- Possibili sovrapposizioni o inefficienze se i fondi non sono coordinati</p>
+<section id="esempio-di-approccio-bottom-up-regioni" class="level3">
+<h3 class="anchored" data-anchor-id="esempio-di-approccio-bottom-up-regioni"><strong>📌 Esempio di Approccio “Bottom-Up” (Regioni)</strong></h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 62%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Fase</strong></th>
+<th><strong>Esempio POR FESR</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Risorse disponibili</td>
+<td>100 milioni di € FESR per innovazione</td>
+</tr>
+<tr class="even">
+<td>Esigenze territoriali</td>
+<td>Supportare la transizione digitale delle PMI</td>
+</tr>
+<tr class="odd">
+<td>Misura</td>
+<td>Voucher per software e formazione digitale</td>
+</tr>
+<tr class="even">
+<td>Allineamento strategico</td>
+<td>Strategia regionale di innovazione 2021-2027</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="quale-approccio-è-meglio" class="level2">
+<h2 class="anchored" data-anchor-id="quale-approccio-è-meglio"><strong>📌 Quale Approccio è Meglio?</strong></h2>
+<p>🔹 <strong>A livello comunitario e nazionale → Approccio “Top-Down”</strong><br>
+- Si definiscono prima gli obiettivi e le strategie<br>
+- Le misure vengono costruite per rispondere a questi obiettivi</p>
+<p>🔹 <strong>A livello regionale e locale → Approccio “Bottom-Up”</strong><br>
+- Si parte dalle risorse disponibili<br>
+- Si creano misure che rispondano ai bisogni territoriali</p>
+<p>💡 <strong>La soluzione migliore?</strong><br>
+🔹 <strong>Un modello misto</strong>, in cui i governi nazionali e regionali stabiliscono le <strong>priorità strategiche (Top-Down)</strong> ma lasciano flessibilità alle regioni e agli enti locali per adattare le misure ai bisogni reali <strong>(Bottom-Up)</strong>.</p>
+<hr>
+</section>
+<section id="ci-sono-poi-anche-i-fondi-regionali-che-necessitano-di-un-coordinamento-con-quelli-nazionali-ed-europei-è-il-cipess-che-organizza" class="level2">
+<h2 class="anchored" data-anchor-id="ci-sono-poi-anche-i-fondi-regionali-che-necessitano-di-un-coordinamento-con-quelli-nazionali-ed-europei-è-il-cipess-che-organizza">ci sono poi anche i fondi regionali che necessitano di un coordinamento con quelli nazionali ed europei è il cipess che organizza?</h2>
+<section id="coordinamento-tra-fondi-regionali-nazionali-ed-europei-il-ruolo-del-cipess" class="level3">
+<h3 class="anchored" data-anchor-id="coordinamento-tra-fondi-regionali-nazionali-ed-europei-il-ruolo-del-cipess"><strong>📌 Coordinamento tra Fondi Regionali, Nazionali ed Europei: Il Ruolo del CIPESS</strong></h3>
+<p>Il <strong>coordinamento tra fondi regionali, nazionali ed europei</strong> è essenziale per garantire una <strong>spesa efficace, sinergie tra le diverse fonti e l’assenza di sovrapposizioni</strong>.</p>
+<p>A livello nazionale, il <strong>CIPESS (Comitato Interministeriale per la Programmazione Economica e lo Sviluppo Sostenibile)</strong> ha un ruolo <strong>centrale nella governance</strong> delle risorse.</p>
+<hr>
+</section>
+</section>
+<section id="quali-sono-i-fondi-coinvolti" class="level2">
+<h2 class="anchored" data-anchor-id="quali-sono-i-fondi-coinvolti"><strong>📌 1. Quali sono i Fondi Coinvolti?</strong></h2>
+<p>Il sistema finanziario per lo sviluppo del territorio si basa su <strong>tre livelli principali di fondi</strong>:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 53%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Livello</strong></th>
+<th><strong>Esempi di Fondi</strong></th>
+<th><strong>Gestione</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Europeo</strong></td>
+<td>FESR, FSE+, FEASR, PNRR (indiretto)</td>
+<td>Gestiti da Commissione UE e autorità nazionali/regionali</td>
+</tr>
+<tr class="even">
+<td><strong>Nazionale</strong></td>
+<td>FSC, PNRR, Fondi di Bilancio, Contratti di Sviluppo</td>
+<td>Definiti dal governo, allocati dal CIPESS</td>
+</tr>
+<tr class="odd">
+<td><strong>Regionale</strong></td>
+<td>POR FESR, POR FSE+, Fondi Regionali propri</td>
+<td>Gestiti dalle Regioni con coordinamento nazionale</td>
+</tr>
+</tbody>
+</table>
+<p>⚠️ <strong>Sfida</strong>: Ogni livello ha <strong>priorità e regole diverse</strong>, quindi serve un <strong>coordinamento forte</strong> per evitare duplicazioni o inefficienze.</p>
+<hr>
+</section>
+<section id="il-ruolo-del-cipess-nel-coordinamento" class="level2">
+<h2 class="anchored" data-anchor-id="il-ruolo-del-cipess-nel-coordinamento"><strong>📌 2. Il Ruolo del CIPESS nel Coordinamento</strong></h2>
+<p>Il <strong>CIPESS</strong> (ex CIPE) è l’organo principale che garantisce il <strong>coordinamento della programmazione e dell’uso dei fondi pubblici</strong>, con particolare attenzione a <strong>FSC e fondi regionali</strong>.</p>
+<p>🔹 <strong>Compiti principali del CIPESS:</strong> ✔️ <strong>Programmazione strategica</strong> → Definisce le priorità per l’uso del Fondo per lo Sviluppo e la Coesione (FSC).<br>
+✔️ <strong>Allocazione delle risorse</strong> → Decide la ripartizione dei fondi FSC tra Regioni, Ministeri e programmi nazionali.<br>
+✔️ <strong>Coordinamento con fondi UE e nazionali</strong> → Assicura che le risorse FSC siano <strong>complementari</strong> ai fondi strutturali UE e ai fondi regionali.<br>
+✔️ <strong>Monitoraggio della spesa pubblica</strong> → Verifica che i fondi siano spesi nei tempi e nei modi previsti.<br>
+✔️ <strong>Supervisione del PNRR</strong> → Anche se il PNRR è gestito principalmente dal MEF e dal Dipartimento per la Coesione, il CIPESS ha un ruolo di supporto nel coordinamento.</p>
+<p>💡 <strong>Es. Decisioni del CIPESS</strong>:<br>
+- <strong>Assegna il FSC alle Regioni</strong> per finanziare infrastrutture, innovazione, ambiente.<br>
+- <strong>Allinea i fondi FSC con FESR e FSE+</strong> per massimizzare l’impatto.<br>
+- <strong>Decide le anticipazioni FSC</strong> per avviare progetti strategici in attesa di fondi UE.</p>
+<hr>
+</section>
+<section id="come-funziona-il-coordinamento-tra-fondi" class="level2">
+<h2 class="anchored" data-anchor-id="come-funziona-il-coordinamento-tra-fondi"><strong>📌 3. Come Funziona il Coordinamento tra Fondi?</strong></h2>
+<p>Per evitare <strong>sovrapposizioni e inefficienze</strong>, il CIPESS lavora con un <strong>modello multilivello</strong>, in cui i fondi vengono <strong>combinati e riallocati</strong> in base alle esigenze e alle strategie territoriali.</p>
+<p><strong>🔹 Coordinamento tra livelli di fondi:</strong> 1️⃣ <strong>Fondi Europei (FESR, FSE+, FEASR, PNRR indiretto)</strong><br>
+- Destinati a obiettivi di sviluppo <strong>comunitari</strong><br>
+- Gestiti dalle Regioni attraverso i <strong>Programmi Operativi Regionali (POR)</strong><br>
+- <strong>Obbligo di cofinanziamento</strong> con risorse nazionali</p>
+<p>2️⃣ <strong>Fondi Nazionali (FSC, PNRR, Bilancio di Stato, Contratti di Sviluppo)</strong><br>
+- Servono a <strong>complementare</strong> i fondi europei<br>
+- Allocati dal CIPESS in base alle priorità del governo<br>
+- In alcuni casi, <strong>sostituiscono i fondi UE in caso di ritardi</strong></p>
+<p>3️⃣ <strong>Fondi Regionali</strong><br>
+- Finanziano progetti specifici <strong>su scala locale</strong><br>
+- Spesso cofinanziati da fondi UE o FSC<br>
+- Devono essere allineati con le strategie nazionali e comunitarie</p>
+<p>💡 <strong>Esempio pratico di coordinamento:</strong> 1. Il CIPESS assegna <strong>FSC alla Regione X</strong> per infrastrutture digitali.<br>
+2. La Regione X usa <strong>FESR per coprire parte degli stessi investimenti</strong>.<br>
+3. Il bilancio regionale aggiunge risorse proprie per completare il progetto.</p>
+<p>⚠️ <strong>Senza coordinamento, il rischio è che uno stesso intervento venga finanziato da più fonti senza una logica chiara.</strong></p>
+<hr>
+</section>
+<section id="come-viene-realizzata-la-programmazione-integrata" class="level2">
+<h2 class="anchored" data-anchor-id="come-viene-realizzata-la-programmazione-integrata"><strong>📌 4. Come Viene Realizzata la Programmazione Integrata?</strong></h2>
+<p>Per garantire <strong>coerenza tra i diversi livelli di fondi</strong>, il processo di programmazione segue questi passaggi:</p>
+<section id="fasi-della-programmazione-integrata" class="level3">
+<h3 class="anchored" data-anchor-id="fasi-della-programmazione-integrata"><strong>📌 Fasi della Programmazione Integrata:</strong></h3>
+<p>1️⃣ <strong>Definizione delle Strategie e Priorità</strong><br>
+- La Commissione UE definisce le <strong>priorità tematiche</strong> per i fondi strutturali<br>
+- Il governo italiano elabora la <strong>Strategia Nazionale per lo Sviluppo</strong><br>
+- Le Regioni definiscono i propri <strong>Programmi Operativi</strong></p>
+<p>2️⃣ <strong>Allocazione e Coordinamento delle Risorse</strong><br>
+- Il CIPESS assegna i fondi FSC e verifica la <strong>coerenza con i fondi UE</strong><br>
+- Le Regioni pianificano come combinare FSC, FESR e fondi propri<br>
+- Il MEF coordina l’attuazione del PNRR con il resto della programmazione</p>
+<p>3️⃣ <strong>Monitoraggio e Controllo della Spesa</strong><br>
+- Il CIPESS e il Dipartimento per la Coesione monitorano l’uso del FSC<br>
+- Le Regioni rendicontano la spesa dei fondi FESR e FSE+<br>
+- La Ragioneria Generale dello Stato e la Commissione UE controllano la spesa</p>
+<p>💡 <strong>Esempio pratico di programmazione coordinata:</strong><br>
+- <strong>Il CIPESS assegna 500 milioni di FSC a una Regione per infrastrutture</strong><br>
+- <strong>La Regione usa anche 300 milioni di FESR</strong> per cofinanziare il progetto<br>
+- <strong>Il bilancio regionale aggiunge 100 milioni di fondi propri</strong><br>
+- <strong>Un monitoraggio periodico verifica l’avanzamento dei lavori</strong></p>
+<hr>
+</section>
+</section>
+<section id="strumenti-di-coordinamento-tra-fondi" class="level2">
+<h2 class="anchored" data-anchor-id="strumenti-di-coordinamento-tra-fondi"><strong>📌 5. Strumenti di Coordinamento tra Fondi</strong></h2>
+<p>Per garantire la coerenza e il corretto utilizzo delle risorse, esistono vari strumenti di <strong>coordinamento istituzionale</strong>:</p>
+<p>🔹 <strong>Accordi di Coesione</strong> → Intese tra Stato e Regioni per l’uso integrato di FSC, FESR e PNRR.<br>
+🔹 <strong>Cabine di Regia PNRR</strong> → Tavoli tecnici per verificare l’attuazione delle misure.<br>
+🔹 <strong>Delibere CIPESS</strong> → Decisioni ufficiali sull’allocazione e la riprogrammazione dei fondi.<br>
+🔹 <strong>Sistemi di Monitoraggio (ReGiS, Opencoesione)</strong> → Strumenti per tracciare la spesa dei fondi.</p>
+<hr>
+</section>
+<section id="conclusione-2" class="level2">
+<h2 class="anchored" data-anchor-id="conclusione-2"><strong>📌 Conclusione</strong></h2>
+<p>✔️ <strong>Il CIPESS è l’organo principale che coordina FSC, fondi regionali e nazionali con quelli UE.</strong><br>
+✔️ <strong>Garantisce che le risorse siano usate in modo sinergico e senza duplicazioni.</strong><br>
+✔️ <strong>Il coordinamento multilivello è essenziale per evitare inefficienze e accelerare la spesa pubblica.</strong></p>
+<p>👉 <strong>Vuoi che realizzi un diagramma di flusso per visualizzare il coordinamento tra fondi UE, nazionali e regionali?</strong> 🚀</p>
+</section>
+<section id="riesco-a-ricostruire-importi-tempi-e-fondi-di-un-progetto-usano-i-dati-di-opencoesione-opencup-o-altri-opendata" class="level2">
+<h2 class="anchored" data-anchor-id="riesco-a-ricostruire-importi-tempi-e-fondi-di-un-progetto-usano-i-dati-di-opencoesione-opencup-o-altri-opendata">riesco a ricostruire importi tempi e fondi di un progetto usano i dati di opencoesione opencup o altri opendata?</h2>
+<section id="ricostruire-importi-tempi-e-fondi-di-un-progetto-con-open-data" class="level3">
+<h3 class="anchored" data-anchor-id="ricostruire-importi-tempi-e-fondi-di-un-progetto-con-open-data"><strong>📌 Ricostruire Importi, Tempi e Fondi di un Progetto con Open Data</strong></h3>
+<p>Sì, è possibile <strong>ricostruire il finanziamento e l’iter temporale di un progetto</strong> utilizzando <strong>opendata</strong> disponibili su piattaforme ufficiali come: 1. <strong>OpenCoesione</strong> → Dati sui progetti finanziati con <strong>FESR, FSE+ e FSC</strong>.<br>
+2. <strong>OpenCUP</strong> → Codici Unici di Progetto per tutti gli investimenti pubblici italiani.<br>
+3. <strong>OpenPNRR</strong> → Database sui progetti finanziati dal <strong>PNRR</strong>.<br>
+4. <strong>Banche dati regionali e ministeriali</strong> → Alcune Regioni e Ministeri pubblicano dataset dettagliati.</p>
+<hr>
+</section>
+</section>
+<section id="dati-disponibili-su-opencoesione" class="level2">
+<h2 class="anchored" data-anchor-id="dati-disponibili-su-opencoesione"><strong>📌 1. Dati Disponibili su OpenCoesione</strong></h2>
+<p>🔹 <strong>OpenCoesione</strong> è la piattaforma ufficiale del governo italiano che <strong>traccia i progetti finanziati con fondi UE e FSC</strong>.<br>
+🔹 Fornisce dati su: - <strong>Importo finanziato e speso</strong><br>
+- <strong>Fondi di provenienza (FESR, FSE+, FSC, PNRR, Regionali, ecc.)</strong><br>
+- <strong>Soggetti attuatori</strong><br>
+- <strong>Date di inizio e fine progetto</strong><br>
+- <strong>Settore e categoria del progetto</strong><br>
+- <strong>Stato di avanzamento</strong></p>
+<p>💡 <strong>Come usare OpenCoesione per ricostruire un progetto?</strong> 1. <strong>Accedi al portale</strong> <a href="https://opencoesione.gov.it/it/">OpenCoesione</a><br>
+2. <strong>Cerca un progetto</strong> per <strong>nome, codice CUP o ente attuatore</strong><br>
+3. <strong>Scarica il dataset</strong> e analizza le informazioni di finanziamento</p>
+<hr>
+</section>
+<section id="dati-disponibili-su-opencup" class="level2">
+<h2 class="anchored" data-anchor-id="dati-disponibili-su-opencup"><strong>📌 2. Dati Disponibili su OpenCUP</strong></h2>
+<p>🔹 <strong>OpenCUP</strong> contiene informazioni <strong>su tutti i progetti di investimento pubblico in Italia</strong>, indipendentemente dal tipo di finanziamento.<br>
+🔹 Permette di tracciare un progetto a partire dal <strong>Codice Unico di Progetto (CUP)</strong>.<br>
+🔹 Dati disponibili: - <strong>Importo totale e fonti di finanziamento (PNRR, FSC, FESR, bilancio statale, ecc.)</strong><br>
+- <strong>Data di approvazione e cronoprogramma</strong><br>
+- <strong>Soggetto beneficiario e localizzazione</strong></p>
+<p>💡 <strong>Come usare OpenCUP?</strong> 1. <strong>Vai su</strong> <a href="https://opencup.gov.it/">OpenCUP</a><br>
+2. <strong>Cerca un progetto per CUP</strong><br>
+3. <strong>Analizza il finanziamento e le tempistiche</strong></p>
+<hr>
+</section>
+<section id="dati-disponibili-su-openpnrr" class="level2">
+<h2 class="anchored" data-anchor-id="dati-disponibili-su-openpnrr"><strong>📌 3. Dati Disponibili su OpenPNRR</strong></h2>
+<p>🔹 <strong>OpenPNRR</strong> è la piattaforma che traccia lo stato di attuazione dei progetti finanziati con il <strong>Piano Nazionale di Ripresa e Resilienza (PNRR)</strong>.<br>
+🔹 Informazioni disponibili: - <strong>Fondi assegnati e spesi</strong><br>
+- <strong>Scadenze e milestone previste</strong><br>
+- <strong>Ministeri e Regioni responsabili</strong><br>
+- <strong>Stato di avanzamento</strong></p>
+<p>💡 <strong>Come usare OpenPNRR?</strong> 1. <strong>Vai su</strong> <a href="https://openpnrr.it/">OpenPNRR</a><br>
+2. <strong>Consulta i dati per missione, misura o ente attuatore</strong><br>
+3. <strong>Scarica i dataset per analisi dettagliate</strong></p>
+<hr>
+</section>
+<section id="dati-aggiuntivi-da-fonti-regionali-e-ministeriali" class="level2">
+<h2 class="anchored" data-anchor-id="dati-aggiuntivi-da-fonti-regionali-e-ministeriali"><strong>📌 4. Dati Aggiuntivi da Fonti Regionali e Ministeriali</strong></h2>
+<p>Alcune Regioni e Ministeri pubblicano <strong>dati dettagliati su progetti finanziati</strong>, ad esempio: - <strong>Portali open data regionali</strong> → Con dati su progetti finanziati localmente.<br>
+- <strong>Banca dati ReGiS del MEF</strong> → Per il monitoraggio degli investimenti pubblici.<br>
+- <strong>Anagrafe Opere Pubbliche (MIT)</strong> → Con dettagli su progetti infrastrutturali.</p>
+<p>💡 <strong>Esempio: Open Data Regione Lombardia</strong> 1. <strong>Vai su</strong> <a href="https://www.dati.lombardia.it/">Open Data Lombardia</a><br>
+2. <strong>Scarica i dataset su fondi FESR e FSC</strong><br>
+3. <strong>Incrocia i dati con OpenCoesione per ricostruire il progetto</strong></p>
+<hr>
+</section>
+<section id="posso-estrarre-e-analizzare-i-dati-per-un-progetto-specifico" class="level2">
+<h2 class="anchored" data-anchor-id="posso-estrarre-e-analizzare-i-dati-per-un-progetto-specifico"><strong>📌 5. Posso Estrarre e Analizzare i Dati per un Progetto Specifico?</strong></h2>
+<p>Se mi fornisci: - <strong>Il nome del progetto</strong><br>
+- <strong>Il codice CUP (se disponibile)</strong><br>
+- <strong>L’ente attuatore o il settore di riferimento</strong></p>
+<p>Posso cercare i dati su OpenCoesione, OpenCUP o OpenPNRR e fornirti un’<strong>analisi dettagliata con importi, fondi e tempi di realizzazione</strong>! 🚀</p>
+</section>
+</section>
+<section id="quale-sono-le-misure-più-semplici-per-il-corrdinamento-delle-risore-se-quali-i-più-complessi" class="level1">
+<h1>quale sono le misure più semplici per il corrdinamento delle risore-se? quali i più complessi?</h1>
+<section id="coordinamento-delle-risorse-misure-più-semplici-vs-più-complesse" class="level3">
+<h3 class="anchored" data-anchor-id="coordinamento-delle-risorse-misure-più-semplici-vs-più-complesse"><strong>📌 Coordinamento delle Risorse: Misure Più Semplici vs Più Complesse</strong></h3>
+<p>Il coordinamento delle risorse tra <strong>fondi europei, nazionali e regionali</strong> può variare in termini di <strong>semplicità e complessità</strong>, a seconda di diversi fattori, come:<br>
+✔️ <strong>Il numero di fonti di finanziamento coinvolte</strong><br>
+✔️ <strong>I livelli amministrativi che partecipano alla gestione</strong><br>
+✔️ <strong>Le regole e vincoli di spesa associati ai fondi</strong></p>
+<p>Vediamo quali sono le <strong>misure più semplici</strong> e quali le <strong>più complesse</strong> da coordinare.</p>
+<hr>
+</section>
+<section id="misure-più-semplici-da-coordinare" class="level2">
+<h2 class="anchored" data-anchor-id="misure-più-semplici-da-coordinare"><strong>📌 1. Misure Più Semplici da Coordinare</strong></h2>
+<p>Le misure più facili da gestire sono quelle in cui: ✔️ <strong>Si utilizza un’unica fonte di finanziamento</strong><br>
+✔️ <strong>Il soggetto attuatore ha un ruolo chiaro e definito</strong><br>
+✔️ <strong>Non sono necessari cofinanziamenti o complementarità con altri fondi</strong><br>
+✔️ <strong>Le regole di spesa sono standardizzate e con meno vincoli burocratici</strong></p>
+<section id="esempi-di-misure-semplici" class="level3">
+<h3 class="anchored" data-anchor-id="esempi-di-misure-semplici"><strong>📌 Esempi di Misure Semplici</strong></h3>
+<p>🔹 <strong>Voucher Digitalizzazione PMI (FESR o PNRR)</strong><br>
+- Finanziato interamente con <strong>una sola fonte</strong> (es. PNRR o POR FESR).<br>
+- Gestito direttamente da un ministero o da una Regione.<br>
+- Facile da attuare: le imprese ricevono un contributo per acquistare beni e servizi digitali.</p>
+<p>🔹 <strong>Bonus Edilizi Finanziati da Bilancio Statale</strong><br>
+- Fondi provenienti solo dal <strong>bilancio nazionale</strong>.<br>
+- Regole di accesso semplici (es. incentivi fiscali automatici).<br>
+- Non richiede complementarità con altri strumenti finanziari.</p>
+<p>🔹 <strong>Piani di Formazione Finanziati dal FSE+</strong><br>
+- I fondi FSE+ sono già destinati alla formazione e non necessitano di integrazioni con altri fondi.<br>
+- La gestione è solitamente <strong>regionale</strong> e ha un iter amministrativo standardizzato.</p>
+<p>💡 <strong>Perché sono semplici?</strong><br>
+✔️ Si basano su <strong>un solo fondo</strong>.<br>
+✔️ Il coordinamento è minimo.<br>
+✔️ Le procedure di spesa sono snelle.</p>
+<hr>
+</section>
+</section>
+<section id="misure-più-complesse-da-coordinare" class="level2">
+<h2 class="anchored" data-anchor-id="misure-più-complesse-da-coordinare"><strong>📌 2. Misure Più Complesse da Coordinare</strong></h2>
+<p>Le misure più difficili da gestire sono quelle in cui: ❌ <strong>Sono coinvolti più fondi con regole diverse (FESR, FSC, PNRR, FEASR, ecc.)</strong><br>
+❌ <strong>I finanziamenti arrivano da livelli amministrativi diversi (UE, Stato, Regioni)</strong><br>
+❌ <strong>Sono previsti cofinanziamenti tra soggetti pubblici e privati</strong><br>
+❌ <strong>Le tempistiche di erogazione e spesa dei fondi sono diverse</strong></p>
+<section id="esempi-di-misure-complesse" class="level3">
+<h3 class="anchored" data-anchor-id="esempi-di-misure-complesse"><strong>📌 Esempi di Misure Complesse</strong></h3>
+<p>🔹 <strong>Grandi Opere Infrastrutturali Finanziate con FSC + FESR + PNRR</strong><br>
+- Un’autostrada o una ferrovia può essere finanziata con <strong>FSC (nazionale)</strong>, <strong>FESR (europeo)</strong> e <strong>PNRR</strong>.<br>
+- Ogni fondo ha <strong>regole diverse</strong> su <strong>tempistiche e rendicontazione</strong>.<br>
+- Richiede <strong>coordinamento tra Ministero, Regione e Unione Europea</strong>.</p>
+<p>🔹 <strong>Interventi di Rigenerazione Urbana (FSC + FESR + Bilancio Comunale + Privati)</strong><br>
+- Coinvolge fondi nazionali, europei, regionali e privati.<br>
+- Deve rispettare obiettivi di sostenibilità, inclusione sociale, transizione ecologica.<br>
+- Richiede <strong>concertazione tra pubblico e privato</strong> per definire regole e risorse.</p>
+<p>🔹 <strong>ZES (Zone Economiche Speciali) con PNRR + Bilancio Nazionale + Finanziamenti Privati</strong><br>
+- Le ZES ricevono finanziamenti misti da <strong>PNRR, fondi nazionali e investitori privati</strong>.<br>
+- Il coordinamento richiede un <strong>piano dettagliato di attrazione degli investimenti</strong>.<br>
+- Devono garantire <strong>coerenza con le strategie industriali nazionali e UE</strong>.</p>
+<p>💡 <strong>Perché sono complesse?</strong><br>
+❌ Necessitano di <strong>coordinamento multilivello</strong> (Regioni, Ministeri, UE).<br>
+❌ I tempi di erogazione e spesa sono diversi tra i fondi.<br>
+❌ Richiedono <strong>procedure burocratiche più lunghe e articolate</strong>.</p>
+<hr>
+</section>
+</section>
+<section id="come-semplificare-il-coordinamento-delle-misure-complesse" class="level2">
+<h2 class="anchored" data-anchor-id="come-semplificare-il-coordinamento-delle-misure-complesse"><strong>📌 3. Come Semplificare il Coordinamento delle Misure Complesse?</strong></h2>
+<p>Per evitare ritardi e inefficienze, si possono adottare alcuni strumenti di <strong>coordinamento istituzionale</strong>:</p>
+<p>✔️ <strong>Accordi di Coesione</strong> → Permettono di integrare FSC e FESR in modo sinergico.<br>
+✔️ <strong>Piani Nazionali Integrati</strong> → Definiti dal CIPESS per allineare PNRR, FSC e FESR.<br>
+✔️ <strong>Cabine di Regia PNRR e FSC</strong> → Strumenti di governance per monitorare la spesa.<br>
+✔️ <strong>Sistemi di Monitoraggio (ReGiS, OpenCoesione)</strong> → Consentono di tracciare la spesa in tempo reale.</p>
+<p>📌 <strong>Esempio: il CIPESS può assegnare FSC a una Regione con un vincolo di complementarità con il FESR.</strong><br>
+📌 <strong>In questo modo si evita che uno stesso progetto venga finanziato da due fondi diversi senza coordinamento.</strong></p>
+<hr>
+</section>
+<section id="conclusione-3" class="level2">
+<h2 class="anchored" data-anchor-id="conclusione-3"><strong>📌 Conclusione</strong></h2>
+<p>🔹 <strong>Le misure più semplici</strong> da coordinare sono quelle che utilizzano <strong>un solo fondo</strong> e hanno una gestione chiara (es. voucher, incentivi fiscali).<br>
+🔹 <strong>Le misure più complesse</strong> coinvolgono <strong>più fondi e livelli amministrativi</strong> e richiedono un forte coordinamento tra istituzioni.<br>
+🔹 <strong>Strumenti come Accordi di Coesione e Cabine di Regia aiutano a gestire il coordinamento tra le diverse fonti di finanziamento.</strong></p>
+<p>👉 <strong>Vuoi che realizzi un diagramma per visualizzare le differenze tra misure semplici e complesse?</strong> 🚀</p>
+</section>
+</section>
+<section id="come-possono-intervenire-le-banche-momentaneamente-al-posto-dei-fondi-pubblici" class="level1">
+<h1>come possono intervenire le banche momentaneamente al posto dei fondi pubblici?</h1>
+<section id="come-possono-intervenire-le-banche-per-sostituire-temporaneamente-i-fondi-pubblici" class="level3">
+<h3 class="anchored" data-anchor-id="come-possono-intervenire-le-banche-per-sostituire-temporaneamente-i-fondi-pubblici"><strong>📌 Come Possono Intervenire le Banche per Sostituire Temporaneamente i Fondi Pubblici?</strong></h3>
+<p>Le <strong>banche</strong> possono giocare un ruolo fondamentale nel <strong>finanziare temporaneamente progetti pubblici</strong> in attesa dell’erogazione dei fondi europei, nazionali o regionali. Questo avviene attraverso strumenti finanziari specifici che permettono di <strong>anticipare liquidità</strong> ed evitare ritardi nei progetti.</p>
+<hr>
+</section>
+<section id="meccanismi-di-intervento-bancario-per-sostituire-temporaneamente-i-fondi-pubblici" class="level2">
+<h2 class="anchored" data-anchor-id="meccanismi-di-intervento-bancario-per-sostituire-temporaneamente-i-fondi-pubblici"><strong>📌 1. Meccanismi di Intervento Bancario per Sostituire Temporaneamente i Fondi Pubblici</strong></h2>
+<p>Quando i fondi pubblici sono assegnati, ma non ancora erogati per motivi amministrativi o burocratici, le banche possono <strong>anticipare il finanziamento</strong> attraverso diverse modalità:</p>
+<section id="anticipazione-di-liquidità-su-fondi-assegnati" class="level3">
+<h3 class="anchored" data-anchor-id="anticipazione-di-liquidità-su-fondi-assegnati"><strong>1️⃣ Anticipazione di Liquidità su Fondi Assegnati</strong></h3>
+<p>📌 <strong>Cosa significa?</strong><br>
+- Se un progetto ha già ricevuto un finanziamento <strong>dal PNRR, FSC o FESR</strong>, ma la somma non è ancora erogata, la banca può anticipare il valore dell’investimento.<br>
+- Quando il fondo pubblico viene erogato, l’importo viene <strong>rimborsato alla banca</strong>.</p>
+<p>📌 <strong>Esempio</strong><br>
+- Un Comune ha ottenuto 5 milioni di euro da <strong>FSC</strong> per un’infrastruttura.<br>
+- La Regione tarda nell’erogazione → La banca anticipa i 5 milioni al Comune con un <strong>finanziamento ponte</strong>.<br>
+- Quando i fondi FSC vengono accreditati, il Comune rimborsa la banca.</p>
+<p>✔️ <strong>Vantaggio</strong>: Il progetto non si ferma in attesa della burocrazia.<br>
+❌ <strong>Rischio</strong>: Se il fondo pubblico viene ridotto o ritardato, il Comune potrebbe dover coprire il debito con risorse proprie.</p>
+<hr>
+</section>
+<section id="finanziamenti-a-breve-termine-bridge-financing" class="level3">
+<h3 class="anchored" data-anchor-id="finanziamenti-a-breve-termine-bridge-financing"><strong>2️⃣ Finanziamenti a Breve Termine (Bridge Financing)</strong></h3>
+<p>📌 <strong>Cosa significa?</strong><br>
+- La banca concede un prestito <strong>a breve termine</strong> (da pochi mesi a 2-3 anni) per <strong>coprire temporaneamente i costi del progetto</strong> in attesa dei fondi pubblici.<br>
+- Questo strumento è usato spesso per i <strong>Fondi Strutturali UE (FESR, FSE+)</strong> che hanno tempi di erogazione lunghi.</p>
+<p>📌 <strong>Esempio</strong><br>
+- Un’impresa ha ottenuto un contributo FESR per l’acquisto di macchinari, ma i fondi arriveranno tra 12 mesi.<br>
+- La banca concede un <strong>prestito-ponte</strong> di 12 mesi.<br>
+- Quando i fondi UE vengono erogati, l’azienda rimborsa il prestito.</p>
+<p>✔️ <strong>Vantaggio</strong>: Nessun blocco degli investimenti per i tempi di attesa dei fondi pubblici.<br>
+❌ <strong>Rischio</strong>: Se l’impresa non riceve i fondi, deve ripagare il prestito con altre risorse.</p>
+<hr>
+</section>
+<section id="anticipazione-su-crediti-di-pagamento" class="level3">
+<h3 class="anchored" data-anchor-id="anticipazione-su-crediti-di-pagamento"><strong>3️⃣ Anticipazione su Crediti di Pagamento</strong></h3>
+<p>📌 <strong>Cosa significa?</strong><br>
+- Se un’impresa o un ente pubblico ha <strong>crediti certi verso lo Stato o le Regioni</strong>, la banca può concedere <strong>un’anticipazione finanziaria su questi crediti</strong>.</p>
+<p>📌 <strong>Esempio</strong><br>
+- Un’impresa ha completato un’opera pubblica e deve ricevere 10 milioni dallo Stato.<br>
+- L’erogazione avverrà tra 18 mesi → La banca anticipa 8 milioni subito.<br>
+- Quando lo Stato paga, l’impresa estingue il prestito.</p>
+<p>✔️ <strong>Vantaggio</strong>: Le imprese evitano problemi di liquidità in attesa di pagamenti pubblici.<br>
+❌ <strong>Rischio</strong>: Se lo Stato ritarda il pagamento, l’impresa deve coprire il debito con altre risorse.</p>
+<hr>
+</section>
+<section id="finanziamento-a-lungo-termine-con-garanzia-pubblica-project-finance" class="level3">
+<h3 class="anchored" data-anchor-id="finanziamento-a-lungo-termine-con-garanzia-pubblica-project-finance"><strong>4️⃣ Finanziamento a Lungo Termine con Garanzia Pubblica (Project Finance)</strong></h3>
+<p>📌 <strong>Cosa significa?</strong><br>
+- Se un progetto pubblico ha un forte interesse strategico, ma i fondi pubblici <strong>non sono sufficienti o arrivano a scaglioni</strong>, la banca può intervenire con un <strong>finanziamento a lungo termine</strong>.<br>
+- Questo è tipico delle <strong>grandi opere infrastrutturali</strong> (strade, ferrovie, ospedali).</p>
+<p>📌 <strong>Esempio</strong><br>
+- Un aeroporto riceve 100 milioni dal PNRR, ma il costo è 200 milioni.<br>
+- La banca finanzia i restanti 100 milioni con un <strong>mutuo ventennale</strong>.<br>
+- Il rimborso avviene con ricavi futuri dell’aeroporto + eventuali fondi pubblici successivi.</p>
+<p>✔️ <strong>Vantaggio</strong>: Progetti complessi vengono realizzati anche senza fondi pubblici immediati.<br>
+❌ <strong>Rischio</strong>: Se i fondi pubblici non coprono il finanziamento, il progetto potrebbe essere in difficoltà finanziaria.</p>
+<hr>
+</section>
+</section>
+<section id="strumenti-bancari-specifici-per-il-settore-pubblico" class="level2">
+<h2 class="anchored" data-anchor-id="strumenti-bancari-specifici-per-il-settore-pubblico"><strong>📌 2. Strumenti Bancari Specifici per il Settore Pubblico</strong></h2>
+<p>Le banche offrono strumenti specifici per enti pubblici e imprese coinvolte in progetti finanziati con fondi pubblici:</p>
+<p>🔹 <strong>Factoring su crediti verso la PA</strong> → Le imprese cedono i loro crediti alla banca per avere liquidità immediata.<br>
+🔹 <strong>Mutui agevolati per Comuni e Regioni</strong> → Finanziamenti a lungo termine per investimenti pubblici.<br>
+🔹 <strong>Fondi di garanzia per progetti UE</strong> → Garanzie bancarie per accedere ai fondi europei senza anticipare risorse proprie.<br>
+🔹 <strong>Prestiti BEI (Banca Europea degli Investimenti)</strong> → Strumento europeo per supportare progetti pubblici con tassi agevolati.</p>
+<p>💡 <strong>Ad esempio, un Comune può richiedere un prestito BEI per un’opera pubblica e poi ripagarlo con fondi UE/FSC ricevuti successivamente.</strong></p>
+<hr>
+</section>
+<section id="vantaggi-e-rischi-dellintervento-bancario" class="level2">
+<h2 class="anchored" data-anchor-id="vantaggi-e-rischi-dellintervento-bancario"><strong>📌 3. Vantaggi e Rischi dell’Intervento Bancario</strong></h2>
+<section id="vantaggi" class="level3">
+<h3 class="anchored" data-anchor-id="vantaggi"><strong>✔️ Vantaggi</strong></h3>
+<p>✅ Evita <strong>blocchi e ritardi nei progetti pubblici</strong> dovuti a lentezze burocratiche.<br>
+✅ Fornisce <strong>liquidità immediata a enti pubblici e imprese</strong>.<br>
+✅ Permette di <strong>realizzare investimenti anche senza fondi pubblici disponibili al 100%</strong>.<br>
+✅ Si può integrare con <strong>fondi strutturali UE e FSC</strong>.</p>
+</section>
+<section id="rischi" class="level3">
+<h3 class="anchored" data-anchor-id="rischi"><strong>❌ Rischi</strong></h3>
+<p>⚠️ Se i fondi pubblici vengono <strong>tagliati o ritardati</strong>, enti e imprese devono coprire il debito.<br>
+⚠️ Gli <strong>interessi bancari aumentano il costo finale del progetto</strong>.<br>
+⚠️ Alcuni enti pubblici hanno <strong>limiti di indebitamento</strong> che non permettono l’uso di strumenti bancari.</p>
+<hr>
+</section>
+</section>
+<section id="conclusione-4" class="level2">
+<h2 class="anchored" data-anchor-id="conclusione-4"><strong>📌 4. Conclusione</strong></h2>
+<p>✔️ <strong>Le banche possono sostituire temporaneamente i fondi pubblici</strong> con strumenti finanziari dedicati.<br>
+✔️ <strong>L’intervento bancario accelera i progetti e garantisce liquidità</strong> a imprese ed enti pubblici.<br>
+✔️ <strong>È essenziale una gestione attenta del rischio</strong>, per evitare indebitamenti eccessivi in caso di ritardi nei fondi pubblici.</p>
+<p>👉 <strong>Vuoi una simulazione pratica su un caso specifico?</strong> 🚀</p>
+</section>
+</section>
+<section id="come-deve-una-impresa-organizzarsi-per-ricevere-fondi" class="level1">
+<h1>come deve una impresa organizzarsi per ricevere fondi ?</h1>
+<section id="come-deve-organizzarsi-unimpresa-per-ricevere-fondi-pubblici" class="level3">
+<h3 class="anchored" data-anchor-id="come-deve-organizzarsi-unimpresa-per-ricevere-fondi-pubblici"><strong>📌 Come Deve Organizzarsi un’Impresa per Ricevere Fondi Pubblici?</strong></h3>
+<p>Per un’<strong>impresa</strong> che vuole accedere ai <strong>fondi pubblici</strong> (europei, nazionali o regionali), è fondamentale seguire una <strong>strategia strutturata</strong>, che comprende:<br>
+✔️ <strong>Analisi delle opportunità di finanziamento</strong><br>
+✔️ <strong>Pianificazione e preparazione della documentazione</strong><br>
+✔️ <strong>Gestione e rendicontazione</strong></p>
+<p>Ecco una guida <strong>passo dopo passo</strong> su come un’impresa deve organizzarsi per ricevere e gestire al meglio i fondi pubblici.</p>
+<hr>
+</section>
+<section id="definire-il-progetto-e-lobiettivo-del-finanziamento" class="level2">
+<h2 class="anchored" data-anchor-id="definire-il-progetto-e-lobiettivo-del-finanziamento"><strong>📌 1. Definire il Progetto e l’Obiettivo del Finanziamento</strong></h2>
+<p>Prima di cercare fondi, un’impresa deve definire chiaramente <strong>cosa vuole finanziare</strong> e <strong>con quale scopo</strong>.<br>
+🔹 Vuole <strong>investire in macchinari e innovazione</strong>? → Potrebbe accedere a fondi FESR o FSC.<br>
+🔹 Vuole <strong>formare il personale</strong>? → Il FSE+ potrebbe essere il fondo adatto.<br>
+🔹 Vuole <strong>internazionalizzarsi</strong>? → Potrebbe beneficiare di fondi SIMEST o BEI.</p>
+<p>💡 <strong>Azioni da fare:</strong> ✔️ Definire un <strong>piano di investimento dettagliato</strong><br>
+✔️ Identificare <strong>il fabbisogno finanziario</strong><br>
+✔️ Valutare <strong>se l’investimento rientra in un bando o misura già esistente</strong></p>
+<p>📌 <strong>Esempio</strong>: Un’azienda manifatturiera vuole acquistare nuovi macchinari per ridurre l’impatto ambientale.<br>
+→ Potrebbe accedere ai fondi <strong>PNRR Transizione Ecologica o FESR Innovazione Industriale</strong>.</p>
+<hr>
+</section>
+<section id="cercare-le-opportunità-di-finanziamento" class="level2">
+<h2 class="anchored" data-anchor-id="cercare-le-opportunità-di-finanziamento"><strong>📌 2. Cercare le Opportunità di Finanziamento</strong></h2>
+<p>Un’impresa può accedere a fondi pubblici attraverso <strong>bandi e programmi di finanziamento</strong> a diversi livelli:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong>Livello</strong></th>
+<th><strong>Fondi Principali</strong></th>
+<th><strong>Dove trovarli</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Europeo</strong></td>
+<td>FESR, FSE+, Horizon Europe, LIFE, InvestEU</td>
+<td>Portale <a href="https://ec.europa.eu/info/funding-tenders">Funding &amp; Tenders</a></td>
+</tr>
+<tr class="even">
+<td><strong>Nazionale</strong></td>
+<td>PNRR, FSC, SIMEST, BEI, Invitalia</td>
+<td><a href="https://www.mimit.gov.it">MIMIT</a>, <a href="https://www.invitalia.it/">Invitalia</a></td>
+</tr>
+<tr class="odd">
+<td><strong>Regionale</strong></td>
+<td>POR FESR, POR FSE+, Fondi per imprese locali</td>
+<td>Portali open data delle Regioni</td>
+</tr>
+</tbody>
+</table>
+<p>💡 <strong>Azioni da fare:</strong><br>
+✔️ Monitorare <strong>i portali ufficiali</strong> per i bandi aperti.<br>
+✔️ Contattare <strong>Confidi, Associazioni di Categoria o Camere di Commercio</strong> per assistenza.<br>
+✔️ Utilizzare servizi di <strong>consulenza specializzata</strong> per valutare i bandi migliori.</p>
+<p>📌 <strong>Esempio</strong>: Un’impresa di software cerca finanziamenti per R&amp;S.<br>
+→ Horizon Europe offre bandi per innovazione tecnologica a livello UE.</p>
+<hr>
+</section>
+<section id="verificare-i-requisiti-di-ammissibilità" class="level2">
+<h2 class="anchored" data-anchor-id="verificare-i-requisiti-di-ammissibilità"><strong>📌 3. Verificare i Requisiti di Ammissibilità</strong></h2>
+<p>Ogni bando ha <strong>criteri specifici</strong> per accedere ai finanziamenti.<br>
+🔹 <strong>Dimensione dell’impresa</strong> → PMI, grande impresa o startup?<br>
+🔹 <strong>Settore di appartenenza</strong> → Industria, agricoltura, servizi?<br>
+🔹 <strong>Tipologia di spesa ammissibile</strong> → Investimenti in attrezzature, personale, formazione?</p>
+<p>💡 <strong>Azioni da fare:</strong><br>
+✔️ Leggere <strong>attentamente i requisiti del bando</strong>.<br>
+✔️ Verificare se sono richiesti <strong>cofinanziamenti privati</strong>.<br>
+✔️ Preparare una <strong>checklist dei documenti richiesti</strong>.</p>
+<p>📌 <strong>Esempio</strong>: Un’impresa vuole accedere a un bando per digitalizzazione.<br>
+→ Il bando richiede che sia <strong>una PMI con almeno 2 anni di attività e bilanci certificati</strong>.</p>
+<hr>
+</section>
+<section id="preparare-il-business-plan-e-la-domanda-di-finanziamento" class="level2">
+<h2 class="anchored" data-anchor-id="preparare-il-business-plan-e-la-domanda-di-finanziamento"><strong>📌 4. Preparare il Business Plan e la Domanda di Finanziamento</strong></h2>
+<p>Una buona domanda di finanziamento deve includere:<br>
+✔️ <strong>Descrizione del progetto</strong> (obiettivi, innovazione, impatto)<br>
+✔️ <strong>Piano finanziario</strong> (quanto serve, come verrà speso)<br>
+✔️ <strong>Tempistiche</strong> (cronoprogramma degli investimenti)<br>
+✔️ <strong>Benefici attesi</strong> (economici, ambientali, sociali)</p>
+<p>💡 <strong>Azioni da fare:</strong><br>
+✔️ Redigere un <strong>business plan dettagliato</strong>.<br>
+✔️ Preparare <strong>documentazione tecnica</strong> (preventivi, studi di fattibilità).<br>
+✔️ Assicurarsi di avere <strong>tutti i documenti amministrativi in regola</strong> (bilancio, DURC, visura camerale).</p>
+<p>📌 <strong>Esempio</strong>: Un’impresa richiede un finanziamento PNRR per digitalizzazione.<br>
+→ Deve allegare <strong>piano dettagliato degli investimenti e prospetti finanziari</strong>.</p>
+<hr>
+</section>
+<section id="presentare-la-domanda-e-monitorare-liter" class="level2">
+<h2 class="anchored" data-anchor-id="presentare-la-domanda-e-monitorare-liter"><strong>📌 5. Presentare la Domanda e Monitorare l’Iter</strong></h2>
+<p>Dopo aver preparato tutto, è il momento di <strong>inviare la domanda</strong> e monitorare il processo.<br>
+🔹 <strong>Canali di presentazione:</strong> Portali regionali, nazionali o europei.<br>
+🔹 <strong>Tempistiche di valutazione:</strong> Dipendono dal bando (da pochi mesi fino a un anno).<br>
+🔹 <strong>Possibili richieste di integrazioni documentali.</strong></p>
+<p>💡 <strong>Azioni da fare:</strong><br>
+✔️ Presentare la domanda <strong>nei tempi stabiliti</strong>.<br>
+✔️ <strong>Monitorare l’iter di valutazione</strong> e rispondere a eventuali richieste di chiarimenti.<br>
+✔️ Prepararsi a gestire <strong>l’anticipo e gli stati di avanzamento del finanziamento</strong>.</p>
+<p>📌 <strong>Esempio</strong>: Un’impresa ottiene un finanziamento FESR.<br>
+→ Deve seguire <strong>step di rendicontazione periodica</strong> per ricevere i fondi.</p>
+<hr>
+</section>
+<section id="gestire-il-finanziamento-e-la-rendicontazione" class="level2">
+<h2 class="anchored" data-anchor-id="gestire-il-finanziamento-e-la-rendicontazione"><strong>📌 6. Gestire il Finanziamento e la Rendicontazione</strong></h2>
+<p>Dopo l’approvazione del finanziamento, l’impresa deve gestire i fondi in modo <strong>corretto e trasparente</strong>.<br>
+🔹 <strong>Rispettare le tempistiche</strong> di realizzazione del progetto.<br>
+🔹 <strong>Conservare tutta la documentazione di spesa</strong>.<br>
+🔹 <strong>Inviare report di avanzamento</strong> se richiesto dal bando.</p>
+<p>💡 <strong>Azioni da fare:</strong><br>
+✔️ Creare <strong>un sistema di gestione finanziaria separato</strong> per il progetto finanziato.<br>
+✔️ Archiviare <strong>fatture, contratti e report</strong> per la rendicontazione.<br>
+✔️ Seguire eventuali <strong>audit o controlli</strong> da parte dell’ente finanziatore.</p>
+<p>📌 <strong>Esempio</strong>: Un’impresa che riceve fondi PNRR deve rispettare le <strong>milestone e target stabiliti</strong>.</p>
+<hr>
+</section>
+<section id="strategie-per-ottimizzare-laccesso-ai-fondi" class="level2">
+<h2 class="anchored" data-anchor-id="strategie-per-ottimizzare-laccesso-ai-fondi"><strong>📌 7. Strategie per Ottimizzare l’Accesso ai Fondi</strong></h2>
+<p>✔️ <strong>Essere sempre aggiornati</strong> → Seguire portali ufficiali, partecipare a webinar informativi.<br>
+✔️ <strong>Affidarsi a consulenti esperti</strong> → Supporto tecnico e fiscale per evitare errori nella domanda.<br>
+✔️ <strong>Valutare combinazioni di fondi</strong> → Es. cofinanziamenti tra FESR, FSC e PNRR per massimizzare il supporto.<br>
+✔️ <strong>Creare una rete di partner</strong> → Collaborare con altre imprese, università, enti pubblici per accedere a bandi più grandi.</p>
+<p>📌 <strong>Esempio</strong>: Una startup innovativa può combinare <strong>PNRR per digitalizzazione</strong> con <strong>fondi regionali per startup</strong>.</p>
+<hr>
+</section>
+<section id="conclusione-5" class="level2">
+<h2 class="anchored" data-anchor-id="conclusione-5"><strong>📌 Conclusione</strong></h2>
+<p>🔹 <strong>Un’impresa deve strutturarsi bene per ottenere fondi pubblici</strong>, con una strategia chiara e una gestione finanziaria precisa.<br>
+🔹 <strong>Il successo dipende dalla capacità di scegliere il bando giusto, preparare una buona domanda e gestire il finanziamento in modo corretto.</strong><br>
+🔹 <strong>Monitorare costantemente le opportunità di finanziamento è essenziale per restare competitivi.</strong></p>
+<p>👉 <strong>Vuoi che crei un diagramma di flusso per sintetizzare il processo di accesso ai fondi?</strong> 🚀</p>
+<div id="4d1a6ca5" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> graphviz</span>
+<span id="cb5-2"></span>
+<span id="cb5-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Creazione del blueprint del progetto con Graphviz</span></span>
+<span id="cb5-4">dot <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> graphviz.Digraph(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">format</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'png'</span>, engine<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'dot'</span>)</span>
+<span id="cb5-5"></span>
+<span id="cb5-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Definizione dei nodi principali (attori coinvolti)</span></span>
+<span id="cb5-7">dot.node(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Impresa'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Impresa Beneficiaria'</span>, shape<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'box'</span>, style<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'filled'</span>, fillcolor<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'lightblue'</span>)</span>
+<span id="cb5-8">dot.node(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Banca'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Banca (Finanziamento Ponte)'</span>, shape<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'ellipse'</span>, style<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'filled'</span>, fillcolor<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'lightgrey'</span>)</span>
+<span id="cb5-9">dot.node(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'FondoUE'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondo Comunitario (FESR, FSE+)'</span>, shape<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'ellipse'</span>, style<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'filled'</span>, fillcolor<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'lightgreen'</span>)</span>
+<span id="cb5-10">dot.node(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'FondoNaz'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondo Nazionale (PNRR, Invitalia)'</span>, shape<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'ellipse'</span>, style<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'filled'</span>, fillcolor<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'lightyellow'</span>)</span>
+<span id="cb5-11">dot.node(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'FSC'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondo per lo Sviluppo e la Coesione (FSC)'</span>, shape<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'ellipse'</span>, style<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'filled'</span>, fillcolor<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'lightcoral'</span>)</span>
+<span id="cb5-12">dot.node(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'FondoReg'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Fondo Regionale (POR FESR, FSE+)'</span>, shape<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'ellipse'</span>, style<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'filled'</span>, fillcolor<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'lightsalmon'</span>)</span>
+<span id="cb5-13"></span>
+<span id="cb5-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Collegamenti tra gli attori</span></span>
+<span id="cb5-15">dot.edge(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Impresa'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Banca'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Richiesta Finanziamento Temporaneo'</span>)</span>
+<span id="cb5-16">dot.edge(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Banca'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Impresa'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Erogazione Finanziamento Ponte'</span>)</span>
+<span id="cb5-17">dot.edge(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Impresa'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'FondoUE'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Domanda di Finanziamento'</span>)</span>
+<span id="cb5-18">dot.edge(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Impresa'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'FondoNaz'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Richiesta Cofinanziamento'</span>)</span>
+<span id="cb5-19">dot.edge(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Impresa'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'FSC'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Richiesta Fondi per Investimento'</span>)</span>
+<span id="cb5-20">dot.edge(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Impresa'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'FondoReg'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Richiesta Supporto Regionale'</span>)</span>
+<span id="cb5-21"></span>
+<span id="cb5-22"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Flussi di finanziamento</span></span>
+<span id="cb5-23">dot.edge(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'FondoUE'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Impresa'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Erogazione Fondi UE'</span>)</span>
+<span id="cb5-24">dot.edge(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'FondoNaz'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Impresa'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Erogazione Fondi Nazionali'</span>)</span>
+<span id="cb5-25">dot.edge(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'FSC'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Impresa'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Erogazione Fondi FSC'</span>)</span>
+<span id="cb5-26">dot.edge(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'FondoReg'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Impresa'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Erogazione Fondi Regionali'</span>)</span>
+<span id="cb5-27"></span>
+<span id="cb5-28"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Ritorno del finanziamento bancario</span></span>
+<span id="cb5-29">dot.edge(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Impresa'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Banca'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Rimborso Finanziamento con Fondi Ricevuti'</span>)</span>
+<span id="cb5-30"></span>
+<span id="cb5-31"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Creazione del diagramma</span></span>
+<span id="cb5-32">dot.render(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'blueprint_progetto'</span>, view<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>'blueprint_progetto.png'</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="la-misura-è-come-una-torta-i-fondi-gli-ingredienti-il-cipess-il-pasticcere" class="level1">
+<h1>la misura è come una torta , i fondi gli ingredienti, il cipess il pasticcere</h1>
+<section id="la-misura-come-una-torta-i-fondi-come-ingredienti-il-cipess-come-il-pasticcere" class="level3">
+<h3 class="anchored" data-anchor-id="la-misura-come-una-torta-i-fondi-come-ingredienti-il-cipess-come-il-pasticcere"><strong>📌 La Misura come una Torta, i Fondi come Ingredienti, il CIPESS come il Pasticcere</strong> 🎂</h3>
+<p>Questa <strong>metafora</strong> spiega in modo chiaro come funziona la <strong>costruzione e gestione di una misura di finanziamento pubblico</strong>:</p>
+<ul>
+<li><strong>La misura</strong> → È <strong>la torta</strong>, il prodotto finale che deve rispondere a un bisogno specifico.<br>
+</li>
+<li><strong>I fondi</strong> → Sono <strong>gli ingredienti</strong> (FESR, FSE+, FSC, PNRR, fondi regionali) necessari per realizzare la misura.<br>
+</li>
+<li><strong>Il CIPESS</strong> → È <strong>il pasticcere</strong>, che combina gli ingredienti e garantisce che il risultato finale sia ben strutturato e conforme alle regole.</li>
+</ul>
+<hr>
+</section>
+<section id="scegliere-la-ricetta-definizione-della-misura" class="level2">
+<h2 class="anchored" data-anchor-id="scegliere-la-ricetta-definizione-della-misura"><strong>📌 1. Scegliere la Ricetta (Definizione della Misura)</strong></h2>
+<p>Prima di preparare la torta, bisogna decidere <strong>che tipo di misura creare</strong> e quali obiettivi raggiungere.</p>
+<p>🔹 <strong>Quale problema deve risolvere la misura?</strong> → Digitalizzazione, sostenibilità, infrastrutture?<br>
+🔹 <strong>Chi sono i beneficiari?</strong> → Imprese, enti pubblici, cittadini?<br>
+🔹 <strong>Quali sono i risultati attesi?</strong> → Crescita economica, riduzione dell’inquinamento, maggiore inclusione sociale?</p>
+<p>📌 <strong>Esempio</strong>: Se vogliamo creare una misura per <strong>innovazione tecnologica nelle PMI</strong>, la torta sarà un programma di finanziamento che aiuti le imprese a investire in digitalizzazione.</p>
+<hr>
+</section>
+<section id="selezionare-gli-ingredienti-scelta-dei-fondi" class="level2">
+<h2 class="anchored" data-anchor-id="selezionare-gli-ingredienti-scelta-dei-fondi"><strong>📌 2. Selezionare gli Ingredienti (Scelta dei Fondi)</strong></h2>
+<p>Ogni misura necessita di <strong>diversi fondi</strong>, che devono essere <strong>combinati in modo efficace</strong>.</p>
+<p>✔️ <strong>Fondi Strutturali Europei (FESR, FSE+)</strong> → Supportano innovazione, formazione, crescita sostenibile.<br>
+✔️ <strong>FSC (Fondo per lo Sviluppo e la Coesione)</strong> → Complementa i fondi UE per aree svantaggiate.<br>
+✔️ <strong>PNRR (Piano Nazionale di Ripresa e Resilienza)</strong> → Strumento straordinario con tempistiche rigide.<br>
+✔️ <strong>Fondi Regionali (POR, Bilancio Regionale)</strong> → Adattati alle specifiche esigenze locali.<br>
+✔️ <strong>Fondi Privati e Bancari</strong> → Cofinanziamento per aumentare l’impatto.</p>
+<p>📌 <strong>Esempio</strong>: Se la misura riguarda la transizione ecologica nelle imprese, si può usare: - <strong>FESR per investimenti in tecnologie pulite</strong> - <strong>FSC per supportare aree meno sviluppate</strong> - <strong>PNRR per accelerare l’adozione delle nuove tecnologie</strong> - <strong>Fondi regionali per progetti locali</strong> - <strong>Prestiti bancari per integrare il finanziamento pubblico</strong></p>
+<p>💡 <strong>Come un bravo pasticcere, il CIPESS deve bilanciare gli ingredienti per ottenere il risultato migliore!</strong> 🎂</p>
+<hr>
+</section>
+<section id="mescolare-e-cuocere-coordinamento-tra-i-fondi" class="level2">
+<h2 class="anchored" data-anchor-id="mescolare-e-cuocere-coordinamento-tra-i-fondi"><strong>📌 3. Mescolare e Cuocere (Coordinamento tra i Fondi)</strong></h2>
+<p>Una volta scelti gli ingredienti, bisogna <strong>gestire il processo di finanziamento</strong>, garantendo che tutto sia armonizzato.</p>
+<p>✔️ <strong>Il CIPESS (Pasticcere)</strong> decide come distribuire i fondi FSC per complementare FESR e PNRR.<br>
+✔️ <strong>Il MEF (forno)</strong> garantisce che i fondi siano erogati rispettando i vincoli di bilancio.<br>
+✔️ <strong>Le Regioni (assistenti in cucina)</strong> applicano le misure sui territori attraverso i Programmi Operativi (POR).<br>
+✔️ <strong>Gli Enti Attuatori (operatori di pasticceria)</strong> devono seguire le regole di attuazione e rendicontazione.</p>
+<p>📌 <strong>Esempio</strong>: Se una Regione vuole avviare una misura per l’economia circolare, il CIPESS deve: - Verificare che il FSC sia complementare ai fondi FESR. - Definire come il PNRR può accelerare i progetti. - Assicurarsi che le Regioni possano cofinanziare la misura con risorse locali.</p>
+<p>💡 <strong>Senza un buon coordinamento, la torta può bruciarsi o avere un sapore sbagliato!</strong> 🔥🍰</p>
+<hr>
+</section>
+<section id="servire-la-torta-erogazione-dei-fondi-e-attuazione-della-misura" class="level2">
+<h2 class="anchored" data-anchor-id="servire-la-torta-erogazione-dei-fondi-e-attuazione-della-misura"><strong>📌 4. Servire la Torta (Erogazione dei Fondi e Attuazione della Misura)</strong></h2>
+<p>Dopo aver <strong>preparato e cotto</strong> la misura, è il momento di <strong>distribuire le risorse ai beneficiari</strong>.</p>
+<p>✔️ <strong>Le imprese e gli enti pubblici ricevono i fondi</strong> per realizzare i progetti.<br>
+✔️ <strong>Il monitoraggio verifica che i fondi vengano spesi correttamente</strong>.<br>
+✔️ <strong>Se qualcosa va storto, si corregge la ricetta per i prossimi anni!</strong></p>
+<p>📌 <strong>Esempio</strong>: Se un bando per le PMI ha meno richieste del previsto, si possono aggiustare gli incentivi o semplificare l’accesso ai fondi.</p>
+<p>💡 <strong>Una torta ben fatta soddisfa tutti: imprese, cittadini e istituzioni!</strong> 🎂✅</p>
+<hr>
+</section>
+<section id="conclusione-6" class="level2">
+<h2 class="anchored" data-anchor-id="conclusione-6"><strong>📌 Conclusione</strong></h2>
+<p>✔️ <strong>La misura è la torta</strong>, il risultato finale che deve essere ben bilanciato.<br>
+✔️ <strong>I fondi sono gli ingredienti</strong>, che devono essere dosati con attenzione per ottenere un impatto efficace.<br>
+✔️ <strong>Il CIPESS è il pasticcere</strong>, che coordina e armonizza le risorse per evitare sprechi e inefficienze.</p>
+<p>👉 <strong>Vuoi che crei un diagramma per rappresentare graficamente questa metafora?</strong> 🚀🍰</p>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <guid>https://paolovolterra.github.io/posts/25_17_FSC/FSC.html</guid>
+  <pubDate>Fri, 07 Feb 2025 09:56:56 GMT</pubDate>
 </item>
 </channel>
 </rss>

@@ -1,0 +1,25 @@
+digraph Blueprint_Finanziamento {
+	Impresa [label="Impresa
+Richiedente del finanziamento"]
+	Banca [label="Banca
+Intermediario per anticipazioni finanziarie"]
+	"Fondo Comunitario" [label="Fondo Comunitario
+Fondi UE (FESR, FSE+)"]
+	"Fondo Nazionale" [label="Fondo Nazionale
+PNRR, SIMEST, Invitalia"]
+	"Fondo FSC" [label="Fondo FSC
+Fondo per lo Sviluppo e la Coesione"]
+	"Fondo Regionale" [label="Fondo Regionale
+POR FESR, POR FSE+"]
+	Impresa -> Banca [label="Richiede finanziamento"]
+	Impresa -> "Fondo Comunitario" [label="Presenta domanda"]
+	Impresa -> "Fondo Nazionale" [label="Presenta domanda"]
+	Impresa -> "Fondo FSC" [label="Presenta domanda"]
+	Impresa -> "Fondo Regionale" [label="Presenta domanda"]
+	Banca -> Impresa [label="Anticipazione finanziaria"]
+	"Fondo Comunitario" -> Impresa [label="Eroga contributo"]
+	"Fondo Nazionale" -> Impresa [label="Eroga contributo"]
+	"Fondo FSC" -> Impresa [label="Eroga contributo"]
+	"Fondo Regionale" -> Impresa [label="Eroga contributo"]
+	Impresa -> Banca [label="Rimborsa prestito"]
+}

@@ -23,6 +23,98 @@ categories:
 
 ![](https://quarto.org/quarto.png)
 
+### **Quarto: Cos'è e a cosa serve?**
+**Quarto** è un sistema open-source per la creazione di documenti dinamici, report scientifici, presentazioni, siti web e libri utilizzando **Markdown avanzato** e **blocco di codice eseguibile**. È il successore di **R Markdown** ed è progettato per essere indipendente dal linguaggio di programmazione, supportando **Python, R, Julia e ObservableJS**.
+
+---
+
+## **🛠️ Funzionalità principali di Quarto**
+1. **Markdown Esteso (`.qmd`)**  
+   - Basato su Markdown, ma con supporto per codice eseguibile.
+   - Include funzionalità avanzate come **bibliografie, LaTeX, cross-referencing**.
+
+2. **Esecuzione di codice (Python, R, Julia, ObservableJS)**  
+   - Permette di integrare ed eseguire codice all'interno di un documento.  
+   - L'output (grafici, tabelle, statistiche) viene incluso automaticamente.
+
+3. **Supporto per più formati di output**  
+   - 📄 **HTML** (per blog, siti web, dashboard)  
+   - 📊 **PDF** (con LaTeX)  
+   - 📜 **Word**  
+   - 🎞 **Presentazioni** (PowerPoint, Reveal.js, Beamer)  
+   - 📚 **Libri e documentazione**  
+
+4. **Interattività**  
+   - Supporta **Shiny, ObservableJS e widgets interattivi**.
+   - Perfetto per **dashboard dinamiche** e documenti interattivi.
+
+5. **Automazione e Reproducibility**  
+   - Può essere utilizzato in **Data Science e Finanza** per report aggiornabili in automatico.
+   - Perfetto per **analisi economiche, finanziarie e report aziendali**.
+
+6. **Gestione YAML per configurazione avanzata**  
+   - Consente di definire **metadati, opzioni di rendering e layout**.
+
+---
+
+## **📌 Differenza tra Quarto e Jupyter Notebook**
+| **Caratteristica**  | **Jupyter Notebook (`.ipynb`)** | **Quarto (`.qmd`)** |
+|---------------------|--------------------------------|---------------------|
+| **Formato file** | JSON con codice e output | Markdown + codice eseguibile |
+| **Modificabile con Git** | Difficile da versionare | Facile da usare con Git |
+| **Output** | Solo interattivo | HTML, PDF, Word, PPT, ecc. |
+| **Uso ideale** | Data Science esplorativa | Report, articoli scientifici, presentazioni |
+
+---
+
+## **🖥️ Come installare Quarto**
+Puoi installarlo con:
+```bash
+# Per Windows, Mac e Linux
+https://quarto.org/docs/get-started/
+```
+Oppure, se usi Conda:
+```bash
+conda install -c conda-forge quarto
+```
+
+Esegui un test con:
+```bash
+quarto check
+```
+
+## Quarto usa qmd e non md
+
+- **`.md`** è un file Markdown tradizionale, usato principalmente per documentazione semplice.
+- **`.qmd`** è un file Markdown esteso per **Quarto**, che permette di eseguire codice, generare report interattivi e produrre output in più formati.
+
+
+Ecco la tabella completa con le differenze tra **`.md`** e **`.qmd`**:
+
+| **Caratteristica**      | **.md (Markdown)**                      | **.qmd (Quarto Markdown)**                  |
+|------------------------|--------------------------------|--------------------------------|
+| **Linguaggio base**   | Markdown standard            | Markdown con estensioni per Quarto |
+| **Obiettivo**         | Formattazione di testo semplice, spesso usato per documentazione, README, blog | Creazione di documenti scientifici, report interattivi, presentazioni |
+| **Supporto per codice** | Supporta solo evidenziazione del codice con ``` | Supporta blocchi di codice eseguibili (Python, R, Julia, ecc.) |
+| **Esecuzione di codice** | No, solo visualizzazione | Sì, può eseguire codice e mostrare output |
+| **Supporto YAML**      | Facoltativo (usato per metadata in alcuni casi) | Sì, il front matter YAML è essenziale per la configurazione |
+| **Compilazione**       | Non necessita di compilazione, può essere letto direttamente | Necessita di `quarto render` per generare output in HTML, PDF, Word, ecc. |
+| **Funzionalità avanzate** | Markdown standard | Supporta LaTeX, bibliografie, cross-referencing, interattività con Shiny, ObservableJS |
+
+
+
+
+
+---
+
+## **📌 Quando usare Quarto?**
+- Per **report finanziari e analisi economiche** (può integrare dati aggiornati automaticamente).
+- Per **presentazioni su innovazione e AI** (come il tuo intervento all'OPEN INNOVATION SUMMIT 2024).
+- Per creare **documentazione bancaria e normativa** con output in PDF, HTML o Word.
+
+---
+
+# Finalità
 
 - creare
 	- progetti

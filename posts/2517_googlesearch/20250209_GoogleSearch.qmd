@@ -1,0 +1,253 @@
+---
+title: "Google Search"
+subtitle: "__ "
+author: "Paolo Volterra"
+date: 2025-02-07
+lang: it
+
+format:
+  html:
+    toc: true               # Abilita il sommario
+    toc-depth: 3            # Mostra fino al terzo livello di intestazioni
+    number-sections: true   # Aggiunge numeri alle sezioni e sottosezioni
+    toc-location: right     # Posiziona il sommario a destra
+    toc-title: "Indice"     # Titolo del sommario
+
+categories:
+  - Python
+  - Bash
+
+---
+
+# Google Search
+
+
+https://www.google.com/search?q=genai+finance+banking+filetype:pdf&tbs=qdr:m&num=10
+Così ottieni solo i PDF pubblicati nell'ultimo mese senza parametri di tracking.
+
+I parametri servono principalmente a:
+
+- Definire il numero di risultati per pagina (num=10)
+- Applicare filtri temporali (tbs=qdr:m)
+- Ottimizzare la ricerca in base al dispositivo e alla sessione utente (biw, bih, dpr, sxsrf)
+- Monitorare e migliorare l'esperienza di ricerca (sca_esv, sa=X, ved)
+- Se vuoi fare una ricerca più pulita e replicabile, puoi usare un URL più semplice, ad esempio:
+
+## a cosa servono num=10&sca_esv=b7f49eb14b13d0ff&sxsrf=AHTn8zoX-WJU4kej-SU5uGy0Sl_AqaeURg:1739086839079&source=lnt&tbs=qdr:m&sa=X&ved=2ahUKEwjNmJuqi7aLAxXRywIHHS8CDDkQpwV6BAgEEA8&biw=1843&bih=1017&dpr=1.56
+
+Questi parametri nell'URL della tua ricerca su Google hanno diverse funzioni specifiche:
+
+- num=10 – Indica il numero di risultati per pagina. In questo caso, Google mostrerà 10 risultati per pagina.
+- sca_esv=b7f49eb14b13d0ff – È un parametro di sessione che Google utilizza per il monitoraggio della ricerca. Non ha un impatto diretto sui risultati, ma serve a Google per ottimizzare la ricerca e migliorare l'esperienza utente.
+- sxsrf=AHTn8zoX-WJU4kej-SU5uGy0Sl_AqaeURg – Fa parte del sistema di sicurezza di Google per prevenire attacchi CSRF (Cross-Site Request Forgery). Non influenza i risultati.
+- source=lnt – Indica che la ricerca ha utilizzato un filtro temporale o altri strumenti avanzati di ricerca.
+- tbs=qdr:m – Applica un filtro temporale alla ricerca. In questo caso, qdr:m significa che vengono mostrati solo i risultati pubblicati nell'ultimo mese.
+- sa=X – È un parametro che indica che la ricerca è stata effettuata manualmente (senza passare da suggerimenti o altre fonti).
+- ved=2ahUKEwjNmJuqi7aLAxXRywIHHS8CDDkQpwV6BAgEEA8 – È un parametro di tracking interno usato da Google per monitorare clic e interazioni con i risultati di ricerca.
+- biw=1843&bih=1017 – Indicano la larghezza (biw) e l'altezza (bih) della finestra del browser in pixel al momento della ricerca. Questo può influenzare la disposizione dei risultati sulla pagina.
+- dpr=1.56 – Indica il device pixel ratio, cioè il rapporto tra pixel fisici e pixel logici dello schermo. Google utilizza questo parametro per ottimizzare la visualizzazione dei risultati su schermi ad alta risoluzione.
+
+
+## nell'ultima settimana
+
+Per filtrare i risultati della ricerca agli ultimi 7 giorni, devi modificare il parametro tbs=qdr:m (che filtra per l'ultimo mese) con tbs=qdr:w, che filtra per l'ultima settimana.
+
+L'URL corretto per la tua ricerca diventa:
+
+arduino
+Copia
+Modifica
+https://www.google.com/search?q=genai+finance+banking+filetype:pdf&tbs=qdr:w&num=10
+📌 Spiegazione della modifica:
+
+tbs=qdr:w → Mostra solo risultati pubblicati nell'ultima settimana.
+num=10 → Limita il numero di risultati per pagina a 10.
+filetype:pdf → Restringe la ricerca ai soli documenti PDF.
+Se vuoi un periodo ancora più ristretto (es. ultime 24 ore), puoi usare tbs=qdr:d.
+
+
+
+## per cercare nell'anno 2022 o in intervallo di date
+ChatGPT ha detto:
+Per cercare documenti nell'anno 2022 o in un intervallo di date specifico su Google, devi usare il parametro tbs=cdr:1,cd_min:[data inizio],cd_max:[data fine].
+
+1️⃣ Cercare nell'anno 2022
+Puoi usare questo URL:
+
+arduino
+Copia
+Modifica
+https://www.google.com/search?q=genai+finance+banking+filetype:pdf&tbs=cdr:1,cd_min:01/01/2022,cd_max:12/31/2022&num=10
+📌 Spiegazione:
+
+tbs=cdr:1,cd_min:01/01/2022,cd_max:12/31/2022 → Filtra i risultati pubblicati tra il 1° gennaio 2022 e il 31 dicembre 2022.
+
+2️⃣ Cercare in un intervallo di date specifico
+Se vuoi risultati pubblicati tra 1° giugno 2023 e 31 dicembre 2023, usa:
+
+arduino
+Copia
+Modifica
+https://www.google.com/search?q=genai+finance+banking+filetype:pdf&tbs=cdr:1,cd_min:06/01/2023,cd_max:12/31/2023&num=10
+📌 Personalizza l'intervallo di date:
+
+cd_min:MM/DD/YYYY → Data di inizio della ricerca.
+cd_max:MM/DD/YYYY → Data di fine della ricerca.
+3️⃣ Metodo Alternativo Manuale
+Se preferisci, puoi fare la ricerca direttamente su Google, poi:
+
+Clicca su Strumenti (sotto la barra di ricerca).
+Seleziona Intervallo di date personalizzato.
+Inserisci le date desiderate.
+Questa tecnica è utile se vuoi un filtro più preciso senza dover modificare l'URL manualmente. 🚀
+
+
+## crea una routine bash che chiede testo da cercare numero di risultati e periodo da a . i risultati devono essere solo pdf. la ricerca deve essere salvata in un file markdown
+
+
+## script puppeteer
+ChatGPT ha detto:
+Google Pdf Search Puppeteer
+Ho creato uno script Puppeteer in JavaScript che esegue una ricerca su Google per file PDF, con la possibilità di specificare un intervallo di date e un numero di risultati. I risultati vengono salvati in un file Markdown. Se hai bisogno di modifiche o miglioramenti, fammi sapere! 🚀
+
+```
+const puppeteer = require('puppeteer');
+const fs = require('fs');
+
+(async () => {
+    const browser = await puppeteer.launch({ headless: true });
+    const page = await browser.newPage();
+
+    // Chiedi all'utente il testo da cercare
+    const readline = require('readline-sync');
+    const query = readline.question("Inserisci il testo da cercare: ");
+    const numResults = readline.question("Inserisci il numero di risultati (es. 10): ");
+    const startDate = readline.question("Inserisci la data di inizio (formato MM/DD/YYYY): ");
+    const endDate = readline.question("Inserisci la data di fine (formato MM/DD/YYYY): ");
+
+    // Formatta la query per l'URL
+    const queryUrl = encodeURIComponent(query);
+    
+    // Costruisci l'URL di ricerca di Google
+    const searchUrl = `https://www.google.com/search?q=${queryUrl}+filetype:pdf&tbs=cdr:1,cd_min:${startDate},cd_max:${endDate}&num=${numResults}`;
+    
+    console.log(`Navigating to: ${searchUrl}`);
+    await page.goto(searchUrl, { waitUntil: 'domcontentloaded' });
+
+    // Estrai i link dai risultati di ricerca
+    const links = await page.evaluate(() => {
+        return Array.from(document.querySelectorAll('a'))
+            .map(anchor => anchor.href)
+            .filter(href => href.endsWith('.pdf'));
+    });
+
+    // Salva i risultati in un file Markdown
+    const outputFile = 'risultati.md';
+    let outputContent = `# Risultati per: ${query}\n`;
+    outputContent += `_Periodo: ${startDate} - ${endDate}_\n\n`;
+    links.forEach(link => {
+        outputContent += `- [${link}](${link})\n`;
+    });
+    
+    fs.writeFileSync(outputFile, outputContent);
+    console.log(`Risultati salvati in ${outputFile}`);
+
+    await browser.close();
+})();
+
+```
+
+
+## routine bash 
+- che chiede testo da cercare numero di risultati e periodo da a . 
+- i risultati devono essere solo pdf. 
+- la ricerca deve essere salvata in un file markdown
+ChatGPT ha detto:
+Google Pdf Search Puppeteer modifica apportata
+Ho aggiornato lo script Bash per eseguire la ricerca di file PDF su Google, chiedendo all'utente il testo da cercare, il numero di risultati e l'intervallo di date.
+I risultati vengono salvati in un file Markdown.
+
+
+```
+#!/bin/bash
+
+# Chiedi all'utente il testo da cercare
+echo "Inserisci il testo da cercare:"
+read query
+
+# Chiedi all'utente il numero di risultati
+echo "Inserisci il numero di risultati (es. 10):"
+read num_results
+
+# Chiedi l'intervallo di date
+echo "Inserisci la data di inizio (formato YYYY-MM-DD):"
+read start_date
+echo "Inserisci la data di fine (formato YYYY-MM-DD):"
+read end_date
+
+# Converti la query per l'URL
+query_url=$(echo "$query" | sed 's/ /+/g')
+
+# Costruisci l'URL di ricerca
+search_url="https://www.google.com/search?q=${query_url}+filetype:pdf&tbs=cdr:1,cd_min:${start_date},cd_max:${end_date}&num=${num_results}"
+
+# Definisci il file di output
+output_file="risultati.md"
+
+# Esegui la ricerca e salva i risultati in Markdown
+echo "# Risultati per: $query" > "$output_file"
+echo "_Periodo: $start_date - $end_date_" >> "$output_file"
+echo "" >> "$output_file"
+
+# Usa wget e grep per estrarre i link
+wget -qO- "$search_url" | grep -Eo 'https?://[^ ]+\.pdf' | sort -u | while read -r link; do
+    echo "- [$link]($link)" >> "$output_file"
+done
+
+echo "Risultati salvati in $output_file"
+```
+
+
+## script python
+
+
+```
+import requests
+from bs4 import BeautifulSoup
+import urllib.parse
+
+# Chiedi all'utente il testo da cercare
+query = input("Inserisci il testo da cercare: ")
+num_results = input("Inserisci il numero di risultati (es. 10): ")
+start_date = input("Inserisci la data di inizio (formato YYYY-MM-DD): ")
+end_date = input("Inserisci la data di fine (formato YYYY-MM-DD): ")
+
+# Converti la query per l'URL
+query_url = urllib.parse.quote(query)
+search_url = f"https://www.google.com/search?q={query_url}+filetype:pdf&tbs=cdr:1,cd_min:{start_date},cd_max:{end_date}&num={num_results}"
+
+# Definisci il file di output
+output_file = "risultati.md"
+
+# Esegui la richiesta HTTP
+headers = {'User-Agent': 'Mozilla/5.0'}
+response = requests.get(search_url, headers=headers)
+soup = BeautifulSoup(response.text, 'html.parser')
+
+# Trova tutti i link ai file PDF
+links = set()
+for a in soup.find_all('a', href=True):
+    href = a['href']
+    if ".pdf" in href:
+        links.add(href)
+
+# Salva i risultati in un file Markdown
+with open(output_file, "w", encoding="utf-8") as f:
+    f.write(f"# Risultati per: {query}\n")
+    f.write(f"_Periodo: {start_date} - {end_date}_\n\n")
+    for link in links:
+        f.write(f"- [{link}]({link})\n")
+
+print(f"Risultati salvati in {output_file}")
+
+```

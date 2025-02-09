@@ -1,0 +1,15 @@
+digraph {
+	UE [label="Commissione Europea
+(Fondi Strutturali: FESR, FSE+, FEASR)"]
+	Italia [label="CIPESS
+(FSC, PNRR, Bilancio Nazionale)"]
+	Regioni [label="Regioni e Autorità Locali
+(POR FESR, POR FSE+, Fondi Regionali)"]
+	Progetti [label="Progetti Locali
+(Infrastrutture, Innovazione, Digitale, Sociale)"]
+	UE -> Italia [label="Allocazione fondi FESR/FSE+"]
+	Italia -> Regioni [label="Ripartizione FSC, PNRR e Bilancio"]
+	Regioni -> Progetti [label="Finanziamenti per sviluppo locale"]
+	UE -> Regioni [label="Gestione diretta POR FESR e POR FSE+"]
+	Italia -> Progetti [label="Finanziamenti diretti PNRR e Contratti di Sviluppo"]
+}
