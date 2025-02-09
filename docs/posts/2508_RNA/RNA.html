@@ -367,7 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Appresso riporto alcune sintesi dell’ultimo XML -&gt; parquet da me prodotto</p>
 <section id="quanti-aiuti-contiene" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="quanti-aiuti-contiene"><span class="header-section-number">9.1</span> Quanti aiuti contiene</h2>
-<div id="d38da1f7" class="cell" data-execution_count="2">
+<div id="3d444b7b" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT count(distinct(CF)), count((CF)), count(distinct(CAR)),count(distinct(CONCEDENTE)), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet'"</span>).df()</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -389,12 +389,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>226995</td>
-<td>287314</td>
-<td>439</td>
-<td>346</td>
-<td>4,156,031,727.0</td>
-<td>2,136,810,435.0</td>
+<td>227772</td>
+<td>288480</td>
+<td>478</td>
+<td>375</td>
+<td>4,198,060,832.0</td>
+<td>2,169,603,080.0</td>
 </tr>
 </tbody>
 </table>
@@ -405,7 +405,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="quali-misure-hanno-più-aiuti" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="quali-misure-hanno-più-aiuti"><span class="header-section-number">9.2</span> Quali misure hanno più aiuti</h2>
-<div id="91d3ebac" class="cell" data-execution_count="3">
+<div id="653c10cb" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(misura) MISURA, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 20"</span>).df()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -455,22 +455,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">4</td>
 <td>FONDO DI GARANZIA PER LE PICCOLE E MEDIE IMPRESE</td>
 <td>14840</td>
-<td>1,936,694,115.0</td>
-<td>127,643,013.0</td>
+<td>1,933,831,009.0</td>
+<td>127,456,523.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
 <td>REGOLAMENTO PER I FONDI INTERPROFESSIONALI PER LA FORMAZIONE CONTINUA PER LA CONCESSIONI DI AIUTI DI STATO ESENTATI AI SENSI DEL REGOLAMENTO CE N.651/2014 E IN REGIME DE MINIMIS AI SENSI DEL REGOLAMENTO CE N.1407/2013</td>
-<td>6056</td>
-<td>30,848,386.0</td>
-<td>30,437,253.0</td>
+<td>6093</td>
+<td>30,887,740.0</td>
+<td>30,476,607.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
 <td>NUOVA SABATINI - FINANZIAMENTI PER L'ACQUISTO DI NUOVI MACCHINARI, IMPIANTI E ATTREZZATURE DA PARTE DELLE PICCOLE E MEDIE IMPRESE - VERSIONE MODIFICATA DA CODICE CE SA.47180</td>
 <td>2502</td>
-<td>36,236,339.0</td>
-<td>36,236,339.0</td>
+<td>36,229,375.0</td>
+<td>36,229,375.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
@@ -488,80 +488,80 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
+<td>AVVISO PUBBLICO PER L’ASSEGNAZIONE DI VOUCHER AZIENDALI A CATALOGO PER INTERVENTI DI FORMAZIONE CONTINUA – SECONDA EDIZIONE</td>
+<td>332</td>
+<td>1,051,790.0</td>
+<td>1,051,790.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
 <td>BANDO FIERE INTERNAZIONALI - ANNO 2024 (24FI)</td>
 <td>249</td>
 <td>505,600.0</td>
 <td>505,600.0</td>
 </tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>FVG – DGR 1987/2022 - CRITERI E MODALITÀ PER CONCESSIONE DI GARANZIE E CONTRIBUZIONI INTEGRATIVE A FAVORE DELLE IMPRESE COLPITE DALL'AUMENTO DEI PREZZI DEL GAS E DELL'ENERGIA ELETTRICA IN ATTUAZIONE DELL'ART 2, CC 6, 7, 8 E 9, DELLA LR 15/2022</td>
+<td>227</td>
+<td>225,537.0</td>
+<td>123,646.0</td>
+</tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">10</td>
+<td data-quarto-table-cell-role="th">12</td>
 <td>[TITOLO II - CAPO 1, 2, 3, 4, 5, 6] REGOLAMENTO REGIONALE DELLA PUGLIA PER GLI AIUTI IN ESENZIONE (REG. REGIONALE N. 17 DEL 30/09/2014-BURP 06/10/2014) - AIUTI A FINALITÀ REGIONALE</td>
 <td>224</td>
 <td>20,505,184.0</td>
 <td>20,505,184.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">11</td>
-<td>FVG – DGR 1987/2022 - CRITERI E MODALITÀ PER CONCESSIONE DI GARANZIE E CONTRIBUZIONI INTEGRATIVE A FAVORE DELLE IMPRESE COLPITE DALL'AUMENTO DEI PREZZI DEL GAS E DELL'ENERGIA ELETTRICA IN ATTUAZIONE DELL'ART 2, CC 6, 7, 8 E 9, DELLA LR 15/2022</td>
-<td>210</td>
-<td>219,846.0</td>
-<td>119,276.0</td>
+<td data-quarto-table-cell-role="th">13</td>
+<td>AIUTI AI CENTRI DI TRASFERIMENTO TECNOLOGICO</td>
+<td>222</td>
+<td>6,244,068.0</td>
+<td>4,332,494.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">12</td>
+<td data-quarto-table-cell-role="th">14</td>
 <td>PIÙ ARTIGIANATO</td>
 <td>200</td>
 <td>5,752,767.0</td>
 <td>4,018,773.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">13</td>
-<td>AIUTI AI CENTRI DI TRASFERIMENTO TECNOLOGICO</td>
-<td>186</td>
-<td>5,239,738.0</td>
-<td>3,595,064.0</td>
+<td data-quarto-table-cell-role="th">15</td>
+<td>APPROVAZIONE AVVISO BANDO DOTE IMPRESA COLLOCAMENTO MIRATO - FONDO 2022</td>
+<td>170</td>
+<td>1,327,263.0</td>
+<td>1,327,263.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">14</td>
-<td>APPROVAZIONE AVVISO BANDO DOTE IMPRESA COLLOCAMENTO MIRATO - FONDO 2022</td>
-<td>152</td>
-<td>1,162,010.0</td>
-<td>1,162,010.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">15</td>
+<td data-quarto-table-cell-role="th">16</td>
 <td>BANDO “DIGITAL EXPORT 2024-2025”</td>
 <td>152</td>
 <td>2,167,102.0</td>
 <td>2,167,102.0</td>
 </tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>GARANZIE DEI CONFIDI ALLE PMI</td>
+<td>143</td>
+<td>11,759,800.0</td>
+<td>327,910.0</td>
+</tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">16</td>
+<td data-quarto-table-cell-role="th">18</td>
 <td>RER - DGR 412/2024 - ISTITUZIONE DEL REGIME DI AIUTI DI IMPORTANZA MINORE («DE MINIMIS») PER FORMAZIONE RIVOLTA ALLE IMPRESE OPERANTI NEL TERRITORIO DELLA REGIONE EMILIA-ROMAGNA AI SENSI DEL REGOLAMENTO (UE) 2023/2831 APPROVAZIONE DISPOSIZIONI</td>
 <td>134</td>
 <td>143,824.0</td>
 <td>143,824.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">17</td>
-<td>GARANZIE DEI CONFIDI ALLE PMI</td>
-<td>134</td>
-<td>10,485,400.0</td>
-<td>310,750.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">18</td>
-<td>AVVISO PUBBLICO ISI 2023</td>
-<td>123</td>
-<td>11,525,926.0</td>
-<td>9,446,582.0</td>
-</tr>
-<tr class="even">
 <td data-quarto-table-cell-role="th">19</td>
-<td>BANDO PER CONTRIBUTI ALLE MICRO, PICCOLE E MEDIE IMPRESE PER L'ATTIVAZIONE DI PERCORSI DI ALTERNANZA SCUOLA – LAVORO – A.S. 2023/2024 - AGEF 2410</td>
-<td>122</td>
-<td>103,800.0</td>
-<td>103,800.0</td>
+<td>BANDO “FRESCO LAZIO - MISURE A SOSTEGNO DELLE ATTIVITÀ DI RISTORAZIONE, TRASFORMAZIONE E DEL COMMERCIO ALIMENTARE CHE UTILIZZANO E/O SOMMINISTRANO LATTE FRESCO DEL LAZIO”</td>
+<td>132</td>
+<td>471,542.0</td>
+<td>471,542.0</td>
 </tr>
 </tbody>
 </table>
@@ -573,7 +573,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="quali-concedenti-hanno-più-aiuti" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="quali-concedenti-hanno-più-aiuti"><span class="header-section-number">9.3</span> Quali concedenti hanno più aiuti</h2>
 <p>purtroppo il nome del concedente è scritto in modi diversi</p>
-<div id="11a9e9aa" class="cell" data-execution_count="4">
+<div id="a830b793" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(concedente) CONCEDENTE, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 10"</span>).df()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -602,22 +602,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">1</td>
 <td>BANCA DEL MEZZOGIORNO MEDIOCREDITO CENTRALE S.P.A.</td>
 <td>14914</td>
-<td>1,937,051,506.0</td>
-<td>128,000,404.0</td>
+<td>1,934,188,400.0</td>
+<td>127,813,914.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
 <td>MINISTERO DELLE IMPRESE E DEL MADE IN ITALY - DIPARTIMENTO PER LE POLITICHE PER LE IMPRESE - DIREZIONE GENERALE PER GLI INCENTIVI ALLE IMPRESE</td>
-<td>2752</td>
-<td>117,437,469.0</td>
-<td>83,735,010.0</td>
+<td>2796</td>
+<td>125,965,619.0</td>
+<td>89,876,791.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
 <td>FONARCOM</td>
-<td>1530</td>
-<td>2,758,960.0</td>
-<td>2,758,960.0</td>
+<td>1529</td>
+<td>2,752,960.0</td>
+<td>2,752,960.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
@@ -629,9 +629,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
 <td>FONDO FOR.TE</td>
-<td>776</td>
-<td>4,867,573.0</td>
-<td>4,867,573.0</td>
+<td>768</td>
+<td>4,851,253.0</td>
+<td>4,851,253.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
@@ -649,17 +649,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
+<td>FONDIMPRESA</td>
+<td>552</td>
+<td>7,712,030.0</td>
+<td>7,712,030.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
 <td>FONCOOP</td>
 <td>531</td>
 <td>5,685,118.0</td>
 <td>5,685,118.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>FONDIMPRESA</td>
-<td>506</td>
-<td>7,650,356.0</td>
-<td>7,650,356.0</td>
 </tr>
 </tbody>
 </table>
@@ -670,7 +670,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="gli-aiuti-in-ordine-di-valore-nominale" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="gli-aiuti-in-ordine-di-valore-nominale"><span class="header-section-number">9.4</span> Gli aiuti in ordine di valore nominale €</h2>
-<div id="87db74fd" class="cell" data-execution_count="5">
+<div id="a7cbe59d" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(concedente) CONCEDENTE, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 3 desc limit 10"</span>).df()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -692,8 +692,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">0</td>
 <td>BANCA DEL MEZZOGIORNO MEDIOCREDITO CENTRALE S.P.A.</td>
 <td>14914</td>
-<td>1,937,051,506.0</td>
-<td>128,000,404.0</td>
+<td>1,934,188,400.0</td>
+<td>127,813,914.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
@@ -712,16 +712,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
 <td>MINISTERO DELLE IMPRESE E DEL MADE IN ITALY - DIPARTIMENTO PER LE POLITICHE PER LE IMPRESE - DIREZIONE GENERALE PER GLI INCENTIVI ALLE IMPRESE</td>
-<td>2752</td>
-<td>117,437,469.0</td>
-<td>83,735,010.0</td>
+<td>2796</td>
+<td>125,965,619.0</td>
+<td>89,876,791.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
 <td>INVITALIA - AGENZIA NAZIONALE PER L'ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D'IMPRESA S.P.A.</td>
-<td>295</td>
-<td>97,627,993.0</td>
-<td>73,255,442.0</td>
+<td>299</td>
+<td>102,743,941.0</td>
+<td>78,368,900.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
@@ -733,16 +733,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
 <td>REGIONE AUTONOMA FRIULI VENEZIA GIULIA - DIREZIONE CENTRALE ATTIVITÀ PRODUTTIVE</td>
-<td>63</td>
-<td>18,168,359.0</td>
-<td>3,032,077.0</td>
+<td>66</td>
+<td>18,257,297.0</td>
+<td>3,121,015.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
 <td>INAIL - DIREZIONE CENTRALE PREVENZIONE</td>
-<td>183</td>
-<td>15,879,668.0</td>
-<td>12,804,532.0</td>
+<td>195</td>
+<td>17,095,554.0</td>
+<td>13,841,898.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
@@ -754,9 +754,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
 <td>REGIONE PIEMONTE - DIREZIONE AGRICOLTURA E CIBO</td>
-<td>20</td>
-<td>14,240,276.0</td>
-<td>355,163.0</td>
+<td>21</td>
+<td>14,261,705.0</td>
+<td>370,163.0</td>
 </tr>
 </tbody>
 </table>
@@ -767,7 +767,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="valori-raggruppati-per-data" class="level2" data-number="9.5">
 <h2 data-number="9.5" class="anchored" data-anchor-id="valori-raggruppati-per-data"><span class="header-section-number">9.5</span> valori raggruppati per data</h2>
-<div id="677c05ce" class="cell" data-execution_count="6">
+<div id="372e5e77" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT CONCESSIONE, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 1 desc"</span>).df()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
@@ -788,37 +788,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
 <td>2025-01-31</td>
-<td>45083</td>
-<td>530,021,998.0</td>
-<td>254,651,392.0</td>
+<td>45421</td>
+<td>561,196,693.0</td>
+<td>278,277,081.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
 <td>2025-01-30</td>
-<td>36054</td>
-<td>203,540,286.0</td>
-<td>199,730,391.0</td>
+<td>36476</td>
+<td>208,556,936.0</td>
+<td>202,515,587.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
 <td>2025-01-29</td>
-<td>35628</td>
-<td>130,529,001.0</td>
-<td>127,867,420.0</td>
+<td>35686</td>
+<td>132,254,858.0</td>
+<td>128,777,052.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
 <td>2025-01-28</td>
-<td>11835</td>
-<td>368,540,202.0</td>
-<td>124,430,019.0</td>
+<td>11855</td>
+<td>369,797,160.0</td>
+<td>125,641,874.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
 <td>2025-01-27</td>
-<td>43517</td>
-<td>349,641,739.0</td>
-<td>342,954,611.0</td>
+<td>43586</td>
+<td>350,755,398.0</td>
+<td>343,786,019.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
@@ -830,44 +830,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
 <td>2025-01-25</td>
-<td>44936</td>
-<td>365,365,038.0</td>
-<td>365,313,398.0</td>
+<td>44938</td>
+<td>365,476,683.0</td>
+<td>365,425,043.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
 <td>2025-01-24</td>
-<td>40902</td>
-<td>560,577,071.0</td>
-<td>263,750,604.0</td>
+<td>40995</td>
+<td>561,494,057.0</td>
+<td>264,903,743.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
 <td>2025-01-23</td>
-<td>12213</td>
-<td>80,905,912.0</td>
-<td>53,842,344.0</td>
+<td>12281</td>
+<td>82,569,511.0</td>
+<td>54,672,683.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
 <td>2025-01-22</td>
-<td>555</td>
-<td>27,872,355.0</td>
-<td>23,058,226.0</td>
+<td>630</td>
+<td>28,215,232.0</td>
+<td>23,393,064.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">10</td>
 <td>2025-01-21</td>
-<td>2754</td>
-<td>333,487,428.0</td>
-<td>38,548,794.0</td>
+<td>2774</td>
+<td>333,887,613.0</td>
+<td>39,562,598.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">11</td>
 <td>2025-01-20</td>
-<td>566</td>
-<td>27,463,725.0</td>
-<td>21,046,214.0</td>
+<td>571</td>
+<td>27,672,794.0</td>
+<td>21,213,848.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">12</td>
@@ -887,29 +887,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">14</td>
 <td>2025-01-17</td>
 <td>3523</td>
-<td>311,926,576.0</td>
-<td>48,611,987.0</td>
+<td>311,049,601.0</td>
+<td>48,535,073.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">15</td>
 <td>2025-01-16</td>
-<td>634</td>
-<td>34,796,382.0</td>
-<td>21,157,147.0</td>
+<td>645</td>
+<td>34,591,334.0</td>
+<td>21,170,260.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">16</td>
 <td>2025-01-15</td>
-<td>927</td>
-<td>16,173,176.0</td>
-<td>9,918,364.0</td>
+<td>925</td>
+<td>16,099,176.0</td>
+<td>9,931,627.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">17</td>
 <td>2025-01-14</td>
 <td>2752</td>
-<td>315,298,389.0</td>
-<td>45,393,259.0</td>
+<td>314,929,229.0</td>
+<td>45,374,544.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">18</td>
@@ -928,30 +928,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">20</td>
 <td>2025-01-10</td>
-<td>2083</td>
-<td>234,633,190.0</td>
-<td>24,140,715.0</td>
+<td>2081</td>
+<td>234,354,686.0</td>
+<td>24,063,820.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">21</td>
 <td>2025-01-09</td>
-<td>1218</td>
-<td>30,782,108.0</td>
-<td>22,415,158.0</td>
+<td>1214</td>
+<td>30,778,080.0</td>
+<td>22,413,430.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">22</td>
 <td>2025-01-08</td>
-<td>381</td>
-<td>14,861,208.0</td>
-<td>12,434,421.0</td>
+<td>374</td>
+<td>14,845,848.0</td>
+<td>12,419,061.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">23</td>
 <td>2025-01-07</td>
 <td>976</td>
-<td>86,895,547.0</td>
-<td>36,452,185.0</td>
+<td>86,815,547.0</td>
+<td>36,432,887.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">24</td>
@@ -996,7 +996,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="valori-raggruppati-per-regione" class="level3" data-number="9.5.1">
 <h3 data-number="9.5.1" class="anchored" data-anchor-id="valori-raggruppati-per-regione"><span class="header-section-number">9.5.1</span> valori raggruppati per regione</h3>
-<div id="77085f23" class="cell" data-execution_count="7">
+<div id="9a6b445b" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(REGIONE) REGIONE, count(CAR), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 3 desc limit 10"</span>).df()</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -1017,72 +1017,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
 <td>LOMBARDIA</td>
-<td>49543</td>
-<td>860,137,541.0</td>
-<td>532,386,739.0</td>
+<td>49892</td>
+<td>873,593,711.0</td>
+<td>545,073,929.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
 <td>CAMPANIA</td>
-<td>31130</td>
-<td>388,057,338.0</td>
-<td>168,367,111.0</td>
+<td>31179</td>
+<td>392,387,204.0</td>
+<td>172,188,255.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
 <td>VENETO</td>
-<td>24322</td>
-<td>366,574,585.0</td>
-<td>178,583,460.0</td>
+<td>24454</td>
+<td>372,076,854.0</td>
+<td>179,851,953.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
 <td>PIEMONTE</td>
-<td>17961</td>
-<td>325,952,280.0</td>
-<td>151,332,017.0</td>
+<td>17998</td>
+<td>326,266,290.0</td>
+<td>151,577,391.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
 <td>LAZIO</td>
-<td>21878</td>
-<td>310,045,888.0</td>
-<td>157,023,288.0</td>
+<td>22051</td>
+<td>316,076,119.0</td>
+<td>163,111,372.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
 <td>EMILIA-ROMAGNA</td>
-<td>20388</td>
-<td>294,592,704.0</td>
-<td>167,970,431.0</td>
+<td>20436</td>
+<td>295,503,890.0</td>
+<td>168,523,740.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
 <td>PUGLIA</td>
-<td>21447</td>
-<td>273,857,771.0</td>
-<td>127,380,755.0</td>
+<td>21462</td>
+<td>275,952,282.0</td>
+<td>128,651,247.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
 <td>SICILIA</td>
-<td>24018</td>
-<td>256,931,646.0</td>
-<td>112,804,637.0</td>
+<td>24128</td>
+<td>258,160,221.0</td>
+<td>113,920,615.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
 <td>TOSCANA</td>
-<td>16031</td>
-<td>222,748,724.0</td>
-<td>105,645,875.0</td>
+<td>16063</td>
+<td>224,343,793.0</td>
+<td>106,355,032.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
 <td>FRIULI-VENEZIA GIULIA</td>
-<td>6135</td>
-<td>125,921,320.0</td>
-<td>78,670,892.0</td>
+<td>6176</td>
+<td>127,429,098.0</td>
+<td>80,238,575.0</td>
 </tr>
 </tbody>
 </table>
@@ -1093,7 +1093,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="valori-raggruppati-per-ateco" class="level3" data-number="9.5.2">
 <h3 data-number="9.5.2" class="anchored" data-anchor-id="valori-raggruppati-per-ateco"><span class="header-section-number">9.5.2</span> valori raggruppati per ATECO</h3>
-<div id="1a1fa4a3" class="cell" data-execution_count="8">
+<div id="b2fe2041" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(SETTORE_ATTIVITA) SETTORE_ATTIVITA, count(CAR), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 3 desc limit 10"</span>).df()</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
@@ -1114,51 +1114,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
 <td>F.41.2</td>
-<td>9254</td>
-<td>162,551,629.0</td>
-<td>48,187,370.0</td>
+<td>9287</td>
+<td>163,293,794.0</td>
+<td>48,573,220.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
 <td>D.35.1</td>
-<td>520</td>
-<td>148,860,921.0</td>
-<td>80,354,056.0</td>
+<td>523</td>
+<td>148,851,639.0</td>
+<td>80,323,869.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
 <td>I.56.1</td>
-<td>20256</td>
-<td>143,259,993.0</td>
-<td>82,080,978.0</td>
+<td>20292</td>
+<td>144,082,919.0</td>
+<td>82,794,010.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
 <td>F.43.2</td>
-<td>10808</td>
-<td>126,103,096.0</td>
-<td>59,576,473.0</td>
+<td>10835</td>
+<td>126,596,444.0</td>
+<td>59,673,120.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>H.49.4</td>
-<td>5093</td>
-<td>117,242,693.0</td>
-<td>35,458,443.0</td>
+<td>J.62.0</td>
+<td>6811</td>
+<td>117,881,630.0</td>
+<td>83,690,826.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
-<td>J.62.0</td>
-<td>6773</td>
-<td>116,315,256.0</td>
-<td>82,363,352.0</td>
+<td>H.49.4</td>
+<td>5105</td>
+<td>117,519,650.0</td>
+<td>35,566,283.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
 <td>G.47.7</td>
-<td>13487</td>
-<td>97,745,951.0</td>
-<td>57,424,175.0</td>
+<td>13507</td>
+<td>97,903,520.0</td>
+<td>57,478,971.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
@@ -1170,16 +1170,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
 <td>G.46.4</td>
-<td>4640</td>
-<td>94,618,607.0</td>
-<td>27,213,851.0</td>
+<td>4646</td>
+<td>94,557,197.0</td>
+<td>27,224,214.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
-<td>G.46.7</td>
-<td>3832</td>
-<td>86,634,083.0</td>
-<td>20,899,546.0</td>
+<td>I.55.1</td>
+<td>3550</td>
+<td>88,270,063.0</td>
+<td>36,006,125.0</td>
 </tr>
 </tbody>
 </table>
@@ -1190,7 +1190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="valori-raggruppati-per-strumento" class="level3" data-number="9.5.3">
 <h3 data-number="9.5.3" class="anchored" data-anchor-id="valori-raggruppati-per-strumento"><span class="header-section-number">9.5.3</span> valori raggruppati per strumento</h3>
-<div id="32280d0d" class="cell" data-execution_count="9">
+<div id="3e4a5d4b" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(DES_STRUMENTO) STRUMENTO, count(CAR), sum(cast(NOMINALE as integer)), sum(cast(AIUTO as integer)) FROM 'OpenData_Aiuti_2025_01.parquet' group by 1 order by 2 desc limit 10"</span>).df()</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
@@ -1211,30 +1211,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
 <td>AGEVOLAZIONE FISCALE O ESENZIONE FISCALE</td>
-<td>254678</td>
-<td>1,432,730,974.0</td>
-<td>1,432,121,970.0</td>
+<td>254746</td>
+<td>1,442,732,051.0</td>
+<td>1,442,123,047.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
 <td>SOVVENZIONE/CONTRIBUTO IN CONTO INTERESSI</td>
-<td>15813</td>
-<td>521,895,852.0</td>
-<td>429,754,937.0</td>
+<td>16696</td>
+<td>544,531,517.0</td>
+<td>449,595,824.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
 <td>GARANZIA (SE DEL CASO CON UN RIFERIMENTO ALLA DECISIONE DELLA COMMISSIONE (10))</td>
-<td>15338</td>
-<td>1,972,257,231.0</td>
-<td>129,616,946.0</td>
+<td>15473</td>
+<td>1,976,479,946.0</td>
+<td>129,662,953.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
 <td>PRESTITO/ANTICIPO RIMBORSABILE</td>
-<td>473</td>
-<td>103,473,001.0</td>
-<td>24,894,015.0</td>
+<td>495</td>
+<td>106,765,282.0</td>
+<td>26,157,762.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
@@ -1246,23 +1246,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
 <td>EROGAZIONE SERVIZI (CATEGORIA: SOVVENZIONE/CONTRIBUTO IN CONTO INTERESSI)</td>
-<td>152</td>
-<td>2,167,705.0</td>
-<td>1,631,721.0</td>
+<td>188</td>
+<td>2,729,160.0</td>
+<td>2,176,276.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
 <td>MISURA PER IL FINANZIAMENTO DEL RISCHIO</td>
-<td>95</td>
-<td>8,152,295.0</td>
-<td>6,668,170.0</td>
+<td>103</td>
+<td>9,039,541.0</td>
+<td>7,376,896.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
 <td>CONTO CAPITALE A FONDO PERDUTO (CATEGORIA: MISURA PER IL FINANZIAMENTO DEL RISCHIO)</td>
-<td>70</td>
-<td>6,534,666.0</td>
-<td>5,098,157.0</td>
+<td>71</td>
+<td>6,646,324.0</td>
+<td>5,209,815.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
@@ -1287,7 +1287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="gli-importi-più-grandi" class="level3" data-number="9.5.4">
 <h3 data-number="9.5.4" class="anchored" data-anchor-id="gli-importi-più-grandi"><span class="header-section-number">9.5.4</span> gli importi più grandi</h3>
-<div id="f01bf336" class="cell" data-execution_count="10">
+<div id="c6ccf2f1" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT IMPRESA, REGIONE, CONCEDENTE, MISURA, NOMINALE, AIUTO FROM 'OpenData_Aiuti_2025_01.parquet' order by 5 desc limit 20"</span>).df()</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
@@ -1363,7 +1363,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
-<td>SAN GIORGIO DI CONTI GIORGIO &amp; C. S.S. SOCIETA' AGRICOLA</td>
+<td>BELLINI ANTONIO E FACCHI ANNA SOCIETA' AGRICOLA S.S.</td>
 <td>Lombardia</td>
 <td>GSE - GESTORE SERVIZI ENERGETICI S.P.A.</td>
 <td>Incentivazione dell'energia prodotta da impianti a biogas da reflui e materie derivanti dalle aziende agricole realizzatrici</td>
@@ -1381,7 +1381,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
-<td>SOCIETA' AGRICOLA LE GAZZE</td>
+<td>SAN GIORGIO DI CONTI GIORGIO &amp; C. S.S. SOCIETA' AGRICOLA</td>
 <td>Lombardia</td>
 <td>GSE - GESTORE SERVIZI ENERGETICI S.P.A.</td>
 <td>Incentivazione dell'energia prodotta da impianti a biogas da reflui e materie derivanti dalle aziende agricole realizzatrici</td>
@@ -1390,7 +1390,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
-<td>BELLINI ANTONIO E FACCHI ANNA SOCIETA' AGRICOLA S.S.</td>
+<td>SOCIETA' AGRICOLA LE GAZZE</td>
 <td>Lombardia</td>
 <td>GSE - GESTORE SERVIZI ENERGETICI S.P.A.</td>
 <td>Incentivazione dell'energia prodotta da impianti a biogas da reflui e materie derivanti dalle aziende agricole realizzatrici</td>
@@ -1505,7 +1505,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>INVITALIA - AGENZIA NAZIONALE PER L’ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D’IMPRESA S.P.A.</li>
 <li>AGENZIA NAZIONALE PER L’ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D’IMPRESA SPA - INVITALIA (05678721001)</li>
 </ul>
-<div id="ab64f700" class="cell" data-execution_count="11">
+<div id="9bf1cd46" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT upper(misura) MISURA, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' where concedente like '%INVI%' group by 1 order by 3 desc limit 10"</span>).df()</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
@@ -1540,16 +1540,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
 <td>FONDO PER IL SOSTEGNO ALLA TRANSIZIONE INDUSTRIALE</td>
-<td>7</td>
-<td>7,656,088.0</td>
-<td>7,656,088.0</td>
+<td>10</td>
+<td>12,759,588.0</td>
+<td>12,759,588.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
 <td>4:2:5 FONDO ROTATIVO IMPRESE (FRI) PER IL SOSTEGNO ALLE IMPRESE E GLI INVESTIMENTI DI SVILUPPO</td>
-<td>31</td>
-<td>7,295,520.0</td>
-<td>6,945,484.0</td>
+<td>39</td>
+<td>8,856,020.0</td>
+<td>8,144,283.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
@@ -1602,7 +1602,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="valori-raggruppati-per-data-1" class="level3" data-number="9.6.2">
 <h3 data-number="9.6.2" class="anchored" data-anchor-id="valori-raggruppati-per-data-1"><span class="header-section-number">9.6.2</span> valori raggruppati per data</h3>
-<div id="d65e00f8" class="cell" data-execution_count="12">
+<div id="2eca9b49" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> con.execute(<span class="st">"SELECT CONCESSIONE, count(CAR) CONCESSIONI, sum(cast(NOMINALE as integer)) NOMINALE, sum(cast(AIUTO as integer)) AIUTI FROM 'OpenData_Aiuti_2025_01.parquet' where concedente like '%INVI%' group by 1 order by 1 desc"</span>).df()</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
@@ -1623,16 +1623,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
 <td>2025-01-31</td>
-<td>22</td>
-<td>5,395,287.0</td>
-<td>2,958,952.0</td>
+<td>32</td>
+<td>12,053,460.0</td>
+<td>9,138,731.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
 <td>2025-01-30</td>
-<td>29</td>
-<td>1,818,383.0</td>
-<td>1,588,046.0</td>
+<td>31</td>
+<td>2,126,257.0</td>
+<td>1,895,920.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
@@ -1659,8 +1659,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">5</td>
 <td>2025-01-23</td>
 <td>8</td>
-<td>2,098,044.0</td>
-<td>1,875,294.0</td>
+<td>1,808,445.0</td>
+<td>1,699,898.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
