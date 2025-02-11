@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+
+<title>Python, Parquets &amp; Opendata (parte 2 – Paolo Volterra’s website</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-8420abe6a3c31beb1b3e31bc4aeaf9cb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta name="twitter:title" content="Python, Parquets &amp; Opendata (parte 2 – Paolo Volterra’s website">
+<meta name="twitter:description" content="Uno studio sugli opendata del Fondo di Garanzia, convertiti in file parquet per una maggiore efficienza. L’obiettivo è determinare la distribuzione delle imprese per numero di comuni coinvolti negli…">
+<meta name="twitter:creator" content="@ghibbli">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra’s website</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Posts</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-books" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Books</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-books">    
+        <li>
+    <a class="dropdown-item" href="https://quarto.org/docs/books/">
+ <span class="dropdown-text">Test1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://quarto.org/docs/books/">
+ <span class="dropdown-text">Test2</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-rss" role="img" aria-label="rss">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/ghibbli"> <i class="bi bi-twitter" role="img" aria-label="twitter">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> 
+<span class="menu-text"><i class="fa-brands fa-bluesky"></i></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#i-codici-fiscali-delle-imprese-sono-dati-sensibili" id="toc-i-codici-fiscali-delle-imprese-sono-dati-sensibili" class="nav-link active" data-scroll-target="#i-codici-fiscali-delle-imprese-sono-dati-sensibili"><strong>I codici fiscali delle imprese sono dati sensibili?</strong></a></li>
+  <li><a href="#datavisualization" id="toc-datavisualization" class="nav-link" data-scroll-target="#datavisualization">Datavisualization</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2403_FdG2/FdG2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Python, Parquets &amp; Opendata (parte 2</h1>
+<p class="subtitle lead">Uno studio sugli opendata del Fondo di Garanzia, convertiti in file parquet per una maggiore efficienza. L’obiettivo è determinare la distribuzione delle imprese per numero di comuni coinvolti negli…</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><em>Uno studio sugli opendata del Fondo di Garanzia, convertiti in file parquet per una maggiore efficienza.</em></p>
+<p><em>L’obiettivo è</em> <strong><em>determinare la distribuzione delle imprese per numero di comuni coinvolti negli investimenti agevolati</em></strong><em>, utilizzando il codice fiscale anonimizzato come identificativo univoco dell’impresa.</em></p>
+<p><em>L’analisi prevede il raggruppamento per codice fiscale e comune, e la successiva creazione di un dataframe che riporta il numero di comuni per ogni impresa.</em></p>
+<p><em>Infine, viene evidenziata la</em> <strong><em>distribuzione fortemente sbilanciata</em></strong><em>, con la stragrande maggioranza delle imprese (ditte individuali) presente in un solo comune e un’unica impresa presente in ben 16 comuni, richiedendo l’uso di una scala logaritmica per la rappresentazione grafica dei risultati.</em></p>
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*aMwI8WDkded47oCrtsj4Qg.png" class="img-fluid"></p>
+<p>www.fondidigaranzia.it</p>
+<p><a href="https://medium.com/@ghibbli/il-fondo-di-garanzia-in-parquet-011ba7745116">Nella parte uno</a> avevamo visto come trasformare i file CSV del Fondo di Garanzia #FdG in file parquet.</p>
+<p>La trasformazione è utile per essere molto più veloci nelle analisi rispetto ad utilizzare file CSV che tra l’altro occupano molto più spazio.</p>
+<p>Python permette di utilizzare x file parquet o in altro formato come fosse un database: posso fare quindi qualsiasi analisi interrogando 1 o più file che ho precedentemente raccolto in un’apposita cartella.</p>
+<pre><code>dir /o-n /b *.parquetFdG_2024-M11.parquet
+FdG_2024-M10.parquet
+FdG_2024-M09.parquet
+FdG_2024-M08.parquet
+FdG_2024-M07.parquet
+FdG_2024-M06.parquet
+FdG_2024-M05.parquet
+FdG_2024-M04.parquet
+FdG_2024-M03.parquet
+FdG_2024-M02.parquet
+FdG_2024-M01.parquet
+FdG_2023.parquet
+FdG_2022.parquet
+FdG_2021.parquet
+FdG_2020.parquet
+FdG_2019.parquet
+FdG_2018-4.parquet
+FdG_2018-3.parquet
+FdG_2018-2.parquet
+FdG_2018-1.parquet
+FdG_2017-4.parquet
+FdG_2017-3.parquet
+FdG_2017-2.parquet
+FdG_2017-1.parquet
+FdG_2016-4.parquet
+FdG_2016-3.parquet
+FdG_2016-2.parquet
+FdG_2016-1.parquet
+FdG_2015-4.parquet
+FdG_2015-3.parquet
+FdG_2015-2.parquet
+FdG_2015-1.parquet
+FdG_2014-4.parquet
+FdG_2014-3.parquet
+FdG_2014-2.parquet
+FdG_2014-1.parquet
+FdG_2013-4.parquet
+FdG_2013-3.parquet
+FdG_2013-2.parquet
+FdG_2013-1.parquet
+FdG_2012-4.parquet
+FdG_2012-3.parquet
+FdG_2012-2.parquet</code></pre>
+<p>Il #FdG inserisce negli #opendata il comune dell’impresa che ha ottenuto l’agevolazione.</p>
+<p>Il Comune non è il comune sede legale dell’impresa, ma è il comune al quale durante l’istruttoria è stato attribuito l’aiuto di stato.</p>
+<p>Potremmo quindi avere imprese che hanno più di un comune in funzione degli investimenti che hanno fatto nel tempo e che sono stati supportati dal #FdG. In questo studio voglio vedere la distribuzione delle imprese per numero di comuni.</p>
+<p>Dopo aver importato le librerie, verifico quanti dati ho a disposizione</p>
+<pre><code>import pyarrow.parquet as pq
+import pandas as pd
+import duckdb
+import os
+con = duckdb.connect()
+con.execute("PRAGMA threads=2") 
+con.execute("PRAGMA enable_object_cache") os.chdir('D:/duckdb/files/FdG/')</code></pre>
+<p>Oltre 3.900.000 agevolazioni per c.a 1.700.000 imprese.</p>
+<pre><code>con.execute("SELECT count(*) FROM '*.parquet';").df()count_star()
+0  3994883con.execute("SELECT count(distinct(CF)) FROM '*.parquet';").df()  count(DISTINCT CF)
+0  1680598</code></pre>
+<p>Per le analisi utilizzerò il codice fiscale e non la ragione sociale perché quest’ultima a volte viene scritta in maniera differente, mentre il codice fiscale è univoco.</p>
+<section id="i-codici-fiscali-delle-imprese-sono-dati-sensibili" class="level2">
+<h2 class="anchored" data-anchor-id="i-codici-fiscali-delle-imprese-sono-dati-sensibili"><strong>I codici fiscali delle imprese sono dati sensibili?</strong></h2>
+<p>Il codice fiscale di un’impresa è considerato un dato personale, ma non rientra nella categoria dei dati sensibili.</p>
+<p>Secondo il Regolamento Generale sulla Protezione dei Dati #GDPR , i dati personali sono informazioni che identificano o rendono identificabile una persona fisica, come il nome, l’indirizzo o il codice fiscale.</p>
+<p>I dati sensibili, invece, includono informazioni che rivelano l’origine razziale o etnica, le opinioni politiche, le convinzioni religiose o filosofiche, l’appartenenza sindacale, dati genetici, dati biometrici, dati relativi alla salute o alla vita sessuale o all’orientamento sessuale di una persona .</p>
+<p>È importante notare che il codice fiscale di un’impresa, essendo associato a una persona giuridica, non è soggetto alle stesse tutele previste per i dati personali delle persone fisiche. Tuttavia, l’utilizzo del codice fiscale deve avvenire nel rispetto delle normative vigenti in materia di protezione dei dati.</p>
+<p>Deve essere quindi posta particolare attenzione nel caso delle ditte individuali dove il codice fiscale richiama luogo e data di nascita del soggetto. Qui sotto, ad esempio, i due ipotetici Rossi e Bianchi sono entrambi nati a Roma (H501) ma nel 1985 il primo (85) e nel 1975 (75) il secondo (il primo aprile, per la precisione)</p>
+<pre><code>data = {'Nome': ['Mario Rossi', 'Luigi Bianchi'], 
+'Codice Fiscale': ['RSSMRA85M01H501Z', 'BNCGLG75D01H501Z']}
+df = pd.DataFrame(data)</code></pre>
+<p>H<a href="https://docs.python.org/3/library/hashlib.html">ashlib</a> permette di anonimizzare i dati in un DataFrame, ad esempio, sostituendoli con hash univoci o mascherandoli parzialmente.</p>
+<pre><code>hashlib.sha256(codice_fiscale.encode()).hexdigest()
+def mask_code(codice_fiscale):
+    return codice_fiscale[:3] + '*' * 8 + codice_fiscale[-3:]
+df['Codice Fiscale Mascherato'] = df['Codice Fiscale'].apply(mask_code)</code></pre>
+<p>Per evitare errori, anonimizzerò completamente, e non parzialmente, i codici fiscali</p>
+<pre><code>import hashlibdef hash_code(codice_fiscale):
+    return hashlib.sha256(codice_fiscale.encode()).hexdigest()df['Codice Fiscale Anonimizzato'] = df['CF'].apply(hash_code)
+df.drop(['CF'], axis=1)</code></pre>
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*QjbEve2--t5mH_b5Mj6CKA.png" class="img-fluid"></p>
+<p>Alcune informazioni (righe) potrebbero essere escluse dall’analisi, ad esempio perchè legate a moratorie e quindi a preesistenti finanziamenti. In questa analisi però sapere che un’impresa ha avuto un finanziamento per un investimento su Roma e successivamente una moratoria, non incide.</p>
+<p>Per prima cosa raggruppo le imprese per codice fiscale (anonimizzato) e per comune.</p>
+<p>Potrò quindi avere il un’impresa Alfa srl che ha uno o più comuni.</p>
+<pre><code>result_df = df.groupby('Codice Fiscale Anonimizzato')['comune'].apply(lambda x: '|'.join(x)).reset_index() 
+result_df.columns = ['Codice Fiscale Anonimizzato', 'comuni_concatenati'] </code></pre>
+<p>Per comodità realizzo un nuovo data frame nel quale riporto univocamente i codici fiscali (anonimizzati) e in una seconda colonna la serie di uno o più comuni separati da un pipe.</p>
+<p>Otterrò quindi due colonne: nella seconda colonna potrà essere presente o un solo comune o più comuni.</p>
+<pre><code>filtered_df = result_df[result_df['comuni_concatenati'].str.contains('|', regex=False)]filtered_df.head()</code></pre>
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*iy2qqMgY_InixbFHk0iQog.png" class="img-fluid"></p>
+<p>Per vedere quale codice fiscale ha più comuni in assoluto, faccio dei tentativi andando a filtrare il data frame.</p>
+<pre><code>filtered_df[filtered_df['comuni_concatenati'].str.count('\|') &gt;= 15]</code></pre>
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*AJ8xQUcgiRt3NG8eGIbDHg.png" class="img-fluid"></p>
+<p>Realizzo adesso un altro dataframe nel quale inserisco pure il numero di comuni che sono presenti nella seconda colonna raggruppati per ogni codice fiscale (anonimizzato) e vado ad ordinarli in modo decrescente in maniera che troverò alla prima riga il codice fiscale che ha più comuni presenti.</p>
+<pre><code>cf_count_df = result_df.copy()
+cf_count_df['num_comuni'] = cf_count_df['comuni_concatenati'].str.count('\|') + 1
+cf_count_sorted = cf_count_df.sort_values(by='num_comuni', ascending=False)print(cf_count_sorted)</code></pre>
+<p>Verifico i primi 10 codici fiscali (anonimizzati) e i relativi comuni.</p>
+<pre><code>pd.set_option('display.max_colwidth', 500)
+cf_count_sorted.head(10)</code></pre>
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*JLBvKS0Ncei0DCxapVm19A.png" class="img-fluid"></p>
+<p>Voglio ora sapere quanti codici fiscali hanno uno o più comuni.</p>
+<pre><code>cf_count_df = result_df.copy()
+cf_count_df['num_comuni'] = cf_count_df['comuni_concatenati'].str.count('\|') + 1
+cf_count_distribution = cf_count_df['num_comuni'].value_counts().sort_index(ascending=False)
+distribution_df = cf_count_distribution.reset_index(name="count").rename(columns={"index": "num_comuni"})print(distribution_df)    num_comuni    count
+0           16        1
+1           14        1
+2           12        2
+3           10        2
+4            9        6
+5            8        6
+6            7       15
+7            6       46
+8            5      222
+9            4     1139
+10           3     8761
+11           2    91515
+12           1  1578882</code></pre>
+<p>Come posso vedere, un solo codice fiscale (anonimizzato) è presente in 16 comuni, mentre oltre 1.700.000 codici fiscali sono presenti in un solo comune.</p>
+</section>
+<section id="datavisualization" class="level2">
+<h2 class="anchored" data-anchor-id="datavisualization">Datavisualization</h2>
+<p>Passo ora alla rappresentazione di quest’ultima tabella di raggruppamento, ma devo utilizzare nella colonna delle ordinate la scala logaritmica in quanto il i codici fiscali con un solo comune sono eccessivi rispetto all’unico codice fiscale con 16 comuni.</p>
+<pre><code>import matplotlib.pyplot as plt
+plt.figure(figsize=(8, 5))
+ax = cf_count_df['num_comuni'].value_counts().sort_index(ascending=False).plot(
+    kind='bar',
+    title='Distribution of CF by Number of Associated "Comuni" (Log Scale)',
+    xlabel='Number of Associated Comuni',
+    ylabel='Frequency (Log Scale)',
+    rot=0,
+    log=True  
+)
+for p in ax.patches:
+    height = p.get_height()
+    ax.annotate(f'{int(height)}', 
+                (p.get_x() + p.get_width() / 2., height * 1.1),  
+                ha='center', va='bottom', fontsize=10)plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.tight_layout()
+plt.show()</code></pre>
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*d7cXkP848Pc-vOqD4Ik1og.png" class="img-fluid"></p>
+<ul>
+<li><a href="https://github.com/paolovolterra/Python/blob/main/FdG_02.ipynb">FdG_02.ipynb su GitHub</a></li>
+<li><a href="https://medium.com/@ghibbli/il-fondo-di-garanzia-in-parquet-011ba7745116">Fondo di Garanzia, Python &amp; Parquet files (parte 1)</a></li>
+</ul>
+<p>Mi raccomando: ho altri approfondimenti da condividere. Metti like!</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/paolovolterra\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2403_FdG2/FdG2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

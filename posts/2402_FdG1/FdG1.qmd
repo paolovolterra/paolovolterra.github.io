@@ -1,0 +1,162 @@
+---
+title: "Python, Parquets & Opendata (part 1)"
+subtitle: "Il Fondo di Garanzia #FdG è uno strumento messo a disposizione dallo Stato italiano per facilitare l’accesso al credito alle piccole e medie imprese (PMI) e ai professionisti. Nella sezione…"
+author:
+  - "Paolo Volterra"
+published: 2024-11-10
+created: 2025-02-11
+
+tags:
+  - FdG
+  - Python
+---
+
+
+Il [Fondo di Garanzia](https://www.fondidigaranzia.it/) #FdG è uno strumento messo a disposizione dallo Stato italiano per facilitare l’accesso al credito alle piccole e medie imprese (PMI) e ai professionisti.
+
+![](https://miro.medium.com/v2/resize:fit:331/1*BU8oDMUBDdA_n_a-U0uwOw.jpeg)
+
+Nella sezione “[Amministrazione trasparente](https://www.fondidigaranzia.it/amministrazione-trasparente/)” del [sito](http://www.fondidigaranzia.it/) vengono pubblicati gli opendata in file mensili in formato csv e xls
+
+I due file più recenti vengono aggiornati due volte a settimana durante il mese di competenza.
+
+S.e., i file “storici” non vengono più aggiornati una volta passati al mese successivo.
+
+Questa (buona) impostazione evita di dover scaricare ogni volta tutti i 100 e più file e doverli rilavorare per verificare se ci sono state modiifiche “retroattive”
+
+## **Concentriamoci ora sui csv**
+
+La struttura del file è sempre la stessa e contiene 14 colonne:
+
+- Ragione sociale e forma giuridica dell’impresa
+- Codice fiscale dell’impresa
+- Tipologia di intervento
+- Importo massimo garantito (euro) (con i punti per le migliaia e la virgola decimale)
+- Riserva / Sezione speciale
+- Data di delibera di concessione della garanzia
+- Importo del finanziamento (con i punti per le migliaia e la virgola decimale)
+- Codice ATECO a 6 cifre dell’attività dell’impresa
+- Anno di riferimento della classificazione ATECO (non so a cosa possa servire)
+- Settore economico
+- Regione di utilizzo
+- Provincia (sigla) di utilizzo
+- Comune di utilizzo
+- Tipo di processo
+
+In questo studio voglio:
+
+1. collegarmi automaticamente ai dati, senza fare download manuali;
+2. fare ETL;
+3. salvarli in formato Parquet per un’interrogazione molto più veloce
+
+Il punto 2) e 3) sono i più interessanti: un corretto settaggio permette di importare efficientemente le informazioni
+
+## **Import librerie**
+
+```
+import os
+from io import StringIO
+import pandas as pd
+import requests
+import duckdb
+pd.set_option('display.float_format', lambda x: '%.2f' % x)
+```
+
+## **Collegamento al file online**
+
+proviamo a lavorare il file di novembre 2024
+
+```
+file = ("2024-M11")
+url='https://www.fondidigaranzia.it/wp-content/uploads/amm_aperta/'+file+'.csv'
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
+s=requests.get(url, headers= headers).text
+```
+
+## **ETL**
+
+```
+date_column = ['delibera']
+df = pd.read_csv(StringIO(s), header=0, sep=',', quotechar='"',
+names=['impresa', 'CF','intervento','garantito','riserva','delibera',
+       'finanziamento','ATECO','anno','settore','regione','prov',
+       'comune','processo'],
+       encoding='utf-8', 
+       decimal="," , 
+       thousands="." , 
+       parse_dates=date_column, 
+       dayfirst=True, 
+       na_filter = False, 
+       skipinitialspace=True)df['ATECO'] = df['ATECO'].astype(str)
+df['anno'] = df['anno'].astype(str)
+df['intervento'] = df['intervento'].astype(str)
+df['CF'] = df['CF'].astype(str)
+```
+
+Le accortezze qui sono:
+
+- l’import dei valori numerici, che contengono il divisore delle migliaia e la virgola per i decimali; impostazioni che stonano con lo standard internazionale
+- la ridenominazione automatica delle colonne
+- la sterelizzazione della sigla “NA” per i Nan, in modo che non sia interpretata come provincia partenopea
+- l’annullamento di spazi inutili
+
+La prima colonna contiene due valori (Ragione sociale e forma giuridica dell’impresa) che potrebbero essere facilmente separati ricorrendo ad uno “split”, utilizzando l’ultima virgola come separatore
+
+```
+df[['impresa','NG']] = df['impresa'].str.split(',', n=1, expand=True)
+```
+
+Ricordiamoci poi che il codice fiscale è un valore di 11 caratteri nel caso di società e di 16 caratteri nel caso di ditte individuali.
+
+In ogni caso, come per la Partita Iva, si tratta di una stringa alfanumerica e non di un numero.
+
+Se lo trattassimo come numero, perderemmo lo (gli) zero (i) iniziale (i)
+
+```
+df[df.isna().any(axis=1)]
+```
+
+con questo comando vediamo se ci sono stati errori (…)
+
+Se non compare nulla, tutto è andato ok
+
+## **Salvataggio in Parquet**
+
+```
+df.to_parquet('D:\\duckdb\\files\\FdG\\FdG_'+file+'.parquet')
+```
+
+Il salvataggio in Parquet ha 2 vantaggi:
+
+- riduce lo spazio (1:5)
+- è performante nelle query (usate [DuckDB](https://duckdb.org/)!)
+
+![](https://miro.medium.com/v2/resize:fit:700/1*de-H8dvryeqSlV0eeI1pLw.png)
+
+A questo punto abbiamo salvato nella directory un file Parquet molto più leggerlo di quello iniziale e lo abbiamo adattato per analisi successive.
+
+Nel tempo la directory finisce per essere un Database: con Python potrai direttamente decidere quali file considerare nelle analisi
+
+- “select \* from FgD\_2024\*.parquet “ per tutto il 2024
+- “select \* from FgD\_2024-M11.parquet” per novembre 2024
+- “select \* from \*.parquet” per tutti i files salvati
+
+![](https://miro.medium.com/v2/resize:fit:700/1*XN3uMAHvZZE5kSqU8xO7PA.png)
+
+## Un unico DB
+
+Volendo, si puòrealizzare un unico file parquet come merge di tutti i precedenti ( cosa che un tempo facevo)
+
+```
+conn = duckdb.connect(database='D:/files/FdG.duckdb', read_only=False)
+os.chdir('D:/')
+DB ='D:/FdG.duckdb'
+conn.execute(f'''CREATE TABLE FdG AS SELECT * FROM read_parquet('D:/duckdb/files/FdG/*.parquet');''').df()
+```
+
+## **Addendum**
+
+Prima del covid, i file csv:
+
+- erano trimestrali e non mensili
+- contenevano un’ulteriore colonna (inutile)
