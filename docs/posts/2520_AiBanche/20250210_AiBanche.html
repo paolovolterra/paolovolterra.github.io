@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Paolo Volterra">
 
-<title>aibanche – Paolo Volterra's website</title>
+<title>Intelligenza Artificiale e banche – Paolo Volterra’s website</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -53,23 +54,24 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
   }
 }</script>
 
 
 <link rel="stylesheet" href="../../MCC.css">
-<meta name="twitter:title" content="Paolo Volterra’s website">
+<meta name="twitter:title" content="Intelligenza Artificiale e banche – Paolo Volterra’s website">
+<meta name="twitter:description" content="__">
 <meta name="twitter:creator" content="@ghibbli">
 <meta name="twitter:card" content="summary">
 </head>
@@ -85,8 +87,8 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">Paolo Volterra’s website</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -151,19 +153,880 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#data-is-king" id="toc-data-is-king" class="nav-link active" data-scroll-target="#data-is-king"><span class="header-section-number">1</span> Data is King</a>
+  <ul class="collapse">
+  <li><a href="#valutazione-del-rischio-e-credit-scoring" id="toc-valutazione-del-rischio-e-credit-scoring" class="nav-link" data-scroll-target="#valutazione-del-rischio-e-credit-scoring"><span class="header-section-number">1.0.1</span> Valutazione del Rischio e Credit Scoring</a></li>
+  <li><a href="#prevenzione-delle-frodi-e-sicurezza" id="toc-prevenzione-delle-frodi-e-sicurezza" class="nav-link" data-scroll-target="#prevenzione-delle-frodi-e-sicurezza"><span class="header-section-number">1.0.2</span> Prevenzione delle Frodi e Sicurezza</a></li>
+  <li><a href="#ottimizzazione-della-customer-experience" id="toc-ottimizzazione-della-customer-experience" class="nav-link" data-scroll-target="#ottimizzazione-della-customer-experience"><span class="header-section-number">1.0.3</span> Ottimizzazione della Customer Experience</a></li>
+  <li><a href="#compliance-e-regolamentazione" id="toc-compliance-e-regolamentazione" class="nav-link" data-scroll-target="#compliance-e-regolamentazione"><span class="header-section-number">1.0.4</span> Compliance e Regolamentazione</a></li>
+  <li><a href="#uso-dellintelligenza-artificiale-in-banca" id="toc-uso-dellintelligenza-artificiale-in-banca" class="nav-link" data-scroll-target="#uso-dellintelligenza-artificiale-in-banca"><span class="header-section-number">1.1</span> Uso dell’Intelligenza artificiale in banca</a>
+  <ul class="collapse">
+  <li><a href="#analisi-predittiva-per-il-credit-scoring" id="toc-analisi-predittiva-per-il-credit-scoring" class="nav-link" data-scroll-target="#analisi-predittiva-per-il-credit-scoring"><span class="header-section-number">1.1.1</span> Analisi Predittiva per il Credit Scoring</a></li>
+  <li><a href="#rilevazione-frodi-e-sicurezza" id="toc-rilevazione-frodi-e-sicurezza" class="nav-link" data-scroll-target="#rilevazione-frodi-e-sicurezza"><span class="header-section-number">1.1.2</span> Rilevazione Frodi e Sicurezza</a></li>
+  <li><a href="#chatbot-e-assistenza-virtuale" id="toc-chatbot-e-assistenza-virtuale" class="nav-link" data-scroll-target="#chatbot-e-assistenza-virtuale"><span class="header-section-number">1.1.3</span> Chatbot e Assistenza Virtuale</a></li>
+  <li><a href="#gestione-degli-investimenti-e-fintech-ai" id="toc-gestione-degli-investimenti-e-fintech-ai" class="nav-link" data-scroll-target="#gestione-degli-investimenti-e-fintech-ai"><span class="header-section-number">1.1.4</span> Gestione degli Investimenti e Fintech AI</a></li>
+  <li><a href="#prevenzione-del-riciclaggio-di-denaro-aml" id="toc-prevenzione-del-riciclaggio-di-denaro-aml" class="nav-link" data-scroll-target="#prevenzione-del-riciclaggio-di-denaro-aml"><span class="header-section-number">1.1.5</span> Prevenzione del Riciclaggio di Denaro (AML)</a></li>
+  <li><a href="#ottimizzazione-della-customer-experience-1" id="toc-ottimizzazione-della-customer-experience-1" class="nav-link" data-scroll-target="#ottimizzazione-della-customer-experience-1"><span class="header-section-number">1.1.6</span> Ottimizzazione della Customer Experience</a></li>
+  <li><a href="#strumenti-e-tecnologie-usate-nelle-banche" id="toc-strumenti-e-tecnologie-usate-nelle-banche" class="nav-link" data-scroll-target="#strumenti-e-tecnologie-usate-nelle-banche"><span class="header-section-number">1.1.7</span> Strumenti e Tecnologie Usate nelle Banche</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#il-tech-in-banca" id="toc-il-tech-in-banca" class="nav-link" data-scroll-target="#il-tech-in-banca"><span class="header-section-number">2</span> Il tech in banca</a>
+  <ul class="collapse">
+  <li><a href="#le-tech" id="toc-le-tech" class="nav-link" data-scroll-target="#le-tech"><span class="header-section-number">2.1</span> Le “Tech”</a></li>
+  <li><a href="#tabella-delle-tech" id="toc-tabella-delle-tech" class="nav-link" data-scroll-target="#tabella-delle-tech"><span class="header-section-number">2.2</span> Tabella delle Tech</a></li>
+  <li><a href="#riferimenti-bibliografici" id="toc-riferimenti-bibliografici" class="nav-link" data-scroll-target="#riferimenti-bibliografici"><span class="header-section-number">2.3</span> Riferimenti Bibliografici</a></li>
+  </ul></li>
+  <li><a href="#gli-investimenti-bancari-in-ai" id="toc-gli-investimenti-bancari-in-ai" class="nav-link" data-scroll-target="#gli-investimenti-bancari-in-ai"><span class="header-section-number">3</span> Gli Investimenti Bancari in AI</a>
+  <ul class="collapse">
+  <li><a href="#quanto-investono-le-banche-in-ai" id="toc-quanto-investono-le-banche-in-ai" class="nav-link" data-scroll-target="#quanto-investono-le-banche-in-ai"><span class="header-section-number">3.1</span> Quanto investono le banche in AI</a></li>
+  <li><a href="#perché-le-banche-investono-in-ai" id="toc-perché-le-banche-investono-in-ai" class="nav-link" data-scroll-target="#perché-le-banche-investono-in-ai"><span class="header-section-number">3.2</span> Perché le banche investono in AI</a></li>
+  <li><a href="#principali-aree-di-investimento-in-ai-nel-settore-bancario" id="toc-principali-aree-di-investimento-in-ai-nel-settore-bancario" class="nav-link" data-scroll-target="#principali-aree-di-investimento-in-ai-nel-settore-bancario"><span class="header-section-number">3.3</span> Principali Aree di Investimento in AI nel Settore Bancario</a>
+  <ul class="collapse">
+  <li><a href="#rilevazione-frodi-sicurezza" id="toc-rilevazione-frodi-sicurezza" class="nav-link" data-scroll-target="#rilevazione-frodi-sicurezza"><span class="header-section-number">3.3.1</span> Rilevazione Frodi &amp; Sicurezza</a></li>
+  <li><a href="#automazione-con-rpa-ai" id="toc-automazione-con-rpa-ai" class="nav-link" data-scroll-target="#automazione-con-rpa-ai"><span class="header-section-number">3.3.2</span> Automazione con RPA &amp; AI</a></li>
+  <li><a href="#ai-per-il-credit-scoring-risk-management" id="toc-ai-per-il-credit-scoring-risk-management" class="nav-link" data-scroll-target="#ai-per-il-credit-scoring-risk-management"><span class="header-section-number">3.3.3</span> AI per il Credit Scoring &amp; Risk Management</a></li>
+  <li><a href="#chatbot-ai-assistenza-clienti" id="toc-chatbot-ai-assistenza-clienti" class="nav-link" data-scroll-target="#chatbot-ai-assistenza-clienti"><span class="header-section-number">3.3.4</span> Chatbot AI &amp; Assistenza Clienti</a></li>
+  <li><a href="#ai-nel-trading-fintech" id="toc-ai-nel-trading-fintech" class="nav-link" data-scroll-target="#ai-nel-trading-fintech"><span class="header-section-number">3.3.5</span> AI nel Trading &amp; Fintech</a></li>
+  </ul></li>
+  <li><a href="#benefici-degli-investimenti-in-ai-per-le-banche" id="toc-benefici-degli-investimenti-in-ai-per-le-banche" class="nav-link" data-scroll-target="#benefici-degli-investimenti-in-ai-per-le-banche"><span class="header-section-number">3.4</span> Benefici degli Investimenti in AI per le Banche</a></li>
+  <li><a href="#sfide-rischi-dellai-nel-settore-bancario" id="toc-sfide-rischi-dellai-nel-settore-bancario" class="nav-link" data-scroll-target="#sfide-rischi-dellai-nel-settore-bancario"><span class="header-section-number">3.5</span> Sfide &amp; Rischi dell’AI nel Settore Bancario</a></li>
+  <li><a href="#il-futuro-dellai-nelle-banche-tendenze-2025-2030" id="toc-il-futuro-dellai-nelle-banche-tendenze-2025-2030" class="nav-link" data-scroll-target="#il-futuro-dellai-nelle-banche-tendenze-2025-2030"><span class="header-section-number">3.6</span> Il Futuro dell’AI nelle Banche: Tendenze 2025-2030</a></li>
+  </ul></li>
+  <li><a href="#i-nuovi-paradigmi-normativi" id="toc-i-nuovi-paradigmi-normativi" class="nav-link" data-scroll-target="#i-nuovi-paradigmi-normativi"><span class="header-section-number">4</span> I nuovi paradigmi normativi</a>
+  <ul class="collapse">
+  <li><a href="#gli-organi-di-vigilanza-e-il-controllo-del-settore-bancario" id="toc-gli-organi-di-vigilanza-e-il-controllo-del-settore-bancario" class="nav-link" data-scroll-target="#gli-organi-di-vigilanza-e-il-controllo-del-settore-bancario"><span class="header-section-number">4.1</span> Gli Organi di Vigilanza e il Controllo del Settore Bancario</a></li>
+  <li><a href="#impatti-per-le-banche" id="toc-impatti-per-le-banche" class="nav-link" data-scroll-target="#impatti-per-le-banche"><span class="header-section-number">4.2</span> <strong>Impatti per le Banche</strong></a></li>
+  </ul></li>
+  <li><a href="#la-confusione-fra-ai-genai-e-rpa" id="toc-la-confusione-fra-ai-genai-e-rpa" class="nav-link" data-scroll-target="#la-confusione-fra-ai-genai-e-rpa"><span class="header-section-number">5</span> La confusione fra AI, GenAI e RPA</a>
+  <ul class="collapse">
+  <li><a href="#tabella-di-confronto-ai-vs.-genai-vs.-rpa" id="toc-tabella-di-confronto-ai-vs.-genai-vs.-rpa" class="nav-link" data-scroll-target="#tabella-di-confronto-ai-vs.-genai-vs.-rpa"><span class="header-section-number">5.1</span> Tabella di confronto AI vs.&nbsp;GenAI vs.&nbsp;RPA</a></li>
+  <li><a href="#quando-è-usata-ai-genai-o-rpa-in-banca" id="toc-quando-è-usata-ai-genai-o-rpa-in-banca" class="nav-link" data-scroll-target="#quando-è-usata-ai-genai-o-rpa-in-banca"><span class="header-section-number">5.2</span> Quando è usata AI, GenAI o RPA in banca</a></li>
+  <li><a href="#ai-intelligenza-artificiale" id="toc-ai-intelligenza-artificiale" class="nav-link" data-scroll-target="#ai-intelligenza-artificiale"><span class="header-section-number">5.3</span> AI – Intelligenza Artificiale</a>
+  <ul class="collapse">
+  <li><a href="#caratteristiche-principali" id="toc-caratteristiche-principali" class="nav-link" data-scroll-target="#caratteristiche-principali"><span class="header-section-number">5.3.1</span> Caratteristiche principali</a></li>
+  <li><a href="#esempi-di-ai-in-banca" id="toc-esempi-di-ai-in-banca" class="nav-link" data-scroll-target="#esempi-di-ai-in-banca"><span class="header-section-number">5.3.2</span> Esempi di AI in banca</a></li>
+  </ul></li>
+  <li><a href="#genai-intelligenza-artificiale-generativa" id="toc-genai-intelligenza-artificiale-generativa" class="nav-link" data-scroll-target="#genai-intelligenza-artificiale-generativa"><span class="header-section-number">5.4</span> GenAI – Intelligenza Artificiale Generativa</a>
+  <ul class="collapse">
+  <li><a href="#caratteristiche-principali-1" id="toc-caratteristiche-principali-1" class="nav-link" data-scroll-target="#caratteristiche-principali-1"><span class="header-section-number">5.4.1</span> Caratteristiche principali</a></li>
+  <li><a href="#esempi-di-genai-in-banca" id="toc-esempi-di-genai-in-banca" class="nav-link" data-scroll-target="#esempi-di-genai-in-banca"><span class="header-section-number">5.4.2</span> Esempi di GenAI in banca</a></li>
+  </ul></li>
+  <li><a href="#rpa-robotic-process-automation" id="toc-rpa-robotic-process-automation" class="nav-link" data-scroll-target="#rpa-robotic-process-automation"><span class="header-section-number">5.5</span> RPA – Robotic Process Automation</a>
+  <ul class="collapse">
+  <li><a href="#caratteristiche-principali-2" id="toc-caratteristiche-principali-2" class="nav-link" data-scroll-target="#caratteristiche-principali-2"><span class="header-section-number">5.5.1</span> Caratteristiche principali</a></li>
+  <li><a href="#esempi-di-rpa-in-banca" id="toc-esempi-di-rpa-in-banca" class="nav-link" data-scroll-target="#esempi-di-rpa-in-banca"><span class="header-section-number">5.5.2</span> Esempi di RPA in banca</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#fintech-ai-e-comportamento-della-clientela" id="toc-fintech-ai-e-comportamento-della-clientela" class="nav-link" data-scroll-target="#fintech-ai-e-comportamento-della-clientela"><span class="header-section-number">6</span> Fintech, AI e Comportamento della Clientela</a>
+  <ul class="collapse">
+  <li><a href="#limpatto-del-fintech-sulle-banche-tradizionali" id="toc-limpatto-del-fintech-sulle-banche-tradizionali" class="nav-link" data-scroll-target="#limpatto-del-fintech-sulle-banche-tradizionali"><span class="header-section-number">6.1</span> L’impatto del Fintech sulle Banche Tradizionali</a></li>
+  <li><a href="#ai-e-personalizzazione-nei-servizi-finanziari" id="toc-ai-e-personalizzazione-nei-servizi-finanziari" class="nav-link" data-scroll-target="#ai-e-personalizzazione-nei-servizi-finanziari"><span class="header-section-number">6.2</span> AI e Personalizzazione nei Servizi Finanziari</a></li>
+  <li><a href="#evoluzione-del-comportamento-della-clientela" id="toc-evoluzione-del-comportamento-della-clientela" class="nav-link" data-scroll-target="#evoluzione-del-comportamento-della-clientela"><span class="header-section-number">6.3</span> Evoluzione del Comportamento della Clientela</a></li>
+  <li><a href="#finanza-dimpresa-e-ai-nuove-opportunità-per-le-aziende" id="toc-finanza-dimpresa-e-ai-nuove-opportunità-per-le-aziende" class="nav-link" data-scroll-target="#finanza-dimpresa-e-ai-nuove-opportunità-per-le-aziende"><span class="header-section-number">6.4</span> Finanza d’Impresa e AI: Nuove Opportunità per le Aziende</a></li>
+  </ul></li>
+  <li><a href="#la-doppia-tripla-transizione-digitale-green-e-generazionale" id="toc-la-doppia-tripla-transizione-digitale-green-e-generazionale" class="nav-link" data-scroll-target="#la-doppia-tripla-transizione-digitale-green-e-generazionale"><span class="header-section-number">7</span> La Doppia (Tripla) Transizione: Digitale, Green e Generazionale</a>
+  <ul class="collapse">
+  <li><a href="#analfabetismo-informatico-digital-divide" id="toc-analfabetismo-informatico-digital-divide" class="nav-link" data-scroll-target="#analfabetismo-informatico-digital-divide"><span class="header-section-number">7.1</span> Analfabetismo Informatico &amp; Digital Divide</a></li>
+  <li><a href="#letà-media-del-bancario-e-il-passaggio-generazionale" id="toc-letà-media-del-bancario-e-il-passaggio-generazionale" class="nav-link" data-scroll-target="#letà-media-del-bancario-e-il-passaggio-generazionale"><span class="header-section-number">7.2</span> L’Età Media del Bancario e il Passaggio Generazionale</a></li>
+  <li><a href="#il-ruolo-della-formazione-fot-feduf-fabi-aipb" id="toc-il-ruolo-della-formazione-fot-feduf-fabi-aipb" class="nav-link" data-scroll-target="#il-ruolo-della-formazione-fot-feduf-fabi-aipb"><span class="header-section-number">7.3</span> Il Ruolo della Formazione (FOT, Feduf, Fabi, AIPB)</a></li>
+  </ul></li>
+  <li><a href="#la-genai-in-banca" id="toc-la-genai-in-banca" class="nav-link" data-scroll-target="#la-genai-in-banca"><span class="header-section-number">8</span> La GenAI in banca</a></li>
+  <li><a href="#glossario" id="toc-glossario" class="nav-link" data-scroll-target="#glossario"><span class="header-section-number">9</span> Glossario</a>
+  <ul class="collapse">
+  <li><a href="#ai-act" id="toc-ai-act" class="nav-link" data-scroll-target="#ai-act"><span class="header-section-number">9.1</span> AI Act</a></li>
+  <li><a href="#allucinazione" id="toc-allucinazione" class="nav-link" data-scroll-target="#allucinazione"><span class="header-section-number">9.2</span> Allucinazione</a></li>
+  <li><a href="#deep-fake" id="toc-deep-fake" class="nav-link" data-scroll-target="#deep-fake"><span class="header-section-number">9.3</span> Deep Fake</a></li>
+  <li><a href="#dora-digital-operational-resilience-act" id="toc-dora-digital-operational-resilience-act" class="nav-link" data-scroll-target="#dora-digital-operational-resilience-act"><span class="header-section-number">9.4</span> DORA (Digital Operational Resilience Act)</a></li>
+  <li><a href="#nis2-network-and-information-security-directive" id="toc-nis2-network-and-information-security-directive" class="nav-link" data-scroll-target="#nis2-network-and-information-security-directive"><span class="header-section-number">9.5</span> NIS2 (Network and Information Security Directive)</a></li>
+  </ul></li>
+  <li><a href="#note" id="toc-note" class="nav-link" data-scroll-target="#note"><span class="header-section-number">10</span> note</a>
+  <ul class="collapse">
+  <li><a href="#note-1" id="toc-note-1" class="nav-link" data-scroll-target="#note-1"><span class="header-section-number">10.1</span> note</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2520_AiBanche/20250210_AiBanche.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Intelligenza Artificiale e banche</h1>
+<p class="subtitle lead">__</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">AI</div>
+    <div class="quarto-category">Banche</div>
+  </div>
+  </div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">10 febbraio 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
 
 
+</header>
 
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<section id="data-is-king" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Data is King</h1>
+<p>I dati sono estremamente preziosi e fondamentali nel mondo moderno: 1. <strong>Il valore dei dati</strong> → In un’economia sempre più digitale, le decisioni si basano sui dati, non solo sull’intuizione. 2. <strong>Potere competitivo</strong> → Le aziende che sfruttano i dati in modo efficace (analisi, AI, Big Data) hanno un enorme vantaggio. 3. <strong>Personalizzazione e automazione</strong> → I dati permettono di creare esperienze personalizzate per gli utenti, automatizzare processi e migliorare prodotti/servizi. 4. <strong>Influenza nel business e nella politica</strong> → I dati vengono usati per strategie di marketing, previsioni finanziarie e persino per influenzare decisioni politiche.</p>
+<p>![[./media/20250206170727.png]]</p>
+<p>Chi possiede e sa interpretare i dati <strong>ha il potere</strong> di prendere decisioni migliori e più strategiche.</p>
+<p>Nel settore bancario, l’espressione <strong>“Data is King”</strong> significa che i dati sono la risorsa più preziosa per migliorare i servizi finanziari, ridurre i rischi e aumentare la competitività. ### Personalizzazione dei Servizi</p>
+<p>Le banche utilizzano i dati per offrire prodotti su misura:</p>
+<ul>
+<li>Analizzano il comportamento finanziario dei clienti per proporre prestiti, mutui o investimenti adatti.</li>
+<li>Creano offerte personalizzate basate sullo storico delle transazioni.</li>
+</ul>
+<section id="valutazione-del-rischio-e-credit-scoring" class="level3" data-number="1.0.1">
+<h3 data-number="1.0.1" class="anchored" data-anchor-id="valutazione-del-rischio-e-credit-scoring"><span class="header-section-number">1.0.1</span> Valutazione del Rischio e Credit Scoring</h3>
+<p>I dati sono fondamentali per determinare l’affidabilità creditizia di un cliente:</p>
+<ul>
+<li>Gli algoritmi analizzano reddito, spese e debiti per assegnare un punteggio di credito.</li>
+<li>Le banche usano il <strong>machine learning</strong> per rilevare potenziali insolvenze prima che si verifichino.</li>
+</ul>
+</section>
+<section id="prevenzione-delle-frodi-e-sicurezza" class="level3" data-number="1.0.2">
+<h3 data-number="1.0.2" class="anchored" data-anchor-id="prevenzione-delle-frodi-e-sicurezza"><span class="header-section-number">1.0.2</span> Prevenzione delle Frodi e Sicurezza</h3>
+<p>L’analisi dei dati permette di individuare transazioni sospette in tempo reale:</p>
+<ul>
+<li>Le banche monitorano pattern di spesa anomali per prevenire frodi.</li>
+<li>La biometria (impronte digitali, riconoscimento facciale) migliora la sicurezza basandosi su dati unici dei clienti.</li>
+</ul>
+</section>
+<section id="ottimizzazione-della-customer-experience" class="level3" data-number="1.0.3">
+<h3 data-number="1.0.3" class="anchored" data-anchor-id="ottimizzazione-della-customer-experience"><span class="header-section-number">1.0.3</span> Ottimizzazione della Customer Experience</h3>
+<p>I dati aiutano le banche a migliorare l’interazione con i clienti:</p>
+<ul>
+<li>Chatbot e assistenti virtuali personalizzano il supporto.</li>
+<li>Le app bancarie suggeriscono modi per risparmiare e investire in base allo storico del cliente.</li>
+</ul>
+</section>
+<section id="compliance-e-regolamentazione" class="level3" data-number="1.0.4">
+<h3 data-number="1.0.4" class="anchored" data-anchor-id="compliance-e-regolamentazione"><span class="header-section-number">1.0.4</span> Compliance e Regolamentazione</h3>
+<p>Nel settore bancario, la gestione dei dati è cruciale per rispettare normative come:</p>
+<ul>
+<li><strong>GDPR</strong> (protezione dati personali)</li>
+<li><strong>Basilea III</strong> (rischio di credito e capitale)</li>
+<li><strong>AML (Anti-Money Laundering)</strong> per prevenire il riciclaggio di denaro.</li>
+</ul>
+<p>Le banche che sfruttano al meglio i dati migliorano la sicurezza, la customer experience e la redditività. Chi padroneggia i dati, ha il vero potere nel settore finanziario.</p>
+</section>
+<section id="uso-dellintelligenza-artificiale-in-banca" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="uso-dellintelligenza-artificiale-in-banca"><span class="header-section-number">1.1</span> Uso dell’Intelligenza artificiale in banca</h2>
+<p>L’<strong>Intelligenza Artificiale (AI) nei dati bancari</strong> sta trasformando il settore finanziario, rendendo i servizi più efficienti, sicuri e personalizzati. Ecco come viene applicata l’AI nei dati bancari:</p>
+<section id="analisi-predittiva-per-il-credit-scoring" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="analisi-predittiva-per-il-credit-scoring"><span class="header-section-number">1.1.1</span> Analisi Predittiva per il Credit Scoring</h3>
+<p>L’AI analizza enormi quantità di dati per prevedere il comportamento finanziario di un cliente e migliorare il <strong>credit scoring</strong>: - Analizza transazioni, reddito e spese - Valuta la probabilità di insolvenza con algoritmi di <strong>machine learning</strong> - Consente di approvare o rifiutare prestiti in tempo reale con meno rischi.</p>
+<p><strong>Esempio:</strong> Modelli AI alternativi aiutano chi non ha uno storico creditizio a ottenere finanziamenti, analizzando dati come pagamenti di utenze o comportamento online.</p>
+<p>![[./media/iter.jpg]]</p>
+</section>
+<section id="rilevazione-frodi-e-sicurezza" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="rilevazione-frodi-e-sicurezza"><span class="header-section-number">1.1.2</span> Rilevazione Frodi e Sicurezza</h3>
+<p>Le banche utilizzano l’AI per individuare <strong>transazioni sospette in tempo reale</strong>: - Gli algoritmi analizzano pattern di spesa e segnalano anomalie.<br>
+- L’AI blocca operazioni fraudolente e avvisa il cliente.<br>
+- Biometria e <strong>deep learning</strong> migliorano la sicurezza nelle autenticazioni (riconoscimento facciale, impronte digitali).</p>
+<p><strong>Esempio:</strong> Se una carta viene usata in un paese straniero mentre il cliente è altrove, l’AI può bloccare il pagamento e richiedere una verifica.</p>
+</section>
+<section id="chatbot-e-assistenza-virtuale" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="chatbot-e-assistenza-virtuale"><span class="header-section-number">1.1.3</span> Chatbot e Assistenza Virtuale</h3>
+<p>L’AI migliora il <strong>customer service</strong> attraverso chatbot avanzati e assistenti virtuali:<br>
+- Rispondono 24/7 a domande su saldo, bonifici, pagamenti.<br>
+- Offrono consigli finanziari basati sullo storico del cliente.<br>
+- Possono gestire operazioni complesse, riducendo i tempi di attesa nei call center.</p>
+<p><strong>Esempio:</strong> Chatbot come <strong>Erica di Bank of America</strong> o <strong>Eva di HDFC Bank</strong> aiutano i clienti a controllare il saldo, pianificare risparmi e segnalare problemi.</p>
+</section>
+<section id="gestione-degli-investimenti-e-fintech-ai" class="level3" data-number="1.1.4">
+<h3 data-number="1.1.4" class="anchored" data-anchor-id="gestione-degli-investimenti-e-fintech-ai"><span class="header-section-number">1.1.4</span> Gestione degli Investimenti e Fintech AI</h3>
+<p>Le <strong>robo-advisor</strong> utilizzano l’AI per creare strategie di investimento personalizzate:<br>
+- Analizzano dati di mercato in tempo reale.<br>
+- Suggeriscono asset in base al profilo di rischio del cliente.<br>
+- Automatizzano il trading sfruttando opportunità di mercato.</p>
+<p><strong>Esempio:</strong> Piattaforme come <strong>Betterment</strong> e <strong>Wealthfront</strong> usano l’AI per creare portafogli su misura.</p>
+</section>
+<section id="prevenzione-del-riciclaggio-di-denaro-aml" class="level3" data-number="1.1.5">
+<h3 data-number="1.1.5" class="anchored" data-anchor-id="prevenzione-del-riciclaggio-di-denaro-aml"><span class="header-section-number">1.1.5</span> Prevenzione del Riciclaggio di Denaro (AML)</h3>
+<p>Le banche devono rispettare regolamenti antiriciclaggio (<strong>AML</strong>). L’AI aiuta a:<br>
+- Rilevare operazioni sospette tra milioni di transazioni.<br>
+- Generare alert su comportamenti anomali.<br>
+- Automatizzare i controlli di conformità, riducendo i falsi positivi.</p>
+<p><strong>Esempio:</strong> L’AI può scoprire schemi di riciclaggio analizzando trasferimenti fra conti, anche se avvengono con piccole somme per evitare controlli manuali.</p>
+</section>
+<section id="ottimizzazione-della-customer-experience-1" class="level3" data-number="1.1.6">
+<h3 data-number="1.1.6" class="anchored" data-anchor-id="ottimizzazione-della-customer-experience-1"><span class="header-section-number">1.1.6</span> Ottimizzazione della Customer Experience</h3>
+<ul>
+<li><strong>Analisi comportamentale</strong>: l’AI prevede i bisogni del cliente prima che li esprima.<br>
+</li>
+<li><strong>Raccomandazioni personalizzate</strong>: l’AI suggerisce prodotti finanziari basati sulle abitudini del cliente.<br>
+</li>
+<li><strong>Gestione delle spese</strong>: alcune app bancarie usano l’AI per suggerire modi per risparmiare.</li>
+</ul>
+<p><strong>Esempio:</strong> <strong>Revolut</strong> e <strong>N26</strong> usano l’AI per fornire previsioni di spesa e suggerimenti finanziari personalizzati.</p>
+</section>
+<section id="strumenti-e-tecnologie-usate-nelle-banche" class="level3" data-number="1.1.7">
+<h3 data-number="1.1.7" class="anchored" data-anchor-id="strumenti-e-tecnologie-usate-nelle-banche"><span class="header-section-number">1.1.7</span> Strumenti e Tecnologie Usate nelle Banche</h3>
+<ul>
+<li><strong>Machine Learning (ML)</strong>: per analisi predittive e rilevamento frodi.</li>
+<li><strong>Natural Language Processing (NLP)</strong>: per chatbot e comprensione delle richieste clienti.</li>
+<li><strong>Deep Learning</strong>: per analisi avanzate di frodi e modelli di rischio.</li>
+<li><strong>Blockchain &amp; AI</strong>: per aumentare la sicurezza nelle transazioni.</li>
+</ul>
+<p>L’Intelligenza Artificiale sta trasformando il settore bancario <strong>rendendo i servizi più sicuri, veloci e personalizzati</strong>. Le banche che sfruttano meglio l’AI hanno un <strong>vantaggio competitivo</strong> enorme, soprattutto nel miglioramento della sicurezza e dell’esperienza cliente.</p>
+</section>
+</section>
+</section>
+<section id="il-tech-in-banca" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Il tech in banca</h1>
+<p>Un <a href="https://www.bloomberg.com/news/articles/2025-01-09/wall-street-expected-to-shed-200-000-jobs-as-ai-erodes-roles?srnd=technology-ai">report</a> di Bloomberg Intelligence prevede che l’intelligenza artificiale causerà la riduzione di circa 200.000 posti di lavoro nel settore bancario globale nei prossimi 3-5 anni (<a href="https://paolovolterra.github.io/posts/2506_IAInBanca/IaBanca.html#ref-wall_street_job_losses_ai">Bloomberg News, 2025</a>).</p>
+<p><img src="https://paolovolterra.github.io/posts/2506_IAInBanca/immagini/Screenshot%202025-01-10%20150944.png" class="img-fluid"></p>
+<p>Nel marzo del 2023, Goldman Sachs aveva pubblicato una ricerca secondo la quale nei successivi 10 anni si sarebbero persi 300 milioni di posti di lavoro.</p>
+<p>Secondo <a href="https://www.bcg.com/press/6september2023-lutilizzo-di-strumenti-di-genai-riduce-i-tempi-di-lavoro-del-50-per-singola-attivita">BCG</a> l’utilizzo di strumenti di GenAI ridurrà i tempi di lavoro del 50% per singola attività.</p>
+<p>Questo cambiamento riguarderà soprattutto mansioni ripetitive del back office e di assistenza clienti, ma porterà anche a un aumento della produttività e dei profitti per le banche, stimato tra il 12% e il 17%.</p>
+<p>Sebbene molti posti di lavoro siano a rischio di automazione, si assisterà più a una trasformazione dei ruoli che a una sostituzione totale, con la creazione di nuove posizioni legate allo sviluppo e alla gestione dell’AI.</p>
+<p>In un precedente articolo (Il Sole 24 Ore Mercoledì 4 Dicembre 2024) si discuteva dell’impatto della #GenAI evidenziando una mancanza di preparazione significativa da parte delle istituzioni.</p>
+<p>Mentre molte banche si concentrano sul taglio dei costi tramite la GenAI (63% degli istituti secondo BCG), il successo delle strategie dipende soprattutto dal fattore umano (70%), attraverso la riqualificazione del personale e la trasformazione organizzativa.</p>
+<p>Studi di Banca d’Italia confermano l’alta esposizione del settore finanziario alla sostituzione automatizzata di posti di lavoro, sottolineando la necessità di investimenti significativi in formazione e upskilling per evitare conseguenze negative.</p>
+<p>Secondo il report #Bankit <a href="https://www.bancaditalia.it/pubblicazioni/qef/2024-0878/index.html">An assessment of occupational exposure to artificial intelligence in Italy</a>, l’#IA è già presente e il suo impatto crescerà esponenzialmente.</p>
+<p>C’è però scarsezza di piani specifici per lo sviluppo delle competenze in GenAI nel settore bancario a livello globale (solo il 5% delle banche ne ha uno).</p>
+<section id="le-tech" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="le-tech"><span class="header-section-number">2.1</span> Le “Tech”</h2>
+<p>Molte delle ultime tecnologie utilizzano l’<strong>intelligenza artificiale #IA</strong> e, in alcuni casi, <strong>robot</strong> (sia fisici che software) per migliorare i servizi bancari e finanziari:</p>
+<p>L’<strong>Intelligenza Artificiale (IA)</strong> è ampiamente utilizzata in quasi tutte le tecnologie per migliorare l’efficienza, personalizzare i servizi, analizzare grandi quantità di dati e rafforzare la sicurezza. I <strong>Robot Software</strong>, come i chatbot e i processi automatizzati (RPA), sono comuni in <strong>AI/ML in Banking</strong>, <strong>RegTech</strong>, <strong>WealthTech</strong> e altre aree per automatizzare le interazioni con i clienti e i processi interni. I <strong>Robot Fisici</strong>, meno comuni nel settore bancario, possono essere utilizzati in <strong>filiali sperimentali</strong> per migliorare l’esperienza del cliente o in ambito <strong>IoT</strong>, come ATM intelligenti.</p>
+</section>
+<section id="tabella-delle-tech" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="tabella-delle-tech"><span class="header-section-number">2.2</span> Tabella delle Tech</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Tecnologia</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempi</strong></th>
+<th><strong>Lavori Ripetitivi Sostituibili</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>AI/ML in Banking</strong></td>
+<td>Intelligenza artificiale per automazione, prevenzione frodi e analisi.</td>
+<td>Chatbot bancari, rilevamento frodi con AI.</td>
+<td>Gestione delle richieste di base dei clienti, monitoraggio delle transazioni, analisi dei dati.</td>
+</tr>
+<tr class="even">
+<td><strong>Biometric Banking</strong></td>
+<td>Tecnologie biometriche per autenticazione sicura.</td>
+<td>Riconoscimento facciale, impronte digitali, scansione dell’iride.</td>
+<td>Verifica dell’identità manuale, controllo accessi fisici.</td>
+</tr>
+<tr class="odd">
+<td><strong>Cloud Banking Technology</strong></td>
+<td>Infrastrutture cloud per maggiore agilità, scalabilità e riduzione dei costi.</td>
+<td>AWS, Microsoft Azure per servizi bancari.</td>
+<td>Gestione manuale di infrastrutture IT e backup.</td>
+</tr>
+<tr class="even">
+<td><strong>CryptoTech</strong></td>
+<td>Tecnologie basate su blockchain e criptovalute.</td>
+<td>Binance, Coinbase, wallet digitali.</td>
+<td>Esecuzione manuale di transazioni ripetitive.</td>
+</tr>
+<tr class="odd">
+<td><strong>CyberTech</strong></td>
+<td>Soluzioni di cybersecurity per proteggere da attacchi e violazioni.</td>
+<td>Autenticazione biometrica, crittografia avanzata.</td>
+<td>Monitoraggio manuale della sicurezza, risposta a minacce.</td>
+</tr>
+<tr class="even">
+<td><strong>DataTech</strong></td>
+<td>Analisi dei Big Data per decisioni strategiche e personalizzazione.</td>
+<td>CRM avanzati, strumenti di data visualization.</td>
+<td>Elaborazione manuale di report e analisi dati.</td>
+</tr>
+<tr class="odd">
+<td><strong>FinTech</strong></td>
+<td>Innovazioni nei servizi finanziari tradizionali.</td>
+<td>PayPal, Stripe, Revolut, N26.</td>
+<td>Elaborazione di pagamenti, apertura conti, riconciliazioni manuali.</td>
+</tr>
+<tr class="even">
+<td><strong>Green Finance Technology</strong></td>
+<td>Soluzioni per gestire finanziamenti sostenibili e monitorare l’impatto ambientale.</td>
+<td>Piattaforme ESG per il monitoraggio ambientale.</td>
+<td>Raccolta manuale di dati ESG, preparazione di report ambientali.</td>
+</tr>
+<tr class="odd">
+<td><strong>InsurTech</strong></td>
+<td>Tecnologie per migliorare i processi assicurativi.</td>
+<td>Lemonade, Trov.</td>
+<td>Elaborazione manuale di richieste di sinistri, valutazione rischi di base.</td>
+</tr>
+<tr class="even">
+<td><strong>IoT in Banking</strong></td>
+<td>Dispositivi connessi per migliorare l’esperienza bancaria.</td>
+<td>Wearable per pagamenti contactless, ATM intelligenti.</td>
+<td>Operazioni di cassa fisica, interazioni di base con i clienti.</td>
+</tr>
+<tr class="odd">
+<td><strong>LendTech</strong></td>
+<td>Tecnologie per il prestito e valutazioni del credito.</td>
+<td>LendingClub, Funding Circle.</td>
+<td>Valutazioni manuali del credito, gestione delle pratiche di prestito.</td>
+</tr>
+<tr class="even">
+<td><strong>Open Banking Technology</strong></td>
+<td>API per condividere dati finanziari con terze parti in modo sicuro.</td>
+<td>Soluzioni basate su PSD2 in Europa.</td>
+<td>Raccolta e condivisione manuale di dati con terze parti.</td>
+</tr>
+<tr class="odd">
+<td><strong>PayTech</strong></td>
+<td>Tecnologie per pagamenti digitali.</td>
+<td>Google Pay, Apple Pay, SumUp.</td>
+<td>Elaborazione manuale dei pagamenti, riconciliazione transazioni.</td>
+</tr>
+<tr class="even">
+<td><strong>PropTech</strong></td>
+<td>Tecnologie per il settore immobiliare.</td>
+<td>Zillow, Casavo, piattaforme per la valutazione immobiliare.</td>
+<td>Valutazioni immobiliari manuali, raccolta dati di mercato.</td>
+</tr>
+<tr class="odd">
+<td><strong>RegTech</strong></td>
+<td>Tecnologie per la conformità normativa.</td>
+<td>Piattaforme di compliance automatizzata, analisi normativa con AI.</td>
+<td>Controllo manuale della conformità normativa, generazione report di audit.</td>
+</tr>
+<tr class="even">
+<td><strong>WealthTech</strong></td>
+<td>Soluzioni per la gestione del patrimonio e investimenti.</td>
+<td>Betterment, eToro, Moneyfarm.</td>
+<td>Analisi patrimoniale di base, consulenza finanziaria ripetitiva.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="riferimenti-bibliografici" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="riferimenti-bibliografici"><span class="header-section-number">2.3</span> Riferimenti Bibliografici</h2>
+<ol type="1">
+<li>Wall Street potrebbe perdere oltre 200.000 posti di lavoro a causa dell’IA (<a href="https://paolovolterra.github.io/posts/2506_IAInBanca/IaBanca.html#ref-wall_street_job_losses_ai">Bloomberg News, 2025</a>).</li>
+<li>L’IA sostituirà 200.000 dipendenti nel settore bancario (<a href="https://paolovolterra.github.io/posts/2506_IAInBanca/IaBanca.html#ref-banche_ai_200k_dipendenti_ilsole24ore">Il Sole 24 Ore, 2025</a>).</li>
+<li>L’IA manderà in ‘pensione’ molti lavoratori bancari (<a href="https://paolovolterra.github.io/posts/2506_IAInBanca/IaBanca.html#ref-banche_ai_200k_dipendenti_italiaoggi">Italia Oggi, 2025</a>).</li>
+<li>JPMorgan utilizza l’IA per aumentare i posti di lavoro anziché sostituirli (<a href="https://paolovolterra.github.io/posts/2506_IAInBanca/IaBanca.html#ref-jpmorgan_ai_rollout_jobs">Bloomberg News, 2024b</a>).</li>
+<li>Citi ritiene che l’IA sostituirà più lavori nel settore bancario rispetto ad altri settori (<a href="https://paolovolterra.github.io/posts/2506_IAInBanca/IaBanca.html#ref-citi_ai_displacing_jobs">Bloomberg News, 2024a</a>).</li>
+<li>Dimon vede l’IA offrire una settimana lavorativa di 3 giorni e mezzo per le generazioni future (<a href="https://paolovolterra.github.io/posts/2506_IAInBanca/IaBanca.html#ref-dimon_ai_shorter_workweek">Bloomberg News, 2023</a>).</li>
+</ol>
+</section>
+</section>
+<section id="gli-investimenti-bancari-in-ai" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Gli Investimenti Bancari in AI</h1>
+<p>Tendenze, Strategie e Impatti</p>
+<p>Le banche stanno investendo <strong>miliardi di dollari</strong> nell’<strong>Intelligenza Artificiale (AI)</strong> per migliorare sicurezza, efficienza operativa e customer experience. L’AI non è più solo un’innovazione sperimentale, ma un elemento chiave per la competitività nel settore finanziario. Le banche stanno <strong>scommettendo fortemente sull’AI</strong>, perché porta vantaggi in termini di sicurezza, efficienza e soddisfazione del cliente. La sfida è <strong>bilanciare innovazione e compliance</strong>, evitando rischi etici e di cybersecurity.</p>
+<section id="quanto-investono-le-banche-in-ai" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="quanto-investono-le-banche-in-ai"><span class="header-section-number">3.1</span> Quanto investono le banche in AI</h2>
+<p>Secondo le ultime analisi:<br>
+- <strong>Nel 2023</strong>, le banche hanno investito oltre <strong>77 miliardi di dollari</strong> in AI e automazione.<br>
+- Si prevede che il valore degli investimenti in AI nel settore finanziario supererà <strong>150 miliardi di dollari entro il 2027</strong>.<br>
+- Le principali aree di investimento riguardano <strong>Machine Learning, Generative AI, RPA e sicurezza anti-frode</strong>.</p>
+<p>🔹 <strong>Banche leader nell’AI</strong>: JPMorgan Chase, Goldman Sachs, Bank of America, HSBC e Deutsche Bank sono tra le più attive negli investimenti AI.</p>
+</section>
+<section id="perché-le-banche-investono-in-ai" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="perché-le-banche-investono-in-ai"><span class="header-section-number">3.2</span> Perché le banche investono in AI</h2>
+<p>L’adozione dell’AI è motivata da diversi fattori:<br>
+- <strong>Riduzione dei costi operativi</strong> – Automazione e ottimizzazione dei processi riducono il personale necessario per attività ripetitive.<br>
+- <strong>Migliore gestione dei rischi</strong> – Algoritmi AI prevedono insolvenze e individuano frodi con maggiore precisione.<br>
+- <strong>Customer Experience migliorata</strong> – Chatbot intelligenti, consulenza personalizzata e servizi finanziari basati su AI.<br>
+- <strong>Trading algoritmico avanzato</strong> – L’AI permette operazioni più rapide e accurate nel mercato finanziario.</p>
+</section>
+<section id="principali-aree-di-investimento-in-ai-nel-settore-bancario" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="principali-aree-di-investimento-in-ai-nel-settore-bancario"><span class="header-section-number">3.3</span> Principali Aree di Investimento in AI nel Settore Bancario</h2>
+<section id="rilevazione-frodi-sicurezza" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="rilevazione-frodi-sicurezza"><span class="header-section-number">3.3.1</span> Rilevazione Frodi &amp; Sicurezza</h3>
+<p>Le banche investono in AI per <strong>rilevare transazioni sospette e prevenire cyber-attacchi</strong>.<br>
+- <strong>Analisi in tempo reale</strong> – AI monitora le transazioni e blocca operazioni anomale.<br>
+- <strong>Rilevamento di deepfake e identità false</strong> – Verifica biometrica e controllo avanzato dell’identità.<br>
+- <strong>Protezione da attacchi informatici</strong> – AI potenzia la cybersecurity con sistemi di auto-apprendimento.</p>
+<p><strong>Esempio:</strong> HSBC ha investito in AI per ridurre del <strong>70%</strong> le frodi nelle transazioni internazionali.</p>
+</section>
+<section id="automazione-con-rpa-ai" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="automazione-con-rpa-ai"><span class="header-section-number">3.3.2</span> Automazione con RPA &amp; AI</h3>
+<p>Molte banche utilizzano <strong>Robotic Process Automation (RPA)</strong> e AI per <strong>automatizzare processi ripetitivi</strong>, come:<br>
+- Elaborazione dei pagamenti e bonifici.<br>
+- Validazione di documenti e verifica KYC (<em>Know Your Customer</em>).<br>
+- Compliance con normative bancarie ed AML (<em>Anti-Money Laundering</em>).</p>
+<p><strong>Esempio:</strong> JPMorgan utilizza un sistema AI chiamato <strong>COIN</strong> che analizza <strong>contratti bancari</strong> in pochi secondi, risparmiando oltre <strong>360.000 ore di lavoro umano</strong> all’anno.</p>
+</section>
+<section id="ai-per-il-credit-scoring-risk-management" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="ai-per-il-credit-scoring-risk-management"><span class="header-section-number">3.3.3</span> AI per il Credit Scoring &amp; Risk Management</h3>
+<p>Le banche stanno rivoluzionando la concessione di prestiti grazie all’AI:<br>
+- Modelli di <strong>Machine Learning</strong> per valutare il rischio di credito basandosi su dati non tradizionali (es. abitudini di spesa).<br>
+- AI per <strong>prevedere insolvenze</strong> e migliorare la gestione dei rischi finanziari.<br>
+- Valutazione più accurata per i clienti <strong>senza storico creditizio</strong> (utilizzando dati alternativi come bollette, affitti, ecc.).</p>
+<p><strong>Esempio:</strong> Goldman Sachs utilizza AI per analizzare dati non convenzionali nei prestiti a piccole imprese.</p>
+</section>
+<section id="chatbot-ai-assistenza-clienti" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="chatbot-ai-assistenza-clienti"><span class="header-section-number">3.3.4</span> Chatbot AI &amp; Assistenza Clienti</h3>
+<p>Le banche investono in <strong>AI conversazionale</strong> per migliorare il customer service:<br>
+- <strong>Chatbot bancari avanzati</strong> – Assistenza clienti 24/7 con AI generativa.<br>
+- <strong>AI per consulenza finanziaria personalizzata</strong> – Analizza le spese e suggerisce strategie di risparmio.<br>
+- <strong>Riconoscimento del linguaggio naturale (NLP)</strong> per un’interazione più fluida.</p>
+<p><strong>Esempio:</strong> <strong>Bank of America</strong> ha lanciato “Erica”, un assistente AI che ha gestito oltre <strong>1 miliardo di interazioni</strong> con clienti in pochi anni.</p>
+</section>
+<section id="ai-nel-trading-fintech" class="level3" data-number="3.3.5">
+<h3 data-number="3.3.5" class="anchored" data-anchor-id="ai-nel-trading-fintech"><span class="header-section-number">3.3.5</span> AI nel Trading &amp; Fintech</h3>
+<p>L’AI è essenziale per <strong>il trading algoritmico</strong> e la gestione degli investimenti:<br>
+- <strong>Trading ad alta frequenza (HFT)</strong> – L’AI prende decisioni in millisecondi.<br>
+- <strong>Analisi predittiva</strong> – L’AI analizza dati di mercato per prevedere tendenze e strategie.<br>
+- <strong>Wealth Management AI</strong> – Robo-advisor che creano strategie di investimento personalizzate.</p>
+<p><strong>Esempio:</strong> BlackRock utilizza <strong>Aladdin AI</strong>, una piattaforma che gestisce <strong>miliardi di dollari</strong> di investimenti con algoritmi avanzati.</p>
+</section>
+</section>
+<section id="benefici-degli-investimenti-in-ai-per-le-banche" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="benefici-degli-investimenti-in-ai-per-le-banche"><span class="header-section-number">3.4</span> Benefici degli Investimenti in AI per le Banche</h2>
+<ul>
+<li><strong>+60% di efficienza operativa</strong> grazie all’automazione.<br>
+</li>
+<li><strong>Riduzione delle frodi fino all’80%</strong> con AI per il rilevamento delle transazioni sospette.<br>
+</li>
+<li><strong>Aumento del 30-40% nella soddisfazione dei clienti</strong> grazie a chatbot e consulenza personalizzata.<br>
+</li>
+<li><strong>Miglioramento della compliance e riduzione delle sanzioni</strong> grazie ad AI per il monitoraggio regolamentare.</li>
+</ul>
+</section>
+<section id="sfide-rischi-dellai-nel-settore-bancario" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="sfide-rischi-dellai-nel-settore-bancario"><span class="header-section-number">3.5</span> Sfide &amp; Rischi dell’AI nel Settore Bancario</h2>
+<p>Nonostante i vantaggi, ci sono ancora alcune sfide da affrontare:<br>
+- <strong>Rischio di bias negli algoritmi</strong> – Decisioni errate se i dati di training non sono bilanciati.<br>
+- <strong>Regolamentazione &amp; compliance</strong> – Le banche devono garantire che l’uso dell’AI rispetti le normative.<br>
+- <strong>Cybersecurity &amp; Deepfake</strong> – L’AI può essere usata anche dai criminali per creare frodi più sofisticate.<br>
+- <strong>Resistenza al cambiamento</strong> – Molti dipendenti e clienti sono scettici sull’AI.</p>
+<p><strong>Soluzioni:</strong> Investire in <strong>modelli più trasparenti</strong>, implementare <strong>AI explainability</strong> (AI interpretabile) e rafforzare la <strong>cybersecurity</strong>.</p>
+</section>
+<section id="il-futuro-dellai-nelle-banche-tendenze-2025-2030" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="il-futuro-dellai-nelle-banche-tendenze-2025-2030"><span class="header-section-number">3.6</span> Il Futuro dell’AI nelle Banche: Tendenze 2025-2030</h2>
+<p>🔹 <strong>AI Generativa per la creazione automatizzata di report finanziari</strong> 📑<br>
+🔹 <strong>Blockchain + AI per maggiore sicurezza nelle transazioni</strong> 🔗<br>
+🔹 <strong>Banking-as-a-Service (BaaS) potenziato dall’AI</strong> 🏦<br>
+🔹 <strong>Riconoscimento facciale + AI per autenticazione senza password</strong> 🛡</p>
+<p><strong>Previsione:</strong> Entro il 2030, l’AI sarà la tecnologia dominante nel settore bancario, rendendo i servizi più <strong>efficienti, sicuri e personalizzati</strong>.</p>
+</section>
+</section>
+<section id="i-nuovi-paradigmi-normativi" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> I nuovi paradigmi normativi</h1>
+<p><strong>AI Act, FIDA, DORA e NIS2</strong>, stanno ridefinendo il rapporto tra <strong>banche, tecnologia e gestione del rischio</strong>. Le istituzioni finanziarie, già altamente regolamentate, devono ora adattarsi a normative che mirano a garantire <strong>sicurezza, trasparenza e affidabilità</strong> nell’uso dell’Intelligenza Artificiale e delle infrastrutture digitali.</p>
+<p>L’<strong>AI Act</strong> impone regole rigorose sull’uso di modelli AI nelle decisioni finanziarie, limitando il rischio di <strong>bias nei credit scoring</strong> o di frodi legate a sistemi automatizzati. Le banche devono implementare <strong>AI spiegabile e auditabile</strong>, riducendo il rischio di sanzioni per discriminazione algoritmica. Parallelamente, il <strong>FIDA</strong> spinge per una gestione responsabile dei dati finanziari, imponendo maggiore trasparenza sulle tecnologie impiegate.</p>
+<p>Dal lato della sicurezza operativa, il <strong>DORA</strong> introduce requisiti più stringenti per la <strong>resilienza digitale</strong>, obbligando le banche a garantire la continuità dei servizi anche in caso di attacchi informatici. La <strong>NIS2</strong>, invece, amplia gli obblighi di cybersecurity, imponendo una gestione proattiva delle minacce su infrastrutture critiche.</p>
+<p>In sintesi, questi regolamenti trasformano le banche in <strong>hub tecnologici più sicuri, trasparenti e resilienti</strong>, costringendole a un’evoluzione strategica che combina innovazione AI con rigide misure di compliance e cybersecurity.</p>
+<section id="gli-organi-di-vigilanza-e-il-controllo-del-settore-bancario" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="gli-organi-di-vigilanza-e-il-controllo-del-settore-bancario"><span class="header-section-number">4.1</span> Gli Organi di Vigilanza e il Controllo del Settore Bancario</h2>
+<p>Le banche operano in un contesto altamente regolamentato, soggetto alla supervisione di diversi <strong>organi di vigilanza</strong>, che ne garantiscono <strong>stabilità, sicurezza e conformità normativa</strong>. Con l’introduzione di regolamenti come <strong>AI Act, FIDA, DORA e NIS2</strong>, il ruolo di queste autorità si è rafforzato, soprattutto nell’ambito della digitalizzazione e della gestione dei rischi tecnologici.</p>
+<p>Con la crescente digitalizzazione bancaria, le autorità di vigilanza hanno ampliato il loro ruolo per affrontare <strong>nuove sfide tecnologiche e di sicurezza</strong>:</p>
+<p>🔹 <strong>AI Act &amp; BCE/EBA</strong> → Impone alle banche requisiti di <strong>trasparenza sugli algoritmi AI</strong>, riducendo rischi di discriminazione o decisioni opache sui crediti.<br>
+🔹 <strong>FIDA &amp; GDPR</strong> → Maggiore protezione dei <strong>dati finanziari</strong>, con vigilanza rafforzata sulla gestione e condivisione delle informazioni.<br>
+🔹 <strong>DORA &amp; BCE/NIS2</strong> → Impone test di <strong>resilienza operativa</strong> e obbliga le banche a <strong>piani di emergenza IT</strong> per affrontare cyberattacchi.<br>
+🔹 <strong>AML &amp; FATF/Banca d’Italia</strong> → Rafforza il monitoraggio sulle operazioni sospette grazie all’<strong>uso di AI per l’antiriciclaggio</strong>.</p>
+</section>
+<section id="impatti-per-le-banche" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="impatti-per-le-banche"><span class="header-section-number">4.2</span> <strong>Impatti per le Banche</strong></h2>
+<p>Gli organi di vigilanza non si limitano più alla stabilità finanziaria, ma giocano un ruolo centrale nel <strong>governare l’innovazione digitale</strong>, garantendo che l’uso di AI e tecnologie avanzate nelle banche sia <strong>sicuro, trasparente e resiliente</strong>.</p>
+<p>✅ <strong>Maggiore trasparenza</strong> → Obbligo di spiegare le decisioni AI nei prestiti e negli investimenti.<br>
+✅ <strong>Cybersecurity rafforzata</strong> → Sistemi di difesa più robusti e gestione del rischio IT obbligatoria.<br>
+✅ <strong>Compliance più rigorosa</strong> → Obbligo di conformarsi a regole più stringenti sui dati e sulle infrastrutture digitali.</p>
+</section>
+</section>
+<section id="la-confusione-fra-ai-genai-e-rpa" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> La confusione fra AI, GenAI e RPA</h1>
+<p><strong>AI (Intelligenza Artificiale), GenAI (Intelligenza Artificiale Generativa) e RPA (Robotic Process Automation)</strong> vengono spesso confusi, non solo dal cliente, ma anche dall’addetto: tutte e tre le tecnologie riguardano l’automazione e il miglioramento dei processi. Tuttavia, hanno differenze fondamentali</p>
+<section id="tabella-di-confronto-ai-vs.-genai-vs.-rpa" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="tabella-di-confronto-ai-vs.-genai-vs.-rpa"><span class="header-section-number">5.1</span> Tabella di confronto AI vs.&nbsp;GenAI vs.&nbsp;RPA</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 28%">
+<col style="width: 28%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tecnologia</th>
+<th>Funzione principale</th>
+<th>Esempi bancari</th>
+<th>Capacità di apprendimento?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>AI</strong></td>
+<td>Analizza dati e prende decisioni</td>
+<td>Credit Scoring, Rilevamento Frodi</td>
+<td>- Sì</td>
+</tr>
+<tr class="even">
+<td><strong>GenAI</strong></td>
+<td>Crea testo, immagini, codice</td>
+<td>Report finanziari, Chatbot avanzati</td>
+<td>- Sì (ma creativa)</td>
+</tr>
+<tr class="odd">
+<td><strong>RPA</strong></td>
+<td>Automatizza compiti ripetitivi</td>
+<td>Pagamenti automatici, Data Entry</td>
+<td>❌ No</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="quando-è-usata-ai-genai-o-rpa-in-banca" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="quando-è-usata-ai-genai-o-rpa-in-banca"><span class="header-section-number">5.2</span> Quando è usata AI, GenAI o RPA in banca</h2>
+<ul>
+<li><strong>Se serve automazione semplice</strong> → RPA (ad es. processare transazioni, verificare documenti).<br>
+</li>
+<li><strong>Se servono decisioni basate sui dati</strong> → AI (ad es. rilevare frodi, assegnare punteggi di credito).<br>
+</li>
+<li><strong>Se serve generare contenuti o conversazioni avanzate</strong> → GenAI (ad es. chatbot avanzati, reportistica automatica).</li>
+</ul>
+</section>
+<section id="ai-intelligenza-artificiale" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="ai-intelligenza-artificiale"><span class="header-section-number">5.3</span> AI – Intelligenza Artificiale</h2>
+<p>L’<strong>AI (Artificial Intelligence)</strong> è un insieme di tecnologie che simulano l’intelligenza umana per prendere decisioni, riconoscere schemi e migliorare con l’esperienza.</p>
+<section id="caratteristiche-principali" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="caratteristiche-principali"><span class="header-section-number">5.3.1</span> Caratteristiche principali</h3>
+<ul>
+<li>Analizza dati e apprende (Machine Learning).<br>
+</li>
+<li>Prende decisioni basate su modelli predittivi.<br>
+</li>
+<li>Può lavorare su dati strutturati e non strutturati.</li>
+</ul>
+</section>
+<section id="esempi-di-ai-in-banca" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="esempi-di-ai-in-banca"><span class="header-section-number">5.3.2</span> Esempi di AI in banca</h3>
+<p>📊 <strong>Credit Scoring</strong> – Valuta il rischio di insolvenza basandosi su dati finanziari.<br>
+🔍 <strong>Frode bancaria</strong> – Rileva operazioni sospette monitorando transazioni in tempo reale.<br>
+🤖 <strong>Chatbot AI (NLP)</strong> – Comprende il linguaggio naturale per rispondere ai clienti.</p>
+</section>
+</section>
+<section id="genai-intelligenza-artificiale-generativa" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="genai-intelligenza-artificiale-generativa"><span class="header-section-number">5.4</span> GenAI – Intelligenza Artificiale Generativa</h2>
+<p>La <strong>Generative AI</strong> è una sottocategoria dell’AI che si concentra sulla <strong>creazione di nuovi contenuti</strong> (testo, immagini, codice, musica, ecc.).</p>
+<section id="caratteristiche-principali-1" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="caratteristiche-principali-1"><span class="header-section-number">5.4.1</span> Caratteristiche principali</h3>
+<ul>
+<li>Crea testo, immagini, video o codice in base ai dati forniti.<br>
+</li>
+<li>Modelli come GPT (per testo), DALL·E (per immagini) e Codex (per codice).<br>
+</li>
+<li>Può generare risposte, traduzioni, riassunti e simulare conversazioni avanzate.</li>
+</ul>
+</section>
+<section id="esempi-di-genai-in-banca" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="esempi-di-genai-in-banca"><span class="header-section-number">5.4.2</span> Esempi di GenAI in banca</h3>
+<p><strong>Analisi automatica di documenti</strong> – Estrarre informazioni da contratti, bilanci e report.<br>
+<strong>Chatbot avanzati</strong> – Chatbot che rispondono in modo più naturale e contestuale.<br>
+<strong>Generazione di report finanziari</strong> – Creazione automatica di analisi e previsioni economiche.</p>
+<p><strong>Differenza tra AI e GenAI:</strong><br>
+L’AI è più <strong>analitica e decisionale</strong>, mentre la GenAI è <strong>creativa</strong> e può generare contenuti autonomamente.</p>
+</section>
+</section>
+<section id="rpa-robotic-process-automation" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="rpa-robotic-process-automation"><span class="header-section-number">5.5</span> RPA – Robotic Process Automation</h2>
+<p>L’<strong>RPA (Robotic Process Automation)</strong> è una tecnologia che utilizza <strong>bot software</strong> per automatizzare attività ripetitive basate su regole <strong>senza intelligenza vera</strong>.</p>
+<section id="caratteristiche-principali-2" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="caratteristiche-principali-2"><span class="header-section-number">5.5.1</span> Caratteristiche principali</h3>
+<ul>
+<li>Automatizza compiti ripetitivi e basati su regole.<br>
+</li>
+<li>Non ha capacità di apprendimento come l’AI (esegue esattamente ciò che è programmato).<br>
+</li>
+<li>Interagisce con software e sistemi esistenti imitando le azioni umane.</li>
+</ul>
+</section>
+<section id="esempi-di-rpa-in-banca" class="level3" data-number="5.5.2">
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="esempi-di-rpa-in-banca"><span class="header-section-number">5.5.2</span> Esempi di RPA in banca</h3>
+<p><strong>Automazione dei pagamenti</strong> – I bot RPA elaborano bonifici e fatture senza errori.<br>
+<strong>Verifica documenti</strong> – Estraggono e inseriscono dati nei sistemi bancari.<br>
+<strong>Reportistica automatizzata</strong> – Generano report periodici senza intervento umano.</p>
+<p>🔹 <strong>Differenza tra AI e RPA:</strong></p>
+<ul>
+<li><strong>AI</strong> apprende ed evolve, mentre <strong>RPA</strong> esegue solo azioni predefinite.</li>
+<li><strong>AI</strong> è utile in scenari complessi (analisi dati, riconoscimento immagini), mentre <strong>RPA</strong> è perfetto per compiti ripetitivi (trasferimento dati tra software).</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="fintech-ai-e-comportamento-della-clientela" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Fintech, AI e Comportamento della Clientela</h1>
+<p>Nuove Frontiere per Banche, Intermediari Finanziari e Finanza d’Impresa</p>
+<p>L’innovazione tecnologica sta ridefinendo il settore finanziario, con <strong>Fintech e Intelligenza Artificiale (AI)</strong> che stanno trasformando l’interazione tra <strong>banche, intermediari finanziari e imprese</strong>. Queste nuove tecnologie <strong>automatizzano processi, migliorano l’efficienza e personalizzano i servizi</strong>, ridefinendo il comportamento della clientela e le strategie delle istituzioni finanziarie.</p>
+<p>Fintech e AI stanno ridisegnando il settore bancario, imponendo un <strong>cambiamento nelle strategie delle banche, degli intermediari finanziari e delle imprese</strong>. L’<strong>automazione e la personalizzazione</strong> sono le chiavi per attrarre e fidelizzare una clientela sempre più digitale. Per restare competitivi, gli operatori finanziari devono <strong>abbracciare queste nuove tecnologie</strong> e adattarsi rapidamente alle <strong>nuove esigenze di mercato</strong>.</p>
+<section id="limpatto-del-fintech-sulle-banche-tradizionali" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="limpatto-del-fintech-sulle-banche-tradizionali"><span class="header-section-number">6.1</span> L’impatto del Fintech sulle Banche Tradizionali</h2>
+<p>Le <strong>Fintech</strong>, grazie a tecnologie come <strong>blockchain, AI e open banking</strong>, stanno cambiando il modo in cui i clienti accedono ai servizi finanziari. Le banche tradizionali devono rispondere con:</p>
+<p>✅ <strong>Digitalizzazione dei servizi</strong> – Home banking avanzato e interfacce utente intuitive.<br>
+✅ <strong>Pagamenti istantanei &amp; Open Banking</strong> – API che integrano conti bancari con servizi di terze parti.<br>
+✅ <strong>Prestiti e mutui digitalizzati</strong> – Processi di concessione automatizzati basati su AI.<br>
+✅ <strong>Tokenizzazione degli asset</strong> – Nuovi strumenti di investimento tramite blockchain.</p>
+<p>📌 <strong>Esempio:</strong> Revolut e N26 offrono <strong>esperienze bancarie completamente digitali</strong>, sfidando il modello tradizionale.</p>
+</section>
+<section id="ai-e-personalizzazione-nei-servizi-finanziari" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="ai-e-personalizzazione-nei-servizi-finanziari"><span class="header-section-number">6.2</span> AI e Personalizzazione nei Servizi Finanziari</h2>
+<p>L’<strong>Intelligenza Artificiale</strong> consente di analizzare enormi quantità di dati per offrire servizi su misura:</p>
+<p>✅ <strong>Analisi predittiva</strong> – Prevede le esigenze finanziarie del cliente (es. risparmi, investimenti).<br>
+✅ <strong>Chatbot intelligenti</strong> – Assistenti virtuali risolvono problemi in tempo reale.<br>
+✅ <strong>AI per la gestione patrimoniale</strong> – Robo-advisor personalizzano strategie di investimento.<br>
+✅ <strong>Prevenzione delle frodi</strong> – Algoritmi di machine learning rilevano transazioni sospette.</p>
+<p>📌 <strong>Esempio:</strong> <strong>JP Morgan</strong> utilizza AI per il trading e per analizzare documenti contrattuali in pochi secondi.</p>
+</section>
+<section id="evoluzione-del-comportamento-della-clientela" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="evoluzione-del-comportamento-della-clientela"><span class="header-section-number">6.3</span> Evoluzione del Comportamento della Clientela</h2>
+<p>La clientela sta cambiando il proprio approccio ai servizi finanziari, preferendo <strong>esperienze digitali e personalizzate</strong>:</p>
+<p>🔹 <strong>Maggiore fiducia nei servizi Fintech</strong> – Più utenti scelgono neobank e piattaforme alternative.<br>
+🔹 <strong>Domanda di servizi più veloci e intuitivi</strong> – Si riduce la pazienza per burocrazia e processi lenti.<br>
+🔹 <strong>Crescente attenzione alla sicurezza e alla privacy</strong> – GDPR e AI explainability diventano centrali.<br>
+🔹 <strong>Nuove abitudini di investimento</strong> – Interesse per asset digitali, criptovalute e prodotti ESG.</p>
+<p>📌 <strong>Dati:</strong> Il 74% dei Millennials preferisce gestire le proprie finanze tramite app mobile piuttosto che in filiale.</p>
+</section>
+<section id="finanza-dimpresa-e-ai-nuove-opportunità-per-le-aziende" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="finanza-dimpresa-e-ai-nuove-opportunità-per-le-aziende"><span class="header-section-number">6.4</span> Finanza d’Impresa e AI: Nuove Opportunità per le Aziende</h2>
+<p>L’AI e il Fintech stanno ridefinendo anche la <strong>finanza aziendale</strong>:</p>
+<p>✅ <strong>Automazione della contabilità</strong> – AI per la gestione di cash flow e report finanziari.<br>
+✅ <strong>Accesso ai finanziamenti alternativo</strong> – Crowdfunding, peer-to-peer lending e fintech lending.<br>
+✅ <strong>Risk management avanzato</strong> – AI per valutare rischi finanziari e creditizi in tempo reale.<br>
+✅ <strong>Supply Chain Finance</strong> – Blockchain per la trasparenza nelle transazioni aziendali.</p>
+<p>📌 <strong>Esempio:</strong> <strong>Stripe e Klarna</strong> offrono soluzioni di pagamento integrate per le imprese, migliorando il cash flow.</p>
+</section>
+</section>
+<section id="la-doppia-tripla-transizione-digitale-green-e-generazionale" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> La Doppia (Tripla) Transizione: Digitale, Green e Generazionale</h1>
+<p>Il settore bancario si trova al centro di una <strong>doppia, se non tripla, transizione</strong> che coinvolge la <strong>digitalizzazione, la sostenibilità e il cambiamento generazionale</strong>. Tuttavia, fattori come l’<strong>analfabetismo informatico</strong>, l’<strong>età media elevata dei bancari</strong> e il <strong>digital divide</strong> rendono questa trasformazione complessa e ricca di sfide.</p>
+<ul>
+<li><strong>Transizione Digitale</strong> → Automazione, AI, blockchain, neobank.<br>
+</li>
+<li><strong>Transizione Green</strong> → Investimenti ESG, finanza sostenibile.<br>
+</li>
+<li><strong>Transizione Generazionale</strong> → Cambio tra vecchia e nuova classe di bancari.</li>
+</ul>
+<p><strong>Sfida principale</strong>: bilanciare innovazione e sostenibilità, senza perdere il contatto con una clientela diversificata.</p>
+<p>La digitalizzazione è inevitabile, ma il settore bancario deve affrontare <strong>sfide culturali e formative</strong>. Le istituzioni devono investire in <strong>formazione, mentorship e strategie inclusive</strong> per assicurare che l’innovazione non lasci indietro nessuno, favorendo una <strong>transizione armonica</strong> tra generazioni e modelli operativi.</p>
+<p>![[./media/20250206170810.png]]</p>
+<section id="analfabetismo-informatico-digital-divide" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="analfabetismo-informatico-digital-divide"><span class="header-section-number">7.1</span> Analfabetismo Informatico &amp; Digital Divide</h2>
+<p>🔹 Molti dipendenti bancari <strong>non hanno competenze digitali avanzate</strong>, rendendo complessa l’adozione di nuove tecnologie.<br>
+🔹 Il <strong>digital divide</strong> crea disparità tra clienti giovani (nativi digitali) e quelli più anziani, meno avvezzi ai servizi online.<br>
+🔹 L’uso dell’AI nei servizi finanziari richiede personale formato per evitare errori nell’automazione e nei processi decisionali.</p>
+<p><strong>Soluzione</strong>: Investire in <strong>formazione digitale</strong> per dipendenti e clienti, con il supporto di enti come <strong>Fabi, AIPB e Feduf</strong>.</p>
+</section>
+<section id="letà-media-del-bancario-e-il-passaggio-generazionale" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="letà-media-del-bancario-e-il-passaggio-generazionale"><span class="header-section-number">7.2</span> L’Età Media del Bancario e il Passaggio Generazionale</h2>
+<p>🔹 L’<strong>età media del bancario</strong> è attorno ai 50 anni, e molti faticano ad adattarsi alle nuove tecnologie.<br>
+🔹 Il <strong>passaggio generazionale</strong> è complesso: i giovani hanno competenze digitali, ma meno esperienza finanziaria e gestionale.<br>
+🔹 Le banche devono <strong>riformare i modelli organizzativi</strong>, valorizzando l’esperienza dei senior e la flessibilità dei giovani.</p>
+<p><strong>Soluzione</strong>: Creazione di <strong>mentorship</strong> tra bancari senior e junior per una <strong>transizione più fluida</strong>.</p>
+<hr>
+</section>
+<section id="il-ruolo-della-formazione-fot-feduf-fabi-aipb" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="il-ruolo-della-formazione-fot-feduf-fabi-aipb"><span class="header-section-number">7.3</span> Il Ruolo della Formazione (FOT, Feduf, Fabi, AIPB)</h2>
+<p>🔹 <strong>FOT (Fondo per l’Occupazione del Credito)</strong> → Supporta piani di aggiornamento professionale per bancari.<br>
+🔹 <strong>Feduf (Educazione Finanziaria e Digitale)</strong> → Promuove l’alfabetizzazione finanziaria nelle scuole e tra i cittadini.<br>
+🔹 <strong>Fabi (Sindacato Bancari)</strong> → Difende i diritti dei lavoratori nel contesto della digitalizzazione.<br>
+🔹 <strong>AIPB (Private Banking)</strong> → Supporta la formazione per i professionisti del wealth management.</p>
+<p><strong>Obiettivo</strong>: Un piano strategico per <strong>formare bancari e clienti</strong>, riducendo il digital divide e facilitando la transizione tecnologica.</p>
+</section>
+</section>
+<section id="la-genai-in-banca" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> La GenAI in banca</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 78%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Tema</strong></th>
+<th><strong>Dati principali</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Adozione GenAI</strong></td>
+<td>88% delle banche con strategia entro il 2025 (38% già operativa).</td>
+</tr>
+<tr class="even">
+<td><strong>Sperimentazione</strong></td>
+<td>69% in fase di test, 60% con progetti AI in produzione.</td>
+</tr>
+<tr class="odd">
+<td><strong>Investimenti</strong></td>
+<td>82% aumenterà il budget AI, 88% incrementerà gli investimenti in GenAI.</td>
+</tr>
+<tr class="even">
+<td><strong>Fattori di investimento</strong></td>
+<td>80% valuta benefici attesi, 67% considera costi e compliance.</td>
+</tr>
+<tr class="odd">
+<td><strong>ROI atteso</strong></td>
+<td>75% senza tempistiche precise, 13% prevede ROI entro 1 anno.</td>
+</tr>
+<tr class="even">
+<td><strong>Strategia “Make or Buy”</strong></td>
+<td>“Make” per studio e gestione rischi (40%), “Buy” per formazione e sviluppo.</td>
+</tr>
+<tr class="odd">
+<td><strong>Partnership</strong></td>
+<td>54% collabora con BigTech/ICT, future sinergie con Software Vendor (55%) e startup fintech (45%).</td>
+</tr>
+<tr class="even">
+<td><strong>Governance AI</strong></td>
+<td>81% monitora AI, 77% integra GenAI nei team AI/Innovazione, 23% ha un team dedicato.</td>
+</tr>
+<tr class="odd">
+<td><strong>Skill gap &amp; Formazione</strong></td>
+<td>57% ha gap in Ethics, Data Science, Testing; 75% investe in change management.</td>
+</tr>
+<tr class="even">
+<td><strong>Conformità AI Act</strong></td>
+<td>70% in fase di adeguamento, 50% ha già un framework di governance.</td>
+</tr>
+</tbody>
+</table>
+<p>Fonte: <strong>Deloitte</strong>&nbsp;nell’ambito dell’**Osservatorio Fintech Innovation</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 91%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Tema</strong></th>
+<th><strong>Dati e Informazioni</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Adozione della GenAI</strong></td>
+<td>- <strong>88%</strong> delle banche italiane avrà una strategia GenAI entro il <strong>2025</strong> (già operativa nel <strong>38%</strong> dei casi).- <strong>80%</strong> delle banche integra la GenAI nella strategia AI complessiva.</td>
+</tr>
+<tr class="even">
+<td><strong>Sperimentazione e Produzione</strong></td>
+<td>- <strong>69%</strong> delle banche è in fase di sperimentazione per la GenAI.- <strong>60%</strong> ha già progetti AI in produzione.</td>
+</tr>
+<tr class="odd">
+<td><strong>Investimenti e Budget</strong></td>
+<td>- <strong>69%</strong> include il budget GenAI nel budget AI complessivo.- Solo <strong>13%</strong> ha un budget specifico per GenAI.- <strong>82%</strong> prevede un aumento del budget AI: - <strong>38%</strong> incremento significativo (&gt;10%). - <strong>44%</strong> incremento moderato (fino al 10%).- <strong>88%</strong> prevede un aumento degli investimenti in GenAI.</td>
+</tr>
+<tr class="even">
+<td><strong>Fattori di valutazione per gli investimenti</strong></td>
+<td>- <strong>80%</strong> considera ricavi e benefici attesi.- <strong>67%</strong> valuta costi e investimenti necessari.- <strong>67%</strong> tiene conto di rischi e compliance.</td>
+</tr>
+<tr class="odd">
+<td><strong>ROI della GenAI</strong></td>
+<td>- <strong>75%</strong> non indica un periodo preciso di ritorno.- <strong>13%</strong> prevede un ROI tra <strong>6 mesi e 1 anno</strong>.</td>
+</tr>
+<tr class="even">
+<td><strong>Strategia “Make or Buy”</strong></td>
+<td>- <strong>Fattori di scelta</strong>: risorse disponibili, tempi di sviluppo, strategia aziendale.- <strong>“Make”</strong>: preferito per studio, progettazione, risk management, audit e assurance (<strong>40%</strong> delle banche).- <strong>“Buy”</strong>: usato per formazione, implementazione architetturale, manutenzione e sviluppo.</td>
+</tr>
+<tr class="odd">
+<td><strong>Collaborazioni e Partnership</strong></td>
+<td>- <strong>54%</strong> delle banche ha partnership attive con aziende ICT/BigTech.- <strong>Sinergie future</strong>: - <strong>55%</strong> Software Vendor. - <strong>45%</strong> Fintech/Startup.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance e Compliance AI</strong></td>
+<td>- <strong>81%</strong> monitora tematiche AI.- <strong>77%</strong> assegna la GenAI ai team AI/Innovazione.- <strong>23%</strong> ha creato un presidio dedicato alla GenAI.- In media <strong>4 dipendenti ogni 1000</strong> coinvolti in AI/GenAI.- <strong>75%</strong> prevede un aumento degli FTE interni nei prossimi 2 anni.</td>
+</tr>
+<tr class="odd">
+<td><strong>Skill Gap e Formazione</strong></td>
+<td>- <strong>57%</strong> segnala skill gap moderato o alto in: - Ethics. - Solution Testing &amp; Deployment. - Data Science/Prompt Engineering.- <strong>75%</strong> ha già attuato o pianifica azioni di change management.- <strong>Iniziative di formazione</strong>: - <strong>50%</strong> corsi su GenAI. - <strong>50%</strong> revisione processi aziendali. - <strong>40%</strong> nuove figure professionali. - <strong>44%</strong> corsi per dipendenti su GenAI. - <strong>33%</strong> awareness su GenAI. - <strong>33%</strong> formazione team di sviluppo. - <strong>56%</strong> percorsi per nuovi ruoli interni.</td>
+</tr>
+<tr class="even">
+<td><strong>Conformità all’AI Act</strong></td>
+<td>- <strong>70%</strong> definisce o sta definendo metodologie per garantire etica e compliance all’AI Act entro il <strong>2025</strong>.- <strong>Pratiche adottate</strong>: - <strong>79%</strong> monitoraggio normativo e conformità. - <strong>71%</strong> AI Governance by Design. - <strong>57%</strong> supervisione umana nella validazione dei contenuti.- <strong>50%</strong> ha definito un framework di governance per GenAI.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="glossario" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Glossario</h1>
+<section id="ai-act" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="ai-act"><span class="header-section-number">9.1</span> AI Act</h2>
+<ul>
+<li><strong>Obiettivo</strong>: Regolare l’uso dell’intelligenza artificiale nell’UE per proteggere i diritti fondamentali.</li>
+<li><strong>Categorie di Rischio</strong>: Classifica le applicazioni AI in base al loro livello di rischio; quelle ad alto rischio, come le valutazioni del merito creditizio, sono soggette a controlli più rigorosi</li>
+</ul>
+</section>
+<section id="allucinazione" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="allucinazione"><span class="header-section-number">9.2</span> Allucinazione</h2>
+<p>In ambito AI, il termine <strong>“allucinazione”</strong> si riferisce a quando un modello di Intelligenza Artificiale <strong>genera informazioni errate, inventate o fuorvianti</strong>, pur presentandole come se fossero vere. Questo fenomeno è particolarmente rilevante nell’AI generativa (<strong>GenAI</strong>), come nei chatbot basati su modelli di linguaggio (LLM), ma può avvenire anche in sistemi di machine learning in altri ambiti. Le allucinazioni avvengono perché i modelli di AI <strong>non comprendono realmente il significato dei dati</strong>, ma si basano su pattern statistici. Ecco alcune cause principali: ✅ <strong>Mancanza di dati</strong> – Se un modello non ha dati sufficienti su un argomento, può riempire i vuoti con informazioni errate.<br>
+✅ <strong>Bias nei dati di training</strong> – Se i dati con cui è stato addestrato contengono errori o distorsioni, l’AI può replicarli.<br>
+✅ <strong>Modello predittivo, non verificativo</strong> – L’AI genera risposte sulla base di probabilità statistiche, non su un controllo fattuale.<br>
+✅ <strong>Errori di contestualizzazione</strong> – Può mescolare informazioni da fonti diverse, creando affermazioni incoerenti o inesatte. Esempi: - Un chatbot bancario potrebbe <strong>inventare politiche sui prestiti</strong> o riferire condizioni errate sui conti correnti.<br>
+- Un modello di AI per il trading potrebbe suggerire decisioni basate su dati inesistenti o correlazioni errate.</p>
+</section>
+<section id="deep-fake" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="deep-fake"><span class="header-section-number">9.3</span> Deep Fake</h2>
+<p>contenuti multimediali (video, immagini, audio) <strong>generati o manipolati con l’Intelligenza Artificiale</strong> per creare simulazioni realistiche di persone, spesso con lo scopo di <strong>ingannare o intrattenere</strong>. Questa tecnologia utilizza <strong>reti neurali profonde</strong> (da cui il nome <em>deep</em> fake) per sostituire volti, voci o movimenti con grande precisione.</p>
+</section>
+<section id="dora-digital-operational-resilience-act" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="dora-digital-operational-resilience-act"><span class="header-section-number">9.4</span> DORA (Digital Operational Resilience Act)</h2>
+<ul>
+<li><strong>Obiettivo</strong>: Migliorare la resilienza operativa digitale delle istituzioni finanziarie, inclusi i servizi bancari.</li>
+<li><strong>Requisiti</strong>: Le banche devono implementare misure per garantire la continuità operativa e gestire i rischi legati alla tecnologia.</li>
+<li><strong>Applicazione</strong>: Si concentra su aspetti come la sicurezza informatica, l’efficienza dei processi digitali e la gestione degli incidenti.</li>
+</ul>
+</section>
+<section id="nis2-network-and-information-security-directive" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="nis2-network-and-information-security-directive"><span class="header-section-number">9.5</span> NIS2 (Network and Information Security Directive)</h2>
+<ul>
+<li><strong>Obiettivo</strong>: Rafforzare la sicurezza informatica delle entità essenziali e importanti nell’UE.</li>
+<li><strong>Requisiti Principali</strong>:
+<ul>
+<li>Valutazione del rischio</li>
+<li>Misure di sicurezza</li>
+<li>Segnalazione degli incidenti</li>
+<li>Sicurezza della catena di approvvigionamento</li>
+<li>Formazione sulla cybersecurity</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="note" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> note</h1>
+<hr>
+<section id="note-1" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="note-1"><span class="header-section-number">10.1</span> note</h2>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -207,12 +1070,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiato!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copiato!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -586,4 +1449,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2520_AiBanche/20250210_AiBanche.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2520_AiBanche/20250210_AiBanche.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div></div></footer></body></html>

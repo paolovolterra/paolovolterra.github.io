@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.40">
@@ -54,17 +54,17 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
   }
 }</script>
 
@@ -90,8 +90,8 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">Paolo Volterra’s website</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -158,13 +158,16 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">Indice</h2>
    
   <ul>
-  <li><a href="#i-codici-fiscali-delle-imprese-sono-dati-sensibili" id="toc-i-codici-fiscali-delle-imprese-sono-dati-sensibili" class="nav-link active" data-scroll-target="#i-codici-fiscali-delle-imprese-sono-dati-sensibili"><strong>I codici fiscali delle imprese sono dati sensibili?</strong></a></li>
-  <li><a href="#datavisualization" id="toc-datavisualization" class="nav-link" data-scroll-target="#datavisualization">Datavisualization</a></li>
+  <li><a href="#opendata-del-fondo-di-garanzia-convertiti-in-file-parquet-per-una-maggiore-efficienza" id="toc-opendata-del-fondo-di-garanzia-convertiti-in-file-parquet-per-una-maggiore-efficienza" class="nav-link active" data-scroll-target="#opendata-del-fondo-di-garanzia-convertiti-in-file-parquet-per-una-maggiore-efficienza"><span class="header-section-number">1</span> opendata del Fondo di Garanzia, convertiti in file parquet per una maggiore efficienza</a>
+  <ul class="collapse">
+  <li><a href="#i-codici-fiscali-delle-imprese-sono-dati-sensibili" id="toc-i-codici-fiscali-delle-imprese-sono-dati-sensibili" class="nav-link" data-scroll-target="#i-codici-fiscali-delle-imprese-sono-dati-sensibili"><span class="header-section-number">1.1</span> <strong>I codici fiscali delle imprese sono dati sensibili?</strong></a></li>
+  <li><a href="#datavisualization" id="toc-datavisualization" class="nav-link" data-scroll-target="#datavisualization"><span class="header-section-number">1.2</span> Datavisualization</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2403_FdG2/FdG2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2403_FdG2/FdG2.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -173,19 +176,31 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title">
 <h1 class="title">Python, Parquets &amp; Opendata (parte 2</h1>
 <p class="subtitle lead">Uno studio sugli opendata del Fondo di Garanzia, convertiti in file parquet per una maggiore efficienza. L’obiettivo è determinare la distribuzione delle imprese per numero di comuni coinvolti negli…</p>
-</div>
+  <div class="quarto-categories">
+    <div class="quarto-category">FdG</div>
+    <div class="quarto-category">Python</div>
+    <div class="quarto-category">Aiuti</div>
+    <div class="quarto-category">Opendata</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
     <div class="quarto-title-meta-contents">
              <p>Paolo Volterra </p>
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">1 dicembre 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -195,7 +210,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><em>Uno studio sugli opendata del Fondo di Garanzia, convertiti in file parquet per una maggiore efficienza.</em></p>
+<section id="opendata-del-fondo-di-garanzia-convertiti-in-file-parquet-per-una-maggiore-efficienza" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> opendata del Fondo di Garanzia, convertiti in file parquet per una maggiore efficienza</h1>
 <p><em>L’obiettivo è</em> <strong><em>determinare la distribuzione delle imprese per numero di comuni coinvolti negli investimenti agevolati</em></strong><em>, utilizzando il codice fiscale anonimizzato come identificativo univoco dell’impresa.</em></p>
 <p><em>L’analisi prevede il raggruppamento per codice fiscale e comune, e la successiva creazione di un dataframe che riporta il numero di comuni per ogni impresa.</em></p>
 <p><em>Infine, viene evidenziata la</em> <strong><em>distribuzione fortemente sbilanciata</em></strong><em>, con la stragrande maggioranza delle imprese (ditte individuali) presente in un solo comune e un’unica impresa presente in ben 16 comuni, richiedendo l’uso di una scala logaritmica per la rappresentazione grafica dei risultati.</em></p>
@@ -263,8 +279,8 @@ con.execute("PRAGMA enable_object_cache") os.chdir('D:/duckdb/files/FdG/')</code
 0  3994883con.execute("SELECT count(distinct(CF)) FROM '*.parquet';").df()  count(DISTINCT CF)
 0  1680598</code></pre>
 <p>Per le analisi utilizzerò il codice fiscale e non la ragione sociale perché quest’ultima a volte viene scritta in maniera differente, mentre il codice fiscale è univoco.</p>
-<section id="i-codici-fiscali-delle-imprese-sono-dati-sensibili" class="level2">
-<h2 class="anchored" data-anchor-id="i-codici-fiscali-delle-imprese-sono-dati-sensibili"><strong>I codici fiscali delle imprese sono dati sensibili?</strong></h2>
+<section id="i-codici-fiscali-delle-imprese-sono-dati-sensibili" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="i-codici-fiscali-delle-imprese-sono-dati-sensibili"><span class="header-section-number">1.1</span> <strong>I codici fiscali delle imprese sono dati sensibili?</strong></h2>
 <p>Il codice fiscale di un’impresa è considerato un dato personale, ma non rientra nella categoria dei dati sensibili.</p>
 <p>Secondo il Regolamento Generale sulla Protezione dei Dati #GDPR , i dati personali sono informazioni che identificano o rendono identificabile una persona fisica, come il nome, l’indirizzo o il codice fiscale.</p>
 <p>I dati sensibili, invece, includono informazioni che rivelano l’origine razziale o etnica, le opinioni politiche, le convinzioni religiose o filosofiche, l’appartenenza sindacale, dati genetici, dati biometrici, dati relativi alla salute o alla vita sessuale o all’orientamento sessuale di una persona .</p>
@@ -323,8 +339,8 @@ distribution_df = cf_count_distribution.reset_index(name="count").rename(columns
 12           1  1578882</code></pre>
 <p>Come posso vedere, un solo codice fiscale (anonimizzato) è presente in 16 comuni, mentre oltre 1.700.000 codici fiscali sono presenti in un solo comune.</p>
 </section>
-<section id="datavisualization" class="level2">
-<h2 class="anchored" data-anchor-id="datavisualization">Datavisualization</h2>
+<section id="datavisualization" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="datavisualization"><span class="header-section-number">1.2</span> Datavisualization</h2>
 <p>Passo ora alla rappresentazione di quest’ultima tabella di raggruppamento, ma devo utilizzare nella colonna delle ordinate la scala logaritmica in quanto il i codici fiscali con un solo comune sono eccessivi rispetto all’unico codice fiscale con 16 comuni.</p>
 <pre><code>import matplotlib.pyplot as plt
 plt.figure(figsize=(8, 5))
@@ -352,8 +368,9 @@ plt.show()</code></pre>
 
 
 </section>
+</section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -397,12 +414,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiato!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copiato!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -776,4 +793,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2403_FdG2/FdG2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2403_FdG2/FdG2.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div></div></footer></body></html>
