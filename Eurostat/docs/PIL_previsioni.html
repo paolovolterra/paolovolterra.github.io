@@ -8461,6 +8461,116 @@ Date
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Backup">Backup<a class="anchor-link" href="#Backup">¶</a></h1>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">nbformat</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nbconvert</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTMLExporter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># === CONFIGURAZIONE ===</span>
+<span class="n">nb_name</span> <span class="o">=</span> <span class="s2">"PIL_previsioni"</span>  <span class="c1"># &lt;-- senza estensione</span>
+<span class="n">input_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">nb_name</span><span class="si">}</span><span class="s2">.ipynb"</span><span class="p">)</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">"D:/paolovolterra.github.io/Eurostat/docs/</span><span class="si">{</span><span class="n">nb_name</span><span class="si">}</span><span class="s2">.html"</span><span class="p">)</span>
+
+<span class="c1"># === CREA CARTELLA DI OUTPUT SE NECESSARIA ===</span>
+<span class="n">output_path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># === CARICA NOTEBOOK ===</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"📖 Carico il notebook…"</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">input_path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">nb_node</span> <span class="o">=</span> <span class="n">nbformat</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">as_version</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># === CONVERSIONE IN HTML ===</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"🌀 Converto in HTML…"</span><span class="p">)</span>
+<span class="n">exporter</span> <span class="o">=</span> <span class="n">HTMLExporter</span><span class="p">()</span>
+<span class="n">exporter</span><span class="o">.</span><span class="n">exclude_input_prompt</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">exporter</span><span class="o">.</span><span class="n">exclude_output_prompt</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">exporter</span><span class="o">.</span><span class="n">template_name</span> <span class="o">=</span> <span class="s2">"classic"</span>
+
+<span class="c1"># === CSS PERSONALIZZATO (opzionale) ===</span>
+<span class="n">custom_css</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">&lt;style&gt;</span>
+<span class="s2">body {</span>
+<span class="s2">    font-family: 'Segoe UI', sans-serif;</span>
+<span class="s2">    margin: 40px;</span>
+<span class="s2">    line-height: 1.6;</span>
+<span class="s2">    color: #333;</span>
+<span class="s2">}</span>
+<span class="s2">h1, h2, h3 {</span>
+<span class="s2">    color: #007a53;</span>
+<span class="s2">    border-bottom: 1px solid #ddd;</span>
+<span class="s2">    padding-bottom: 0.3em;</span>
+<span class="s2">}</span>
+<span class="s2">code {</span>
+<span class="s2">    background-color: #f8f8f8;</span>
+<span class="s2">    padding: 0.2em 0.4em;</span>
+<span class="s2">    border-radius: 4px;</span>
+<span class="s2">    font-size: 90%;</span>
+<span class="s2">}</span>
+<span class="s2">pre {</span>
+<span class="s2">    background-color: #f4f4f4;</span>
+<span class="s2">    padding: 1em;</span>
+<span class="s2">    border-radius: 6px;</span>
+<span class="s2">    overflow-x: auto;</span>
+<span class="s2">}</span>
+<span class="s2">&lt;/style&gt;</span>
+<span class="s2">"""</span>
+
+<span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">resources</span><span class="p">)</span> <span class="o">=</span> <span class="n">exporter</span><span class="o">.</span><span class="n">from_notebook_node</span><span class="p">(</span><span class="n">nb_node</span><span class="p">)</span>
+
+<span class="c1"># Inserisce CSS nell'head</span>
+<span class="n">body</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"&lt;/head&gt;"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">custom_css</span><span class="si">}</span><span class="se">\n</span><span class="s2">&lt;/head&gt;"</span><span class="p">)</span>
+
+<span class="c1"># === SALVA HTML ===</span>
+<span class="n">output_path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"✅ Salvato in: </span><span class="si">{</span><span class="n">output_path</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>📖 Carico il notebook…
+🌀 Converto in HTML…
+✅ Salvato in: D:\paolovolterra.github.io\Eurostat\docs\PIL_previsioni.html
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-python"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>
