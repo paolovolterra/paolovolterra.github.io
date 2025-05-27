@@ -9850,6 +9850,41 @@ a.anchor-link {
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=9f85f819-5aae-4144-b85f-1e2dd7a0a597">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># Ottieni il nome del notebook corrente</span>
+<span class="n">nb_name</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span> <span class="k">if</span> <span class="s2">"__file__"</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">()</span> <span class="k">else</span> <span class="s2">"eurostat"</span>  <span class="c1"># fallback se in Jupyter</span>
+
+<span class="c1"># Percorso output</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"D:/paolovolterra.github.io/DBNomics/docs"</span><span class="p">)</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">nb_name</span><span class="si">}</span><span class="s2">.html"</span>
+<span class="n">output_path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Comando nbconvert (usa il file attuale)</span>
+<span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"jupyter"</span><span class="p">,</span> <span class="s2">"nbconvert"</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">nb_name</span><span class="si">}</span><span class="s2">.ipynb"</span><span class="p">,</span>
+    <span class="s2">"--to"</span><span class="p">,</span> <span class="s2">"html"</span><span class="p">,</span>
+    <span class="s2">"--output"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"🌀 Converto il notebook in HTML…"</span><span class="p">)</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"✅ Salvato in: </span><span class="si">{</span><span class="n">output_path</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </main>
 </body>
