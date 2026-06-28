@@ -30,23 +30,15 @@ Le banche italiane giocheranno un ruolo cruciale nel facilitare l'accesso a ques
 
 In sintesi, l'offerta delle banche italiane per la coesione 2021-2027 si configura come un'opportunità significativa per promuovere lo sviluppo regionale e la cooperazione europea, con un focus particolare su progetti innovativi e sostenibili.
 
-
 Citations:
-[1] = https://ue.regione.lombardia.it/it/pc2127/la-politica-di-coesione-2021-2027/accordo-di-partenariato-italia-2021-2027
-
+[1] https://ue.regione.lombardia.it/it/pc2127/la-politica-di-coesione-2021-2027/accordo-di-partenariato-italia-2021-2027
 [2] = https://www.credem.it/content/credem/it/scopri-credem-banca/scopri-credem-banca/magazine/guide-articoli/interreg-italia-centro-europa.html
-
-[3] = https://www.regione.fvg.it/rafvg/cms/RAFVG/formazione-lavoro/formazione/fondo-sociale-europeo/FOGLIA33/
-
-[4] = https://documenti.camera.it/leg19/dossier/pdf/BI0017.pdf
-
-[5] = https://www.rgs.mef.gov.it/_Documenti/VERSIONE-I/attivita_istituzionali/monitoraggio/rapporti_finanziari_ue/monitoraggio_politiche_di_coesione_2014-2020/2024-04-30/BMPC-30.04.2024.pdf
-
-[6] = https://www.flcgil.it/attualita/fondi-europei-2021-2027/fondi-europei-2021-2027-notizie-e-provvedimenti.flc
-
-[7] = https://www.agenziacoesione.gov.it/lacoesione/le-politiche-di-coesione-in-italia-2014-2020/programmazione-2021-2027/
-
-[8] = https://europedirect.regione.lombardia.it/it/pc2127/europe-direct-lombardia/notizie-dallue-2/politica-di-coesione-2021-2027-il-parlamento-europeo-approva-i-bilanci-dei-nuovi-fondi
+[3] https://www.regione.fvg.it/rafvg/cms/RAFVG/formazione-lavoro/formazione/fondo-sociale-europeo/FOGLIA33/
+[4] https://documenti.camera.it/leg19/dossier/pdf/BI0017.pdf
+[5] https://www.rgs.mef.gov.it/_Documenti/VERSIONE-I/attivita_istituzionali/monitoraggio/rapporti_finanziari_ue/monitoraggio_politiche_di_coesione_2014-2020/2024-04-30/BMPC-30.04.2024.pdf
+[6] https://www.flcgil.it/attualita/fondi-europei-2021-2027/fondi-europei-2021-2027-notizie-e-provvedimenti.flc
+[7] https://www.agenziacoesione.gov.it/lacoesione/le-politiche-di-coesione-in-italia-2014-2020/programmazione-2021-2027/
+[8] https://europedirect.regione.lombardia.it/it/pc2127/europe-direct-lombardia/notizie-dallue-2/politica-di-coesione-2021-2027-il-parlamento-europeo-approva-i-bilanci-dei-nuovi-fondi
 [^3]: 
 [^4]
 [^4]: 
