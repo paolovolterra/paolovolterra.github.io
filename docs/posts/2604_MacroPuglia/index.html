@@ -194,9 +194,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#pil-regionale" id="toc-pil-regionale" class="nav-link" data-scroll-target="#pil-regionale"><span class="header-section-number">3</span> PIL regionale</a></li>
   <li><a href="#rete-bancaria" id="toc-rete-bancaria" class="nav-link" data-scroll-target="#rete-bancaria"><span class="header-section-number">4</span> Rete bancaria</a></li>
   <li><a href="#narrativa-generata-qwen" id="toc-narrativa-generata-qwen" class="nav-link" data-scroll-target="#narrativa-generata-qwen"><span class="header-section-number">5</span> Narrativa generata (Qwen)</a></li>
+  <li><a href="#sintesi-1" id="toc-sintesi-1" class="nav-link" data-scroll-target="#sintesi-1"><span class="header-section-number">6</span> Sintesi</a></li>
+  <li><a href="#evidenze" id="toc-evidenze" class="nav-link" data-scroll-target="#evidenze"><span class="header-section-number">7</span> Evidenze</a>
+  <ul class="collapse">
+  <li><a href="#qualità-del-credito" id="toc-qualità-del-credito" class="nav-link" data-scroll-target="#qualità-del-credito"><span class="header-section-number">7.1</span> Qualità del credito</a></li>
+  <li><a href="#stock-dei-prestiti" id="toc-stock-dei-prestiti" class="nav-link" data-scroll-target="#stock-dei-prestiti"><span class="header-section-number">7.2</span> Stock dei prestiti</a></li>
+  <li><a href="#pil-regionale-1" id="toc-pil-regionale-1" class="nav-link" data-scroll-target="#pil-regionale-1"><span class="header-section-number">7.3</span> PIL regionale</a></li>
+  <li><a href="#rete-bancaria-1" id="toc-rete-bancaria-1" class="nav-link" data-scroll-target="#rete-bancaria-1"><span class="header-section-number">7.4</span> Rete bancaria</a></li>
+  </ul></li>
+  <li><a href="#implicazioni-per-il-credito" id="toc-implicazioni-per-il-credito" class="nav-link" data-scroll-target="#implicazioni-per-il-credito"><span class="header-section-number">8</span> Implicazioni per il credito</a></li>
   <li><a href="#note-metodologiche" id="toc-note-metodologiche" class="nav-link" data-scroll-target="#note-metodologiche"><span class="header-section-number">9</span> Note metodologiche</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2604_MacroPuglia/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -255,9 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="f97bf6de" class="cell" data-execution_count="1">
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a1b2c3d4</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -276,15 +283,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>OUTDIR <span class="op">=</span> Path(<span class="st">"OUT"</span>)</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> json.loads((OUTDIR <span class="op">/</span> <span class="st">"results.json"</span>).read_text())</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> results[<span class="st">"summary"</span>]</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<section id="sintesi" class="level2 anchored" data-number="1" data-anchor-id="sintesi">
-<h2 class="anchored" data-number="1" data-anchor-id="sintesi"><span class="header-section-number">1</span> Sintesi</h2>
+<section id="sintesi" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="sintesi"><span class="header-section-number">1</span> Sintesi</h2>
 <p>La Puglia attraversa una fase di doppia transizione: da un lato la crescita nominale del PIL (+27% rispetto alla media pre-Covid 2015–2019), trainata anche dalla ripresa post-pandemia e dall’inflazione; dall’altro, la contrazione della rete fisica bancaria (-25% sullo stesso benchmark), segnale di una riorganizzazione strutturale del sistema creditizio regionale.</p>
 <p>Il credito alle imprese è sostanzialmente stabile (+2,8% sul pre-Covid), mentre i tassi sui nuovi prestiti a breve termine alle SNF sono quasi raddoppiati dal 2022 in avanti, riflettendo la stretta BCE.</p>
-<div id="cb27de5b" class="cell" data-execution_count="2">
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># b2c3d4e5</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabella riepilogativa</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
@@ -298,12 +301,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    })</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>df_tab <span class="op">=</span> pd.DataFrame(rows)</span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>df_tab.style.set_caption(<span class="st">"Tab. 1 — Indicatori macroeconomici Puglia al dato più recente"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<div id="T_f12fa" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="T_f12fa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">&nbsp;</th>
@@ -349,20 +347,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;1: Tab. 1 — Indicatori macroeconomici Puglia al dato più recente</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="credito-alle-imprese-e-tassi" class="level2 anchored" data-number="2" data-anchor-id="credito-alle-imprese-e-tassi">
-<h2 class="anchored" data-number="2" data-anchor-id="credito-alle-imprese-e-tassi"><span class="header-section-number">2</span> Credito alle imprese e tassi</h2>
-<div id="f46f8942" class="cell" data-execution_count="3">
+<section id="credito-alle-imprese-e-tassi" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="credito-alle-imprese-e-tassi"><span class="header-section-number">2</span> Credito alle imprese e tassi</h2>
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># c3d4e5f6</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Carica parquet credito e tassi</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> {}</span>
@@ -412,23 +401,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>plt.savefig(OUTDIR <span class="op">/</span> <span class="st">"charts"</span> <span class="op">/</span> <span class="st">"puglia_credito_custom.png"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
 <span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-display">
 <div>
-<div class="figure">
 <p><img src="figure/fig01.png" class="figure-img" role="img" width="1491" height="752"></p>
-</div>
-</div>
-</div>
 </div>
 <p>Lo <strong>stock di credito alle SNF</strong> in Puglia si attesta a <strong>20,379 mln€</strong> a gennaio 2026, sostanzialmente stabile rispetto alla media pre-Covid (19,820 mln€, var. +2.8%).</p>
 <p>Il <strong>tasso sui nuovi prestiti BT</strong> alle SNF (dato nazionale) è salito a <strong>3.16%</strong> a gennaio 2026, contro una media pre-Covid di 1.88% (+68.1% di variazione). La stretta avviata dalla BCE nel luglio 2022 ha quasi raddoppiato il costo del credito alle imprese.</p>
 </section>
-<section id="pil-regionale" class="level2 anchored" data-number="3" data-anchor-id="pil-regionale">
-<h2 class="anchored" data-number="3" data-anchor-id="pil-regionale"><span class="header-section-number">3</span> PIL regionale</h2>
-<div id="ba654150" class="cell" data-execution_count="4">
+<section id="pil-regionale" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="pil-regionale"><span class="header-section-number">3</span> PIL regionale</h2>
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># d4e5f6g7</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_gdp <span class="op">=</span> pd.read_parquet(<span class="bu">list</span>((OUTDIR <span class="op">/</span> <span class="st">"data"</span>).glob(<span class="st">"puglia_pil_sport_GDP_REG_IT.parquet"</span>))[<span class="dv">0</span>])</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>df_gdp[<span class="st">"data"</span>] <span class="op">=</span> pd.to_datetime(df_gdp[<span class="st">"data"</span>])</span>
@@ -451,22 +432,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>plt.savefig(OUTDIR <span class="op">/</span> <span class="st">"charts"</span> <span class="op">/</span> <span class="st">"puglia_pil.png"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-display">
 <div>
-<div class="figure">
 <p><img src="figure/fig02.png" class="figure-img" role="img" width="1491" height="678"></p>
-</div>
-</div>
-</div>
 </div>
 <p>Il <strong>PIL della Puglia</strong> ha raggiunto <strong>94,508 mln€</strong> nel 2024 (prezzi correnti, Eurostat), con un incremento del <strong>+27.0%</strong> rispetto alla media pre-Covid (74,391 mln€). La crescita nominale riflette sia la ripresa post-pandemia sia la componente inflattiva del 2022–2023.</p>
 </section>
-<section id="rete-bancaria" class="level2 anchored" data-number="4" data-anchor-id="rete-bancaria">
-<h2 class="anchored" data-number="4" data-anchor-id="rete-bancaria"><span class="header-section-number">4</span> Rete bancaria</h2>
-<div id="b755687d" class="cell" data-execution_count="5">
+<section id="rete-bancaria" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="rete-bancaria"><span class="header-section-number">4</span> Rete bancaria</h2>
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># e5f6g7h8</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df_sport <span class="op">=</span> pd.read_parquet(<span class="bu">list</span>((OUTDIR <span class="op">/</span> <span class="st">"data"</span>).glob(<span class="st">"puglia_pil_sport_SPORT_PUGLIA.parquet"</span>))[<span class="dv">0</span>])</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df_sport[<span class="st">"data"</span>] <span class="op">=</span> pd.to_datetime(df_sport[<span class="st">"data"</span>])</span>
@@ -490,75 +463,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>plt.savefig(OUTDIR <span class="op">/</span> <span class="st">"charts"</span> <span class="op">/</span> <span class="st">"puglia_sportelli.png"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
 <span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-display">
 <div>
-<div class="figure">
 <p><img src="figure/fig03.png" class="figure-img" role="img" width="1491" height="604"></p>
-</div>
-</div>
-</div>
 </div>
 <p>La <strong>rete fisica bancaria</strong> in Puglia si è ridotta a <strong>1,792 sportelli</strong> a fine 2025 (–25% rispetto alla media pre-Covid di 2,388 unità). Dal picco 2015 (2.572 sportelli) a oggi, la contrazione supera il 30%, accelerando dopo il 2020.</p>
 <p>Il segnale <code>branch_network_shrinkage</code> confermato dalla pipeline è coerente con il trend nazionale, ma la Puglia mostra una velocità di chiusura superiore alla media Mezzogiorno.</p>
 </section>
-<section id="narrativa-generata-qwen" class="level2 anchored" data-number="5" data-anchor-id="narrativa-generata-qwen">
-<h2 class="anchored" data-number="5" data-anchor-id="narrativa-generata-qwen"><span class="header-section-number">5</span> Narrativa generata (Qwen)</h2>
-<div id="7335cdf0" class="cell" data-execution_count="6">
+<section id="narrativa-generata-qwen" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="narrativa-generata-qwen"><span class="header-section-number">5</span> Narrativa generata (Qwen)</h2>
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># f6g7h8i9</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>narrative <span class="op">=</span> (OUTDIR <span class="op">/</span> <span class="st">"narrative.md"</span>).read_text()</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Rimuove header commento</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>narrative_clean <span class="op">=</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(l <span class="cf">for</span> l <span class="kw">in</span> narrative.splitlines() <span class="cf">if</span> <span class="kw">not</span> l.startswith(<span class="st">"&lt;!--"</span>))</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>Markdown(narrative_clean)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="6">
-<section id="sintesi-1" class="level2 anchored" data-number="6" data-anchor-id="sintesi-1">
-<h2 class="anchored" data-number="6" data-anchor-id="sintesi-1"><span class="header-section-number">6</span> Sintesi</h2>
+</section>
+<section id="sintesi-1" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="sintesi-1"><span class="header-section-number">6</span> Sintesi</h2>
 <p>Nel periodo 2009-2026, l’economia della Puglia ha subìto notevoli cambiamenti. Il stock dei prestiti ai società non finanziarie (SNF) e alle famiglie produttrici è aumentato leggermente, mentre i tassi di interesse sui nuovi prestiti hanno registrato un forte aumento. Inoltre, il PIL regionale ha registrato un incremento significativo, ma la rete bancaria si è contratta notevolmente.</p>
 </section>
-<section id="evidenze" class="level2 anchored" data-number="7" data-anchor-id="evidenze">
-<h2 class="anchored" data-number="7" data-anchor-id="evidenze"><span class="header-section-number">7</span> Evidenze</h2>
-<section id="qualità-del-credito" class="level3 anchored" data-number="7.1" data-anchor-id="qualità-del-credito">
-<h3 class="anchored" data-number="7.1" data-anchor-id="qualità-del-credito"><span class="header-section-number">7.1</span> Qualità del credito</h3>
+<section id="evidenze" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="evidenze"><span class="header-section-number">7</span> Evidenze</h2>
+<section id="qualità-del-credito" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="qualità-del-credito"><span class="header-section-number">7.1</span> Qualità del credito</h3>
 <ul>
 <li><strong>Tasso nuovi prestiti BT — Società non finanziarie (2015–2026)</strong>: Il tasso medio dei nuovi prestiti BT per le SNF ha aumentato da 1.879% nel periodo pre-COVID a 3.157% nel 2026, registrando una variazione del 68.1%. Questo segnale suggerisce un rafforzamento delle condizioni creditizie, probabilmente in risposta alla politica monetaria più restrittiva adottata dalla BCE dopo il 2022 (segnale atteso).</li>
 </ul>
 </section>
-<section id="stock-dei-prestiti" class="level3 anchored" data-number="7.2" data-anchor-id="stock-dei-prestiti">
-<h3 class="anchored" data-number="7.2" data-anchor-id="stock-dei-prestiti"><span class="header-section-number">7.2</span> Stock dei prestiti</h3>
+<section id="stock-dei-prestiti" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="stock-dei-prestiti"><span class="header-section-number">7.2</span> Stock dei prestiti</h3>
 <ul>
 <li><strong>Stock prestiti — SNF e famiglie produttrici per regione NUTS2 (2015–2026)</strong>: Il stock di prestiti ha aumentato leggermente da 19.819,64 mln € nel periodo pre-COVID a 20.378,72 mln € nel 2026, con una variazione del 2.8%. Questo indicatore suggerisce un modesto rafforzamento della disponibilità creditizia.</li>
 </ul>
 </section>
-<section id="pil-regionale-1" class="level3 anchored" data-number="7.3" data-anchor-id="pil-regionale-1">
-<h3 class="anchored" data-number="7.3" data-anchor-id="pil-regionale-1"><span class="header-section-number">7.3</span> PIL regionale</h3>
+<section id="pil-regionale-1" class="level3" data-number="7.3">
+<h3 data-number="7.3" class="anchored" data-anchor-id="pil-regionale-1"><span class="header-section-number">7.3</span> PIL regionale</h3>
 <ul>
 <li><strong>PIL regionale Italia per NUTS2 (2015–2024)</strong>: Il PIL regionale della Puglia è aumentato da 74.391,198 mln € nel periodo pre-COVID a 94.507,89 mln € nel 2024, con una variazione del 27%. Questo segnale suggerisce un forte rafforzamento dell’economia regionale.</li>
 </ul>
 </section>
-<section id="rete-bancaria-1" class="level3 anchored" data-number="7.4" data-anchor-id="rete-bancaria-1">
-<h3 class="anchored" data-number="7.4" data-anchor-id="rete-bancaria-1"><span class="header-section-number">7.4</span> Rete bancaria</h3>
+<section id="rete-bancaria-1" class="level3" data-number="7.4">
+<h3 data-number="7.4" class="anchored" data-anchor-id="rete-bancaria-1"><span class="header-section-number">7.4</span> Rete bancaria</h3>
 <ul>
 <li><strong>Sportelli bancari — Puglia (2015–2025)</strong>: La rete bancaria si è contratta significativamente, passando da 2.388 sportelli nel periodo pre-COVID a 1.792 sportelli nel 2025, con una variazione del -25%. Questo segnale suggerisce un rafforzamento della digitalizzazione e delle alternative al sistema bancario fisico.</li>
 </ul>
 </section>
 </section>
-<section id="implicazioni-per-il-credito" class="level2 anchored" data-number="8" data-anchor-id="implicazioni-per-il-credito">
-<h2 class="anchored" data-number="8" data-anchor-id="implicazioni-per-il-credito"><span class="header-section-number">8</span> Implicazioni per il credito</h2>
+<section id="implicazioni-per-il-credito" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="implicazioni-per-il-credito"><span class="header-section-number">8</span> Implicazioni per il credito</h2>
 <p>Le evidenze riportate indicano che la Puglia ha registrato un aumento significativo del PIL, ma con una contrazione della rete bancaria. Queste dinamiche hanno potenziali impatti sia sulle condizioni creditizie che sulla disponibilità dei servizi finanziari.</p>
 <p>In termini di qualità del credito, il tasso di interesse sui nuovi prestiti BT per le SNF è aumentato notevolmente dopo il 2022. Questo segnale suggerisce un rafforzamento delle condizioni creditizie, probabilmente in risposta alla politica monetaria più restrittiva della BCE. Tuttavia, l’aumento dei tassi potrebbe rendere i prestiti meno accessibili per le imprese e le famiglie.</p>
 <p>Il stock dei prestiti ha aumentato leggermente, indicando un modesto rafforzamento della disponibilità creditizia. Questa tendenza è positiva, ma la variazione relativamente bassa suggerisce che il mercato del credito potrebbe non essere ancora completamente ripristinato.</p>
 <p>Il PIL regionale ha registrato un forte aumento, che dovrebbe supportare l’espansione economica e migliorare le condizioni generali per i crediti. Tuttavia, la contrazione della rete bancaria potrebbe limitare l’accesso ai servizi finanziari, specialmente in aree rurali o meno accessibili.</p>
 <p>In conclusione, mentre l’economia della Puglia continua a rafforzarsi, le dinamiche del credito e della disponibilità dei servizi finanziari richiedono attenzioni specifiche per garantire che le imprese e i cittadini abbiano accesso ad opportunità creditizie equilibrate e sostenibili.</p>
 </section>
-</div>
-</div>
-</section>
-<section id="note-metodologiche" class="level2 anchored" data-number="9" data-anchor-id="note-metodologiche">
-<h2 class="anchored" data-number="9" data-anchor-id="note-metodologiche"><span class="header-section-number">9</span> Note metodologiche</h2>
+<section id="note-metodologiche" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="note-metodologiche"><span class="header-section-number">9</span> Note metodologiche</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -602,9 +563,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p><em>Elaborazione: Orchestra pipeline (step2_execute → step_validate → step4_narrative). Analisi: 2026-04-11.</em></p>
+
+
 </section>
-
-
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1015,7 +976,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2604_MacroPuglia/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

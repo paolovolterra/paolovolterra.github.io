@@ -75,6 +75,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../MCC.css">
 <meta property="og:title" content="Stagflazione 2026: anatomia di uno scenario attivo – Paolo Volterra">
@@ -192,7 +221,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#possibili-shock-esogeni-non-incorporati" id="toc-possibili-shock-esogeni-non-incorporati" class="nav-link" data-scroll-target="#possibili-shock-esogeni-non-incorporati"><span class="header-section-number">8.4</span> Possibili shock esogeni non incorporati</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2603_Stagflazione2026/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -284,38 +313,32 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="contesto-e-motivazione" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Contesto e motivazione</h1>
-<section id="da-scenario-prospettico-a-regime-attivo" class="level2 anchored" data-number="2.1" data-anchor-id="da-scenario-prospettico-a-regime-attivo">
-<h2 class="anchored" data-number="2.1" data-anchor-id="da-scenario-prospettico-a-regime-attivo"><span class="header-section-number">2.1</span> Da scenario prospettico a regime attivo</h2>
+<section id="da-scenario-prospettico-a-regime-attivo" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="da-scenario-prospettico-a-regime-attivo"><span class="header-section-number">2.1</span> Da scenario prospettico a regime attivo</h2>
 <p>Il documento precedente (stagflazione_primer v1, ottobre 2025) descriveva la stagflazione come rischio in costruzione, con SRI a 65,6 — al limite superiore della zona moderata. A marzo 2026 il quadro si è modificato in modo materiale su tre dimensioni.</p>
 <p><em>Fatti osservabili</em>: il Brent ha superato i 100 USD/barile in seguito all’escalation nel Golfo Persico, con Goldman Sachs che ha rivisto al rialzo le previsioni per il biennio 2026–2027. La Fed nel dot plot del 18 marzo 2026 ha segnalato potenzialmente zero tagli per il 2026, con il core PCE di gennaio 2026 al 3,1% e la crescita Q4 2025 rivista a +0,7% annualizzato. La BCE, che tre settimane prima si preparava a possibili ulteriori tagli, ha invertito orientamento verso possibili rialzi se il Brent restasse strutturalmente elevato.</p>
 <p><em>Interpretazione</em>: queste tre variazioni convergono a indicare che il regime stagflazionistico — coesistenza operativa di inflazione sopra target e crescita sotto potenziale con banche centrali incapaci di agire in modo direzionale — è già attivo. La distinzione tra rischio prospettico e regime attivo è rilevante per le decisioni operative bancarie: non si tratta di prepararsi, ma di gestire.</p>
 </section>
-<section id="perché-questo-episodio-è-strutturalmente-diverso-dagli-anni-settanta" class="level2 anchored" data-number="2.2" data-anchor-id="perché-questo-episodio-è-strutturalmente-diverso-dagli-anni-settanta">
-<h2 class="anchored" data-number="2.2" data-anchor-id="perché-questo-episodio-è-strutturalmente-diverso-dagli-anni-settanta"><span class="header-section-number">2.2</span> Perché questo episodio è strutturalmente diverso dagli anni Settanta</h2>
+<section id="perché-questo-episodio-è-strutturalmente-diverso-dagli-anni-settanta" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="perché-questo-episodio-è-strutturalmente-diverso-dagli-anni-settanta"><span class="header-section-number">2.2</span> Perché questo episodio è strutturalmente diverso dagli anni Settanta</h2>
 <p>L’analogia con gli anni Settanta — ricorrente nella stampa finanziaria e in alcuni report di mercato — è euristicamente utile ma va maneggiata con cautela.</p>
 <p>Le somiglianze strutturali sono reali: shock energetico esogeno, banche centrali in ritardo sulla diagnosi, trasmissione ai prezzi core con lag, deterioramento del potere d’acquisto reale. <em>Fatto verificabile</em>: nei picchi inflazionistici 1974 e 1979, oro e commodity hanno registrato rendimenti straordinari mentre le obbligazioni a lunga scadenza mostravano rendimenti reali negativi (fonte: dati BofA citati in <code>IN/Stagflazione-e-portafogli.md</code>).</p>
 <p>Le differenze strutturali sono però altrettanto rilevanti. Il debito pubblico globale è oggi incomparabilmente più alto rispetto agli anni Settanta, riducendo lo spazio di manovra fiscale e aumentando la sensibilità ai rialzi dei tassi. La quota di energia fossile sul PIL delle economie avanzate è calata, anche se la dipendenza rimane elevata per specifici settori manifatturieri. Il sistema bancario europeo è vincolato da requisiti prudenziali (BRRD, CRR3, IFRS 9) che rendono i meccanismi di trasmissione al deterioramento creditizio più rapidi e formalmente codificati.</p>
 <p><em>Assunzione esplicita</em>: questa analisi assume che i meccanismi di trasmissione energetico-creditizia identificati sul campione 2010–2025 siano più rilevanti come benchmark prospettico rispetto ai parametri degli anni Settanta. Questa assunzione è contestabile, soprattutto per la dinamica delle aspettative di inflazione.</p>
 </section>
-<section id="il-contesto-italiano-specifico" class="level2 anchored" data-number="2.3" data-anchor-id="il-contesto-italiano-specifico">
-<h2 class="anchored" data-number="2.3" data-anchor-id="il-contesto-italiano-specifico"><span class="header-section-number">2.3</span> Il contesto italiano specifico</h2>
+<section id="il-contesto-italiano-specifico" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="il-contesto-italiano-specifico"><span class="header-section-number">2.3</span> Il contesto italiano specifico</h2>
 <p><em>Fatti</em>: la quota di PMI nel tessuto produttivo italiano è strutturalmente più alta che in Germania o Francia. Le PMI hanno minore capacità di copertura sui costi energetici, minore accesso a finanziamento alternativo al credito bancario, bilanci con leva finanziaria mediamente più elevata. Lo spread BTP-Bund si colloca in un range 120–170 bp (fine 2025), al di sotto delle soglie di allerta ma sensibile alle revisioni al rialzo dei tassi BCE.</p>
 <p><em>Interpretazione</em>: il sistema bancario italiano è esposto in modo non lineare alla sequenza Energia → DSCR → NPL, soprattutto nei settori e nelle aree geografiche più energivore.</p>
 </section>
 </section>
 <section id="framework-analitico" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Framework analitico</h1>
-<section id="la-catena-causale-come-metodo-diagnostico" class="level2 anchored" data-number="3.1" data-anchor-id="la-catena-causale-come-metodo-diagnostico">
-<h2 class="anchored" data-number="3.1" data-anchor-id="la-catena-causale-come-metodo-diagnostico"><span class="header-section-number">3.1</span> La catena causale come metodo diagnostico</h2>
+<section id="la-catena-causale-come-metodo-diagnostico" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="la-catena-causale-come-metodo-diagnostico"><span class="header-section-number">3.1</span> La catena causale come metodo diagnostico</h2>
 <p>La stagflazione non si identifica da un singolo indicatore. Va letta come una sequenza temporale in cui cinque blocchi si attivano in successione con lag tipici. Questo non è un modello stimato: è un framework diagnostico basato sulla letteratura e sull’evidenza descrittiva. <em>Assunzione critica</em>: i lag sono stabili tra episodi. Se variassero con il regime o con l’intensità energetica settoriale, i segnali di early warning potrebbero arrivare in anticipo o in ritardo.</p>
-<div id="63486875" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display">
 <div>
-<div class="figure">
 <p><img src="figure/fig01.png" class="figure-img" role="img" width="1156" height="403"></p>
-</div>
-</div>
-</div>
 </div>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
@@ -393,74 +416,56 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="lo-stagflation-risk-index-sri" class="level2 anchored" data-number="3.2" data-anchor-id="lo-stagflation-risk-index-sri">
-<h2 class="anchored" data-number="3.2" data-anchor-id="lo-stagflation-risk-index-sri"><span class="header-section-number">3.2</span> Lo Stagflation Risk Index (SRI)</h2>
-<p><span class="math display">\[ \text{SRI} = \text{norm}_{0\text{–}100}\!\Bigl( 0{,}25 \cdot z(\text{Brent}) + 0{,}25 \cdot z(\text{HICP core}) - 0{,}20 \cdot z(\text{PIL}_{t/t}) + 0{,}15 \cdot z(\text{disoc}_{EA}) + 0{,}15 \cdot z(\text{tasso SNF}) \Bigr) \]</span></p>
+<section id="lo-stagflation-risk-index-sri" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="lo-stagflation-risk-index-sri"><span class="header-section-number">3.2</span> Lo Stagflation Risk Index (SRI)</h2>
+<p><span class="math display">\[\text{SRI} = \text{norm}_{0\text{--}100}\!\Bigl( 0{,}25 \cdot z(\text{Brent}) + 0{,}25 \cdot z(\text{HICP core}) - 0{,}20 \cdot z(\text{PIL}_{t/t}) + 0{,}15 \cdot z(\text{disoc}_{EA}) + 0{,}15 \cdot z(\text{tasso SNF}) \Bigr)\]</span></p>
 <p>dove <span class="math inline">\(z(\cdot)\)</span> è lo z-score su finestra mobile 120 mesi (min. 36). I pesi sono fissi, calibrati su giudizio esperto, non su stima econometrica. <em>Limite esplicito</em>: struttura lineare a pesi fissi; non cattura la regime-dependence del ciclo (in early stagflation il peso energia dovrebbe essere più alto; in late stagflation il credito e il lavoro). Il valore di riferimento (ottobre 2025: 65,6) va aggiornato quando i dati marzo 2026 saranno disponibili.</p>
-<div id="e40ed0e3" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display">
 <div>
-<div class="figure">
 <p><img src="figure/fig02.png" class="figure-img" role="img" width="1027" height="194"></p>
 </div>
-</div>
-</div>
-</div>
 </section>
-<section id="i-tre-regimi-della-stagflazione" class="level2 anchored" data-number="3.3" data-anchor-id="i-tre-regimi-della-stagflazione">
-<h2 class="anchored" data-number="3.3" data-anchor-id="i-tre-regimi-della-stagflazione"><span class="header-section-number">3.3</span> I tre regimi della stagflazione</h2>
+<section id="i-tre-regimi-della-stagflazione" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="i-tre-regimi-della-stagflazione"><span class="header-section-number">3.3</span> I tre regimi della stagflazione</h2>
 <p>La stagflazione non è un evento puntuale ma un processo che attraversa tre fasi. Riconoscere il regime è determinante per calibrare le azioni operative.</p>
-<div id="c2b4fe2a" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display">
 <div>
-<div class="figure">
 <p><img src="figure/fig03.png" class="figure-img" role="img" width="1417" height="637"></p>
-</div>
-</div>
-</div>
 </div>
 </section>
 </section>
 <section id="classificazione-esplicita-dei-rischi" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Classificazione esplicita dei rischi</h1>
 <p>Per ogni rischio: categoria, orizzonte temporale, meccanismo di trasmissione, trigger, fragilità dell’analisi.</p>
-<section id="rischio-di-credito" class="level2 anchored" data-number="4.1" data-anchor-id="rischio-di-credito">
-<h2 class="anchored" data-number="4.1" data-anchor-id="rischio-di-credito"><span class="header-section-number">4.1</span> Rischio di credito</h2>
+<section id="rischio-di-credito" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="rischio-di-credito"><span class="header-section-number">4.1</span> Rischio di credito</h2>
 <p><strong>Orizzonte</strong>: breve-medio (6–18 mesi, H2 2026 – H1 2027).</p>
 <p>Lo shock energetico comprime i margini operativi delle imprese energivore (manifatturiero pesante, ceramica, chimica, trasporti, agroalimentare). Il DSCR si deteriora perché i flussi di cassa calano mentre il servizio del debito resta fisso o sale con i tassi. Le banche registrano una progressiva migrazione da stage 1 a stage 2 e poi a stage 3 nel modello IFRS 9, con aumento delle ECL.</p>
 <p><strong>Trigger</strong>: Brent &gt; 100 USD per più di 6 mesi consecutivi + tasso SNF medio &gt; 5,5% + crescita EA &lt; 0% per due trimestri.</p>
 <p><strong>Fragilità</strong>: il lag di 6–12 mesi è ipotesi non ancora stimata empiricamente. Se il lag fosse più corto (3–4 mesi), la finestra operativa potrebbe essere già parzialmente chiusa.</p>
-<div id="d1674c2a" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display">
 <div>
-<div class="figure">
 <p><img src="figure/fig04.png" class="figure-img" role="img" width="1156" height="349"></p>
 </div>
-</div>
-</div>
-</div>
 </section>
-<section id="rischio-di-concentrazione" class="level2 anchored" data-number="4.2" data-anchor-id="rischio-di-concentrazione">
-<h2 class="anchored" data-number="4.2" data-anchor-id="rischio-di-concentrazione"><span class="header-section-number">4.2</span> Rischio di concentrazione</h2>
+<section id="rischio-di-concentrazione" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="rischio-di-concentrazione"><span class="header-section-number">4.2</span> Rischio di concentrazione</h2>
 <p><strong>Orizzonte</strong>: breve (3–9 mesi).</p>
 <p>La trasmissione energetico-creditizia non è uniforme. I settori con la più alta intensità energetica (C20 chimica, C23 ceramica/vetro, C24 siderurgia, H trasporti) e le aree geografiche dove sono concentrati (distretti industriali del Nord-Est, distretto ceramico, petrolchimico) subiscono un impatto sproporzionato. Il Mezzogiorno, con PMI strutturalmente più fragili, è esposto per canali diversi ma altrettanto rilevanti (liquidità, capitale circolante).</p>
 <p><strong>Trigger</strong>: deterioramento del portafoglio in due o più settori energivori simultaneamente; o concentrazione territoriale &gt; 30% degli impieghi in aree con intensità energetica media alta.</p>
 <p><strong>Fragilità</strong>: i dati Bankit disponibili (TDB10295, TRI30021) consentono la segmentazione per settore e provincia, ma non sono stati ancora elaborati disaggregatamente in questa analisi.</p>
 </section>
-<section id="rischio-regolamentare" class="level2 anchored" data-number="4.3" data-anchor-id="rischio-regolamentare">
-<h2 class="anchored" data-number="4.3" data-anchor-id="rischio-regolamentare"><span class="header-section-number">4.3</span> Rischio regolamentare</h2>
+<section id="rischio-regolamentare" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="rischio-regolamentare"><span class="header-section-number">4.3</span> Rischio regolamentare</h2>
 <p><strong>Orizzonte</strong>: medio (12–24 mesi).</p>
 <p>L’applicazione più stringente delle linee guida EBA sulla gestione dei crediti in bonis (stage 2 triggers) e l’entrata in vigore di CRR3 aumentano la sensibilità dei requisiti di capitale alle variazioni macro. In un regime stagflazionistico, le autorità potrebbero richiedere buffer aggiuntivi (Pillar 2 Guidance) proprio quando la redditività è sotto pressione.</p>
 <p><strong>Trigger</strong>: ispezione regolamentare che evidenzia inadeguatezza dei modelli IFRS 9; o attivazione di stress test BCE/EBA con scenario stagflazionistico esplicito.</p>
 </section>
-<section id="rischio-di-modello" class="level2 anchored" data-number="4.4" data-anchor-id="rischio-di-modello">
-<h2 class="anchored" data-number="4.4" data-anchor-id="rischio-di-modello"><span class="header-section-number">4.4</span> Rischio di modello</h2>
+<section id="rischio-di-modello" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="rischio-di-modello"><span class="header-section-number">4.4</span> Rischio di modello</h2>
 <p><strong>Orizzonte</strong>: trasversale.</p>
 <p>I modelli di PD, LGD e stage allocation calibrati sul periodo 2010–2021 — tassi bassi e prezzi energetici moderati — introducono un rischio di sottostima sistematica degli ECL nel regime 2026.</p>
 <p><strong>Trigger</strong>: inizio di NPL inflow superiore alle stime ECL del portafoglio; o backtesting negativo sulle previsioni PD per le categorie energivore.</p>
 </section>
-<section id="rischio-sistemico" class="level2 anchored" data-number="4.5" data-anchor-id="rischio-sistemico">
-<h2 class="anchored" data-number="4.5" data-anchor-id="rischio-sistemico"><span class="header-section-number">4.5</span> Rischio sistemico</h2>
+<section id="rischio-sistemico" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="rischio-sistemico"><span class="header-section-number">4.5</span> Rischio sistemico</h2>
 <p><strong>Orizzonte</strong>: medio (6–18 mesi).</p>
 <p>Se la BCE fosse costretta a effettuare rialzi in un contesto di crescita negativa, lo spread BTP-Bund potrebbe allargarsi verso e oltre i 200 bp, riattivando il loop sovrano-bancario già visto nel 2011–2012. L’efficacia del TPI in un contesto in cui la BCE stessa dovrebbe alzare i tassi — riducendo lo spazio per acquisti di titoli periferici — non è stata ancora testata.</p>
 <p><strong>Trigger</strong>: annuncio di rialzo BCE + crescita EA negativa + spread BTP &gt; 200 bp per due mesi consecutivi.</p>
@@ -469,14 +474,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="tre-scenari-prospettici" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Tre scenari prospettici</h1>
 <p>Gli scenari hanno meccanismi distinti — non sono semplici variazioni di intensità. <em>Assunzione comune</em>: la struttura del sistema bancario italiano rimane sostanzialmente invariata nell’orizzonte considerato (12–18 mesi).</p>
-<div id="00e41539" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display">
 <div>
-<div class="figure">
 <p><img src="figure/fig05.png" class="figure-img" role="img" width="1547" height="669"></p>
-</div>
-</div>
-</div>
 </div>
 <p><strong>Scenario base</strong> — Lo shock energetico rimane prolungato ma non si intensifica. Il Brent oscilla tra 90 e 110 USD. La BCE resta ferma nella prima metà del 2026, con possibilità di un taglio precauzionale a Q4. La crescita EA si assesta tra +0,3% e +0,6%, evitando la recessione tecnica. L’NPL inflow è graduale a partire da H2 2026, concentrato nei settori energivori. <em>Rischio principale di questo scenario</em>: l’inerzia operativa. La situazione è abbastanza “confortante” da ritardare le azioni preventive nelle banche, perdendo la finestra anticipatoria.</p>
 <p><strong>Scenario avverso</strong> — Il conflitto si intensifica nella seconda metà del 2026. Il Brent supera i 120 USD. In Germania e nei Paesi Bassi si avvia una spirale salariale (aumenti &gt; 5% a/a). Le aspettative EA superano il 4%. La BCE è costretta a un rialzo di emergenza nel Q3 2026 nonostante la crescita negativa. L’area euro entra in recessione tecnica. Il meccanismo di feedback — credito si contrae → crescita peggiora → default aumentano → credito si contrae ulteriormente — rende questo scenario auto-amplificante. Una volta innescato, è molto più difficile da interrompere.</p>
@@ -504,26 +503,26 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<section id="alco-asset-liability-management" class="level2 anchored" data-number="6.1" data-anchor-id="alco-asset-liability-management">
-<h2 class="anchored" data-number="6.1" data-anchor-id="alco-asset-liability-management"><span class="header-section-number">6.1</span> ALCO — Asset &amp; Liability Management</h2>
+<section id="alco-asset-liability-management" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="alco-asset-liability-management"><span class="header-section-number">6.1</span> ALCO — Asset &amp; Liability Management</h2>
 <p>Il trade-off principale è tra protezione del margine di interesse a breve e esposizione al rischio di qualità del credito a medio termine. In un regime di tassi elevati, il margine di interesse tende a espandersi nel breve — soprattutto per le banche con portafoglio a tasso variabile. Questo può mascherare il deterioramento in corso del portafoglio.</p>
 <p>Il framework SRI + lag stimati suggerisce che, con Brent stabilmente sopra i 100 USD, il sistema bancario è verosimilmente a 6–9 mesi dalla materializzazione del deterioramento creditizio. La finestra per agire su funding mix, duration dell’attivo e composizione settoriale del portafoglio è aperta ora, non quando i dati di deterioramento saranno visibili nei bilanci.</p>
 <p>Il segnale operativo da monitorare è la velocità con cui i tassi sui nuovi prestiti a SNF si distaccano dal DFR BCE: se lo spread bancario si allarga, il mercato sta già incorporando il deterioramento atteso.</p>
 </section>
-<section id="pricing-del-credito-corporate" class="level2 anchored" data-number="6.2" data-anchor-id="pricing-del-credito-corporate">
-<h2 class="anchored" data-number="6.2" data-anchor-id="pricing-del-credito-corporate"><span class="header-section-number">6.2</span> Pricing del credito corporate</h2>
+<section id="pricing-del-credito-corporate" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="pricing-del-credito-corporate"><span class="header-section-number">6.2</span> Pricing del credito corporate</h2>
 <p>Il framework consente di identificare i settori con la maggiore probabilità di deterioramento del DSCR prima che emerga nei rating interni. I settori prioritari per revisione degli spread: manifatturiero energivoro (C20, C23, C24), trasporti e logistica (H), agroalimentare ad alto consumo di gas (parte di C10–C11).</p>
 <p>Il trade-off è tra competitività commerciale (spread più alti riducono la domanda) e correttezza del pricing per il rischio (spread inadeguati creano selezione avversa). In uno scenario di stress energetico prolungato, il secondo rischio domina il primo.</p>
 <p><em>Assunzione critica</em>: questa logica vale per le nuove erogazioni. Per il portafoglio esistente a tasso fisso la finestra è più limitata e richiede strumenti diversi (covenant, revisione delle linee).</p>
 </section>
-<section id="early-warning-e-gestione-ifrs-9" class="level2 anchored" data-number="6.3" data-anchor-id="early-warning-e-gestione-ifrs-9">
-<h2 class="anchored" data-number="6.3" data-anchor-id="early-warning-e-gestione-ifrs-9"><span class="header-section-number">6.3</span> Early warning e gestione IFRS 9</h2>
+<section id="early-warning-e-gestione-ifrs-9" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="early-warning-e-gestione-ifrs-9"><span class="header-section-number">6.3</span> Early warning e gestione IFRS 9</h2>
 <p>La catena Energia → DSCR → PD → Stage migration è direttamente integrabile nei modelli di stage allocation. Lo strumento è il <strong>forward-looking adjustment</strong> (overlay macro): sovrascrivere il modello storico con una correzione basata sullo scenario macro attuale.</p>
 <p>Un trigger operativamente verificabile: se il Brent supera il +30% a/a per tre mesi consecutivi, attivare una revisione del staging per le esposizioni verso i settori energivori. Il lag stimato di 6–9 mesi significa che questo trigger deve essere attivato <em>prima</em> che la PD storica mostri il deterioramento.</p>
 <p>Il principale rischio di governance: asimmetria delle conseguenze. Se lo scenario base si materializza, l’overlay aumenta le ECL (impatto sul patrimonio); se si materializza lo scenario di adattamento, l’overlay era cautelativo ma non necessario. Dichiarare esplicitamente le assunzioni dello scenario usato per l’overlay è un requisito di trasparenza verso auditor e vigilanza.</p>
 </section>
-<section id="connessione-con-il-nowcasting" class="level2 anchored" data-number="6.4" data-anchor-id="connessione-con-il-nowcasting">
-<h2 class="anchored" data-number="6.4" data-anchor-id="connessione-con-il-nowcasting"><span class="header-section-number">6.4</span> Connessione con il nowcasting</h2>
+<section id="connessione-con-il-nowcasting" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="connessione-con-il-nowcasting"><span class="header-section-number">6.4</span> Connessione con il nowcasting</h2>
 <p>Il modello ARDL in fase di stima (<code>ardl_stagflazione.ipynb</code>) permetterà, una volta calibrato, di aggiornare le previsioni del tasso creditizio mensile non appena i prezzi energetici (disponibili in tempo reale) vengono osservati — senza attendere il dato Bankit con il suo ritardo tipico di 45 giorni. Questo è il ruolo del blocco <code>fill_ragged()</code> in <code>macro_dashboard/nowcast.py</code>.</p>
 </section>
 </section>
@@ -537,29 +536,29 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="criticità-residue-e-vulnerabilità-aperte" class="level1" data-number="8">
 <h1 data-number="8"><span class="header-section-number">8</span> Criticità residue e vulnerabilità aperte</h1>
-<section id="rischi-non-mitigabili" class="level2 anchored" data-number="8.1" data-anchor-id="rischi-non-mitigabili">
-<h2 class="anchored" data-number="8.1" data-anchor-id="rischi-non-mitigabili"><span class="header-section-number">8.1</span> Rischi non mitigabili</h2>
+<section id="rischi-non-mitigabili" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="rischi-non-mitigabili"><span class="header-section-number">8.1</span> Rischi non mitigabili</h2>
 <p>L’<strong>opacità del lag effettivo</strong> è la vulnerabilità più strutturale. Se il lag fosse già scaduto, le banche scoprirebbero il problema nei dati di bilancio Q3–Q4 2026, senza la possibilità di aver agito preventivamente. Non esiste evidenza disponibile nei dati pubblici che permetta di escludere questo scenario.</p>
 <p>La <strong>spirale salari-prezzi</strong>, una volta innescata, non si interrompe rapidamente. Il rischio di credito che ne deriva non è più solo un rischio di cash flow per le imprese, ma un rischio di ristrutturazione sistemica.</p>
 </section>
-<section id="zone-di-incertezza-strutturale" class="level2 anchored" data-number="8.2" data-anchor-id="zone-di-incertezza-strutturale">
-<h2 class="anchored" data-number="8.2" data-anchor-id="zone-di-incertezza-strutturale"><span class="header-section-number">8.2</span> Zone di incertezza strutturale</h2>
+<section id="zone-di-incertezza-strutturale" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="zone-di-incertezza-strutturale"><span class="header-section-number">8.2</span> Zone di incertezza strutturale</h2>
 <p>La <strong>funzione di reazione BCE</strong> in uno scenario di inflazione &gt; 3% con crescita negativa non è osservabile ex ante. L’efficacia del TPI in un contesto dove la BCE stessa potrebbe dover alzare i tassi è una zona di incertezza senza precedenti diretti.</p>
 <p>La <strong>trasmissione settoriale eterogenea</strong> — cuore del rischio di concentrazione — è una zona di opacità per chi non dispone dei dati interni di portafoglio.</p>
 </section>
-<section id="dipendenze-esterne" class="level2 anchored" data-number="8.3" data-anchor-id="dipendenze-esterne">
-<h2 class="anchored" data-number="8.3" data-anchor-id="dipendenze-esterne"><span class="header-section-number">8.3</span> Dipendenze esterne</h2>
+<section id="dipendenze-esterne" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="dipendenze-esterne"><span class="header-section-number">8.3</span> Dipendenze esterne</h2>
 <p>La geopolitica non è prevedibile con strumenti analitici standard. Il coordinamento fiscale europeo è storicamente lento e incompleto. Il comportamento delle grandi banche europee in scenario avverso potrebbe anticipare e amplificare il deterioramento delle condizioni di credito prima che i dati domestici lo segnalino.</p>
 </section>
-<section id="possibili-shock-esogeni-non-incorporati" class="level2 anchored" data-number="8.4" data-anchor-id="possibili-shock-esogeni-non-incorporati">
-<h2 class="anchored" data-number="8.4" data-anchor-id="possibili-shock-esogeni-non-incorporati"><span class="header-section-number">8.4</span> Possibili shock esogeni non incorporati</h2>
+<section id="possibili-shock-esogeni-non-incorporati" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="possibili-shock-esogeni-non-incorporati"><span class="header-section-number">8.4</span> Possibili shock esogeni non incorporati</h2>
 <p>Un evento di instabilità finanziaria non connesso all’energia potrebbe interagire con lo scenario stagflazionistico in modo non modellizzabile. Una risposta fiscale eccezionalmente rapida e di scala sufficiente (replay del SURE o del NGEU con focus energetico) potrebbe modificare radicalmente le traiettorie di tutti e tre gli scenari.</p>
 <hr>
 <p><em>Dati aggiornati a marzo 2026.</em></p>
-</section>
-</section>
 
 
+</section>
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -970,7 +969,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2603_Stagflazione2026/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

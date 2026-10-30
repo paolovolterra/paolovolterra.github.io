@@ -95,6 +95,35 @@ div.csl-indent {
 }</script>
 <script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../MCC.css">
 <meta property="og:title" content="Mappa causale dell’economia – Paolo Volterra">
@@ -202,10 +231,12 @@ div.csl-indent {
   <li><a href="#rapporto-con-il-primo-nowcast-del-credito" id="toc-rapporto-con-il-primo-nowcast-del-credito" class="nav-link" data-scroll-target="#rapporto-con-il-primo-nowcast-del-credito"><span class="header-section-number">13</span> Rapporto con il primo nowcast del credito</a></li>
   <li><a href="#rappresentazione-e-aggiornamento" id="toc-rappresentazione-e-aggiornamento" class="nav-link" data-scroll-target="#rappresentazione-e-aggiornamento"><span class="header-section-number">14</span> Rappresentazione e aggiornamento</a></li>
   <li><a href="#governance-delle-affermazioni" id="toc-governance-delle-affermazioni" class="nav-link" data-scroll-target="#governance-delle-affermazioni"><span class="header-section-number">15</span> Governance delle affermazioni</a></li>
-  <li><a href="#riferimenti" id="toc-riferimenti" class="nav-link" data-scroll-target="#riferimenti"><span class="header-section-number">16</span> Riferimenti</a></li>
+  <li><a href="#riferimenti" id="toc-riferimenti" class="nav-link" data-scroll-target="#riferimenti"><span class="header-section-number">16</span> Riferimenti</a>
+  <ul class="collapse">
   <li><a href="#note" id="toc-note" class="nav-link" data-scroll-target="#note"><span class="header-section-number">16.1</span> Note</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2610_MappaCausaleEconomia/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -303,9 +334,6 @@ div.csl-indent {
 <p>L’impostazione <strong>product-oriented</strong>, associata alla critica di Galbraith <span class="citation" data-cites="galbraith1958Affluent galbraith1967Industrial"><a href="#ref-galbraith1958Affluent" role="doc-biblioref">[9]</a>, <a href="#ref-galbraith1967Industrial" role="doc-biblioref">[10]</a></span>, considera invece produzione, innovazione e comunicazione capaci di formare o amplificare desideri e domanda. Le due ipotesi non vanno confuse.</p>
 <p>Una terza impostazione, prevalente nella macroeconomia contemporanea, attribuisce all’offerta la determinazione del prodotto nel lungo periodo. Lavoro, capitale e progresso tecnico fissano il prodotto potenziale <span class="citation" data-cites="solow1956Contribution"><a href="#ref-solow1956Contribution" role="doc-biblioref">[11]</a></span>, mentre la domanda spiega soprattutto gli scostamenti di breve periodo da quel livello. In questa lettura la domanda delle famiglie conta per il ciclo, non per la crescita di lungo periodo. La distinzione è verificabile: gli shock di domanda dovrebbero avere effetti temporanei sul prodotto, quelli di offerta effetti permanenti <span class="citation" data-cites="blanchard1989Dynamic"><a href="#ref-blanchard1989Dynamic" role="doc-biblioref">[12]</a></span>.</p>
 <p>Il modello empirico dovrà quindi verificare la trasmissione dalla domanda alla produzione, la possibile retroazione dall’offerta alla domanda e il vincolo posto nel lungo periodo dal prodotto potenziale.</p>
-<div id="tab-ipotesi-concorrenti" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-ipotesi-concorrenti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 14%">
@@ -337,12 +365,7 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;1: Ipotesi teoriche concorrenti</p>
-</div>
-</div>
-</div>
 <p><em>In parole semplici:</em> il primo modello parte da ciò che le persone cercano di soddisfare; il secondo considera la capacità delle imprese di creare nuovi desideri e mercati; il terzo ricorda che, nel lungo periodo, quanto un’economia può produrre dipende da lavoratori, macchinari e tecnologia.</p>
 </section>
 <section id="dal-bisogno-alla-domanda-effettiva" class="level1" data-number="3">
@@ -397,21 +420,10 @@ div.csl-indent {
 <h1 data-number="4"><span class="header-section-number">4</span> Il sistema di trasmissione</h1>
 <p>La sequenza delle variabili forma un <strong>circuito modale</strong>: reddito, aspettative, domanda, credito, produzione, occupazione, prezzi e investimenti si influenzano attraverso retroazioni e stati accumulati. Il circuito non possiede un’origine economica unica. La variabile iniziale è il punto nel quale l’analista decide di aprire il ciclo per rispondere a una domanda determinata.</p>
 <p>Questa scelta non attribuisce alla variabile selezionata una priorità ontologica. Stabilisce soltanto il verso del test, l’orizzonte temporale e le conseguenze da seguire. Se l’analisi parte da uno shock dei prezzi, si osservano potere d’acquisto, consumi e produzione; se parte dalla fiducia, si osservano spesa, vendite e investimenti; se parte dal credito, si separano domanda e offerta bancaria e si seguono gli effetti sull’attività. La chiusura del percorso riporta comunque alle variabili iniziali attraverso reddito, prezzi, debito, ricchezza e aspettative.</p>
-<div id="figura-catena-causale" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-catena-causale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig01.svg" class="img-fluid figure-img" role="img"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;1: Circuito modale delle variabili economiche: un possibile punto di apertura e le retroazioni</p>
-</div>
-</div>
-</div>
 <p><em>In parole semplici:</em> il diagramma non afferma che l’economia cominci dai bisogni. Mostra un circuito che può essere aperto in punti differenti: siamo noi a scegliere la prima variabile in funzione della relazione che vogliamo verificare.</p>
 <p>Il circuito comprende un modulo neokeynesiano che rende operativa l’ipotesi dal lato dell’offerta <span class="citation" data-cites="woodford2003Interest kva2026Scientific"><a href="#ref-woodford2003Interest" role="doc-biblioref">[18]</a>, <a href="#ref-kva2026Scientific" role="doc-biblioref">[19]</a></span>. L’output gap è la distanza fra il prodotto effettivo e il prodotto potenziale, cioè quello che si avrebbe con prezzi pienamente flessibili. Il gap non è osservato e va stimato. Quando è positivo spinge i prezzi verso l’alto e indica alla banca centrale un rialzo dei tassi; quando è negativo indica il contrario. Uno shock d’offerta negativo, come un rincaro dell’energia, riduce il prodotto potenziale più di quello effettivo: il gap diventa positivo anche se la produzione cala.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> La stessa variabile osservata, una produzione in calo, porta così a conclusioni opposte a seconda che lo shock venga dalla domanda o dall’offerta.</p>
-<div id="tab-aperture-circuito" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-aperture-circuito-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 12%">
@@ -466,74 +478,66 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;2: Possibili aperture dello stesso circuito causale</p>
-</div>
-</div>
-</div>
 <p><em>In parole semplici:</em> la stessa economia può essere studiata partendo da punti diversi. La scelta è valida quando dichiara quale variabile apre l’analisi, quali effetti saranno seguiti e quale ritorno chiude il circuito.</p>
 <p>La variabile di apertura sarà scelta mediante cinque criteri: pertinenza rispetto alla domanda di ricerca, precedenza economica plausibile, disponibilità nel calendario reale, qualità e stabilità della misura, possibilità di distinguere lo shock iniziale dalle altre cause. Per il nowcasting può essere utile aprire il circuito con il nuovo rilascio; per una tesi causale è preferibile partire da uno shock o da una variazione identificabile, anche se pubblicata più tardi.</p>
 </section>
 <section id="sequenza-causale-operativa-e-formule-econometriche" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Sequenza causale operativa e formule econometriche</h1>
 <p>Il circuito viene aperto, per il primo ciclo di verifica, in corrispondenza di prezzi e capacità reale di spesa. Questa apertura è provvisoria e può essere ruotata nei cicli successivi. La sequenza dei paragrafi segue il percorso prezzi → reddito reale → aspettative → spesa e credito → vendite interne ed estere → produzione → lavoro e investimenti → reddito successivo → verifica aggregata. Ogni passaggio dichiara che cosa è un’identità, che cosa è una relazione stimabile e quale condizione aggiuntiva è necessaria per interpretarla causalmente.</p>
-<section id="prezzi-e-capacità-reale-di-spesa" class="level2 anchored" data-number="5.1" data-anchor-id="prezzi-e-capacità-reale-di-spesa">
-<h2 class="anchored" data-number="5.1" data-anchor-id="prezzi-e-capacità-reale-di-spesa"><span class="header-section-number">5.1</span> Prezzi e capacità reale di spesa</h2>
+<section id="prezzi-e-capacità-reale-di-spesa" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="prezzi-e-capacità-reale-di-spesa"><span class="header-section-number">5.1</span> Prezzi e capacità reale di spesa</h2>
 <p>Il primo passaggio trasforma le risorse nominali in capacità reale di acquisto. La relazione di base è un’identità, non una stima causale:</p>
-<p><span class="math display">\[ R_t = \frac{Y^{d}_t}{P^C_t}, \qquad \Delta \log R_t \simeq \Delta \log Y^{d}_t - \pi^C_t, \]</span></p>
+<p><span class="math display">\[R_t = \frac{Y^{d}_t}{P^C_t}, \qquad \Delta \log R_t \simeq \Delta \log Y^{d}_t - \pi^C_t,\]</span></p>
 <p>dove <span class="math inline">\(Y^{d}_t\)</span> è il reddito disponibile nominale, <span class="math inline">\(P^C_t\)</span> il deflatore dei consumi e <span class="math inline">\(R_t\)</span> il potere d’acquisto. L’identità misura l’erosione reale prodotta dai prezzi; non stabilisce da sola se la variazione dei prezzi derivi da domanda, offerta, energia o margini.</p>
 </section>
-<section id="capacità-di-spesa-fiducia-e-consumi" class="level2 anchored" data-number="5.2" data-anchor-id="capacità-di-spesa-fiducia-e-consumi">
-<h2 class="anchored" data-number="5.2" data-anchor-id="capacità-di-spesa-fiducia-e-consumi"><span class="header-section-number">5.2</span> Capacità di spesa, fiducia e consumi</h2>
+<section id="capacità-di-spesa-fiducia-e-consumi" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="capacità-di-spesa-fiducia-e-consumi"><span class="header-section-number">5.2</span> Capacità di spesa, fiducia e consumi</h2>
 <p>La spesa dipende dalle risorse correnti e attese, dalla fiducia, dalla ricchezza e dal desiderio di risparmiare. Una prima specificazione a correzione dell’errore unisce la dinamica di breve periodo a una relazione di lungo periodo fra consumi, reddito reale e ricchezza <span class="citation" data-cites="davidson1978Econometric"><a href="#ref-davidson1978Econometric" role="doc-biblioref">[20]</a></span>:</p>
-<p><span class="math display">\[ \Delta \log C_t = \alpha + \sum_{\ell=1}^{L}\beta_{\ell}\Delta\log R_{t-\ell} + \sum_{\ell=1}^{L}\gamma_{\ell}F_{t-\ell} - \lambda\left(\log C_{t-1} - \theta_R \log R_{t-1} - \theta_W \log W_{t-1}\right) + \eta r_t + \varepsilon_t, \]</span></p>
+<p><span class="math display">\[\Delta \log C_t = \alpha + \sum_{\ell=1}^{L}\beta_{\ell}\Delta\log R_{t-\ell} + \sum_{\ell=1}^{L}\gamma_{\ell}F_{t-\ell} - \lambda\left(\log C_{t-1} - \theta_R \log R_{t-1} - \theta_W \log W_{t-1}\right) + \eta r_t + \varepsilon_t,\]</span></p>
 <p>dove <span class="math inline">\(C_t\)</span> indica i consumi reali, <span class="math inline">\(F_t\)</span> la fiducia, <span class="math inline">\(W_t\)</span> la ricchezza e <span class="math inline">\(r_t\)</span> il costo reale del finanziamento. Il termine fra parentesi misura la distanza dei consumi dal loro livello di equilibrio e <span class="math inline">\(\lambda\)</span> la velocità con cui vi ritornano. Reddito e ricchezza entrano in livello soltanto in questa relazione di lungo periodo, perché sono serie non stazionarie. I regressori partono dal primo ritardo: il potere d’acquisto contemporaneo contiene il deflatore dei consumi ed è determinato insieme alla spesa. I coefficienti descrivono intensità e ritardo; per attribuire un effetto causale alla fiducia occorre separarla dalle notizie su reddito, prezzi e occupazione già conosciute dalle famiglie <span class="citation" data-cites="jappelli2010Consumption"><a href="#ref-jappelli2010Consumption" role="doc-biblioref">[14]</a></span>.</p>
 </section>
-<section id="domanda-e-offerta-di-credito" class="level2 anchored" data-number="5.3" data-anchor-id="domanda-e-offerta-di-credito">
-<h2 class="anchored" data-number="5.3" data-anchor-id="domanda-e-offerta-di-credito"><span class="header-section-number">5.3</span> Domanda e offerta di credito</h2>
+<section id="domanda-e-offerta-di-credito" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="domanda-e-offerta-di-credito"><span class="header-section-number">5.3</span> Domanda e offerta di credito</h2>
 <p>Il credito osservato è il risultato congiunto della domanda del debitore e dell’offerta bancaria. Le due componenti non sono identificabili dalla sola quantità erogata. Una rappresentazione minima, nella tradizione dei modelli di mercato in disequilibrio <span class="citation" data-cites="fair1972Methods maddala1974Maximum"><a href="#ref-fair1972Methods" role="doc-biblioref">[21]</a>, <a href="#ref-maddala1974Maximum" role="doc-biblioref">[22]</a></span>, è:</p>
-<p><span class="math display">\[ \begin{aligned} L^d_t &amp;= \alpha_d + \beta_d E_t(Y_{t+1}) - \gamma_d i_t + u^d_t,\\ L^s_t &amp;= \alpha_s + \delta_s i_t - \beta_s \text{Rischio}_t - \gamma_s \text{Criteri}_t + u^s_t,\\ L_t &amp;= \min(L^d_t,L^s_t). \end{aligned} \]</span></p>
+<p><span class="math display">\[\begin{aligned} L^d_t &amp;= \alpha_d + \beta_d E_t(Y_{t+1}) - \gamma_d i_t + u^d_t,\\ L^s_t &amp;= \alpha_s + \delta_s i_t - \beta_s \text{Rischio}_t - \gamma_s \text{Criteri}_t + u^s_t,\\ L_t &amp;= \min(L^d_t,L^s_t). \end{aligned}\]</span></p>
 <p>dove <span class="math inline">\(L^d_t\)</span> e <span class="math inline">\(L^s_t\)</span> sono domanda e offerta di prestiti, <span class="math inline">\(L_t\)</span> il credito erogato, <span class="math inline">\(i_t\)</span> il tasso sui prestiti, <span class="math inline">\(\text{Rischio}_t\)</span> il rischio percepito dalle banche e <span class="math inline">\(\text{Criteri}_t\)</span> i criteri di concessione. Per le imprese il segno di <span class="math inline">\(\beta_d\)</span> non è certo: quando le vendite calano, la domanda di prestiti può aumentare per finanziare scorte e capitale circolante e diminuire soltanto in seguito, con il rinvio degli investimenti. L’indagine sul credito bancario serve a distinguere variazioni della domanda, criteri di offerta e quantità effettivamente concesse. L’ultima equazione stabilisce che il credito erogato è il minore fra domanda e offerta: quando il vincolo è l’offerta, la domanda di finanziamento non soddisfatta non si traduce in spesa.</p>
 </section>
-<section id="spesa-vendite-e-ordini" class="level2 anchored" data-number="5.4" data-anchor-id="spesa-vendite-e-ordini">
-<h2 class="anchored" data-number="5.4" data-anchor-id="spesa-vendite-e-ordini"><span class="header-section-number">5.4</span> Spesa, vendite e ordini</h2>
+<section id="spesa-vendite-e-ordini" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="spesa-vendite-e-ordini"><span class="header-section-number">5.4</span> Spesa, vendite e ordini</h2>
 <p>Consumi, investimenti e domanda estera diventano segnali osservabili dalle imprese attraverso vendite e ordini. Il ponte empirico può essere scritto come:</p>
-<p><span class="math display">\[ \Delta \log V_t = \alpha + \sum_{\ell=0}^{L}\beta_{\ell}\Delta\log C_{t-\ell} + \sum_{\ell=0}^{L}\theta_{\ell}\Delta\log X^d_{t-\ell} + \Gamma'Z_t + e_t, \]</span></p>
+<p><span class="math display">\[\Delta \log V_t = \alpha + \sum_{\ell=0}^{L}\beta_{\ell}\Delta\log C_{t-\ell} + \sum_{\ell=0}^{L}\theta_{\ell}\Delta\log X^d_{t-\ell} + \Gamma'Z_t + e_t,\]</span></p>
 <p>dove <span class="math inline">\(V_t\)</span> comprende vendite e ordini, mentre <span class="math inline">\(X^d_t\)</span> rappresenta la domanda estera. Importazioni, prezzi e scorte devono essere controllati per distinguere crescita dei volumi, variazioni nominali e sostituzione con beni prodotti all’estero.</p>
 </section>
-<section id="vendite-scorte-e-produzione" class="level2 anchored" data-number="5.5" data-anchor-id="vendite-scorte-e-produzione">
-<h2 class="anchored" data-number="5.5" data-anchor-id="vendite-scorte-e-produzione"><span class="header-section-number">5.5</span> Vendite, scorte e produzione</h2>
+<section id="vendite-scorte-e-produzione" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="vendite-scorte-e-produzione"><span class="header-section-number">5.5</span> Vendite, scorte e produzione</h2>
 <p>La produzione è legata alle vendite da un’identità: in volume, ciò che viene prodotto è venduto oppure accumulato in magazzino, <span class="math inline">\(Q_t \equiv V_t + \Delta S_t\)</span>. Le imprese adeguano quindi la produzione alle vendite attese e alla distanza delle scorte dal livello desiderato <span class="citation" data-cites="lovell1961Manufacturers blinder1991Taking"><a href="#ref-lovell1961Manufacturers" role="doc-biblioref">[23]</a>, <a href="#ref-blinder1991Taking" role="doc-biblioref">[24]</a></span>:</p>
-<p><span class="math display">\[ \Delta\log Q_t = \alpha + \sum_{\ell=1}^{L}\beta_{\ell}\Delta\log V_{t-\ell} - \gamma\left(\log S_{t-1} - \log V_{t-1} - \kappa\right) + \rho\,\Delta\log Q_{t-1}+\varepsilon_t, \]</span></p>
+<p><span class="math display">\[\Delta\log Q_t = \alpha + \sum_{\ell=1}^{L}\beta_{\ell}\Delta\log V_{t-\ell} - \gamma\left(\log S_{t-1} - \log V_{t-1} - \kappa\right) + \rho\,\Delta\log Q_{t-1}+\varepsilon_t,\]</span></p>
 <p>dove <span class="math inline">\(S_t\)</span> indica le scorte e <span class="math inline">\(\kappa\)</span> il logaritmo del rapporto desiderato fra scorte e vendite. Il segno atteso delle vendite è positivo; quello delle scorte eccedenti è negativo. Empiricamente la produzione è più variabile delle vendite, il che contraddice l’idea che le scorte servano soltanto ad attenuarne le oscillazioni <span class="citation" data-cites="blinder1991Taking"><a href="#ref-blinder1991Taking" role="doc-biblioref">[24]</a></span>.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> La produzione può inoltre anticipare vendite attese oppure reagire a shock di offerta, perciò l’ordine temporale deve essere verificato e non imposto.</p>
 </section>
-<section id="produzione-lavoro-e-reddito-successivo" class="level2 anchored" data-number="5.6" data-anchor-id="produzione-lavoro-e-reddito-successivo">
-<h2 class="anchored" data-number="5.6" data-anchor-id="produzione-lavoro-e-reddito-successivo"><span class="header-section-number">5.6</span> Produzione, lavoro e reddito successivo</h2>
+<section id="produzione-lavoro-e-reddito-successivo" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="produzione-lavoro-e-reddito-successivo"><span class="header-section-number">5.6</span> Produzione, lavoro e reddito successivo</h2>
 <p>La risposta dell’occupazione alla produzione può essere stimata mediante un’elasticità dinamica, nella tradizione della legge di Okun <span class="citation" data-cites="okun1962Potential"><a href="#ref-okun1962Potential" role="doc-biblioref">[25]</a></span>:</p>
-<p><span class="math display">\[ \Delta\log N_t = lpha + \sum_{\ell=0}^{L}\beta_{\ell}\Delta\log Q_{t-\ell} + \Gamma'Z_t + \varepsilon_t, \]</span></p>
+<p><span class="math display">\[\Delta\log N_t = lpha + \sum_{\ell=0}^{L}\beta_{\ell}\Delta\log Q_{t-\ell} + \Gamma'Z_t + \varepsilon_t,\]</span></p>
 <p>dove <span class="math inline">\(N_t\)</span> indica l’occupazione e <span class="math inline">\(Q_t\)</span> la produzione. Ore lavorate, produttività, composizione settoriale e contratti modificano la trasmissione. Salari e occupazione alimentano quindi il reddito disponibile del periodo successivo, chiudendo una prima retroazione verso la capacità di spesa.</p>
 </section>
-<section id="vendite-attese-capacità-e-investimenti" class="level2 anchored" data-number="5.7" data-anchor-id="vendite-attese-capacità-e-investimenti">
-<h2 class="anchored" data-number="5.7" data-anchor-id="vendite-attese-capacità-e-investimenti"><span class="header-section-number">5.7</span> Vendite attese, capacità e investimenti</h2>
+<section id="vendite-attese-capacità-e-investimenti" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="vendite-attese-capacità-e-investimenti"><span class="header-section-number">5.7</span> Vendite attese, capacità e investimenti</h2>
 <p>Gli investimenti dipendono dalle vendite attese, dal grado di utilizzo della capacità, dal costo del capitale e dal credito. Una forma dell’acceleratore che include il costo d’uso del capitale <span class="citation" data-cites="jorgenson1963Capital"><a href="#ref-jorgenson1963Capital" role="doc-biblioref">[26]</a></span> e la disponibilità di finanziamento <span class="citation" data-cites="fazzari1988Financing"><a href="#ref-fazzari1988Financing" role="doc-biblioref">[27]</a></span> è:</p>
-<p><span class="math display">\[ \frac{I_t}{K_{t-1}} = \alpha + \beta \frac{E_t(\Delta V_{t+1})}{K_{t-1}} + \gamma U_t - \delta UCC_t + \phi \frac{\Delta L_t}{K_{t-1}} + \varepsilon_t, \]</span></p>
+<p><span class="math display">\[\frac{I_t}{K_{t-1}} = \alpha + \beta \frac{E_t(\Delta V_{t+1})}{K_{t-1}} + \gamma U_t - \delta UCC_t + \phi \frac{\Delta L_t}{K_{t-1}} + \varepsilon_t,\]</span></p>
 <p>dove <span class="math inline">\(U_t\)</span> è l’utilizzo della capacità, <span class="math inline">\(UCC_t\)</span> il costo d’uso del capitale e <span class="math inline">\(\Delta L_t\)</span> il nuovo credito erogato. I flussi sono rapportati allo stock di capitale, così che i coefficienti abbiano la stessa scala. L’uso del credito o della liquidità come prova di vincoli finanziari è controverso, perché entrambi riflettono anche le prospettive di vendita. Il modello dovrà ammettere soglie: quando vendite attese e utilizzo sono bassi, una riduzione dei tassi può non produrre nuovi investimenti.</p>
 </section>
-<section id="chiusura-aggregata-e-propagazione-degli-shock" class="level2 anchored" data-number="5.8" data-anchor-id="chiusura-aggregata-e-propagazione-degli-shock">
-<h2 class="anchored" data-number="5.8" data-anchor-id="chiusura-aggregata-e-propagazione-degli-shock"><span class="header-section-number">5.8</span> Chiusura aggregata e propagazione degli shock</h2>
+<section id="chiusura-aggregata-e-propagazione-degli-shock" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="chiusura-aggregata-e-propagazione-degli-shock"><span class="header-section-number">5.8</span> Chiusura aggregata e propagazione degli shock</h2>
 <p>Consumi, investimenti, spesa pubblica ed esportazioni nette confluiscono nell’identità del prodotto:</p>
-<p><span class="math display">\[ Y_t = C_t + I_t + G_t + X_t - M_t. \]</span></p>
+<p><span class="math display">\[Y_t = C_t + I_t + G_t + X_t - M_t.\]</span></p>
 <p>L’identità vale esattamente a prezzi correnti. Nei volumi a valori concatenati le componenti non si sommano al totale, e i contributi alla crescita vanno calcolati con il metodo adottato dall’istituto di statistica <span class="citation" data-cites="ue2013Sec2010"><a href="#ref-ue2013Sec2010" role="doc-biblioref">[1]</a></span>. Dal lato della spesa il PIL chiude il periodo; dal lato dei redditi diventa salari e profitti che alimentano il periodo successivo. Per stimare congiuntamente le retroazioni si utilizzerà un sistema strutturale dinamico <span class="citation" data-cites="sims1980Macroeconomics"><a href="#ref-sims1980Macroeconomics" role="doc-biblioref">[28]</a></span>:</p>
-<p><span class="math display">\[ A_0 q_t = c + \sum_{\ell=1}^{L} A_{\ell}q_{t-\ell} + B s_t + u_t, \]</span></p>
+<p><span class="math display">\[A_0 q_t = c + \sum_{\ell=1}^{L} A_{\ell}q_{t-\ell} + B s_t + u_t,\]</span></p>
 <p>dove <span class="math inline">\(q_t\)</span> raccoglie le variabili endogene e <span class="math inline">\(s_t\)</span> gli shock o strumenti esterni <span class="citation" data-cites="stock2018Causal"><a href="#ref-stock2018Causal" role="doc-biblioref">[29]</a></span>. Un residuo diventa uno shock strutturale soltanto dopo l’identificazione. Le proiezioni locali misureranno poi la risposta a ciascun orizzonte <span class="citation" data-cites="jorda2005Estimation"><a href="#ref-jorda2005Estimation" role="doc-biblioref">[30]</a></span>:</p>
-<p><span class="math display">\[ y_{t+h}-y_{t-1}=\alpha_h+\beta_h\widehat{s}_t+\Gamma_h'Z_t+e_{t+h}. \]</span></p>
+<p><span class="math display">\[y_{t+h}-y_{t-1}=\alpha_h+\beta_h\widehat{s}_t+\Gamma_h'Z_t+e_{t+h}.\]</span></p>
 <p>Per il nowcasting, un modello fattoriale dinamico separerà il fattore comune dalle componenti specifiche delle serie <span class="citation" data-cites="stock2002Diffusion giannone2008Nowcasting"><a href="#ref-stock2002Diffusion" role="doc-biblioref">[31]</a>, <a href="#ref-giannone2008Nowcasting" role="doc-biblioref">[32]</a></span>:</p>
-<p><span class="math display">\[ x_t=\Lambda f_t+e_t, \qquad f_t=A f_{t-1}+u_t. \]</span></p>
+<p><span class="math display">\[x_t=\Lambda f_t+e_t, \qquad f_t=A f_{t-1}+u_t.\]</span></p>
 <p>Il modello fattoriale aggiorna la previsione con pubblicazioni a frequenza diversa; non sostituisce l’identificazione causale degli archi.</p>
-<div id="tab-sequenza-formule" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-sequenza-formule-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 13%">
@@ -600,12 +604,7 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;3: Sequenza dei paragrafi, formule e problemi di identificazione</p>
-</div>
-</div>
-</div>
 <p><em>In parole semplici:</em> ogni paragrafo trasforma una freccia del circuito in una formula verificabile. La formula misura una relazione; per chiamarla causale occorre anche spiegare come viene isolata la variazione iniziale dalle altre cause.</p>
 <p>Il circuito può entrare in una fase restrittiva quando timore e incertezza aumentano il risparmio precauzionale. La debolezza delle vendite accresce le scorte e riduce l’utilizzo della capacità produttiva. In queste condizioni le imprese possono rinviare gli investimenti anche quando i tassi diminuiscono. La domanda di credito si indebolisce, la produzione rallenta e la minore crescita di occupazione e reddito torna a comprimere i consumi. Nel secondo trimestre del 2026 il primo anello di questo meccanismo non era in atto, perché il risparmio delle famiglie è diminuito.</p>
 <p>Analizzando la crisi pandemica, Woodford mostra che una carenza di domanda effettiva, nel senso di Keynes <span class="citation" data-cites="keynes1936General"><a href="#ref-keynes1936General" role="doc-biblioref">[33]</a></span>, può mantenere l’attività di più settori al di sotto del livello efficiente senza che una riduzione dei tassi la compensi <span class="citation" data-cites="woodford2022Demand"><a href="#ref-woodford2022Demand" role="doc-biblioref">[34]</a></span>.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> Il risultato riguarda uno shock che interrompe il flusso circolare dei pagamenti; la sua estensione alle fasi cicliche ordinarie è un’ipotesi da verificare.</p>
@@ -616,9 +615,6 @@ div.csl-indent {
 <h1 data-number="6"><span class="header-section-number">6</span> Le pubblicazioni come osservazioni successive</h1>
 <p>Le pubblicazioni periodiche di ISTAT e Banca d’Italia possono essere organizzate come una staffetta informativa. Ogni rilascio aggiorna una fase della catena e consente di verificare se il segnale precedente si stia trasmettendo alla fase successiva.</p>
 <p>L’ordine logico non deve essere imposto come una sequenza unica. Il sistema comprende più punti di ingresso, fra cui politica monetaria e fiscale, domanda estera, prezzi dell’energia, tecnologia, demografia e condizioni finanziarie. Comprende inoltre variabili di stato, come debito, ricchezza, capitale produttivo e scorte, che trasferiscono gli effetti da un periodo al successivo.</p>
-<div id="tab-fasi-osservatorio" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-fasi-osservatorio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 17%">
@@ -680,12 +676,7 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;4: Le fasi dell’osservatorio congiunturale</p>
-</div>
-</div>
-</div>
 <p><em>In parole semplici:</em> le statistiche non vengono lette come comunicati isolati. Ogni dato occupa una posizione precisa fra capacità di spesa, decisioni, produzione e risultato finale.</p>
 </section>
 <section id="tempo-economico-e-tempo-informativo" class="level1" data-number="7">
@@ -696,9 +687,6 @@ div.csl-indent {
 <section id="agenda-dei-prossimi-test" class="level1" data-number="8">
 <h1 data-number="8"><span class="header-section-number">8</span> Agenda dei prossimi test</h1>
 <p>Il calendario operativo parte dallo stato dell’informazione disponibile l’11 ottobre 2026. Le variabili recenti costituiscono gli antecedenti della catena: ogni nuova pubblicazione deve essere confrontata con i segnali già osservati, oltre che con la propria storia. La base iniziale comprende capacità di spesa, prezzi, fiducia, spesa osservata, produzione, lavoro, credito, domanda delle imprese e indicatore coincidente.</p>
-<div id="tab-base-informativa" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-base-informativa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -782,28 +770,12 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;5: Base informativa disponibile all’11 ottobre 2026</p>
-</div>
-</div>
-</div>
 <p><em>In parole semplici:</em> prima dei nuovi comunicati sappiamo già che il potere d’acquisto si è ridotto nel secondo trimestre, la fiducia è peggiorata a settembre e la produzione industriale è scesa in agosto, mentre vendite e occupazione hanno mostrato una maggiore tenuta. La colonna sullo stato evita di trattare allo stesso modo stime provvisorie, risultati d’indagine e dati ancora soggetti a revisione.</p>
-<div id="figura-agenda-causale" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-agenda-causale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig02.svg" class="img-fluid figure-img" role="img"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;2: Agenda causale: dalla base informativa recente ai prossimi rilasci e alla valutazione del nowcast</p>
-</div>
-</div>
-</div>
 <p><em>In parole semplici:</em> le informazioni già disponibili alimentano i primi confronti su domanda estera, produzione, prezzi e commercio. I risultati vengono poi trasmessi ai test su costruzioni, credito, vendite, lavoro e fiducia; PIL e inflazione chiudono questo ciclo di verifica, dopo il quale si aggiornano il nowcast e lo stato delle relazioni.</p>
 <p>Il calendario non coincide meccanicamente con l’elenco dei primi dieci comunicati in ordine cronologico: privilegia i rilasci che permettono di verificare una relazione della mappa. Le date e i periodi di riferimento provengono dai calendari ufficiali di ISTAT, Eurostat e Banca d’Italia <span class="citation" data-cites="istat2026Calendario eurostat2026ReleaseCalendar bankitalia2026Calendario"><a href="#ref-istat2026Calendario" role="doc-biblioref">[44]</a>, <a href="#ref-eurostat2026ReleaseCalendar" role="doc-biblioref">[45]</a>, <a href="#ref-bankitalia2026Calendario" role="doc-biblioref">[46]</a></span>.</p>
-<div id="tab-agenda-test" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-agenda-test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 5%">
@@ -894,12 +866,7 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;6: Agenda dei dieci test successivi all’11 ottobre 2026</p>
-</div>
-</div>
-</div>
 <p><em>In parole semplici:</em> ogni riga collega un dato in arrivo alle informazioni già disponibili. Il test non chiede soltanto se il nuovo valore sale o scende, ma se conferma la trasmissione attesa dalla fiducia e dal potere d’acquisto verso spesa, credito, produzione, lavoro e infine PIL.</p>
 <p>Il Bollettino economico della Banca d’Italia del 16 ottobre sarà utilizzato come confronto interpretativo, perché incorpora informazioni provenienti da più blocchi, e non come variabile elementare della catena. Dopo i dieci passaggi, Ita-coin del 3 novembre offrirà un indicatore coincidente indipendente; il commercio al dettaglio di settembre, previsto il 5 novembre, permetterà una verifica più diretta del passaggio da potere d’acquisto e fiducia alla spesa osservata.</p>
 <p>Per ciascun appuntamento saranno conservati la previsione disponibile prima della pubblicazione, il valore nel suo primo rilascio, la sorpresa rispetto alla previsione, le revisioni successive e la variazione del nowcast. Un singolo dato potrà rafforzare o indebolire provvisoriamente una relazione, ma la modifica dello stato di un arco richiederà evidenze ripetute. Le date Eurostat successive alla settimana immediatamente seguente saranno ricontrollate nel calendario settimanale; la data dell’indagine sul credito bancario è indicativa e dipende dalla diffusione dei risultati per l’area dell’euro <span class="citation" data-cites="eurostat2026ReleaseCalendar bankitalia2026Calendario"><a href="#ref-eurostat2026ReleaseCalendar" role="doc-biblioref">[45]</a>, <a href="#ref-bankitalia2026Calendario" role="doc-biblioref">[46]</a></span>.</p>
@@ -908,9 +875,6 @@ div.csl-indent {
 <h1 data-number="9"><span class="header-section-number">9</span> Dall’inventario delle variabili al grafo causale</h1>
 <p>La prima base dati dell’hub sarà un inventario delle serie disponibili. Nella prima fase ogni serie verrà descritta mediante fonte, definizione, unità, popolazione, settore istituzionale, frequenza, periodo di riferimento, data di pubblicazione, revisioni e copertura. L’associazione a un concetto economico e a una posizione nel grafo avverrà nella fase successiva.</p>
 <p>La sequenza metodologica è inventario → armonizzazione semantica e temporale → raggruppamento delle variabili → confronto con la letteratura → formulazione degli archi → test empirici → uso predittivo. I costrutti latenti non vengono scelti per primi, ma proposti dopo aver osservato quali dimensioni sono effettivamente misurate.</p>
-<div id="tab-livelli-logici" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-livelli-logici-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 18%">
@@ -957,21 +921,13 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;7: Livelli logici per ordinare le variabili economiche</p>
-</div>
-</div>
-</div>
 <p><em>In parole semplici:</em> le serie non vengono messe in fila in base alla data in cui escono. Vengono raggruppate secondo il ruolo che svolgono nel processo economico e collegate attraverso ipotesi verificabili.</p>
 <p>Più serie possono misurare lo stesso nodo latente e una stessa serie può contribuire a più relazioni. L’ordine risultante sarà quindi un ordinamento parziale: alcune variabili precedono altre, mentre altre ancora interagiscono nello stesso periodo o attraverso retroazioni temporalizzate. La denominazione dei nodi, compresi eventuali nodi relativi ai bisogni, rimarrà provvisoria finché non sarà sostenuta dalla mappatura e dalla letteratura.</p>
 </section>
 <section id="programma-empirico" class="level1" data-number="10">
 <h1 data-number="10"><span class="header-section-number">10</span> Programma empirico</h1>
 <p>L’analisi procederà per passaggi verificabili. Per ogni collegamento saranno definiti il segno atteso, l’intervallo dei ritardi plausibili, le variabili di controllo e un benchmark autoregressivo.</p>
-<div id="tab-ipotesi-ritardi" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-ipotesi-ritardi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 32%">
@@ -1038,12 +994,7 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;8: Prime ipotesi sui collegamenti e sui ritardi</p>
-</div>
-</div>
-</div>
 <p><em>In parole semplici:</em> ogni freccia del diagramma diventa un’ipotesi misurabile. I ritardi indicati sono punti di partenza e saranno mantenuti soltanto se i dati li confermeranno.</p>
 <p>Le verifiche iniziali comprenderanno grafici lead–lag, correlazioni incrociate e regressioni con ritardi distribuiti. Ogni modello sarà confrontato con una previsione basata soltanto sulla storia della variabile da prevedere. Il backtest pseudo-real-time misurerà quanto ciascun nuovo indicatore migliori la previsione disponibile in quel momento.</p>
 <p>La causalità predittiva di Granger <span class="citation" data-cites="granger1969Investigating"><a href="#ref-granger1969Investigating" role="doc-biblioref">[47]</a></span> sarà utilizzata come diagnostica e non come prova definitiva. Le affermazioni causali richiederanno shock identificati, esperimenti naturali o proiezioni locali sostenute da ipotesi economiche esplicite. Il fatto che una variabile ne preveda un’altra non è né necessario né sufficiente perché agire sulla prima modifichi la seconda <span class="citation" data-cites="buiter1986Granger"><a href="#ref-buiter1986Granger" role="doc-biblioref">[48]</a></span>.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
@@ -1074,12 +1025,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="2">
-<div id="tab-ciclo-2021-23" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="2">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-ciclo-2021-23-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display cell-output-markdown">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 23%">
 <col style="width: 14%">
@@ -1169,18 +1115,11 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;9: Archi della catena con dati trimestrali, Italia; stima ricorsiva dal 1999, trimestri 2020T1–2021T2 esclusi, ciclo 2021T3–2024T4 <span class="citation" data-cites="eurostat2026Namq10gdp eurostat2026Nasq10ki eurostat2026PrcHicpMinr eurostat2026EiBscoM eurostat2026StsInprM eurostat2026StsTrtuM eurostat2026UneRtM ecb2026BsiCreditoConsumo ecb2026MirCreditoConsumo"><a href="#ref-eurostat2026Namq10gdp" role="doc-biblioref">[2]</a>, <a href="#ref-eurostat2026PrcHicpMinr" role="doc-biblioref">[15]</a>, <a href="#ref-eurostat2026Nasq10ki" role="doc-biblioref">[16]</a>, <a href="#ref-eurostat2026EiBscoM" role="doc-biblioref">[51]</a>, <a href="#ref-eurostat2026StsInprM" role="doc-biblioref">[52]</a>, <a href="#ref-eurostat2026StsTrtuM" role="doc-biblioref">[53]</a>, <a href="#ref-eurostat2026UneRtM" role="doc-biblioref">[54]</a>, <a href="#ref-ecb2026BsiCreditoConsumo" role="doc-biblioref">[55]</a>, <a href="#ref-ecb2026MirCreditoConsumo" role="doc-biblioref">[56]</a></span></p>
-</div>
-</div>
-</div>
-</div>
 <p><em>In parole semplici:</em> un valore piccolo (sotto 0,10) indica che la variabile a monte aiuta a prevedere quella a valle. Nella catena della domanda interna nessun arco aiuta fuori campione; aiutano invece le esportazioni per la produzione e la crescita del PIL per la disoccupazione.</p>
 <p>Con dati mensili, dove disponibili, i periodi di valutazione sono circa tre volte più lunghi: su 7 archi soltanto vendite al dettaglio → produzione (solo negli anni 2012-2019) mostra contenuto predittivo. Il risultato principale non cambia: nel 2021-2023 i consumi hanno retto grazie al risparmio, e la catena dei prezzi non è passata ai consumi né al lavoro; il contenuto predittivo si trova dal lato della domanda estera e della produzione.</p>
-<section id="il-consumo-è-prevedibile-il-riferimento-di-hall" class="level2 anchored" data-number="11.1" data-anchor-id="il-consumo-è-prevedibile-il-riferimento-di-hall">
-<h2 class="anchored" data-number="11.1" data-anchor-id="il-consumo-è-prevedibile-il-riferimento-di-hall"><span class="header-section-number">11.1</span> Il consumo è prevedibile? Il riferimento di Hall</h2>
+<section id="il-consumo-è-prevedibile-il-riferimento-di-hall" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="il-consumo-è-prevedibile-il-riferimento-di-hall"><span class="header-section-number">11.1</span> Il consumo è prevedibile? Il riferimento di Hall</h2>
 <p>L’assenza di contenuto predittivo degli archi verso i consumi ha un riferimento teorico preciso. Se le famiglie consumano in base alle aspettative sul reddito di tutta la vita, la crescita dei consumi dipende solo dall’informazione nuova, e nessuna variabile nota in anticipo, nemmeno i consumi passati, dovrebbe prevederla <span class="citation" data-cites="hall1978Stochastic"><a href="#ref-hall1978Stochastic" role="doc-biblioref">[57]</a></span>. La parte prevedibile misura le deviazioni dalla teoria, per esempio famiglie che non possono indebitarsi e spendono il reddito corrente; la loro importanza si stima con la sensibilità λ dei consumi al reddito prevedibile <span class="citation" data-cites="campbell1989Consumption"><a href="#ref-campbell1989Consumption" role="doc-biblioref">[58]</a></span>.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></p>
 <p>Sui dati italiani 2000-2019, esclusa la pandemia, la versione rigorosa della teoria non regge: le informazioni note da almeno due trimestri prevedono la crescita dei consumi (p &lt; 0,001). La previsione viene però dal passato dei consumi stessi (p &lt; 0,001; correlazione 0,58 con il trimestre precedente), non dal reddito passato (p = 0,100). È coerente con i test sugli archi: il reddito non aggiunge informazione a una previsione che usa già i consumi passati. La sensibilità λ stimata è 0,48 nel 2000-2019 e 1,14 fino all’ultimo dato, ma il reddito è poco prevedibile (statistica F del primo stadio sotto 10 in entrambi i periodi): gli strumenti sono deboli e la stima non è affidabile <span class="citation" data-cites="staiger1997Instrumental"><a href="#ref-staiger1997Instrumental" role="doc-biblioref">[60]</a></span>. L’inerzia dei consumi ha spiegazioni concorrenti che il test non distingue: le abitudini di consumo <span class="citation" data-cites="fuhrer2000Habit"><a href="#ref-fuhrer2000Habit" role="doc-biblioref">[61]</a></span>, le famiglie che spendono il reddito corrente e il modo in cui sono costruiti i conti trimestrali.</p>
 <div class="callout callout-style-simple callout-none no-icon">
@@ -1242,20 +1181,8 @@ div.csl-indent {
 <p>Il ciclo dei prezzi è una finestra fissa. Per seguire la catena come un processo continuo, gli stessi dieci archi trimestrali sono valutati trimestre per trimestre dal 2016 all’ultimo dato disponibile. In ogni trimestre il benchmark e il modello con l’arco sono stimati con i soli trimestri precedenti, come se il dato fosse appena stato pubblicato.</p>
 <p>Per ogni arco e trimestre si confrontano due quantità: il contributo dell’arco, cioè la differenza fra la previsione del modello con l’arco e quella del benchmark, e l’errore del benchmark. L’arco <strong>conferma</strong> se il suo contributo va nella stessa direzione dell’errore, <strong>smentisce</strong> se va nella direzione opposta, dà un <strong>segnale debole</strong> se il contributo è inferiore a un decimo della deviazione standard della variabile a valle. Il doppio del prodotto fra contributo ed errore è il contributo del trimestre alla statistica di Clark e West <span class="citation" data-cites="clark2006Approximately"><a href="#ref-clark2006Approximately" role="doc-biblioref">[49]</a></span>: la somma progressiva di questi contributi scompone il test nel tempo e mostra quando un arco guadagna o perde capacità predittiva.</p>
 <p>I trimestri dal 2020T1 al 2021T2 sono esclusi; lo sono anche 2021T3 e 2021T4, perché i ritardi usati come regressori cadono ancora nella pandemia e un solo trimestre di rimbalzo dominerebbe l’evidenza di dieci anni. Ogni nuova esecuzione con dati aggiornati aggiunge le proprie righe al registro, che conserva così anche l’effetto delle revisioni.</p>
-<div id="cell-fig-catena-cumulata" class="cell" data-fig-height="5.5" data-execution_count="6">
-<div class="cell-output cell-output-display">
-<div id="figura-catena-cumulata" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-catena-cumulata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig03.svg" class="img-fluid figure-img" role="img"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;3: Evidenza cumulata per arco, Italia, 2016-oggi: somma progressiva dei contributi trimestrali alla statistica di Clark–West, in unità della varianza della variabile a valle; fascia grigia: trimestri esclusi 2020T1–2021T4; fascia gialla: trimestri valutabili del ciclo dei prezzi 2022T1–2023T4 <span class="citation" data-cites="eurostat2026Namq10gdp eurostat2026Nasq10ki eurostat2026PrcHicpMinr eurostat2026EiBscoM eurostat2026StsInprM eurostat2026StsTrtuM eurostat2026UneRtM ecb2026BsiCreditoConsumo ecb2026MirCreditoConsumo"><a href="#ref-eurostat2026Namq10gdp" role="doc-biblioref">[2]</a>, <a href="#ref-eurostat2026PrcHicpMinr" role="doc-biblioref">[15]</a>, <a href="#ref-eurostat2026Nasq10ki" role="doc-biblioref">[16]</a>, <a href="#ref-eurostat2026EiBscoM" role="doc-biblioref">[51]</a>, <a href="#ref-eurostat2026StsInprM" role="doc-biblioref">[52]</a>, <a href="#ref-eurostat2026StsTrtuM" role="doc-biblioref">[53]</a>, <a href="#ref-eurostat2026UneRtM" role="doc-biblioref">[54]</a>, <a href="#ref-ecb2026BsiCreditoConsumo" role="doc-biblioref">[55]</a>, <a href="#ref-ecb2026MirCreditoConsumo" role="doc-biblioref">[56]</a></span></p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p><em>In parole semplici:</em> una linea che sale indica un arco che migliora le previsioni, una linea che scende un arco che le peggiora. Nel ciclo dei prezzi peggiorano soprattutto fiducia → consumi, prezzi → reddito reale e consumi → PIL; migliorano prezzi → fiducia e esportazioni → produzione.</p>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
@@ -1282,12 +1209,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="8">
-<div id="tab-stato-archi" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="8">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-stato-archi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display cell-output-markdown">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 26%">
 <col style="width: 18%">
@@ -1377,14 +1299,7 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;10: Stato suggerito per arco secondo la governance dell’hub: «sostenuta» se il test di Clark–West sul periodo 2016-oggi ha p sotto 0,10 e il segno attuale è quello atteso; «contestata» se prevede con segno opposto; «condizionata» se il contenuto predittivo compare solo negli ultimi dodici trimestri; altrimenti «proposta» <span class="citation" data-cites="clark2006Approximately"><a href="#ref-clark2006Approximately" role="doc-biblioref">[49]</a></span></p>
-</div>
-</div>
-</div>
-</div>
 <p><em>In parole semplici:</em> la tabella riassume dieci anni di registro in uno stato per arco. L’evidenza suggerisce lo stato «sostenuta» per esportazioni → produzione e PIL → disoccupazione (legge di Okun); «condizionata» per vendite al dettaglio → produzione. Gli altri 7 archi restano proposte: i dati non li smentiscono, ma non mostrano capacità predittiva.</p>
 <p>Le propagazioni lungo la catena sono rare. Si registra una propagazione quando un arco conferma e l’arco successivo conferma nello stesso trimestre o nei due seguenti: dal 2016 gli episodi sono 19. Le sequenze di almeno tre archi consecutivi, dai prezzi ai consumi, al PIL e alla disoccupazione, iniziano tutte negli anni 2016, 2017 e 2018. Nel ciclo dei prezzi gli episodi sono 3, con al massimo 2 archi consecutivi.</p>
 <div class="callout callout-style-simple callout-none no-icon">
@@ -1415,16 +1330,8 @@ div.csl-indent {
 <section id="rapporto-con-il-primo-nowcast-del-credito" class="level1" data-number="13">
 <h1 data-number="13"><span class="header-section-number">13</span> Rapporto con il primo nowcast del credito</h1>
 <p>Il primo modello di nowcasting dei prestiti alle società non finanziarie seguiva già una logica per blocchi: condizioni finanziarie, ciclo reale, domanda e offerta bancaria alimentavano la previsione del credito. La specifica stimata era tuttavia dominata dalla persistenza dello stock di prestiti. Il nuovo schema estende quel modello a monte e distingue la domanda finale, la domanda di credito e l’offerta bancaria.</p>
-<div id="figura-estensione-nowcast" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-estensione-nowcast-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig04.svg" class="img-fluid figure-img" role="img"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;4: Estensione della catena del primo nowcast del credito</p>
-</div>
-</div>
-</div>
 <p><em>In parole semplici:</em> il vecchio modello iniziava vicino al credito. Il nuovo impianto aggiunge le fasi che spiegano perché famiglie e imprese arrivano a domandare finanziamenti.</p>
 </section>
 <section id="rappresentazione-e-aggiornamento" class="level1" data-number="14">
@@ -1436,9 +1343,6 @@ div.csl-indent {
 <h1 data-number="15"><span class="header-section-number">15</span> Governance delle affermazioni</h1>
 <p>La mappa è una rappresentazione rivedibile dello stato delle conoscenze. Le relazioni contenute nel grafo non sono assunte come definitive e possono essere rafforzate, ristrette a particolari regimi, invertite, sospese o respinte quando cambiano la letteratura, i dati o i risultati dei test.</p>
 <p>Ogni progetto futuro che utilizzi variabili economiche connesse alla mappa dovrà indicare quali nodi osserva, quali archi assume o sottopone a verifica, quale periodo e quali vintage utilizza e quale nuova evidenza produce. Il confronto con l’hub serve anche quando il progetto conclude che una relazione già rappresentata non regge nel proprio campione.</p>
-<div id="tab-stati-affermazioni" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-stati-affermazioni-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 31%">
@@ -1477,12 +1381,7 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;11: Stati delle affermazioni e degli archi causali</p>
-</div>
-</div>
-</div>
 <p><em>In parole semplici:</em> il grafo conserva ipotesi e risultati, non verità immutabili. Un nuovo progetto può confermare una freccia, limitarla a certe condizioni oppure mostrare che deve essere modificata.</p>
 <p>Ogni revisione dovrà conservare la formulazione precedente, la data, la motivazione, la fonte dell’evidenza e il progetto che l’ha prodotta. In questo modo il nowcasting utilizzerà lo stato corrente della mappa, mentre la cronologia permetterà di ricostruire perché una variabile o una relazione è stata introdotta, modificata o rimossa.</p>
 </section>
@@ -2047,7 +1946,6 @@ R. Ashley, C. W. J. Granger, e R. Schmalensee, <a href="https://doi.org/10.2307/
 <p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
 <p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale; l’analisi è pertanto integralmente auditabile e replicabile da terzi a partire da esse. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
 <p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
-</section>
 <div id="quarto-appendix" class="default">
 <div id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <section id="note" class="level2 anchored quarto-appendix-heading" data-number="16.1">
@@ -2057,6 +1955,7 @@ R. Ashley, C. W. J. Granger, e R. Schmalensee, <a href="https://doi.org/10.2307/
 </div>
 
 
+</section>
 
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Note</h2>
@@ -2486,7 +2385,7 @@ R. Ashley, C. W. J. Granger, e R. Schmalensee, <a href="https://doi.org/10.2307/
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2610_MappaCausaleEconomia/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

@@ -165,7 +165,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#come-integrare-lo-stress-test-nel-report-standard" id="toc-come-integrare-lo-stress-test-nel-report-standard" class="nav-link" data-scroll-target="#come-integrare-lo-stress-test-nel-report-standard"><span class="header-section-number">5</span> Come integrare lo stress test nel report standard</a></li>
   <li><a href="#differenza-stress-test-vs-scenario-analysis" id="toc-differenza-stress-test-vs-scenario-analysis" class="nav-link" data-scroll-target="#differenza-stress-test-vs-scenario-analysis"><span class="header-section-number">6</span> Differenza stress test vs scenario analysis</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_StressTestPermacrisi/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -236,12 +236,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <hr>
-<section id="il-confine-del-modello-lineare" class="level2 anchored" data-anchor-id="il-confine-del-modello-lineare" data-number="1">
-<h2 class="anchored" data-anchor-id="il-confine-del-modello-lineare" data-number="1"><span class="header-section-number">1</span> Il confine del modello lineare</h2>
+<section id="il-confine-del-modello-lineare" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="il-confine-del-modello-lineare"><span class="header-section-number">1</span> Il confine del modello lineare</h2>
 <p>Il modello OLS stima un β fisso: per ogni +1bp del DFR, il tasso bancario si muove di β bp. Questa struttura funziona bene quando gli shock sono moderati e il contesto di mercato resta stabile. Comincia a cedere quando uno shock supera la soglia oltre cui il comportamento dei mercati, delle banche e dei depositanti cambia strutturalmente — non solo di grandezza, ma di qualità.</p>
-<div id="0419977f" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display" data-execution_count="2">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Approccio</th>
@@ -267,23 +265,21 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
 <hr>
 </section>
-<section id="come-funziona-uno-stress-test-bancario" class="level2 anchored" data-anchor-id="come-funziona-uno-stress-test-bancario" data-number="2">
-<h2 class="anchored" data-anchor-id="come-funziona-uno-stress-test-bancario" data-number="2"><span class="header-section-number">2</span> Come funziona uno stress test bancario</h2>
+<section id="come-funziona-uno-stress-test-bancario" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="come-funziona-uno-stress-test-bancario"><span class="header-section-number">2</span> Come funziona uno stress test bancario</h2>
 <p>Gli stress test istituzionali (EBA, BCE, Fed) seguono uno schema in tre fasi. Ogni fase aggiunge un livello di complessità che il modello di previsione standard non può replicare con i soli dati storici.</p>
-<section id="shock-narrativo" class="level3 anchored" data-anchor-id="shock-narrativo" data-number="2.1">
-<h3 class="anchored" data-anchor-id="shock-narrativo" data-number="2.1"><span class="header-section-number">2.1</span> 1. Shock narrativo</h3>
+<section id="shock-narrativo" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="shock-narrativo"><span class="header-section-number">2.1</span> 1. Shock narrativo</h3>
 <p>Il punto di partenza non è un percentile statistico, ma una storia causale coerente:</p>
 <blockquote class="blockquote">
 <p><em>“Riesplode il conflitto nel Golfo → blocco export petrolio → Brent a $150 → HICP al 5% → BCE alza il DFR a 3,25% in tre riunioni consecutive → spread BTP si allarga a 200bp per effetto flight-to-quality → le banche italiane vedono salire il costo di funding → credit crunch”</em></p>
 </blockquote>
 <p>Ogni freccia di questa catena è un’ipotesi esplicita che va difesa.</p>
 </section>
-<section id="canali-di-trasmissione-espliciti" class="level3 anchored" data-anchor-id="canali-di-trasmissione-espliciti" data-number="2.2">
-<h3 class="anchored" data-anchor-id="canali-di-trasmissione-espliciti" data-number="2.2"><span class="header-section-number">2.2</span> 2. Canali di trasmissione espliciti</h3>
+<section id="canali-di-trasmissione-espliciti" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="canali-di-trasmissione-espliciti"><span class="header-section-number">2.2</span> 2. Canali di trasmissione espliciti</h3>
 <pre><code>Shock energetico estremo
     ├─► HICP +2pp → BCE +100bp DFR → Euribor +105bp
     │       └─► MIR attivi +68bp (β=0,65 × 105bp)
@@ -291,8 +287,8 @@ ul.task-list li input[type="checkbox"] {
     │       └─► Funding cost banche IT +30bp → MIR attivi +30bp aggiuntivi
     └─► PIL −1,5pp → NPL +1,2pp → CET1 eroso → lending contraction</code></pre>
 </section>
-<section id="β-variabile-per-scenario" class="level3 anchored" data-anchor-id="β-variabile-per-scenario" data-number="2.3">
-<h3 class="anchored" data-anchor-id="β-variabile-per-scenario" data-number="2.3"><span class="header-section-number">2.3</span> 3. β variabile per scenario</h3>
+<section id="β-variabile-per-scenario" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="β-variabile-per-scenario"><span class="header-section-number">2.3</span> 3. β variabile per scenario</h3>
 <p>Nello stress test il β non è fisso. La struttura del mercato cambia con lo shock:</p>
 <ul>
 <li><strong>Depositi</strong>: β salta da 0.43 (baseline) a 0,30–0,50 quando i correntisti spostano la liquidità su BTP o conti deposito online</li>
@@ -302,14 +298,10 @@ ul.task-list li input[type="checkbox"] {
 <hr>
 </section>
 </section>
-<section id="la-permacrisi-distribuzione-degli-shock-più-larga" class="level2 anchored" data-anchor-id="la-permacrisi-distribuzione-degli-shock-più-larga" data-number="3">
-<h2 class="anchored" data-anchor-id="la-permacrisi-distribuzione-degli-shock-più-larga" data-number="3"><span class="header-section-number">3</span> La permacrisi: distribuzione degli shock più larga</h2>
-<div id="c5aa23d4" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="3">
+<section id="la-permacrisi-distribuzione-degli-shock-più-larga" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="la-permacrisi-distribuzione-degli-shock-più-larga"><span class="header-section-number">3</span> La permacrisi: distribuzione degli shock più larga</h2>
 <p>Dal 2020 ad oggi il sistema economico globale ha attraversato una sequenza di shock che non si sono risolti prima di lasciare spazio al successivo: la pandemia di COVID-19, la fiammata inflazionistica del 2021–23, la guerra in Ucraina con il conseguente shock energetico, la chiusura dello Stretto di Hormuz nel 2026, i dazi USA sull’Europa. Il termine “permacrisi” descrive proprio questa condizione: non una singola crisi con un inizio e una fine, ma uno stato di instabilità strutturale in cui nuovi shock si sovrappongono a quelli precedenti prima che questi si siano riassorbiti.</p>
 <p><strong>La rilevanza per il nostro modello è diretta.</strong> L’OLS assume che i parametri stimati sul passato (i β) siano stabili nel futuro. Questa assunzione è ragionevole con shock piccoli distribuiti attorno a un centro stabile. Quando il regime stesso cambia — come è successo quando il DFR si è mosso di 4pp in 14 mesi (2022–23), poi è sceso di 2pp, e ora risale — i β storici diventano una guida meno affidabile.</p>
-</div>
-</div>
 <p>Il nostro scenario avverso (DFR 2,85%) era impensabile nel 2024. A fine aprile 2026, prima della distensione USA-Iran, era lo scenario centrale dei mercati (OIS).</p>
 <pre><code>Ventaglio scenari 2019 (±2σ)     Ventaglio scenari 2026 (±3σ)
         │                                 │
@@ -321,14 +313,9 @@ ul.task-list li input[type="checkbox"] {
     −2σ   +2σ                      −3σ      +3σ</code></pre>
 <hr>
 </section>
-<section id="lo-scenario-stress-iv-numeri-concreti" class="level2 anchored" data-anchor-id="lo-scenario-stress-iv-numeri-concreti" data-number="4">
-<h2 class="anchored" data-anchor-id="lo-scenario-stress-iv-numeri-concreti" data-number="4"><span class="header-section-number">4</span> Lo scenario Stress IV: numeri concreti</h2>
-<div id="1bdbe10d" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display" data-execution_count="4">
-<div id="T_a5e07" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="T_a5e07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table table-sm table-striped small">
+<section id="lo-scenario-stress-iv-numeri-concreti" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="lo-scenario-stress-iv-numeri-concreti"><span class="header-section-number">4</span> Lo scenario Stress IV: numeri concreti</h2>
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Scenario</th>
@@ -394,14 +381,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;1: Scenari stress — dati correnti al 2026-07-01 · Stress IV usa β variabili per depositi</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -429,8 +409,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <hr>
 </section>
-<section id="come-integrare-lo-stress-test-nel-report-standard" class="level2 anchored" data-anchor-id="come-integrare-lo-stress-test-nel-report-standard" data-number="5">
-<h2 class="anchored" data-anchor-id="come-integrare-lo-stress-test-nel-report-standard" data-number="5"><span class="header-section-number">5</span> Come integrare lo stress test nel report standard</h2>
+<section id="come-integrare-lo-stress-test-nel-report-standard" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="come-integrare-lo-stress-test-nel-report-standard"><span class="header-section-number">5</span> Come integrare lo stress test nel report standard</h2>
 <p>Il modello OLS con β fisso cattura bene il caso Base e l’Avverso moderato, dove il driver varia di ±25–60bp e la struttura del mercato resta sostanzialmente invariata. È lo strumento giusto per il report previsionale standard.</p>
 <p>Lo Scenario Stress richiede tre integrazioni che non possono essere derivate meccanicamente dal modello:</p>
 <p><strong>1. Canale spread</strong> — aggiunge 10–30bp sulle categorie attive per riflettere il costo di funding aggiuntivo delle banche italiane con BTP-Bund &gt; 150bp.</p>
@@ -438,11 +418,9 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>3. Narrativa causale</strong> — per ogni scenario oltre il Base, la storia deve essere coerente: ogni assunzione numerica va giustificata da un meccanismo economico.</p>
 <hr>
 </section>
-<section id="differenza-stress-test-vs-scenario-analysis" class="level2 anchored" data-anchor-id="differenza-stress-test-vs-scenario-analysis" data-number="6">
-<h2 class="anchored" data-anchor-id="differenza-stress-test-vs-scenario-analysis" data-number="6"><span class="header-section-number">6</span> Differenza stress test vs scenario analysis</h2>
-<div id="0784efae" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display" data-execution_count="5">
-<table class="caption-top table table-sm table-striped small">
+<section id="differenza-stress-test-vs-scenario-analysis" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="differenza-stress-test-vs-scenario-analysis"><span class="header-section-number">6</span> Differenza stress test vs scenario analysis</h2>
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Dimensione</th>
@@ -483,8 +461,6 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
 <hr>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
@@ -516,9 +492,9 @@ ul.task-list li input[type="checkbox"] {
 <p>L’uso di strumenti di intelligenza artificiale generativa è dichiarato esplicitamente in quanto parte del processo di lavoro seguito nella redazione del presente documento. Tali strumenti sono stati impiegati a supporto della lettura, della sintesi, della riorganizzazione argomentativa e della revisione testuale, sempre nell’ambito di un processo pienamente controllato dall’autore.</p>
 <p>La responsabilità per le fonti utilizzate, le analisi condotte, le verifiche effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore.</p>
 <p>L’intelligenza artificiale è stata utilizzata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+
+
 </section>
-
-
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -929,7 +905,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_StressTestPermacrisi/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

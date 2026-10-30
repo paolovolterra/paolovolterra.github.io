@@ -160,8 +160,15 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#chi-deposita-conti-correnti-e-vincolati" id="toc-chi-deposita-conti-correnti-e-vincolati" class="nav-link" data-scroll-target="#chi-deposita-conti-correnti-e-vincolati"><span class="header-section-number">4</span> Chi deposita: conti correnti e vincolati</a></li>
   <li><a href="#i-tre-scenari" id="toc-i-tre-scenari" class="nav-link" data-scroll-target="#i-tre-scenari"><span class="header-section-number">5</span> I tre scenari</a></li>
   <li><a href="#le-variabili-che-il-modello-non-vede" id="toc-le-variabili-che-il-modello-non-vede" class="nav-link" data-scroll-target="#le-variabili-che-il-modello-non-vede"><span class="header-section-number">6</span> Le variabili che il modello non vede</a></li>
+  <li><a href="#come-funziona-il-modello-per-chi-vuole-capire" id="toc-come-funziona-il-modello-per-chi-vuole-capire" class="nav-link" data-scroll-target="#come-funziona-il-modello-per-chi-vuole-capire"><span class="header-section-number">7</span> Come funziona il modello (per chi vuole capire)</a>
+  <ul class="collapse">
+  <li><a href="#il-coefficiente-β-quanto-si-trasmette" id="toc-il-coefficiente-β-quanto-si-trasmette" class="nav-link" data-scroll-target="#il-coefficiente-β-quanto-si-trasmette"><span class="header-section-number">7.1</span> Il coefficiente β: quanto si trasmette</a></li>
+  <li><a href="#il-modello-ecm-laggiustamento-nel-tempo" id="toc-il-modello-ecm-laggiustamento-nel-tempo" class="nav-link" data-scroll-target="#il-modello-ecm-laggiustamento-nel-tempo"><span class="header-section-number">7.2</span> Il modello ECM: l’aggiustamento nel tempo</a></li>
+  </ul></li>
+  <li><a href="#approfondimenti" id="toc-approfondimenti" class="nav-link" data-scroll-target="#approfondimenti"><span class="header-section-number">8</span> Approfondimenti</a></li>
+  <li><a href="#note-metodologiche" id="toc-note-metodologiche" class="nav-link" data-scroll-target="#note-metodologiche"><span class="header-section-number">9</span> Note metodologiche</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_TassiBancariH2/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -223,16 +230,11 @@ ul.task-list li input[type="checkbox"] {
 <div style="position:sticky;top:0;z-index:999;background:#1a2744;padding:9px 28px;font-family:'Source Sans Pro','Helvetica Neue',sans-serif;font-size:0.875em;display:flex;gap:0;align-items:center;border-bottom:3px solid #c9a84c;box-shadow:0 2px 8px rgba(0,0,0,.35)">
 <p><span style="color:#c9a84c;font-weight:700;letter-spacing:.04em;margin-right:20px">HUB TASSI 2026</span> <a href="index.html" style="color:#e8e8e8;text-decoration:none;padding:4px 12px;border-radius:3px;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='transparent'">Previsioni</a> <a href="glossario.html" style="color:#e8e8e8;text-decoration:none;padding:4px 12px;border-radius:3px;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='transparent'">Glossario</a> <a href="guida_profano.html" style="color:#e8e8e8;text-decoration:none;padding:4px 12px;border-radius:3px;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='transparent'">Guida</a> <a href="stress_test.html" style="color:#e8e8e8;text-decoration:none;padding:4px 12px;border-radius:3px;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='transparent'">Stress&nbsp;Test</a> <a href="canali.html" style="color:#e8e8e8;text-decoration:none;padding:4px 12px;border-radius:3px;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='transparent'">Canali</a> <span style="margin-left:auto;color:#8899aa;font-size:.8em;font-style:italic">dati BCE · MIR Italia</span></p>
 </div>
-<section id="la-risposta-in-una-tabella" class="level2 anchored" data-number="1" data-anchor-id="la-risposta-in-una-tabella">
-<h2 class="anchored" data-number="1" data-anchor-id="la-risposta-in-una-tabella"><span class="header-section-number">1</span> La risposta in una tabella</h2>
+<section id="la-risposta-in-una-tabella" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="la-risposta-in-una-tabella"><span class="header-section-number">1</span> La risposta in una tabella</h2>
 <p><strong>La domanda è semplice</strong>: quando la BCE alza i tassi, le banche italiane trasferiscono l’aumento ai clienti — e se sì, in quanto tempo?</p>
 <p>La risposta empirica è: <strong>sì per i prestiti; quasi no per i depositi a vista, in misura rilevante per quelli a termine</strong>.</p>
-<div id="cell-tabella-principale" class="cell" data-execution_count="2">
-<div id="tabella-principale" class="cell-output cell-output-display" data-execution_count="2">
-<div id="T_5efdb" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="T_5efdb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Tasso</th>
@@ -319,14 +321,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;1: Previsione tassi bancari italiani — dati al 2026-07-01 · scenario base: DFR → 2.75% · avverso: DFR → 3.10%</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -349,34 +344,19 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <hr>
 </section>
-<section id="come-funziona-la-trasmissione" class="level2 anchored" data-number="2" data-anchor-id="come-funziona-la-trasmissione">
-<h2 class="anchored" data-number="2" data-anchor-id="come-funziona-la-trasmissione"><span class="header-section-number">2</span> Come funziona la trasmissione</h2>
+<section id="come-funziona-la-trasmissione" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="come-funziona-la-trasmissione"><span class="header-section-number">2</span> Come funziona la trasmissione</h2>
 <p>Quando la BCE muove il DFR, il segnale arriva ai tassi bancari in due fasi.</p>
 <p><strong>Fase 1 — immediata (1-2 mesi)</strong>: i tassi variabili si aggiustano subito perché i contratti sono esplicitamente agganciati all’Euribor (che segue il DFR entro settimane).</p>
 <p><strong>Fase 2 — graduale (mesi e anni)</strong>: la banca rivede le condizioni dei nuovi contratti, ma lo fa lentamente — soprattutto sui depositi a vista, dove non ha incentivo a farlo se i clienti non spostano i soldi; sui depositi a termine, dove la concorrenza è più attiva, l’adeguamento è più marcato (β ≈ 0,43).</p>
-<div id="cell-grafico-storico" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display" data-execution_count="3">
-<div id="grafico-storico" class="quarto-figure quarto-figure-center anchored">
-<div class="figure">
 <p><img src="figure/fig01.png" class="img-fluid figure-img" role="img"></p>
-<div class="caption">
 <p>Serie storiche 2015–2026: DFR BCE vs tassi attivi e passivi italiani (MIR)</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p>Il grafico mostra chiaramente il problema: dal 2022 al 2024 il DFR è passato da -0,5% a 4,0% (+450bp). I tassi sui prestiti hanno seguito; tra i depositi, quelli a vista sono rimasti fermi, mentre quelli a termine hanno recuperato nel tempo.</p>
 <hr>
 </section>
-<section id="chi-prende-a-prestito-mutui-e-imprese" class="level2 anchored" data-number="3" data-anchor-id="chi-prende-a-prestito-mutui-e-imprese">
-<h2 class="anchored" data-number="3" data-anchor-id="chi-prende-a-prestito-mutui-e-imprese"><span class="header-section-number">3</span> Chi prende a prestito: mutui e imprese</h2>
-<div id="cell-attivi-dettaglio" class="cell" data-execution_count="4">
-<div id="attivi-dettaglio" class="cell-output cell-output-display" data-execution_count="4">
-<div id="T_a0452" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="T_a0452-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table table-sm table-striped small">
+<section id="chi-prende-a-prestito-mutui-e-imprese" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="chi-prende-a-prestito-mutui-e-imprese"><span class="header-section-number">3</span> Chi prende a prestito: mutui e imprese</h2>
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Tasso</th>
@@ -445,27 +425,15 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;2: Tassi attivi — previsione dic-2026 per tre scenari DFR</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p><strong>Mutui variabili</strong>: reagiscono in 1-2 mesi. Un rialzo BCE di +25bp porta i mutui var a circa 3,25%, con un aggravio mensile di circa <strong>15-20€/mese su 100.000€ di mutuo</strong>.</p>
 <p><strong>Mutui fissi</strong>: seguono il Bund tedesco a 10 anni (attualmente 3,04%), non il DFR. Se il Bund sale di +15bp (meno del DFR), i fissi salgono moderatamente a ~3,80%. Chi ha già un mutuo fisso non è toccato — vale solo per i nuovi contratti.</p>
 <p><strong>Prestiti alle imprese</strong>: quelli a breve (Euribor-linked) salgono subito. Quelli a lungo termine salgono meno perché in parte a tasso fisso.</p>
 <hr>
 </section>
-<section id="chi-deposita-conti-correnti-e-vincolati" class="level2 anchored" data-number="4" data-anchor-id="chi-deposita-conti-correnti-e-vincolati">
-<h2 class="anchored" data-number="4" data-anchor-id="chi-deposita-conti-correnti-e-vincolati"><span class="header-section-number">4</span> Chi deposita: conti correnti e vincolati</h2>
-<div id="cell-passivi-dettaglio" class="cell" data-execution_count="5">
-<div id="passivi-dettaglio" class="cell-output cell-output-display" data-execution_count="5">
-<div id="T_8f35e" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="T_8f35e-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table table-sm table-striped small">
+<section id="chi-deposita-conti-correnti-e-vincolati" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="chi-deposita-conti-correnti-e-vincolati"><span class="header-section-number">4</span> Chi deposita: conti correnti e vincolati</h2>
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Deposito</th>
@@ -507,38 +475,16 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;3: Tassi passivi — vischiosità dei conti correnti confermata dai dati 2015–2026</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p><strong>Il problema della vischiosità (dei conti correnti)</strong>: la BCE paga alle banche il 2,25% sui depositi overnight. Le banche pagano ai correntisti italiani lo 0,19%. La differenza (~2%) è margine bancario puro. Nello scenario base questo divario si allarga ancora (+1bp ai conti correnti, +16bp ai prestiti).</p>
 <p><strong>Perché le banche non alzano i conti correnti?</strong> Perché non devono: i correntisti italiani non spostano i soldi anche quando il rendimento è bassissimo. La concorrenza su questo comparto è quasi assente. Sui <strong>depositi a termine</strong>, invece, la concorrenza è attiva e il pass-through è significativo (β ≈ 0,43): qui la banca deve muoversi per trattenere la raccolta vincolata.</p>
-<div id="cell-grafico-fan" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display" data-execution_count="6">
-<div id="grafico-fan" class="quarto-figure quarto-figure-center anchored">
-<div class="figure">
 <p><img src="figure/fig02.png" class="img-fluid figure-img" role="img"></p>
-<div class="caption">
 <p>Fan chart — proiezione tassi NFC e depositi termine con tre scenari DFR</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <hr>
 </section>
-<section id="i-tre-scenari" class="level2 anchored" data-number="5" data-anchor-id="i-tre-scenari">
-<h2 class="anchored" data-number="5" data-anchor-id="i-tre-scenari"><span class="header-section-number">5</span> I tre scenari</h2>
-<div id="cell-scenari-tabella" class="cell" data-execution_count="7">
-<div id="scenari-tabella" class="cell-output cell-output-display" data-execution_count="7">
-<div id="T_78410" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="T_78410-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table table-sm table-striped small">
+<section id="i-tre-scenari" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="i-tre-scenari"><span class="header-section-number">5</span> I tre scenari</h2>
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Scenario</th>
@@ -572,28 +518,16 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;4: Scenari DFR e impatto sui tassi chiave</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p><strong>Scenario base</strong> (+25bp): probabile se l’inflazione scende verso il 2% come atteso da BCE e mercati.</p>
 <p><strong>Scenario avverso</strong> (+60bp): possibile se l’energia torna a salire (Hormuz, geopolitica), l’HICP non converge, o se i mercati prezzano un ciclo di rialzi più lungo. In questo caso i mutui variabili toccano 3,43% e le imprese pagano di più sul debito a breve.</p>
 <p><strong>Scenario benigno</strong> (fermo): possibile se il PIL area euro scende sotto lo 0% per due trimestri (tecnica recessione) o se lo shock geopolitico si risolve rapidamente.</p>
 <hr>
 </section>
-<section id="le-variabili-che-il-modello-non-vede" class="level2 anchored" data-number="6" data-anchor-id="le-variabili-che-il-modello-non-vede">
-<h2 class="anchored" data-number="6" data-anchor-id="le-variabili-che-il-modello-non-vede"><span class="header-section-number">6</span> Le variabili che il modello non vede</h2>
+<section id="le-variabili-che-il-modello-non-vede" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="le-variabili-che-il-modello-non-vede"><span class="header-section-number">6</span> Le variabili che il modello non vede</h2>
 <p>Il modello usa il DFR come unica variabile. Nella realtà i tassi bancari dipendono anche da:</p>
-<div id="cell-variabili-esterne" class="cell" data-execution_count="8">
-<div id="variabili-esterne" class="cell-output cell-output-display" data-execution_count="8">
-<div id="T_30222" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="T_30222-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Variabile</th>
@@ -629,29 +563,16 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;5: Variabili esterne non incluse nel modello DFR-pass-through</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p><strong>Connessione con il Nowcasting</strong> (<code>20260311_Nowcasting</code>): il Nowcasting usa Brent e TTF come indicatori anticipatori della domanda di credito PMI. Tassi bancari più alti comprimono la domanda → il Nowcasting cattura la frenata con 6-12 mesi di anticipo rispetto ai dati ufficiali.</p>
 <hr>
 </section>
 <section id="come-funziona-il-modello-per-chi-vuole-capire" class="level2" data-number="7">
-<section id="come-funziona-il-modello-per-chi-vuole-capire" class="level2 anchored" data-number="7" data-anchor-id="come-funziona-il-modello-per-chi-vuole-capire">
-<h2 class="anchored" data-number="7" data-anchor-id="come-funziona-il-modello-per-chi-vuole-capire"><span class="header-section-number">7</span> Come funziona il modello (per chi vuole capire)</h2>
-<section id="il-coefficiente-β-quanto-si-trasmette" class="level3 anchored" data-number="7.1" data-anchor-id="il-coefficiente-β-quanto-si-trasmette">
-<h3 class="anchored" data-number="7.1" data-anchor-id="il-coefficiente-β-quanto-si-trasmette"><span class="header-section-number">7.1</span> Il coefficiente β: quanto si trasmette</h3>
+<h2 data-number="7" class="anchored" data-anchor-id="come-funziona-il-modello-per-chi-vuole-capire"><span class="header-section-number">7</span> Come funziona il modello (per chi vuole capire)</h2>
+<section id="il-coefficiente-β-quanto-si-trasmette" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="il-coefficiente-β-quanto-si-trasmette"><span class="header-section-number">7.1</span> Il coefficiente β: quanto si trasmette</h3>
 <p>Per ogni tasso bancario, misuriamo quanto è cambiato storicamente quando il DFR cambiava. Esempio: quando il DFR sale di 1% (+100bp), i mutui variabili salgono di circa 0,59% (+59bp). Questo coefficiente si chiama <strong>β</strong> e vale tra 0 (niente trasmissione) e 1 (trasmissione totale).</p>
-<div id="cell-beta-confronto" class="cell" data-execution_count="9">
-<div id="beta-confronto" class="cell-output cell-output-display" data-execution_count="9">
-<div id="T_a2463" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="T_a2463-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Tasso</th>
@@ -727,25 +648,13 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;6: Coefficienti β di pass-through: immediato (OLS) vs lungo periodo (ECM) vs letteratura</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p><strong>Perché i β dei depositi a vista sono così bassi rispetto alla letteratura?</strong> Perché il ciclo 2015-2022 era a tassi zero o negativi: i conti correnti erano già fermi a 0% e non potevano scendere ulteriormente (il “floor” a zero comprime il β stimato). Anche in un ciclo “normale” il pass-through sui conti correnti italiani resta contenuto. I <strong>depositi a termine</strong>, con β ≈ 0,43, sono invece in linea con la letteratura.</p>
 </section>
-<section id="il-modello-ecm-laggiustamento-nel-tempo" class="level3 anchored" data-number="7.2" data-anchor-id="il-modello-ecm-laggiustamento-nel-tempo">
-<h3 class="anchored" data-number="7.2" data-anchor-id="il-modello-ecm-laggiustamento-nel-tempo"><span class="header-section-number">7.2</span> Il modello ECM: l’aggiustamento nel tempo</h3>
+<section id="il-modello-ecm-laggiustamento-nel-tempo" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="il-modello-ecm-laggiustamento-nel-tempo"><span class="header-section-number">7.2</span> Il modello ECM: l’aggiustamento nel tempo</h3>
 <p>Il β immediato misura solo il primo mese. L’ECM (Error Correction Model) misura quanta parte dell’aggiustamento avviene nel corso dei mesi successivi.</p>
-<div id="cell-ecm-velocita" class="cell" data-execution_count="10">
-<div id="ecm-velocita" class="cell-output cell-output-display" data-execution_count="10">
-<div id="T_30f55" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="T_30f55-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Tasso</th>
@@ -821,35 +730,49 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;7: ECM — velocità di aggiustamento verso l'equilibrio di lungo periodo</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p><strong>Gap attuale</strong>: quanto ogni tasso è sopra (+) o sotto (-) il livello che il modello prevede in equilibrio con il DFR corrente. Un gap negativo significa che il tasso non ha ancora assorbito completamente i movimenti passati del DFR.</p>
+<hr>
+</section>
+</section>
+<section id="approfondimenti" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="approfondimenti"><span class="header-section-number">8</span> Approfondimenti</h2>
+<p>Quattro documenti satellite completano questo hub con analisi specializzate:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: left;">::::</th>
-<th style="text-align: left;">approfondimenti”}</th>
+<th style="text-align: left;">Documento</th>
+<th style="text-align: left;">Contenuto</th>
 <th style="text-align: left;">Per chi</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><a href="glossario.html">Glossario</a> <a href="guida_profano.html">Guida per non specialisti</a> <a href="stress_test.html">Stress test e permacrisi</a> <a href="canali.html">Canali di trasmissione</a></td>
-<td style="text-align: left;">Tutte le sigle — DFR, Euribor, β, ECM, TLTRO, permacrisi, … Come si costruisce una previsione E2E in 7 passi, con numeri concreti Scenari estremi, β non lineare, Scenario Stress IV (DFR 3,25%) Gli 8 canali che il β lineare non cattura — letteratura e mappa operativa</td>
-<td style="text-align: left;">Chi legge e vuole capire i termini Chi vuole capire il metodo dall’inizio Chi vuole capire i rischi oltre il modello Chi vuole capire i meccanismi strutturali</td>
+<td style="text-align: left;"><a href="glossario.html">Glossario</a></td>
+<td style="text-align: left;">Tutte le sigle — DFR, Euribor, β, ECM, TLTRO, permacrisi, …</td>
+<td style="text-align: left;">Chi legge e vuole capire i termini</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="guida_profano.html">Guida per non specialisti</a></td>
+<td style="text-align: left;">Come si costruisce una previsione E2E in 7 passi, con numeri concreti</td>
+<td style="text-align: left;">Chi vuole capire il metodo dall’inizio</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="stress_test.html">Stress test e permacrisi</a></td>
+<td style="text-align: left;">Scenari estremi, β non lineare, Scenario Stress IV (DFR 3,25%)</td>
+<td style="text-align: left;">Chi vuole capire i rischi oltre il modello</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="canali.html">Canali di trasmissione</a></td>
+<td style="text-align: left;">Gli 8 canali che il β lineare non cattura — letteratura e mappa operativa</td>
+<td style="text-align: left;">Chi vuole capire i meccanismi strutturali</td>
 </tr>
 </tbody>
 </table>
+<hr>
 </section>
-</section>
-<section id="note-metodologiche" class="level2 anchored" data-number="8" data-anchor-id="note-metodologiche">
-<h2 class="anchored" data-number="8" data-anchor-id="note-metodologiche"><span class="header-section-number">8</span> Note metodologiche</h2>
+<section id="note-metodologiche" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="note-metodologiche"><span class="header-section-number">9</span> Note metodologiche</h2>
 <ul>
 <li><strong>Dati</strong>: MIR BCE (serie italiane, nuovi contratti), scaricati via <code>ecbdata</code>. Ultimo rilascio: 2026-07-01.</li>
 <li><strong>Modelli</strong>: OLS su differenze prime (β immediato, ciclo 2022-2026) + ECM Engle-Granger (β di LR, 2015-2026).</li>
@@ -864,7 +787,6 @@ ul.task-list li input[type="checkbox"] {
 <p>L’uso di strumenti di intelligenza artificiale generativa è dichiarato esplicitamente in quanto parte del processo di lavoro seguito nella redazione del presente documento. Tali strumenti sono stati impiegati a supporto della lettura, della sintesi, della riorganizzazione argomentativa e della revisione testuale, sempre nell’ambito di un processo pienamente controllato dall’autore.</p>
 <p>La responsabilità per le fonti utilizzate, le analisi condotte, le verifiche effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore.</p>
 <p>L’intelligenza artificiale è stata utilizzata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
-</section>
 
 
 </section>
@@ -1278,7 +1200,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_TassiBancariH2/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

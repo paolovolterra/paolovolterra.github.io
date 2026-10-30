@@ -110,6 +110,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../MCC.css">
 <meta property="og:title" content="Validazione esterna dell’indicatore di rischio geopolitico settoriale – Paolo Volterra">
@@ -211,7 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#conclusioni" id="toc-conclusioni" class="nav-link" data-scroll-target="#conclusioni"><span class="header-section-number">6</span> Conclusioni</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2604_RischioGeopoliticoValidazione/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -270,8 +299,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="obiettivo-e-impostazione-metodologica" class="level2 anchored" data-number="1" data-anchor-id="obiettivo-e-impostazione-metodologica">
-<h2 class="anchored" data-number="1" data-anchor-id="obiettivo-e-impostazione-metodologica"><span class="header-section-number">1</span> Obiettivo e impostazione metodologica</h2>
+<section id="obiettivo-e-impostazione-metodologica" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="obiettivo-e-impostazione-metodologica"><span class="header-section-number">1</span> Obiettivo e impostazione metodologica</h2>
 <p>La classificazione di rischio geopolitico adottata in questo lavoro assegna a ciascuna divisione ATECO 2025 un livello di rischio (Medio, Medio-Alto, Alto) sulla base di criteri prevalentemente qualitativi e di valutazione esperta. Questa nota pone una domanda semplice e operativamente rilevante:</p>
 <blockquote class="blockquote">
 <p><em>I settori classificati come più rischiosi mostrano, nei dati osservabili, caratteristiche coerenti con un’esposizione geopolitica elevata?</em></p>
@@ -282,8 +311,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Dipendenza da consumi intermedi</strong>: la quota di input intermedi sull’output totale misura quanto un settore dipenda da forniture esterne — incluse quelle internazionali — ed è quindi un proxy della sua vulnerabilità alle interruzioni di filiera.</p></li>
 <li><p><strong>Esposizione alle esportazioni</strong>: la quota di esportazioni sull’output misura l’integrazione del settore nei mercati internazionali e la sua sensibilità a variazioni dei flussi commerciali globali.</p></li>
 </ol>
-<section id="fonti-dati" class="level3 anchored" data-number="1.1" data-anchor-id="fonti-dati">
-<h3 class="anchored" data-number="1.1" data-anchor-id="fonti-dati"><span class="header-section-number">1.1</span> Fonti dati</h3>
+<section id="fonti-dati" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="fonti-dati"><span class="header-section-number">1.1</span> Fonti dati</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 26%">
@@ -322,18 +351,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>Il mapping tra settori IEA (utilizzati in <code>nrg_bal_s</code>) e sezioni NACE/ATECO è semplificato: i sub-settori industriali (acciaio, chimica, minerali non metalliferi, ecc.) sono aggregati alla sezione C; i trasporti IEA (FC_TRA_E) alla sezione H; i servizi commerciali e pubblici (FC_OTH_CP_E) alle sezioni di servizi proporzionalmente al valore aggiunto. La sezione D (energia) incorpora la quota di autoconsumo dell’industria residua.</p>
 </section>
-<section id="score-composito-esterno" class="level3 anchored" data-number="1.2" data-anchor-id="score-composito-esterno">
-<h3 class="anchored" data-number="1.2" data-anchor-id="score-composito-esterno"><span class="header-section-number">1.2</span> Score composito esterno</h3>
+<section id="score-composito-esterno" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="score-composito-esterno"><span class="header-section-number">1.2</span> Score composito esterno</h3>
 <p>Le tre proxy vengono normalizzate min-max e aggregate con pesi prefissati:</p>
 <p><span class="math display">\[\text{Score\_ext} = 0.35 \times \text{energy\_norm} + 0.35 \times \text{input\_norm} + 0.30 \times \text{export\_norm}\]</span></p>
 <p>Lo score composito viene poi convertito in classi (tercili) comparabili con la classificazione interna: basso → Medio, medio → Medio-Alto, alto → Alto.</p>
 </section>
 </section>
-<section id="le-tre-dimensioni-dello-score-esterno" class="level2 anchored" data-number="2" data-anchor-id="le-tre-dimensioni-dello-score-esterno">
-<h2 class="anchored" data-number="2" data-anchor-id="le-tre-dimensioni-dello-score-esterno"><span class="header-section-number">2</span> Le tre dimensioni dello score esterno</h2>
-<div id="cell-fig-tre-dimensioni" class="cell" data-execution_count="2">
+<section id="le-tre-dimensioni-dello-score-esterno" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="le-tre-dimensioni-dello-score-esterno"><span class="header-section-number">2</span> Le tre dimensioni dello score esterno</h2>
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="fl">4.5</span>))</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dim_info <span class="op">=</span> [</span>
@@ -354,20 +381,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"OUT/fig_validation_dimensioni.png"</span>, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-display">
-<div id="figura-tre-dimensioni" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-tre-dimensioni-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig01.png" class="figure-img" role="img" width="1138" height="422"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;1: Tre proxy di esposizione geopolitica per sezione ATECO (score normalizzato 0–1)</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p>Le tre proxy catturano aspetti distinti dell’esposizione geopolitica:</p>
 <ul>
 <li><p><strong>Intensità energetica</strong>: domina nei trasporti (H) e nell’energia (D), riflette l’esposizione diretta agli shock petroliferi e del gas naturale. Sezione H: 17,9 TJ/MLN EUR di VA, valore 8 volte superiore alla media dei servizi.</p></li>
@@ -375,11 +390,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Esposizione export</strong>: estrazione (B) ed energia (D) mostrano elevata intensità di esportazione. Il dato per i servizi di supporto alle imprese (N) — relativamente alto — riflette le esportazioni di servizi di logistica integrata e noleggio internazionale registrate nell’anno di riferimento SBS.</p></li>
 </ul>
 </section>
-<section id="il-confronto-classificazione-interna-vs-evidenze-esterne" class="level2 anchored" data-number="3" data-anchor-id="il-confronto-classificazione-interna-vs-evidenze-esterne">
-<h2 class="anchored" data-number="3" data-anchor-id="il-confronto-classificazione-interna-vs-evidenze-esterne"><span class="header-section-number">3</span> Il confronto: classificazione interna vs evidenze esterne</h2>
-<div id="cell-fig-confronto-scatter" class="cell" data-execution_count="3">
+<section id="il-confronto-classificazione-interna-vs-evidenze-esterne" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="il-confronto-classificazione-interna-vs-evidenze-esterne"><span class="header-section-number">3</span> Il confronto: classificazione interna vs evidenze esterne</h2>
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Jitter orizzontale per leggibilità</span></span>
@@ -415,23 +428,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"OUT/fig_validation_scatter.png"</span>, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
 <span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-display">
-<div id="figura-confronto-scatter" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-confronto-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig02.png" class="figure-img" role="img" width="758" height="470"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;2: Classificazione interna vs score esterno per sezione ATECO</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="4">
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>desc_sez <span class="op">=</span> {</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A"</span>:<span class="st">"Agricoltura, silvicoltura e pesca"</span>,<span class="st">"B"</span>:<span class="st">"Estrazione di minerali"</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C"</span>:<span class="st">"Attività manifatturiere"</span>,<span class="st">"D"</span>:<span class="st">"Fornitura di energia elettrica, gas"</span>,</span>
@@ -458,13 +457,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>tab_out <span class="op">=</span> tab[[<span class="st">"Sezione"</span>,<span class="st">"Descrizione"</span>,<span class="st">"Rischio interno"</span>,<span class="st">"Score esterno"</span>,<span class="st">"Classe esterna"</span>,<span class="st">"Esito"</span>]].copy()</span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>tab_out[<span class="st">"_sort"</span>] <span class="op">=</span> tab[<span class="st">"score_esterno"</span>]</span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>tab_out.sort_values(<span class="st">"_sort"</span>, ascending<span class="op">=</span><span class="va">False</span>).drop(columns<span class="op">=</span><span class="st">"_sort"</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="tab-confronto" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-confronto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -597,57 +591,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;1: Confronto classificazione interna vs score esterno per sezione ATECO</p>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="principali-evidenze" class="level2 anchored" data-number="4" data-anchor-id="principali-evidenze">
-<h2 class="anchored" data-number="4" data-anchor-id="principali-evidenze"><span class="header-section-number">4</span> Principali evidenze</h2>
+<section id="principali-evidenze" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="principali-evidenze"><span class="header-section-number">4</span> Principali evidenze</h2>
 <p>Su 13 sezioni analizzate:</p>
 <ul>
 <li><p><strong>6 coerenti</strong>: le sezioni H (Trasporti), D (Energia), C (Manifattura), A (Agricoltura), M (Servizi professionali) e L (Immobiliare) presentano una classificazione interna allineata alle evidenze esterne. In particolare, le tre sezioni classificate Alto internamente (H, D, C) ricevono tutte punteggi alti o medio-alti dall’analisi esterna.</p></li>
 <li><p><strong>1 possibile sovrastima</strong> — sezione G (Commercio): la classificazione interna Medio-Alto non trova pieno riscontro nello score esterno (Medio), che riflette intensità energetica bassa e dipendenza da input nella media dei servizi. Tuttavia, la classificazione Medio-Alto per G rimane difendibile in ottica di policy: il commercio all’ingrosso (div. 46) e al dettaglio (div. 47) fungono da intermediari di prodotti con elevata esposizione geopolitica, anche se il settore in quanto tale non è ad alta intensità di input energetici.</p></li>
 <li><p><strong>6 possibili sottostime</strong> — B, E, F, I, J, N: queste sezioni, classificate internamente Medio o Medio-Alto, mostrano score esterni superiori alla classe assegnata. Le motivazioni variano per settore:</p></li>
 </ul>
-<section id="sezione-b-estrazione-di-minerali" class="level3 anchored" data-number="4.1" data-anchor-id="sezione-b-estrazione-di-minerali">
-<h3 class="anchored" data-number="4.1" data-anchor-id="sezione-b-estrazione-di-minerali"><span class="header-section-number">4.1</span> Sezione B — Estrazione di minerali</h3>
+<section id="sezione-b-estrazione-di-minerali" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="sezione-b-estrazione-di-minerali"><span class="header-section-number">4.1</span> Sezione B — Estrazione di minerali</h3>
 <p>L’indicatore interno assegna un mix Alto/Medio-Alto alle divisioni dell’estrattivo. Lo score esterno colloca B nella classe Alto, principalmente per l’elevata quota di esportazioni di materie prime (indicatore V15110 SBS) e l’alta dipendenza da input. Il segnale è coerente con la natura dell’estrattivo: materie prime come nichel, rame e minerali critici hanno mercati fortemente influenzati da dinamiche geopolitiche.</p>
 </section>
-<section id="sezione-n-noleggio-agenzie-supporto-alle-imprese" class="level3 anchored" data-number="4.2" data-anchor-id="sezione-n-noleggio-agenzie-supporto-alle-imprese">
-<h3 class="anchored" data-number="4.2" data-anchor-id="sezione-n-noleggio-agenzie-supporto-alle-imprese"><span class="header-section-number">4.2</span> Sezione N — Noleggio, agenzie, supporto alle imprese</h3>
+<section id="sezione-n-noleggio-agenzie-supporto-alle-imprese" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="sezione-n-noleggio-agenzie-supporto-alle-imprese"><span class="header-section-number">4.2</span> Sezione N — Noleggio, agenzie, supporto alle imprese</h3>
 <p>La sezione N mostra un’esposizione commerciale elevata (8,6% di export su output nel 2019 secondo SBS), superiore a quanto suggerisce la classificazione Medio. La componente rilevante è il noleggio di macchinari e attrezzature industriali a clientela internazionale e i servizi di logistica contrattuale, che creano esposizione indiretta a mercati esteri.</p>
 </section>
-<section id="sezioni-f-i-j-e-costruzioni-alloggio-ict-acquarifiuti" class="level3 anchored" data-number="4.3" data-anchor-id="sezioni-f-i-j-e-costruzioni-alloggio-ict-acquarifiuti">
-<h3 class="anchored" data-number="4.3" data-anchor-id="sezioni-f-i-j-e-costruzioni-alloggio-ict-acquarifiuti"><span class="header-section-number">4.3</span> Sezioni F, I, J, E — Costruzioni, Alloggio, ICT, Acqua/rifiuti</h3>
+<section id="sezioni-f-i-j-e-costruzioni-alloggio-ict-acquarifiuti" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="sezioni-f-i-j-e-costruzioni-alloggio-ict-acquarifiuti"><span class="header-section-number">4.3</span> Sezioni F, I, J, E — Costruzioni, Alloggio, ICT, Acqua/rifiuti</h3>
 <p>Per queste sezioni lo score esterno si colloca in classe Medio-Alto per effetto combinato della dipendenza da input intermedi (materiali da costruzione, attrezzature ICT, reagenti per il trattamento acque) e di flussi commerciali transfrontalieri non trascurabili. La classificazione interna Medio è conservativa ma operativamente difendibile, in quanto questi settori non hanno esposizione diretta alle rotte commerciali del Medio Oriente.</p>
 </section>
 </section>
-<section id="limiti-metodologici" class="level2 anchored" data-number="5" data-anchor-id="limiti-metodologici">
-<h2 class="anchored" data-number="5" data-anchor-id="limiti-metodologici"><span class="header-section-number">5</span> Limiti metodologici</h2>
-<section id="il-mapping-iea-nace-è-parziale-per-i-servizi" class="level3 anchored" data-number="5.1" data-anchor-id="il-mapping-iea-nace-è-parziale-per-i-servizi">
-<h3 class="anchored" data-number="5.1" data-anchor-id="il-mapping-iea-nace-è-parziale-per-i-servizi"><span class="header-section-number">5.1</span> 1. Il mapping IEA → NACE è parziale per i servizi</h3>
+<section id="limiti-metodologici" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="limiti-metodologici"><span class="header-section-number">5</span> Limiti metodologici</h2>
+<section id="il-mapping-iea-nace-è-parziale-per-i-servizi" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="il-mapping-iea-nace-è-parziale-per-i-servizi"><span class="header-section-number">5.1</span> 1. Il mapping IEA → NACE è parziale per i servizi</h3>
 <p>I dati energetici Eurostat (<code>nrg_bal_s</code>) disaggregano l’industria con dettaglio sub-settoriale (acciaio, chimica, minerali) ma riportano i servizi come aggregato (<code>FC_OTH_CP_E</code>). L’allocazione alle sezioni di servizi in proporzione al valore aggiunto introduce uniformità artificiale nell’intensità energetica delle sezioni F–N, limitando il potere discriminante della dimensione energetica per i non-industriali.</p>
 </section>
-<section id="anni-di-riferimento-eterogenei" class="level3 anchored" data-number="5.2" data-anchor-id="anni-di-riferimento-eterogenei">
-<h3 class="anchored" data-number="5.2" data-anchor-id="anni-di-riferimento-eterogenei"><span class="header-section-number">5.2</span> 2. Anni di riferimento eterogenei</h3>
+<section id="anni-di-riferimento-eterogenei" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="anni-di-riferimento-eterogenei"><span class="header-section-number">5.2</span> 2. Anni di riferimento eterogenei</h3>
 <p>I tre indicatori si riferiscono ad anni diversi (2019 per SBS export, 2022 per energia e conti nazionali). Il 2019 per le esportazioni evita le distorsioni COVID del 2020–2021 ma potrebbe non catturare ristrutturazioni recenti (es. supply chain reshoring post-2022).</p>
 </section>
-<section id="lo-score-esterno-misura-esposizione-strutturale-non-geopolitica-diretta" class="level3 anchored" data-number="5.3" data-anchor-id="lo-score-esterno-misura-esposizione-strutturale-non-geopolitica-diretta">
-<h3 class="anchored" data-number="5.3" data-anchor-id="lo-score-esterno-misura-esposizione-strutturale-non-geopolitica-diretta"><span class="header-section-number">5.3</span> 3. Lo score esterno misura esposizione strutturale, non geopolitica diretta</h3>
+<section id="lo-score-esterno-misura-esposizione-strutturale-non-geopolitica-diretta" class="level3" data-number="5.3">
+<h3 data-number="5.3" class="anchored" data-anchor-id="lo-score-esterno-misura-esposizione-strutturale-non-geopolitica-diretta"><span class="header-section-number">5.3</span> 3. Lo score esterno misura esposizione strutturale, non geopolitica diretta</h3>
 <p>Le tre proxy misurano la struttura produttiva e commerciale del settore, non la sua effettiva esposizione alla crisi in Medio Oriente. Un settore con alta export intensity ma orientato a mercati non coinvolti (es. USA, Cina) riceve un punteggio elevato anche se la sua esposizione mediorientale è bassa.</p>
 </section>
-<section id="il-confronto-è-a-livello-di-sezione-a-n-non-di-divisione" class="level3 anchored" data-number="5.4" data-anchor-id="il-confronto-è-a-livello-di-sezione-a-n-non-di-divisione">
-<h3 class="anchored" data-number="5.4" data-anchor-id="il-confronto-è-a-livello-di-sezione-a-n-non-di-divisione"><span class="header-section-number">5.4</span> 4. Il confronto è a livello di sezione (A-N), non di divisione</h3>
+<section id="il-confronto-è-a-livello-di-sezione-a-n-non-di-divisione" class="level3" data-number="5.4">
+<h3 data-number="5.4" class="anchored" data-anchor-id="il-confronto-è-a-livello-di-sezione-a-n-non-di-divisione"><span class="header-section-number">5.4</span> 4. Il confronto è a livello di sezione (A-N), non di divisione</h3>
 <p>L’indicatore interno opera a livello di divisione (2 cifre) e sotto-divisione, catturando eterogeneità interna che lo score esterno — costruito per sezione — non può vedere. Il caso più evidente è la sezione C (manifattura): al suo interno coesistono divisioni ad Alto rischio (es. 19 raffinazione, 24 metallurgia) e divisioni Medio (es. 10 alimentare, 31 mobili), che lo score aggregato appiattisce.</p>
 </section>
 </section>
-<section id="conclusioni" class="level2 anchored" data-number="6" data-anchor-id="conclusioni">
-<h2 class="anchored" data-number="6" data-anchor-id="conclusioni"><span class="header-section-number">6</span> Conclusioni</h2>
+<section id="conclusioni" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="conclusioni"><span class="header-section-number">6</span> Conclusioni</h2>
 <p>La validazione esterna conferma la coerenza di fondo della classificazione per i settori ad alta intensità energetica e industriale (H, D, C). Emerge tuttavia uno spazio di possibile revisione metodologica in due direzioni:</p>
 <ol type="1">
 <li><p><strong>Verso l’alto</strong> (possibili sottostime): l’estrazione mineraria (B) e i servizi di noleggio e supporto (N) mostrano esposizioni commerciali non pienamente catturate dalla classificazione corrente. Una revisione delle divisioni 08–09 (minerali non ferrosi) e delle divisioni 77–82 (noleggio industriale, logistica contrattuale) potrebbe essere opportuna.</p></li>
@@ -656,9 +643,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Il risultato più importante della validazione non è il punteggio, ma la <strong>conferma che la dimensione energetica e la dipendenza da input sono i driver dominanti</strong> dell’esposizione geopolitica osservabile — coerentemente con l’impatto della crisi in Medio Oriente sulle forniture di idrocarburi e sulle rotte di trasporto marittimo.</p>
 <hr>
 <p><em>Dati: Eurostat <code>nama_10_a64</code> (2022), <code>nrg_bal_s</code> (2022), <code>sbs_na_sca_r2</code> V15110 (2019). Elaborazione e mapping IEA→NACE a cura dell’autore.</em></p>
+
+
 </section>
-
-
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1069,7 +1056,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2604_RischioGeopoliticoValidazione/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

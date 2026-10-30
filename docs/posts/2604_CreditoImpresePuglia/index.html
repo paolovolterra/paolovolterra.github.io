@@ -189,7 +189,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Indice</h2>
    
   <ul>
-  <li><a href="#dati" id="toc-dati" class="nav-link active" data-scroll-target="#dati"><span class="header-section-number">3</span> Dati</a>
+  <li><a href="#evidenze" id="toc-evidenze" class="nav-link active" data-scroll-target="#evidenze"><span class="header-section-number">1</span> Evidenze</a></li>
+  <li><a href="#implicazioni-per-il-credito" id="toc-implicazioni-per-il-credito" class="nav-link" data-scroll-target="#implicazioni-per-il-credito"><span class="header-section-number">2</span> Implicazioni per il credito</a></li>
+  <li><a href="#dati" id="toc-dati" class="nav-link" data-scroll-target="#dati"><span class="header-section-number">3</span> Dati</a>
   <ul class="collapse">
   <li><a href="#grafico" id="toc-grafico" class="nav-link" data-scroll-target="#grafico"><span class="header-section-number">3.1</span> Grafico</a></li>
   <li><a href="#statistiche-di-sintesi" id="toc-statistiche-di-sintesi" class="nav-link" data-scroll-target="#statistiche-di-sintesi"><span class="header-section-number">3.2</span> Statistiche di sintesi</a></li>
@@ -197,7 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#note-metodologiche" id="toc-note-metodologiche" class="nav-link" data-scroll-target="#note-metodologiche"><span class="header-section-number">4</span> Note metodologiche</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2604_CreditoImpresePuglia/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -256,9 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="6e5e2ef7" class="cell" data-execution_count="1">
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a1b2c3d4</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -267,11 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> json.loads(Path(<span class="st">"OUT/results.json"</span>).read_text())</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> results[<span class="st">"summary"</span>]</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<div id="494a352d" class="cell" data-execution_count="2">
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># f1a2b3c4</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>narrative_path <span class="op">=</span> Path(<span class="st">"OUT/narrative.md"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> narrative_path.exists():</span>
@@ -281,55 +277,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    display(Markdown(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(lines)))</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    display(Markdown(<span class="st">"&gt; *Narrativa non ancora generata. Eseguire `step3_narrative.py`.*"</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-display cell-output-markdown">
 <p>## Sintesi</p>
 <p>Nel quadro dell’analisi <em>Banche al Mezzogiorno: sportelli, impieghi e sofferenze vs Centro-Nord</em>, presentiamo i risultati relativi ai dati disponibili dal 2009 al 2024. Il dataset considera come Mezzogiorno le regioni Abruzzo, Molise, Campania, Puglia, Basilicata, Calabria, Sicilia e Sardegna, mentre il Centro-Nord include Piemonte, Valle d’Aosta, Liguria, Lombardia, Veneto, Friuli Venezia Giulia, Emilia-Romagna, Toscana, Umbria, Marche e Lazio.</p>
 <p>Le sofferenze SNF nel Mezzogiorno sono state in calo del 60% rispetto ai valori medi pre-pandemia, con un valore finale di 2596 milioni di € nel 2024, contro i 17850,66 milioni di € della media annuale pre-crisi. Invece, le sofferenze SNF nel Centro-Nord sono scese del 90%, con un valore finale di 8393 milioni di € nel 2024, contro i 68986,59 milioni di € della media annuale pre-crisi.</p>
 <p>Le impieghi SNF nel Mezzogiorno sono scesi del 17% rispetto ai valori medi pre-pandemia, con un valore finale di 92175,17 milioni di € nel 2024, contro i 109029,01 milioni di € della media annuale pre-crisi. Le impieghi SNF nel Centro-Nord sono scese del 23% rispetto ai valori medi pre-pandemia, con un valore finale di 523898,47 milioni di € nel 2024, contro i 655295,46 milioni di € della media annuale pre-crisi.</p>
 <p>Il numero di sportelli bancari nel Mezzogiorno è sceso del 35% rispetto ai valori medi pre-pandemia, con un valore finale di 8680 nel 2024, contro i 11754 della media annuale pre-crisi. Il numero di sportelli bancari nel Centro-Nord è sceso del 39% rispetto ai valori medi pre-pandemia, con un valore finale di 29302 nel 2024, contro i 41187,6 della media annuale pre-crisi.</p>
-<section id="evidenze" class="level2 anchored" data-number="1" data-anchor-id="evidenze">
-<h2 class="anchored" data-number="1" data-anchor-id="evidenze"><span class="header-section-number">1</span> Evidenze</h2>
+<section id="evidenze" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="evidenze"><span class="header-section-number">1</span> Evidenze</h2>
 <ul>
 <li>Sofferenze SNF: <a href="https://memoria.bancaditalia.it/dettaglio/TDB10226">TDB10226</a></li>
 <li>Impieghi SNF: <a href="https://memoria.bancaditalia.it/dettaglio/TDB10226">TDB10226</a></li>
 <li>Sportelli bancari: <a href="https://memoria.bancaditalia.it/dettaglio/TDB20207">TDB20207</a></li>
 </ul>
 </section>
-<section id="implicazioni-per-il-credito" class="level2 anchored" data-number="2" data-anchor-id="implicazioni-per-il-credito">
-<h2 class="anchored" data-number="2" data-anchor-id="implicazioni-per-il-credito"><span class="header-section-number">2</span> Implicazioni per il credito</h2>
+<section id="implicazioni-per-il-credito" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="implicazioni-per-il-credito"><span class="header-section-number">2</span> Implicazioni per il credito</h2>
 <p>Gli sviluppi osservati nel Mezzogiorno suggeriscono un’erosione della rete bancaria, con una contrazione dei sofferenze SNF e degli impieghi SNF rispetto ai valori medi pre-crisi. Tuttavia, la situazione resta complessa, con un divario strutturale tra il Mezzogiorno e il Centro-Nord che richiede ulteriori analisi per comprendere le implicazioni operative per intermediari e imprenditori nella regione.</p>
 <p>L’intensità del cleanup NPL nel periodo 2017-2024 potrebbe avere un impatto significativo sulla situazione dei crediti nel Mezzogiorno, richiedendo una gestione attenta da parte delle banche per preservare la stabilità finanziaria della regione.</p>
 <p>Inoltre, l’erosione della rete bancaria potrebbe avere implicazioni per il servizio pubblico e per i cittadini del Mezzogiorno, con possibili conseguenze sulla disponibilità di prodotti finanziari e servizi associati.</p>
 <p>Per comprendere meglio la situazione e le implicazioni future, è necessario continuare a monitorare i dati e a analizzarne le tendenze.</p>
-</section>
-</div>
-</div>
 <hr>
-<section id="dati" class="level2 anchored" data-number="3" data-anchor-id="dati">
-<h2 class="anchored" data-number="3" data-anchor-id="dati"><span class="header-section-number">3</span> Dati</h2>
-<section id="grafico" class="level3 anchored" data-number="3.1" data-anchor-id="grafico">
-<h3 class="anchored" data-number="3.1" data-anchor-id="grafico"><span class="header-section-number">3.1</span> Grafico</h3>
-<div id="figura-main" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-main-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</section>
+<section id="dati" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="dati"><span class="header-section-number">3</span> Dati</h2>
+<section id="grafico" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="grafico"><span class="header-section-number">3.1</span> Grafico</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figure/fig01.png" class="img-fluid quarto-figure quarto-figure-center figure-img" role="img"></p>
 </figure>
 </div>
-</div>
-<div class="caption">
 <p>Figura&nbsp;1: Evoluzione dello stock di prestiti e dei tassi sui nuovi prestiti</p>
-</div>
-</div>
-</div>
 </section>
-<section id="statistiche-di-sintesi" class="level3 anchored" data-number="3.2" data-anchor-id="statistiche-di-sintesi">
-<h3 class="anchored" data-number="3.2" data-anchor-id="statistiche-di-sintesi"><span class="header-section-number">3.2</span> Statistiche di sintesi</h3>
-<div id="4ccc474e" class="cell" data-execution_count="3">
+<section id="statistiche-di-sintesi" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="statistiche-di-sintesi"><span class="header-section-number">3.2</span> Statistiche di sintesi</h3>
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># b2c3d4e5</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> sid, s <span class="kw">in</span> summary.items():</span>
@@ -347,9 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>df_tab <span class="op">=</span> pd.DataFrame(rows, columns<span class="op">=</span>[<span class="st">"Indicatore"</span>, <span class="st">"Valore"</span>, <span class="st">"Riferimento"</span>])</span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>df_tab.style.hide(axis<span class="op">=</span><span class="st">"index"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Indicatore</th>
@@ -480,14 +460,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-</div>
-</div>
 </section>
-<section id="serie-storiche" class="level3 anchored" data-number="3.3" data-anchor-id="serie-storiche">
-<h3 class="anchored" data-number="3.3" data-anchor-id="serie-storiche"><span class="header-section-number">3.3</span> Serie storiche</h3>
-<div id="270deeae" class="cell" data-execution_count="4">
+<section id="serie-storiche" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="serie-storiche"><span class="header-section-number">3.3</span> Serie storiche</h3>
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># c3d4e5f6</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_stock <span class="op">=</span> pd.read_parquet(<span class="st">"OUT/data/credito_bt_puglia_2018_2024_stock.parquet"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>df_tassi <span class="op">=</span> pd.read_parquet(<span class="st">"OUT/data/credito_bt_puglia_2018_2024_tassi.parquet"</span>)</span>
@@ -501,9 +477,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>df_merge.style.hide(axis<span class="op">=</span><span class="st">"index"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Data</th>
@@ -934,16 +908,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-</div>
-</div>
 <hr>
 </section>
 </section>
-<section id="note-metodologiche" class="level2 anchored" data-number="4" data-anchor-id="note-metodologiche">
-<h2 class="anchored" data-number="4" data-anchor-id="note-metodologiche"><span class="header-section-number">4</span> Note metodologiche</h2>
-<div id="65fb0430" class="cell" data-execution_count="5">
+<section id="note-metodologiche" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="note-metodologiche"><span class="header-section-number">4</span> Note metodologiche</h2>
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># d4e5f6g7</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>notes_md <span class="op">=</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(<span class="ss">f"- </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> n <span class="kw">in</span> results.get(<span class="st">"notes"</span>, []))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>series_lines <span class="op">=</span> []</span>
@@ -951,8 +921,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    series_lines.append(<span class="ss">f"- **</span><span class="sc">{</span>sid<span class="sc">}</span><span class="ss">**: </span><span class="sc">{</span>s<span class="sc">.</span>get(<span class="st">'label'</span>, sid)<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>s<span class="sc">.</span>get(<span class="st">'unit'</span>,<span class="st">''</span>)<span class="sc">}</span><span class="ss">)"</span>)</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>meta_md <span class="op">=</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(series_lines)</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>Markdown(<span class="ss">f"**Serie utilizzate**</span><span class="ch">\n\n</span><span class="sc">{</span>meta_md<span class="sc">}</span><span class="ch">\n\n</span><span class="ss">**Note di analisi**</span><span class="ch">\n\n</span><span class="sc">{</span>notes_md<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="5">
 <p><strong>Serie utilizzate</strong></p>
 <ul>
 <li><strong>SOF_SNF_SUD</strong>: Sofferenze SNF — Mezzogiorno (mln €) (mln_eur)</li>
@@ -971,21 +939,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Sofferenze SNF lordi: trimestrali 2009-2024, TRI30031. Picco Q4 2016: 138.8 mld€ Italia</li>
 <li>Evidenziare divario strutturale Sud/Nord, intensità del cleanup NPL 2017-2024, erosione rete sportelli</li>
 </ul>
-</div>
-</div>
-<div id="2dcdf0fb" class="cell" data-execution_count="6">
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># e5f6g7h8</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Markdown(<span class="ss">f"*Elaborazione dell'autore. Generato il </span><span class="sc">{</span>results[<span class="st">'generated'</span>]<span class="sc">}</span><span class="ss">.*"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="6">
 <p><em>Elaborazione dell’autore. Generato il 2026-04-11 06:23.</em></p>
-</div>
-</div>
+
+
 </section>
-
-
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1396,7 +1356,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2604_CreditoImpresePuglia/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

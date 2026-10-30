@@ -245,10 +245,10 @@ div.csl-indent {
   <li><a href="#integrazione-con-altre-fonti" id="toc-integrazione-con-altre-fonti" class="nav-link" data-scroll-target="#integrazione-con-altre-fonti"><span class="header-section-number">6.4</span> Integrazione con altre fonti</a></li>
   <li><a href="#indicatori-compositi" id="toc-indicatori-compositi" class="nav-link" data-scroll-target="#indicatori-compositi"><span class="header-section-number">6.5</span> Indicatori compositi</a></li>
   <li><a href="#automazione-e-monitoraggio" id="toc-automazione-e-monitoraggio" class="nav-link" data-scroll-target="#automazione-e-monitoraggio"><span class="header-section-number">6.6</span> Automazione e monitoraggio</a></li>
+  <li><a href="#quarto-bibliography" id="toc-quarto-bibliography" class="nav-link" data-scroll-target="#quarto-bibliography"><span class="header-section-number">6.7</span> Referenze</a></li>
   </ul></li>
-  <li><a href="#referenze" id="toc-referenze" class="nav-link" data-scroll-target="#referenze"><span class="header-section-number">6.7</span> Referenze</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2607_DecifrareDatiBankit/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -315,8 +315,8 @@ div.csl-indent {
 </section>
 <section id="architettura-del-database" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Architettura del database</h1>
-<section id="struttura-delle-tabelle" class="level2 anchored" data-number="2.1" data-anchor-id="struttura-delle-tabelle">
-<h2 class="anchored" data-number="2.1" data-anchor-id="struttura-delle-tabelle"><span class="header-section-number">2.1</span> Struttura delle tabelle</h2>
+<section id="struttura-delle-tabelle" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="struttura-delle-tabelle"><span class="header-section-number">2.1</span> Struttura delle tabelle</h2>
 <p>Il dump <code>Bankit.sqlite</code> contiene circa 245 tabelle. I nomi seguono una convenzione a prefisso che indica la provenienza:</p>
 <table class="caption-top table">
 <colgroup>
@@ -372,8 +372,8 @@ div.csl-indent {
 <p>Le tabelle <code>nuts_it_2024</code>, <code>comuni</code>, <code>regioni</code> forniscono la geografia.</p>
 <p>I numeri nelle sigle <code>TDB*</code> hanno un significato: <code>TDB10290</code> parte dal 2007, <code>TDB20290</code> dal 2011 (la versione più recente con copertura ridotta). In generale, la serie <code>TDB1*</code> ha la copertura storica più lunga, la serie <code>TDB2*</code> ha una finestra temporale più corta ma dati più aggiornati o definizioni riviste.</p>
 </section>
-<section id="colonne-ricorrenti" class="level2 anchored" data-number="2.2" data-anchor-id="colonne-ricorrenti">
-<h2 class="anchored" data-number="2.2" data-anchor-id="colonne-ricorrenti"><span class="header-section-number">2.2</span> Colonne ricorrenti</h2>
+<section id="colonne-ricorrenti" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="colonne-ricorrenti"><span class="header-section-number">2.2</span> Colonne ricorrenti</h2>
 <p>La maggior parte delle tavole condivide queste colonne:</p>
 <ul>
 <li><strong><code>DATA_OSS</code></strong>: data dell’osservazione (tipicamente fine mese o trimestre)</li>
@@ -387,8 +387,8 @@ div.csl-indent {
 </section>
 <section id="decifrare-i-codici" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Decifrare i codici</h1>
-<section id="fenec-il-fenomeno-economico" class="level2 anchored" data-number="3.1" data-anchor-id="fenec-il-fenomeno-economico">
-<h2 class="anchored" data-number="3.1" data-anchor-id="fenec-il-fenomeno-economico"><span class="header-section-number">3.1</span> FENEC: il fenomeno economico</h2>
+<section id="fenec-il-fenomeno-economico" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="fenec-il-fenomeno-economico"><span class="header-section-number">3.1</span> FENEC: il fenomeno economico</h2>
 <p><code>FENEC</code> è un codice numerico che identifica cosa viene misurato. Non esiste una tabella di decodifica completa nel dump SQLite. I codici più comuni:</p>
 <table class="caption-top table">
 <thead>
@@ -428,8 +428,8 @@ div.csl-indent {
 </table>
 <p>Il modo più affidabile per identificare un FENEC sconosciuto è <strong>confrontare il valore nazionale</strong> (<code>LOC_CTP='IT'</code>) con un valore noto dello stesso ordine di grandezza. Per esempio: se il totale nazionale è circa 1.200 miliardi, siamo nell’ordine dei depositi; se è 600 miliardi, potrebbe essere una sotto-componente; se è 60 miliardi, è qualcosa di molto più specifico.</p>
 </section>
-<section id="set_ctp-il-settore-di-controparte" class="level2 anchored" data-number="3.2" data-anchor-id="set_ctp-il-settore-di-controparte">
-<h2 class="anchored" data-number="3.2" data-anchor-id="set_ctp-il-settore-di-controparte"><span class="header-section-number">3.2</span> SET_CTP: il settore di controparte</h2>
+<section id="set_ctp-il-settore-di-controparte" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="set_ctp-il-settore-di-controparte"><span class="header-section-number">3.2</span> SET_CTP: il settore di controparte</h2>
 <p>Il codice <code>SET_CTP</code> identifica <em>chi</em> detiene il deposito o il prestito. Qui sta una delle insidie maggiori. Il SEC 2010 <span class="citation" data-cites="sec2010"><a href="#ref-sec2010" role="doc-biblioref">[3]</a></span> definisce i settori istituzionali con codici <code>S*</code>, ma Bankit usa anche codici proprietari numerici. La tabella <code>BAM_decodifiche</code> copre solo alcuni codici; <code>dove_SET_CTP</code> elenca le tabelle che usano questo campo ma non fornisce la decodifica.</p>
 <p><strong>Esempio critico — famiglie consumatrici:</strong></p>
 <ul>
@@ -441,8 +441,8 @@ div.csl-indent {
 </ul>
 <p><strong>Regola pratica</strong>: se una tavola ha sia <code>S14</code> sia <code>600</code>, provare entrambi e confrontare con un valore di riferimento noto. La differenza tra i due può rivelare cosa include il codice SEC più ampio.</p>
 </section>
-<section id="loc_ctp-la-geografia" class="level2 anchored" data-number="3.3" data-anchor-id="loc_ctp-la-geografia">
-<h2 class="anchored" data-number="3.3" data-anchor-id="loc_ctp-la-geografia"><span class="header-section-number">3.3</span> LOC_CTP: la geografia</h2>
+<section id="loc_ctp-la-geografia" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="loc_ctp-la-geografia"><span class="header-section-number">3.3</span> LOC_CTP: la geografia</h2>
 <ul>
 <li><code>IT</code> = intero territorio nazionale</li>
 <li>4 caratteri (es. <code>ITC4</code>) = NUTS2 (regioni)</li>
@@ -454,16 +454,16 @@ div.csl-indent {
 <section id="caso-studio-depositi-delle-famiglie-consumatrici" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Caso studio: depositi delle famiglie consumatrici</h1>
 <p>Per replicare i dati di un articolo che riportava 1.162,8 miliardi di euro di depositi di famiglie consumatrici a aprile 2026 <span class="citation" data-cites="sole24ore_depositi"><a href="#ref-sole24ore_depositi" role="doc-biblioref">[2]</a></span>, il percorso è stato:</p>
-<section id="primo-tentativo-sbagliato" class="level2 anchored" data-number="4.1" data-anchor-id="primo-tentativo-sbagliato">
-<h2 class="anchored" data-number="4.1" data-anchor-id="primo-tentativo-sbagliato"><span class="header-section-number">4.1</span> Primo tentativo (sbagliato)</h2>
+<section id="primo-tentativo-sbagliato" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="primo-tentativo-sbagliato"><span class="header-section-number">4.1</span> Primo tentativo (sbagliato)</h2>
 <p><code>TDB10290</code> + <code>SET_CTP='S14'</code> + <code>FENEC=1041810</code> → 1.247,8 miliardi. Scostamento: +7,3%. Direzione giusta ma livello sbagliato.</p>
 </section>
-<section id="diagnosi" class="level2 anchored" data-number="4.2" data-anchor-id="diagnosi">
-<h2 class="anchored" data-number="4.2" data-anchor-id="diagnosi"><span class="header-section-number">4.2</span> Diagnosi</h2>
+<section id="diagnosi" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="diagnosi"><span class="header-section-number">4.2</span> Diagnosi</h2>
 <p>La stessa tavola <code>TDB10290</code> contiene anche il codice <code>SET_CTP='600'</code>. Provandolo: 1.157,9 miliardi — molto più vicino ma ancora ~5 miliardi sotto.</p>
 </section>
-<section id="trovare-la-tavola-giusta" class="level2 anchored" data-number="4.3" data-anchor-id="trovare-la-tavola-giusta">
-<h2 class="anchored" data-number="4.3" data-anchor-id="trovare-la-tavola-giusta"><span class="header-section-number">4.3</span> Trovare la tavola giusta</h2>
+<section id="trovare-la-tavola-giusta" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="trovare-la-tavola-giusta"><span class="header-section-number">4.3</span> Trovare la tavola giusta</h2>
 <p>Il passo successivo è stato interrogare <strong>tutte</strong> le tavole con <code>SET_CTP='600'</code> per trovare quella con il FENEC che desse il valore nazionale esatto. Su 245 tabelle, quattro contengono il settore <code>600</code> con dati provinciali:</p>
 <table class="caption-top table">
 <thead>
@@ -503,12 +503,12 @@ div.csl-indent {
 </table>
 <p><strong>Risultato</strong>: <code>TDB20290</code> + <code>SET_CTP='600'</code> + <code>FENEC=52000100</code> riproduce esattamente tutti i valori dell’articolo.</p>
 </section>
-<section id="verifica-sui-dati-sub-nazionali" class="level2 anchored" data-number="4.4" data-anchor-id="verifica-sui-dati-sub-nazionali">
-<h2 class="anchored" data-number="4.4" data-anchor-id="verifica-sui-dati-sub-nazionali"><span class="header-section-number">4.4</span> Verifica sui dati sub-nazionali</h2>
+<section id="verifica-sui-dati-sub-nazionali" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="verifica-sui-dati-sub-nazionali"><span class="header-section-number">4.4</span> Verifica sui dati sub-nazionali</h2>
 <p>Il test definitivo è sui dati disaggregati. Confrontando i delta per 103 province tra i nostri dati e quelli pubblicati, 99 corrispondono esattamente (correlazione 0,92). L’unica discrepanza significativa è la Sardegna, dove il database manca di una provincia (ITG2H, Sud Sardegna) all’ultima data disponibile — un problema di copertura, non di codici.</p>
 </section>
-<section id="lezioni-dal-caso" class="level2 anchored" data-number="4.5" data-anchor-id="lezioni-dal-caso">
-<h2 class="anchored" data-number="4.5" data-anchor-id="lezioni-dal-caso"><span class="header-section-number">4.5</span> Lezioni dal caso</h2>
+<section id="lezioni-dal-caso" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="lezioni-dal-caso"><span class="header-section-number">4.5</span> Lezioni dal caso</h2>
 <ol type="1">
 <li><strong>SET_CTP ‘600’ ≠ ‘S14’</strong>: la classificazione Bankit ha codici proprietari che non coincidono 1:1 con i codici SEC 2010, anche quando il concetto sembra lo stesso.</li>
 <li><strong>Tabelle «gemelle»</strong>: <code>TDB1*</code> e <code>TDB2*</code> spesso contengono lo stesso fenomeno con definizioni o finestre temporali diverse. Provare entrambe.</li>
@@ -520,71 +520,65 @@ div.csl-indent {
 <section id="metodo-di-ricerca-sistematica" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Metodo di ricerca sistematica</h1>
 <p>Quando si affronta una domanda nuova («esiste una tavola con il dato X?»), l’approccio è:</p>
-<section id="passo-1-cercare-per-parola-chiave" class="level2 anchored" data-number="5.1" data-anchor-id="passo-1-cercare-per-parola-chiave">
-<h2 class="anchored" data-number="5.1" data-anchor-id="passo-1-cercare-per-parola-chiave"><span class="header-section-number">5.1</span> Passo 1: cercare per parola chiave</h2>
+<section id="passo-1-cercare-per-parola-chiave" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="passo-1-cercare-per-parola-chiave"><span class="header-section-number">5.1</span> Passo 1: cercare per parola chiave</h2>
 <p>Il database non ha metadati testuali ricercabili direttamente in SQL. La tabella <code>LEGEND</code> contiene descrizioni in italiano per alcune tavole (es. «Depositi per provincia»), ma la copertura è parziale. La tabella <code>STRUCTURE</code> elenca le colonne di ogni tavola con i domini associati.</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Cerca tavole con una colonna specifica</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> name <span class="kw">FROM</span> sqlite_master</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="kw">type</span><span class="op">=</span><span class="st">'table'</span> <span class="kw">AND</span> name <span class="kw">NOT</span> <span class="kw">LIKE</span> <span class="st">'nuts%'</span>;</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 </section>
-<section id="passo-2-screening-per-settore-e-localizzazione" class="level2 anchored" data-number="5.2" data-anchor-id="passo-2-screening-per-settore-e-localizzazione">
-<h2 class="anchored" data-number="5.2" data-anchor-id="passo-2-screening-per-settore-e-localizzazione"><span class="header-section-number">5.2</span> Passo 2: screening per settore e localizzazione</h2>
+<section id="passo-2-screening-per-settore-e-localizzazione" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="passo-2-screening-per-settore-e-localizzazione"><span class="header-section-number">5.2</span> Passo 2: screening per settore e localizzazione</h2>
 <p>Per ogni tavola candidata, verificare: - Contiene <code>SET_CTP</code>? Se sì, include il settore cercato? - Contiene <code>LOC_CTP</code>? Se sì, a che granularità (nazionale, regionale, provinciale)? - Quali FENEC sono disponibili per quel settore?</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pattern di screening</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> candidate_tables:</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    sectors <span class="op">=</span> query(<span class="ss">f"SELECT DISTINCT SET_CTP FROM '</span><span class="sc">{</span>t<span class="sc">}</span><span class="ss">'"</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    fenecs  <span class="op">=</span> query(<span class="ss">f"SELECT DISTINCT FENEC FROM '</span><span class="sc">{</span>t<span class="sc">}</span><span class="ss">' WHERE SET_CTP='TARGET'"</span>)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    locs    <span class="op">=</span> query(<span class="ss">f"SELECT DISTINCT LOC_CTP FROM '</span><span class="sc">{</span>t<span class="sc">}</span><span class="ss">' WHERE SET_CTP='TARGET' LIMIT 10"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 </section>
-<section id="passo-3-validazione-nazionale" class="level2 anchored" data-number="5.3" data-anchor-id="passo-3-validazione-nazionale">
-<h2 class="anchored" data-number="5.3" data-anchor-id="passo-3-validazione-nazionale"><span class="header-section-number">5.3</span> Passo 3: validazione nazionale</h2>
+<section id="passo-3-validazione-nazionale" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="passo-3-validazione-nazionale"><span class="header-section-number">5.3</span> Passo 3: validazione nazionale</h2>
 <p>Per ogni combinazione candidata (tavola + FENEC + SET_CTP), estrarre il valore nazionale più recente e confrontarlo con un benchmark noto.</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> query(<span class="ss">f"SELECT VALORE FROM '</span><span class="sc">{</span>t<span class="sc">}</span><span class="ss">' WHERE SET_CTP='TARGET'</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="er">           AND FENEC=F AND LOC_CTP='IT'</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>           ORDER BY DATA_OSS DESC LIMIT <span class="dv">1</span><span class="st">")</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 </section>
-<section id="passo-4-validazione-sub-nazionale" class="level2 anchored" data-number="5.4" data-anchor-id="passo-4-validazione-sub-nazionale">
-<h2 class="anchored" data-number="5.4" data-anchor-id="passo-4-validazione-sub-nazionale"><span class="header-section-number">5.4</span> Passo 4: validazione sub-nazionale</h2>
+<section id="passo-4-validazione-sub-nazionale" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="passo-4-validazione-sub-nazionale"><span class="header-section-number">5.4</span> Passo 4: validazione sub-nazionale</h2>
 <p>Se il nazionale corrisponde, verificare su un campione di province per confermare che la composizione geografica sia corretta.</p>
 </section>
-<section id="passo-5-verifica-delle-unità" class="level2 anchored" data-number="5.5" data-anchor-id="passo-5-verifica-delle-unità">
-<h2 class="anchored" data-number="5.5" data-anchor-id="passo-5-verifica-delle-unità"><span class="header-section-number">5.5</span> Passo 5: verifica delle unità</h2>
+<section id="passo-5-verifica-delle-unità" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="passo-5-verifica-delle-unità"><span class="header-section-number">5.5</span> Passo 5: verifica delle unità</h2>
 <p>L’unità di misura (<code>VALORE</code>) va sempre verificata. Il modo più rapido: confrontare l’ordine di grandezza del totale nazionale con un dato pubblico noto. Se il PIL italiano è circa 2.000 miliardi, un valore di 1.200 miliardi per i depositi è plausibile; un valore di 1.200 milioni no.</p>
 </section>
 </section>
 <section id="idee-di-utilizzo" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Idee di utilizzo</h1>
 <p>Una volta identificata la combinazione giusta di tavola e codici, i dati Bankit si prestano a diverse direzioni di analisi.</p>
-<section id="analisi-territoriale" class="level2 anchored" data-number="6.1" data-anchor-id="analisi-territoriale">
-<h2 class="anchored" data-number="6.1" data-anchor-id="analisi-territoriale"><span class="header-section-number">6.1</span> Analisi territoriale</h2>
+<section id="analisi-territoriale" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="analisi-territoriale"><span class="header-section-number">6.1</span> Analisi territoriale</h2>
 <p>Il database ha granularità provinciale (NUTS3) per decine di fenomeni: depositi, prestiti, sofferenze, tassi di decadimento, numero di sportelli. Questo permette di costruire <strong>mappe</strong>, <strong>classifiche</strong> e <strong>indicatori di divergenza territoriale</strong> che vanno oltre le medie nazionali.</p>
 <p>Alcune domande: - Quali province hanno perso più depositi in termini reali (al netto dell’inflazione)? - La riduzione degli sportelli bancari è uniforme o colpisce più alcune aree? - Esiste una correlazione tra calo dei prestiti e aumento delle sofferenze a livello provinciale?</p>
 </section>
-<section id="serie-storiche-e-cicli" class="level2 anchored" data-number="6.2" data-anchor-id="serie-storiche-e-cicli">
-<h2 class="anchored" data-number="6.2" data-anchor-id="serie-storiche-e-cicli"><span class="header-section-number">6.2</span> Serie storiche e cicli</h2>
+<section id="serie-storiche-e-cicli" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="serie-storiche-e-cicli"><span class="header-section-number">6.2</span> Serie storiche e cicli</h2>
 <p>La profondità temporale (mensile dal 2007 o 2011) consente di analizzare <strong>l’evoluzione ciclica</strong> dei fenomeni bancari: la corsa ai depositi durante il Covid, il successivo rallentamento con l’inflazione, la trasmissione dei rialzi BCE ai tassi sui prestiti.</p>
 </section>
-<section id="composizione-e-sostituzione" class="level2 anchored" data-number="6.3" data-anchor-id="composizione-e-sostituzione">
-<h2 class="anchored" data-number="6.3" data-anchor-id="composizione-e-sostituzione"><span class="header-section-number">6.3</span> Composizione e sostituzione</h2>
+<section id="composizione-e-sostituzione" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="composizione-e-sostituzione"><span class="header-section-number">6.3</span> Composizione e sostituzione</h2>
 <p>Confrontando diverse componenti dello stesso fenomeno, emergono dinamiche di <strong>sostituzione</strong>. Per esempio: i depositi in conto corrente stagnano mentre crescono i titoli di Stato in portafoglio alle famiglie — un indicatore di riorientamento del risparmio.</p>
 </section>
-<section id="integrazione-con-altre-fonti" class="level2 anchored" data-number="6.4" data-anchor-id="integrazione-con-altre-fonti">
-<h2 class="anchored" data-number="6.4" data-anchor-id="integrazione-con-altre-fonti"><span class="header-section-number">6.4</span> Integrazione con altre fonti</h2>
+<section id="integrazione-con-altre-fonti" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="integrazione-con-altre-fonti"><span class="header-section-number">6.4</span> Integrazione con altre fonti</h2>
 <p>I dati Bankit possono essere incrociati con: - <strong>ISTAT</strong>: popolazione residente per provincia → indicatori pro capite - <strong>InfoCamere</strong>: numero di imprese per provincia → prestiti per impresa - <strong>Agenzia delle Entrate</strong>: reddito imponibile → depositi in rapporto al reddito - <strong>Eurostat</strong>: confronti con altri paesi europei</p>
 <p>Il join geografico passa sempre attraverso i codici NUTS.</p>
 </section>
-<section id="indicatori-compositi" class="level2 anchored" data-number="6.5" data-anchor-id="indicatori-compositi">
-<h2 class="anchored" data-number="6.5" data-anchor-id="indicatori-compositi"><span class="header-section-number">6.5</span> Indicatori compositi</h2>
+<section id="indicatori-compositi" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="indicatori-compositi"><span class="header-section-number">6.5</span> Indicatori compositi</h2>
 <p>Combinando più variabili Bankit si possono costruire indicatori sintetici: - <strong>Indice di bancarizzazione</strong>: depositi pro capite × sportelli per abitante - <strong>Indice di stress creditizio</strong>: sofferenze / prestiti totali - <strong>Velocità di trasmissione della politica monetaria</strong>: lag tra variazioni BCE e variazioni dei tassi sui nuovi prestiti</p>
 </section>
-<section id="automazione-e-monitoraggio" class="level2 anchored" data-number="6.6" data-anchor-id="automazione-e-monitoraggio">
-<h2 class="anchored" data-number="6.6" data-anchor-id="automazione-e-monitoraggio"><span class="header-section-number">6.6</span> Automazione e monitoraggio</h2>
+<section id="automazione-e-monitoraggio" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="automazione-e-monitoraggio"><span class="header-section-number">6.6</span> Automazione e monitoraggio</h2>
 <p>Il dump SQLite si aggiorna periodicamente. Un notebook parametrizzato su tavola + FENEC + SET_CTP permette di <strong>aggiornare automaticamente</strong> grafici e analisi a ogni rilascio dei dati, senza riscrivere il codice.</p>
 <hr>
 <p><strong>Trasparenza sull’uso dell’intelligenza artificiale</strong></p>
@@ -592,11 +586,9 @@ div.csl-indent {
 <p>La responsabilità per le fonti utilizzate, le analisi condotte, le verifiche effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore.</p>
 <p>L’intelligenza artificiale è stata utilizzata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
 </section>
-</section>
 <div id="quarto-appendix" class="default">
-<section id="quarto-bibliography" class="quarto-appendix-contents" role="doc-bibliography">
-<section id="referenze" class="level2 anchored quarto-appendix-heading" data-number="6.7">
-<h2 class="anchored quarto-appendix-heading" data-number="6.7" data-anchor-id="referenze"><span class="header-section-number">6.7</span> Referenze</h2>
+<section id="quarto-bibliography" class="level2 quarto-appendix-heading" data-number="6.7">
+<h2 class="quarto-appendix-heading anchored" data-number="6.7" data-anchor-id="quarto-bibliography"><span class="header-section-number">6.7</span> Referenze</h2>
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
 <div id="ref-bankit_infostat" class="csl-entry" role="listitem">
 <div class="csl-left-margin">
@@ -624,10 +616,10 @@ Eurostat, <a href="https://ec.europa.eu/eurostat/web/esa-2010">«Sistema europeo
 </div>
 </div>
 </section>
-</section>
 </div>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1038,7 +1030,7 @@ Eurostat, <a href="https://ec.europa.eu/eurostat/web/esa-2010">«Sistema europeo
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2607_DecifrareDatiBankit/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

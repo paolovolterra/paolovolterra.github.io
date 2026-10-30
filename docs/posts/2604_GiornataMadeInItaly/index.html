@@ -204,7 +204,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#note-metodologiche" id="toc-note-metodologiche" class="nav-link" data-scroll-target="#note-metodologiche"><span class="header-section-number">6</span> Note metodologiche</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2604_GiornataMadeInItaly/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -263,12 +263,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="il-quadro-generale" class="level2 anchored" data-number="1" data-anchor-id="il-quadro-generale">
-<h2 class="anchored" data-number="1" data-anchor-id="il-quadro-generale"><span class="header-section-number">1</span> Il quadro generale</h2>
+<section id="il-quadro-generale" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="il-quadro-generale"><span class="header-section-number">1</span> Il quadro generale</h2>
 <p>Al 9 aprile 2026 risultano iscritti <strong>730 eventi</strong> su tutto il territorio nazionale, promossi da istituzioni, associazioni di categoria, imprese e scuole. La distribuzione copre <strong>107 province</strong> e <strong>350 comuni</strong>, con una forte concentrazione nei capoluoghi regionali.</p>
-<div class="cell" data-execution_count="2">
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>overview <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Indicatore'</span>: [</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Totale eventi'</span>, <span class="st">'Regioni'</span>, <span class="st">'Province'</span>, <span class="st">'Comuni'</span>,</span>
@@ -287,12 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    ]</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>})</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>overview.style.hide(axis<span class="op">=</span><span class="st">'index'</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="tab-overview" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="2">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-overview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="10">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Indicatore</th>
@@ -334,24 +327,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;1: Principali indicatori — Giornata del Made in Italy 2026</p>
-</div>
-</div>
-</div>
-</div>
 <p>La metà degli eventi dura al più <strong>7 giorni</strong>; la media più alta (23,6 giorni) riflette alcune mostre o cicli formativi plurisettimanali che alzano la coda destra della distribuzione.</p>
 </section>
-<section id="distribuzione-geografica" class="level2 anchored" data-number="2" data-anchor-id="distribuzione-geografica">
-<h2 class="anchored" data-number="2" data-anchor-id="distribuzione-geografica"><span class="header-section-number">2</span> Distribuzione geografica</h2>
-<section id="per-regione" class="level3 anchored" data-number="2.1" data-anchor-id="per-regione">
-<h3 class="anchored" data-number="2.1" data-anchor-id="per-regione"><span class="header-section-number">2.1</span> Per regione</h3>
+<section id="distribuzione-geografica" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="distribuzione-geografica"><span class="header-section-number">2</span> Distribuzione geografica</h2>
+<section id="per-regione" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="per-regione"><span class="header-section-number">2.1</span> Per regione</h3>
 <p>Il Lazio (111 eventi) guida davanti a Campania (88) e Lombardia (71). La graduatoria riflette la densità di soggetti promotori — enti nazionali, associazioni di categoria, università — concentrati nelle grandi città.</p>
-<div id="cell-fig-regioni" class="cell" data-execution_count="3">
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>reg <span class="op">=</span> df[df[<span class="st">'regione'</span>] <span class="op">!=</span> <span class="st">'Italia'</span>][<span class="st">'regione'</span>].value_counts().sort_values()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">6</span>))</span>
@@ -362,37 +346,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'OUT/fig_regioni.png'</span>, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-display">
-<div id="figura-regioni" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-regioni-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig01.png" class="figure-img" role="img" width="853" height="566"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;1: Numero di eventi per regione (esclusi 8 eventi a copertura nazionale)</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="top-10-comuni" class="level3 anchored" data-number="2.2" data-anchor-id="top-10-comuni">
-<h3 class="anchored" data-number="2.2" data-anchor-id="top-10-comuni"><span class="header-section-number">2.2</span> Top 10 comuni</h3>
+<section id="top-10-comuni" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="top-10-comuni"><span class="header-section-number">2.2</span> Top 10 comuni</h3>
 <p>Roma svetta con 96 eventi, più del triplo di Milano (28) e Torino (24). Tra i primi dieci figurano anche Modena (14) e Augusta (6, Sicilia) — segnale che la partecipazione non è solo metropolitana.</p>
-<div class="cell" data-execution_count="4">
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>top10 <span class="op">=</span> df[<span class="st">'comune'</span>].value_counts().head(<span class="dv">10</span>).reset_index()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>top10.columns <span class="op">=</span> [<span class="st">'Comune'</span>, <span class="st">'Eventi'</span>]</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>top10[<span class="st">'</span><span class="sc">% s</span><span class="st">ul totale'</span>] <span class="op">=</span> (top10[<span class="st">'Eventi'</span>] <span class="op">/</span> <span class="bu">len</span>(df) <span class="op">*</span> <span class="dv">100</span>).<span class="bu">round</span>(<span class="dv">1</span>).astype(<span class="bu">str</span>) <span class="op">+</span> <span class="st">' %'</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>top10.style.hide(axis<span class="op">=</span><span class="st">'index'</span>).bar(subset<span class="op">=</span><span class="st">'Eventi'</span>, color<span class="op">=</span>C_GREEN, vmin<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="tab-comuni" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-comuni-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="12">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Comune</th>
@@ -453,22 +418,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;2: Top 10 comuni per numero di eventi</p>
-</div>
-</div>
-</div>
-</div>
 </section>
 </section>
-<section id="distribuzione-temporale" class="level2 anchored" data-number="3" data-anchor-id="distribuzione-temporale">
-<h2 class="anchored" data-number="3" data-anchor-id="distribuzione-temporale"><span class="header-section-number">3</span> Distribuzione temporale</h2>
+<section id="distribuzione-temporale" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="distribuzione-temporale"><span class="header-section-number">3</span> Distribuzione temporale</h2>
 <p>Il <strong>15 aprile</strong> è la data istituzionale della Giornata; di conseguenza il 69 % degli eventi si concentra nel solo mese di aprile. Un secondo addensamento a marzo (111 eventi) indica anteprime e iniziative preparatorie; maggio (95) ospita le code.</p>
-<div id="cell-fig-mesi" class="cell" data-execution_count="5">
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mesi <span class="op">=</span> df[<span class="st">'mese_inizio'</span>].value_counts().sort_index()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>etichette <span class="op">=</span> {</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'2026-01'</span>: <span class="st">'Gen'</span>, <span class="st">'2026-02'</span>: <span class="st">'Feb'</span>, <span class="st">'2026-03'</span>: <span class="st">'Mar'</span>, <span class="st">'2026-04'</span>: <span class="st">'Apr'</span>,</span>
@@ -486,27 +442,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'OUT/fig_mesi.png'</span>, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-display">
-<div id="figura-mesi" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-mesi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig02.png" class="figure-img" role="img" width="758" height="326"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;2: Eventi per mese di inizio</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="tipologia-degli-eventi" class="level2 anchored" data-number="4" data-anchor-id="tipologia-degli-eventi">
-<h2 class="anchored" data-number="4" data-anchor-id="tipologia-degli-eventi"><span class="header-section-number">4</span> Tipologia degli eventi</h2>
+<section id="tipologia-degli-eventi" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="tipologia-degli-eventi"><span class="header-section-number">4</span> Tipologia degli eventi</h2>
 <p>La categoria <strong>Evento</strong> (convegni, fiere, manifestazioni) rappresenta il 57 % del totale. Le <strong>Aziende aperte</strong> sono seconde (18 %), confermando l’interesse per iniziative di open-factory. Formazione, Mostre e Iniziative di comunicazione coprono insieme il restante 24 %.</p>
-<div id="cell-fig-categorie" class="cell" data-execution_count="6">
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cat <span class="op">=</span> df[<span class="st">'categoria'</span>].value_counts().sort_values()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>cat_colors <span class="op">=</span> [C_GREY, C_ORANGE, C_BLUE, C_RED, C_GREEN, <span class="st">'#9467bd'</span>]</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -543,29 +485,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'OUT/fig_categorie.png'</span>, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
 <span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-display">
-<div id="figura-categorie" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-categorie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig03.png" class="figure-img" role="img" width="1044" height="374"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;3: Composizione per categoria</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="focus-mezzogiorno" class="level2 anchored" data-number="5" data-anchor-id="focus-mezzogiorno">
-<h2 class="anchored" data-number="5" data-anchor-id="focus-mezzogiorno"><span class="header-section-number">5</span> Focus Mezzogiorno</h2>
-<section id="peso-complessivo" class="level3 anchored" data-number="5.1" data-anchor-id="peso-complessivo">
-<h3 class="anchored" data-number="5.1" data-anchor-id="peso-complessivo"><span class="header-section-number">5.1</span> Peso complessivo</h3>
+<section id="focus-mezzogiorno" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="focus-mezzogiorno"><span class="header-section-number">5</span> Focus Mezzogiorno</h2>
+<section id="peso-complessivo" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="peso-complessivo"><span class="header-section-number">5.1</span> Peso complessivo</h3>
 <p>Il Mezzogiorno contribuisce con <strong>273 eventi</strong> (37,4 % del totale), una quota superiore al peso demografico della ripartizione (~34 %). Campania e Calabria guidano, insieme totalizzando oltre la metà degli eventi meridionali.</p>
-<div id="cell-fig-mezzogiorno" class="cell" data-execution_count="7">
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>macro <span class="op">=</span> pd.Series({</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Mezzogiorno'</span>: <span class="bu">len</span>(mez),</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Nord-Centro'</span>: <span class="bu">len</span>(nord),</span>
@@ -595,27 +523,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'OUT/fig_mezzogiorno.png'</span>, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
 <span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-display">
-<div id="figura-mezzogiorno" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-mezzogiorno-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig04.png" class="figure-img" role="img" width="1142" height="422"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;4: Ripartizione geografica macro e dettaglio Mezzogiorno</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="mix-categorie-mezzogiorno-vs-nord-centro" class="level3 anchored" data-number="5.2" data-anchor-id="mix-categorie-mezzogiorno-vs-nord-centro">
-<h3 class="anchored" data-number="5.2" data-anchor-id="mix-categorie-mezzogiorno-vs-nord-centro"><span class="header-section-number">5.2</span> Mix categorie: Mezzogiorno vs Nord-Centro</h3>
+<section id="mix-categorie-mezzogiorno-vs-nord-centro" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="mix-categorie-mezzogiorno-vs-nord-centro"><span class="header-section-number">5.2</span> Mix categorie: Mezzogiorno vs Nord-Centro</h3>
 <p>La struttura per categoria è simile tra le due ripartizioni, con una leggera prevalenza di <strong>Aziende aperte</strong> al Sud (19,4 % vs 17,0 %) e di <strong>Formazione</strong> al Nord-Centro (10,4 % vs 8,4 %).</p>
-<div class="cell" data-execution_count="8">
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>cat_mez  <span class="op">=</span> mez[<span class="st">'categoria'</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>).rename(<span class="st">'Mezzogiorno'</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>cat_nord <span class="op">=</span> nord[<span class="st">'categoria'</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>).rename(<span class="st">'Nord-Centro'</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>cat_comp <span class="op">=</span> (pd.concat([cat_mez, cat_nord], axis<span class="op">=</span><span class="dv">1</span>).fillna(<span class="dv">0</span>) <span class="op">*</span> <span class="dv">100</span>).<span class="bu">round</span>(<span class="dv">1</span>)</span>
@@ -624,12 +538,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'Mezzogiorno'</span>: <span class="st">'</span><span class="sc">{:.1f}</span><span class="st"> %'</span>, <span class="st">'Nord-Centro'</span>: <span class="st">'</span><span class="sc">{:.1f}</span><span class="st"> %'</span>}</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>).bar(subset<span class="op">=</span>[<span class="st">'Mezzogiorno'</span>, <span class="st">'Nord-Centro'</span>],</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>      color<span class="op">=</span>[C_RED, C_BLUE], vmin<span class="op">=</span><span class="dv">0</span>, vmax<span class="op">=</span><span class="dv">60</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="tab-categorie-confronto" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="8">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-categorie-confronto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="16">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Categoria</th>
@@ -670,22 +579,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;3: Distribuzione % per categoria — Mezzogiorno vs Nord-Centro</p>
-</div>
-</div>
-</div>
-</div>
 </section>
 </section>
-<section id="note-metodologiche" class="level2 anchored" data-number="6" data-anchor-id="note-metodologiche">
-<h2 class="anchored" data-number="6" data-anchor-id="note-metodologiche"><span class="header-section-number">6</span> Note metodologiche</h2>
+<section id="note-metodologiche" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="note-metodologiche"><span class="header-section-number">6</span> Note metodologiche</h2>
 <p>I dati sono stati estratti dal portale <a href="https://mappe.mimit.gov.it/index.php?page=mappa&amp;tipologia=giornata_del_made_in_italy">mappe.mimit.gov.it</a> il 9 aprile 2026 (730 record, CSV <code>IN/made_in_italy.csv</code>). La pulizia include: normalizzazione Title Case di regione/provincia/comune; correzione alias province; separazione degli 8 eventi a copertura nazionale (regione = “Italia”) dalle analisi geografiche sub-nazionali. La durata è calcolata come <code>(data_fine − data_inizio) + 1</code>; per 491 eventi <code>data_fine</code> è assente e la durata risulta <code>NaN</code>.</p>
+
+
 </section>
-
-
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1096,7 +998,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2604_GiornataMadeInItaly/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

@@ -170,7 +170,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#limiti-dellanalisi" id="toc-limiti-dellanalisi" class="nav-link" data-scroll-target="#limiti-dellanalisi"><span class="header-section-number">7</span> Limiti dell’analisi</a></li>
   <li><a href="#criticità-residue-e-vulnerabilità-aperte" id="toc-criticità-residue-e-vulnerabilità-aperte" class="nav-link" data-scroll-target="#criticità-residue-e-vulnerabilità-aperte"><span class="header-section-number">8</span> Criticità residue e vulnerabilità aperte</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2603_CreditoArtigianiPuglia/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -224,15 +224,15 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="executive-summary" class="level2 anchored" data-anchor-id="executive-summary" data-number="1">
-<h2 class="anchored" data-anchor-id="executive-summary" data-number="1"><span class="header-section-number">1</span> Executive Summary</h2>
+<section id="executive-summary" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="executive-summary"><span class="header-section-number">1</span> Executive Summary</h2>
 <p>Il presente documento analizza l’evoluzione del credito bancario alle <strong>imprese artigiane pugliesi</strong> nel periodo 2007-2026, utilizzando come fonte primaria la serie <strong>TDB10295 S11BI7</strong> di Banca d’Italia (Quasi-società non finanziarie artigiane, aggiornata a febbraio 2026) e, come fonte secondaria, i microdati del Fondo di Garanzia PMI.</p>
 <p>I principali fatti osservabili sono i seguenti. Lo stock di prestiti alle imprese artigiane in Puglia ha raggiunto il picco nel <strong>2011-09</strong> a circa <strong>0.89</strong> miliardi di euro e si attesta a febbraio 2026 a <strong>0.36</strong> miliardi, con una contrazione cumulata di circa <strong>-59%</strong>. La flessione è più pronunciata di quella registrata per le quasi-società non artigiane nello stesso periodo (-49%). La Puglia pesa per circa il <strong>3.4%</strong> del totale nazionale dei prestiti alle artigiane, quota inferiore al peso demografico ed economico della regione. La variazione annua più recente è pari a <strong>-6.1%</strong> per la Puglia e <strong>-9.9%</strong> per l’Italia, con la regione che registra una contrazione meno intensa rispetto alla media nazionale.</p>
 <p>L’analisi evidenzia tre fragilità strutturali: l’erosione più rapida del credito artigiano rispetto alle altre categorie di imprese, la persistente sotto-rappresentazione della Puglia nel credito artigiano nazionale, e la dipendenza quasi totale dal credito bancario (saldo depositi-prestiti prossimo allo zero) che lascia le artigiane pugliesi senza cuscinetto di liquidità.</p>
 <hr>
 </section>
-<section id="contesto-e-motivazione" class="level2 anchored" data-anchor-id="contesto-e-motivazione" data-number="2">
-<h2 class="anchored" data-anchor-id="contesto-e-motivazione" data-number="2"><span class="header-section-number">2</span> Contesto e motivazione</h2>
+<section id="contesto-e-motivazione" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="contesto-e-motivazione"><span class="header-section-number">2</span> Contesto e motivazione</h2>
 <p>L’artigianato costituisce una componente rilevante del tessuto produttivo pugliese: la Puglia conta circa 75.000 imprese artigiane iscritte agli albi (fonte: Unioncamere), pari a circa il 30% delle imprese manifatturiere e dei servizi alla persona. Si tratta prevalentemente di micro-imprese a conduzione familiare attive in costruzioni, trasformazione alimentare, abbigliamento, lavorazione del legno e dei metalli, riparazione e servizi alla persona.</p>
 <p>La classificazione Banca d’Italia utilizza il codice <strong>S11BI7</strong> per le “quasi-società non finanziarie artigiane”, ovvero le imprese artigiane con contabilità separata ma prive di personalità giuridica (ditte individuali artigiane e società di persone artigiane). Questa categoria non include i liberi professionisti né le società di capitali che svolgono attività artigianale, il che implica una sottostima sistematica rispetto all’universo dell’artigianato in senso lato.</p>
 <blockquote class="blockquote">
@@ -240,38 +240,21 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <hr>
 </section>
-<section id="framework-analitico" class="level2 anchored" data-anchor-id="framework-analitico" data-number="3">
-<h2 class="anchored" data-anchor-id="framework-analitico" data-number="3"><span class="header-section-number">3</span> Framework analitico</h2>
+<section id="framework-analitico" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="framework-analitico"><span class="header-section-number">3</span> Framework analitico</h2>
 <p>L’analisi si basa su tre componenti:</p>
 <p>La prima è la serie <strong>TDB10295 S11BI7</strong>, che misura lo stock mensile di prestiti (esclusi PCT) alle quasi-società non finanziarie artigiane per provincia e regione, disponibile dal 2007. La serie copre sia la Puglia (codice NUTS2: ITF4) sia l’aggregato nazionale (IT), consentendo confronti longitudinali e geografici.</p>
 <p>La seconda è la serie <strong>TDB10290 S11BI7</strong>, che misura i depositi bancari delle stesse imprese artigiane. Il raffronto tra prestiti e depositi permette di stimare la posizione netta delle artigiane verso il sistema bancario, proxy del loro grado di dipendenza finanziaria dal credito esterno.</p>
 <p>La terza è il dataset <strong>Fondo di Garanzia PMI</strong> (MiMIT, microdati parquet), utilizzato per ricostruire il sostegno pubblico al credito per i settori manifatturiero (ATECO C) e delle costruzioni (ATECO F), che rappresentano i due settori a maggiore intensità artigianale nel portafoglio del Fondo.</p>
 <hr>
 </section>
-<section id="analisi" class="level2 anchored" data-anchor-id="analisi" data-number="4">
-<h2 class="anchored" data-anchor-id="analisi" data-number="4"><span class="header-section-number">4</span> Analisi</h2>
-<section id="lo-stock-di-credito-una-contrazione-strutturalmente-più-intensa" class="level3 anchored" data-anchor-id="lo-stock-di-credito-una-contrazione-strutturalmente-più-intensa" data-number="4.1">
-<h3 class="anchored" data-anchor-id="lo-stock-di-credito-una-contrazione-strutturalmente-più-intensa" data-number="4.1"><span class="header-section-number">4.1</span> Lo stock di credito: una contrazione strutturalmente più intensa</h3>
-<div id="cell-fig-art1-stock" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display">
-<div id="figura-art1-stock" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-art1-stock-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<section id="analisi" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="analisi"><span class="header-section-number">4</span> Analisi</h2>
+<section id="lo-stock-di-credito-una-contrazione-strutturalmente-più-intensa" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="lo-stock-di-credito-una-contrazione-strutturalmente-più-intensa"><span class="header-section-number">4.1</span> Lo stock di credito: una contrazione strutturalmente più intensa</h3>
 <p><img src="figure/fig01.png" class="figure-img" role="img" width="1186" height="659"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;1: Stock di prestiti alle quasi-società non finanziarie: artigiane (S11BI7, linea blu) vs altre (S11BI8, linea arancione). Unità: miliardi di euro. Fonte: Banca d’Italia, TDB10295. Elaborazione propria.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="3">
-<div id="tab-art1" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-art1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="3">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Mese</th>
@@ -355,40 +338,16 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;1: Stock di prestiti alle quasi-soc. non fin. artigiane (S11BI7) e altre (S11BI8) in Puglia — ultimi 12 mesi. Unità: milioni di euro. Fonte: Banca d’Italia, TDB10295.</p>
-</div>
-</div>
-</div>
-</div>
 <p><strong>Fatto.</strong> Lo stock di prestiti alle imprese artigiane in Puglia ha raggiunto il picco nel 2011-09 a 885 milioni di euro, ed è sceso a 359 milioni a febbraio 2026, registrando una contrazione cumulata di circa -59%. Nello stesso periodo, le quasi-società non artigiane hanno subito una flessione di circa -49%, un calo meno pronunciato di circa 9 punti percentuali.</p>
 <p><strong>Interpretazione.</strong> La differenza nella traiettoria di contrazione tra artigiane e non-artigiane può riflettere tre meccanismi distinti: (a) le artigiane pugliesi, operando in settori più ciclici (costruzioni, lavorazioni) e con minore capacità collaterale, potrebbero aver subito un razionamento del credito più severo; (b) la riduzione dello stock può riflettere l’uscita dal mercato di imprese artigiane — dissoluzioni, conversioni in altre forme giuridiche — piuttosto che una riduzione della domanda di credito per impresa sopravvissuta; (c) le artigiane tendono a operare con volumi di debito unitario più bassi, rendendo lo stock più sensibile alle variazioni del numero di imprese attive.</p>
 <p><strong>Assunzione critica.</strong> La serie TDB10295 S11BI7 non consente di separare le variazioni di stock dovute a nuove erogazioni, rimborsi, write-off o reclassificazioni. Il confronto con S11BI8 è tra serie omogenee per metodologia ma disomogenee per struttura settoriale e dimensionale delle imprese sottostanti.</p>
 </section>
-<section id="la-dinamica-relativa-puglia-vs-italia" class="level3 anchored" data-anchor-id="la-dinamica-relativa-puglia-vs-italia" data-number="4.2">
-<h3 class="anchored" data-anchor-id="la-dinamica-relativa-puglia-vs-italia" data-number="4.2"><span class="header-section-number">4.2</span> La dinamica relativa: Puglia vs Italia</h3>
-<div id="cell-fig-art2-yoy" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display">
-<div id="figura-art2-yoy" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-art2-yoy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<section id="la-dinamica-relativa-puglia-vs-italia" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="la-dinamica-relativa-puglia-vs-italia"><span class="header-section-number">4.2</span> La dinamica relativa: Puglia vs Italia</h3>
 <p><img src="figure/fig02.png" class="figure-img" role="img" width="1185" height="659"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;2: Variazione annua (su 12 mesi) dei prestiti alle imprese artigiane: Puglia (linea blu) vs Italia (linea grigia tratteggiata). Fonte: Banca d’Italia, TDB10295, S11BI7. Elaborazione propria.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="5">
-<div id="tab-art2" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="5">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-art2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="5">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Mese</th>
@@ -472,40 +431,16 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;2: Variazione annua (YoY su 12 mesi) dei prestiti alle imprese artigiane: Puglia e Italia — ultimi 12 mesi. Fonte: Banca d’Italia, TDB10295, S11BI7.</p>
-</div>
-</div>
-</div>
-</div>
 <p><strong>Fatto.</strong> La variazione annua dei prestiti alle artigiane pugliesi è rimasta in territorio negativo in modo quasi ininterrotto a partire dal 2012, con punte di contrazione superiori al 10% nel biennio 2017-2018. Dall’inizio del 2022 la dinamica si è allineata alla media nazionale, con entrambe le serie che mostrano contrazioni moderate. La variazione più recente è pari a -6.1% per la Puglia e -9.9% per l’Italia.</p>
 <p><strong>Interpretazione.</strong> L’allineamento recente tra Puglia e Italia nelle variazioni annue va letto con cautela. Non implica convergenza nei livelli assoluti di credito per unità produttiva, né riduzione delle asimmetrie strutturali. Un’analisi della convergenza richiederebbe la normalizzazione per numero di imprese artigiane attive, dato non disponibile in questa fonte.</p>
 <p><strong>Obiezione Risk Committee.</strong> La recente contrazione relativamente più contenuta della Puglia rispetto all’Italia (-6.1% vs -9.9%) potrebbe non riflettere maggiore resilienza, ma semplicemente un livello assoluto di stock già così basso da rendere difficile ulteriori contrazioni (effetto “pavimento”).</p>
 </section>
-<section id="la-quota-strutturale-del-credito-artigiano" class="level3 anchored" data-anchor-id="la-quota-strutturale-del-credito-artigiano" data-number="4.3">
-<h3 class="anchored" data-anchor-id="la-quota-strutturale-del-credito-artigiano" data-number="4.3"><span class="header-section-number">4.3</span> La quota strutturale del credito artigiano</h3>
-<div id="cell-fig-art3-quota" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display">
-<div id="figura-art3-quota" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-art3-quota-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<section id="la-quota-strutturale-del-credito-artigiano" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="la-quota-strutturale-del-credito-artigiano"><span class="header-section-number">4.3</span> La quota strutturale del credito artigiano</h3>
 <p><img src="figure/fig03.png" class="figure-img" role="img" width="1185" height="644"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;3: Quota dei prestiti alle artigiane sul totale quasi-soc. non fin. (S11BI7 / [S11BI7+S11BI8]): Puglia (linea blu) vs Italia (linea grigia). Fonte: Banca d’Italia, TDB10295. Elaborazione propria.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="7">
-<div id="tab-art3" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="7">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-art3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="7">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Anno</th>
@@ -613,40 +548,16 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;3: Quota dei prestiti alle artigiane sul totale quasi-soc. non fin. (S11BI7/[S11BI7+S11BI8]) — valore di dicembre di ogni anno. Fonte: Banca d’Italia, TDB10295.</p>
-</div>
-</div>
-</div>
-</div>
 <p><strong>Fatto.</strong> La quota dei prestiti alle artigiane sul totale delle quasi-società non finanziarie è scesa in Puglia dal 27% del 2010 al 22% del febbraio 2026, con una riduzione di circa 5 punti percentuali. In Italia il calo è simile: dal 32% al 27%.</p>
 <p><strong>Interpretazione.</strong> La riduzione della quota riflette un declino strutturale del peso delle artigiane nel portafoglio creditizio bancario. Questo è coerente con: (i) la riduzione del numero di imprese artigiane attive in tutto il paese, un fenomeno documentato da Unioncamere; (ii) la maggiore contrazione dei prestiti unitari alle artigiane rispetto alle altre quasi-società, dovuta a processi di selezione del credito sfavorevoli per le imprese più piccole e meno patrimonializzate.</p>
 <p><strong>Convergenza Puglia-Italia.</strong> Il fatto che la Puglia mantenga una quota artigiane leggermente inferiore alla media nazionale (23% vs 28%) suggerisce che la struttura produttiva regionale, pur con un elevato numero di artigiani, non si traduce in una maggiore intensità creditizia delle artigiane rispetto al resto del paese. Un’ipotesi interpretativa è che le artigiane pugliesi siano più piccole in media e quindi meno capaci di accedere al credito formale.</p>
 </section>
-<section id="la-posizione-finanziaria-netta-prestiti-e-depositi" class="level3 anchored" data-anchor-id="la-posizione-finanziaria-netta-prestiti-e-depositi" data-number="4.4">
-<h3 class="anchored" data-anchor-id="la-posizione-finanziaria-netta-prestiti-e-depositi" data-number="4.4"><span class="header-section-number">4.4</span> La posizione finanziaria netta: prestiti e depositi</h3>
-<div id="cell-fig-art4-dep-pre" class="cell" data-execution_count="8">
-<div class="cell-output cell-output-display">
-<div id="figura-art4-dep-pre" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-art4-dep-pre-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<section id="la-posizione-finanziaria-netta-prestiti-e-depositi" class="level3" data-number="4.4">
+<h3 data-number="4.4" class="anchored" data-anchor-id="la-posizione-finanziaria-netta-prestiti-e-depositi"><span class="header-section-number">4.4</span> La posizione finanziaria netta: prestiti e depositi</h3>
 <p><img src="figure/fig04.png" class="figure-img" role="img" width="1185" height="659"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;4: Prestiti (TDB10295, linea rossa) e depositi (TDB10290, linea blu) delle imprese artigiane in Puglia. Il saldo (depositi − prestiti) è evidenziato in verde (saldo positivo) o rosso (saldo negativo). Fonte: Banca d’Italia. Elaborazione propria.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="9">
-<div id="tab-art4" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="9">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-art4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="9">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Mese</th>
@@ -730,40 +641,16 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;4: Prestiti, depositi e saldo netto delle imprese artigiane in Puglia — ultimi 12 mesi disponibili. Unità: milioni di euro. Fonte: Banca d’Italia, TDB10295 e TDB10290.</p>
-</div>
-</div>
-</div>
-</div>
 <p><strong>Fatto.</strong> Fino al 2013 circa, lo stock di prestiti alle artigiane pugliesi era significativamente superiore ai depositi, con uno sbilancio (prestiti - depositi) nell’ordine di 200-300 milioni di euro. Da quella data la convergenza si è fatta rapida: a 2025-09 il saldo è pari a circa -40 milioni di euro (depositi 330 mln, prestiti 370 mln).</p>
 <p><strong>Interpretazione.</strong> La convergenza tra prestiti e depositi può essere interpretata in due modi opposti. La prima lettura — ottimistica — è che le artigiane pugliesi abbiano ridotto la dipendenza dal debito bancario, accumulando liquidità e migliorando il proprio equilibrio finanziario. La seconda lettura — pessimistica — è che la riduzione dei prestiti sia stata forzata (credit rationing, uscita dal mercato) e che la quasi-parità attuale rifletta un sottoutilizzo del credito disponibile piuttosto che una scelta finanziaria consapevole.</p>
 <p><strong>Vulnerabilità metodologica.</strong> I dati TDB10295 includono le sofferenze nel numeratore dei prestiti, mentre TDB10290 misura solo i depositi performing. Il saldo depositi-prestiti non è quindi una misura pulita della posizione netta liquida, ma risente della componente NPL inclusa nello stock dei prestiti.</p>
 </section>
-<section id="il-fondo-di-garanzia-per-i-settori-artigiano-intensivi" class="level3 anchored" data-anchor-id="il-fondo-di-garanzia-per-i-settori-artigiano-intensivi" data-number="4.5">
-<h3 class="anchored" data-anchor-id="il-fondo-di-garanzia-per-i-settori-artigiano-intensivi" data-number="4.5"><span class="header-section-number">4.5</span> Il Fondo di Garanzia per i settori artigiano-intensivi</h3>
-<div id="cell-fig-art5-fdg" class="cell" data-execution_count="10">
-<div class="cell-output cell-output-display">
-<div id="figura-art5-fdg" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-art5-fdg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<section id="il-fondo-di-garanzia-per-i-settori-artigiano-intensivi" class="level3" data-number="4.5">
+<h3 data-number="4.5" class="anchored" data-anchor-id="il-fondo-di-garanzia-per-i-settori-artigiano-intensivi"><span class="header-section-number">4.5</span> Il Fondo di Garanzia per i settori artigiano-intensivi</h3>
 <p><img src="figure/fig05.png" class="figure-img" role="img" width="1186" height="659"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;5: Finanziamenti deliberati dal FdG PMI in Puglia per macro-settore ATECO (classificazione a 2 digit). Unità: miliardi di euro. Fonte: Fondo di Garanzia PMI — MiMIT, elaborazione su microdati. I settori sono raggruppati per sezione ATECO.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="11">
-<div id="tab-art5" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="11">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-art5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="11">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Anno</th>
@@ -841,51 +728,44 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;5: Finanziamenti FdG PMI per macro-settore ATECO in Puglia — ultimi 7 anni. Unità: milioni di euro. Fonte: Fondo di Garanzia PMI, MiMIT.</p>
-</div>
-</div>
-</div>
-</div>
 <p><strong>Fatto.</strong> I finanziamenti deliberati dal Fondo di Garanzia PMI in Puglia mostrano una forte concentrazione su costruzioni (ATECO F) e manifattura (ATECO C), i due settori a maggiore intensità artigianale. L’esplosione del volume nel 2020-2021 riflette le garanzie emergenziali COVID (art. 13 lett. m del D.L. 23/2020 e art. 56 D.L. 18/2020), che hanno interessato in misura proporzionale anche le artigiane.</p>
 <p><strong>Limiti del dato FdG per le artigiane.</strong> Il Fondo di Garanzia non distingue le imprese artigiane iscritte all’albo dalle altre PMI nella propria reportistica standard. La sezione ATECO è solo una proxy: molte imprese manifatturiere e delle costruzioni non sono artigiane, e viceversa alcune artigiane operano in settori non manifatturieri. Non è quindi possibile isolare il contributo del FdG al credito artigiano con i microdati disponibili.</p>
 <p><strong>Interpretazione.</strong> Il fatto che costruzioni e manifattura — entrambi settori ad alta intensità artigianale — siano anche i principali destinatari del FdG in Puglia è coerente con l’ipotesi che la garanzia pubblica sia funzionale a compensare il deficit di collaterale tipico delle artigiane, che non dispongono di beni immobili iscritti a bilancio nella stessa misura delle società di capitali.</p>
 <hr>
 </section>
 </section>
-<section id="classificazione-esplicita-dei-rischi" class="level2 anchored" data-anchor-id="classificazione-esplicita-dei-rischi" data-number="5">
-<h2 class="anchored" data-anchor-id="classificazione-esplicita-dei-rischi" data-number="5"><span class="header-section-number">5</span> Classificazione esplicita dei rischi</h2>
+<section id="classificazione-esplicita-dei-rischi" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="classificazione-esplicita-dei-rischi"><span class="header-section-number">5</span> Classificazione esplicita dei rischi</h2>
 <p><strong>Rischio strutturale — declino del numero di artigiane.</strong> La contrazione del credito alle artigiane pugliesi (-58% dal picco) eccede verosimilmente quanto giustificabile dal solo ciclo del credito e riflette anche la riduzione demografica dell’artigianato. Se confermato, questo è un rischio sistemico per la manifattura leggera e i servizi locali, non correggibile con politiche di accesso al credito. <em>Orizzonte: lungo. Trigger: ulteriore contrazione del numero di artigiane attive. Fragilità: dato non disponibile in questa fonte.</em></p>
 <p><strong>Rischio di liquidità — saldo depositi-prestiti prossimo a zero.</strong> L’azzeramento dello sbilancio prestiti-depositi suggerisce che le artigiane pugliesi non dispongano di riserve bancarie significative. In uno scenario di shock di liquidità (ritardi nei pagamenti, calo ordinativi), la capacità di assorbimento finanziario è minima. <em>Orizzonte: breve. Trigger: deterioramento del ciclo dei pagamenti nella filiera manifatturiera e delle costruzioni. Fragilità: il dato depositi può sottostimare la liquidità reale (includere contanti, conti postali, ecc.).</em></p>
 <p><strong>Rischio di accesso al credito — concentrazione in settori ad elevata ciclicità.</strong> Le costruzioni e la manifattura leggera, che sono i principali settori delle artigiane pugliesi, sono strutturalmente prociclici. In una recessione, la riduzione della domanda settoriale si combina con la stretta creditizia, amplificando l’impatto sulle artigiane. <em>Orizzonte: medio. Trigger: contrazione degli investimenti pubblici (PNRR) e privati in edilizia. Fragilità: senza dati sui tassi di rigetto delle domande di credito, non è possibile misurare il razionamento.</em></p>
 <p><strong>Rischio normativo — revisione del perimetro del Codice Civile per le artigiane.</strong> La classificazione Banca d’Italia S11BI7 segue la forma giuridica dell’impresa, non l’iscrizione all’albo artigiani. Modifiche normative alla definizione di impresa artigiana (es. soglie occupazionali, requisiti di capitale) potrebbero alterare il perimetro della serie senza che vi sia una discontinuità economica reale. <em>Orizzonte: continuo. Trigger: modifiche al Codice dell’Artigianato (L. 443/1985) o alla normativa regionale.</em></p>
 <hr>
 </section>
-<section id="tre-scenari-prospettici" class="level2 anchored" data-anchor-id="tre-scenari-prospettici" data-number="6">
-<h2 class="anchored" data-anchor-id="tre-scenari-prospettici" data-number="6"><span class="header-section-number">6</span> Tre scenari prospettici</h2>
+<section id="tre-scenari-prospettici" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="tre-scenari-prospettici"><span class="header-section-number">6</span> Tre scenari prospettici</h2>
 <p><strong>Scenario A — Stabilizzazione al di sopra del livello attuale (scenario base).</strong> Il credito alle artigiane pugliesi si stabilizza attorno ai livelli attuali (360-380 milioni di euro), con variazioni annue prossime a zero. Il Fondo di Garanzia rimane lo strumento principale di accesso al credito per le artigiane nei settori costruzioni e manifattura. <em>Indicatori di monitoraggio: variazione annua TDB10295 S11BI7 ITF4 compresa tra -3% e +3%; saldo depositi-prestiti stabile; volume FdG settori C e F invariato.</em></p>
 <p><strong>Scenario B — Ripresa trainata da domanda pubblica e transizione energetica.</strong> La spesa pubblica per la transizione energetica e l’efficienza degli edifici (Superbonus o strumenti sostitutivi), gli investimenti PNRR nelle infrastrutture e la domanda di lavorazioni specializzate in metalli e materiali compositi generano domanda di credito per le artigiane delle costruzioni e della manifattura. Lo stock torna a crescere verso i 400-450 milioni di euro entro il 2027. <em>Trigger: attivazione di incentivi alle ristrutturazioni edilizie e domanda di sub-appalto da parte di grandi cantieri pubblici in Puglia. Fragilità: il nesso tra domanda pubblica e credito alle artigiane dipende dalla struttura dei contratti di filiera, non direttamente osservabile.</em></p>
 <p><strong>Scenario C — Ulteriore contrazione per stagnazione e credit crunch settoriale.</strong> La prolungata debolezza della domanda nel settore delle costruzioni (fine degli incentivi fiscali straordinari, tassi ipotecari elevati) e la pressione competitiva delle imprese non artigiane di dimensione maggiore nella manifattura comprimono ulteriormente lo stock. Il credito alle artigiane scende sotto i 300 milioni entro il 2028. <em>Trigger: normalizzazione definitiva del FdG senza strumenti sostitutivi; ulteriore calo del numero di artigiane attive; restrizione delle condizioni di credito bancario per le micro-imprese. Questo scenario è coerente con la traiettoria storica del periodo 2012-2025.</em></p>
 <hr>
 </section>
-<section id="limiti-dellanalisi" class="level2 anchored" data-anchor-id="limiti-dellanalisi" data-number="7">
-<h2 class="anchored" data-anchor-id="limiti-dellanalisi" data-number="7"><span class="header-section-number">7</span> Limiti dell’analisi</h2>
+<section id="limiti-dellanalisi" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="limiti-dellanalisi"><span class="header-section-number">7</span> Limiti dell’analisi</h2>
 <p>L’analisi si basa esclusivamente sulla categoria S11BI7 di Banca d’Italia, che copre le quasi-società artigiane ma esclude le artigiane organizzate come società di capitali (incluse in S11) e gli artigiani individuali che si comportano da famiglie produttrici (inclusi in parti di SBI25 non separabili con i dati disponibili). La stima del credito artigiano totale è quindi una sottostima strutturale.</p>
 <p>Non sono disponibili, per questa specifica categoria, dati sulle sofferenze e sul tasso di deterioramento, che richiederebbero la tabella TRI con un codice geografico per regione non disponibile nelle serie TRI30231 e TRI30171. Non è disponibile nemmeno la serie dei tassi di interesse praticati alle artigiane a livello regionale (la serie MIR non è declinata per sottosettore a livello NUTS2).</p>
 <p>La classificazione FdG per settore ATECO è una proxy necessariamente imprecisa dell’artigianato: il FdG non distingue le imprese artigiane in senso stretto nella propria reportistica per provincia.</p>
 <hr>
 </section>
-<section id="criticità-residue-e-vulnerabilità-aperte" class="level2 anchored" data-anchor-id="criticità-residue-e-vulnerabilità-aperte" data-number="8">
-<h2 class="anchored" data-anchor-id="criticità-residue-e-vulnerabilità-aperte" data-number="8"><span class="header-section-number">8</span> Criticità residue e vulnerabilità aperte</h2>
+<section id="criticità-residue-e-vulnerabilità-aperte" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="criticità-residue-e-vulnerabilità-aperte"><span class="header-section-number">8</span> Criticità residue e vulnerabilità aperte</h2>
 <p>La questione irrisolta centrale è la seguente: quanto della contrazione del credito alle artigiane pugliesi (-58% dal picco) è attribuibile alla riduzione del numero di imprese attive, e quanto alla riduzione del credito per impresa sopravvissuta? Le due dinamiche hanno implicazioni di policy radicalmente diverse: la prima richiede politiche di sostegno alla sopravvivenza delle artigiane (semplificazione, accesso ai mercati, formazione); la seconda richiede politiche di accesso al credito (garanzie, fondi rotativi, credito agevolato). Rispondere a questa domanda richiederebbe l’incrocio con i dati del Registro delle Imprese — una lacuna non colmabile con le fonti dell’HUB attuale e che costituisce il principale limite dell’analisi.</p>
 <hr>
 <p><em>Fonti primarie: Banca d’Italia — Rilevazioni Territoriali (TDB10295 S11BI7, TDB10290 S11BI7), aggiornate a febbraio 2026; Fondo di Garanzia PMI — MiMIT, microdati delibere 2012-2025.</em></p>
 <p><em>Classificazione settoriale: DOMAIN-STABOL-MULTICUBE, Banca d’Italia — S11BI7 = “Quasi-società non finanziarie artigiane”.</em></p>
+
+
 </section>
-
-
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1296,7 +1176,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2603_CreditoArtigianiPuglia/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

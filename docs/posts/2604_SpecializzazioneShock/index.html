@@ -75,6 +75,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../MCC.css">
 <meta property="og:title" content="Specializzazione produttiva e vulnerabilità agli shock – Paolo Volterra">
@@ -154,20 +183,24 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Indice</h2>
    
   <ul>
-  <li><a href="#perché-questa-nota" id="toc-perché-questa-nota" class="nav-link active" data-scroll-target="#perché-questa-nota"><span class="header-section-number">1</span> Perché questa nota</a></li>
-  <li><a href="#il-punto-di-partenza-teorico-la-terza-italia" id="toc-il-punto-di-partenza-teorico-la-terza-italia" class="nav-link" data-scroll-target="#il-punto-di-partenza-teorico-la-terza-italia"><span class="header-section-number">2</span> Il punto di partenza teorico: la Terza Italia</a></li>
-  <li><a href="#cosa-non-abbiamo-ancora" id="toc-cosa-non-abbiamo-ancora" class="nav-link" data-scroll-target="#cosa-non-abbiamo-ancora"><span class="header-section-number">3</span> Cosa non abbiamo ancora</a>
+  <li><a href="#sez-obiettivo" id="toc-sez-obiettivo" class="nav-link active" data-scroll-target="#sez-obiettivo"><span class="header-section-number">1</span> Perché questa nota</a></li>
+  <li><a href="#sez-teoria" id="toc-sez-teoria" class="nav-link" data-scroll-target="#sez-teoria"><span class="header-section-number">2</span> Il punto di partenza teorico: la Terza Italia</a></li>
+  <li><a href="#sez-rca" id="toc-sez-rca" class="nav-link" data-scroll-target="#sez-rca"><span class="header-section-number">3</span> Cosa abbiamo: il RCA nazionale</a>
   <ul class="collapse">
-  <li><a href="#la-dimensione-territoriale" id="toc-la-dimensione-territoriale" class="nav-link" data-scroll-target="#la-dimensione-territoriale"><span class="header-section-number">3.1</span> La dimensione territoriale</a></li>
-  <li><a href="#la-dimensione-qualitativa" id="toc-la-dimensione-qualitativa" class="nav-link" data-scroll-target="#la-dimensione-qualitativa"><span class="header-section-number">3.2</span> La dimensione qualitativa</a></li>
-  <li><a href="#la-dimensione-di-rete" id="toc-la-dimensione-di-rete" class="nav-link" data-scroll-target="#la-dimensione-di-rete"><span class="header-section-number">3.3</span> La dimensione di rete</a></li>
+  <li><a href="#limitazioni-dichiarate" id="toc-limitazioni-dichiarate" class="nav-link" data-scroll-target="#limitazioni-dichiarate"><span class="header-section-number">3.1</span> Limitazioni dichiarate</a></li>
   </ul></li>
-  <li><a href="#cosa-possiamo-ottenere" id="toc-cosa-possiamo-ottenere" class="nav-link" data-scroll-target="#cosa-possiamo-ottenere"><span class="header-section-number">4</span> Cosa possiamo ottenere</a></li>
-  <li><a href="#idee-aggiuntive-da-valutare" id="toc-idee-aggiuntive-da-valutare" class="nav-link" data-scroll-target="#idee-aggiuntive-da-valutare"><span class="header-section-number">5</span> Idee aggiuntive da valutare</a></li>
-  <li><a href="#una-nota-sulla-coerenza-metodologica" id="toc-una-nota-sulla-coerenza-metodologica" class="nav-link" data-scroll-target="#una-nota-sulla-coerenza-metodologica"><span class="header-section-number">6</span> Una nota sulla coerenza metodologica</a></li>
-  <li><a href="#prossimi-passi" id="toc-prossimi-passi" class="nav-link" data-scroll-target="#prossimi-passi"><span class="header-section-number">7</span> Prossimi passi</a></li>
+  <li><a href="#sez-gap" id="toc-sez-gap" class="nav-link" data-scroll-target="#sez-gap"><span class="header-section-number">4</span> Cosa non abbiamo ancora</a>
+  <ul class="collapse">
+  <li><a href="#la-dimensione-territoriale" id="toc-la-dimensione-territoriale" class="nav-link" data-scroll-target="#la-dimensione-territoriale"><span class="header-section-number">4.1</span> La dimensione territoriale</a></li>
+  <li><a href="#la-dimensione-qualitativa" id="toc-la-dimensione-qualitativa" class="nav-link" data-scroll-target="#la-dimensione-qualitativa"><span class="header-section-number">4.2</span> La dimensione qualitativa</a></li>
+  <li><a href="#la-dimensione-di-rete" id="toc-la-dimensione-di-rete" class="nav-link" data-scroll-target="#la-dimensione-di-rete"><span class="header-section-number">4.3</span> La dimensione di rete</a></li>
+  </ul></li>
+  <li><a href="#sez-output" id="toc-sez-output" class="nav-link" data-scroll-target="#sez-output"><span class="header-section-number">5</span> Cosa possiamo ottenere</a></li>
+  <li><a href="#sez-idee" id="toc-sez-idee" class="nav-link" data-scroll-target="#sez-idee"><span class="header-section-number">6</span> Idee aggiuntive da valutare</a></li>
+  <li><a href="#sez-metodo" id="toc-sez-metodo" class="nav-link" data-scroll-target="#sez-metodo"><span class="header-section-number">7</span> Una nota sulla coerenza metodologica</a></li>
+  <li><a href="#sez-next" id="toc-sez-next" class="nav-link" data-scroll-target="#sez-next"><span class="header-section-number">8</span> Prossimi passi</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2604_SpecializzazioneShock/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -226,18 +259,15 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="sec-obiettivo" class="level2" data-number="1">
-<section id="perché-questa-nota" class="level2 anchored" data-number="1" data-anchor-id="sec-obiettivo">
-<h2 class="anchored" data-number="1" data-anchor-id="perché-questa-nota"><span class="header-section-number">1</span> Perché questa nota</h2>
+<section id="sez-obiettivo" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="sez-obiettivo"><span class="header-section-number">1</span> Perché questa nota</h2>
 <p>I documenti disponibili sull’industria italiana offrono molta descrizione e poca dinamica. Il MIMIT (<em>Made in Italy 2030</em>, Libro Verde, Rapporto settori industriali) costruisce una narrativa strategica convincente, usa dati ISTAT ed Eurostat, e identifica le filiere prioritarie — ma si affida a tre indicatori semplici (valore aggiunto, quota PIL, occupazione) e non produce modellistica quantitativa. SVIMEZ fa un passo avanti: analizza gli shock in chiave territoriale, distingue gli effetti per macro-area, ragiona implicitamente in termini di filiere. Intesa Sanpaolo va ancora oltre, lavorando su bilanci aziendali reali — fatturato, EBITDA, patrimonializzazione — e mostrando la dispersione di performance all’interno dei distretti. Eppure nessuno di questi lavori risponde a una domanda che per un ufficio studi bancario è operativamente critica: <em>dato uno shock esterno, chi viene colpito, con quale intensità e attraverso quale canale?</em></p>
 <p>Non si tratta di un limite di competenza. È una scelta di campo: quei documenti sono costruiti per orientare la politica industriale o comunicare ai mercati, non per simulare scenari di stress. Il risultato è che abbiamo molte fotografie dell’industria italiana — alcune eccellenti — ma pochi strumenti in grado di mostrarne la dinamica sotto pressione.</p>
 <p>Questa nota descrive un framework che prova a colmare quel vuoto, partendo dallo strumento più semplice (il RCA di Balassa, già calcolato su dati reali per il 2023) e costruendo progressivamente i livelli che servono per arrivare a un’analisi operativa del rischio settoriale e territoriale.</p>
 <hr>
 </section>
-</section>
-<section id="sec-teoria" class="level2" data-number="2">
-<section id="il-punto-di-partenza-teorico-la-terza-italia" class="level2 anchored" data-number="2" data-anchor-id="sec-teoria">
-<h2 class="anchored" data-number="2" data-anchor-id="il-punto-di-partenza-teorico-la-terza-italia"><span class="header-section-number">2</span> Il punto di partenza teorico: la Terza Italia</h2>
+<section id="sez-teoria" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="sez-teoria"><span class="header-section-number">2</span> Il punto di partenza teorico: la Terza Italia</h2>
 <p>Il framework non nasce nel vuoto. Si radica in un corpo di letteratura che ha descritto, a partire dagli anni Settanta, un modello di sviluppo industriale specificamente italiano.</p>
 <p>Bagnasco (1977) individua una <em>Terza Italia</em> — né il grande capitalismo nordoccidentale né il Sud agricolo e assistito — fondata su piccole e medie imprese, territorio e relazioni sociali dense. Becattini formalizza il concetto di distretto industriale marshalliano: un sistema produttivo localizzato dove l’unità rilevante non è la singola impresa ma la comunità di imprese, con economie esterne, circolazione tacita di conoscenza e mercato del lavoro specializzato. Piore e Sabel introducono il concetto di <em>specializzazione flessibile</em>: le PMI in rete sono più adattabili della grande impresa verticalmente integrata perché possono ricombinare le competenze senza dover ristrutturare tutta la catena produttiva. Marshall, ripreso da Bellandi e dalla California School (Scott, Storper), fornisce la spiegazione dei meccanismi: la prossimità geografica riduce i costi di transazione, crea un’atmosfera industriale che accelera la diffusione delle innovazioni, e permette una divisione del lavoro fine che una singola grande impresa non potrebbe sostenere internamente.</p>
 <p>La sintesi operativa è una: il modello italiano funziona grazie all’<strong>interconnessione densa tra PMI specializzate</strong>. Questa interconnessione è il motore della flessibilità e della qualità — ed è anche, simmetricamente, il principale canale di trasmissione degli shock. Il punto di forza strutturale è lo stesso del punto di vulnerabilità.</p>
@@ -245,64 +275,89 @@ ul.task-list li input[type="checkbox"] {
 <p><em>Forza = interconnessione. Interconnessione = vulnerabilità.</em></p>
 </blockquote>
 <p>Questo non è un paradosso astratto. È la premessa operativa del framework.</p>
+<hr>
+</section>
+<section id="sez-rca" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="sez-rca"><span class="header-section-number">3</span> Cosa abbiamo: il RCA nazionale</h2>
+<p>Il punto di partenza empirico è il <strong>RCA di Balassa</strong> (<em>Revealed Comparative Advantage</em>), calcolato su dati di export HS2 dall’API pubblica di UN Comtrade per l’anno 2023. La formula è:</p>
+<p><span class="math display">\[\text{RCA}_i = \frac{X_i^{IT} / X_{tot}^{IT}}{X_i^{W} / X_{tot}^{W}}\]</span></p>
+<p>dove <span class="math inline">\(X_i^{IT}\)</span> è l’export italiano nel settore <span class="math inline">\(i\)</span> e <span class="math inline">\(X_i^W\)</span> è l’export mondiale nello stesso settore. Un valore maggiore di 1 indica specializzazione; minore di 1, svantaggio relativo. La variante simmetrica RSCA = (RCA−1)/(RCA+1) mappa il risultato nell’intervallo [−1, +1].</p>
+<p>I risultati per il 2023 (97 capitoli HS2, aggregati in 11 macro-settori) sono coerenti con l’immagine attesa:</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 23%">
-<col style="width: 15%">
-</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">:</th>
-<th style="text-align: center;">tion .level2 number=“3”} RCA nazionale {#cosa-abbiamo-il-rca-nazionale .anchored number=“3” anchor-id=“sec-rca”}</th>
+<th style="text-align: left;">Macro-settore</th>
+<th style="text-align: center;">RCA 2023</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Moda Agroalimentare Lusso Chimica Sistema casa Metallurgia Gomma-Plastica Trasporti Meccanica</td>
-<td style="text-align: center;">2.44 1.60 1.51 1.47 1.41 1.38 1.01 0.82 0.81</td>
+<td style="text-align: left;">Moda</td>
+<td style="text-align: center;">2.44</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">meccanica sotto</td>
-<td style="text-align: center;">1 riflette la forte concorrenza tedesca e asiatica; i settori del Made in Italy classico sono tutti sopra 1.3.</td>
+<td style="text-align: left;">Agroalimentare</td>
+<td style="text-align: center;">1.60</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">: {#limitazioni-d # Limitazioni dic</td>
-<td style="text-align: center;">ichiarate .section .level3 number=“3.1”} hiarate {.anchored number=“3.1” anchor-id=“limitazioni-dichiarate”}</td>
+<td style="text-align: left;">Lusso</td>
+<td style="text-align: center;">1.51</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">esta fotografia h</td>
-<td style="text-align: center;">a tre limiti da tenere presenti. Primo: il “mondo” è approssimato da un proxy di 16 economie che coprono circa il 53% del commercio mondiale; UK, Francia e Spagna sono escluse per ragioni tecniche legate all’API gratuita (dati troncati a 500 righe), il che può portare a una sovrastima dell’RCA nei settori dove quei paesi sono concorrenti diretti. Secondo: l’RCA tratta l’Italia come un blocco unico, mentre il vantaggio comparato italiano è geograficamente concentrato — è la somma di micro-specializzazioni distrettuali. Terzo, e più importante: l’RCA è statico. Descrive una posizione, non una traiettoria; descrive una forza, non la sua robustezza.</td>
+<td style="text-align: left;">Chimica</td>
+<td style="text-align: center;">1.47</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sistema casa</td>
+<td style="text-align: center;">1.41</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Metallurgia</td>
+<td style="text-align: center;">1.38</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gomma-Plastica</td>
+<td style="text-align: center;">1.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Trasporti</td>
+<td style="text-align: center;">0.82</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Meccanica</td>
+<td style="text-align: center;">0.81</td>
 </tr>
 </tbody>
 </table>
+<p>La meccanica sotto 1 riflette la forte concorrenza tedesca e asiatica; i settori del Made in Italy classico sono tutti sopra 1.3.</p>
+<section id="limitazioni-dichiarate" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="limitazioni-dichiarate"><span class="header-section-number">3.1</span> Limitazioni dichiarate</h3>
+<p>Questa fotografia ha tre limiti da tenere presenti. Primo: il “mondo” è approssimato da un proxy di 16 economie che coprono circa il 53% del commercio mondiale; UK, Francia e Spagna sono escluse per ragioni tecniche legate all’API gratuita (dati troncati a 500 righe), il che può portare a una sovrastima dell’RCA nei settori dove quei paesi sono concorrenti diretti. Secondo: l’RCA tratta l’Italia come un blocco unico, mentre il vantaggio comparato italiano è geograficamente concentrato — è la somma di micro-specializzazioni distrettuali. Terzo, e più importante: l’RCA è statico. Descrive una posizione, non una traiettoria; descrive una forza, non la sua robustezza.</p>
+<hr>
 </section>
 </section>
-<p>::::</p>
-<section id="sec-gap" class="level2" data-number="4">
-<section id="cosa-non-abbiamo-ancora" class="level2 anchored" data-number="3" data-anchor-id="sec-gap">
-<h2 class="anchored" data-number="3" data-anchor-id="cosa-non-abbiamo-ancora"><span class="header-section-number">3</span> Cosa non abbiamo ancora</h2>
+<section id="sez-gap" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="sez-gap"><span class="header-section-number">4</span> Cosa non abbiamo ancora</h2>
 <p>Mancano tre livelli analitici, ciascuno dei quali aggiunge una dimensione diversa e necessaria.</p>
-<section id="la-dimensione-territoriale" class="level3 anchored" data-number="3.1" data-anchor-id="la-dimensione-territoriale">
-<h3 class="anchored" data-number="3.1" data-anchor-id="la-dimensione-territoriale"><span class="header-section-number">3.1</span> La dimensione territoriale</h3>
+<section id="la-dimensione-territoriale" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="la-dimensione-territoriale"><span class="header-section-number">4.1</span> La dimensione territoriale</h3>
 <p>Sapere che l’Italia è forte nel mobile (Sistema casa, RCA 1.41) non dice nulla su chi subisce per primo lo shock quando la domanda estera cala. I dati Furnilytics — basati su ISTAT SBS e Eurostat Comext — mostrano che il 62% della produzione di mobili è concentrata in tre regioni: Lombardia, Veneto, FVG. Di queste, FVG e Marche hanno aumentato la penetrazione negli USA post-Covid proprio mentre i dazi americani entravano in vigore; il risultato è un calo del 15.5% dell’export nel trimestre più recente con un’aliquota effettiva del 13.4% su HS9401–9403.</p>
 <p>Il <strong>RCA regionale</strong> — calcolabile da ISTAT Coeweb con la formula <span class="math inline">\((X_i^{reg}/X_{tot}^{reg}) / (X_i^{IT}/X_{tot}^{IT})\)</span> — permette di “spacchettare” il dato nazionale in micro-specializzazioni territoriali. Un valore maggiore di 1 significa che la regione è più specializzata in quel settore rispetto alla media italiana. Questo è lo strumento che distingue FVG (monosettoriale nel mobile) da Lombardia (più diversificata) e misura empiricamente la concentrazione del rischio geografico.</p>
 </section>
-<section id="la-dimensione-qualitativa" class="level3 anchored" data-number="3.2" data-anchor-id="la-dimensione-qualitativa">
-<h3 class="anchored" data-number="3.2" data-anchor-id="la-dimensione-qualitativa"><span class="header-section-number">3.2</span> La dimensione qualitativa</h3>
+<section id="la-dimensione-qualitativa" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="la-dimensione-qualitativa"><span class="header-section-number">4.2</span> La dimensione qualitativa</h3>
 <p>Due settori con lo stesso RCA possono avere profili di rischio molto diversi. Il rapporto Intesa Sanpaolo sui distretti industriali mostra esattamente questa dispersione: all’interno dello stesso macro-settore coesistono distretti ad alta performance e distretti che si reggono su margini sottilissimi. Senza incorporare indicatori di qualità — produttività del lavoro (VA/addetti), intensità tecnologica (R&amp;S/VA), upgrading di filiera (export/VA) — l’RCA racconta solo metà della storia.</p>
 <p>Questa dimensione risponde a una domanda diversa dal RCA: non <em>quanto esporti</em> ma <em>quanto vale quello che esporti</em>, e quindi quanto spazio hai per assorbire uno shock prima che i margini diventino negativi.</p>
 </section>
-<section id="la-dimensione-di-rete" class="level3 anchored" data-number="3.3" data-anchor-id="la-dimensione-di-rete">
-<h3 class="anchored" data-number="3.3" data-anchor-id="la-dimensione-di-rete"><span class="header-section-number">3.3</span> La dimensione di rete</h3>
+<section id="la-dimensione-di-rete" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="la-dimensione-di-rete"><span class="header-section-number">4.3</span> La dimensione di rete</h3>
 <p>È il livello più complesso e anche il più direttamente collegato alla teoria della Terza Italia. Le tavole input-output — disponibili da ISTAT o Eurostat FIGARO — mappano i flussi di beni intermedi tra settori. Il modello Leontief, <span class="math inline">\(\mathbf{x} = (I - A)^{-1}\mathbf{y}\)</span>, permette di calcolare i moltiplicatori di produzione: dato uno shock sulla domanda finale di un settore, quanto si propaga agli altri settori attraverso le relazioni di fornitura?</p>
 <p>Questo è l’effetto sgocciolamento (<em>trickle-down</em>) nella sua forma quantificabile: uno shock energetico aumenta i costi della chimica, che aumenta i costi della plastica, che comprime i margini del packaging, che erode la redditività dell’agroalimentare. Senza questa dimensione, il framework vede gli shock ma non li propaga.</p>
 <hr>
 </section>
 </section>
-</section>
-<section id="sec-output" class="level2" data-number="5">
-<section id="cosa-possiamo-ottenere" class="level2 anchored" data-number="4" data-anchor-id="sec-output">
-<h2 class="anchored" data-number="4" data-anchor-id="cosa-possiamo-ottenere"><span class="header-section-number">4</span> Cosa possiamo ottenere</h2>
+<section id="sez-output" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="sez-output"><span class="header-section-number">5</span> Cosa possiamo ottenere</h2>
 <p>Con i tre livelli aggiunti, il framework diventa uno strumento operativo a sei stadi sequenziali:</p>
 <pre><code>Specializzazione (RCA)          →  cosa produce il paese
 Struttura territoriale           →  dove lo produce
@@ -314,10 +369,8 @@ Propagazione (Leontief)          →  chi viene colpito e con quale intensità</
 <p>Per un ufficio studi bancario, il quadrante operativamente rilevante è il secondo: i settori ad alto RCA ma alta vulnerabilità sono quelli dove la concentrazione dell’esposizione creditizia richiede un monitoraggio specifico.</p>
 <hr>
 </section>
-</section>
-<section id="sec-idee" class="level2" data-number="6">
-<section id="idee-aggiuntive-da-valutare" class="level2 anchored" data-number="5" data-anchor-id="sec-idee">
-<h2 class="anchored" data-number="5" data-anchor-id="idee-aggiuntive-da-valutare"><span class="header-section-number">5</span> Idee aggiuntive da valutare</h2>
+<section id="sez-idee" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="sez-idee"><span class="header-section-number">6</span> Idee aggiuntive da valutare</h2>
 <p>Alcune estensioni non ancora nel piano che potrebbero arricchire il framework in modo significativo.</p>
 <p><strong>Economic Complexity Index</strong> (Hidalgo &amp; Hausmann): misura non quanto esporti ma quanto sono <em>sofisticati</em> i prodotti esportati. Un paese che esporta beni che pochi altri sanno produrre ha un vantaggio più difendibile nel tempo. L’ECI è calcolabile sugli stessi dati Comtrade e aggiungerebbe una dimensione “difendibilità del vantaggio” che il RCA non ha — in sostanza, risponde alla domanda <em>quanto è difficile da replicare questa specializzazione?</em></p>
 <p><strong>Esposizione tariffaria ponderata</strong>: per ogni settore, un indice che combina quota di export verso mercati a rischio tariffario e aliquota effettiva attesa. Il caso mobile è già un test: HS9401–9403, aliquota 13.4%, calo -15.5% in un trimestre. Generalizzare questo calcolo a tutti i settori darebbe una misura di esposizione al protezionismo commerciale oggi concretamente rilevante.</p>
@@ -326,19 +379,15 @@ Propagazione (Leontief)          →  chi viene colpito e con quale intensità</
 <p><strong>Integrazione con dati creditizi</strong> (Bankit.sqlite): l’output naturale del framework per un ufficio studi bancario è il collegamento tra specializzazione settoriale e andamento del credito — sofferenze, nuove erogazioni, tassi di default per settore e area geografica. Le tabelle TRI (sofferenze) e TFR (erogazioni MLT) sono già disponibili e permetterebbero di chiudere il loop: dalla struttura produttiva all’impatto sul portafoglio.</p>
 <hr>
 </section>
-</section>
-<section id="sec-metodo" class="level2" data-number="7">
-<section id="una-nota-sulla-coerenza-metodologica" class="level2 anchored" data-number="6" data-anchor-id="sec-metodo">
-<h2 class="anchored" data-number="6" data-anchor-id="una-nota-sulla-coerenza-metodologica"><span class="header-section-number">6</span> Una nota sulla coerenza metodologica</h2>
+<section id="sez-metodo" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="sez-metodo"><span class="header-section-number">7</span> Una nota sulla coerenza metodologica</h2>
 <p>Man mano che il framework cresce, si accumula etereogeneità nelle fonti: RCA da Comtrade, produttività da ISTAT SBS, margini da Intesa Sanpaolo, input-output da FIGARO. Ciascuna fonte ha anni di riferimento diversi, classificazioni settoriali diverse (HS, NACE, ATECO, CPA) e livelli geografici diversi (nazionale, NUTS2, NUTS3).</p>
 <p>Prima di produrre output destinati a circolazione esterna, serve una fase esplicita di armonizzazione: mapping tra classificazioni, trattamento delle discontinuità di serie, dichiarazione dei proxy usati quando i dati diretti non esistono. Questo non è un ostacolo — è una scelta di qualità. La differenza tra un framework credibile e uno che sembra preciso ma non lo è sta quasi sempre in questi dettagli di raccordo.</p>
 <p>La trasparenza sulle limitazioni è anche una scelta comunicativa: in un documento destinato a un ufficio studi, dichiarare esplicitamente cosa non sai è spesso più utile che mascherare l’incertezza.</p>
 <hr>
 </section>
-</section>
-<section id="sec-next" class="level2" data-number="8">
-<section id="prossimi-passi" class="level2 anchored" data-number="7" data-anchor-id="sec-next">
-<h2 class="anchored" data-number="7" data-anchor-id="prossimi-passi"><span class="header-section-number">7</span> Prossimi passi</h2>
+<section id="sez-next" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="sez-next"><span class="header-section-number">8</span> Prossimi passi</h2>
 <p>Il percorso verso il framework completo è sequenziale e modulare: ogni livello aggiunto è già utile indipendentemente da quelli successivi.</p>
 <ol type="1">
 <li><strong>Fix tecnici</strong> <code>download_comtrade.py</code>: correzione dedup (sum vs max) e filtro cmdCode</li>
@@ -351,10 +400,9 @@ Propagazione (Leontief)          →  chi viene colpito e con quale intensità</
 <li><strong>Integrazione Bankit</strong> (impatto su portafoglio creditizio)</li>
 </ol>
 <p>I primi tre punti sono fattibili a breve con le fonti già disponibili. I punti 6–8 richiedono un investimento metodologico più significativo ma sono quelli che portano il framework da <em>descrittivo</em> a <em>predittivo</em>.</p>
-</section>
-</section>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -765,7 +813,7 @@ Propagazione (Leontief)          →  chi viene colpito e con quale intensità</
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2604_SpecializzazioneShock/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

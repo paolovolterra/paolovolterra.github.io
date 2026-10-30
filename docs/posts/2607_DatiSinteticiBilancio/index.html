@@ -259,9 +259,9 @@ div.csl-indent {
   <li><a href="#benchmark-reale-delle-medie-imprese-italiane" id="toc-benchmark-reale-delle-medie-imprese-italiane" class="nav-link" data-scroll-target="#benchmark-reale-delle-medie-imprese-italiane"><span class="header-section-number">19.4</span> Benchmark reale delle medie imprese italiane</a></li>
   <li><a href="#collegamento-con-questo-progetto" id="toc-collegamento-con-questo-progetto" class="nav-link" data-scroll-target="#collegamento-con-questo-progetto"><span class="header-section-number">19.5</span> Collegamento con questo progetto</a></li>
   </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">20</span> 20 References</a></li>
+  <li><a href="#quarto-bibliography" id="toc-quarto-bibliography" class="nav-link" data-scroll-target="#quarto-bibliography"><span class="header-section-number">20</span> 20 References</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2607_DatiSinteticiBilancio/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -308,8 +308,8 @@ div.csl-indent {
 </header>
 
 
-<section id="sintesi" class="level2 anchored" data-number="1" data-anchor-id="sintesi">
-<h2 class="anchored" data-number="1" data-anchor-id="sintesi"><span class="header-section-number">1</span> Sintesi</h2>
+<section id="sintesi" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="sintesi"><span class="header-section-number">1</span> Sintesi</h2>
 <p>Questo documento descrive un piccolo laboratorio per generare <strong>dati sintetici di bilancio</strong> e usarli per provare un motore automatico di analisi.</p>
 <p>L’idea nasce da un problema pratico: se vogliamo spiegare, testare o stressare un algoritmo di lettura dei bilanci, non sempre e’ opportuno usare dati reali. I dati reali possono contenere informazioni riconoscibili, possono essere coperti da vincoli di riservatezza e possono rendere difficile condividere esempi didattici.</p>
 <p>I dati sintetici risolvono questo problema quando sono costruiti bene:</p>
@@ -321,10 +321,8 @@ div.csl-indent {
 <li>rendono esplicite le regole usate per generare il campione.</li>
 </ul>
 <p>Nel progetto sono stati generati 1000 bilanci sintetici e un primo motore di screening trasparente. Lo screening classifica ogni impresa sintetica in <code>PASS</code>, <code>WATCH</code> o <code>REJECT</code>.</p>
-<div id="38ba4ab0" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -356,11 +354,9 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
 </section>
-<section id="premessa-il-problema-dei-dati-di-bilancio" class="level2 anchored" data-number="2" data-anchor-id="premessa-il-problema-dei-dati-di-bilancio">
-<h2 class="anchored" data-number="2" data-anchor-id="premessa-il-problema-dei-dati-di-bilancio"><span class="header-section-number">2</span> Premessa: il problema dei dati di bilancio</h2>
+<section id="premessa-il-problema-dei-dati-di-bilancio" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="premessa-il-problema-dei-dati-di-bilancio"><span class="header-section-number">2</span> Premessa: il problema dei dati di bilancio</h2>
 <p>Una premessa di contesto riguarda la disponibilita’ dei bilanci societari in Italia.</p>
 <p>I bilanci depositati dalle societa’ sono documenti pubblici in senso giuridico: esistono nel Registro delle Imprese e possono essere richiesti. Tuttavia, per un uso analitico sistematico, la situazione e’ diversa. Nella pratica l’accesso avviene spesso per singola impresa, tramite visure, atti o bilanci scaricati puntualmente, con costi e interfacce pensate piu’ per la consultazione documentale che per il riuso massivo come open data.</p>
 <p>Questo crea una frizione importante:</p>
@@ -389,8 +385,8 @@ div.csl-indent {
 </ul>
 <p>Una community che puo’ lavorare su dati aperti o su dataset sintetici ben documentati tende a produrre sinergie: corregge errori, propone metriche, confronta approcci, costruisce esempi didattici e aumenta la conoscenza condivisa. In questo senso il dato non e’ solo materia prima per modelli automatici, ma infrastruttura culturale.</p>
 </section>
-<section id="cosa-sono-i-dati-sintetici" class="level2 anchored" data-number="3" data-anchor-id="cosa-sono-i-dati-sintetici">
-<h2 class="anchored" data-number="3" data-anchor-id="cosa-sono-i-dati-sintetici"><span class="header-section-number">3</span> Cosa sono i dati sintetici</h2>
+<section id="cosa-sono-i-dati-sintetici" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="cosa-sono-i-dati-sintetici"><span class="header-section-number">3</span> Cosa sono i dati sintetici</h2>
 <p>Per dati sintetici intendiamo dati generati artificialmente, ma costruiti per assomigliare a una certa famiglia di fenomeni reali.</p>
 <p>Nel nostro caso il fenomeno e’ il bilancio di una societa’. Un bilancio sintetico non e’ il bilancio di una vera impresa, ma deve avere almeno alcune caratteristiche realistiche:</p>
 <ul>
@@ -404,8 +400,8 @@ div.csl-indent {
 <p>Il punto importante e’ che “sintetico” non significa “casuale senza regole”. Un numero casuale puo’ essere inutile; un dato sintetico deve essere governato da ipotesi esplicite.</p>
 <p>La letteratura sui dati sintetici nasce anche nel campo della protezione della riservatezza statistica: l’idea e’ produrre dati utilizzabili per analisi senza rilasciare direttamente microdati sensibili <span class="citation" data-cites="rubin1993 little1993 drechsler2023">(<a href="#ref-rubin1993" role="doc-biblioref">Rubin 1993</a>; <a href="#ref-little1993" role="doc-biblioref">Little 1993</a>; <a href="#ref-drechsler2023" role="doc-biblioref">Drechsler and Haensch 2023</a>)</span>. In anni piu’ recenti il tema si e’ esteso alla generazione di dati tabellari per machine learning, benchmarking e condivisione controllata di dataset <span class="citation" data-cites="patki2016 xu2019ctgan stoian2025survey">(<a href="#ref-patki2016" role="doc-biblioref">Patki et al.&nbsp;2016</a>; <a href="#ref-xu2019ctgan" role="doc-biblioref">Xu et al.&nbsp;2019</a>; <a href="#ref-stoian2025survey" role="doc-biblioref">Stoian et al.&nbsp;2025</a>)</span>.</p>
 </section>
-<section id="perche-generarli" class="level2 anchored" data-number="4" data-anchor-id="perche-generarli">
-<h2 class="anchored" data-number="4" data-anchor-id="perche-generarli"><span class="header-section-number">4</span> Perche’ generarli</h2>
+<section id="perche-generarli" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="perche-generarli"><span class="header-section-number">4</span> Perche’ generarli</h2>
 <p>I dati sintetici servono soprattutto quando vogliamo lavorare sul metodo.</p>
 <p>Esempi:</p>
 <ul>
@@ -418,8 +414,8 @@ div.csl-indent {
 </ul>
 <p>Nel lavoro su XBRL il problema era mostrare il processo end-to-end senza trasformare il caso in esposizione di una societa’ reale. Qui facciamo un passo ulteriore: invece di anonimizzare un bilancio reale, generiamo molti bilanci fittizi con regole controllate.</p>
 </section>
-<section id="come-sono-stati-generati" class="level2 anchored" data-number="5" data-anchor-id="come-sono-stati-generati">
-<h2 class="anchored" data-number="5" data-anchor-id="come-sono-stati-generati"><span class="header-section-number">5</span> Come sono stati generati</h2>
+<section id="come-sono-stati-generati" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="come-sono-stati-generati"><span class="header-section-number">5</span> Come sono stati generati</h2>
 <p>Il generatore e’ contenuto nel file <code>synthetic_balance_generator.py</code>.</p>
 <p>Il flusso e’ il seguente:</p>
 <ol type="1">
@@ -430,9 +426,7 @@ div.csl-indent {
 <li>il dataset viene esportato in CSV ed Excel.</li>
 </ol>
 <p>La generazione e’ riproducibile: usando lo stesso <code>seed</code>, si ottiene lo stesso dataset.</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> synthetic_balance_generator.py <span class="at">--n</span> 1000 <span class="at">--seed</span> 42</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 <p>Gli output principali sono:</p>
 <ul>
 <li><code>OUT/bilanci_sintetici.csv</code>;</li>
@@ -442,13 +436,11 @@ div.csl-indent {
 <li><code>OUT/parametri_algoritmo.xlsx</code>.</li>
 </ul>
 </section>
-<section id="gli-archetipi" class="level2 anchored" data-number="6" data-anchor-id="gli-archetipi">
-<h2 class="anchored" data-number="6" data-anchor-id="gli-archetipi"><span class="header-section-number">6</span> Gli archetipi</h2>
+<section id="gli-archetipi" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="gli-archetipi"><span class="header-section-number">6</span> Gli archetipi</h2>
 <p>Gli archetipi sono profili economico-finanziari. Non sono imprese reali: sono stampi logici usati per generare casi diversi.</p>
-<div id="4d0b6304" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -495,14 +487,10 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
 <p>Ogni archetipo ha range diversi per ricavi, crescita, margini, leva finanziaria, patrimonio netto e capitale circolante. In questo modo il dataset contiene imprese sane, imprese in crescita, imprese fragili e imprese in crisi.</p>
 <p>La tabella seguente e’ la versione ruotata, pensata per lettura e stampa A4.</p>
-<div id="1aa3b476" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -653,11 +641,9 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
 </section>
-<section id="i-parametri-dati-allalgoritmo" class="level2 anchored" data-number="7" data-anchor-id="i-parametri-dati-allalgoritmo">
-<h2 class="anchored" data-number="7" data-anchor-id="i-parametri-dati-allalgoritmo"><span class="header-section-number">7</span> I parametri dati all’algoritmo</h2>
+<section id="i-parametri-dati-allalgoritmo" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="i-parametri-dati-allalgoritmo"><span class="header-section-number">7</span> I parametri dati all’algoritmo</h2>
 <p>La tabella <code>parametri_algoritmo</code> descrive che cosa riceve il generatore come input logico.</p>
 <p>La distinzione principale e’:</p>
 <ul>
@@ -666,10 +652,8 @@ div.csl-indent {
 <li><strong>derivato</strong>: il valore non viene estratto, ma calcolato da altri valori;</li>
 <li><strong>controllo</strong>: il valore serve a verificare la coerenza finale.</li>
 </ul>
-<div id="a055d530" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -847,18 +831,14 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
 <p>Questa tabella e’ importante perche’ rende il dataset auditabile. Se un archetipo produce troppe imprese respinte, possiamo capire se il problema nasce dai range di leva, dai margini, dai giorni clienti o da altre ipotesi.</p>
 <p>Nella letteratura sui dati sintetici, questa distinzione tra generazione e valutazione e’ centrale: non basta creare dati realistici, bisogna anche misurarne utilita’, fedelta’ statistica, rischio di disclosure e coerenza con vincoli di dominio <span class="citation" data-cites="raab2017 raab2021 hassan2023">(<a href="#ref-raab2017" role="doc-biblioref">Raab et al.&nbsp;2017</a>, <a href="#ref-raab2021" role="doc-biblioref">2021</a>; <a href="#ref-hassan2023" role="doc-biblioref">Hassan et al.&nbsp;2023</a>)</span>.</p>
 </section>
-<section id="variabili-prodotte" class="level2 anchored" data-number="8" data-anchor-id="variabili-prodotte">
-<h2 class="anchored" data-number="8" data-anchor-id="variabili-prodotte"><span class="header-section-number">8</span> Variabili prodotte</h2>
+<section id="variabili-prodotte" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="variabili-prodotte"><span class="header-section-number">8</span> Variabili prodotte</h2>
 <p>Il dataset finale contiene variabili economiche, patrimoniali e indicatori.</p>
-<div id="36169da8" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -997,8 +977,6 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
 <p>Alcune variabili sono direttamente generate, altre sono derivate:</p>
 <ul>
 <li><code>ricavi</code>, <code>crescita_ricavi_pct</code>, <code>ebitda_margin_pct</code> descrivono la dinamica economica;</li>
@@ -1009,8 +987,8 @@ div.csl-indent {
 <li><code>check_quadratura</code> verifica che lo stato patrimoniale sintetico quadri.</li>
 </ul>
 </section>
-<section id="esempio-di-bilancio-riclassificato" class="level2 anchored" data-number="9" data-anchor-id="esempio-di-bilancio-riclassificato">
-<h2 class="anchored" data-number="9" data-anchor-id="esempio-di-bilancio-riclassificato"><span class="header-section-number">9</span> Esempio di bilancio riclassificato</h2>
+<section id="esempio-di-bilancio-riclassificato" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="esempio-di-bilancio-riclassificato"><span class="header-section-number">9</span> Esempio di bilancio riclassificato</h2>
 <p>Per rendere piu’ concreto il dataset, prendiamo una singola impresa sintetica con criticita’ evidenti e la rappresentiamo in forma riclassificata.</p>
 <p>La scelta di un caso problematico e’ didatticamente utile: il lettore puo’ confrontare i prospetti con i ratios e verificare se lo screening automatico ha intercettato segnali coerenti.</p>
 <p>Questa non e’ una riclassificazione civilistica completa. E’ una vista didattica, utile per mostrare come i dati generati possano essere letti da un analista:</p>
@@ -1018,10 +996,8 @@ div.csl-indent {
 <li>nello stato patrimoniale distinguiamo attivo corrente, immobilizzazioni, patrimonio netto e debiti;</li>
 <li>nel conto economico distinguiamo ricavi, EBITDA, EBIT, gestione finanziaria, imposte e utile netto.</li>
 </ul>
-<div id="4b7a2309" class="cell" data-execution_count="7">
-<div class="cell-output cell-output-display" data-execution_count="7">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -1068,15 +1044,11 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<section id="situazione-patrimoniale-riclassificata" class="level3 anchored" data-number="9.1" data-anchor-id="situazione-patrimoniale-riclassificata">
-<h3 class="anchored" data-number="9.1" data-anchor-id="situazione-patrimoniale-riclassificata"><span class="header-section-number">9.1</span> Situazione patrimoniale riclassificata</h3>
+<section id="situazione-patrimoniale-riclassificata" class="level3" data-number="9.1">
+<h3 data-number="9.1" class="anchored" data-anchor-id="situazione-patrimoniale-riclassificata"><span class="header-section-number">9.1</span> Situazione patrimoniale riclassificata</h3>
 <p>La situazione patrimoniale riclassificata mostra da un lato gli impieghi, cioe’ dove sono investite le risorse, e dall’altro le fonti, cioe’ come quegli impieghi sono finanziati.</p>
-<div id="9cb14373" class="cell" data-execution_count="8">
-<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -1132,13 +1104,9 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
 <p>L’uguaglianza tra <code>Totale attivo</code> e <code>Totale passivo e patrimonio netto</code> e’ il controllo minimo di quadratura.</p>
-<div id="ec11951e" class="cell" data-execution_count="9">
-<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -1165,16 +1133,12 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
 </section>
-<section id="conto-economico-riclassificato" class="level3 anchored" data-number="9.2" data-anchor-id="conto-economico-riclassificato">
-<h3 class="anchored" data-number="9.2" data-anchor-id="conto-economico-riclassificato"><span class="header-section-number">9.2</span> Conto economico riclassificato</h3>
+<section id="conto-economico-riclassificato" class="level3" data-number="9.2">
+<h3 data-number="9.2" class="anchored" data-anchor-id="conto-economico-riclassificato"><span class="header-section-number">9.2</span> Conto economico riclassificato</h3>
 <p>Il conto economico riclassificato parte dai ricavi e arriva all’utile netto, evidenziando i principali margini intermedi.</p>
-<div id="f9750ea0" class="cell" data-execution_count="10">
-<div class="cell-output cell-output-display" data-execution_count="10">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -1235,16 +1199,12 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
 </section>
-<section id="indicatori-sintetici-del-caso-critico" class="level3 anchored" data-number="9.3" data-anchor-id="indicatori-sintetici-del-caso-critico">
-<h3 class="anchored" data-number="9.3" data-anchor-id="indicatori-sintetici-del-caso-critico"><span class="header-section-number">9.3</span> Indicatori sintetici del caso critico</h3>
+<section id="indicatori-sintetici-del-caso-critico" class="level3" data-number="9.3">
+<h3 data-number="9.3" class="anchored" data-anchor-id="indicatori-sintetici-del-caso-critico"><span class="header-section-number">9.3</span> Indicatori sintetici del caso critico</h3>
 <p>Gli indicatori permettono di collegare bilancio e screening automatico.</p>
-<div id="878a71f0" class="cell" data-execution_count="11">
-<div class="cell-output cell-output-display" data-execution_count="11">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -1299,18 +1259,14 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
 <p>Nel caso scelto, l’esito <code>REJECT</code> non deriva da una decisione opaca. I motivi sono riportati nella tabella iniziale e possono essere verificati nei ratios: margini, utile, leva, copertura degli oneri finanziari e liquidita’ corrente.</p>
 </section>
 </section>
-<section id="controlli-di-coerenza" class="level2 anchored" data-number="10" data-anchor-id="controlli-di-coerenza">
-<h2 class="anchored" data-number="10" data-anchor-id="controlli-di-coerenza"><span class="header-section-number">10</span> Controlli di coerenza</h2>
+<section id="controlli-di-coerenza" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="controlli-di-coerenza"><span class="header-section-number">10</span> Controlli di coerenza</h2>
 <p>Il controllo minimo e’ la quadratura dello stato patrimoniale:</p>
-<div id="60f3b0e0" class="cell" data-execution_count="12">
-<div class="cell-output cell-output-display" data-execution_count="12">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -1329,14 +1285,10 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
 <p>Nel dataset generato, tutti i casi quadrano. Questo non significa che ogni bilancio sia civilisticamente completo, ma significa che la struttura base e’ coerente.</p>
 <p>Un secondo controllo e’ la distribuzione degli archetipi:</p>
-<div id="e57afebb" class="cell" data-execution_count="13">
-<div class="cell-output cell-output-display" data-execution_count="13">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -1391,26 +1343,20 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
 </section>
-<section id="uso-per-testare-un-motore-automatico" class="level2 anchored" data-number="11" data-anchor-id="uso-per-testare-un-motore-automatico">
-<h2 class="anchored" data-number="11" data-anchor-id="uso-per-testare-un-motore-automatico"><span class="header-section-number">11</span> Uso per testare un motore automatico</h2>
+<section id="uso-per-testare-un-motore-automatico" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="uso-per-testare-un-motore-automatico"><span class="header-section-number">11</span> Uso per testare un motore automatico</h2>
 <p>Una volta creati i bilanci sintetici, possiamo usarli per verificare un motore di screening.</p>
 <p>Il motore e’ contenuto in <code>screening_engine.py</code> ed e’ volutamente trasparente: ogni regola e’ leggibile e il risultato finale dipende dai fail registrati.</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> screening_engine.py <span class="at">--input</span> OUT/bilanci_sintetici.csv</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 <p>Gli esiti sono:</p>
 <ul>
 <li><code>PASS</code>: supera tutti i filtri;</li>
 <li><code>WATCH</code>: non ha fail bloccanti, ma presenta segnali da approfondire;</li>
 <li><code>REJECT</code>: fallisce almeno una regola bloccante.</li>
 </ul>
-<div id="96a1bf65" class="cell" data-execution_count="14">
-<div class="cell-output cell-output-display" data-execution_count="14">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -1441,16 +1387,12 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
 </section>
-<section id="quanto-screma-il-motore" class="level2 anchored" data-number="12" data-anchor-id="quanto-screma-il-motore">
-<h2 class="anchored" data-number="12" data-anchor-id="quanto-screma-il-motore"><span class="header-section-number">12</span> Quanto screma il motore</h2>
+<section id="quanto-screma-il-motore" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="quanto-screma-il-motore"><span class="header-section-number">12</span> Quanto screma il motore</h2>
 <p>La tabella seguente mostra la scrematura per archetipo.</p>
-<div id="b5f4a0ca" class="cell" data-execution_count="15">
-<div class="cell-output cell-output-display" data-execution_count="15">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">screening_esito</th>
@@ -1513,17 +1455,13 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
 <p>Questo tipo di tabella e’ utile per capire se il motore si comporta come atteso. Per esempio, e’ ragionevole che l’archetipo <code>crisi</code> generi molti <code>REJECT</code>, mentre <code>sana_stabile</code> dovrebbe produrre molti <code>PASS</code>.</p>
 </section>
-<section id="quali-regole-pesano-di-piu" class="level2 anchored" data-number="13" data-anchor-id="quali-regole-pesano-di-piu">
-<h2 class="anchored" data-number="13" data-anchor-id="quali-regole-pesano-di-piu"><span class="header-section-number">13</span> Quali regole pesano di piu’</h2>
+<section id="quali-regole-pesano-di-piu" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="quali-regole-pesano-di-piu"><span class="header-section-number">13</span> Quali regole pesano di piu’</h2>
 <p>Ogni riga del dataset mantiene anche l’esito delle singole regole. Possiamo quindi contare quali filtri intervengono piu’ spesso.</p>
-<div id="ef04cccd" class="cell" data-execution_count="16">
-<div class="cell-output cell-output-display" data-execution_count="16">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -1596,19 +1534,17 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
 <p>Questa analisi permette di rispondere a una domanda concreta: il motore sta scartando perche’ le imprese sono davvero deboli, oppure perche’ una soglia e’ troppo rigida?</p>
 </section>
-<section id="come-usare-il-dataset" class="level2 anchored" data-number="14" data-anchor-id="come-usare-il-dataset">
-<h2 class="anchored" data-number="14" data-anchor-id="come-usare-il-dataset"><span class="header-section-number">14</span> Come usare il dataset</h2>
+<section id="come-usare-il-dataset" class="level2" data-number="14">
+<h2 data-number="14" class="anchored" data-anchor-id="come-usare-il-dataset"><span class="header-section-number">14</span> Come usare il dataset</h2>
 <p>Il dataset sintetico puo’ essere usato in diversi modi.</p>
-<section id="formazione" class="level3 anchored" data-number="14.1" data-anchor-id="formazione">
-<h3 class="anchored" data-number="14.1" data-anchor-id="formazione"><span class="header-section-number">14.1</span> Formazione</h3>
+<section id="formazione" class="level3" data-number="14.1">
+<h3 data-number="14.1" class="anchored" data-anchor-id="formazione"><span class="header-section-number">14.1</span> Formazione</h3>
 <p>Si possono mostrare casi <code>PASS</code>, <code>WATCH</code> e <code>REJECT</code> e chiedere al lettore di capire quali variabili guidano l’esito.</p>
 </section>
-<section id="taratura-dei-filtri" class="level3 anchored" data-number="14.2" data-anchor-id="taratura-dei-filtri">
-<h3 class="anchored" data-number="14.2" data-anchor-id="taratura-dei-filtri"><span class="header-section-number">14.2</span> Taratura dei filtri</h3>
+<section id="taratura-dei-filtri" class="level3" data-number="14.2">
+<h3 data-number="14.2" class="anchored" data-anchor-id="taratura-dei-filtri"><span class="header-section-number">14.2</span> Taratura dei filtri</h3>
 <p>Si possono cambiare le soglie dello screening e misurare subito l’effetto:</p>
 <ul>
 <li>quanti casi passano;</li>
@@ -1617,17 +1553,17 @@ div.csl-indent {
 <li>quali archetipi vengono penalizzati.</li>
 </ul>
 </section>
-<section id="stress-test" class="level3 anchored" data-number="14.3" data-anchor-id="stress-test">
-<h3 class="anchored" data-number="14.3" data-anchor-id="stress-test"><span class="header-section-number">14.3</span> Stress test</h3>
+<section id="stress-test" class="level3" data-number="14.3">
+<h3 data-number="14.3" class="anchored" data-anchor-id="stress-test"><span class="header-section-number">14.3</span> Stress test</h3>
 <p>Si possono aumentare i casi di crisi, alzare la leva, ridurre i margini o peggiorare i giorni clienti per vedere se il motore intercetta il deterioramento.</p>
 </section>
-<section id="documentazione-metodologica" class="level3 anchored" data-number="14.4" data-anchor-id="documentazione-metodologica">
-<h3 class="anchored" data-number="14.4" data-anchor-id="documentazione-metodologica"><span class="header-section-number">14.4</span> Documentazione metodologica</h3>
+<section id="documentazione-metodologica" class="level3" data-number="14.4">
+<h3 data-number="14.4" class="anchored" data-anchor-id="documentazione-metodologica"><span class="header-section-number">14.4</span> Documentazione metodologica</h3>
 <p>Le tabelle <code>archetipi</code> e <code>parametri_algoritmo</code> permettono di spiegare da dove vengono i numeri. Questo evita che il dataset sembri una scatola nera.</p>
 </section>
 </section>
-<section id="limiti" class="level2 anchored" data-number="15" data-anchor-id="limiti">
-<h2 class="anchored" data-number="15" data-anchor-id="limiti"><span class="header-section-number">15</span> Limiti</h2>
+<section id="limiti" class="level2" data-number="15">
+<h2 data-number="15" class="anchored" data-anchor-id="limiti"><span class="header-section-number">15</span> Limiti</h2>
 <p>Questo progetto non genera un bilancio civilistico completo. Genera una rappresentazione sintetica utile per analisi, screening e didattica.</p>
 <p>I limiti principali sono:</p>
 <ul>
@@ -1641,8 +1577,8 @@ div.csl-indent {
 <p>Questi limiti sono accettabili per testare un motore di screening. Per un simulatore contabile piu’ rigoroso, il passo successivo sarebbe costruire un modello con piu’ vincoli, piu’ voci e una generazione coerente dei flussi di cassa.</p>
 <p>Sull’ultimo punto vale una precisazione. La letteratura classica sulla previsione del fallimento aziendale mostra che le soglie sui ratios andrebbero calibrate confrontando campioni reali di imprese fallite e non fallite, non fissate per convenzione <span class="citation" data-cites="beaver1966 altman1968 ohlson1980">(<a href="#ref-beaver1966" role="doc-biblioref">Beaver 1966</a>; <a href="#ref-altman1968" role="doc-biblioref">Altman 1968</a>; <a href="#ref-ohlson1980" role="doc-biblioref">Ohlson 1980</a>)</span>. Le fonti aggregate disponibili per la taratura di questo progetto (medie di sistema regionali, medie di campioni di imprese sopravvissute) descrivono popolazioni gia’ filtrate verso l’alto: utili per posizionare un archetipo rispetto alla media osservata, non per stimare una soglia minima di viabilita’, che richiederebbe la dispersione o i percentili di un campione non selezionato, comprensivo di casi di default. In assenza di questo dato, le soglie restano convenzionali per scelta esplicita, non per omissione.</p>
 </section>
-<section id="prossimi-sviluppi" class="level2 anchored" data-number="16" data-anchor-id="prossimi-sviluppi">
-<h2 class="anchored" data-number="16" data-anchor-id="prossimi-sviluppi"><span class="header-section-number">16</span> Prossimi sviluppi</h2>
+<section id="prossimi-sviluppi" class="level2" data-number="16">
+<h2 data-number="16" class="anchored" data-anchor-id="prossimi-sviluppi"><span class="header-section-number">16</span> Prossimi sviluppi</h2>
 <p>Evoluzioni naturali:</p>
 <ol type="1">
 <li>generare anche un rendiconto finanziario sintetico;</li>
@@ -1657,8 +1593,8 @@ div.csl-indent {
 <p>La prospettiva di fondo e’ comunitaria: rendere disponibili esempi, regole e dataset controllati permette a professionisti diversi di parlare la stessa lingua. Il redattore del bilancio vede come il dato viene interpretato; l’analista vede da quali ipotesi nascono i ratios; il docente puo’ spiegare casi complessi senza usare informazioni sensibili; lo sviluppatore puo’ testare strumenti in modo riproducibile.</p>
 <p>Anche quando il dataset e’ sintetico, se e’ ben documentato puo’ diventare uno spazio comune di apprendimento.</p>
 </section>
-<section id="estensione-settore-e-territorio" class="level2 anchored" data-number="17" data-anchor-id="estensione-settore-e-territorio">
-<h2 class="anchored" data-number="17" data-anchor-id="estensione-settore-e-territorio"><span class="header-section-number">17</span> Estensione: settore e territorio</h2>
+<section id="estensione-settore-e-territorio" class="level2" data-number="17">
+<h2 data-number="17" class="anchored" data-anchor-id="estensione-settore-e-territorio"><span class="header-section-number">17</span> Estensione: settore e territorio</h2>
 <p>Il modello puo’ essere ulteriormente caratterizzato introducendo due assi aggiuntivi:</p>
 <ul>
 <li><strong>settore merceologico</strong>;</li>
@@ -1671,8 +1607,8 @@ div.csl-indent {
 tensione_liquidita x metallurgico x Nord Ovest
 sana_stabile x alimentare x Sud e Isole</code></pre>
 <p>Questa estensione e’ utile perche’ molte variabili di bilancio non dipendono solo dalla salute finanziaria dell’impresa, ma anche dal tipo di attivita’ e dal contesto territoriale.</p>
-<section id="fonti-interne-gia-disponibili" class="level3 anchored" data-number="17.1" data-anchor-id="fonti-interne-gia-disponibili">
-<h3 class="anchored" data-number="17.1" data-anchor-id="fonti-interne-gia-disponibili"><span class="header-section-number">17.1</span> Fonti interne gia’ disponibili</h3>
+<section id="fonti-interne-gia-disponibili" class="level3" data-number="17.1">
+<h3 data-number="17.1" class="anchored" data-anchor-id="fonti-interne-gia-disponibili"><span class="header-section-number">17.1</span> Fonti interne gia’ disponibili</h3>
 <p>Nei progetti gia’ presenti sono stati individuati materiali utili:</p>
 <ul>
 <li><code>20260630_MediobancaMedieImprese</code>;</li>
@@ -1687,8 +1623,8 @@ sana_stabile x alimentare x Sud e Isole</code></pre>
 <li>i settori usati in alcuni report sono cluster settoriali Mediobanca, non necessariamente codici ATECO ufficiali.</li>
 </ol>
 </section>
-<section id="aree-territoriali-mediobanca" class="level3 anchored" data-number="17.2" data-anchor-id="aree-territoriali-mediobanca">
-<h3 class="anchored" data-number="17.2" data-anchor-id="aree-territoriali-mediobanca"><span class="header-section-number">17.2</span> Aree territoriali Mediobanca</h3>
+<section id="aree-territoriali-mediobanca" class="level3" data-number="17.2">
+<h3 data-number="17.2" class="anchored" data-anchor-id="aree-territoriali-mediobanca"><span class="header-section-number">17.2</span> Aree territoriali Mediobanca</h3>
 <p>Per l’insieme chiuso 2015-2024 delle medie imprese industriali, i cluster geografici sono:</p>
 <table class="caption-top table">
 <thead>
@@ -1736,8 +1672,8 @@ sana_stabile x alimentare x Sud e Isole</code></pre>
 <li>probabilita’ di tensione finanziaria.</li>
 </ul>
 </section>
-<section id="settori-mediobanca" class="level3 anchored" data-number="17.3" data-anchor-id="settori-mediobanca">
-<h3 class="anchored" data-number="17.3" data-anchor-id="settori-mediobanca"><span class="header-section-number">17.3</span> Settori Mediobanca</h3>
+<section id="settori-mediobanca" class="level3" data-number="17.3">
+<h3 data-number="17.3" class="anchored" data-anchor-id="settori-mediobanca"><span class="header-section-number">17.3</span> Settori Mediobanca</h3>
 <p>I cluster settoriali individuati sono:</p>
 <table class="caption-top table">
 <thead>
@@ -1779,8 +1715,8 @@ sana_stabile x alimentare x Sud e Isole</code></pre>
 </table>
 <p>Nota metodologica: questi gruppi vanno chiamati <strong>settori Mediobanca</strong> o <strong>cluster settoriali Mediobanca</strong>. Non vanno chiamati direttamente ATECO, salvo costruire e verificare un mapping granulare verso ATECO.</p>
 </section>
-<section id="esempio-di-logica-settoriale" class="level3 anchored" data-number="17.4" data-anchor-id="esempio-di-logica-settoriale">
-<h3 class="anchored" data-number="17.4" data-anchor-id="esempio-di-logica-settoriale"><span class="header-section-number">17.4</span> Esempio di logica settoriale</h3>
+<section id="esempio-di-logica-settoriale" class="level3" data-number="17.4">
+<h3 data-number="17.4" class="anchored" data-anchor-id="esempio-di-logica-settoriale"><span class="header-section-number">17.4</span> Esempio di logica settoriale</h3>
 <p>I settori potrebbero introdurre moltiplicatori o range specifici:</p>
 <table class="caption-top table">
 <colgroup>
@@ -1822,8 +1758,8 @@ sana_stabile x alimentare x Sud e Isole</code></pre>
 </table>
 <p>Questi effetti non sostituirebbero l’archetipo finanziario. Lo modulerebbero.</p>
 </section>
-<section id="esempio-di-logica-territoriale" class="level3 anchored" data-number="17.5" data-anchor-id="esempio-di-logica-territoriale">
-<h3 class="anchored" data-number="17.5" data-anchor-id="esempio-di-logica-territoriale"><span class="header-section-number">17.5</span> Esempio di logica territoriale</h3>
+<section id="esempio-di-logica-territoriale" class="level3" data-number="17.5">
+<h3 data-number="17.5" class="anchored" data-anchor-id="esempio-di-logica-territoriale"><span class="header-section-number">17.5</span> Esempio di logica territoriale</h3>
 <p>Le aree potrebbero introdurre differenze di contesto:</p>
 <table class="caption-top table">
 <colgroup>
@@ -1857,8 +1793,8 @@ sana_stabile x alimentare x Sud e Isole</code></pre>
 </table>
 <p>Anche qui serve cautela: l’effetto territoriale va tarato su dati osservati e non trasformato in stereotipo economico.</p>
 </section>
-<section id="come-incorporarlo-nel-generatore" class="level3 anchored" data-number="17.6" data-anchor-id="come-incorporarlo-nel-generatore">
-<h3 class="anchored" data-number="17.6" data-anchor-id="come-incorporarlo-nel-generatore"><span class="header-section-number">17.6</span> Come incorporarlo nel generatore</h3>
+<section id="come-incorporarlo-nel-generatore" class="level3" data-number="17.6">
+<h3 data-number="17.6" class="anchored" data-anchor-id="come-incorporarlo-nel-generatore"><span class="header-section-number">17.6</span> Come incorporarlo nel generatore</h3>
 <p>Una versione successiva del generatore potrebbe lavorare cosi’:</p>
 <ol type="1">
 <li>scegliere un archetipo finanziario;</li>
@@ -1878,8 +1814,8 @@ sana_stabile x alimentare x Sud e Isole</code></pre>
 <li>dimensione e struttura del capitale circolante.</li>
 </ul>
 </section>
-<section id="caveat-metodologico" class="level3 anchored" data-number="17.7" data-anchor-id="caveat-metodologico">
-<h3 class="anchored" data-number="17.7" data-anchor-id="caveat-metodologico"><span class="header-section-number">17.7</span> Caveat metodologico</h3>
+<section id="caveat-metodologico" class="level3" data-number="17.7">
+<h3 data-number="17.7" class="anchored" data-anchor-id="caveat-metodologico"><span class="header-section-number">17.7</span> Caveat metodologico</h3>
 <p>Il progetto Mediobanca sulle medie imprese segnala un punto importante: le analisi territoriali e quelle settoriali possono riferirsi a universi campionari diversi.</p>
 <p>In particolare:</p>
 <ul>
@@ -1891,8 +1827,8 @@ sana_stabile x alimentare x Sud e Isole</code></pre>
 <p>Quindi, per costruire dati sintetici robusti, settore e territorio dovrebbero essere usati come profili di simulazione, non come riproduzione meccanica di frequenze campionarie non perfettamente confrontabili.</p>
 </section>
 </section>
-<section id="estensione-dati-sintetici-da-esperienza-di-lavoro" class="level2 anchored" data-number="18" data-anchor-id="estensione-dati-sintetici-da-esperienza-di-lavoro">
-<h2 class="anchored" data-number="18" data-anchor-id="estensione-dati-sintetici-da-esperienza-di-lavoro"><span class="header-section-number">18</span> Estensione: dati sintetici da esperienza di lavoro</h2>
+<section id="estensione-dati-sintetici-da-esperienza-di-lavoro" class="level2" data-number="18">
+<h2 data-number="18" class="anchored" data-anchor-id="estensione-dati-sintetici-da-esperienza-di-lavoro"><span class="header-section-number">18</span> Estensione: dati sintetici da esperienza di lavoro</h2>
 <p>Un altro modo per costruire dati sintetici e’ partire dall’esperienza professionale.</p>
 <p>Questo approccio non parte prima dalle distribuzioni statistiche, ma dai casi che un analista, un gestore o un ufficio crediti incontra nella pratica. L’obiettivo e’ generare imprese sintetiche che raccontino una storia aziendale riconoscibile.</p>
 <p>In questo senso ci sono due approcci complementari:</p>
@@ -1927,8 +1863,8 @@ sana_stabile x alimentare x Sud e Isole</code></pre>
 </tbody>
 </table>
 <p>La soluzione piu’ solida e’ ibrida: usare i dati reali per definire ordini di grandezza e range, e usare l’esperienza per costruire pattern aziendali credibili.</p>
-<section id="pattern-esperienziali" class="level3 anchored" data-number="18.1" data-anchor-id="pattern-esperienziali">
-<h3 class="anchored" data-number="18.1" data-anchor-id="pattern-esperienziali"><span class="header-section-number">18.1</span> Pattern esperienziali</h3>
+<section id="pattern-esperienziali" class="level3" data-number="18.1">
+<h3 data-number="18.1" class="anchored" data-anchor-id="pattern-esperienziali"><span class="header-section-number">18.1</span> Pattern esperienziali</h3>
 <p>Un pattern esperienziale descrive una situazione aziendale tipica. Non e’ ancora un bilancio, ma una traccia narrativa che modifica i numeri.</p>
 <p>Esempi:</p>
 <table class="caption-top table">
@@ -2010,8 +1946,8 @@ sana_stabile x alimentare x Sud e Isole</code></pre>
 </tbody>
 </table>
 </section>
-<section id="come-entra-nel-generatore" class="level3 anchored" data-number="18.2" data-anchor-id="come-entra-nel-generatore">
-<h3 class="anchored" data-number="18.2" data-anchor-id="come-entra-nel-generatore"><span class="header-section-number">18.2</span> Come entra nel generatore</h3>
+<section id="come-entra-nel-generatore" class="level3" data-number="18.2">
+<h3 data-number="18.2" class="anchored" data-anchor-id="come-entra-nel-generatore"><span class="header-section-number">18.2</span> Come entra nel generatore</h3>
 <p>Nel generatore attuale ogni impresa nasce da un archetipo finanziario. In una versione piu’ ricca, ogni impresa potrebbe nascere da quattro dimensioni:</p>
 <pre class="text"><code>archetipo finanziario x settore x territorio x pattern esperienziale</code></pre>
 <p>Esempio:</p>
@@ -2062,8 +1998,8 @@ turnaround x alimentare x Sud e Isole x debito costoso</code></pre>
 </tbody>
 </table>
 </section>
-<section id="perche-e-utile" class="level3 anchored" data-number="18.3" data-anchor-id="perche-e-utile">
-<h3 class="anchored" data-number="18.3" data-anchor-id="perche-e-utile"><span class="header-section-number">18.3</span> Perche’ e’ utile</h3>
+<section id="perche-e-utile" class="level3" data-number="18.3">
+<h3 data-number="18.3" class="anchored" data-anchor-id="perche-e-utile"><span class="header-section-number">18.3</span> Perche’ e’ utile</h3>
 <p>Questo approccio e’ utile soprattutto per formazione e validazione.</p>
 <p>Un motore automatico puo’ essere testato non solo su imprese “casuali”, ma su casi costruiti per verificare se riconosce situazioni specifiche:</p>
 <ul>
@@ -2075,8 +2011,8 @@ turnaround x alimentare x Sud e Isole x debito costoso</code></pre>
 </ul>
 <p>In questo modo il dataset sintetico diventa un vero banco di prova. Non contiene solo numeri plausibili, ma casi intenzionali.</p>
 </section>
-<section id="caveat" class="level3 anchored" data-number="18.4" data-anchor-id="caveat">
-<h3 class="anchored" data-number="18.4" data-anchor-id="caveat"><span class="header-section-number">18.4</span> Caveat</h3>
+<section id="caveat" class="level3" data-number="18.4">
+<h3 data-number="18.4" class="anchored" data-anchor-id="caveat"><span class="header-section-number">18.4</span> Caveat</h3>
 <p>L’esperienza professionale e’ preziosa, ma va disciplinata.</p>
 <p>Per evitare che il generatore rifletta solo intuizioni soggettive, ogni pattern dovrebbe avere:</p>
 <ul>
@@ -2090,11 +2026,11 @@ turnaround x alimentare x Sud e Isole x debito costoso</code></pre>
 <p>In pratica, l’esperienza deve diventare una tabella di regole esplicite. Solo cosi’ puo’ essere discussa, corretta e migliorata.</p>
 </section>
 </section>
-<section id="riferimenti-accademici-utili" class="level2 anchored" data-number="19" data-anchor-id="riferimenti-accademici-utili">
-<h2 class="anchored" data-number="19" data-anchor-id="riferimenti-accademici-utili"><span class="header-section-number">19</span> Riferimenti accademici utili</h2>
+<section id="riferimenti-accademici-utili" class="level2" data-number="19">
+<h2 data-number="19" class="anchored" data-anchor-id="riferimenti-accademici-utili"><span class="header-section-number">19</span> Riferimenti accademici utili</h2>
 <p>La costruzione di questo laboratorio puo’ appoggiarsi a quattro filoni di letteratura e dati.</p>
-<section id="dati-sintetici-e-disclosure-control" class="level3 anchored" data-number="19.1" data-anchor-id="dati-sintetici-e-disclosure-control">
-<h3 class="anchored" data-number="19.1" data-anchor-id="dati-sintetici-e-disclosure-control"><span class="header-section-number">19.1</span> Dati sintetici e disclosure control</h3>
+<section id="dati-sintetici-e-disclosure-control" class="level3" data-number="19.1">
+<h3 data-number="19.1" class="anchored" data-anchor-id="dati-sintetici-e-disclosure-control"><span class="header-section-number">19.1</span> Dati sintetici e disclosure control</h3>
 <p>Il primo filone riguarda la generazione di dati sintetici per rendere accessibili dataset sensibili. I riferimenti classici sono Rubin <span class="citation" data-cites="rubin1993">(<a href="#ref-rubin1993" role="doc-biblioref">1993</a>)</span> e Little <span class="citation" data-cites="little1993">(<a href="#ref-little1993" role="doc-biblioref">1993</a>)</span>, poi sviluppati in lavori su microdati parzialmente sintetici e metodi pratici di sintesi <span class="citation" data-cites="reiter2005 nowok2016 raab2017">(<a href="#ref-reiter2005" role="doc-biblioref">Reiter 2005</a>; <a href="#ref-nowok2016" role="doc-biblioref">Nowok et al.&nbsp;2016</a>; <a href="#ref-raab2017" role="doc-biblioref">Raab et al.&nbsp;2017</a>)</span>.</p>
 <p>Questi lavori sono utili per due ragioni:</p>
 <ul>
@@ -2102,8 +2038,8 @@ turnaround x alimentare x Sud e Isole x debito costoso</code></pre>
 <li>propongono criteri per valutare utilita’ statistica e rischio residuo di identificazione.</li>
 </ul>
 </section>
-<section id="dati-tabellari-sintetici-e-machine-learning" class="level3 anchored" data-number="19.2" data-anchor-id="dati-tabellari-sintetici-e-machine-learning">
-<h3 class="anchored" data-number="19.2" data-anchor-id="dati-tabellari-sintetici-e-machine-learning"><span class="header-section-number">19.2</span> Dati tabellari sintetici e machine learning</h3>
+<section id="dati-tabellari-sintetici-e-machine-learning" class="level3" data-number="19.2">
+<h3 data-number="19.2" class="anchored" data-anchor-id="dati-tabellari-sintetici-e-machine-learning"><span class="header-section-number">19.2</span> Dati tabellari sintetici e machine learning</h3>
 <p>Il secondo filone riguarda la generazione di dati tabellari con modelli statistici o generativi. Qui rientrano strumenti come Synthetic Data Vault <span class="citation" data-cites="patki2016">(<a href="#ref-patki2016" role="doc-biblioref">Patki et al.&nbsp;2016</a>)</span> e modelli GAN per tabelle, come TGAN/CTGAN <span class="citation" data-cites="xu2018tgan xu2019ctgan">(<a href="#ref-xu2018tgan" role="doc-biblioref">Xu and Veeramachaneni 2018</a>; <a href="#ref-xu2019ctgan" role="doc-biblioref">Xu et al.&nbsp;2019</a>)</span>.</p>
 <p>Per il nostro progetto questi riferimenti sono utili come confronto metodologico. Noi non stiamo ancora usando un modello generativo profondo: stiamo costruendo un generatore parametrico, domain-driven ed expert-driven. Pero’ i criteri di valutazione restano simili:</p>
 <ul>
@@ -2114,13 +2050,13 @@ turnaround x alimentare x Sud e Isole x debito costoso</code></pre>
 <li>rischio di generare dati implausibili.</li>
 </ul>
 </section>
-<section id="classificazione-squilibri-di-classe-e-rischio-di-credito" class="level3 anchored" data-number="19.3" data-anchor-id="classificazione-squilibri-di-classe-e-rischio-di-credito">
-<h3 class="anchored" data-number="19.3" data-anchor-id="classificazione-squilibri-di-classe-e-rischio-di-credito"><span class="header-section-number">19.3</span> Classificazione, squilibri di classe e rischio di credito</h3>
+<section id="classificazione-squilibri-di-classe-e-rischio-di-credito" class="level3" data-number="19.3">
+<h3 data-number="19.3" class="anchored" data-anchor-id="classificazione-squilibri-di-classe-e-rischio-di-credito"><span class="header-section-number">19.3</span> Classificazione, squilibri di classe e rischio di credito</h3>
 <p>Il terzo filone riguarda l’uso dei ratios per individuare fragilita’ aziendali. I lavori classici di Beaver, Altman e Ohlson mostrano come informazioni di bilancio e indicatori finanziari possano essere usati per predire fallimento o distress <span class="citation" data-cites="beaver1966 altman1968 ohlson1980">(<a href="#ref-beaver1966" role="doc-biblioref">Beaver 1966</a>; <a href="#ref-altman1968" role="doc-biblioref">Altman 1968</a>; <a href="#ref-ohlson1980" role="doc-biblioref">Ohlson 1980</a>)</span>.</p>
 <p>Per la parte di screening automatico e’ utile anche il riferimento a SMOTE <span class="citation" data-cites="chawla2002">(<a href="#ref-chawla2002" role="doc-biblioref">Chawla et al.&nbsp;2002</a>)</span>, non perche’ il nostro generatore usi SMOTE, ma perche’ mostra una logica importante: quando i casi critici sono pochi, si possono generare osservazioni sintetiche per testare meglio classificatori e filtri.</p>
 </section>
-<section id="benchmark-reale-delle-medie-imprese-italiane" class="level3 anchored" data-number="19.4" data-anchor-id="benchmark-reale-delle-medie-imprese-italiane">
-<h3 class="anchored" data-number="19.4" data-anchor-id="benchmark-reale-delle-medie-imprese-italiane"><span class="header-section-number">19.4</span> Benchmark reale delle medie imprese italiane</h3>
+<section id="benchmark-reale-delle-medie-imprese-italiane" class="level3" data-number="19.4">
+<h3 data-number="19.4" class="anchored" data-anchor-id="benchmark-reale-delle-medie-imprese-italiane"><span class="header-section-number">19.4</span> Benchmark reale delle medie imprese italiane</h3>
 <p>Il quarto filone non e’ letteratura metodologica ma un dataset di riferimento: il rapporto Area Studi Mediobanca - Centro Studi Tagliacarne “Le medie imprese industriali italiane (2015-2024)” <span class="citation" data-cites="mediobanca2026medie">(<a href="#ref-mediobanca2026medie" role="doc-biblioref">Area Studi Mediobanca and Centro Studi delle Camere di Commercio Guglielmo Tagliacarne 2026</a>)</span>, gia’ usato nel progetto collegato <code>20260630_MediobancaMedieImprese</code>.</p>
 <p>Questo rapporto e’ utile come ancoraggio empirico esterno:</p>
 <ul>
@@ -2129,8 +2065,8 @@ turnaround x alimentare x Sud e Isole x debito costoso</code></pre>
 <li>ricorda un limite metodologico da rispettare anche qui: campioni chiusi e survivor bias possono distorcere le frequenze osservate, quindi vanno usati come riferimento di ordine di grandezza e non riprodotti meccanicamente.</li>
 </ul>
 </section>
-<section id="collegamento-con-questo-progetto" class="level3 anchored" data-number="19.5" data-anchor-id="collegamento-con-questo-progetto">
-<h3 class="anchored" data-number="19.5" data-anchor-id="collegamento-con-questo-progetto"><span class="header-section-number">19.5</span> Collegamento con questo progetto</h3>
+<section id="collegamento-con-questo-progetto" class="level3" data-number="19.5">
+<h3 data-number="19.5" class="anchored" data-anchor-id="collegamento-con-questo-progetto"><span class="header-section-number">19.5</span> Collegamento con questo progetto</h3>
 <p>Il nostro approccio e’ volutamente piu’ semplice dei modelli generativi avanzati:</p>
 <ul>
 <li>non apprende automaticamente una distribuzione da microdati reali;</li>
@@ -2142,13 +2078,9 @@ turnaround x alimentare x Sud e Isole x debito costoso</code></pre>
 <p>Questa impostazione e’ adatta a un uso didattico e metodologico. Per usi predittivi o regolamentari servirebbero invece validazioni piu’ forti: confronto con dati osservati, misure formali di utilita’, privacy risk assessment e backtesting su task specifici.</p>
 </section>
 </section>
-<section id="references" class="level2 unnumbered" data-number="20">
-
-</section>
 <div id="quarto-appendix" class="default">
-<section id="quarto-bibliography" class="quarto-appendix-contents" role="doc-bibliography">
-<section id="references" class="level2 anchored quarto-appendix-heading" data-number="20">
-<h2 class="anchored quarto-appendix-heading" data-number="20" data-anchor-id="references"><span class="header-section-number">20</span> 20 References</h2>
+<section id="quarto-bibliography" class="level2 quarto-appendix-heading" data-number="20">
+<h2 class="quarto-appendix-heading anchored" data-number="20" data-anchor-id="quarto-bibliography"><span class="header-section-number">20</span> 20 References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-altman1968" class="csl-entry" role="listitem">
 Altman, Edward I. 1968. “Financial Ratios, Discriminant Analysis and the Prediction of Corporate Bankruptcy.” <em>The Journal of Finance</em> 23 (4): 589–609. <a href="https://doi.org/10.1111/j.1540-6261.1968.tb00843.x" class="uri">https://doi.org/10.1111/j.1540-6261.1968.tb00843.x</a>.
@@ -2211,7 +2143,6 @@ Xu, Lei, Maria Skoularidou, Alfredo Cuesta-Infante, and Kalyan Veeramachaneni. 2
 Xu, Lei, and Kalyan Veeramachaneni. 2018. <em>Synthesizing Tabular Data Using Generative Adversarial Networks</em>. <a href="https://arxiv.org/abs/1811.11264" class="uri">https://arxiv.org/abs/1811.11264</a>.
 </div>
 </div>
-</section>
 </section>
 </div>
 
@@ -2626,7 +2557,7 @@ Xu, Lei, and Kalyan Veeramachaneni. 2018. <em>Synthesizing Tabular Data Using Ge
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2607_DatiSinteticiBilancio/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

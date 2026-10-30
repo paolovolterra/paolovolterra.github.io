@@ -94,6 +94,35 @@ div.csl-indent {
 }</script>
 <script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../MCC.css">
 <meta property="og:title" content="Le esportazioni delle regioni italiane – Paolo Volterra">
@@ -191,7 +220,7 @@ div.csl-indent {
   </ul></li>
   <li><a href="#riferimenti" id="toc-riferimenti" class="nav-link" data-scroll-target="#riferimenti">Riferimenti</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2610_ExportRegioni/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -261,15 +290,10 @@ div.csl-indent {
 <h1 data-number="1"><span class="header-section-number">1</span> La pubblicazione dell’11 settembre 2026</h1>
 <p>L’11 settembre 2026 l’Istat ha pubblicato la nuova edizione de <em>Le esportazioni delle regioni italiane</em>, riferita al secondo trimestre. Il rilascio comprende il comunicato, le serie trimestrali per ripartizione e le tavole del primo semestre per regione e attività economica. Offre quindi due letture complementari: il movimento congiunturale tra primo e secondo trimestre, corretto per la stagionalità, e il confronto tendenziale tra i primi sei mesi del 2026 e lo stesso periodo del 2025 <span class="citation" data-cites="istat2026exportregioniq2">(<a href="#ref-istat2026exportregioniq2" role="doc-biblioref">Istituto Nazionale di Statistica 2026b</a>)</span>.</p>
 <p>Il dato di apertura è una crescita nazionale in valore del 4,5% nel semestre. Preso da solo, tuttavia, questo numero nasconde differenze rilevanti per dimensione regionale, velocità, composizione e diffusione settoriale. L’analisi che segue sviluppa questi quattro piani senza assumere che la regione con il maggiore contributo rappresenti l’intero sistema esportatore.</p>
-<section id="unespansione-a-più-velocità" class="level2 anchored" data-number="1.1" data-anchor-id="unespansione-a-più-velocità">
-<h2 class="anchored" data-number="1.1" data-anchor-id="unespansione-a-più-velocità"><span class="header-section-number">1.1</span> Un’espansione a più velocità</h2>
+<section id="unespansione-a-più-velocità" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="unespansione-a-più-velocità"><span class="header-section-number">1.1</span> Un’espansione a più velocità</h2>
 <p>Nel secondo trimestre 2026 l’export aumenta in termini congiunturali in tre ripartizioni su quattro. Sud e Isole registrano l’incremento più forte; il Centro arretra rispetto al trimestre precedente, pur mantenendo una crescita tendenziale sostenuta. Le due misure non sono in contraddizione: la prima confronta trimestri consecutivi su dati destagionalizzati, la seconda lo stesso trimestre di due anni adiacenti su dati grezzi <span class="citation" data-cites="istat2026exportregioniq2">(<a href="#ref-istat2026exportregioniq2" role="doc-biblioref">Istituto Nazionale di Statistica 2026b</a>)</span>.</p>
-<div class="cell" data-execution_count="2">
-<div id="tab-ripartizioni" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="2">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-ripartizioni-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display cell-output-markdown">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
 <col style="width: 28%">
@@ -311,40 +335,22 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;1: Quadro per ripartizione nel secondo trimestre 2026</p>
-</div>
-</div>
-</div>
-</div>
 <p>La leadership congiunturale del Mezzogiorno va letta insieme ai livelli: nel primo semestre il Sud rappresenta il 7,3% e le Isole il 3,1% dell’export nazionale. Il loro peso congiunto è dunque circa il 10,4%, mentre Nord-ovest e Nord-est concentrano oltre due terzi dei flussi <span class="citation" data-cites="istat2026exportregioniq2">(<a href="#ref-istat2026exportregioniq2" role="doc-biblioref">Istituto Nazionale di Statistica 2026b</a>)</span>.</p>
 <p>La serie trimestrale mostra che il divario nei livelli è persistente. Evidenzia inoltre una stagionalità comune alle ripartizioni e consente di collocare il rimbalzo del secondo trimestre 2026 in una prospettiva più ampia del solo confronto con il trimestre precedente.</p>
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figure/fig01.png" class="img-fluid figure-img" role="img" aria-label="Grafico a linee delle esportazioni trimestrali di Nord-ovest, Nord-est, Centro e Sud e Isole dal 2023 al 2026."></p>
 <figcaption>Grafico a linee delle esportazioni trimestrali di Nord-ovest, Nord-est, Centro e Sud e Isole dal 2023 al 2026.</figcaption>
 </figure>
 </div>
-<div class="caption">
 <p>Esportazioni trimestrali per ripartizione territoriale, dal 2023 al secondo trimestre 2026. Dati grezzi, milioni di euro.</p>
-</div>
-</div>
-</div>
 </section>
 </section>
 <section id="venti-regioni-quattro-misure" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Venti regioni, quattro misure</h1>
 <p>Una graduatoria costruita sulla sola crescita percentuale premia più facilmente regioni piccole; una fondata sul contributo privilegia le economie esportatrici maggiori. Per evitare entrambe le distorsioni, la tabella 2 affianca quattro dimensioni: quota sull’export nazionale, variazione tendenziale, contributo alla crescita italiana e numero di settori in aumento.</p>
-<div class="cell" data-execution_count="4">
-<div id="tab-regioni-code" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-regioni-code-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display cell-output-markdown">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 19%">
 <col style="width: 13%">
@@ -526,119 +532,71 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;2: Profilo comparato delle regioni, primo semestre 2026</p>
-</div>
-</div>
-</div>
-</div>
 <p>La geografia che emerge non è riconducibile a un solo territorio. Basilicata, Toscana e Puglia hanno i tassi di crescita più elevati; Lombardia, Piemonte, Veneto ed Emilia-Romagna incidono per la combinazione fra dimensione e dinamica; Sardegna e Sicilia beneficiano soprattutto dei prodotti petroliferi; Lazio, Friuli-Venezia Giulia e Campania sottraggono crescita al totale nazionale.</p>
 <p>Il rapporto fra peso e crescita chiarisce la differenza tra velocità e impatto. Le regioni collocate più a destra hanno una base esportatrice maggiore; quelle sopra la linea tratteggiata crescono più della media italiana. La scala logaritmica serve a rendere leggibili nello stesso spazio regioni con quote molto diverse.</p>
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figure/fig02.png" class="img-fluid figure-img" role="img" aria-label="Diagramma a dispersione che confronta quota nazionale e crescita dell'export delle venti regioni."></p>
 <figcaption>Diagramma a dispersione che confronta quota nazionale e crescita dell'export delle venti regioni.</figcaption>
 </figure>
 </div>
-<div class="caption">
 <p>Peso sull’export nazionale e crescita tendenziale delle regioni nel primo semestre 2026. L’asse orizzontale è in scala logaritmica.</p>
-</div>
-</div>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figure/fig03.png" class="img-fluid figure-img" role="img" aria-label="Grafico a barre della crescita dell'export nelle venti regioni italiane."></p>
 <figcaption>Grafico a barre della crescita dell'export nelle venti regioni italiane.</figcaption>
 </figure>
 </div>
-<div class="caption">
 <p>Crescita tendenziale dell’export regionale nel primo semestre 2026. Valori percentuali.</p>
-</div>
-</div>
-</div>
 </section>
 <section id="quanto-è-diffusa-la-crescita" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Quanto è diffusa la crescita?</h1>
 <p>La crescita regionale complessiva può dipendere da un unico comparto. Il numero di settori positivi offre una misura semplice della sua ampiezza. Piemonte, Liguria, Emilia-Romagna e Toscana presentano 14 aggregati in aumento su 18; anche la Campania ne conta 12, pur chiudendo il semestre in flessione a causa del peso delle componenti negative. Il segno del totale e la diffusione settoriale raccontano quindi aspetti distinti.</p>
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figure/fig04.png" class="img-fluid figure-img" role="img" aria-label="Grafico a punti del numero di settori in crescita per ciascuna regione."></p>
 <figcaption>Grafico a punti del numero di settori in crescita per ciascuna regione.</figcaption>
 </figure>
 </div>
-<div class="caption">
 <p>Ampiezza settoriale della crescita: aggregati Ateco in aumento su 18.</p>
-</div>
-</div>
-</div>
 </section>
 <section id="il-contributo-alla-crescita-nazionale" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Il contributo alla crescita nazionale</h1>
 <p>I contributi combinano dimensione iniziale e variazione. La loro somma ricostruita è leggermente diversa dal +4,5% ufficiale perché quote e tassi nelle tavole sono pubblicati con arrotondamenti. Essi vanno pertanto interpretati come stime additive, non come una quadratura sui valori elementari non arrotondati.</p>
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figure/fig05.png" class="img-fluid figure-img" role="img" aria-label="Grafico a barre dei contributi regionali positivi e negativi alla crescita nazionale."></p>
 <figcaption>Grafico a barre dei contributi regionali positivi e negativi alla crescita nazionale.</figcaption>
 </figure>
 </div>
-<div class="caption">
 <p>Contributo stimato delle regioni alla crescita nazionale dell’export. Punti percentuali.</p>
-</div>
-</div>
-</div>
 <p>Il grafico rende visibile un elemento eccezionale: il contributo della Toscana è molto superiore a quello delle altre regioni. Non rappresenta però l’intero quadro territoriale; è un caso specifico da isolare per comprendere perché la crescita aggregata italiana sia più forte della dinamica del suo perimetro residuo.</p>
 <p>La stessa scomposizione per attività economica identifica il comparto che genera questa eccezione e, insieme, mostra quali settori sostengono o frenano il risultato nazionale. Anche questi contributi sono stime basate sulle quote pubblicate arrotondate.</p>
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figure/fig06.png" class="img-fluid figure-img" role="img" aria-label="Grafico a barre dei contributi settoriali positivi e negativi alla crescita nazionale."></p>
 <figcaption>Grafico a barre dei contributi settoriali positivi e negativi alla crescita nazionale.</figcaption>
 </figure>
 </div>
-<div class="caption">
 <p>Contributo stimato dei settori Ateco alla crescita nazionale dell’export. Punti percentuali.</p>
-</div>
-</div>
-</div>
 </section>
 <section id="specializzazioni-territoriali" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Specializzazioni territoriali</h1>
 <p>L’indice di localizzazione confronta il peso di un settore nell’export regionale con il peso dello stesso settore nell’export italiano. Un valore superiore a uno segnala una specializzazione relativa, non necessariamente un vantaggio competitivo o una maggiore produttività.</p>
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figure/fig07.png" class="img-fluid figure-img" role="img" aria-label="Mappa di calore delle specializzazioni settoriali delle regioni italiane."></p>
 <figcaption>Mappa di calore delle specializzazioni settoriali delle regioni italiane.</figcaption>
 </figure>
 </div>
-<div class="caption">
 <p>Specializzazione delle regioni per settore Ateco nel primo semestre 2026. Il colore rappresenta il logaritmo in base 2 dell’indice di localizzazione.</p>
-</div>
-</div>
-</div>
 <p>Le specializzazioni più nette riguardano la raffinazione in Sardegna e Sicilia, i mezzi di trasporto in Basilicata, la farmaceutica nel Lazio e in Abruzzo, l’agroalimentare in Calabria e Campania, la meccanica in Emilia-Romagna e Veneto. Queste configurazioni aiutano a leggere sia le accelerazioni sia le cadute: una forte specializzazione amplifica gli effetti di shock e commesse settoriali <span class="citation" data-cites="istat2026exportregioniq2">(<a href="#ref-istat2026exportregioniq2" role="doc-biblioref">Istituto Nazionale di Statistica 2026b</a>)</span>.</p>
 </section>
 <section id="concentrazione-e-scomposizione-prezzo-volume" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Concentrazione e scomposizione Prezzo-Volume</h1>
 <p>Nel primo semestre 2026 la crescita nazionale è particolarmente concentrata. La sola combinazione Toscana × metalli contribuisce per circa 2,38 punti percentuali; escludendo lo stesso perimetro in entrambi gli anni, la crescita del residuo è stimata intorno al 2,2%. Escludendo l’intero aggregato dei metalli, scende intorno all’1,7%.</p>
-<div class="cell" data-execution_count="11">
-<div id="tab-controfattuali" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="11">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-controfattuali-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display cell-output-markdown">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Perimetro</th>
@@ -664,28 +622,15 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;3: Crescita osservata e perimetri depurati</p>
-</div>
-</div>
-</div>
-</div>
 <p>L’approfondimento sulle statistiche bilaterali Eurostat COMEXT chiarisce la natura economica di questo fenomeno <span class="citation" data-cites="eurostat2026comext">(<a href="#ref-eurostat2026comext" role="doc-biblioref">Eurostat 2026</a>)</span>: - Il flusso trainante della Toscana verso la Svizzera è costituito da oro grezzo e semilavorato (<code>HS 7108</code>), le cui esportazioni nazionali verso la Confederazione Elvetica sono balzate da 1,7 a 8,3 miliardi di euro (+388,0%). La scomposizione logaritmica dimostra che l’aumento combina una triplicazione dei volumi fisici (+202,9%, da 21,9 a 66,3 tonnellate) con un’impennata del valore unitario medio da 77.443 a 124.790 €/kg (+61,1%), trainata dalle quotazioni record dell’oro. - Nei prodotti petroliferi raffinati (<code>CD</code>, <code>HS 2710</code>), driver di Sicilia e Sardegna, l’81% della crescita del fatturato estero (+22,2%) è invece spiegato dall’aumento dei prezzi medi e dei margini di raffinazione (+17,6%), a fronte di volumi fisici sostanzialmente stabili (+3,9%).</p>
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figure/fig08.png" class="img-fluid figure-img" role="img" aria-label="Grafico a barre della scomposizione prezzo-volume dei principali flussi export."></p>
 <figcaption>Grafico a barre della scomposizione prezzo-volume dei principali flussi export.</figcaption>
 </figure>
 </div>
-<div class="caption">
 <p>Scomposizione delle variazioni tendenziali 2026H1/2025H1: valore nominale, volumi fisici e valore unitario medio per i flussi guida.</p>
-</div>
-</div>
-</div>
 <p>Le destinazioni doganali e i fornitori a monte offrono un secondo indizio nella stessa direzione. Fra i quattro flussi guida individuati nel semestre, l’oro è quello con il mercato di sbocco più concentrato: la sola Svizzera assorbe il 72,9% dell’export nazionale del codice (indice di Herfindahl 0,55, equivalente a meno di due destinazioni indipendenti), contro una diffusione nettamente maggiore per i petroliferi, le navi e i farmaceutici. La stessa piazza elvetica è anche, sul lato opposto del flusso, il primo fornitore dell’Italia per l’oro grezzo e semilavorato usato come materia prima (39,9% dell’import). Il flusso toscano si configura quindi, almeno in parte, come un circuito di lavorazione fra le stesse due economie — oro che entra dalla Svizzera, viene lavorato e certificato nel distretto orafo aretino e in parte vi ritorna — più che come un allargamento di mercato. I flussi petroliferi seguono un profilo diverso e più diffuso su entrambi i lati: in uscita nessun singolo mercato supera il 16% (Gibilterra, Spagna, Libia, Croazia, Francia, Egitto), e il greggio lavorato nelle raffinerie di Sicilia e Sardegna proviene da otto-nove paesi fornitori senza che nessuno superi il 18-20% (Azerbaigian, Libia, Stati Uniti, Kazakhstan, Iraq, Arabia Saudita) <span class="citation" data-cites="eurostat2026comext gaulier2010baci">(<a href="#ref-eurostat2026comext" role="doc-biblioref">Eurostat 2026</a>; <a href="#ref-gaulier2010baci" role="doc-biblioref">Gaulier e Zignago 2010</a>)</span>.</p>
 <p><strong>Tabella 4. Concentrazione dei mercati di destinazione e di origine, primi due flussi per intensità di import</strong></p>
 <table class="caption-top table">
@@ -743,18 +688,12 @@ div.csl-indent {
 <p>La quota di ritenzione interna varia sensibilmente tra i comparti: - settori a forte ritenzione interna: arredo e altre manifatturiere (68,7%), macchine e apparecchi meccanici (64,7%), computer ed elettronica (64,5%), tessile e abbigliamento (65,2%), alimentari (59,3%); - settori ad alto contenuto di input esteri (<em>import leakage</em>): coke e raffinazione petrolifera (<strong>31,6%</strong> di DVA, con 68,4% di importazioni intermediate), chimica di base (42,6%), mezzi di trasporto (52,0%).</p>
 <p>Pesando i flussi regionali per i coefficienti DVA, la crescita nazionale del <strong>Valore Aggiunto Domestico Esportato (EVA)</strong> si attesta a <strong>+4,26%</strong> (contro il +4,53% doganale). La graduatoria dei contributi territoriali si ricompone a favore della spina dorsale manifatturiera padana: Lombardia (+0,90 pp), Emilia-Romagna (+0,46 pp) e Veneto (+0,46 pp) guidano la creazione effettiva di ricchezza netta. Al contrario, l’apporto della Sicilia si riduce da +0,15 pp lordi a soli +0,02 pp reali, assorbito per oltre due terzi dall’acquisto di greggio estero.</p>
 <div class="quarto-figure quarto-figure-center">
-<div class="figure">
-<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figure/fig09.png" class="img-fluid figure-img" role="img" aria-label="Grafico comparativo dei contributi regionali: export lordo verso valore aggiunto reale."></p>
 <figcaption>Grafico comparativo dei contributi regionali: export lordo verso valore aggiunto reale.</figcaption>
 </figure>
 </div>
-<div class="caption">
 <p>Confronto tra contributi alla crescita 2026H1: export lordo doganale e Valore Aggiunto Domestico Esportato (EVA).</p>
-</div>
-</div>
-</div>
 </section>
 <section id="una-lettura-dinsieme" class="level1" data-number="8">
 <h1 data-number="8"><span class="header-section-number">8</span> Una lettura d’insieme</h1>
@@ -819,8 +758,8 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<section id="una-matrice-operativa-per-il-portafoglio" class="level2 anchored" data-number="9.1" data-anchor-id="una-matrice-operativa-per-il-portafoglio">
-<h2 class="anchored" data-number="9.1" data-anchor-id="una-matrice-operativa-per-il-portafoglio"><span class="header-section-number">9.1</span> Una matrice operativa per il portafoglio</h2>
+<section id="una-matrice-operativa-per-il-portafoglio" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="una-matrice-operativa-per-il-portafoglio"><span class="header-section-number">9.1</span> Una matrice operativa per il portafoglio</h2>
 <p>Incrociando dinamica tendenziale, diffusione settoriale regionale, specializzazione e quota di Valore Aggiunto Domestico, le 360 celle osservate (20 regioni × 18 settori Ateco) vengono classificate in quattro classi operative di rischio e intervento bancario:</p>
 <ol type="1">
 <li><strong>Favorevole Diffuso (101 celle, 28,1% del totale)</strong>: comparti espansivi in contesti regionali a crescita corale e solida ritenzione interna (meccanica emiliano-lombarda, elettronica, gomma e plastica). <em>Indicazione</em>: supporto attivo a investimenti capex, linee commerciali e capitale circolante ordinario.</li>
@@ -829,21 +768,15 @@ div.csl-indent {
 <li><strong>Allerta di Comparto (82 celle, 22,8%)</strong>: flessioni marcate del contesto estero (farmaceutica Lazio, mezzi di trasporto Friuli-Venezia Giulia). <em>Indicazione</em>: presidio andamentale in Centrale dei Rischi, verifica dell’accumulo di scorte e stress-test della liquidità aziendale a 90 giorni.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
-<div class="figure">
-<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figure/fig10.png" class="img-fluid figure-img" role="img" aria-label="Mappa di calore della matrice di overlay creditizio export per le 20 regioni italiane."></p>
 <figcaption>Mappa di calore della matrice di overlay creditizio export per le 20 regioni italiane.</figcaption>
 </figure>
 </div>
-<div class="caption">
 <p>Matrice di overlay creditizio settoriale-territoriale: classificazione delle 360 celle regione × Ateco per il risk management di portafoglio.</p>
-</div>
-</div>
-</div>
 </section>
-<section id="limiti-nelluso-creditizio" class="level2 anchored" data-number="9.2" data-anchor-id="limiti-nelluso-creditizio">
-<h2 class="anchored" data-number="9.2" data-anchor-id="limiti-nelluso-creditizio"><span class="header-section-number">9.2</span> Limiti nell’uso creditizio</h2>
+<section id="limiti-nelluso-creditizio" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="limiti-nelluso-creditizio"><span class="header-section-number">9.2</span> Limiti nell’uso creditizio</h2>
 <p>Tre cautele sono decisive. Primo, un flusso doganale è attribuito territorialmente secondo criteri statistici che non coincidono necessariamente con sede legale, unità produttiva e debitore bancario. Secondo, l’export è espresso in valore: prezzi, materie prime importate e operazioni commerciali possono aumentarlo senza un analogo miglioramento dei volumi o dei margini. Terzo, i dati aggregati non sostituiscono bilanci, Centrale dei rischi, informazioni andamentali e conoscenza della controparte.</p>
 <p>L’impiego corretto è dunque quello di un <strong>overlay di portafoglio</strong>: orienta domande, segmentazione e monitoraggio, ma non produce automaticamente rating, affidamenti o decisioni sulla singola impresa. Il valore aggiunto del rilascio Istat consiste nel segnalare dove approfondire — quali territori, quali settori e quale grado di concentrazione — prima di entrare nel merito delle controparti.</p>
 </section>
@@ -875,9 +808,9 @@ Istituto Nazionale di Statistica. 2026b. <em>Le esportazioni delle Regioni itali
 <p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
 <p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale; l’analisi è pertanto integralmente auditabile e replicabile da terzi a partire da esse. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
 <p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+
+
 </section>
-
-
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1288,7 +1221,7 @@ Istituto Nazionale di Statistica. 2026b. <em>Le esportazioni delle Regioni itali
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2610_ExportRegioni/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

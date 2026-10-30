@@ -170,7 +170,7 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#fonti-di-copertura-finanziaria" id="toc-fonti-di-copertura-finanziaria" class="nav-link" data-scroll-target="#fonti-di-copertura-finanziaria"><span class="header-section-number">5</span> Fonti di copertura finanziaria</a>
   <ul class="collapse">
-  <li><a href="#nota-pnrr" id="toc-nota-pnrr" class="nav-link" data-scroll-target="#nota-pnrr"><span class="header-section-number">5.1</span> Nota PNRR</a></li>
+  <li><a href="#sez-pnrr" id="toc-sez-pnrr" class="nav-link" data-scroll-target="#sez-pnrr"><span class="header-section-number">5.1</span> Nota PNRR</a></li>
   </ul></li>
   <li><a href="#distribuzione-degli-importi-la-dualità-del-portafoglio" id="toc-distribuzione-degli-importi-la-dualità-del-portafoglio" class="nav-link" data-scroll-target="#distribuzione-degli-importi-la-dualità-del-portafoglio"><span class="header-section-number">6</span> Distribuzione degli importi: la dualità del portafoglio</a>
   <ul class="collapse">
@@ -185,10 +185,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#sintesi-e-prossimi-passi" id="toc-sintesi-e-prossimi-passi" class="nav-link" data-scroll-target="#sintesi-e-prossimi-passi"><span class="header-section-number">8</span> Sintesi e prossimi passi</a>
   <ul class="collapse">
   <li><a href="#direzioni-di-approfondimento" id="toc-direzioni-di-approfondimento" class="nav-link" data-scroll-target="#direzioni-di-approfondimento"><span class="header-section-number">8.1</span> Direzioni di approfondimento</a></li>
-  <li><a href="#strumenti" id="toc-strumenti" class="nav-link" data-scroll-target="#strumenti"><span class="header-section-number">8.2</span> Strumenti</a></li>
   </ul></li>
+  <li><a href="#appendice-metodologica" id="toc-appendice-metodologica" class="nav-link" data-scroll-target="#appendice-metodologica"><span class="header-section-number">9</span> Appendice metodologica</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_OpenCup/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -247,12 +247,12 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="il-sistema-cup-e-il-dataset-opencup" class="level2 anchored" data-number="1" data-anchor-id="il-sistema-cup-e-il-dataset-opencup">
-<h2 class="anchored" data-number="1" data-anchor-id="il-sistema-cup-e-il-dataset-opencup"><span class="header-section-number">1</span> Il sistema CUP e il dataset OpenCUP</h2>
+<section id="il-sistema-cup-e-il-dataset-opencup" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="il-sistema-cup-e-il-dataset-opencup"><span class="header-section-number">1</span> Il sistema CUP e il dataset OpenCUP</h2>
 <p>Il <strong>Codice Unico di Progetto (CUP)</strong> è l’identificativo alfanumerico assegnato a ogni intervento di investimento pubblico ai sensi della Legge 3/2003 e del DPCM 25 settembre 2002. È obbligatorio per tutti i progetti finanziati con risorse pubbliche — nazionali, regionali, comunitarie — e per quelli inseriti nel Documento di Economia e Finanza. Il CUP segue il progetto dalla fase decisionale fino alla chiusura, permettendo in teoria la tracciabilità completa del ciclo di vita dell’investimento.</p>
 <p>Il portale <a href="https://opencup.gov.it/">OpenCUP</a> gestito dal Dipartimento per la Programmazione Economica (DIPE) della Presidenza del Consiglio pubblica l’archivio completo in formato open data con aggiornamenti periodici. L’aggiornamento esaminato in questo documento è quello di <strong>giugno 2026</strong>.</p>
-<section id="struttura-del-dataset" class="level3 anchored" data-number="1.1" data-anchor-id="struttura-del-dataset">
-<h3 class="anchored" data-number="1.1" data-anchor-id="struttura-del-dataset"><span class="header-section-number">1.1</span> Struttura del dataset</h3>
+<section id="struttura-del-dataset" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="struttura-del-dataset"><span class="header-section-number">1.1</span> Struttura del dataset</h3>
 <p>Il dataset è composto da quattro tabelle distinte, joinabili tramite il campo <code>CUP</code>:</p>
 <table class="caption-top table">
 <colgroup>
@@ -319,19 +319,13 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 </section>
-<section id="distribuzione-temporale-il-ciclo-dellinvestimento-pubblico" class="level2 anchored" data-number="2" data-anchor-id="distribuzione-temporale-il-ciclo-dellinvestimento-pubblico">
-<h2 class="anchored" data-number="2" data-anchor-id="distribuzione-temporale-il-ciclo-dellinvestimento-pubblico"><span class="header-section-number">2</span> Distribuzione temporale: il ciclo dell’investimento pubblico</h2>
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
+<section id="distribuzione-temporale-il-ciclo-dellinvestimento-pubblico" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="distribuzione-temporale-il-ciclo-dellinvestimento-pubblico"><span class="header-section-number">2</span> Distribuzione temporale: il ciclo dell’investimento pubblico</h2>
 <p><img src="figure/fig01.png" class="img-fluid figure-img" role="img"></p>
-<div class="caption">
 <p>Nuovi CUP per anno di decisione (sinistra) e distribuzione per stato (destra)</p>
-</div>
-</div>
-</div>
 <p>Il corpus copre il periodo <strong>2000–2026</strong>. I dati pre-2010 sono incompleti per effetto dell’adozione graduale del sistema CUP nelle amministrazioni periferiche. Dal 2010 in poi la copertura può considerarsi sostanzialmente completa.</p>
-<section id="trend-20102026" class="level3 anchored" data-number="2.1" data-anchor-id="trend-20102026">
-<h3 class="anchored" data-number="2.1" data-anchor-id="trend-20102026"><span class="header-section-number">2.1</span> Trend 2010–2026</h3>
+<section id="trend-20102026" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="trend-20102026"><span class="header-section-number">2.1</span> Trend 2010–2026</h3>
 <p>La tabella seguente riporta il numero di nuovi CUP e il costo dichiarato aggregato per anno:</p>
 <table class="caption-top table">
 <thead>
@@ -455,24 +449,12 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Stato dei progetti:</strong> 78,8% ATTIVO (9,25M CUP), 20,4% CHIUSO (2,4M), 0,7% CHIUSO D’UFFICIO (86K).</p>
 </section>
 </section>
-<section id="distribuzione-geografica" class="level2 anchored" data-number="3" data-anchor-id="distribuzione-geografica">
-<h2 class="anchored" data-number="3" data-anchor-id="distribuzione-geografica"><span class="header-section-number">3</span> Distribuzione geografica</h2>
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
+<section id="distribuzione-geografica" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="distribuzione-geografica"><span class="header-section-number">3</span> Distribuzione geografica</h2>
 <p><img src="figure/fig02.png" class="img-fluid figure-img" role="img"></p>
-<div class="caption">
 <p>CUP (sinistra) e costo aggregato in miliardi € (destra) per regione</p>
-</div>
-</div>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
 <p><img src="figure/fig03.png" class="img-fluid figure-img" role="img"></p>
-<div class="caption">
 <p>Distribuzione territoriale del costo aggregato</p>
-</div>
-</div>
-</div>
 <p>La distribuzione regionale rivela una netta disomogeneità tra volume e valore degli investimenti:</p>
 <table class="caption-top table">
 <colgroup>
@@ -635,18 +617,12 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="natura-e-settore-degli-interventi" class="level2 anchored" data-number="4" data-anchor-id="natura-e-settore-degli-interventi">
-<h2 class="anchored" data-number="4" data-anchor-id="natura-e-settore-degli-interventi"><span class="header-section-number">4</span> Natura e settore degli interventi</h2>
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
+<section id="natura-e-settore-degli-interventi" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="natura-e-settore-degli-interventi"><span class="header-section-number">4</span> Natura e settore degli interventi</h2>
 <p><img src="figure/fig04.png" class="img-fluid figure-img" role="img"></p>
-<div class="caption">
 <p>Classificazione per natura (sinistra) e settore (destra)</p>
-</div>
-</div>
-</div>
-<section id="natura-dellintervento" class="level3 anchored" data-number="4.1" data-anchor-id="natura-dellintervento">
-<h3 class="anchored" data-number="4.1" data-anchor-id="natura-dellintervento"><span class="header-section-number">4.1</span> Natura dell’intervento</h3>
+<section id="natura-dellintervento" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="natura-dellintervento"><span class="header-section-number">4.1</span> Natura dell’intervento</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -685,8 +661,8 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p>Oltre la metà del corpus (53,8%) è costituita da <strong>concessioni di incentivi a unità produttive</strong> — ovvero contributi, crediti d’imposta e finanziamenti agevolati a imprese. Questo riflette il peso dei programmi di incentivazione industriale (Industria 4.0, Nuova Sabatini, contratti di sviluppo) e degli aiuti PAC all’agricoltura. I lavori pubblici tradizionali rappresentano solo il 15% dei CUP ma una quota assai più elevata del valore aggregato.</p>
 </section>
-<section id="settore-di-intervento" class="level3 anchored" data-number="4.2" data-anchor-id="settore-di-intervento">
-<h3 class="anchored" data-number="4.2" data-anchor-id="settore-di-intervento"><span class="header-section-number">4.2</span> Settore di intervento</h3>
+<section id="settore-di-intervento" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="settore-di-intervento"><span class="header-section-number">4.2</span> Settore di intervento</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -751,16 +727,10 @@ ul.task-list li input[type="checkbox"] {
 <p>Il settore <em>Attività produttive</em> (38%) è il più numeroso, in linea con la natura incentivistica del portafoglio. <em>Istruzione</em> (17%) e <em>Infrastrutture sociali</em> (17%) riflettono il peso dei fondi strutturali europei sui programmi scolastici e sanitari. Le infrastrutture di trasporto, energetiche e ICT, pur minoritarie in numero, concentrano un valore pro-capite molto più alto.</p>
 </section>
 </section>
-<section id="fonti-di-copertura-finanziaria" class="level2 anchored" data-number="5" data-anchor-id="fonti-di-copertura-finanziaria">
-<h2 class="anchored" data-number="5" data-anchor-id="fonti-di-copertura-finanziaria"><span class="header-section-number">5</span> Fonti di copertura finanziaria</h2>
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
+<section id="fonti-di-copertura-finanziaria" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="fonti-di-copertura-finanziaria"><span class="header-section-number">5</span> Fonti di copertura finanziaria</h2>
 <p><img src="figure/fig05.png" class="img-fluid figure-img" role="img"></p>
-<div class="caption">
 <p>Mix delle fonti di copertura finanziaria</p>
-</div>
-</div>
-</div>
 <p>Il dataset <code>fonti_copertura</code> contiene 22,5 milioni di record — circa <strong>1,91 fonti per CUP</strong> in media, a indicare che molti progetti hanno una struttura di cofinanziamento misto. La distribuzione per tipologia di fonte è:</p>
 <table class="caption-top table">
 <thead>
@@ -809,27 +779,19 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>La <strong>copertura comunitaria al 26,5%</strong> è il principale termometro della capacità di assorbimento dei fondi europei: rappresenta il canale FESR, FSE e FEASR per i Programmi Operativi 2014–2020 e 2021–2027. La copertura privata (9,9%) è coerente con i meccanismi di cofinanziamento obbligatorio previsti per molti incentivi alle imprese.</p>
-<section id="sec-pnrr" class="level3" data-number="5.1">
-<section id="nota-pnrr" class="level3 anchored" data-number="5.1" data-anchor-id="sec-pnrr">
-<h3 class="anchored" data-number="5.1" data-anchor-id="nota-pnrr"><span class="header-section-number">5.1</span> Nota PNRR</h3>
+<section id="sez-pnrr" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="sez-pnrr"><span class="header-section-number">5.1</span> Nota PNRR</h3>
 <p>Il dataset non contiene riferimenti espliciti al <strong>Piano Nazionale di Ripresa e Resilienza (PNRR)</strong>: il campo <code>STRUMENTO_PROGRAMMAZIONE</code> non include la stringa “PNRR” in nessun record, e <code>ALTRE_INFORMAZIONI</code> registra soltanto 1.427 match — un numero irrilevante rispetto alla portata del Piano.</p>
 <p>Possibili spiegazioni: 1. I CUP PNRR potrebbero non essere ancora stati riversati nell’archivio OpenCUP alla data di questo aggiornamento, oppure essere inseriti in un aggiornamento successivo. 2. L’identificazione richiede un join con il sistema <strong>ReGiS</strong> (Registro nazionale degli interventi PNRR) che mantiene la mappatura CUP↔︎Misura-PNRR. 3. Parte dei progetti PNRR potrebbe essere tracciata tramite la copertura “Comunitaria” senza un’etichetta specifica.</p>
 <p>Ai fini di questo documento si usa la <strong>copertura Comunitaria (26,5%)</strong> come proxy dell’esposizione agli investimenti EU-funded, senza poter distinguere i fondi strutturali dal PNRR.</p>
 </section>
 </section>
-</section>
-<section id="distribuzione-degli-importi-la-dualità-del-portafoglio" class="level2 anchored" data-number="6" data-anchor-id="distribuzione-degli-importi-la-dualità-del-portafoglio">
-<h2 class="anchored" data-number="6" data-anchor-id="distribuzione-degli-importi-la-dualità-del-portafoglio"><span class="header-section-number">6</span> Distribuzione degli importi: la dualità del portafoglio</h2>
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
+<section id="distribuzione-degli-importi-la-dualità-del-portafoglio" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="distribuzione-degli-importi-la-dualità-del-portafoglio"><span class="header-section-number">6</span> Distribuzione degli importi: la dualità del portafoglio</h2>
 <p><img src="figure/fig06.png" class="img-fluid figure-img" role="img"></p>
-<div class="caption">
 <p>Distribuzione di COSTO_PROGETTO: scala lineare fino a 1M€ (sinistra) e log-scale (destra)</p>
-</div>
-</div>
-</div>
-<section id="statistiche-descrittive" class="level3 anchored" data-number="6.1" data-anchor-id="statistiche-descrittive">
-<h3 class="anchored" data-number="6.1" data-anchor-id="statistiche-descrittive"><span class="header-section-number">6.1</span> Statistiche descrittive</h3>
+<section id="statistiche-descrittive" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="statistiche-descrittive"><span class="header-section-number">6.1</span> Statistiche descrittive</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -874,8 +836,8 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p>La distribuzione è <strong>fortemente asimmetrica a destra</strong> (media 36× la mediana): la coesistenza di milioni di micro-incentivi (AgriCUP PAC, incentivi energia, contributi de minimis) e di grandi opere infrastrutturali produce una struttura bimodale.</p>
 </section>
-<section id="la-dualità-strutturale" class="level3 anchored" data-number="6.2" data-anchor-id="la-dualità-strutturale">
-<h3 class="anchored" data-number="6.2" data-anchor-id="la-dualità-strutturale"><span class="header-section-number">6.2</span> La dualità strutturale</h3>
+<section id="la-dualità-strutturale" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="la-dualità-strutturale"><span class="header-section-number">6.2</span> La dualità strutturale</h3>
 <p>Il dato più rilevante dell’analisi è la concentrazione del valore in pochi grandi progetti:</p>
 <table class="caption-top table">
 <colgroup>
@@ -943,22 +905,16 @@ ul.task-list li input[type="checkbox"] {
 <p>Questa struttura è attesa per un sistema che aggrega incentivi de minimis (pochi euro) e grandi opere (autostrade, ferrovie, rigassificatori) sotto lo stesso identificatore. Ai fini delle politiche pubbliche, le due popolazioni richiedono strumenti analitici distinti.</p>
 </section>
 </section>
-<section id="top-soggetti-titolari" class="level2 anchored" data-number="7" data-anchor-id="top-soggetti-titolari">
-<h2 class="anchored" data-number="7" data-anchor-id="top-soggetti-titolari"><span class="header-section-number">7</span> Top soggetti titolari</h2>
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
+<section id="top-soggetti-titolari" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="top-soggetti-titolari"><span class="header-section-number">7</span> Top soggetti titolari</h2>
 <p><img src="figure/fig07.png" class="img-fluid figure-img" role="img"></p>
-<div class="caption">
 <p>Top 20 soggetti per numero di CUP</p>
-</div>
-</div>
-</div>
-<section id="per-numero-di-cup" class="level3 anchored" data-number="7.1" data-anchor-id="per-numero-di-cup">
-<h3 class="anchored" data-number="7.1" data-anchor-id="per-numero-di-cup"><span class="header-section-number">7.1</span> Per numero di CUP</h3>
+<section id="per-numero-di-cup" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="per-numero-di-cup"><span class="header-section-number">7.1</span> Per numero di CUP</h3>
 <p>Il soggetto con il maggior numero di CUP è <strong>AGEA</strong> (Agenzia per le Erogazioni in Agricoltura) con circa 1,5 milioni di codici. Il numero elevato riflette la struttura a domanda individuale dei pagamenti PAC: ogni posizione aziendale agricola genera un CUP distinto per ogni annata e misura di sostegno.</p>
 </section>
-<section id="per-valore-aggregato" class="level3 anchored" data-number="7.2" data-anchor-id="per-valore-aggregato">
-<h3 class="anchored" data-number="7.2" data-anchor-id="per-valore-aggregato"><span class="header-section-number">7.2</span> Per valore aggregato</h3>
+<section id="per-valore-aggregato" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="per-valore-aggregato"><span class="header-section-number">7.2</span> Per valore aggregato</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1029,8 +985,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </section>
-<section id="sintesi-e-prossimi-passi" class="level2 anchored" data-number="8" data-anchor-id="sintesi-e-prossimi-passi">
-<h2 class="anchored" data-number="8" data-anchor-id="sintesi-e-prossimi-passi"><span class="header-section-number">8</span> Sintesi e prossimi passi</h2>
+<section id="sintesi-e-prossimi-passi" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="sintesi-e-prossimi-passi"><span class="header-section-number">8</span> Sintesi e prossimi passi</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 42%">
@@ -1093,8 +1049,8 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<section id="direzioni-di-approfondimento" class="level3 anchored" data-number="8.1" data-anchor-id="direzioni-di-approfondimento">
-<h3 class="anchored" data-number="8.1" data-anchor-id="direzioni-di-approfondimento"><span class="header-section-number">8.1</span> Direzioni di approfondimento</h3>
+<section id="direzioni-di-approfondimento" class="level3" data-number="8.1">
+<h3 data-number="8.1" class="anchored" data-anchor-id="direzioni-di-approfondimento"><span class="header-section-number">8.1</span> Direzioni di approfondimento</h3>
 <p>Il presente documento costituisce un’esplorazione iniziale. I filoni analitici prioritari sono:</p>
 <ol type="1">
 <li><strong>Identificazione PNRR via ReGiS</strong>: join con il registro degli interventi PNRR per isolare la componente Piano Nazionale di Ripresa e Resilienza.</li>
@@ -1103,30 +1059,64 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Analisi settoriale per Mezzogiorno vs.&nbsp;Centro-Nord</strong>: decomposizione del gap di costo medio tra le due aree per settore e fonte di copertura.</li>
 <li><strong>Concentrazione per soggetto</strong>: curva di Lorenz del costo per soggetto titolare; analisi di dominanza di MIMIT, RFI e ANAS nel portafoglio infrastrutturale.</li>
 </ol>
+<hr>
+</section>
+</section>
+<div id="quarto-appendix" class="default">
+<section id="appendice-metodologica" class="level2 quarto-appendix-heading" data-number="9">
+<h2 class="quarto-appendix-heading anchored" data-number="9" data-anchor-id="appendice-metodologica"><span class="header-section-number">9</span> Appendice metodologica</h2>
+<div class="quarto-appendix-contents">
+<section id="schema-dati" class="level3" data-number="9.1">
+<h3 data-number="9.1" class="anchored" data-anchor-id="schema-dati"><span class="header-section-number">9.1</span> Schema dati</h3>
+<p>Le 62 colonne della tabella <code>progetti</code> si articolano in:</p>
+<ul>
+<li><strong>Identificazione</strong>: <code>CUP</code>, <code>ANNO_DECISIONE</code>, <code>STATO_PROGETTO</code></li>
+<li><strong>Soggetto</strong>: <code>SOGGETTO_TITOLARE</code>, <code>PIVA_CF_BENEFICIARIO</code>, <code>CATEGORIA_SOGGETTO</code></li>
+<li><strong>Classificazione</strong>: <code>NATURA_INTERVENTO</code>, <code>TIPOLOGIA_INTERVENTO</code>, <code>AREA_INTERVENTO</code>, <code>SETTORE_INTERVENTO</code>, <code>SOTTOSETTORE_INTERVENTO</code>, <code>CATEGORIA_INTERVENTO</code></li>
+<li><strong>ATECO</strong>: <code>SEZIONE_ATECO</code> → <code>DIVISIONE_ATECO</code> → <code>GRUPPO_ATECO</code> → <code>CLASSE_ATECO</code> → <code>CATEGORIA_ATECO</code> → <code>SOTTOCATEGORIA_ATECO</code></li>
+<li><strong>Finanziario</strong>: <code>COSTO_PROGETTO</code>, <code>FINANZIAMENTO_PROGETTO</code></li>
+<li><strong>Programmazione</strong>: <code>STRUMENTO_PROGRAMMAZIONE</code>, <code>FINANZA_PROGETTO</code>, <code>ALTRE_INFORMAZIONI</code></li>
+</ul>
+</section>
+<section id="gotcha-tecnici" class="level3" data-number="9.2">
+<h3 data-number="9.2" class="anchored" data-anchor-id="gotcha-tecnici"><span class="header-section-number">9.2</span> Gotcha tecnici</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 98%">
+<col style="width: 38%">
+<col style="width: 60%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">: ::</th>
+<th style="text-align: left;">Problema</th>
+<th style="text-align: left;">Soluzione adottata</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Problema Soluzione adottata</td>
+<td style="text-align: left;">Encoding Latin-1 non supportato da DuckDB</td>
+<td style="text-align: left;">Estrazione ZIP + conversione UTF-8 in memoria prima di <code>read_csv</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Join 1:N con localizzazione</td>
+<td style="text-align: left;"><code>DISTINCT CUP, REGIONE</code> prima di aggregare per evitare duplicazione del costo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Valori accentati corrotti in <code>NATURA_INTERVENTO</code></td>
+<td style="text-align: left;">Usare <code>NATURA_INTERVENTO</code> (corretta dopo conversione UTF-8)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>TIME_PERIOD</code> / <code>ANNO_DECISIONE</code> come integer</td>
+<td style="text-align: left;">Cast esplicito a INT prima dei confronti e ORDER BY</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PNRR non identificabile</td>
+<td style="text-align: left;">Proxy: <code>COPERTURA_FINANZIARIA = 'COMUNITARIA'</code></td>
 </tr>
 </tbody>
 </table>
-<p>Encoding Latin-1 non supportato da DuckDB Estrazione ZIP + conversione UTF-8 in memoria prima di <code>read_csv</code></p>
-<p>Join 1:N con localizzazione <code>DISTINCT CUP, REGIONE</code> prima di aggregare per evitare duplicazione del costo</p>
-<p>Valori accentati corrotti in <code>NATURA_INTERVENTO</code> Usare <code>NATURA_INTERVENTO</code> (corretta dopo conversione UTF-8)</p>
-<p><code>TIME_PERIOD</code> / <code>ANNO_DECISIONE</code> come integer Cast esplicito a INT prima dei confronti e ORDER BY</p>
-<p>PNRR non identificabile Proxy: <code>COPERTURA_FINANZIARIA = 'COMUNITARIA'</code> ———————————————————————————————————————————-</p>
 </section>
 <section id="ambiente-di-lavoro" class="level3" data-number="9.3">
-<section id="strumenti" class="level3 anchored" data-number="8.2" data-anchor-id="ambiente-di-lavoro">
-<h3 class="anchored" data-number="8.2" data-anchor-id="strumenti"><span class="header-section-number">8.2</span> Strumenti</h3>
+<h3 data-number="9.3" class="anchored" data-anchor-id="ambiente-di-lavoro"><span class="header-section-number">9.3</span> Strumenti</h3>
 <p>Elaborazioni in Python (pandas, DuckDB) sul dataset completo OpenCUP.</p>
 <hr>
 <p><strong>Trasparenza sull’uso dell’intelligenza artificiale</strong></p>
@@ -1134,9 +1124,9 @@ ul.task-list li input[type="checkbox"] {
 <p>La responsabilità per le fonti utilizzate, le analisi condotte, le verifiche effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore.</p>
 <p>L’intelligenza artificiale è stata utilizzata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
 </section>
+</div>
 </section>
-</section>
-<p>::::::: ::::::::</p>
+</div>
 
 
 
@@ -1549,7 +1539,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_OpenCup/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

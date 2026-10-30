@@ -75,6 +75,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../MCC.css">
 <meta property="og:title" content="Dalla Resilienza alla Robustezza – Paolo Volterra">
@@ -168,8 +197,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#lintelligenza-artificiale-come-fattore-di-instabilità" id="toc-lintelligenza-artificiale-come-fattore-di-instabilità" class="nav-link" data-scroll-target="#lintelligenza-artificiale-come-fattore-di-instabilità"><span class="header-section-number">3.3</span> L’Intelligenza Artificiale come Fattore di Instabilità</a></li>
   </ul></li>
   <li><a href="#sintesi-delle-raccomandazioni-di-policy" id="toc-sintesi-delle-raccomandazioni-di-policy" class="nav-link" data-scroll-target="#sintesi-delle-raccomandazioni-di-policy"><span class="header-section-number">4</span> Sintesi delle Raccomandazioni di Policy</a></li>
+  <li><a href="#appendice-riferimenti-documentali-zotero" id="toc-appendice-riferimenti-documentali-zotero" class="nav-link" data-scroll-target="#appendice-riferimenti-documentali-zotero"><span class="header-section-number">5</span> Appendice: Riferimenti Documentali (Zotero)</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_RapportoBri2026/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -237,17 +267,17 @@ ul.task-list li input[type="checkbox"] {
 <section id="punti-chiave-del-rapporto-bri-2026" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Punti Chiave del Rapporto BRI 2026</h1>
 <p>Il rapporto della BRI si articola su tre direttrici principali che delineano i rischi per la stabilità economica e finanziaria globale:</p>
-<section id="capitolo-i-crescita-ai-e-lo-shock-energetico-dallo-stretto-di-hormuz" class="level2 anchored" data-number="2.1" data-anchor-id="capitolo-i-crescita-ai-e-lo-shock-energetico-dallo-stretto-di-hormuz">
-<h2 class="anchored" data-number="2.1" data-anchor-id="capitolo-i-crescita-ai-e-lo-shock-energetico-dallo-stretto-di-hormuz"><span class="header-section-number">2.1</span> Capitolo I: Crescita, AI e lo Shock Energetico dallo Stretto di Hormuz</h2>
+<section id="capitolo-i-crescita-ai-e-lo-shock-energetico-dallo-stretto-di-hormuz" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="capitolo-i-crescita-ai-e-lo-shock-energetico-dallo-stretto-di-hormuz"><span class="header-section-number">2.1</span> Capitolo I: Crescita, AI e lo Shock Energetico dallo Stretto di Hormuz</h2>
 <p>La tenuta dell’economia nel biennio 2025-26 è riconducibile a tre fattori: * L’applicazione di tariffe commerciali effettive inferiori a quelle ipotizzate. * Meccanismi di diversione commerciale che le imprese hanno assorbito riducendo i propri margini di profitto. * Gli ingenti investimenti in conto capitale (<em>capex</em>) destinati allo sviluppo dell’infrastruttura per l’Intelligenza Artificiale, concentrati negli Stati Uniti.</p>
 <p>Tuttavia, due gravi minacce incombono su questo scenario: 1. <strong>Lo shock petrolifero ed energetico:</strong> La chiusura dello Stretto di Hormuz ha sottratto oltre 10 milioni di barili al giorno al mercato globale. Nonostante il rilascio coordinato di 400 milioni di barili dalle riserve strategiche, i costi di produzione industriale (materie plastiche +30%, fertilizzanti +50%) minacciano di propagarsi ai prezzi dei beni finali, rischiando di disancorare le aspettative di inflazione. 2. <strong>Il rischio di bolla tech/AI:</strong> L’euforia dei mercati azionari per l’AI ha alimentato valutazioni che rischiano di rivelarsi insostenibili qualora i ritorni economici sui progetti infrastrutturali non dovessero materializzarsi in tempi rapidi, ostacolati anche da colli di bottiglia fisici e tecnologici (semiconduttori, fornitura di energia).</p>
 </section>
-<section id="capitolo-ii-nbfi-e-il-nuovo-nexus-fiscale-finanziario" class="level2 anchored" data-number="2.2" data-anchor-id="capitolo-ii-nbfi-e-il-nuovo-nexus-fiscale-finanziario">
-<h2 class="anchored" data-number="2.2" data-anchor-id="capitolo-ii-nbfi-e-il-nuovo-nexus-fiscale-finanziario"><span class="header-section-number">2.2</span> Capitolo II: NBFI e il Nuovo Nexus Fiscale-Finanziario</h2>
+<section id="capitolo-ii-nbfi-e-il-nuovo-nexus-fiscale-finanziario" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="capitolo-ii-nbfi-e-il-nuovo-nexus-fiscale-finanziario"><span class="header-section-number">2.2</span> Capitolo II: NBFI e il Nuovo Nexus Fiscale-Finanziario</h2>
 <p>Il debito pubblico globale si attesta su livelli vicini ai massimi storici dal secondo dopoguerra. Nel contempo, la struttura dei mercati dei titoli di Stato ha subito modifiche sostanziali: * <strong>La disintermediazione bancaria:</strong> Una quota rilevante del debito sovrano è oggi detenuta ed intermediata da istituzioni finanziarie non bancarie (<strong>NBFI</strong> - <em>Non-Bank Financial Intermediaries</em>, comunemente definite <em>shadow banking</em>), inclusi hedge fund a leva, fondi aperti e fondi monetari. * <strong>Le strategie repo a leva:</strong> Molti hedge fund attuano strategie di arbitraggio a leva sui titoli sovrani finanziandosi sui mercati repo. Sebbene questo fornisca liquidità in tempi normali, in caso di shock i margin call forzati e le conseguenti vendite di emergenza (<em>fire sales</em>) amplificano la volatilità e comprimono la liquidità di mercato. * <strong>Il circolo vizioso fiscale-finanziario:</strong> Si crea un nesso pericoloso in cui lo shock fiscale (aumento del rendimento dei titoli sovrani) si trasmette al mercato finanziario illiquido, costringendo le banche centrali a intervenire frequentemente come backstop sistemico. Questo rischia di alterare la determinazione dei prezzi (<em>price discovery</em>) e di generare azzardo morale (<em>moral hazard</em>).</p>
 </section>
-<section id="capitolo-iii-stablecoin-e-il-futuro-digitale-della-moneta" class="level2 anchored" data-number="2.3" data-anchor-id="capitolo-iii-stablecoin-e-il-futuro-digitale-della-moneta">
-<h2 class="anchored" data-number="2.3" data-anchor-id="capitolo-iii-stablecoin-e-il-futuro-digitale-della-moneta"><span class="header-section-number">2.3</span> Capitolo III: Stablecoin e il Futuro Digitale della Moneta</h2>
+<section id="capitolo-iii-stablecoin-e-il-futuro-digitale-della-moneta" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="capitolo-iii-stablecoin-e-il-futuro-digitale-della-moneta"><span class="header-section-number">2.3</span> Capitolo III: Stablecoin e il Futuro Digitale della Moneta</h2>
 <p>La BRI ribadisce che la fiducia e la garanzia del rimborso alla pari (<em>redeemability at par</em>) sono i cardini del sistema monetario. Le stablecoin private mostrano i vantaggi tecnologici della programmabilità e dei pagamenti 24/7, ma presentano vulnerabilità intrinseche: * Mancanza di un reale ancoraggio nei periodi di stress finanziario (rischio di <em>run</em>). * Potenziale drenaggio dei depositi bancari commerciali, con impatti negativi sull’offerta di credito all’economia reale. * Rischi di dollarizzazione informale nelle economie emergenti e problemi di conformità antiriciclaggio (AML/CFT).</p>
 <p>La risposta raccomandata non è la delega del sistema monetario a ledger privati, bensì lo sviluppo di <strong>ledger unificati</strong> e piattaforme programmabili pubbliche in cui la tecnologia DLT sia integrata all’interno del collaudato sistema a due livelli (moneta di banca centrale e moneta di banca commerciale).</p>
 </section>
@@ -255,8 +285,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="il-dibattito-economico-lanalisi-di-donato-masciandaro" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Il Dibattito Economico: L’Analisi di Donato Masciandaro</h1>
 <p>Nell’intervista rilasciata a <em>La Stampa</em>, il professor Donato Masciandaro fornisce una lettura critica dello scenario evidenziato dalla BRI, focalizzandosi sui meccanismi di accumulazione del rischio.</p>
-<section id="la-metafora-del-rischio-sistemico" class="level2 anchored" data-number="3.1" data-anchor-id="la-metafora-del-rischio-sistemico">
-<h2 class="anchored" data-number="3.1" data-anchor-id="la-metafora-del-rischio-sistemico"><span class="header-section-number">3.1</span> La Metafora del Rischio Sistemico</h2>
+<section id="la-metafora-del-rischio-sistemico" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="la-metafora-del-rischio-sistemico"><span class="header-section-number">3.1</span> La Metafora del Rischio Sistemico</h2>
 <p>Masciandaro illustra la situazione attuale attraverso una metafora dinamica:</p>
 <p><span class="math display">\[\text{Rischio Sistemico} = f(\text{Rubinetti}, \text{Tanica}, \text{Fiammifero})\]</span></p>
 <ul>
@@ -265,12 +295,12 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Il fiammifero:</strong> Rappresenta l’innesco o l’evento scatenante della crisi. Masciandaro avverte che l’evento scatenante è strutturalmente imprevedibile; l’unica prevenzione efficace consiste nel chiudere i due rubinetti per evitare di riempire la tanica di carburante.</li>
 </ul>
 </section>
-<section id="lo-spostamento-del-rischio-il-private-credit" class="level2 anchored" data-number="3.2" data-anchor-id="lo-spostamento-del-rischio-il-private-credit">
-<h2 class="anchored" data-number="3.2" data-anchor-id="lo-spostamento-del-rischio-il-private-credit"><span class="header-section-number">3.2</span> Lo Spostamento del Rischio: Il Private Credit</h2>
+<section id="lo-spostamento-del-rischio-il-private-credit" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="lo-spostamento-del-rischio-il-private-credit"><span class="header-section-number">3.2</span> Lo Spostamento del Rischio: Il Private Credit</h2>
 <p>Dal “Whatever it takes” in poi, le politiche di stabilizzazione hanno protetto i mercati dei titoli di Stato, ma non hanno eliminato il rischio: lo hanno trasferito. Gran parte di questo rischio si trova ora nel comparto del <strong>private credit</strong> e delle istituzioni finanziarie non bancarie, posizionate al di fuori del perimetro di vigilanza bancario ordinario. Con l’attuale livello elevato dei tassi di interesse, la sostenibilità di questi debiti a leva rappresenta una fragilità acuta che le autorità di controllo devono monitorare con la massima urgenza.</p>
 </section>
-<section id="lintelligenza-artificiale-come-fattore-di-instabilità" class="level2 anchored" data-number="3.3" data-anchor-id="lintelligenza-artificiale-come-fattore-di-instabilità">
-<h2 class="anchored" data-number="3.3" data-anchor-id="lintelligenza-artificiale-come-fattore-di-instabilità"><span class="header-section-number">3.3</span> L’Intelligenza Artificiale come Fattore di Instabilità</h2>
+<section id="lintelligenza-artificiale-come-fattore-di-instabilità" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="lintelligenza-artificiale-come-fattore-di-instabilità"><span class="header-section-number">3.3</span> L’Intelligenza Artificiale come Fattore di Instabilità</h2>
 <p>Masciandaro evidenzia l’ambivalenza della narrativa sull’intelligenza artificiale: * <strong>Effetto Gregge e Bolle Speculative:</strong> L’incertezza tecnologica spinge gli investitori a comportamenti imitativi, ignorando i fondamentali economici (un parallelismo storico con Sir Isaac Newton nella bolla della <em>South Sea Company</em> del 1720). * <strong>Profitti e Produttività:</strong> I mercati azionari prezzano guadagni di produttività immediati, ma l’implementazione del software non genera profitti in automatico. Molte società sfruttano la narrativa dell’IA semplicemente per giustificare piani di ristrutturazione e tagli del personale volti a sostenere le quotazioni e i dividendi. * <strong>La Distruzione Creatrice sul Lavoro:</strong> Richiamando Joseph Schumpeter, l’economista sottolinea che la distruzione creatrice non è un processo simultaneo. La <strong>distruzione</strong> (perdita di posti di lavoro, che in questo ciclo tecnologico colpisce in particolar modo i colletti bianchi e le professioni intellettuali) si manifesta immediatamente, mentre la <strong>creazione</strong> di nuovo valore richiede tempi più lunghi. Promettere un saldo positivo nel breve termine per tutti è un “falso storico”.</p>
 </section>
 </section>
@@ -283,31 +313,53 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Limiti all’intervento delle banche centrali:</strong> I backstop sui mercati dei titoli sovrani devono essere eccezionali, mirati, temporanei e reversibili per non compromettere la determinazione dei prezzi e l’indipendenza monetaria.</li>
 <li><strong>Innovazione finanziaria pubblica:</strong> Promuovere lo sviluppo di architetture digitali e ledger unificati basati su moneta sovrana (CBDC), impedendo che la frammentazione delle stablecoin private mini l’integrità del sistema dei pagamenti.</li>
 </ol>
+<hr>
+</section>
+<section id="appendice-riferimenti-documentali-zotero" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Appendice: Riferimenti Documentali (Zotero)</h1>
+<p>La presente analisi si basa sulla documentazione indicizzata nel database semantico locale:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 98%">
+<col style="width: 8%">
+<col style="width: 37%">
+<col style="width: 31%">
+<col style="width: 8%">
+<col style="width: 12%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">:</th>
+<th style="text-align: left;">Chiave Zotero</th>
+<th style="text-align: left;">Titolo Documento</th>
+<th style="text-align: left;">Autore / Fonte</th>
+<th style="text-align: left;">Data</th>
+<th style="text-align: left;">Tipologia</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Chiave Zotero Titolo Documento Autore / Fonte Data Tipologia</td>
+<td style="text-align: left;"><code>ELQ4L4VM</code></td>
+<td style="text-align: left;"><em>BIS Annual Economic Report 2026</em></td>
+<td style="text-align: left;">Banca dei Regolamenti Internazionali (BRI)</td>
+<td style="text-align: left;">Giugno 2026</td>
+<td style="text-align: left;">Rapporto Istituzionale</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>V8X2WJ6D</code></td>
+<td style="text-align: left;"><em>L’allarme della Bri su Ai, debito e prezzi “La crescita è a rischio”</em></td>
+<td style="text-align: left;">Fabrizio Goria / <em>La Stampa</em> (Intervista a D. Masciandaro)</td>
+<td style="text-align: left;">29 Giugno 2026</td>
+<td style="text-align: left;">Articolo Giornalistico</td>
 </tr>
 </tbody>
 </table>
-<p><code>ELQ4L4VM</code> <em>BIS Annual Economic Report 2026</em> Banca dei Regolamenti Internazionali (BRI) Giugno 2026 Rapporto Istituzionale</p>
-<p><code>V8X2WJ6D</code> <em>L’allarme della Bri su Ai, debito e prezzi “La crescita è a rischio”</em> Fabrizio Goria / <em>La Stampa</em> (Intervista a D. Masciandaro) 29 Giugno 2026 Articolo Giornalistico ———————————————————————————————————————————————————————————————–</p>
 <hr>
 <p><strong>Trasparenza sull’uso dell’intelligenza artificiale</strong></p>
 <p>L’uso di strumenti di intelligenza artificiale generativa è dichiarato esplicitamente in quanto parte del processo di lavoro seguito nella redazione del presente documento. Tali strumenti sono stati impiegati a supporto della lettura, della sintesi, della riorganizzazione argomentativa e della revisione testuale, sempre nell’ambito di un processo pienamente controllato dall’autore.</p>
 <p>La responsabilità per le fonti utilizzate, le analisi condotte, le verifiche effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore.</p>
 <p>L’intelligenza artificiale è stata utilizzata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+
+
 </section>
-
-
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -718,7 +770,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_RapportoBri2026/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

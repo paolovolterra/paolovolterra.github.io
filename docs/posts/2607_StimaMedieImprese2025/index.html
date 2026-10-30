@@ -94,6 +94,35 @@ div.csl-indent {
 }</script>
 <script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../MCC.css">
 <meta property="og:title" content="Stima 2025 — medie imprese industriali – Paolo Volterra">
@@ -184,7 +213,7 @@ div.csl-indent {
   <li><a href="#conclusioni" id="toc-conclusioni" class="nav-link" data-scroll-target="#conclusioni"><span class="header-section-number">9</span> Conclusioni</a></li>
   <li><a href="#riferimenti-bibliografici" id="toc-riferimenti-bibliografici" class="nav-link" data-scroll-target="#riferimenti-bibliografici"><span class="header-section-number">10</span> Riferimenti bibliografici</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2607_StimaMedieImprese2025/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -284,23 +313,11 @@ div.csl-indent {
 <p>Modello log-lineare con effetti fissi e trend specifici per settore <span class="citation" data-cites="wooldridge2010econometric">(<a href="#ref-wooldridge2010econometric" role="doc-biblioref">Wooldridge 2010</a>)</span>:</p>
 <p><span class="math display">\[\log(\text{valore}_{it}) = \alpha_i + \beta_i \cdot t + \gamma \cdot \text{post\_covid} + \varepsilon_{it}\]</span></p>
 <p>Stima OLS con dummy per intercetta (effetti fissi), interazione codice×trend (pendenze settoriali), dummy post-2020. La scala logaritmica cattura tassi di crescita compositi anziché variazioni assolute e consente di leggere i movimenti in modo più stabile quando le serie hanno livelli molto diversi.</p>
-<div id="741d6102" class="cell" data-fig-height="6" data-fig-width="10" data-execution_count="4">
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
 <p><img src="figure/fig01.png" class="figure-img" role="img" width="1386" height="826"></p>
-<div class="caption">
 <p>Panel regression: backtest 2024 per FATTURATO NETTO</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell" data-tbl-cap="Panel regression — errori di backtest (MAPE %) e stime 2025" data-execution_count="5">
-<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
-<table class="caption-top table table-sm table-striped small">
-<caption>Panel regression — errori di backtest (MAPE %) e stime 2025</caption>
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>Panel regression — errori di backtest (MAPE %) e stime 2025 {data-border='1'}</caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -343,41 +360,17 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
 </section>
 <section id="pca-arima" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> PCA + ARIMA</h1>
 <p>Riduzione dimensionale: PCA sulle 8 serie long-series (7 settori + totale 565). I primi componenti catturano il ciclo macro comune <span class="citation" data-cites="stock2002forecasting bai2002determining">(<a href="#ref-stock2002forecasting" role="doc-biblioref">Stock e Watson 2002</a>; <a href="#ref-bai2002determining" role="doc-biblioref">Bai e Ng 2002</a>)</span>. ARIMA(1,1,0) su ciascun PC <span class="citation" data-cites="box2015time">(<a href="#ref-box2015time" role="doc-biblioref">Box et al.&nbsp;2015</a>)</span>, poi ricostruzione delle serie originali. Il vantaggio è separare la componente comune di sistema dal rumore specifico delle singole serie.</p>
-<div id="aa6e292c" class="cell" data-fig-height="5" data-fig-width="8" data-execution_count="6">
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
 <p><img src="figure/fig02.png" class="figure-img" role="img" width="1106" height="687"></p>
-<div class="caption">
 <p>PCA + ARIMA: varianza spiegata dai componenti</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="8a0432ab" class="cell" data-fig-height="6" data-fig-width="10" data-execution_count="7">
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
 <p><img src="figure/fig03.png" class="figure-img" role="img" width="1386" height="826"></p>
-<div class="caption">
 <p>PCA + ARIMA: backtest 2024 per FATTURATO NETTO</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell" data-tbl-cap="PCA + ARIMA — errori di backtest e stime 2025" data-execution_count="8">
-<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
-<table class="caption-top table table-sm table-striped small">
-<caption>PCA + ARIMA — errori di backtest e stime 2025</caption>
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>PCA + ARIMA — errori di backtest e stime 2025 {data-border='1'}</caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -420,29 +413,15 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
 </section>
 <section id="ridge-regression-con-lag-features" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Ridge regression con lag features</h1>
 <p>Features: <code>lag1, lag2, lag3, trend, post_covid</code> + dummy per codice. RidgeCV per la regolarizzazione. Addestramento pooled su tutti i codici, così da sfruttare sia la persistenza temporale sia l’informazione trasversale tra settori.</p>
-<div id="67e9b078" class="cell" data-fig-height="6" data-fig-width="10" data-execution_count="9">
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
 <p><img src="figure/fig04.png" class="figure-img" role="img" width="1386" height="826"></p>
-<div class="caption">
 <p>Ridge + lag: backtest 2024 per FATTURATO NETTO</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell" data-tbl-cap="Ridge + lag — errori di backtest e stime 2025" data-execution_count="10">
-<div class="cell-output cell-output-display" data-execution_count="10">
 <div>
-<table class="caption-top table table-sm table-striped small">
-<caption>Ridge + lag — errori di backtest e stime 2025</caption>
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>Ridge + lag — errori di backtest e stime 2025 {data-border='1'}</caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -485,17 +464,13 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
 </section>
 <section id="confronto-metodi-e-ensemble" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Confronto metodi e ensemble</h1>
 <p>L’ensemble è la media semplice dei tre metodi. In questa prima versione non introduco pesi complessi: il confronto sul backtest 2024 serve soprattutto a capire se i metodi convergono o divergono in modo sistematico.</p>
-<div class="cell" data-tbl-cap="Confronto MAPE backtest 2024 tra i tre metodi" data-execution_count="11">
-<div class="cell-output cell-output-display" data-execution_count="11">
 <div>
-<table class="caption-top table table-sm table-striped small">
-<caption>Confronto MAPE backtest 2024 tra i tre metodi</caption>
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>Confronto MAPE backtest 2024 tra i tre metodi {data-border='1'}</caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -534,29 +509,15 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div id="def01549" class="cell" data-fig-height="6" data-fig-width="10" data-execution_count="12">
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
 <p><img src="figure/fig05.png" class="figure-img" role="img" width="1386" height="826"></p>
-<div class="caption">
 <p>Ensemble: stime 2025 a confronto tra metodi</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 </section>
 <section id="stima-2025-sintesi-finale" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Stima 2025 — sintesi finale</h1>
 <p>Media ensemble dei tre metodi, con confronto con le stime della conferenza Siena (Salerno, <code>OUT/03</code>). Il confronto serve come controllo di coerenza esterna, non come benchmark perfetto, perché i perimetri e le ipotesi non sono identici.</p>
-<div class="cell" data-tbl-cap="Stima 2025: ensemble dei tre metodi vs stime conferenza Siena" data-execution_count="13">
-<div class="cell-output cell-output-display" data-execution_count="13">
 <div>
-<table class="caption-top table table-sm table-striped small">
-<caption>Stima 2025: ensemble dei tre metodi vs stime conferenza Siena</caption>
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>Stima 2025: ensemble dei tre metodi vs stime conferenza Siena {data-border='1'}</caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -653,25 +614,11 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div id="b17bca86" class="cell" data-fig-height="6" data-fig-width="10" data-execution_count="14">
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
 <p><img src="figure/fig06.png" class="figure-img" role="img" width="1384" height="826"></p>
-<div class="caption">
 <p>Stima 2025 — variazione % ensemble vs stime conferenza Siena</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell" data-tbl-cap="Confronto ensemble vs conferenza Siena (solo settori con stima)" data-execution_count="15">
-<div class="cell-output cell-output-display" data-execution_count="15">
 <div>
-<table class="caption-top table table-sm table-striped small">
-<caption>Confronto ensemble vs conferenza Siena (solo settori con stima)</caption>
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>Confronto ensemble vs conferenza Siena (solo settori con stima) {data-border='1'}</caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -714,17 +661,13 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
 </section>
 <section id="sintesi-italia-stima-macro-2025" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Sintesi Italia — stima macro 2025</h1>
 <p>Proiezione del fatturato Italia aggregando le stime settoriali ensemble e confrontando con il trend storico. È un modo semplice per verificare se la somma delle dinamiche settoriali restituisce un quadro macro plausibile.</p>
-<div class="cell" data-tbl-cap="Italia: stima aggregata 2025 dal panel settoriale" data-execution_count="16">
-<div class="cell-output cell-output-display" data-execution_count="16">
 <div>
-<table class="caption-top table table-sm table-striped small">
-<caption>Italia: stima aggregata 2025 dal panel settoriale</caption>
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>Italia: stima aggregata 2025 dal panel settoriale {data-border='1'}</caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -751,17 +694,13 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
 </section>
 <section id="confronto-common-size-margini-impliciti-fatturato" class="level1" data-number="8">
 <h1 data-number="8"><span class="header-section-number">8</span> Confronto common-size: margini impliciti (% Fatturato)</h1>
 <p>I settori long-series hanno scale molto diverse (Meccanico vs Carta e stampa): confrontare le stime 2025 in Mld€ nasconde la struttura. Qui MOL e Risultato d’esercizio vengono riletti come quota del fatturato, sia nel reale 2024 sia nell’ensemble 2025, per isolare l’effetto margine dall’effetto dimensione e rendere il confronto più informativo.</p>
-<div class="cell" data-tbl-cap="Margini impliciti per settore: reale 2024 vs ensemble 2025 (% del fatturato)" data-execution_count="17">
-<div class="cell-output cell-output-display" data-execution_count="17">
 <div>
-<table class="caption-top table table-sm table-striped small">
-<caption>Margini impliciti per settore: reale 2024 vs ensemble 2025 (% del fatturato)</caption>
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>Margini impliciti per settore: reale 2024 vs ensemble 2025 (% del fatturato) {data-border='1'}</caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -838,20 +777,8 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div id="35052279" class="cell" data-fig-height="6.5" data-fig-width="11" data-execution_count="18">
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
 <p><img src="figure/fig07.png" class="figure-img" role="img" width="1524" height="896"></p>
-<div class="caption">
 <p>Margini impliciti per settore: MOL/Fatturato e Risultato/Fatturato, 2024 vs 2025 ensemble</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p>Isolando la scala, la lettura cambia rispetto ai grafici in Mld€: un settore piccolo con margine implicito stabile o in miglioramento è strutturalmente più solido di uno grande con margine in compressione, anche se il primo pesa meno in valore assoluto sul totale. È proprio questa distinzione tra dimensione e qualità del margine che rende utile la rilettura common-size.</p>
 </section>
 <section id="conclusioni" class="level1" data-number="9">
@@ -887,9 +814,9 @@ Wooldridge, Jeffrey M. 2010. <em>Econometric Analysis of Cross Section and Panel
 <p>L’uso di strumenti di intelligenza artificiale generativa è dichiarato esplicitamente in quanto parte del processo di lavoro seguito nella redazione del presente documento. Tali strumenti sono stati impiegati a supporto della lettura, della sintesi, della riorganizzazione argomentativa e della revisione testuale, sempre nell’ambito di un processo pienamente controllato dall’autore.</p>
 <p>La responsabilità per le fonti utilizzate, le analisi condotte, le verifiche effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore.</p>
 <p>L’intelligenza artificiale è stata utilizzata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+
+
 </section>
-
-
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1300,7 +1227,7 @@ Wooldridge, Jeffrey M. 2010. <em>Econometric Analysis of Cross Section and Panel
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2607_StimaMedieImprese2025/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

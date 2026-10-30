@@ -163,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#passo-7-leggere-i-risultati" id="toc-passo-7-leggere-i-risultati" class="nav-link" data-scroll-target="#passo-7-leggere-i-risultati"><span class="header-section-number">8</span> Passo 7 — Leggere i risultati</a></li>
   <li><a href="#i-limiti-del-modello" id="toc-i-limiti-del-modello" class="nav-link" data-scroll-target="#i-limiti-del-modello"><span class="header-section-number">9</span> I limiti del modello</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_PrevisioneTassiGuida/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -234,14 +234,14 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <hr>
-<section id="il-problema-che-vogliamo-risolvere" class="level2 anchored" data-anchor-id="il-problema-che-vogliamo-risolvere" data-number="1">
-<h2 class="anchored" data-anchor-id="il-problema-che-vogliamo-risolvere" data-number="1"><span class="header-section-number">1</span> Il problema che vogliamo risolvere</h2>
+<section id="il-problema-che-vogliamo-risolvere" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="il-problema-che-vogliamo-risolvere"><span class="header-section-number">1</span> Il problema che vogliamo risolvere</h2>
 <p>Quando la Banca Centrale Europea decide di alzare i tassi di interesse, sui giornali si legge che “i mutui costeranno di più” o che “i risparmi renderanno di più”. Ma di quanto, esattamente? E dopo quanto tempo? E vale allo stesso modo per tutti i tipi di prestito e di deposito?</p>
 <p>Queste domande sembrano semplici ma richiedono un metodo rigoroso per essere risposte. Al momento di scrivere questo documento (dati al 2026-07-01), il DFR BCE è al 2.50% e l’Euribor 3M è a 2.62%. Le banche italiane applicano tassi che vanno dal 0.19% sui conti correnti fino al 3.73% sui prestiti alle imprese a breve termine. Come si prevede dove saranno questi tassi a dicembre 2026?</p>
 <hr>
 </section>
-<section id="passo-1-capire-chi-comanda-davvero-sui-tassi" class="level2 anchored" data-anchor-id="passo-1-capire-chi-comanda-davvero-sui-tassi" data-number="2">
-<h2 class="anchored" data-anchor-id="passo-1-capire-chi-comanda-davvero-sui-tassi" data-number="2"><span class="header-section-number">2</span> Passo 1 — Capire chi comanda davvero sui tassi</h2>
+<section id="passo-1-capire-chi-comanda-davvero-sui-tassi" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="passo-1-capire-chi-comanda-davvero-sui-tassi"><span class="header-section-number">2</span> Passo 1 — Capire chi comanda davvero sui tassi</h2>
 <p>Il primo errore che si commette è pensare che la BCE fissi direttamente il tasso del mutuo o del conto corrente. Non è così. La BCE fissa un tasso di riferimento, chiamato <strong>DFR</strong> (Deposit Facility Rate), che è il tasso che la BCE paga alle banche commerciali sui soldi che queste parcheggiano presso di lei. È un tasso “all’ingrosso”, che riguarda i rapporti tra la BCE e le banche — non tra le banche e i clienti finali.</p>
 <p>Il tasso del mutuo o del conto corrente è fissato dalla singola banca commerciale, che segue la propria logica di costi e ricavi. Tuttavia, esiste una catena di trasmissione che collega il DFR della BCE ai tassi che il cliente finale paga o riceve:</p>
 <p><strong>La BCE alza il DFR</strong> → Le banche commerciali trovano più costoso finanziarsi sul mercato interbancario. Il mercato interbancario funziona a un tasso chiamato <strong>Euribor 3M</strong> — il tasso a cui le banche si prestano tra loro a 3 mesi — che segue il DFR con uno spread stabile di circa 10–15bp.</p>
@@ -250,18 +250,13 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Le banche aggiustano i propri listini</strong> → Solo alla fine di questa catena la banca commerciale decide come riprezzare mutui, prestiti alle imprese, conti correnti, depositi a termine. E qui entra in gioco la concorrenza: se nessuna banca concorrente alza i tassi sui depositi, la mia banca non ha incentivo a farlo.</p>
 <hr>
 </section>
-<section id="passo-2-raccogliere-i-dati-storici" class="level2 anchored" data-anchor-id="passo-2-raccogliere-i-dati-storici" data-number="3">
-<h2 class="anchored" data-anchor-id="passo-2-raccogliere-i-dati-storici" data-number="3"><span class="header-section-number">3</span> Passo 2 — Raccogliere i dati storici</h2>
+<section id="passo-2-raccogliere-i-dati-storici" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="passo-2-raccogliere-i-dati-storici"><span class="header-section-number">3</span> Passo 2 — Raccogliere i dati storici</h2>
 <p>Per costruire una previsione statistica, il punto di partenza sono i dati storici. Abbiamo bisogno di due serie temporali mensili, possibilmente lunghe almeno 5–10 anni.</p>
 <p><strong>Serie 1 — il driver</strong>: il tasso che guida il sistema, scelto in base al tipo di prodotto bancario. Per i prestiti variabili è l’Euribor 3M; per i depositi è il DFR; per i mutui fissi è il tasso swap a 10 anni.</p>
 <p><strong>Serie 2 — il tasso bancario italiano</strong>: si scarica dal sito della BCE (ECB Statistical Data Warehouse) dove sono pubblicate, mese per mese dal 2003, le statistiche MIR (MFI Interest Rates) per ogni paese dell’area euro.</p>
 <p>Come si sono mossi i dati negli ultimi anni:</p>
-<div id="0ca13258" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display" data-execution_count="2">
-<div id="T_c5d58" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="T_c5d58-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Mese</th>
@@ -309,28 +304,16 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;1: Evoluzione storica: DFR vs tassi bancari italiani (MIR)</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p>Anche a occhio si vede che esiste una relazione: quando il DFR sale, i tassi sui mutui salgono. Ma non della stessa quantità: il DFR è salito di 4 punti percentuali, mentre i mutui sono saliti di circa 3,4 punti. E i depositi a termine, pur salendo, sono rimasti molto al di sotto della variazione del DFR. Questa asimmetria è già un segnale che la relazione è più complessa di una semplice proporzione.</p>
 <hr>
 </section>
-<section id="passo-3-stimare-quanto-si-trasmette-il-coefficiente-β" class="level2 anchored" data-anchor-id="passo-3-stimare-quanto-si-trasmette-il-coefficiente-β" data-number="4">
-<h2 class="anchored" data-anchor-id="passo-3-stimare-quanto-si-trasmette-il-coefficiente-β" data-number="4"><span class="header-section-number">4</span> Passo 3 — Stimare quanto si trasmette (il coefficiente β)</h2>
+<section id="passo-3-stimare-quanto-si-trasmette-il-coefficiente-β" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="passo-3-stimare-quanto-si-trasmette-il-coefficiente-β"><span class="header-section-number">4</span> Passo 3 — Stimare quanto si trasmette (il coefficiente β)</h2>
 <p>Il cuore del modello è stimare, con precisione statistica, quanto di ogni variazione del DFR si trasmette ai tassi bancari. Questo si fa con una regressione lineare OLS (Ordinary Least Squares):</p>
 <pre><code>variazione_tasso_bancario(mese t) = β × variazione_DFR(mese t − lag)</code></pre>
 <p>Il coefficiente β — detto anche “coefficiente di pass-through” — misura la quota di ogni variazione del DFR che si trasmette al tasso bancario. I risultati per i principali tassi italiani sono:</p>
-<div id="b28871c0" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display" data-execution_count="3">
-<div id="T_223a2" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="T_223a2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Tasso bancario</th>
@@ -366,23 +349,14 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;2: Coefficienti di pass-through β — stima OLS su ciclo 2022–2026</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p>Questi numeri rivelano un’asimmetria strutturale: le banche alzano abbastanza rapidamente i tassi sui prestiti (β tra 0,58 e 0,64), mentre sui depositi a <strong>vista</strong> restano vischiosi (β tra 0,05 e 0,12). I <strong>depositi a termine</strong>, invece, si adeguano di più (β ≈ 0,43), segno che la concorrenza sulla raccolta vincolata è attiva. La vischiosità dei conti correnti — i correntisti italiani spostano poco i risparmi finché non lo fanno, le banche non hanno incentivo a pagare di più — resta la ragione principale dei margini bancari elevati del 2023–2024.</p>
 <hr>
 </section>
-<section id="passo-4-costruire-gli-scenari-sul-driver" class="level2 anchored" data-anchor-id="passo-4-costruire-gli-scenari-sul-driver" data-number="5">
-<h2 class="anchored" data-anchor-id="passo-4-costruire-gli-scenari-sul-driver" data-number="5"><span class="header-section-number">5</span> Passo 4 — Costruire gli scenari sul driver</h2>
+<section id="passo-4-costruire-gli-scenari-sul-driver" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="passo-4-costruire-gli-scenari-sul-driver"><span class="header-section-number">5</span> Passo 4 — Costruire gli scenari sul driver</h2>
 <p>Non sappiamo con certezza dove andrà il DFR nei prossimi sei mesi. Nessuno lo sa — nemmeno la BCE stessa. Quindi costruiamo tre scenari alternativi che rappresentano altrettante possibili evoluzioni del contesto macroeconomico.</p>
-<div id="0e6cb506" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display" data-execution_count="4">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Scenario</th>
@@ -412,43 +386,32 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
 <p>Vale la pena notare che questi scenari non sono equiprobabili: al momento della stesura, il mercato assegna la maggiore probabilità allo scenario Base, con code significative verso l’Avverso.</p>
 <hr>
 </section>
-<section id="passo-5-applicare-β-per-ottenere-la-previsione" class="level2 anchored" data-anchor-id="passo-5-applicare-β-per-ottenere-la-previsione" data-number="6">
-<h2 class="anchored" data-anchor-id="passo-5-applicare-β-per-ottenere-la-previsione" data-number="6"><span class="header-section-number">6</span> Passo 5 — Applicare β per ottenere la previsione</h2>
+<section id="passo-5-applicare-β-per-ottenere-la-previsione" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="passo-5-applicare-β-per-ottenere-la-previsione"><span class="header-section-number">6</span> Passo 5 — Applicare β per ottenere la previsione</h2>
 <p>Una volta definiti gli scenari sul driver, la previsione è un calcolo aritmetico semplice:</p>
 <pre><code>Tasso_previsto = Tasso_attuale + β × variazione_DFR</code></pre>
 <p>Esempio concreto per i mutui variabili (β = 0.57, tasso attuale = 2.99%):</p>
-<div id="ac8ff715" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="5">
 <ul>
 <li><strong>Scenario Benigno</strong>: ΔDFR = 0bp → previsto = 2.99% + 0.57 × 0 = <strong>2.99%</strong></li>
 <li><strong>Scenario Base</strong>: ΔDFR = +25bp → previsto = 2.99% + 0.57 × 0.25 = <strong>3.13%</strong></li>
 <li><strong>Scenario Avverso</strong>: ΔDFR = +60bp → previsto = 2.99% + 0.57 × 0.60 = <strong>3.34%</strong></li>
 </ul>
-</div>
-</div>
 <p>I numeri sembrano piccoli — +15bp o +35bp. Ma su un mutuo da 200.000 euro a 25 anni, ogni +25bp corrisponde a circa <strong>+30 euro al mese di rata aggiuntiva</strong>.</p>
 <hr>
 </section>
-<section id="passo-6-confrontare-con-benchmark-esterni" class="level2 anchored" data-anchor-id="passo-6-confrontare-con-benchmark-esterni" data-number="7">
-<h2 class="anchored" data-anchor-id="passo-6-confrontare-con-benchmark-esterni" data-number="7"><span class="header-section-number">7</span> Passo 6 — Confrontare con benchmark esterni</h2>
+<section id="passo-6-confrontare-con-benchmark-esterni" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="passo-6-confrontare-con-benchmark-esterni"><span class="header-section-number">7</span> Passo 6 — Confrontare con benchmark esterni</h2>
 <p>Prima di presentare i risultati, si confrontano le proprie previsioni con quelle di altri analisti, per verificare se si è in linea o se si è sistematicamente sopra o sotto.</p>
 <p><strong>BCE — proiezioni staff giugno 2026</strong>: assumono un Euribor 3M medio 2026 di circa 2,4–2,5% (corretto post-rialzo giugno). Questo implica DFR ~2,50% a fine 2026 — identico al nostro scenario Base. La previsione centrale è allineata con quella dell’istituzione più informata.</p>
 <p><strong>Intesa Sanpaolo Research</strong>: stima DFR 2,50% fine 2026 con rischio orientato verso l’Avverso. Coerente con il nostro Base.</p>
 <hr>
 </section>
-<section id="passo-7-leggere-i-risultati" class="level2 anchored" data-anchor-id="passo-7-leggere-i-risultati" data-number="8">
-<h2 class="anchored" data-anchor-id="passo-7-leggere-i-risultati" data-number="8"><span class="header-section-number">8</span> Passo 7 — Leggere i risultati</h2>
-<div id="df0a2f0c" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display" data-execution_count="6">
-<div id="T_3ed93" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="T_3ed93-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table table-sm table-striped small">
+<section id="passo-7-leggere-i-risultati" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="passo-7-leggere-i-risultati"><span class="header-section-number">8</span> Passo 7 — Leggere i risultati</h2>
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Tasso bancario</th>
@@ -502,19 +465,12 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;3: Previsione tassi bancari italiani dic-2026 — dati correnti al 2026-07-01</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p>La prima cosa che salta all’occhio è l’asimmetria: i tassi attivi (prestiti) salgono significativamente anche nel Base (+{python} f”{B_NFC * d_bas * 100:.0f}bp” per le imprese), mentre i tassi passivi (depositi) rimangono quasi fermi (+1–2bp). Questo è il meccanismo attraverso cui i margini bancari si allargano in un ciclo di rialzi.</p>
 <hr>
 </section>
-<section id="i-limiti-del-modello" class="level2 anchored" data-anchor-id="i-limiti-del-modello" data-number="9">
-<h2 class="anchored" data-anchor-id="i-limiti-del-modello" data-number="9"><span class="header-section-number">9</span> I limiti del modello</h2>
+<section id="i-limiti-del-modello" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="i-limiti-del-modello"><span class="header-section-number">9</span> I limiti del modello</h2>
 <p>Questo modello è volutamente semplice. La sua forza è la trasparenza e la robustezza su orizzonti brevi (6 mesi). Ma ci sono almeno quattro situazioni in cui la previsione potrebbe essere sistematicamente sbagliata.</p>
 <p><strong>Il β potrebbe non essere stabile.</strong> Stimato su dati 2022–2026, un periodo molto specifico. Se cambia la struttura competitiva del mercato bancario (es. ingresso di operatori digitali che pagano di più sui depositi), il β storico non è più valido.</p>
 <p><strong>I mutui fissi hanno il driver sbagliato nel modello semplice.</strong> In realtà dipendono principalmente dai tassi swap a lungo termine. Nelle versioni aggiornate del modello si usa sempre il tasso Bund/IRS a 10 anni come driver per i mutui fissi (R² sale da 0,18 a 0,76).</p>
@@ -552,9 +508,9 @@ ul.task-list li input[type="checkbox"] {
 <p>L’uso di strumenti di intelligenza artificiale generativa è dichiarato esplicitamente in quanto parte del processo di lavoro seguito nella redazione del presente documento. Tali strumenti sono stati impiegati a supporto della lettura, della sintesi, della riorganizzazione argomentativa e della revisione testuale, sempre nell’ambito di un processo pienamente controllato dall’autore.</p>
 <p>La responsabilità per le fonti utilizzate, le analisi condotte, le verifiche effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore.</p>
 <p>L’intelligenza artificiale è stata utilizzata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+
+
 </section>
-
-
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -965,7 +921,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_PrevisioneTassiGuida/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

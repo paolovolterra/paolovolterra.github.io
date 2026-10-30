@@ -95,6 +95,35 @@ div.csl-indent {
 }</script>
 <script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../MCC.css">
 <meta property="og:title" content="Imprese per mille abitanti – Paolo Volterra">
@@ -196,7 +225,7 @@ div.csl-indent {
   </ul></li>
   <li><a href="#riferimenti" id="toc-riferimenti" class="nav-link" data-scroll-target="#riferimenti">Riferimenti</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2610_ImpresePerMilleAbitanti/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -269,8 +298,8 @@ div.csl-indent {
 </section>
 <section id="il-quadro-ufficiale-di-misurazione" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Il quadro ufficiale di misurazione</h1>
-<section id="un-fenomeno-multidimensionale" class="level2 anchored" data-number="2.1" data-anchor-id="un-fenomeno-multidimensionale">
-<h2 class="anchored" data-number="2.1" data-anchor-id="un-fenomeno-multidimensionale"><span class="header-section-number">2.1</span> Un fenomeno multidimensionale</h2>
+<section id="un-fenomeno-multidimensionale" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="un-fenomeno-multidimensionale"><span class="header-section-number">2.1</span> Un fenomeno multidimensionale</h2>
 <p>Il quadro adottato dall’ISTAT deriva dall’Entrepreneurship Indicators Programme dell’OCSE e di Eurostat <span class="citation" data-cites="istat2017imprenditorialita"><a href="#ref-istat2017imprenditorialita" role="doc-biblioref">[3]</a></span>. L’imprenditorialità è associata alla ricerca di creazione di valore attraverso la nascita o l’espansione di un’attività economica, l’introduzione di prodotti e processi e l’accesso a nuovi mercati. Il sistema di misurazione distingue tre categorie:</p>
 <table class="caption-top table">
 <colgroup>
@@ -306,43 +335,31 @@ div.csl-indent {
 <p><em>In parole semplici:</em> l’imprenditorialità non è rappresentata da un solo conteggio. Il quadro ufficiale separa le condizioni che la rendono possibile, ciò che accade alle imprese e gli effetti prodotti.</p>
 <p>La scheda qualità più recente dell’ISTAT conferma questa impostazione operativa <span class="citation" data-cites="istat2024qualitaimprenditorialita"><a href="#ref-istat2024qualitaimprenditorialita" role="doc-biblioref">[4]</a></span>. La popolazione delle imprese attive è la base osservata; gli indicatori riguardano nascite e cessazioni reali, sopravvivenza fino a cinque anni, imprese ad elevata crescita e addetti. Le nascite escludono fusioni, scorpori e altre trasformazioni di unità già esistenti; le cessazioni sono confermate dopo due anni per escludere le riattivazioni. Nel volume metodologico l’ISTAT considera il tasso di natalità delle imprese con dipendenti più significativo, ai fini dell’imprenditorialità, dello stesso tasso calcolato su tutte le imprese attive <span class="citation" data-cites="istat2017imprenditorialita"><a href="#ref-istat2017imprenditorialita" role="doc-biblioref">[3]</a></span>.</p>
 </section>
-<section id="rapporto-descrittivo-e-indicatore-di-propensione" class="level2 anchored" data-number="2.2" data-anchor-id="rapporto-descrittivo-e-indicatore-di-propensione">
-<h2 class="anchored" data-number="2.2" data-anchor-id="rapporto-descrittivo-e-indicatore-di-propensione"><span class="header-section-number">2.2</span> Rapporto descrittivo e indicatore di propensione</h2>
+<section id="rapporto-descrittivo-e-indicatore-di-propensione" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="rapporto-descrittivo-e-indicatore-di-propensione"><span class="header-section-number">2.2</span> Rapporto descrittivo e indicatore di propensione</h2>
 <p>L’ISTAT pubblica anche il numero di imprese per mille abitanti, denominandolo in modo descrittivo <span class="citation" data-cites="istat2025noiitalia"><a href="#ref-istat2025noiitalia" role="doc-biblioref">[5]</a></span>. La presenza di questa statistica ufficiale non basta però ad assegnarle il significato di propensione imprenditoriale. Per sostenere tale interpretazione occorrerebbe mostrare che il rapporto varia coerentemente con manifestazioni osservabili del fenomeno, come la nascita di nuove imprese, la loro sopravvivenza, la crescita o l’ingresso di nuovi imprenditori, e che conserva tale relazione una volta considerate struttura settoriale e condizioni territoriali.</p>
 </section>
 </section>
 <section id="valutazione-della-misura-proposta" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Valutazione della misura proposta</h1>
-<section id="stock-e-processi" class="level2 anchored" data-number="3.1" data-anchor-id="stock-e-processi">
-<h2 class="anchored" data-number="3.1" data-anchor-id="stock-e-processi"><span class="header-section-number">3.1</span> Stock e processi</h2>
+<section id="stock-e-processi" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="stock-e-processi"><span class="header-section-number">3.1</span> Stock e processi</h2>
 <p>Le imprese attive in un anno costituiscono uno stock formato da coorti nate in periodi diversi. Il suo livello dipende dalle nascite, dalle cessazioni, dalla sopravvivenza e dalle trasformazioni avvenute nel tempo. Due territori possono avere lo stesso numero di imprese per abitante pur presentando dinamiche opposte: uno può avere molte nuove imprese e molte cessazioni; l’altro poche nascite e imprese longeve. Il rapporto non distingue queste configurazioni e non osserva direttamente la decisione corrente di intraprendere.</p>
 <p>La motivazione fondata sul peso delle microimprese non risolve il problema. Il fatto che la maggioranza delle imprese abbia meno di dieci addetti descrive la distribuzione dimensionale, ma non dimostra che ogni impresa attiva rappresenti nella stessa misura propensione, opportunità o capacità imprenditoriale. Nel registro statistico rientrano lavoratori autonomi, liberi professionisti e imprese organizzate in forme e settori molto differenti <span class="citation" data-cites="istat2015strutturaimprese"><a href="#ref-istat2015strutturaimprese" role="doc-biblioref">[6]</a></span>.</p>
 </section>
-<section id="una-scomposizione-diagnostica" class="level2 anchored" data-number="3.2" data-anchor-id="una-scomposizione-diagnostica">
-<h2 class="anchored" data-number="3.2" data-anchor-id="una-scomposizione-diagnostica"><span class="header-section-number">3.2</span> Una scomposizione diagnostica</h2>
+<section id="una-scomposizione-diagnostica" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="una-scomposizione-diagnostica"><span class="header-section-number">3.2</span> Una scomposizione diagnostica</h2>
 <p>Il rapporto può essere riscritto mediante un’identità contabile:</p>
-<p><span class="math display">\[ \frac{\text{imprese}}{\text{residenti}} = \frac{\text{addetti}/\text{residenti}} {\text{addetti}/\text{imprese}}. \]</span></p>
+<p><span class="math display">\[\frac{\text{imprese}}{\text{residenti}} = \frac{\text{addetti}/\text{residenti}} {\text{addetti}/\text{imprese}}.\]</span></p>
 <p>L’identità non confuta la misura e non stabilisce quale componente determini le differenze territoriali. Mostra però che lo stesso valore può derivare dalla quantità di lavoro presente nelle imprese, dalla dimensione media o da combinazioni diverse delle due grandezze. Per attribuire il rapporto a una propensione individuale serve quindi evidenza ulteriore.</p>
 <p>Fra le province italiane la correlazione di rango del rapporto con gli addetti nelle imprese per abitante è 0,80; quella con la dimensione media è 0,51. Il primo legame è più stretto, ma il confronto fra due correlazioni non scompone la varianza e non identifica relazioni causali. Indica soltanto che la graduatoria provinciale riflette in misura rilevante la diversa intensità dell’occupazione nelle imprese.</p>
-<div id="cell-fig-scomposizione" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display">
-<div id="figura-scomposizione" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-scomposizione-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig01.svg" class="img-fluid figure-img" role="img"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;1: Imprese attive e addetti nelle imprese per 1.000 abitanti nelle province italiane, 2024. Le linee tratteggiate indicano dimensioni medie costanti di 3, 4 e 5 addetti per impresa.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p><em>In parole semplici:</em> salire nel grafico significa avere più imprese rispetto ai residenti; spostarsi a destra significa avere più addetti nelle imprese. Province alla stessa altezza possono raggiungere lo stesso rapporto con quantità di lavoro e dimensioni medie differenti.</p>
 <p>Savona e Bologna hanno quasi lo stesso rapporto: 91,7 e 91,6 imprese ogni mille abitanti. A Savona gli addetti sono 254 ogni mille abitanti e la dimensione media è 2,8; a Bologna i valori sono 425 e 4,6. La coincidenza del rapporto non implica quindi equivalenza della struttura produttiva né dimostra una propensione imprenditoriale identica.</p>
 </section>
-<section id="denominatore-e-localizzazione" class="level2 anchored" data-number="3.3" data-anchor-id="denominatore-e-localizzazione">
-<h2 class="anchored" data-number="3.3" data-anchor-id="denominatore-e-localizzazione"><span class="header-section-number">3.3</span> Denominatore e localizzazione</h2>
+<section id="denominatore-e-localizzazione" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="denominatore-e-localizzazione"><span class="header-section-number">3.3</span> Denominatore e localizzazione</h2>
 <p>La popolazione residente è un denominatore disponibile e confrontabile, ma non coincide sempre con la popolazione esposta alle opportunità economiche del territorio. Nelle località turistiche la domanda comprende visitatori non residenti; nelle aree metropolitane intervengono pendolari in entrata e in uscita; la quota di popolazione in età lavorativa varia tra territori. Questi elementi non rendono inutile il rapporto, ma ne limitano l’interpretazione comportamentale.</p>
 <p>Distinto è il problema della localizzazione del numeratore. Le imprese sono attribuite alla sede; gli addetti di un’impresa plurilocalizzata possono lavorare in unità locali situate in altre province. Il volume ISTAT dedicato all’imprenditorialità territoriale tratta separatamente imprese, unità locali, proiezione esterna e attrattività proprio per evitare di sovrapporre sede dell’organizzazione e luogo dell’attività <span class="citation" data-cites="istat2017imprenditorialita"><a href="#ref-istat2017imprenditorialita" role="doc-biblioref">[3]</a></span>.</p>
 </section>
@@ -400,18 +417,13 @@ div.csl-indent {
 <section id="appendice-verifiche-sul-caso-provinciale" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Appendice: verifiche sul caso provinciale</h1>
 <p>Le verifiche che seguono riguardano la coerenza interna dei dati pubblicati. Non costituiscono il fondamento della valutazione concettuale, che resterebbe invariata anche se tutte le tabelle fossero perfettamente coerenti.</p>
-<section id="ricostruzione-della-graduatoria" class="level2 anchored" data-number="6.1" data-anchor-id="ricostruzione-della-graduatoria">
-<h2 class="anchored" data-number="6.1" data-anchor-id="ricostruzione-della-graduatoria"><span class="header-section-number">6.1</span> Ricostruzione della graduatoria</h2>
+<section id="ricostruzione-della-graduatoria" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="ricostruzione-della-graduatoria"><span class="header-section-number">6.1</span> Ricostruzione della graduatoria</h2>
 <p>Dividendo le imprese attive 2024 riportate nello studio per la popolazione residente al 1° gennaio 2024 si ottiene lo stesso valore, al decimale, per <strong>106 province su 107</strong> e un dato nazionale di 80,6 <span class="citation" data-cites="eurostat2025pjanaggr3"><a href="#ref-eurostat2025pjanaggr3" role="doc-biblioref">[8]</a></span>. L’unica eccezione è Cremona: la tabella 2 riporta 87,4, mentre imprese e residenti pubblicati implicano 68,8.</p>
 </section>
-<section id="valori-testuali-delle-grandi-città" class="level2 anchored" data-number="6.2" data-anchor-id="valori-testuali-delle-grandi-città">
-<h2 class="anchored" data-number="6.2" data-anchor-id="valori-testuali-delle-grandi-città"><span class="header-section-number">6.2</span> Valori testuali delle grandi città</h2>
-<div class="cell" data-execution_count="3">
-<div id="tab-testo" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-testo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="3">
-<table class="caption-top table table-sm table-striped small">
+<section id="valori-testuali-delle-grandi-città" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="valori-testuali-delle-grandi-città"><span class="header-section-number">6.2</span> Valori testuali delle grandi città</h2>
+<table class="caption-top table">
 <colgroup>
 <col style="width: 17%">
 <col style="width: 28%">
@@ -466,25 +478,13 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;1: Imprese per 1.000 abitanti: valori citati nel testo, valori della tabella 2 e ricalcolo con la popolazione al 1° gennaio 2024</p>
-</div>
-</div>
-</div>
-</div>
 <p><em>In parole semplici:</em> per cinque grandi città i valori scritti nel commento non coincidono con la tabella. Il ricalcolo con la popolazione ufficiale conferma i valori tabellari.</p>
 </section>
-<section id="unità-territoriali-a-doppia-crescita" class="level2 anchored" data-number="6.3" data-anchor-id="unità-territoriali-a-doppia-crescita">
-<h2 class="anchored" data-number="6.3" data-anchor-id="unità-territoriali-a-doppia-crescita"><span class="header-section-number">6.3</span> Unità territoriali a «doppia crescita»</h2>
+<section id="unità-territoriali-a-doppia-crescita" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="unità-territoriali-a-doppia-crescita"><span class="header-section-number">6.3</span> Unità territoriali a «doppia crescita»</h2>
 <p>Lo studio indica 17 province sopra la media nazionale sia per crescita delle imprese sia per crescita degli addetti, mentre la tavola ne elenca 21. Taranto è inclusa, ma la sua crescita degli addetti e la media sono entrambe pubblicate come +17,2%: con i valori arrotondati non si può stabilire se la prima sia strettamente superiore. La Sardegna, presentata come aggregato regionale, supera entrambe le soglie ma non compare nell’elenco.</p>
-<div class="cell" data-execution_count="4">
-<div id="tab-crescita" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-crescita-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="4">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 45%">
 <col style="width: 5%">
@@ -532,14 +532,7 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;2: Classificazione sui valori arrotondati pubblicati per crescita 2014-2024 di imprese e addetti</p>
-</div>
-</div>
-</div>
-</div>
 <p><em>In parole semplici:</em> testo, elenco e ricalcolo non restituiscono lo stesso numero di territori. Taranto non è distinguibile dalla media alla precisione pubblicata, quindi il totale non può essere considerato definitivo senza dati non arrotondati.</p>
 </section>
 </section>
@@ -616,9 +609,9 @@ Eurostat, <a href="https://ec.europa.eu/eurostat/databrowser/view/demo_r_pjanagg
 <p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
 <p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale, così che i dati e le affermazioni possano essere controllati da terzi. La riproduzione integrale dei risultati richiede anche il codice, le estrazioni, i filtri e i parametri impiegati nell’elaborazione. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
 <p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+
+
 </section>
-
-
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1029,7 +1022,7 @@ Eurostat, <a href="https://ec.europa.eu/eurostat/databrowser/view/demo_r_pjanagg
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2610_ImpresePerMilleAbitanti/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

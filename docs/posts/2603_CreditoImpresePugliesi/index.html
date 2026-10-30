@@ -170,7 +170,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#limiti-dellanalisi" id="toc-limiti-dellanalisi" class="nav-link" data-scroll-target="#limiti-dellanalisi"><span class="header-section-number">7</span> Limiti dell’analisi</a></li>
   <li><a href="#criticità-residue-e-vulnerabilità-aperte" id="toc-criticità-residue-e-vulnerabilità-aperte" class="nav-link" data-scroll-target="#criticità-residue-e-vulnerabilità-aperte"><span class="header-section-number">8</span> Criticità residue e vulnerabilità aperte</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2603_CreditoImpresePugliesi/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -223,15 +223,15 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="executive-summary" class="level2 anchored" data-anchor-id="executive-summary" data-number="1">
-<h2 class="anchored" data-anchor-id="executive-summary" data-number="1"><span class="header-section-number">1</span> Executive Summary</h2>
+<section id="executive-summary" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="executive-summary"><span class="header-section-number">1</span> Executive Summary</h2>
 <p>Il presente documento analizza l’evoluzione del credito bancario alle imprese pugliesi nel periodo 2010-2026, utilizzando come fonte primaria le serie storiche di Banca d’Italia (TDB10226, TDB10224, TDB10295, TRI30633 — aggiornate a febbraio 2026) e come fonte secondaria i microdati del Fondo di Garanzia PMI.</p>
 <p>I principali fatti osservabili sono i seguenti. Lo stock di prestiti bancari a imprese e famiglie produttrici in Puglia si attesta a febbraio 2026 intorno a <strong>20.4</strong> miliardi di euro (fonte: TDB10226, SBI25), con una dinamica di contrazione prolungata rispetto al picco pre-crisi, seguita da una stabilizzazione nel triennio 2022-2025. Il tasso di deterioramento del credito — rapporto sofferenze/prestiti — ha raggiunto un picco stimato intorno al <strong>95832%</strong> (2024-06) ed era pari a circa <strong>95571%</strong> all’ultimo dato disponibile. La garanzia pubblica del Fondo di Garanzia PMI ha coperto nel 2025 circa il <strong>17%</strong> del totale dei prestiti alle imprese — una quota strutturalmente più alta rispetto al 5% pre-pandemia.</p>
 <p>L’analisi evidenzia tre fragilità sistemiche: la persistenza di sofferenze elevate nonostante la riduzione dello stock, la concentrazione del credito su settori a bassa produttività, e la dipendenza crescente dalla garanzia pubblica come condizione di accesso al credito per le PMI.</p>
 <hr>
 </section>
-<section id="contesto-e-motivazione" class="level2 anchored" data-anchor-id="contesto-e-motivazione" data-number="2">
-<h2 class="anchored" data-anchor-id="contesto-e-motivazione" data-number="2"><span class="header-section-number">2</span> Contesto e motivazione</h2>
+<section id="contesto-e-motivazione" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="contesto-e-motivazione"><span class="header-section-number">2</span> Contesto e motivazione</h2>
 <p>La Puglia rappresenta la seconda regione per popolazione nel Mezzogiorno e la quinta a livello nazionale. Il sistema bancario regionale riflette la struttura produttiva: prevalenza di piccole e micro imprese, elevata esposizione ai settori tradizionali (commercio, costruzioni, agricoltura), limitata presenza di imprese manifatturiere di media-grande dimensione.</p>
 <p>Il credito bancario costituisce la principale fonte di finanziamento esterno per le PMI italiane e pugliesi in particolare. La letteratura empirica documenta in modo consistente che le imprese meridionali fronteggiano condizioni di accesso al credito più restrittive rispetto alla media nazionale, con spread più elevati e garanzie collaterali maggiori a parità di caratteristiche dell’impresa (Panetta e Signoretti, 2010; Bonaccorsi di Patti e Gobbi, 2007; Albertazzi e Marchetti, 2010). Se la convergenza di queste condizioni verso la media nazionale si sia avviata o sia ancora lontana è una delle domande a cui questa analisi cerca di contribuire.</p>
 <blockquote class="blockquote">
@@ -239,146 +239,86 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <hr>
 </section>
-<section id="framework-analitico" class="level2 anchored" data-anchor-id="framework-analitico" data-number="3">
-<h2 class="anchored" data-anchor-id="framework-analitico" data-number="3"><span class="header-section-number">3</span> Framework analitico</h2>
+<section id="framework-analitico" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="framework-analitico"><span class="header-section-number">3</span> Framework analitico</h2>
 <p>L’analisi si articola su tre fonti principali, descritte nella nota tecnica allegata:</p>
 <p>La prima è la serie <strong>TDB10226</strong> di Banca d’Italia, che misura lo stock di prestiti (esclusi PCT e sofferenze) per provincia e settore della clientela su base mensile. Il settore SBI25 (società non finanziarie e famiglie produttrici) è il proxy più vicino al concetto di “imprese” nell’accezione corrente. La serie è disponibile dal 2007, aggiornata a febbraio 2026.</p>
 <p>La seconda è la serie <strong>TRI30633</strong>, che misura lo stock di sofferenze per area geografica. Il rapporto sofferenze/prestiti (TRI30633/TDB10295) è utilizzato come misura del tasso di deterioramento del portafoglio bancario.</p>
 <p>La terza è il dataset <strong>Fondo di Garanzia PMI</strong> (MiMIT, elaborazione su microdati parquet), che contiene le singole operazioni garantite dal Fondo con dettaglio per importo, regione, settore e data di delibera. Il FdG copre una quota stimata del 17% del totale dei prestiti alle imprese pugliesi (2025), ed è quindi trattato come proxy dell’intervento pubblico nel mercato del credito, non come misura del mercato totale.</p>
 <hr>
 </section>
-<section id="analisi" class="level2 anchored" data-anchor-id="analisi" data-number="4">
-<h2 class="anchored" data-anchor-id="analisi" data-number="4"><span class="header-section-number">4</span> Analisi</h2>
-<section id="lo-stock-di-credito-una-contrazione-prolungata-e-una-stabilizzazione-recente" class="level3 anchored" data-anchor-id="lo-stock-di-credito-una-contrazione-prolungata-e-una-stabilizzazione-recente" data-number="4.1">
-<h3 class="anchored" data-anchor-id="lo-stock-di-credito-una-contrazione-prolungata-e-una-stabilizzazione-recente" data-number="4.1"><span class="header-section-number">4.1</span> Lo stock di credito: una contrazione prolungata e una stabilizzazione recente</h3>
-<div id="cell-fig-prestiti-totali" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display">
-<div id="figura-prestiti-totali" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-prestiti-totali-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<section id="analisi" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="analisi"><span class="header-section-number">4</span> Analisi</h2>
+<section id="lo-stock-di-credito-una-contrazione-prolungata-e-una-stabilizzazione-recente" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="lo-stock-di-credito-una-contrazione-prolungata-e-una-stabilizzazione-recente"><span class="header-section-number">4.1</span> Lo stock di credito: una contrazione prolungata e una stabilizzazione recente</h3>
 <p><img src="figure/fig01.png" class="figure-img" role="img" width="1186" height="659"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;1: Stock di prestiti bancari in Puglia per settore della clientela. Unità: miliardi di euro. Fonte: Banca d’Italia, TDB10226. Elaborazione propria. La serie SBI25 (linea blu) include società non finanziarie e famiglie produttrici.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p><strong>Fatto.</strong> Lo stock di prestiti a società non finanziarie e famiglie produttrici in Puglia (SBI25) ha raggiunto il picco intorno al 2011-2012 e ha poi subito una contrazione protratta fino al 2017-2018, riflettendo la combinazione di domanda debole e offerta restrittiva nel periodo post-recessione. A febbraio 2026 lo stock è pari a circa 20.4 miliardi di euro.</p>
 <p><strong>Interpretazione.</strong> La stabilizzazione del 2022-2025 può essere letta come convergenza verso un nuovo equilibrio di lungo periodo, a livelli strutturalmente inferiori rispetto al pre-crisi. In alternativa, può riflettere una domanda di credito ancora depressa in un contesto di tassi elevati (2022-2024). Le due letture non sono mutuamente esclusive.</p>
 <p><strong>Assunzione critica.</strong> Il dato è uno stock: non permette di distinguere tra contrazione del credito per riduzione della domanda, per deterioramento del merito creditizio delle imprese, o per razionamento da parte delle banche. Senza dati sulle condizioni di offerta (spread, garanzie richieste, tassi di rigetto delle domande), la causa della dinamica rimane indeterminata.</p>
 </section>
-<section id="dinamica-relativa-puglia-vs-italia" class="level3 anchored" data-anchor-id="dinamica-relativa-puglia-vs-italia" data-number="4.2">
-<h3 class="anchored" data-anchor-id="dinamica-relativa-puglia-vs-italia" data-number="4.2"><span class="header-section-number">4.2</span> Dinamica relativa: Puglia vs Italia</h3>
-<div id="cell-fig-yoy" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display">
-<div id="figura-yoy" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-yoy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<section id="dinamica-relativa-puglia-vs-italia" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="dinamica-relativa-puglia-vs-italia"><span class="header-section-number">4.2</span> Dinamica relativa: Puglia vs Italia</h3>
 <p><img src="figure/fig02.png" class="figure-img" role="img" width="1185" height="659"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;2: Variazione annua (su 12 mesi) dei prestiti bancari alle imprese: Puglia (linea blu) vs Italia (linea grigia tratteggiata). Fonte: Banca d’Italia, TDB10226, SBI25. Elaborazione propria.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p><strong>Fatto.</strong> La dinamica dei prestiti alle imprese pugliesi ha mostrato variazioni annue negative in modo più persistente rispetto alla media nazionale nel periodo 2012-2018. Dal 2021 il differenziale si è ridotto, con variazioni sostanzialmente allineate tra Puglia e Italia.</p>
 <p><strong>Interpretazione.</strong> La convergenza recente può riflettere tanto un miglioramento relativo delle condizioni di accesso al credito in Puglia quanto una generalizzazione della debolezza della domanda a livello nazionale. Non è possibile, con questi dati, attribuire la convergenza a uno specifico meccanismo.</p>
 <p><strong>Obiezione Risk Committee.</strong> La convergenza nelle variazioni annue non implica convergenza nei livelli assoluti di credito per unità di PIL. Una regione con un livello di partenza più basso può mostrare la stessa variazione percentuale di un’altra con un livello più alto, mantenendo invariata la distanza strutturale.</p>
 </section>
-<section id="la-composizione-settoriale-del-credito" class="level3 anchored" data-anchor-id="la-composizione-settoriale-del-credito" data-number="4.3">
-<h3 class="anchored" data-anchor-id="la-composizione-settoriale-del-credito" data-number="4.3"><span class="header-section-number">4.3</span> La composizione settoriale del credito</h3>
-<div id="cell-fig-ateco" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display">
-<div id="figura-ateco" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-ateco-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<section id="la-composizione-settoriale-del-credito" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="la-composizione-settoriale-del-credito"><span class="header-section-number">4.3</span> La composizione settoriale del credito</h3>
 <p><img src="figure/fig03.png" class="figure-img" role="img" width="1186" height="659"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;3: Stock di prestiti alle imprese pugliesi per settore ATECO. Unità: miliardi di euro. Fonte: Banca d’Italia, TDB10224, SBI25. Elaborazione propria. La serie include solo i settori con maggiore rappresentatività.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p><strong>Fatto.</strong> Il commercio e le costruzioni sono storicamente i settori con la maggiore esposizione creditizia. La manifattura (ATECO C) mostra uno stock relativamente modesto in rapporto al peso occupazionale del settore, il che riflette sia la dimensione ridotta delle imprese manifatturiere pugliesi sia il maggiore utilizzo di autofinanziamento o fonti alternative.</p>
 <p><strong>Inferenza.</strong> Il peso elevato delle costruzioni nel portafoglio creditizio bancario pugliese pone un interrogativo sulla qualità del collaterale: in un contesto di mercato immobiliare depresso, la capacità di recupero in caso di insolvenza dipende in misura significativa dalla liquidità dei cespiti immobiliari. Questo nesso non è verificabile con i dati disponibili.</p>
 </section>
-<section id="qualità-del-credito-sofferenze-e-tasso-di-deterioramento" class="level3 anchored" data-anchor-id="qualità-del-credito-sofferenze-e-tasso-di-deterioramento" data-number="4.4">
-<h3 class="anchored" data-anchor-id="qualità-del-credito-sofferenze-e-tasso-di-deterioramento" data-number="4.4"><span class="header-section-number">4.4</span> Qualità del credito: sofferenze e tasso di deterioramento</h3>
-<div id="cell-fig-sofferenze" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display">
-<div id="figura-sofferenze" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-sofferenze-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<section id="qualità-del-credito-sofferenze-e-tasso-di-deterioramento" class="level3" data-number="4.4">
+<h3 data-number="4.4" class="anchored" data-anchor-id="qualità-del-credito-sofferenze-e-tasso-di-deterioramento"><span class="header-section-number">4.4</span> Qualità del credito: sofferenze e tasso di deterioramento</h3>
 <p><img src="figure/fig04.png" class="figure-img" role="img" width="1185" height="659"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;4: Sofferenze (asse sinistro, mld €) e tasso di deterioramento stimato (asse destro, %) per le imprese pugliesi. Fonte: Banca d’Italia, TRI30633 e TDB10295. Elaborazione propria. Il tasso di deterioramento è calcolato come sofferenze/prestiti totali (incluse sofferenze).</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p><strong>Fatto.</strong> Il tasso di deterioramento del portafoglio creditizio alle imprese pugliesi ha raggiunto un picco stimato di circa 95832% (2024-06) e mostra una traiettoria di riduzione nel periodo successivo. L’ultimo dato disponibile indica un tasso di circa 95571%.</p>
 <p><strong>Interpretazione.</strong> La riduzione del tasso di deterioramento va letta con cautela. Parte di essa riflette operazioni di cessione di crediti deteriorati (cartolarizzazioni NPL), che riducono lo stock senza che si sia verificato un miglioramento del merito creditizio degli debitori. Non è possibile separare i due effetti con i dati disponibili.</p>
 <p><strong>Vulnerabilità metodologica.</strong> Il tasso di deterioramento qui calcolato (TRI30633/TDB10295) è una proxy: le due serie non sono perfettamente omogenee per perimetro e data di rilevazione. Questo introduce un errore di misura non quantificabile.</p>
 </section>
-<section id="il-fondo-di-garanzia-come-strumento-complementare" class="level3 anchored" data-anchor-id="il-fondo-di-garanzia-come-strumento-complementare" data-number="4.5">
-<h3 class="anchored" data-anchor-id="il-fondo-di-garanzia-come-strumento-complementare" data-number="4.5"><span class="header-section-number">4.5</span> Il Fondo di Garanzia come strumento complementare</h3>
-<div id="cell-fig-fdg-quota" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display">
-<div id="figura-fdg-quota" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-fdg-quota-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<section id="il-fondo-di-garanzia-come-strumento-complementare" class="level3" data-number="4.5">
+<h3 data-number="4.5" class="anchored" data-anchor-id="il-fondo-di-garanzia-come-strumento-complementare"><span class="header-section-number">4.5</span> Il Fondo di Garanzia come strumento complementare</h3>
 <p><img src="figure/fig05.png" class="figure-img" role="img" width="1186" height="659"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;5: Stock di prestiti bancari alle imprese (barre grigie) e finanziamenti con garanzia FdG (barre blu). La linea rossa indica la quota % del FdG sul totale. Fonte: Banca d’Italia TDB10226 e FdG MiMIT. Elaborazione propria.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p><strong>Fatto.</strong> La quota dei finanziamenti garantiti dal FdG sul totale dei prestiti alle imprese pugliesi era stimabile intorno al 5% nel 2019. Dopo il picco del 2020-2021 (garanzie emergenziali COVID), si attesta nel 2025 intorno al 17%.</p>
 <p><strong>Interpretazione.</strong> L’aumento strutturale della quota FdG suggerisce che una quota crescente di imprese pugliesi accede al credito bancario solo attraverso la mediazione della garanzia pubblica. Questa dipendenza può essere letta come un indicatore di fragilità del merito creditizio delle PMI o come effetto di razionalità economica (conviene sempre attivare la garanzia quando disponibile, indipendentemente dal merito). Le due interpretazioni hanno implicazioni di policy molto diverse.</p>
 <p><strong>Obiezione academic reviewer.</strong> L’aumento della quota FdG potrebbe riflettere semplicemente l’ampliamento normativo del perimetro del Fondo (plafond elevati, soglie abbassate, coperture al 100%) più che un peggioramento strutturale del merito creditizio. Senza tenere conto delle modifiche normative intervenute nel periodo, il confronto temporale della quota è di difficile interpretazione.</p>
 <hr>
 </section>
 </section>
-<section id="classificazione-esplicita-dei-rischi" class="level2 anchored" data-anchor-id="classificazione-esplicita-dei-rischi" data-number="5">
-<h2 class="anchored" data-anchor-id="classificazione-esplicita-dei-rischi" data-number="5"><span class="header-section-number">5</span> Classificazione esplicita dei rischi</h2>
+<section id="classificazione-esplicita-dei-rischi" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="classificazione-esplicita-dei-rischi"><span class="header-section-number">5</span> Classificazione esplicita dei rischi</h2>
 <p><strong>Rischio di credito — concentrazione settoriale.</strong> Il portafoglio bancario pugliese mostra una concentrazione su costruzioni e commercio, settori a elevata ciclicità e con collaterale immobiliare illiquido in contesti di stress. <em>Orizzonte: breve-medio. Trigger: deterioramento del mercato immobiliare o contrazione consumi. Fragilità: mancanza di dati granulari per istituto.</em></p>
 <p><strong>Rischio di modello — dipendenza dalla garanzia pubblica.</strong> L’aumento della quota FdG rende le banche esposte a un rischio di selezione avversa: la garanzia pubblica può ridurre gli incentivi al monitoraggio del merito creditizio. <em>Orizzonte: medio. Trigger: escussioni massive in un ciclo recessivo. Fragilità: non osservabile con dati aggregati.</em></p>
 <p><strong>Rischio sistemico — pro-ciclicità della garanzia.</strong> In una recessione, il volume di escussioni FdG aumenta simultaneamente per molti prenditori, concentrando il rischio sullo Stato. Il Fondo non è uno strumento di diversificazione del rischio ma di trasferimento. <em>Orizzonte: medio-lungo. Trigger: shock macro. Fragilità: nessun dato su escussioni effettive disponibile.</em></p>
 <p><strong>Rischio regolamentare.</strong> Le modifiche ai criteri di eligibilità del FdG e alla normativa NPL europei (calendar provisioning, linee guida EBA) influenzano sia la domanda di garanzia sia l’incentivo delle banche a cedere sofferenze. <em>Orizzonte: continuo. Trigger: recepimento direttive UE.</em></p>
 <hr>
 </section>
-<section id="tre-scenari-prospettici" class="level2 anchored" data-anchor-id="tre-scenari-prospettici" data-number="6">
-<h2 class="anchored" data-anchor-id="tre-scenari-prospettici" data-number="6"><span class="header-section-number">6</span> Tre scenari prospettici</h2>
+<section id="tre-scenari-prospettici" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="tre-scenari-prospettici"><span class="header-section-number">6</span> Tre scenari prospettici</h2>
 <p><strong>Scenario A — Stabilizzazione graduale (scenario base).</strong> Lo stock di prestiti rimane su livelli prossimi a quelli attuali nei prossimi 12-18 mesi. Il tasso di deterioramento continua a ridursi per effetto di nuove cessioni NPL. La quota FdG si stabilizza intorno ai livelli attuali con la normalizzazione dei plafond post-COVID. <em>Indicatori di monitoraggio: variazione annua TDB10226 compresa tra -2% e +2%; tasso det. in calo costante; quota FdG stabile.</em></p>
 <p><strong>Scenario B — Ripresa guidata dagli investimenti.</strong> Il ciclo degli investimenti produttivi (transizione energetica, PNRR, agritech) genera domanda di credito per la manifattura e le energie rinnovabili. Lo stock di prestiti alle imprese torna a crescere a ritmi del 3-5% annuo. L’aumento della qualità dei prenditori riduce la dipendenza dalla garanzia pubblica. <em>Trigger: accelerazione effettiva nell’implementazione degli investimenti PNRR in Puglia; miglioramento delle aspettative degli imprenditori. Fragilità: il nesso tra PNRR e credito bancario non è automatico e dipende dall’architettura finanziaria degli interventi.</em></p>
 <p><strong>Scenario C — Deterioramento da rialzo dei tassi prolungato.</strong> I tassi di interesse rimangono elevati oltre le aspettative correnti, comprimendo la capacità di rimborso delle imprese con debito a tasso variabile. Il tasso di deterioramento risale verso i livelli del biennio 2015-2017. Le banche irrigidiscono le condizioni di offerta. <em>Trigger: inflazione persistente; tassi BCE stabili o in rialzo. Implicazioni: aumento delle escussioni FdG, pressione sui bilanci bancari regionali, ulteriore contrazione dello stock di prestiti. Questo scenario è coerente con le vulnerabilità strutturali già documentate.</em></p>
 <hr>
 </section>
-<section id="limiti-dellanalisi" class="level2 anchored" data-anchor-id="limiti-dellanalisi" data-number="7">
-<h2 class="anchored" data-anchor-id="limiti-dellanalisi" data-number="7"><span class="header-section-number">7</span> Limiti dell’analisi</h2>
+<section id="limiti-dellanalisi" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="limiti-dellanalisi"><span class="header-section-number">7</span> Limiti dell’analisi</h2>
 <p>L’analisi si basa esclusivamente su dati aggregati a livello NUTS2. Non è possibile osservare la distribuzione intrabancaria o intra-settoriale del rischio, né le condizioni di prezzo (spread, tassi praticati) che determinano l’accessibilità effettiva del credito. L’assenza di dati Banca d’Italia per la Puglia da tabelle MIR (tassi per area geografica) non permette di stimare il costo del credito a livello regionale. Il Fondo di Garanzia è trattato come strumento unitario, senza distinguere tra garanzie dirette, controgaranzie e cogaranzie, né tra le diverse normative che hanno disciplinato il Fondo nel periodo analizzato.</p>
 <hr>
 </section>
-<section id="criticità-residue-e-vulnerabilità-aperte" class="level2 anchored" data-anchor-id="criticità-residue-e-vulnerabilità-aperte" data-number="8">
-<h2 class="anchored" data-anchor-id="criticità-residue-e-vulnerabilità-aperte" data-number="8"><span class="header-section-number">8</span> Criticità residue e vulnerabilità aperte</h2>
+<section id="criticità-residue-e-vulnerabilità-aperte" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="criticità-residue-e-vulnerabilità-aperte"><span class="header-section-number">8</span> Criticità residue e vulnerabilità aperte</h2>
 <p>La questione irrisolta centrale è la seguente: la riduzione dello stock di prestiti alle imprese pugliesi nel periodo 2012-2020 riflette prevalentemente una riduzione della domanda (imprese meno indebitate per scelta o per difficoltà di crescita) o una riduzione dell’offerta (banche più restrittive)? La risposta ha implicazioni di policy profondamente diverse. Un’analisi delle condizioni di offerta richiederebbe dati sui tassi di rigetto delle domande di credito e sui tassi applicati, che non sono disponibili nel database utilizzato. Questa lacuna non è colmabile con le fonti attuali dell’HUB e costituisce la principale vulnerabilità dell’analisi.</p>
 <hr>
 <p><em>Fonti primarie: Banca d’Italia — Rilevazioni Territoriali (TDB10226, TDB10224, TDB10295, TRI30633, TDB20290), aggiornate a febbraio 2026; Fondo di Garanzia PMI — MiMIT, microdati delibere 2012-2025.</em></p>
 <p><em>Fonti secondarie consultate: MEMORIA corpus (82 chunk su credito bancario e politica monetaria, score cross-encoder: tutti negativi, qualità bassa per questo tema specifico).</em></p>
+
+
 </section>
-
-
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -789,7 +729,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2603_CreditoImpresePugliesi/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

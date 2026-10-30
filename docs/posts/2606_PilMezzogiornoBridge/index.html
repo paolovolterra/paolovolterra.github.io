@@ -75,6 +75,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../MCC.css">
 <meta property="og:title" content="PIL del Mezzogiorno prima dei conti regionali ISTAT – Paolo Volterra">
@@ -173,7 +202,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#rolling-update-2026-nowcast-in-tempo-reale" id="toc-rolling-update-2026-nowcast-in-tempo-reale" class="nav-link" data-scroll-target="#rolling-update-2026-nowcast-in-tempo-reale"><span class="header-section-number">8</span> Rolling update 2026 — nowcast in tempo reale</a></li>
   <li><a href="#conclusioni" id="toc-conclusioni" class="nav-link" data-scroll-target="#conclusioni"><span class="header-section-number">9</span> Conclusioni</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_PilMezzogiornoBridge/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -232,39 +261,22 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="motivazione" class="level2 anchored" data-number="1" data-anchor-id="motivazione">
-<h2 class="anchored" data-number="1" data-anchor-id="motivazione"><span class="header-section-number">1</span> Motivazione</h2>
+<section id="motivazione" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="motivazione"><span class="header-section-number">1</span> Motivazione</h2>
 <p>I conti economici territoriali ISTAT vengono pubblicati con un ritardo strutturale di circa 18 mesi rispetto all’anno di riferimento. SVIMEZ pubblica stime anticipate del PIL del Mezzogiorno nel proprio Rapporto annuale, ma il modello bi-regionale utilizzato non è open-access (<span class="citation" data-cites="svimez2000">@svimez2000</span>). Questo lavoro propone un’alternativa riproducibile basata su bridge equations annuali, un approccio documentato in letteratura per il nowcasting del PIL a partire da indicatori ad alta frequenza <span class="citation" data-cites="linzenich2024">[<span class="citation" data-cites="linzenich2024">@linzenich2024</span>]</span>.</p>
 </section>
-<section id="dati" class="level2 anchored" data-number="2" data-anchor-id="dati">
-<h2 class="anchored" data-number="2" data-anchor-id="dati"><span class="header-section-number">2</span> Dati</h2>
+<section id="dati" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="dati"><span class="header-section-number">2</span> Dati</h2>
 <p><strong>VA per macroarea</strong> (variabile dipendente): ISTAT dataflow <code>93_1227</code> (Conti Economici Territoriali, struttura DCCN_TNA1), edizione dicembre 2025. Valori concatenati base 2020 (<code>VALUATION=L_2020</code>) per ITFG (Mezzogiorno) e ITCDE (Centro-Nord). Il deflatore regionale implicito — calcolato come rapporto VA correnti / VA concatenati — differisce da quello nazionale: nel 2023, il Mezzogiorno registra un deflatore inferiore di circa 1pp rispetto alla media nazionale, coerentemente con la minore presenza industriale. Copertura: 2000–2024.</p>
 <p>La struttura settoriale (quota VA per NACE Rev.2) è derivata da Eurostat <code>nama_10r_3gva</code>, valori correnti CP_MEUR, NUTS1 2021: ITC (Nord-Ovest), ITH (Nord-Est), ITI (Centro), ITF (Sud), ITG (Isole).</p>
 <p><strong>Occupazione</strong> (regressore settoriale): ISTAT <code>93_379_DF_DCCN_OCCTSEC2010_1</code>, edizione dicembre 2025. Unità di lavoro (ULA) per settore NACE Rev.2, macroaree ITFG (Mezzogiorno) e ITCDE (Centro-Nord). Copertura: 1995–2023.</p>
 <p><strong>Nota</strong>: IPI e permessi di costruire ISTAT sono disponibili solo a livello nazionale via SDMX — nessuna disaggregazione per ripartizione geografica.</p>
-<div id="cell-fig-quota" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display">
-<div id="figura-quota" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-quota-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig01.png" class="figure-img" role="img" width="1173" height="490"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;1: Quota del Mezzogiorno sul VA totale nazionale (prezzi correnti, 2001–2024)</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p>La quota del Mezzogiorno sul VA nazionale segue un trend discendente da 24.0% nel 2001 a 22.0% nel 2019, con un modesto recupero a 22.4% nel 2024. Il divario strutturale riflette una crescita reale sistematicamente inferiore alla media nazionale di circa 0.3pp annui.</p>
-<section id="struttura-settoriale" class="level3 anchored" data-number="2.1" data-anchor-id="struttura-settoriale">
-<h3 class="anchored" data-number="2.1" data-anchor-id="struttura-settoriale"><span class="header-section-number">2.1</span> Struttura settoriale</h3>
-<div class="cell" data-execution_count="3">
-<div id="tab-settori" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-settori-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<section id="struttura-settoriale" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="struttura-settoriale"><span class="header-section-number">2.1</span> Struttura settoriale</h3>
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Settore</th>
@@ -312,29 +324,17 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;1: Quote VA per settore (prezzi correnti, 2023)</p>
-</div>
-</div>
-</div>
-</div>
 <p>La struttura settoriale del Mezzogiorno si distingue per il peso della componente pubblica (PA, istruzione, sanità: <strong>26.3%</strong> vs 16.8% al Centro-Nord) e per la minore presenza industriale (<strong>12.7%</strong> vs 22.4%). Questa composizione attutisce le fluttuazioni cicliche — la componente pubblica è quasi immune agli indicatori congiunturali — ma riduce anche la capacità di rispondere a stimoli nazionali di domanda.</p>
 </section>
 </section>
-<section id="bridge-equations" class="level2 anchored" data-number="3" data-anchor-id="bridge-equations">
-<h2 class="anchored" data-number="3" data-anchor-id="bridge-equations"><span class="header-section-number">3</span> Bridge equations</h2>
-<section id="modello-di-base-m1" class="level3 anchored" data-number="3.1" data-anchor-id="modello-di-base-m1">
-<h3 class="anchored" data-number="3.1" data-anchor-id="modello-di-base-m1"><span class="header-section-number">3.1</span> Modello di base (M1)</h3>
+<section id="bridge-equations" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="bridge-equations"><span class="header-section-number">3</span> Bridge equations</h2>
+<section id="modello-di-base-m1" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="modello-di-base-m1"><span class="header-section-number">3.1</span> Modello di base (M1)</h3>
 <p>Il modello di base regredisce la crescita reale del VA del Mezzogiorno sulla crescita reale del VA nazionale:</p>
 <p><span class="math display">\[\Delta \ln VA^r_{Mz,t} = \alpha + \beta \cdot \Delta \ln VA^r_{IT,t} + \varepsilon_t\]</span></p>
-<div class="cell" data-execution_count="4">
-<div id="tab-m1" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-m1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -365,26 +365,14 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;2: Stima OLS — Modello M1. Standard error HC3. Campione 2002–2024.</p>
-</div>
-</div>
-</div>
-</div>
 <p>Il coefficiente β del Mezzogiorno (0.934) è significativamente inferiore a 1 e a quello del Centro-Nord (1.020): il ciclo meridionale amplifica meno le variazioni nazionali, coerentemente con il maggior peso della componente pubblica. La costante negativa (−0.30%/anno) cattura il divario strutturale di crescita.</p>
 </section>
-<section id="estensione-con-ula-costruzioni-m2" class="level3 anchored" data-number="3.2" data-anchor-id="estensione-con-ula-costruzioni-m2">
-<h3 class="anchored" data-number="3.2" data-anchor-id="estensione-con-ula-costruzioni-m2"><span class="header-section-number">3.2</span> Estensione con ULA Costruzioni (M2)</h3>
+<section id="estensione-con-ula-costruzioni-m2" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="estensione-con-ula-costruzioni-m2"><span class="header-section-number">3.2</span> Estensione con ULA Costruzioni (M2)</h3>
 <p>Aggiungendo la crescita delle unità di lavoro nel settore Costruzioni del Mezzogiorno:</p>
 <p><span class="math display">\[\Delta \ln VA^r_{Mz,t} = \alpha + \beta \cdot \Delta \ln VA^r_{IT,t} + \gamma \cdot \Delta \ln ULA^F_{Mz,t} + \varepsilon_t\]</span></p>
-<div class="cell" data-execution_count="5">
-<div id="tab-m2" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="5">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-m2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -414,42 +402,18 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;3: Stima OLS — Modello M2 (con ULA Costruzioni). Campione 2002–2023.</p>
-</div>
-</div>
-</div>
-</div>
 <p>Il coefficiente γ delle costruzioni è significativo (t=4.8): un aumento del 10% delle ULA nelle costruzioni del Mezzogiorno si associa a un incremento aggiuntivo di circa 1.1pp del VA. Questo canale riflette il ciclo edilizio — in particolare il Superbonus 110% tra il 2021 e il 2024, che ha prodotto variazioni straordinarie delle ULA del settore (+26.1% nel 2021, +13.9% nel 2022 per il Mezzogiorno).</p>
 </section>
-<section id="confronto-fitted-vs-actual" class="level3 anchored" data-number="3.3" data-anchor-id="confronto-fitted-vs-actual">
-<h3 class="anchored" data-number="3.3" data-anchor-id="confronto-fitted-vs-actual"><span class="header-section-number">3.3</span> Confronto fitted vs actual</h3>
-<div id="cell-fig-fitted" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display">
-<div id="figura-fitted" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-fitted-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<section id="confronto-fitted-vs-actual" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="confronto-fitted-vs-actual"><span class="header-section-number">3.3</span> Confronto fitted vs actual</h3>
 <p><img src="figure/fig02.png" class="figure-img" role="img" width="958" height="550"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;2: VA reale Mezzogiorno: effettivo vs stimato da M1 (2002–2024)</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p>Il modello M1 replica bene le variazioni del ciclo (2020: −8%, 2021: +8%), ma sottostima sistematicamente il 2022 (+1.2pp) e il 2024 (+1.0pp). Il residuo positivo nel 2024 riflette la sovraperformance strutturale del Mezzogiorno in quell’anno, probabilmente legata alla ZES Unica e all’accelerazione dei cantieri PNRR concentrati nel Sud.</p>
 </section>
-<section id="pseudo-validazione-out-of-sample-20222024" class="level3 anchored" data-number="3.4" data-anchor-id="pseudo-validazione-out-of-sample-20222024">
-<h3 class="anchored" data-number="3.4" data-anchor-id="pseudo-validazione-out-of-sample-20222024"><span class="header-section-number">3.4</span> Pseudo-validazione out-of-sample (2022–2024)</h3>
-<div class="cell" data-execution_count="7">
-<div id="tab-oos" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="7">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-oos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<section id="pseudo-validazione-out-of-sample-20222024" class="level3" data-number="3.4">
+<h3 data-number="3.4" class="anchored" data-anchor-id="pseudo-validazione-out-of-sample-20222024"><span class="header-section-number">3.4</span> Pseudo-validazione out-of-sample (2022–2024)</h3>
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Anno</th>
@@ -515,40 +479,16 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;4: Crescita VA reale — ISTAT ufficiale (93_1227, L_2020) vs modello M1. Anni con dati disponibili.</p>
-</div>
-</div>
-</div>
-</div>
 <p><em>Nota:</em> = fuori campione di stima (2024). Tutti i valori “ISTAT” provengono da ISTAT dataflow 93_1227, VALUATION=L_2020, edizione 2025M12.</p>
 <p>Il modello replica bene il ciclo 2020–2021. Il residuo positivo al Mezzogiorno nel 2022–2024 riflette effetti non catturabili dal VA nazionale: Superbonus 110%, ZES Unica, accelerazione cantieri PNRR concentrati al Sud.</p>
 </section>
 </section>
-<section id="stima-2025" class="level2 anchored" data-number="4" data-anchor-id="stima-2025">
-<h2 class="anchored" data-number="4" data-anchor-id="stima-2025"><span class="header-section-number">4</span> Stima 2025</h2>
-<div id="cell-fig-stima2025" class="cell" data-execution_count="8">
-<div class="cell-output cell-output-display">
-<div id="figura-stima2025" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-stima2025-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<section id="stima-2025" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="stima-2025"><span class="header-section-number">4</span> Stima 2025</h2>
 <p><img src="figure/fig03.png" class="figure-img" role="img" width="708" height="429"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;3: Stima VA reale Mezzogiorno 2025 con intervalli di confidenza al 90% e 95%</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="9">
-<div id="tab-stima2025" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="9">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-stima2025-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -584,29 +524,13 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;5: Stima puntuale e intervalli di confidenza VA reale 2025</p>
-</div>
-</div>
-</div>
-</div>
-<div id="a0bb98cb" class="cell" data-execution_count="10">
-<div class="cell-output cell-output-display">
 <p>Con una crescita nazionale di <strong>+0.5%</strong> (Eurostat 2026-06-26), il modello M1 prevede una crescita reale del Mezzogiorno di <strong>0.14%</strong>, sostanzialmente stagnante. L'intervallo di confidenza al 95% (-0.21%, 0.49%) include la stagnazione. Il Centro-Nord è stimato a 0.61%, confermando il divario strutturale.</p>
-</div>
-</div>
 <p><strong>Avvertenza per M2</strong>: il modello esteso con ULA Costruzioni (R²=0.965) non è applicabile al 2025 in tempo reale perché i dati occupazionali ISTAT per il 2025 non saranno disponibili prima del 2027.</p>
 </section>
-<section id="analisi-nuts2-m1-per-le-20-regioni" class="level2 anchored" data-number="5" data-anchor-id="analisi-nuts2-m1-per-le-20-regioni">
-<h2 class="anchored" data-number="5" data-anchor-id="analisi-nuts2-m1-per-le-20-regioni"><span class="header-section-number">5</span> Analisi NUTS2 — M1 per le 20 regioni</h2>
-<div class="cell" data-execution_count="11">
-<div id="tab-nuts2" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="11">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-nuts2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<section id="analisi-nuts2-m1-per-le-20-regioni" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="analisi-nuts2-m1-per-le-20-regioni"><span class="header-section-number">5</span> Analisi NUTS2 — M1 per le 20 regioni</h2>
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Macro</th>
@@ -854,54 +778,16 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;6: M1 per le 20 regioni italiane: α (gap strutturale annuo), β (sensibilità al ciclo nazionale), R². Fonte: ISTAT 93_1227 L_2020, ed.&nbsp;2025M12.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="cell-fig-nuts2-alpha" class="cell" data-execution_count="12">
-<div class="cell-output cell-output-display">
-<div id="figura-nuts2-alpha" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-nuts2-alpha-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig04.png" class="figure-img" role="img" width="972" height="610"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;4: Gap strutturale α per regione (M1, % annuo). Barre rosse: α significativo (|t|&gt;2). Fonte: ISTAT 93_1227 L_2020.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="cell-fig-nuts2-beta" class="cell" data-execution_count="13">
-<div class="cell-output cell-output-display">
-<div id="figura-nuts2-beta" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-nuts2-beta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig05.png" class="figure-img" role="img" width="971" height="609"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;5: Sensibilità β al ciclo nazionale per regione (M1). β&gt;1: amplifica il ciclo; β&lt;1: attutisce.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="bridge-settoriale-m3" class="level2 anchored" data-number="6" data-anchor-id="bridge-settoriale-m3">
-<h2 class="anchored" data-number="6" data-anchor-id="bridge-settoriale-m3"><span class="header-section-number">6</span> Bridge settoriale (M3)</h2>
-<div class="cell" data-execution_count="14">
-<div id="tab-m3" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="14">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-m3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display">
+<section id="bridge-settoriale-m3" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="bridge-settoriale-m3"><span class="header-section-number">6</span> Bridge settoriale (M3)</h2>
 <p><strong>Mezzogiorno</strong></p>
-</div>
-<div class="cell-output cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Settore</th>
@@ -961,12 +847,8 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="cell-output cell-output-display">
 <p><strong>Centro-Nord</strong></p>
-</div>
-<div class="cell-output cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Settore</th>
@@ -1026,34 +908,10 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;7: M3 — bridge settoriale per Mezzogiorno: α e β per settore. Fonte: ISTAT 93_1227 L_2020, ed.&nbsp;2025M12.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="cell-fig-m3-alpha" class="cell" data-execution_count="15">
-<div class="cell-output cell-output-display">
-<div id="figura-m3-alpha" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-m3-alpha-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig06.png" class="figure-img" role="img" width="971" height="490"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;6: Gap strutturale α per settore e macroarea (M3). Fonte: ISTAT 93_1227 L_2020.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="16">
-<div id="tab-m3-additivity" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="16">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-m3-additivity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -1079,28 +937,14 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;8: Check additività M3 vs M1: previsione 2025 bottom-up (somma settori) vs top-down.</p>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="m4-bridge-con-produzione-industriale" class="level2 anchored" data-number="7" data-anchor-id="m4-bridge-con-produzione-industriale">
-<h2 class="anchored" data-number="7" data-anchor-id="m4-bridge-con-produzione-industriale"><span class="header-section-number">7</span> M4 — Bridge con produzione industriale</h2>
+<section id="m4-bridge-con-produzione-industriale" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="m4-bridge-con-produzione-industriale"><span class="header-section-number">7</span> M4 — Bridge con produzione industriale</h2>
 <p>L’IPI (Indice di Produzione Industriale) misura mensilmente quanto produce l’industria italiana. Aggregato ad annuale, serve a distinguere il <em>tipo</em> di crescita nazionale: una ripresa trainata dall’industria avvantaggia il Centro-Nord (dove l’industria è concentrata), non il Mezzogiorno.</p>
-<div class="cell" data-execution_count="17">
-<div class="cell-output cell-output-stdout">
 <pre><code>* M1 stimato sullo stesso campione (24 obs) per confronto equo.
   IPI disponibile fino al 2025.</code></pre>
-</div>
-<div id="tab-m4" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="17">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-m4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Area</th>
@@ -1139,38 +983,12 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;9: M4 — bridge con IPI: aggiunge la produzione industriale come regressore. Fonte: ISTAT 93_1227 L_2020 + Eurostat sts_inpr_a.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="cell-fig-m4-ipi-sign" class="cell" data-execution_count="18">
-<div class="cell-output cell-output-display">
-<div id="figura-m4-ipi-sign" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-m4-ipi-sign-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig07.png" class="figure-img" role="img" width="1091" height="499"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;7: Il coefficiente dell’IPI (γ) ha segno opposto tra Mezzogiorno e Centro-Nord: le riprese industriali avvantaggiano il Nord.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="19">
-<div class="cell-output cell-output-stdout">
 <pre><code>Note: IPI 2024=-4.0%/a (contrazione industriale). IPI 2025=-0.3%/a.
 Contrazione IPI → γ negativo × IPI negativo = effetto leggermente positivo per Mz.</code></pre>
-</div>
-<div id="tab-m4-stima2025" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="19">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-m4-stima2025-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Modello</th>
@@ -1194,38 +1012,14 @@ Contrazione IPI → γ negativo × IPI negativo = effetto leggermente positivo p
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;10: Stima 2025 con M4. IPI 2024 non ancora disponibile nella serie Eurostat → stima indicativa basata su PIL IT flash.</p>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="rolling-update-2026-nowcast-in-tempo-reale" class="level2 anchored" data-number="8" data-anchor-id="rolling-update-2026-nowcast-in-tempo-reale">
-<h2 class="anchored" data-number="8" data-anchor-id="rolling-update-2026-nowcast-in-tempo-reale"><span class="header-section-number">8</span> Rolling update 2026 — nowcast in tempo reale</h2>
+<section id="rolling-update-2026-nowcast-in-tempo-reale" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="rolling-update-2026-nowcast-in-tempo-reale"><span class="header-section-number">8</span> Rolling update 2026 — nowcast in tempo reale</h2>
 <p>Questa sezione si aggiorna <strong>ad ogni render</strong> usando i dati più recenti disponibili. Nessun valore è hardcoded: IPI e PIL trimestrale vengono scaricati live.</p>
-<div id="cell-fig-rolling-2026" class="cell" data-execution_count="20">
-<div class="cell-output cell-output-display">
-<div id="figura-rolling-2026" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-rolling-2026-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig08.png" class="figure-img" role="img" width="1091" height="549"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;8: Rolling update 2026: stima crescita Mz al crescere dei mesi IPI disponibili. Banda grigia = IC 95% M4. Fonte: Eurostat sts_inpr_m (I21 CA) + namq_10_gdp.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="21">
-<div id="tab-rolling-2026" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="21">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-rolling-2026-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Mesi</th>
@@ -1261,17 +1055,10 @@ Contrazione IPI → γ negativo × IPI negativo = effetto leggermente positivo p
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;11: Stima puntuale Mz 2026 per numero di mesi IPI disponibili.</p>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="conclusioni" class="level2 anchored" data-number="9" data-anchor-id="conclusioni">
-<h2 class="anchored" data-number="9" data-anchor-id="conclusioni"><span class="header-section-number">9</span> Conclusioni</h2>
+<section id="conclusioni" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="conclusioni"><span class="header-section-number">9</span> Conclusioni</h2>
 <p>Le bridge equations annuali consentono di stimare il PIL del Mezzogiorno prima della pubblicazione dei conti regionali ISTAT con errori nell’ordine di 0.1–1.0pp. Il modello di base (VA nazionale come unico regressore) raggiunge R²=0.938, un livello elevato considerato il campione di soli 23 osservazioni. L’estensione con le ULA nel settore costruzioni migliora il fit (R²=0.965) e cattura il ciclo edilizio straordinario del 2021–2024.</p>
 <p>Per il 2025, con PIL italiano atteso a +0.5%, la stima centrale indica una crescita reale del Mezzogiorno di circa +0.1%, quasi piatta, mentre il Centro-Nord dovrebbe crescere di +0.6%. Il divario strutturale (α=−0.36%/anno) persiste e riflette le note tendenze alla divergenza territoriale. L’accordo quasi perfetto con le stime SVIMEZ 2022–2023 (+0.08pp con deflatore regionale) valida la scelta di utilizzare i valori concatenati ISTAT 93_1227.</p>
 <p>I limiti principali sono il campione piccolo (N=22) e l’indisponibilità in tempo reale degli indicatori settoriali per l’anno in corso. Un’estensione naturale è l’integrazione di indicatori trimestrali — occupazione Forza Lavoro per ripartizione, turismo, fatturato servizi — per aumentare la frequenza di aggiornamento delle stime.</p>
@@ -1280,9 +1067,9 @@ Contrazione IPI → γ negativo × IPI negativo = effetto leggermente positivo p
 <p>L’uso di strumenti di intelligenza artificiale generativa è dichiarato esplicitamente in quanto parte del processo di lavoro seguito nella redazione del presente documento. Tali strumenti sono stati impiegati a supporto della lettura, della sintesi, della riorganizzazione argomentativa e della revisione testuale, sempre nell’ambito di un processo pienamente controllato dall’autore.</p>
 <p>La responsabilità per le fonti utilizzate, le analisi condotte, le verifiche effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore.</p>
 <p>L’intelligenza artificiale è stata utilizzata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+
+
 </section>
-
-
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1693,7 +1480,7 @@ Contrazione IPI → γ negativo × IPI negativo = effetto leggermente positivo p
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_PilMezzogiornoBridge/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

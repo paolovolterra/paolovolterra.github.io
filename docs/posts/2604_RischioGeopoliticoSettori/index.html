@@ -75,6 +75,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../MCC.css">
 <meta property="og:title" content="Rischio geopolitico e settori produttivi italiani – Paolo Volterra">
@@ -205,7 +234,7 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#conclusioni" id="toc-conclusioni" class="nav-link" data-scroll-target="#conclusioni"><span class="header-section-number">12</span> Conclusioni</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2604_RischioGeopoliticoSettori/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -264,8 +293,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="contesto-e-obiettivo" class="level2 anchored" data-number="1" data-anchor-id="contesto-e-obiettivo">
-<h2 class="anchored" data-number="1" data-anchor-id="contesto-e-obiettivo"><span class="header-section-number">1</span> Contesto e obiettivo</h2>
+<section id="contesto-e-obiettivo" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="contesto-e-obiettivo"><span class="header-section-number">1</span> Contesto e obiettivo</h2>
 <p>La crisi in Medio Oriente — con le sue ricadute su rotte commerciali, forniture energetiche e catene di approvvigionamento — ha spinto molti intermediari creditizi a dotarsi di strumenti per valutare l’esposizione geopolitica del proprio portafoglio impieghi. Questa nota adotta un indicatore di rischio geosettoriale costruito sulla tassonomia ATECO 2025, che costituisce la base delle comunicazioni interne e delle linee guida per la concessione e la gestione del credito performing.</p>
 <p>La presente nota ha un duplice scopo:</p>
 <ol type="1">
@@ -273,8 +302,8 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Metodologico</strong> — segnalare i limiti dell’approccio, i settori non coperti che potrebbero celare rischio latente e le cautele da adottare nell’uso operativo.</li>
 </ol>
 </section>
-<section id="la-fonte-lindicatore-di-rischio-geosettoriale" class="level2 anchored" data-number="2" data-anchor-id="la-fonte-lindicatore-di-rischio-geosettoriale">
-<h2 class="anchored" data-number="2" data-anchor-id="la-fonte-lindicatore-di-rischio-geosettoriale"><span class="header-section-number">2</span> La fonte: l’indicatore di rischio geosettoriale</h2>
+<section id="la-fonte-lindicatore-di-rischio-geosettoriale" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="la-fonte-lindicatore-di-rischio-geosettoriale"><span class="header-section-number">2</span> La fonte: l’indicatore di rischio geosettoriale</h2>
 <p>L’indicatore è distribuito come file Excel con tre fogli distinti, ciascuno corrispondente a una classe di rischio:</p>
 <table class="caption-top table">
 <colgroup>
@@ -308,13 +337,8 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>Ogni riga riporta: codice ATECO 2025, descrizione e livello di rischio. Il file non contiene una categoria “Basso” o “Nullo”: <strong>tutti i settori presenti nell’indicatore hanno per definizione un livello di esposizione geopolitica almeno Medio.</strong> I settori assenti sono implicitamente considerati al di fuori del perimetro di rischio, ma questa esclusione non è documentata esplicitamente.</p>
-<div class="cell" data-execution_count="2">
-<div id="tab-distribuzione-sheet" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="2">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-distribuzione-sheet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -366,18 +390,11 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;1: Distribuzione dei codici per foglio e livello gerarchico</p>
-</div>
-</div>
-</div>
-</div>
 <p>I codici sono presenti a tutti i livelli gerarchici della classificazione ATECO 2025 (da 2 a 8 caratteri, escluso il punto separatore). Questo riflette la struttura dello stesso indicatore, che nella maggior parte dei casi assegna il rischio alla divisione (2 cifre) e lo declina poi per gruppi (3 cifre), classi (4 cifre), sotto-classi (5 cifre) e categorie (6 cifre, equivalenti alle 8 posizioni con il punto).</p>
 </section>
-<section id="la-tassonomia-ateco-2025" class="level2 anchored" data-number="3" data-anchor-id="la-tassonomia-ateco-2025">
-<h2 class="anchored" data-number="3" data-anchor-id="la-tassonomia-ateco-2025"><span class="header-section-number">3</span> La tassonomia ATECO 2025</h2>
+<section id="la-tassonomia-ateco-2025" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="la-tassonomia-ateco-2025"><span class="header-section-number">3</span> La tassonomia ATECO 2025</h2>
 <p>ATECO 2025 è la classificazione italiana delle attività economiche, allineata alla nomenclatura europea NACE Rev.&nbsp;2.1. La struttura è strettamente gerarchica:</p>
 <pre><code>Sezione   → lettera (A–U), 21 sezioni
   Divisione → 2 cifre (01–99), 88 divisioni
@@ -386,13 +403,8 @@ ul.task-list li input[type="checkbox"] {
         Sotto-classe → 5 caratteri (es. 01.11.0)
           Categoria  → 6 caratteri (es. 01.11.00)</code></pre>
 <p>Rispetto ad ATECO 2007, la versione 2025 ridefinisce alcune divisioni e introduce nuove sotto-classi nei settori digitali, dell’energia e dei servizi professionali. Le 88 divisioni sono distribuite in 21 sezioni (A–U); la tabella seguente ne riporta la struttura:</p>
-<div class="cell" data-execution_count="3">
-<div id="tab-sezioni" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-sezioni-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -514,19 +526,12 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;2: Sezioni ATECO 2025 e numero di divisioni</p>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="metodologia-di-classificazione-e-propagazione-del-rischio" class="level2 anchored" data-number="4" data-anchor-id="metodologia-di-classificazione-e-propagazione-del-rischio">
-<h2 class="anchored" data-number="4" data-anchor-id="metodologia-di-classificazione-e-propagazione-del-rischio"><span class="header-section-number">4</span> Metodologia di classificazione e propagazione del rischio</h2>
-<section id="la-regola-di-propagazione" class="level3 anchored" data-number="4.1" data-anchor-id="la-regola-di-propagazione">
-<h3 class="anchored" data-number="4.1" data-anchor-id="la-regola-di-propagazione"><span class="header-section-number">4.1</span> La regola di propagazione</h3>
+<section id="metodologia-di-classificazione-e-propagazione-del-rischio" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="metodologia-di-classificazione-e-propagazione-del-rischio"><span class="header-section-number">4</span> Metodologia di classificazione e propagazione del rischio</h2>
+<section id="la-regola-di-propagazione" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="la-regola-di-propagazione"><span class="header-section-number">4.1</span> La regola di propagazione</h3>
 <p>L’indicatore assegna il livello di rischio a livelli gerarchici diversi a seconda del settore. Quando un codice è assente dal file ma appartiene a una divisione (2 cifre) classificata, il rischio si propaga per discendenza: la sotto-classe eredita il livello del suo antenato più prossimo presente nell’indicatore.</p>
 <p>Formalmente, per ogni codice <span class="math inline">\(c\)</span> non presente nel file si risale la gerarchia:</p>
 <p><span class="math display">\[\text{rischio\_effettivo}(c) = \text{rischio}(\text{antenato}^*(c))\]</span></p>
@@ -562,16 +567,11 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="deroghe-esplicite" class="level3 anchored" data-number="4.2" data-anchor-id="deroghe-esplicite">
-<h3 class="anchored" data-number="4.2" data-anchor-id="deroghe-esplicite"><span class="header-section-number">4.2</span> Deroghe esplicite</h3>
+<section id="deroghe-esplicite" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="deroghe-esplicite"><span class="header-section-number">4.2</span> Deroghe esplicite</h3>
 <p>Una <strong>deroga</strong> si verifica quando un codice figlio è presente nell’indicatore con un livello di rischio diverso da quello che erediterebbe dalla propria divisione o sotto-divisione. Le deroghe sono la principale modalità con cui l’indicatore gestisce le eterogeneità interne a una divisione.</p>
-<div class="cell" data-execution_count="4">
-<div id="tab-deroghe" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-deroghe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -642,70 +642,34 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;3: Divisioni con deroghe interne — 21 codici in 7 divisioni</p>
-</div>
-</div>
-</div>
-</div>
 <p>L’analisi delle deroghe rivela due pattern distinti:</p>
 <p><strong>Deroghe verso il basso</strong> (rischio del figlio &lt; rischio della divisione): divisioni 23, 46, 47, 95. La divisione viene classificata a un livello conservativo, ma specifiche sotto-classi sono riconosciute come meno esposte. È il caso tipico di settori con produzione eterogenea, dove alcune linee sono legate a materie prime critiche e altre no.</p>
 <p><strong>Deroghe verso l’alto</strong> (rischio del figlio &gt; rischio della divisione): divisioni 28 e 52. Alcune sotto-classi specifiche — macchinari per il riscaldamento (28.21), attrezzature per ufficio (28.23) e vari servizi di movimentazione merci in aree sensibili (52.21–52.24) — presentano un’esposizione superiore alla divisione di appartenenza.</p>
 </section>
-<section id="lanomalia-della-divisione-23" class="level3 anchored" data-number="4.3" data-anchor-id="lanomalia-della-divisione-23">
-<h3 class="anchored" data-number="4.3" data-anchor-id="lanomalia-della-divisione-23"><span class="header-section-number">4.3</span> L’anomalia della divisione 23</h3>
+<section id="lanomalia-della-divisione-23" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="lanomalia-della-divisione-23"><span class="header-section-number">4.3</span> L’anomalia della divisione 23</h3>
 <p>La divisione 23 (fabbricazione di prodotti in minerali non metalliferi) merita una nota specifica. La radice <code>23</code> è classificata <strong>Rischio Alto</strong>, ma 7 degli 8 gruppi di terzo livello (23.1–23.7) sono classificati <strong>Rischio Medio/Alto</strong>. Solo il gruppo 23.9 (produzione di materiali abrasivi e altri minerali non metalliferi n.c.a.) è Alto.</p>
 <p>Questo crea un’asimmetria rilevante nell’applicazione della regola di propagazione: qualsiasi sotto-classe di divisione 23 non presente esplicitamente nell’indicatore eredita il rischio Alto dalla radice, anche se appartiene a un gruppo classificato Medio/Alto. In pratica, la radice funziona come “copertura conservativa” dell’intera divisione, ma non riflette il profilo prevalente.</p>
 <p><strong>Indicazione operativa</strong>: per i codici ATECO della divisione 23, è preferibile risalire al gruppo di terzo livello (es. <code>23.1</code>, <code>23.4</code>) piuttosto che fermarsi alla divisione, per ottenere una classificazione più aderente all’indicatore.</p>
 </section>
 </section>
-<section id="copertura-delluniverso-ateco-2025" class="level2 anchored" data-number="5" data-anchor-id="copertura-delluniverso-ateco-2025">
-<h2 class="anchored" data-number="5" data-anchor-id="copertura-delluniverso-ateco-2025"><span class="header-section-number">5</span> Copertura dell’universo ATECO 2025</h2>
+<section id="copertura-delluniverso-ateco-2025" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="copertura-delluniverso-ateco-2025"><span class="header-section-number">5</span> Copertura dell’universo ATECO 2025</h2>
 <p>Delle 88 divisioni ATECO 2025, l’indicatore copre:</p>
-<div id="cell-fig-copertura" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display">
-<div id="figura-copertura" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-copertura-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig01.png" class="figure-img" role="img" width="853" height="372"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;1: Copertura delle divisioni ATECO 2025 per sezione</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p>Le 17 divisioni totalmente assenti appartengono a sezioni caratterizzate da ridotta dipendenza diretta dalle catene di approvvigionamento internazionali coinvolte nella crisi in Medio Oriente: istruzione (P), famiglie come datori di lavoro (T), organismi extraterritoriali (U), attività ricreative e sportive (R parziale), servizi di pubblica utilità locale (E parziale).</p>
 <p>Le 5 divisioni coperte solo via sub-codici sono: silvicoltura di supporto (02), attività ausiliarie finanziarie (66), direzione aziendale e consulenza gestionale (70), servizi di supporto alle funzioni d’ufficio (82), creazione artistica e intrattenimento (90). In questi casi, la classificazione di rischio non è espressa a livello di divisione ma solo per specifiche sotto-classi.</p>
 </section>
-<section id="distribuzione-delle-imprese-italiane-per-classe-di-rischio" class="level2 anchored" data-number="6" data-anchor-id="distribuzione-delle-imprese-italiane-per-classe-di-rischio">
-<h2 class="anchored" data-number="6" data-anchor-id="distribuzione-delle-imprese-italiane-per-classe-di-rischio"><span class="header-section-number">6</span> Distribuzione delle imprese italiane per classe di rischio</h2>
+<section id="distribuzione-delle-imprese-italiane-per-classe-di-rischio" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="distribuzione-delle-imprese-italiane-per-classe-di-rischio"><span class="header-section-number">6</span> Distribuzione delle imprese italiane per classe di rischio</h2>
 <p>La quantificazione dell’esposizione per numero di imprese richiede di incrociare l’indicatore con dati sullo stock di imprese attive per divisione ATECO. La fonte primaria utilizzata è <strong>Eurostat Structural Business Statistics (SBS)</strong>, che fornisce dati a livello di divisione NACE per l’Italia; come fonte di completamento per le divisioni non presenti in SBS si utilizzano i dati <strong>CCIA Marche</strong> (open data, aggiornati al 31 marzo 2026), disponibili a livello di sezione.</p>
 <p><strong>Limitazioni della fonte SBS</strong>: i dati più recenti disponibili sono riferiti al 2020. Per le divisioni coperte solo a livello di sezione dalla CCIA, il numero di imprese viene stimato come quota proporzionale (divisioni equamente ponderate all’interno della sezione), il che introduce un’approssimazione che può essere rilevante nelle sezioni con divisioni molto eterogenee per dimensione.</p>
-<div id="cell-fig-distribuzione" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display">
-<div id="figura-distribuzione" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-distribuzione-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig02.png" class="figure-img" role="img" width="758" height="325"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;2: Distribuzione delle imprese italiane attive per classe di rischio geopolitico</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="7">
-<div id="tab-distribuzione-rischio" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="7">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-distribuzione-rischio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="7">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -752,28 +716,16 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;4: Riepilogo quantitativo per classe di rischio</p>
-</div>
-</div>
-</div>
-</div>
-<section id="lettura-dei-dati" class="level3 anchored" data-number="6.1" data-anchor-id="lettura-dei-dati">
-<h3 class="anchored" data-number="6.1" data-anchor-id="lettura-dei-dati"><span class="header-section-number">6.1</span> Lettura dei dati</h3>
+<section id="lettura-dei-dati" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="lettura-dei-dati"><span class="header-section-number">6.1</span> Lettura dei dati</h3>
 <p>Il dato più rilevante è che il <strong>71% delle imprese italiane attive</strong> ricade in divisioni con classificazione esplicita nell’indicatore — il che significa che almeno un livello di esposizione geopolitica è attribuito all’attività principale. Il restante 29% si divide tra settori parzialmente coperti (8%) e settori totalmente assenti dall’indicatore (21%).</p>
 <p>All’interno delle sole imprese classificate esplicitamente, la distribuzione è fortemente sbilanciata verso i livelli più bassi: il 61% è classificato Medio, il 33% Medio/Alto e solo il 6% Alto. In termini assoluti, le imprese in settori ad Alto rischio sono circa <strong>199.000</strong>, pari al <strong>4% del totale nazionale</strong>.</p>
 </section>
-<section id="le-divisioni-assenti-più-rilevanti-per-numerosità" class="level3 anchored" data-number="6.2" data-anchor-id="le-divisioni-assenti-più-rilevanti-per-numerosità">
-<h3 class="anchored" data-number="6.2" data-anchor-id="le-divisioni-assenti-più-rilevanti-per-numerosità"><span class="header-section-number">6.2</span> Le divisioni assenti più rilevanti per numerosità</h3>
-<div class="cell" data-execution_count="8">
-<div id="tab-assenti" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="8">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-assenti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="8">
+<section id="le-divisioni-assenti-più-rilevanti-per-numerosità" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="le-divisioni-assenti-più-rilevanti-per-numerosità"><span class="header-section-number">6.2</span> Le divisioni assenti più rilevanti per numerosità</h3>
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -906,26 +858,19 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;5: Divisioni assenti dall’indicatore — ordinate per numero di imprese</p>
-</div>
-</div>
-</div>
-</div>
 </section>
 </section>
-<section id="settori-non-classificati-rischio-latente-e-canali-indiretti" class="level2 anchored" data-number="7" data-anchor-id="settori-non-classificati-rischio-latente-e-canali-indiretti">
-<h2 class="anchored" data-number="7" data-anchor-id="settori-non-classificati-rischio-latente-e-canali-indiretti"><span class="header-section-number">7</span> Settori non classificati: rischio latente e canali indiretti</h2>
+<section id="settori-non-classificati-rischio-latente-e-canali-indiretti" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="settori-non-classificati-rischio-latente-e-canali-indiretti"><span class="header-section-number">7</span> Settori non classificati: rischio latente e canali indiretti</h2>
 <p>L’assenza di un settore dall’indicatore non equivale necessariamente a zero esposizione geopolitica. Esistono almeno due canali attraverso cui settori nominalmente “fuori perimetro” possono ereditare o trasmettere rischio:</p>
-<section id="canale-indiretto-portafoglio-creditizio-e-garanzie" class="level3 anchored" data-number="7.1" data-anchor-id="canale-indiretto-portafoglio-creditizio-e-garanzie">
-<h3 class="anchored" data-number="7.1" data-anchor-id="canale-indiretto-portafoglio-creditizio-e-garanzie"><span class="header-section-number">7.1</span> Canale indiretto: portafoglio creditizio e garanzie</h3>
+<section id="canale-indiretto-portafoglio-creditizio-e-garanzie" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="canale-indiretto-portafoglio-creditizio-e-garanzie"><span class="header-section-number">7.1</span> Canale indiretto: portafoglio creditizio e garanzie</h3>
 <p>I <strong>servizi finanziari</strong> (divisione 64, ~35.700 imprese tra banche, finanziarie, confidi) e le <strong>assicurazioni</strong> (divisione 65, ~330 imprese) non operano direttamente in area a rischio, ma la loro esposizione è endogena alla composizione del portafoglio. Un confidi specializzato in garanzie per imprese manifatturiere o commerciali classificate Alto o Medio/Alto trasmette al proprio bilancio il rischio geopolitico di quelle controparti, senza che ciò emerga dalla classificazione ATECO del confidi stesso.</p>
 <p>Questa è la principale limitazione dell’approccio settoriale puro: <strong>il rischio geopolitico del credito bancario è una funzione della distribuzione settoriale del portafoglio, non del codice ATECO del soggetto erogante.</strong> L’indicatore deve essere applicato al settore del <em>prenditore</em>, non dell’<em>intermediario</em>.</p>
 </section>
-<section id="canale-diretto-operatività-in-area-a-rischio" class="level3 anchored" data-number="7.2" data-anchor-id="canale-diretto-operatività-in-area-a-rischio">
-<h3 class="anchored" data-number="7.2" data-anchor-id="canale-diretto-operatività-in-area-a-rischio"><span class="header-section-number">7.2</span> Canale diretto: operatività in area a rischio</h3>
+<section id="canale-diretto-operatività-in-area-a-rischio" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="canale-diretto-operatività-in-area-a-rischio"><span class="header-section-number">7.2</span> Canale diretto: operatività in area a rischio</h3>
 <p>Alcune divisioni assenti dall’indicatore presentano un rischio diretto qualora l’impresa operi fisicamente o contrattualmente nell’area a rischio:</p>
 <table class="caption-top table">
 <colgroup>
@@ -971,32 +916,32 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p>Per queste imprese, la valutazione di rischio non può basarsi sul solo codice ATECO ma richiede un’analisi della localizzazione geografica dei contratti e della clientela.</p>
 </section>
-<section id="sezione-t-famiglie-come-datori-di-lavoro" class="level3 anchored" data-number="7.3" data-anchor-id="sezione-t-famiglie-come-datori-di-lavoro">
-<h3 class="anchored" data-number="7.3" data-anchor-id="sezione-t-famiglie-come-datori-di-lavoro"><span class="header-section-number">7.3</span> Sezione T: famiglie come datori di lavoro</h3>
+<section id="sezione-t-famiglie-come-datori-di-lavoro" class="level3" data-number="7.3">
+<h3 data-number="7.3" class="anchored" data-anchor-id="sezione-t-famiglie-come-datori-di-lavoro"><span class="header-section-number">7.3</span> Sezione T: famiglie come datori di lavoro</h3>
 <p>Le divisioni 97 e 98 (famiglie che impiegano personale domestico o producono per uso proprio) rappresentano circa 330.000 unità secondo la CCIA. Si tratta di un perimetro convenzionalmente escluso dall’analisi creditizia delle imprese produttive, in quanto non accede al credito bancario in forma organizzata. La loro esclusione dall’indicatore è metodologicamente coerente.</p>
 </section>
 </section>
-<section id="limiti-metodologici" class="level2 anchored" data-number="8" data-anchor-id="limiti-metodologici">
-<h2 class="anchored" data-number="8" data-anchor-id="limiti-metodologici"><span class="header-section-number">8</span> Limiti metodologici</h2>
-<section id="lindicatore-non-ha-una-categoria-nessun-rischio" class="level3 anchored" data-number="8.1" data-anchor-id="lindicatore-non-ha-una-categoria-nessun-rischio">
-<h3 class="anchored" data-number="8.1" data-anchor-id="lindicatore-non-ha-una-categoria-nessun-rischio"><span class="header-section-number">8.1</span> 1. L’indicatore non ha una categoria “Nessun rischio”</h3>
+<section id="limiti-metodologici" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="limiti-metodologici"><span class="header-section-number">8</span> Limiti metodologici</h2>
+<section id="lindicatore-non-ha-una-categoria-nessun-rischio" class="level3" data-number="8.1">
+<h3 data-number="8.1" class="anchored" data-anchor-id="lindicatore-non-ha-una-categoria-nessun-rischio"><span class="header-section-number">8.1</span> 1. L’indicatore non ha una categoria “Nessun rischio”</h3>
 <p>Come evidenziato, l’indicatore è costruito per identificare i settori <em>a rischio</em>, non per escludere quelli <em>senza rischio</em>. L’assenza di un settore dal file è un silenzio dell’indicatore, non una certificazione di sicurezza. Questo rende impossibile costruire una matrice completa rischio/no-rischio senza integrare fonti esterne o adottare assunzioni esplicite.</p>
 <p>Una soluzione operativa è dichiarare esplicitamente che i settori assenti sono trattati come “non valutati per questa crisi” e che la classificazione di rischio non si applica.</p>
 </section>
-<section id="la-propagazione-per-discendenza-può-sovrastimare-il-rischio" class="level3 anchored" data-number="8.2" data-anchor-id="la-propagazione-per-discendenza-può-sovrastimare-il-rischio">
-<h3 class="anchored" data-number="8.2" data-anchor-id="la-propagazione-per-discendenza-può-sovrastimare-il-rischio"><span class="header-section-number">8.2</span> 2. La propagazione per discendenza può sovrastimare il rischio</h3>
+<section id="la-propagazione-per-discendenza-può-sovrastimare-il-rischio" class="level3" data-number="8.2">
+<h3 data-number="8.2" class="anchored" data-anchor-id="la-propagazione-per-discendenza-può-sovrastimare-il-rischio"><span class="header-section-number">8.2</span> 2. La propagazione per discendenza può sovrastimare il rischio</h3>
 <p>La regola “il rischio della divisione si propaga ai figli” è una semplificazione. In pratica, l’indicatore classifica spesso la divisione per il suo segmento più esposto, non per il profilo medio. Il caso della divisione 23 (radice Alto, figli prevalentemente Medio/Alto) è il più evidente, ma il principio vale in generale: un’impresa in una sotto-classe non specificata eredita il massimo conservativo della divisione, che può essere sovrastimato rispetto alla sua effettiva esposizione.</p>
 </section>
-<section id="i-dati-sulle-imprese-sono-eterogenei-per-anno-e-granularità" class="level3 anchored" data-number="8.3" data-anchor-id="i-dati-sulle-imprese-sono-eterogenei-per-anno-e-granularità">
-<h3 class="anchored" data-number="8.3" data-anchor-id="i-dati-sulle-imprese-sono-eterogenei-per-anno-e-granularità"><span class="header-section-number">8.3</span> 3. I dati sulle imprese sono eterogenei per anno e granularità</h3>
+<section id="i-dati-sulle-imprese-sono-eterogenei-per-anno-e-granularità" class="level3" data-number="8.3">
+<h3 data-number="8.3" class="anchored" data-anchor-id="i-dati-sulle-imprese-sono-eterogenei-per-anno-e-granularità"><span class="header-section-number">8.3</span> 3. I dati sulle imprese sono eterogenei per anno e granularità</h3>
 <p>I dati SBS sono riferiti al 2020 e potrebbero non riflettere le variazioni strutturali successive (crescita dei servizi digitali, contrazione del manifatturiero, ecc.). La CCIA Marche è più recente (marzo 2026) ma ha granularità sezione, non divisione: la distribuzione proporzionale all’interno delle sezioni è un proxy grezzo, specialmente in sezioni con molte divisioni di dimensione molto diversa (es. Sezione M con 7 divisioni che vanno da 69 Legale a 75 Veterinaria).</p>
 </section>
-<section id="il-codice-ateco-primario-non-cattura-la-diversificazione-settoriale" class="level3 anchored" data-number="8.4" data-anchor-id="il-codice-ateco-primario-non-cattura-la-diversificazione-settoriale">
-<h3 class="anchored" data-number="8.4" data-anchor-id="il-codice-ateco-primario-non-cattura-la-diversificazione-settoriale"><span class="header-section-number">8.4</span> 4. Il codice ATECO primario non cattura la diversificazione settoriale</h3>
+<section id="il-codice-ateco-primario-non-cattura-la-diversificazione-settoriale" class="level3" data-number="8.4">
+<h3 data-number="8.4" class="anchored" data-anchor-id="il-codice-ateco-primario-non-cattura-la-diversificazione-settoriale"><span class="header-section-number">8.4</span> 4. Il codice ATECO primario non cattura la diversificazione settoriale</h3>
 <p>Le imprese grandi e diversificate operano in più settori ma hanno un unico codice ATECO primario. Un’impresa con codice principale in un settore a Rischio Medio ma con significativa attività in un’area ad Alto rischio non viene correttamente classificata. Questo limite è strutturale all’approccio settoriale e non è risolvibile senza informazioni sulla composizione del fatturato per linea di business.</p>
 </section>
-<section id="lindicatore-non-cattura-il-rischio-indiretto-tramite-la-catena-di-fornitura" class="level3 anchored" data-number="8.5" data-anchor-id="lindicatore-non-cattura-il-rischio-indiretto-tramite-la-catena-di-fornitura">
-<h3 class="anchored" data-number="8.5" data-anchor-id="lindicatore-non-cattura-il-rischio-indiretto-tramite-la-catena-di-fornitura"><span class="header-section-number">8.5</span> 5. L’indicatore non cattura il rischio indiretto tramite la catena di fornitura</h3>
+<section id="lindicatore-non-cattura-il-rischio-indiretto-tramite-la-catena-di-fornitura" class="level3" data-number="8.5">
+<h3 data-number="8.5" class="anchored" data-anchor-id="lindicatore-non-cattura-il-rischio-indiretto-tramite-la-catena-di-fornitura"><span class="header-section-number">8.5</span> 5. L’indicatore non cattura il rischio indiretto tramite la catena di fornitura</h3>
 <p>Il rischio classificato è <strong>diretto</strong>: dipende dal settore in cui opera l’impresa, non dalla struttura del suo approvvigionamento o del suo mercato di sbocco. Tuttavia un’impresa può essere esposta al rischio geopolitico anche per via indiretta:</p>
 <ul>
 <li><strong>Canale fornitori</strong>: acquisto di input intermedi da settori ad alto rischio (es. un’impresa tessile in div. 13, classificata Rischio Medio, che si approvvigiona di filati sintetici da fornitori dipendenti dalla petrolchimica del Golfo);</li>
@@ -1006,16 +951,16 @@ ul.task-list li input[type="checkbox"] {
 <p>In linea di principio questo rischio potrebbe essere quantificato attraverso le tavole simmetriche Input-Output (Eurostat <code>naio_10_cp1620</code>), calcolando per ogni sezione ATECO la quota di input intermedi proveniente da settori Alto e la quota di output destinata a settori Alto. Nella pratica operativa, la soluzione più efficace rimane il colloquio con il cliente e l’analisi della base fornitori e clienti dichiarata in sede di istruttoria, in particolare per le imprese in settori a Rischio Medio con alta dipendenza da un singolo comparto a monte o a valle.</p>
 </section>
 </section>
-<section id="implicazioni-operative" class="level2 anchored" data-number="9" data-anchor-id="implicazioni-operative">
-<h2 class="anchored" data-number="9" data-anchor-id="implicazioni-operative"><span class="header-section-number">9</span> Implicazioni operative</h2>
-<section id="per-la-valutazione-delle-singole-pratiche" class="level3 anchored" data-number="9.1" data-anchor-id="per-la-valutazione-delle-singole-pratiche">
-<h3 class="anchored" data-number="9.1" data-anchor-id="per-la-valutazione-delle-singole-pratiche"><span class="header-section-number">9.1</span> Per la valutazione delle singole pratiche</h3>
+<section id="implicazioni-operative" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="implicazioni-operative"><span class="header-section-number">9</span> Implicazioni operative</h2>
+<section id="per-la-valutazione-delle-singole-pratiche" class="level3" data-number="9.1">
+<h3 data-number="9.1" class="anchored" data-anchor-id="per-la-valutazione-delle-singole-pratiche"><span class="header-section-number">9.1</span> Per la valutazione delle singole pratiche</h3>
 <p>L’indicatore fornisce un <strong>segnale di primo livello</strong>, non una valutazione finale. Il codice ATECO del prenditore determina la classe di appartenenza e attiva eventuali procedure di approfondimento previste dalle linee guida. La classificazione ha valore presuntivo: imprese in settori Alto o Medio/Alto entrano in un percorso di revisione, non in un automatismo di rifiuto.</p>
 <p>Per i codici a 2 digit con deroghe interne rilevanti (in particolare 23, 46, 52), è preferibile scendere al livello del gruppo o della classe prima di attribuire il livello di rischio, per evitare classificazioni eccessivamente conservative.</p>
 <p>Per le imprese classificate a Rischio Medio, è opportuno verificare in sede di istruttoria la presenza di <strong>concentrazioni di fornitura o di clientela</strong> in settori ad Alto rischio: un’impresa formalmente nel comparto “basso rischio” può essere significativamente esposta per via indiretta (cfr. Limite 5 nella sezione metodologica).</p>
 </section>
-<section id="per-lanalisi-di-portafoglio" class="level3 anchored" data-number="9.2" data-anchor-id="per-lanalisi-di-portafoglio">
-<h3 class="anchored" data-number="9.2" data-anchor-id="per-lanalisi-di-portafoglio"><span class="header-section-number">9.2</span> Per l’analisi di portafoglio</h3>
+<section id="per-lanalisi-di-portafoglio" class="level3" data-number="9.2">
+<h3 data-number="9.2" class="anchored" data-anchor-id="per-lanalisi-di-portafoglio"><span class="header-section-number">9.2</span> Per l’analisi di portafoglio</h3>
 <p>L’indicatore consente di costruire una <strong>mappa del portafoglio impieghi</strong> per classe di rischio geopolitico, aggregando le esposizioni per codice ATECO dei prenditori. Questa mappa è utile per:</p>
 <ul>
 <li>identificare le concentrazioni settoriali in classi Alto o Medio/Alto;</li>
@@ -1024,36 +969,19 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Per le divisioni non classificate (21% dell’universo imprese), la raccomandazione è di non assumere automaticamente assenza di rischio, ma di valutare caso per caso per le imprese con operatività internazionale documentata.</p>
 </section>
-<section id="per-i-confidi-e-gli-intermediari-di-garanzia" class="level3 anchored" data-number="9.3" data-anchor-id="per-i-confidi-e-gli-intermediari-di-garanzia">
-<h3 class="anchored" data-number="9.3" data-anchor-id="per-i-confidi-e-gli-intermediari-di-garanzia"><span class="header-section-number">9.3</span> Per i confidi e gli intermediari di garanzia</h3>
+<section id="per-i-confidi-e-gli-intermediari-di-garanzia" class="level3" data-number="9.3">
+<h3 data-number="9.3" class="anchored" data-anchor-id="per-i-confidi-e-gli-intermediari-di-garanzia"><span class="header-section-number">9.3</span> Per i confidi e gli intermediari di garanzia</h3>
 <p>Come discusso nella sezione precedente, per i confidi l’analisi deve essere condotta sul portafoglio garantito, non sul codice ATECO del confidi stesso. Un confidi dovrebbe produrre una propria mappa di esposizione applicando l’indicatore ai codici ATECO delle imprese garantite e segnalare le concentrazioni rilevanti.</p>
 </section>
 </section>
-<section id="esposizione-del-credito-bancario-per-classe-di-rischio-geopolitico" class="level2 anchored" data-number="10" data-anchor-id="esposizione-del-credito-bancario-per-classe-di-rischio-geopolitico">
-<h2 class="anchored" data-number="10" data-anchor-id="esposizione-del-credito-bancario-per-classe-di-rischio-geopolitico"><span class="header-section-number">10</span> Esposizione del credito bancario per classe di rischio geopolitico</h2>
+<section id="esposizione-del-credito-bancario-per-classe-di-rischio-geopolitico" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="esposizione-del-credito-bancario-per-classe-di-rischio-geopolitico"><span class="header-section-number">10</span> Esposizione del credito bancario per classe di rischio geopolitico</h2>
 <p>La classificazione settoriale assume rilievo concreto quando viene proiettata sul credito bancario effettivamente erogato. Incrociando l’indicatore di rischio con i dati Banca d’Italia su prestiti a residenti per settore di attività economica (fonte: BAM-ATECO, elaborazione su dati dicembre 2025) è possibile stimare il volume di credito in capo a prenditori appartenenti a settori Alto, Medio/Alto o Medio.</p>
 <p>La fonte Banca d’Italia (serie BAM-ATECO) fornisce lo stock di prestiti al sistema bancario aggregato per sezione ATECO (lettere A–N) e per due settori istituzionali: <strong>S11</strong> (Società non finanziarie) e <strong>S14BI2</strong> (Famiglie produttrici — artigiani e lavoratori autonomi). Le sezioni K (Finanziari), O–U e le residuali non sono disponibili a questo livello di disaggregazione.</p>
-<div id="cell-fig-credito-rischio" class="cell" data-execution_count="9">
-<div class="cell-output cell-output-display">
-<div id="figura-credito-rischio" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-credito-rischio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig03.png" class="figure-img" role="img" width="1132" height="422"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;3: Stock di prestiti bancari per sezione ATECO e classe di rischio (dic 2025, MLN EUR)</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="10">
-<div id="tab-credito-rischio" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="10">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-credito-rischio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="10">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -1188,16 +1116,9 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;6: Prestiti bancari per sezione ATECO e classe di rischio (dic 2025, MLN EUR)</p>
-</div>
-</div>
-</div>
-</div>
-<section id="principali-evidenze" class="level3 anchored" data-number="10.1" data-anchor-id="principali-evidenze">
-<h3 class="anchored" data-number="10.1" data-anchor-id="principali-evidenze"><span class="header-section-number">10.1</span> Principali evidenze</h3>
+<section id="principali-evidenze" class="level3" data-number="10.1">
+<h3 data-number="10.1" class="anchored" data-anchor-id="principali-evidenze"><span class="header-section-number">10.1</span> Principali evidenze</h3>
 <p>Su un totale di <strong>640 miliardi di euro</strong> di prestiti bancari a imprese e famiglie produttrici (sezioni A–N, dicembre 2025):</p>
 <ul>
 <li><p>Il <strong>20% — circa 129 miliardi</strong> — è erogato a settori classificati <strong>Rischio Alto</strong>. Le componenti principali sono la manifattura pesante e chimica nella sezione C (~89 miliardi, 50% della sezione) e l’energia (sezione D, ~21 miliardi, interamente Alto).</p></li>
@@ -1206,18 +1127,18 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Complessivamente, il <strong>52% del credito alle imprese</strong> — circa 333 miliardi di euro — è riconducibile a settori ad esposizione significativa (Alto o Medio/Alto).</p>
 </section>
-<section id="nota-metodologica" class="level3 anchored" data-number="10.2" data-anchor-id="nota-metodologica">
-<h3 class="anchored" data-number="10.2" data-anchor-id="nota-metodologica"><span class="header-section-number">10.2</span> Nota metodologica</h3>
+<section id="nota-metodologica" class="level3" data-number="10.2">
+<h3 data-number="10.2" class="anchored" data-anchor-id="nota-metodologica"><span class="header-section-number">10.2</span> Nota metodologica</h3>
 <p>La stima del credito per classe di rischio a livello di sezione si basa su una ponderazione uguale per divisione all’interno di ciascuna sezione (ogni divisione ATECO presente nell’indicatore contribuisce in quota uniforme all’esposizione totale della sezione). Questa assunzione introduce un’approssimazione rilevante nelle sezioni eterogenee, in particolare la sezione C (manifattura), dove le 24 divisioni hanno volumi d’attività molto diversi e non tutti i sotto-settori sono ugualmente rappresentati nel portafoglio bancario medio.</p>
 <p>I dati Bankit disponibili a livello di sezione non consentono di disaggregare ulteriormente senza ipotesi aggiuntive. Per le banche che dispongono del dato di portafoglio per divisione ATECO, è possibile applicare direttamente il vettore di rischio al vettore di esposizione, ottenendo una stima più precisa.</p>
 </section>
 </section>
-<section id="score-di-vulnerabilità-composita-esposizione-energetica-e-pricing-power" class="level2 anchored" data-number="11" data-anchor-id="score-di-vulnerabilità-composita-esposizione-energetica-e-pricing-power">
-<h2 class="anchored" data-number="11" data-anchor-id="score-di-vulnerabilità-composita-esposizione-energetica-e-pricing-power"><span class="header-section-number">11</span> Score di vulnerabilità composita: esposizione energetica e pricing power</h2>
+<section id="score-di-vulnerabilità-composita-esposizione-energetica-e-pricing-power" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="score-di-vulnerabilità-composita-esposizione-energetica-e-pricing-power"><span class="header-section-number">11</span> Score di vulnerabilità composita: esposizione energetica e pricing power</h2>
 <p>L’indicatore di rischio geosettoriale classifica i settori in base all’esposizione <em>diretta</em> al contesto geopolitico. Questo approccio cattura bene la dipendenza da materie prime, rotte commerciali e mercati in area di crisi, ma non distingue tra settori ugualmente esposti al rischio ma con capacità molto diverse di assorbire o trasferire gli shock. Due settori classificati entrambi “Rischio Alto” possono avere profili creditizi molto differenti a seconda di quanto dipendono dall’energia fossile importata e di quanto riescono a scaricare i rincari sui propri prezzi di vendita.</p>
 <p>Per questo motivo sono stati costruiti due sotto-indicatori complementari — Score B (esposizione energetica) e Score C (pricing power) — combinati in un punteggio composito (Score BC) che permette di ordinare le divisioni per <strong>vulnerabilità creditizia effettiva</strong> e non solo per esposizione geopolitica nominale.</p>
-<section id="score-b-esposizione-energetica-per-fonte" class="level3 anchored" data-number="11.1" data-anchor-id="score-b-esposizione-energetica-per-fonte">
-<h3 class="anchored" data-number="11.1" data-anchor-id="score-b-esposizione-energetica-per-fonte"><span class="header-section-number">11.1</span> Score B — Esposizione energetica per fonte</h3>
+<section id="score-b-esposizione-energetica-per-fonte" class="level3" data-number="11.1">
+<h3 data-number="11.1" class="anchored" data-anchor-id="score-b-esposizione-energetica-per-fonte"><span class="header-section-number">11.1</span> Score B — Esposizione energetica per fonte</h3>
 <p>La crisi in Medio Oriente si trasmette all’economia reale prevalentemente attraverso il canale energetico: aumento del prezzo del petrolio, tensioni sul gas naturale (spesso contrattato a prezzi legati al Brent) e volatilità dell’energia elettrica (in Italia dipendente per circa il 45% dalla generazione a gas). Settori ad alta intensità energetica — e in particolare ad alta dipendenza dal gas — sono strutturalmente più vulnerabili a questi shock.</p>
 <p><strong>Fonte dati</strong>: Eurostat <code>nrg_bal_s</code> (consumo finale di energia per settore, Italia, anno di riferimento 2022). Per ogni categoria Eurostat viene calcolata la quota di consumo da gas naturale (<span class="math inline">\(s_{\text{gas}}\)</span>), elettricità (<span class="math inline">\(s_{\text{elec}}\)</span>) e petrolio/carburanti (<span class="math inline">\(s_{\text{oil}}\)</span>) sul totale.</p>
 <p><strong>Formula dell’energy score grezzo</strong>:</p>
@@ -1258,8 +1179,8 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math display">\[\text{Score\_B} = \text{rischio\_num} \times (0{,}7 + 0{,}3 \times \hat{e})\]</span></p>
 <p>dove <span class="math inline">\(\text{rischio\_num} \in \{1, 2, 3\}\)</span> e <span class="math inline">\(\hat{e}\)</span> è l’energy score normalizzato nell’intervallo <span class="math inline">\([0, 1]\)</span>. Il rischio geopolitico pesa il 70%; l’intensità energetica modula il restante 30%. Un settore con Rischio Alto e massima dipendenza da gas ottiene Score_B <span class="math inline">\(\approx 3\)</span>.</p>
 </section>
-<section id="score-c-pricing-power-e-capacità-di-assorbimento-degli-shock" class="level3 anchored" data-number="11.2" data-anchor-id="score-c-pricing-power-e-capacità-di-assorbimento-degli-shock">
-<h3 class="anchored" data-number="11.2" data-anchor-id="score-c-pricing-power-e-capacità-di-assorbimento-degli-shock"><span class="header-section-number">11.2</span> Score C — Pricing power e capacità di assorbimento degli shock</h3>
+<section id="score-c-pricing-power-e-capacità-di-assorbimento-degli-shock" class="level3" data-number="11.2">
+<h3 data-number="11.2" class="anchored" data-anchor-id="score-c-pricing-power-e-capacità-di-assorbimento-degli-shock"><span class="header-section-number">11.2</span> Score C — Pricing power e capacità di assorbimento degli shock</h3>
 <p>La capacità di un settore di trasferire i propri rincari di costo sui prezzi di vendita — il cosiddetto <em>pricing power</em> — è determinante per la tenuta dei margini in uno scenario di shock energetico. Un settore con alto pricing power scarica i costi a valle e protegge i margini; uno con basso pricing power li assorbe, con conseguente deterioramento della redditività e, potenzialmente, della qualità creditizia.</p>
 <p><strong>Fonte dati</strong>: Istat <em>Competitività dei Settori Produttivi</em> (edizione 2022), tabella <code>indicatori_principali</code>. Vengono utilizzate due serie:</p>
 <ul>
@@ -1273,8 +1194,8 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math display">\[\text{Score\_C} = \text{rischio\_num} \times (1 - \text{pricing\_power})\]</span></p>
 <p>Un settore con Rischio Alto e pricing power nullo (massima vulnerabilità) ottiene Score_C <span class="math inline">\(= 3\)</span>; uno con Rischio Medio e pricing power elevato si avvicina a zero.</p>
 </section>
-<section id="score-bc-indicatore-composito-di-vulnerabilità" class="level3 anchored" data-number="11.3" data-anchor-id="score-bc-indicatore-composito-di-vulnerabilità">
-<h3 class="anchored" data-number="11.3" data-anchor-id="score-bc-indicatore-composito-di-vulnerabilità"><span class="header-section-number">11.3</span> Score BC — Indicatore composito di vulnerabilità</h3>
+<section id="score-bc-indicatore-composito-di-vulnerabilità" class="level3" data-number="11.3">
+<h3 data-number="11.3" class="anchored" data-anchor-id="score-bc-indicatore-composito-di-vulnerabilità"><span class="header-section-number">11.3</span> Score BC — Indicatore composito di vulnerabilità</h3>
 <p>I due score vengono combinati con peso uguale:</p>
 <p><span class="math display">\[\text{Score\_BC} = \frac{1}{2} \cdot \text{Score\_B} + \frac{1}{2} \cdot \text{Score\_C}\]</span></p>
 <p>Le divisioni vengono quindi classificate in tre fasce di vulnerabilità in base ai quartili della distribuzione di Score_BC:</p>
@@ -1310,34 +1231,17 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="matrice-di-vulnerabilità" class="level3 anchored" data-number="11.4" data-anchor-id="matrice-di-vulnerabilità">
-<h3 class="anchored" data-number="11.4" data-anchor-id="matrice-di-vulnerabilità"><span class="header-section-number">11.4</span> Matrice di vulnerabilità</h3>
+<section id="matrice-di-vulnerabilità" class="level3" data-number="11.4">
+<h3 data-number="11.4" class="anchored" data-anchor-id="matrice-di-vulnerabilità"><span class="header-section-number">11.4</span> Matrice di vulnerabilità</h3>
 <p>La figura seguente posiziona ogni divisione ATECO classificata su due assi: asse orizzontale = intensità energetica (energy score), asse verticale = vulnerabilità al pricing (1 − pricing power). Il colore indica la classe di rischio geopolitico dell’indicatore base.</p>
-<div id="cell-fig-vulnerabilita-bc" class="cell" data-execution_count="11">
-<div class="cell-output cell-output-display" data-execution_count="11">
-<div id="figura-vulnerabilita-bc" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-vulnerabilita-bc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig04.png" class="img-fluid figure-img" role="img"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;4: Matrice di vulnerabilità: esposizione energetica × pricing power, per divisione ATECO (colore = classe rischio geopolitico)</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p>Le divisioni in alto a destra — alta intensità energetica e basso pricing power — presentano la <strong>doppia vulnerabilità</strong> più elevata. Quelle in basso a sinistra sono relativamente resilienti pur rientrando nell’indicatore di rischio geopolitico.</p>
 </section>
-<section id="divisioni-a-vulnerabilità-critica" class="level3 anchored" data-number="11.5" data-anchor-id="divisioni-a-vulnerabilità-critica">
-<h3 class="anchored" data-number="11.5" data-anchor-id="divisioni-a-vulnerabilità-critica"><span class="header-section-number">11.5</span> Divisioni a vulnerabilità critica</h3>
-<div class="cell" data-execution_count="12">
-<div id="tab-vulnerabilita-critica" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="12">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-vulnerabilita-critica-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="12">
+<section id="divisioni-a-vulnerabilità-critica" class="level3" data-number="11.5">
+<h3 data-number="11.5" class="anchored" data-anchor-id="divisioni-a-vulnerabilità-critica"><span class="header-section-number">11.5</span> Divisioni a vulnerabilità critica</h3>
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -1553,25 +1457,18 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;7: Divisioni a vulnerabilità critica (Score BC nel quartile superiore)</p>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="note-metodologiche" class="level3 anchored" data-number="11.6" data-anchor-id="note-metodologiche">
-<h3 class="anchored" data-number="11.6" data-anchor-id="note-metodologiche"><span class="header-section-number">11.6</span> Note metodologiche</h3>
+<section id="note-metodologiche" class="level3" data-number="11.6">
+<h3 data-number="11.6" class="anchored" data-anchor-id="note-metodologiche"><span class="header-section-number">11.6</span> Note metodologiche</h3>
 <p><strong>Copertura Istat</strong>: i dati di pricing power coprono solo le sezioni con dati disponibili nella banca dati Istat Competitività (prevalentemente sezioni B, C, D, E, F, G). Per le divisioni delle sezioni H–N per cui il dato specifico non è disponibile, il pricing power è stimato come media della sezione di appartenenza o, in mancanza di dati di sezione, come media generale. Questo introduce un’approssimazione nelle sezioni dei servizi.</p>
 <p><strong>Anomalia C19 (raffinazione)</strong>: la divisione 19 presenta pricing_power <span class="math inline">\(= 0\)</span> come artefatto della volatilità estrema dei margini 2022 (anno di forte espansione dei margini di raffinazione). Il valore va interpretato con cautela e la divisione trattata separatamente nelle analisi di portafoglio.</p>
 <p><strong>Dati energetici 2022</strong>: il mix energetico è riferito al 2022, anno di picco della crisi energetica europea. Successivamente al 2022 molte imprese hanno avviato processi di efficientamento e sostituzione del gas. Lo score B potrebbe sovrastimare l’esposizione corrente per i settori che hanno già completato una significativa transizione energetica.</p>
 <p><strong>Rischio geopolitico come moltiplicatore</strong>: Score B e Score C amplificano il rischio base, non lo sostituiscono. Una divisione con Rischio Basso (assente dall’indicatore) ottiene Score BC <span class="math inline">\(= 0\)</span> a prescindere dall’intensità energetica. Lo strumento è pensato per ordinare le priorità <em>all’interno</em> dell’universo già classificato come rischioso.</p>
 </section>
 </section>
-<section id="conclusioni" class="level2 anchored" data-number="12" data-anchor-id="conclusioni">
-<h2 class="anchored" data-number="12" data-anchor-id="conclusioni"><span class="header-section-number">12</span> Conclusioni</h2>
+<section id="conclusioni" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="conclusioni"><span class="header-section-number">12</span> Conclusioni</h2>
 <p>L’indicatore di rischio geosettoriale costituisce uno strumento utile e operativamente praticabile per il governo del credito in contesto di crisi geopolitica. I suoi punti di forza sono la copertura ampia (71% delle imprese italiane per numero di unità), la granularità fino al livello di categoria ATECO e la distinzione su tre livelli di intensità del rischio.</p>
 <p>I principali limiti sono: l’assenza di una categoria di rischio nullo, la possibile sovrastima per propagazione nelle divisioni con deroghe diffuse (in primis la 23), e l’incapacità strutturale di catturare la diversificazione delle imprese multi-settore.</p>
 <p>Per un utilizzo corretto, si raccomanda di:</p>
@@ -1584,9 +1481,9 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <hr>
 <p><em>Dati elaborati da: Indicatore Rischio Geosettoriale ATECO 2025 (fonte interna); Eurostat SBS 2020; CCIA Marche — Stock Imprese Attive Italia, 31/03/2026; Banca d’Italia — BAM-ATECO, dicembre 2025; Eurostat nrg_bal_s — Consumo finale energia per settore, Italia, 2022; Istat Competitività dei Settori Produttivi, edizione 2022.</em></p>
+
+
 </section>
-
-
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1997,7 +1894,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2604_RischioGeopoliticoSettori/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

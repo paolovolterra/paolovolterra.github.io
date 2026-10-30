@@ -179,9 +179,9 @@ div.csl-indent {
   <li><a href="#centro-osservato-e-floor-di-sopravvivenza" id="toc-centro-osservato-e-floor-di-sopravvivenza" class="nav-link" data-scroll-target="#centro-osservato-e-floor-di-sopravvivenza"><span class="header-section-number">5</span> Centro osservato e floor di sopravvivenza</a></li>
   <li><a href="#lettura" id="toc-lettura" class="nav-link" data-scroll-target="#lettura"><span class="header-section-number">6</span> Lettura</a></li>
   <li><a href="#caveat" id="toc-caveat" class="nav-link" data-scroll-target="#caveat"><span class="header-section-number">7</span> Caveat</a></li>
-  <li><a href="#referenze" id="toc-referenze" class="nav-link" data-scroll-target="#referenze"><span class="header-section-number">8</span> Referenze</a></li>
+  <li><a href="#quarto-bibliography" id="toc-quarto-bibliography" class="nav-link" data-scroll-target="#quarto-bibliography"><span class="header-section-number">8</span> Referenze</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2607_NormalitaGenerata/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -228,8 +228,8 @@ div.csl-indent {
 </header>
 
 
-<section id="perche-dati-sintetici" class="level2 anchored" data-number="1" data-anchor-id="perche-dati-sintetici">
-<h2 class="anchored" data-number="1" data-anchor-id="perche-dati-sintetici"><span class="header-section-number">1</span> Perche’ dati sintetici</h2>
+<section id="perche-dati-sintetici" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="perche-dati-sintetici"><span class="header-section-number">1</span> Perche’ dati sintetici</h2>
 <p>I dati sintetici servono a costruire casi didattici o scenari di test senza usare bilanci reali. Ma una impresa sintetica puo’ essere coerente in quadratura e comunque poco plausibile rispetto ai range osservati. Per questo i benchmark Bankit e Mediobanca servono come vincolo empirico.</p>
 <p>La letteratura sui modelli di previsione del fallimento mostra il passaggio da indicatori singoli a profili piu’ complessi <span class="citation" data-cites="beaver1966financial altman1968financial balcaen2006business">(<a href="#ref-beaver1966financial" role="doc-biblioref">Beaver 1966</a>; <a href="#ref-altman1968financial" role="doc-biblioref">Altman 1968</a>; <a href="#ref-balcaen2006business" role="doc-biblioref">Balcaen e Ooghe 2006</a>)</span>. Qui il punto e’ simile: non basta che un ratio superi una soglia; conta il profilo complessivo.</p>
 <p>Il generatore di bilanci sintetici nasce con un obiettivo diverso dalle fonti osservate. Bankit e Mediobanca descrivono aggregati reali. Il generatore inventa imprese fittizie ma internamente coerenti. Proprio per questo ha bisogno di due controlli distinti:</p>
@@ -239,15 +239,10 @@ div.csl-indent {
 </ol>
 <p>I benchmark riscontrabili entrano nel secondo controllo. Non dicono quale sia il valore ottimo. Dicono se uno scenario sintetico e’ vicino, lontano o radicalmente fuori dai profili osservati.</p>
 </section>
-<section id="archetipi" class="level2 anchored" data-number="2" data-anchor-id="archetipi">
-<h2 class="anchored" data-number="2" data-anchor-id="archetipi"><span class="header-section-number">2</span> Archetipi</h2>
-<div class="cell" data-execution_count="2">
-<div id="tab-archetipi" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="2">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-archetipi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="2">
+<section id="archetipi" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="archetipi"><span class="header-section-number">2</span> Archetipi</h2>
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -334,26 +329,14 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;1: Archetipi del generatore sintetico: range principali.</p>
-</div>
-</div>
-</div>
-</div>
 <p>Gli archetipi non devono coincidere con cluster empirici osservati. <code>crisi</code>, <code>turnaround</code> o <code>tensione_liquidita</code> sono scenari intenzionali: servono a costruire casi limite e a testare regole. Sarebbe un errore forzarli dentro il range medio di Bankit o Mediobanca. Il confronto con i benchmark serve a capire quanto sono lontani, non a renderli tutti normali.</p>
 <p>La distinzione diventa particolarmente importante per le soglie. Un conto e’ dire che l’archetipo <code>sana_stabile</code> ha un EBITDA margin coerente con un centro osservato; un altro conto e’ dire che sotto una certa soglia l’impresa deve essere rifiutata. Il primo e’ un confronto con il riscontrabile. Il secondo e’ una regola di accettabilita’.</p>
 </section>
-<section id="output-generato" class="level2 anchored" data-number="3" data-anchor-id="output-generato">
-<h2 class="anchored" data-number="3" data-anchor-id="output-generato"><span class="header-section-number">3</span> Output generato</h2>
-<div class="cell" data-execution_count="3">
-<div id="tab-sintetici-esiti" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-sintetici-esiti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="3">
+<section id="output-generato" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="output-generato"><span class="header-section-number">3</span> Output generato</h2>
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">screening_esito</th>
@@ -416,38 +399,14 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;2: Esiti dello screening per archetipo.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="cell-fig-ebitda-sintetici" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display">
-<div id="figura-ebitda-sintetici" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-ebitda-sintetici-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig01.png" class="figure-img" role="img" width="736" height="481"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;1: Distribuzione dell’EBITDA margin sintetico per archetipo.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="soglie-da-manuale-e-soglie-riscontrabili" class="level2 anchored" data-number="4" data-anchor-id="soglie-da-manuale-e-soglie-riscontrabili">
-<h2 class="anchored" data-number="4" data-anchor-id="soglie-da-manuale-e-soglie-riscontrabili"><span class="header-section-number">4</span> Soglie da manuale e soglie riscontrabili</h2>
-<div class="cell" data-execution_count="5">
-<div id="tab-soglie-screening" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="5">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-soglie-screening-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="5">
+<section id="soglie-da-manuale-e-soglie-riscontrabili" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="soglie-da-manuale-e-soglie-riscontrabili"><span class="header-section-number">4</span> Soglie da manuale e soglie riscontrabili</h2>
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -509,28 +468,16 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;3: Regole di screening: fallimenti per regola nel dataset sintetico.</p>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="centro-osservato-e-floor-di-sopravvivenza" class="level2 anchored" data-number="5" data-anchor-id="centro-osservato-e-floor-di-sopravvivenza">
-<h2 class="anchored" data-number="5" data-anchor-id="centro-osservato-e-floor-di-sopravvivenza"><span class="header-section-number">5</span> Centro osservato e floor di sopravvivenza</h2>
+<section id="centro-osservato-e-floor-di-sopravvivenza" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="centro-osservato-e-floor-di-sopravvivenza"><span class="header-section-number">5</span> Centro osservato e floor di sopravvivenza</h2>
 <p>Il contributo piu’ importante della riflessione sui dati sintetici e’ distinguere due grandezze che spesso vengono confuse.</p>
 <p>La prima e’ il <strong>centro o range di un archetipo</strong>. Qui il principio del riscontrabile vale pienamente: se si vuole descrivere un’impresa normale, sana o in crescita, ha senso guardare dove stanno Bankit e Mediobanca. Non serve inventare un “valore ottimo” astratto se esiste un intervallo osservato.</p>
 <p>La seconda e’ il <strong>floor di soglia</strong>, cioe’ il minimo sotto cui una regola di screening scatta. Qui il problema e’ diverso. Bankit e Mediobanca sono medie o aggregati di popolazioni gia’ selezionate: societa’ di capitali sopravvissute, medie imprese industriali, campioni osservabili. Non misurano la coda bassa di imprese deboli ma ancora vive. Per tarare una soglia di sopravvivenza servirebbe una fonte con microdati o percentili, non solo centri aggregati.</p>
 <p>Quindi il valore da manuale non va demonizzato in blocco. Va collocato nel suo ruolo. Se descrive un centro normale, dovrebbe essere sostituito o almeno confrontato con il riscontrabile. Se descrive un floor prudenziale e non esiste una fonte empirica adatta, puo’ restare una convenzione, ma deve essere dichiarato come tale.</p>
-<div class="cell" data-execution_count="6">
-<div id="tab-centro-floor" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="6">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-centro-floor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -558,27 +505,19 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;4: Due usi diversi dei benchmark: centro osservato e floor prudenziale.</p>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="lettura" class="level2 anchored" data-number="6" data-anchor-id="lettura">
-<h2 class="anchored" data-number="6" data-anchor-id="lettura"><span class="header-section-number">6</span> Lettura</h2>
+<section id="lettura" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="lettura"><span class="header-section-number">6</span> Lettura</h2>
 </section>
-<section id="caveat" class="level2 anchored" data-number="7" data-anchor-id="caveat">
-<h2 class="anchored" data-number="7" data-anchor-id="caveat"><span class="header-section-number">7</span> Caveat</h2>
+<section id="caveat" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="caveat"><span class="header-section-number">7</span> Caveat</h2>
 <p>La coerenza dei ratio non garantisce da sola la coerenza contabile. Il generatore deve continuare a controllare quadratura, relazioni tra voci e plausibilita’ dei flussi. Bankit e Mediobanca aiutano a tarare i range, non sostituiscono il motore contabile.</p>
 <p>Inoltre la plausibilita’ di un singolo ratio non implica plausibilita’ multivariata. Un’impresa sintetica puo’ avere un margine normale, un leverage normale e un current ratio normale presi uno per volta, ma una combinazione complessiva incoerente. L’obiettivo finale e’ quindi costruire benchmark di profilo: non solo range per colonna, ma combinazioni osservabili tra margini, leva, liquidita’, crescita e costo del debito.</p>
 </section>
 <div id="quarto-appendix" class="default">
-<section id="quarto-bibliography" class="quarto-appendix-contents" role="doc-bibliography">
-<section id="referenze" class="level2 anchored quarto-appendix-heading" data-number="8">
-<h2 class="anchored quarto-appendix-heading" data-number="8" data-anchor-id="referenze"><span class="header-section-number">8</span> Referenze</h2>
+<section id="quarto-bibliography" class="level2 quarto-appendix-heading" data-number="8">
+<h2 class="quarto-appendix-heading anchored" data-number="8" data-anchor-id="quarto-bibliography"><span class="header-section-number">8</span> Referenze</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-altman1968financial" class="csl-entry" role="listitem">
 Altman, Edward I. 1968. «Financial Ratios, Discriminant Analysis and the Prediction of Corporate Bankruptcy». <em>The Journal of Finance</em> 23 (4): 589–609. <a href="https://doi.org/10.2307/2978933" class="uri">https://doi.org/10.2307/2978933</a>.
@@ -590,7 +529,6 @@ Balcaen, Sofie, e Hubert Ooghe. 2006. «35 Years of Studies on Business Failure:
 Beaver, William H. 1966. «Financial Ratios as Predictors of Failure». <em>Journal of Accounting Research</em> 4: 71–111. <a href="https://doi.org/10.2307/2490171" class="uri">https://doi.org/10.2307/2490171</a>.
 </div>
 </div>
-</section>
 </section>
 </div>
 
@@ -1005,7 +943,7 @@ Beaver, William H. 1966. «Financial Ratios as Predictors of Failure». <em>Jour
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2607_NormalitaGenerata/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

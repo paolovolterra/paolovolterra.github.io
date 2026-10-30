@@ -75,6 +75,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../MCC.css">
 <meta property="og:title" content="Total Factor Productivity – Paolo Volterra">
@@ -167,7 +196,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#il-prossimo-shock-intelligenza-artificiale-e-digitale" id="toc-il-prossimo-shock-intelligenza-artificiale-e-digitale" class="nav-link" data-scroll-target="#il-prossimo-shock-intelligenza-artificiale-e-digitale"><span class="header-section-number">7.3</span> Il prossimo shock: intelligenza artificiale e digitale</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2603_TotalFactorProductivity/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -220,8 +249,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="perché-studiare-la-total-factor-productivity" class="level2 anchored" data-anchor-id="perché-studiare-la-total-factor-productivity" data-number="1">
-<h2 class="anchored" data-anchor-id="perché-studiare-la-total-factor-productivity" data-number="1"><span class="header-section-number">1</span> Perché studiare la Total Factor Productivity</h2>
+<section id="perché-studiare-la-total-factor-productivity" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="perché-studiare-la-total-factor-productivity"><span class="header-section-number">1</span> Perché studiare la Total Factor Productivity</h2>
 <p>Quando si vuole capire perché alcune economie crescono e altre ristagnano, il PIL da solo non basta. Un paese può produrre di più semplicemente accumulando più capitale fisico — costruendo fabbriche, acquistando macchinari — oppure portando più lavoratori nel mercato. Ma questi fattori sono soggetti a rendimenti decrescenti: prima o poi si esauriscono. La domanda davvero interessante è un’altra: quanta crescita otteniamo <em>a parità</em> di input? Quanto riusciamo a fare con le stesse risorse?</p>
 <p>Questa quota “residuale” della crescita è la <strong>Total Factor Productivity</strong> (TFP), detta anche residuo di Solow dal nome dell’economista che la formalizzò negli anni Cinquanta. In senso lato la TFP misura il progresso tecnologico, la qualità delle istituzioni, l’efficienza nell’allocazione delle risorse, la capacità innovativa di un sistema economico. Non è osservabile direttamente: si stima sottraendo al tasso di crescita del PIL il contributo del lavoro e del capitale. Proprio per questo è la variabile più difficile da far crescere con le politiche economiche ordinarie, e la più rivelatrice di quanto un’economia sia davvero moderna.</p>
 <div class="callout callout-style-simple callout-none no-icon callout-titled" title="Il residuo di Solow">
@@ -251,30 +280,19 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>L’analisi che segue utilizza le serie della <strong>Penn World Tables</strong> (versione 10.x) distribuite tramite il database FRED della Fed di St.&nbsp;Louis. La serie <code>RTFPNAXXXA632NRUG</code> fornisce la TFP a prezzi nazionali costanti, con base di riferimento 2017, per cinque paesi: Italia, Germania, Francia, Spagna e Stati Uniti. Per rendere confrontabili le traiettorie storiche indipendentemente dai livelli assoluti di partenza, normalizziamo ogni serie a <strong>1,0 nell’anno 1954</strong>: in questo modo il grafico mostra <em>di quanto è cambiata</em> la produttività di ciascun paese rispetto a quella base comune. Copertura temporale: 1954–2023 (ultimo dato disponibile).</p>
 </section>
-<section id="il-quadro-generale" class="level2 anchored" data-anchor-id="il-quadro-generale" data-number="2">
-<h2 class="anchored" data-anchor-id="il-quadro-generale" data-number="2"><span class="header-section-number">2</span> Il quadro generale</h2>
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
+<section id="il-quadro-generale" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="il-quadro-generale"><span class="header-section-number">2</span> Il quadro generale</h2>
 <p><img src="figure/loc_tfp_5paesi.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<div class="caption">
 <p>TFP normalizzata 1954–2023: cinque paesi a confronto</p>
-</div>
-</div>
-</div>
 <p>Il grafico racconta settant’anni di storia economica in una sola immagine. Tre fasi emergono con chiarezza.</p>
 <p>Nella prima fase — la <strong>fascia verde</strong>, 1954–1974 — tutte le economie crescono, ma a velocità molto diverse. Gli USA partono già sulla frontiera tecnologica mondiale: avendo già incorporato le innovazioni del dopoguerra, il loro margine di miglioramento è più stretto, e il CAGR della TFP si ferma allo 0,89 % annuo. Le economie europee invece inseguono: Francia (+3,54 % annuo), Spagna (+3,38 %), Italia (+2,86 %), Germania (+2,75 %) sfruttano il meccanismo del <em>catching-up</em> — importano tecnologie già collaudate dagli USA, riorganizzano la produzione, modernizzano il tessuto industriale. È l’età dell’oro della crescita europea.</p>
 <p>La <strong>linea tratteggiata rossa</strong> del 1974 interrompe bruscamente questa parabola. Con il primo shock petrolifero il costo energetico quadruplica, rendendo obsoleta una parte consistente dello stock di capitale fisico costruito su energia a buon mercato. La seconda fase — la <strong>fascia rosa</strong>, 1974–1987 — è quella della stagflazione: crescita lenta, inflazione alta, ristrutturazioni dolorose. I paesi reagiscono in modo diverso, e qui le traiettorie cominciano a divergere.</p>
 <p>La terza fase, dal 1987 in poi, vede una parziale ripresa in Germania (+1,15 % annuo tra 1987 e 2008) e Spagna, mentre Francia e soprattutto Italia faticano a ritrovare un sentiero stabile. La crisi del 2008 chiude il ciclo con un calo generalizzato, dal quale solo gli USA escono rapidamente.</p>
 </section>
-<section id="crescita-cumulata-e-cagr-per-sottoperiodo" class="level2 anchored" data-anchor-id="crescita-cumulata-e-cagr-per-sottoperiodo" data-number="3">
-<h2 class="anchored" data-anchor-id="crescita-cumulata-e-cagr-per-sottoperiodo" data-number="3"><span class="header-section-number">3</span> Crescita cumulata e CAGR per sottoperiodo</h2>
+<section id="crescita-cumulata-e-cagr-per-sottoperiodo" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="crescita-cumulata-e-cagr-per-sottoperiodo"><span class="header-section-number">3</span> Crescita cumulata e CAGR per sottoperiodo</h2>
 <p>Le due tabelle seguenti scompongono la storia in quattro archi temporali definiti dagli eventi strutturali: l’età dell’oro (1954–1974), la stagflazione (1974–1987), la lunga ripresa pre-crisi (1987–2008) e il periodo post-crisi finanziaria (2008–2023). La prima tabella mostra la variazione cumulata totale in ciascun periodo; la seconda il tasso di crescita medio annuo composto (CAGR), che normalizza per la durata diversa di ciascun arco e rende i periodi direttamente confrontabili.</p>
-<div id="b550fa31" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display" data-execution_count="2">
-<div id="T_385f9" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="T_385f9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Paese</th>
@@ -328,18 +346,9 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;1: Crescita TFP cumulata (%)</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p>Leggendo la tabella cumulata per colonna si vede subito la differenza tra paesi che hanno saputo ripartire dopo il 1974 e paesi che non ce l’hanno fatta. Francia e Germania accumulano crescita positiva anche nei periodi difficili; l’Italia è l’unica a mostrare segno negativo già dal secondo sottoperiodo e non lo recupera mai.</p>
-<div id="3c7e4bba" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display" data-execution_count="3">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Paese</th>
@@ -393,28 +402,15 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
 </section>
-<section id="il-caso-italia-una-frattura-che-non-si-è-mai-chiusa" class="level2 anchored" data-anchor-id="il-caso-italia-una-frattura-che-non-si-è-mai-chiusa" data-number="4">
-<h2 class="anchored" data-anchor-id="il-caso-italia-una-frattura-che-non-si-è-mai-chiusa" data-number="4"><span class="header-section-number">4</span> Il caso Italia: una frattura che non si è mai chiusa</h2>
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
+<section id="il-caso-italia-una-frattura-che-non-si-è-mai-chiusa" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="il-caso-italia-una-frattura-che-non-si-è-mai-chiusa"><span class="header-section-number">4</span> Il caso Italia: una frattura che non si è mai chiusa</h2>
 <p><img src="figure/loc_tfp_italia_vs_altri.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<div class="caption">
 <p>Sinistra: base 1954 = 1. Destra: re-normalizzata al 1974 per isolare la stagnazione post-shock</p>
-</div>
-</div>
-</div>
 <p>Il pannello di destra del grafico è il più eloquente: re-normalizzando tutte le serie al 1974, emerge con nettezza che l’Italia è l’unico paese che non torna mai stabilmente sopra la propria linea di base post-shock. Le altre economie — chi prima, chi dopo — ritrovano un sentiero di crescita della produttività. L’Italia no.</p>
 <p>Perché? La letteratura economica suggerisce una combinazione di fattori strutturali che si sono stratificati nel tempo. Primo, il sistema produttivo italiano è dominato da piccole e medie imprese che, pur flessibili, investono poco in ricerca e sviluppo e faticano a scalare. Secondo, la specializzazione nei settori tradizionali (tessile, abbigliamento, meccanica leggera) ha subito la concorrenza dei paesi emergenti proprio negli anni in cui si sarebbero dovuti realizzare gli investimenti in innovazione. Terzo, il mercato dei capitali e del lavoro ha presentato rigidità che hanno rallentato la riallocazione delle risorse verso attività a più alta produttività. Infine, le inefficienze della pubblica amministrazione e il costo della burocrazia hanno compresso i rendimenti privati dell’investimento.</p>
 <p>Il risultato numerico è senza appello: nei 49 anni compresi tra il 1974 e il 2023, la TFP italiana è diminuita in media dello <strong>0,40 % ogni anno</strong>. La perdita cumulata rispetto al 1974 è del <strong>−17,9 %</strong>. Nello stesso arco temporale la Germania ha guadagnato il +47 %, la Spagna il +36 %, la Francia il +23 %. Il divario con la frontiera tecnologica, invece di ridursi come ci si attenderebbe da un paese che partiva indietro, si è allargato.</p>
-<div id="01ca4e47" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display" data-execution_count="4">
-<div id="T_a9523" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="T_a9523-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">&nbsp;</th>
@@ -440,33 +436,15 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;2: Italia: indicatori chiave post-1974</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="la-crisi-del-2008-lultimo-shock-generalizzato" class="level2 anchored" data-anchor-id="la-crisi-del-2008-lultimo-shock-generalizzato" data-number="5">
-<h2 class="anchored" data-anchor-id="la-crisi-del-2008-lultimo-shock-generalizzato" data-number="5"><span class="header-section-number">5</span> La crisi del 2008: l’ultimo shock generalizzato</h2>
-<div class="quarto-figure quarto-figure-center">
-<div class="figure">
+<section id="la-crisi-del-2008-lultimo-shock-generalizzato" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="la-crisi-del-2008-lultimo-shock-generalizzato"><span class="header-section-number">5</span> La crisi del 2008: l’ultimo shock generalizzato</h2>
 <p><img src="figure/loc_tfp_crisi2008.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<div class="caption">
 <p>Impatto della crisi finanziaria 2008 sulla TFP</p>
-</div>
-</div>
-</div>
 <p>La crisi finanziaria globale del 2008–2009 è l’ultimo grande evento esogeno che colpisce la produttività in modo sincronizzato. Il canale di trasmissione è diverso da quello del 1974: non è un rincaro dell’energia a rendere obsoleto il capitale, ma il credit crunch — il brusco razionamento del credito bancario — che blocca gli investimenti, comprime la domanda e accelera la distruzione di imprese. Le imprese più vulnerabili, quelle con meno liquidità e più esposte ai mercati finanziari, escono dal mercato o ridimensionano drasticamente; la produttività media dell’economia cade perché sopravvivono soprattutto le imprese che erano già meno dinamiche.</p>
 <p>Il grafico mostra la finestra 2004–2015 per mettere in evidenza l’ampiezza e la velocità del crollo. La tabella quantifica la variazione della TFP nel biennio più acuto (2008–2010):</p>
-<div id="45f2834b" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display" data-execution_count="5">
-<div id="T_83221" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="T_83221-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">&nbsp;</th>
@@ -500,34 +478,27 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;3: Variazione TFP 2008–2010</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p>Tutti i paesi europei registrano cali: da −0,9 % della Spagna a −3,5 % dell’Italia. Solo gli Stati Uniti invertono la tendenza già entro il 2010 (+1,9 %), grazie alla rapidità della risposta di politica monetaria, alla flessibilità del mercato del lavoro e alla maggiore capacità delle imprese americane di riallocare risorse verso settori ad alta produttività come il digitale.</p>
 <p>Per l’Italia il 2008 rappresenta il colpo di grazia a una produttività che era già ferma da tre decenni. Non si tratta soltanto di un rimbalzo ciclico negativo: i dati mostrano che dopo il 2010 la TFP italiana non recupera i livelli pre-crisi, consolidando una traiettoria di declino strutturale che affonda le radici nel 1974.</p>
 </section>
-<section id="conclusioni" class="level2 anchored" data-anchor-id="conclusioni" data-number="6">
-<h2 class="anchored" data-anchor-id="conclusioni" data-number="6"><span class="header-section-number">6</span> Conclusioni</h2>
+<section id="conclusioni" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="conclusioni"><span class="header-section-number">6</span> Conclusioni</h2>
 <p>L’analisi conferma e quantifica quattro affermazioni che sintetizzano settant’anni di divergenza nella produttività europea.</p>
 <p><strong>1. Il catching-up è reale, ma dipende dalla distanza dalla frontiera.</strong> Nell’età dell’oro gli USA crescono lentamente (0,89 % annuo) perché non hanno nessuno da imitare: devono innovare ex novo. Le economie europee, ancora lontane dalla frontiera, importano tecnologie già testate, riorganizzano la produzione su modelli americani e crescono a ritmi quasi quattro volte superiori. Questo meccanismo — il <em>catching-up</em> di Gerschenkron — spiega perché i paesi arretrati possano convergere rapidamente, ma anche perché la convergenza rallenta una volta che il divario si riduce.</p>
 <p><strong>2. Il 1974 è uno spartiacque, non un rallentamento.</strong> Il primo shock petrolifero non è un ciclo negativo passeggero: provoca una caduta strutturale della crescita della produttività in tutti i paesi. La differenza tra chi riesce a ripartire e chi no dipende dalla capacità di riallocare il capitale verso tecnologie non energivore, di ristrutturare il tessuto industriale e di mantenere investimenti in istruzione e ricerca anche nei periodi di austerità fiscale.</p>
 <p><strong>3. L’Italia è un caso a sé.</strong> È l’unico paese con CAGR della TFP negativo su tutti i sottoperiodi successivi al 1974. La TFP italiana nel 2023 è inferiore del 17,9 % rispetto al 1974: mezzo secolo perduto sul fronte dell’efficienza produttiva. Questo non significa che l’economia italiana non abbia prodotto ricchezza nel periodo, ma che l’ha fatto principalmente accumulando input — più capitale, più ore lavorate — e non migliorando l’efficienza con cui li utilizza. Un sentiero insostenibile nel lungo periodo.</p>
 <p><strong>4. Il 2008 amplifica i divari preesistenti.</strong> La crisi finanziaria colpisce tutti, ma non allo stesso modo. I paesi che erano riusciti a costruire una base produttiva solida nel trentennio precedente (Germania in testa) assorbono lo shock e riprendono. I paesi che arrivavano al 2008 già indeboliti — Italia in primo luogo — escono dalla crisi con una produttività ancora più lontana dalla frontiera. La politica economica post-2008 si è concentrata soprattutto sul consolidamento fiscale e sulla tenuta del sistema bancario; le riforme strutturali necessarie a riaccendere la crescita della TFP sono rimaste in larga parte incompiute.</p>
 </section>
-<section id="implicazioni-produttività-credito-e-la-prossima-frontiera" class="level2 anchored" data-anchor-id="implicazioni-produttività-credito-e-la-prossima-frontiera" data-number="7">
-<h2 class="anchored" data-anchor-id="implicazioni-produttività-credito-e-la-prossima-frontiera" data-number="7"><span class="header-section-number">7</span> Implicazioni: produttività, credito e la prossima frontiera</h2>
-<section id="la-tesi-in-sintesi" class="level3 anchored" data-anchor-id="la-tesi-in-sintesi" data-number="7.1">
-<h3 class="anchored" data-anchor-id="la-tesi-in-sintesi" data-number="7.1"><span class="header-section-number">7.1</span> La tesi in sintesi</h3>
+<section id="implicazioni-produttività-credito-e-la-prossima-frontiera" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="implicazioni-produttività-credito-e-la-prossima-frontiera"><span class="header-section-number">7</span> Implicazioni: produttività, credito e la prossima frontiera</h2>
+<section id="la-tesi-in-sintesi" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="la-tesi-in-sintesi"><span class="header-section-number">7.1</span> La tesi in sintesi</h3>
 <p>L’Italia non è un paese che cresce poco: è un paese che da cinquant’anni fatica a trasformare le risorse in produttività. Il meccanismo di diffusione tecnologica che aveva alimentato il miracolo economico si è inceppato nel 1974 e non è mai stato riparato. Il risultato è che ogni shock esogeno — energetico nel 1974, finanziario nel 2008 — trova il sistema produttivo italiano già in posizione difensiva e produce effetti asimmetrici rispetto agli altri paesi europei.</p>
 <p>Questa distinzione non è accademica. Ha conseguenze dirette sul profilo di rischio delle imprese, sull’allocazione del credito e sulla valutazione della capacità di rimborso a medio termine.</p>
 </section>
-<section id="tfp-e-rischio-di-credito" class="level3 anchored" data-anchor-id="tfp-e-rischio-di-credito" data-number="7.2">
-<h3 class="anchored" data-anchor-id="tfp-e-rischio-di-credito" data-number="7.2"><span class="header-section-number">7.2</span> TFP e rischio di credito</h3>
+<section id="tfp-e-rischio-di-credito" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="tfp-e-rischio-di-credito"><span class="header-section-number">7.2</span> TFP e rischio di credito</h3>
 <p>Il divario di produttività si traduce in modo meccanico sulla redditività delle imprese. Un’impresa operante in un settore a TFP stagnante o decrescente deve compensare la perdita di efficienza con aumenti di prezzo — difficili in mercati aperti alla concorrenza internazionale — oppure comprimendo margini e investimenti. Nel lungo periodo, bassa TFP significa:</p>
 <ul>
 <li><strong>Minori flussi di cassa liberi</strong> disponibili per il servizio del debito, a parità di fatturato;</li>
@@ -536,15 +507,15 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>La Germania ha accumulato +47 % di TFP tra il 1974 e il 2023; l’Italia ha perso il 17,9 %. Il differenziale — 64 punti percentuali in mezzo secolo — non è riassorbibile con cicli congiunturali favorevoli. Si tratta di uno scarto strutturale che un’analisi del merito creditizio corretta dovrebbe scontare nella valutazione delle PMI manifatturiere italiane, specialmente quelle operanti nei settori a più bassa intensità tecnologica.</p>
 </section>
-<section id="il-prossimo-shock-intelligenza-artificiale-e-digitale" class="level3 anchored" data-anchor-id="il-prossimo-shock-intelligenza-artificiale-e-digitale" data-number="7.3">
-<h3 class="anchored" data-anchor-id="il-prossimo-shock-intelligenza-artificiale-e-digitale" data-number="7.3"><span class="header-section-number">7.3</span> Il prossimo shock: intelligenza artificiale e digitale</h3>
+<section id="il-prossimo-shock-intelligenza-artificiale-e-digitale" class="level3" data-number="7.3">
+<h3 data-number="7.3" class="anchored" data-anchor-id="il-prossimo-shock-intelligenza-artificiale-e-digitale"><span class="header-section-number">7.3</span> Il prossimo shock: intelligenza artificiale e digitale</h3>
 <p>Lo shock energetico del 1974 ha reso obsoleta una parte del capitale fisico costruito su energia a buon mercato. Lo shock AI degli anni 2020 rischia di rendere obsoleta una parte del capitale umano e organizzativo costruito su lavoro manuale a medio contenuto cognitivo — esattamente la specializzazione produttiva dove l’Italia è sovrarappresentata.</p>
 <p>I paesi che hanno mantenuto — o ricostruito — un meccanismo efficiente di diffusione tecnologica (Stati Uniti, Germania, in misura minore Francia) assorbono questo shock trasformandolo in guadagni di produttività. I paesi che arrivano al 2025 con una TFP già in declino rischiano invece di subire un effetto sostituzione senza contropartita: le attività a basso valore aggiunto vengono automatizzate, ma la capacità di generarne di nuove ad alto valore rimane compressa dalle stesse rigidità strutturali che hanno bloccato la crescita della TFP nei decenni precedenti.</p>
 <p>Il monitoraggio della TFP settoriale — già disponibile attraverso le serie Penn World Tables e i dati ISTAT sulla competitività — diventa quindi uno strumento di early warning per identificare le filiere dove il rischio di obsolescenza sistemica è più elevato, e dove la qualità del portafoglio crediti delle banche esposte a quelle filiere richiede un’attenzione aggiuntiva.</p>
-</section>
-</section>
 
 
+</section>
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -955,7 +926,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2603_TotalFactorProductivity/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

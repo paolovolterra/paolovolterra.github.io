@@ -110,6 +110,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../MCC.css">
 <meta property="og:title" content="GMM Forward-Looking Analysis – Paolo Volterra">
@@ -224,7 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#riferimenti-bibliografici" id="toc-riferimenti-bibliografici" class="nav-link" data-scroll-target="#riferimenti-bibliografici"><span class="header-section-number">6.3</span> Riferimenti bibliografici</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2602_FiduciaImpreseGMM/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -290,10 +319,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Disponibili mensilmente con bassa latenza</p></li>
 <li><p>Forniscono strumenti validi per GMM</p></li>
 </ul>
-<section id="dataset-disponibili" class="level2 anchored" data-number="1" data-anchor-id="dataset-disponibili">
-<h2 class="anchored" data-number="1" data-anchor-id="dataset-disponibili"><span class="header-section-number">1</span> Dataset Disponibili</h2>
-<section id="files-generati" class="level3 anchored" data-anchor-id="files-generati" data-number="1.1">
-<h3 class="anchored" data-anchor-id="files-generati" data-number="1.1"><span class="header-section-number">1.1</span> Files generati</h3>
+<section id="dataset-disponibili" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="dataset-disponibili"><span class="header-section-number">1</span> Dataset Disponibili</h2>
+<section id="files-generati" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="files-generati"><span class="header-section-number">1.1</span> Files generati</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 31%">
@@ -331,8 +360,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
-<section id="copertura-dati" class="level3 anchored" data-anchor-id="copertura-dati" data-number="1.2">
-<h3 class="anchored" data-anchor-id="copertura-dati" data-number="1.2"><span class="header-section-number">1.2</span> Copertura dati</h3>
+<section id="copertura-dati" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="copertura-dati"><span class="header-section-number">1.2</span> Copertura dati</h3>
 <ul>
 <li><strong>Paesi</strong>: Italia, Germania, Francia, Spagna, Area Euro (EA20)</li>
 <li><strong>Periodo</strong>: 2010-01 → 2026-01 (16 anni, frequenza mensile)</li>
@@ -347,8 +376,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 </section>
-<section id="trasformazioni-gmm-incluse" class="level3 anchored" data-anchor-id="trasformazioni-gmm-incluse" data-number="1.3">
-<h3 class="anchored" data-anchor-id="trasformazioni-gmm-incluse" data-number="1.3"><span class="header-section-number">1.3</span> Trasformazioni GMM incluse</h3>
+<section id="trasformazioni-gmm-incluse" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="trasformazioni-gmm-incluse"><span class="header-section-number">1.3</span> Trasformazioni GMM incluse</h3>
 <p>Il dataset <code>data_panel_gmm_ready.parquet</code> include:</p>
 <ol type="1">
 <li><strong>Lag variabili</strong> (t-1, t-3, t-6, t-12)</li>
@@ -358,9 +387,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Gap vs benchmark</strong> (differenza da EA20)</li>
 <li><strong>Variabili strutturali</strong> (entity_id, time_id, year, month, quarter)</li>
 </ol>
-<div id="b4ce8605" class="cell" data-execution_count="1">
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -376,8 +403,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Periodo: </span><span class="sc">{</span>panel[<span class="st">'time'</span>]<span class="sc">.</span><span class="bu">min</span>()<span class="sc">.</span>date()<span class="sc">}</span><span class="ss"> → </span><span class="sc">{</span>panel[<span class="st">'time'</span>]<span class="sc">.</span><span class="bu">max</span>()<span class="sc">.</span>date()<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>panel.sample(<span class="dv">5</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-stdout">
 <pre><code>📊 Panel GMM-Ready
    Dimensioni: (49757, 27)
    Paesi: &lt;ArrowStringArray&gt;
@@ -387,10 +412,8 @@ Length: 5, dtype: str
 ['construction', 'consumer', 'industry', 'retail', 'sentiment', 'services']
 Length: 6, dtype: str
    Periodo: 2010-01-05 → 2026-01-05</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="1">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -542,14 +565,12 @@ Length: 6, dtype: str
 </table>
 <p>5 rows × 27 columns</p>
 </div>
-</div>
-</div>
 </section>
 </section>
-<section id="risultati-analisi-preliminare" class="level2 anchored" data-number="2" data-anchor-id="risultati-analisi-preliminare">
-<h2 class="anchored" data-number="2" data-anchor-id="risultati-analisi-preliminare"><span class="header-section-number">2</span> Risultati Analisi Preliminare</h2>
-<section id="test-di-stazionarietà-adf" class="level3 anchored" data-anchor-id="test-di-stazionarietà-adf" data-number="2.1">
-<h3 class="anchored" data-anchor-id="test-di-stazionarietà-adf" data-number="2.1"><span class="header-section-number">2.1</span> Test di Stazionarietà (ADF)</h3>
+<section id="risultati-analisi-preliminare" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="risultati-analisi-preliminare"><span class="header-section-number">2</span> Risultati Analisi Preliminare</h2>
+<section id="test-di-stazionarietà-adf" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="test-di-stazionarietà-adf"><span class="header-section-number">2.1</span> Test di Stazionarietà (ADF)</h3>
 <p><strong>Risultati chiave</strong>:</p>
 <table class="caption-top table">
 <thead>
@@ -587,9 +608,7 @@ Length: 6, dtype: str
 <li><p>Tassi di variazione (<code>value_growth1</code>, <code>value_growth12</code>)</p></li>
 <li><p>Oppure specificare modello con Error Correction Mechanism (ECM)</p></li>
 </ul>
-<div id="c670a1ed" class="cell" data-execution_count="2">
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Confronto livelli vs differenze - Italia ESI (pulito e coerente)</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>it_sentiment <span class="op">=</span> panel[</span>
@@ -630,18 +649,12 @@ Length: 6, dtype: str
 <span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-display">
 <div>
-<div class="figure">
 <p><img src="figure/fig01.png" class="figure-img" role="img" width="1333" height="756"></p>
 </div>
-</div>
-</div>
-</div>
 </section>
-<section id="test-di-granger-causality" class="level3 anchored" data-anchor-id="test-di-granger-causality" data-number="2.2">
-<h3 class="anchored" data-anchor-id="test-di-granger-causality" data-number="2.2"><span class="header-section-number">2.2</span> Test di Granger Causality</h3>
+<section id="test-di-granger-causality" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="test-di-granger-causality"><span class="header-section-number">2.2</span> Test di Granger Causality</h3>
 <p><strong>Leading Indicators identificati</strong> (Italia, target = ESI composito):</p>
 <table class="caption-top table">
 <thead>
@@ -685,9 +698,7 @@ Length: 6, dtype: str
 </tbody>
 </table>
 <p><strong>Implicazione per GMM</strong>: - L’indicatore <strong>costruzioni</strong> è il miglior leading indicator (anticipa ESI di 2-4 mesi) - Usare come <strong>strumento valido</strong> nelle equazioni GMM - Specificare lag ottimali (2-4 periodi)</p>
-<div id="e8dbcf3b" class="cell" data-execution_count="3">
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizza relazione leading: Costruzioni → Sentiment</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>it_data <span class="op">=</span> panel[panel[<span class="st">'country_code'</span>] <span class="op">==</span> <span class="st">'IT'</span>].copy()</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -718,18 +729,12 @@ Length: 6, dtype: str
 <span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-display">
 <div>
-<div class="figure">
 <p><img src="figure/fig02.png" class="figure-img" role="img" width="1333" height="564"></p>
 </div>
-</div>
-</div>
-</div>
 </section>
-<section id="cointegrazione-johansen-test" class="level3 anchored" data-anchor-id="cointegrazione-johansen-test" data-number="2.3">
-<h3 class="anchored" data-anchor-id="cointegrazione-johansen-test" data-number="2.3"><span class="header-section-number">2.3</span> Cointegrazione (Johansen Test)</h3>
+<section id="cointegrazione-johansen-test" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="cointegrazione-johansen-test"><span class="header-section-number">2.3</span> Cointegrazione (Johansen Test)</h3>
 <p><strong>Risultato</strong>: 4 relazioni di cointegrazione identificate tra i 6 indicatori (Italia)</p>
 <p><strong>Implicazione per GMM</strong>: - Gli indicatori hanno <strong>relazioni di lungo periodo</strong> - Specificare modello GMM con <strong>Error Correction Mechanism (ECM)</strong> - Oppure usare <strong>Vector Error Correction Model (VECM)</strong> per GMM system</p>
 <p><strong>Trace Statistics</strong>:</p>
@@ -738,21 +743,20 @@ Critical value (95%): [95.75, 69.82, 47.85, 29.80, 15.49, 3.84]
 → 4 relazioni cointegrazione confermate</code></pre>
 </section>
 </section>
-<section id="specificazione-gmm-raccomandata" class="level2 anchored" data-number="3" data-anchor-id="specificazione-gmm-raccomandata">
-<h2 class="anchored" data-number="3" data-anchor-id="specificazione-gmm-raccomandata"><span class="header-section-number">3</span> Specificazione GMM Raccomandata</h2>
-<section id="modello-base-single-equation-gmm" class="level3 anchored" data-anchor-id="modello-base-single-equation-gmm" data-number="3.1">
-<h3 class="anchored" data-anchor-id="modello-base-single-equation-gmm" data-number="3.1"><span class="header-section-number">3.1</span> Modello Base: Single-Equation GMM</h3>
+<section id="specificazione-gmm-raccomandata" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="specificazione-gmm-raccomandata"><span class="header-section-number">3</span> Specificazione GMM Raccomandata</h2>
+<section id="modello-base-single-equation-gmm" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="modello-base-single-equation-gmm"><span class="header-section-number">3.1</span> Modello Base: Single-Equation GMM</h3>
 <p>Per analisi forward-looking del PIL:</p>
-<p><span class="math display">\Delta y(t) = \alpha \;+\; \beta_1 \Delta y(t-1) \;+\; \beta_2 ESI(t-1) \;+\; \beta_3 Construction(t-2) \;+\; \varepsilon(t)</span></p>
+<p><span class="math display">\[\Delta y(t) = \alpha \;+\; \beta_1 \Delta y(t-1) \;+\; \beta_2 ESI(t-1) \;+\; \beta_3 Construction(t-2) \;+\; \varepsilon(t)\]</span></p>
 <p>Strumenti GMM:</p>
-<p><span class="math display">ESI(t-2),\; ESI(t-3),\; Construction(t-2),\; Construction(t-3),\; Services(t-2)</span></p>
+<p><span class="math display">\[ESI(t-2),\; ESI(t-3),\; Construction(t-2),\; Construction(t-3),\; Services(t-2)\]</span></p>
 <p>Condizioni di momento:</p>
-<p><span class="math display">E[Z(t-j)\varepsilon(t)] = 0, \quad j \geq 2</span></p>
+<p><span class="math display">\[E[Z(t-j)\varepsilon(t)] = 0, \quad j \geq 2\]</span></p>
 </section>
-<section id="modello-system-gmm-panel" class="level3 anchored" data-anchor-id="modello-system-gmm-panel" data-number="3.2">
-<h3 class="anchored" data-anchor-id="modello-system-gmm-panel" data-number="3.2"><span class="header-section-number">3.2</span> Modello System GMM (Panel)</h3>
+<section id="modello-system-gmm-panel" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="modello-system-gmm-panel"><span class="header-section-number">3.2</span> Modello System GMM (Panel)</h3>
 <p>Per sfruttare cross-section (5 paesi):</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> linearmodels <span class="im">import</span> PanelOLS</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> linearmodels.panel <span class="im">import</span> RandomEffects</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -765,12 +769,10 @@ Critical value (95%): [95.75, 69.82, 47.85, 29.80, 15.49, 3.84]
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>panel_indexed</span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> model.fit()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 </section>
-<section id="dynamic-panel-gmm-arellano-bond" class="level3 anchored" data-anchor-id="dynamic-panel-gmm-arellano-bond" data-number="3.3">
-<h3 class="anchored" data-anchor-id="dynamic-panel-gmm-arellano-bond" data-number="3.3"><span class="header-section-number">3.3</span> Dynamic Panel GMM (Arellano-Bond)</h3>
+<section id="dynamic-panel-gmm-arellano-bond" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="dynamic-panel-gmm-arellano-bond"><span class="header-section-number">3.3</span> Dynamic Panel GMM (Arellano-Bond)</h3>
 <p>Per catturare persistenza e dinamiche:</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Richiede installazione: pip install pydynpd</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydynpd <span class="im">import</span> regression</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -779,16 +781,13 @@ Critical value (95%): [95.75, 69.82, 47.85, 29.80, 15.49, 3.84]
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    panel_indexed,</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'entity_id'</span>, <span class="st">'time'</span>]</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 </section>
 </section>
-<section id="utilizzo-pratico-esempio-gmm" class="level2 anchored" data-number="4" data-anchor-id="utilizzo-pratico-esempio-gmm">
-<h2 class="anchored" data-number="4" data-anchor-id="utilizzo-pratico-esempio-gmm"><span class="header-section-number">4</span> Utilizzo Pratico: Esempio GMM</h2>
-<section id="step-1-preparazione-dati-per-gmm" class="level3 anchored" data-anchor-id="step-1-preparazione-dati-per-gmm" data-number="4.1">
-<h3 class="anchored" data-anchor-id="step-1-preparazione-dati-per-gmm" data-number="4.1"><span class="header-section-number">4.1</span> Step 1: Preparazione dati per GMM</h3>
-<div id="c69cd82c" class="cell" data-execution_count="4">
+<section id="utilizzo-pratico-esempio-gmm" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="utilizzo-pratico-esempio-gmm"><span class="header-section-number">4</span> Utilizzo Pratico: Esempio GMM</h2>
+<section id="step-1-preparazione-dati-per-gmm" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="step-1-preparazione-dati-per-gmm"><span class="header-section-number">4.1</span> Step 1: Preparazione dati per GMM</h3>
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtra Italia, periodo post-crisi</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>gmm_data <span class="op">=</span> panel[</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    (panel[<span class="st">'country_code'</span>] <span class="op">==</span> <span class="st">'IT'</span>) <span class="op">&amp;</span></span>
@@ -820,8 +819,6 @@ Critical value (95%): [95.75, 69.82, 47.85, 29.80, 15.49, 3.84]
 <span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Indicatori: </span><span class="sc">{</span>[c.split(<span class="st">'_'</span>)[<span class="op">-</span><span class="dv">1</span>] <span class="cf">for</span> c <span class="kw">in</span> gmm_pivot_clean.columns <span class="cf">if</span> c.startswith(<span class="st">'value_sentiment'</span>)]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>gmm_pivot_clean.head()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-stdout">
 <pre><code>Dataset GMM preparato: (132, 24)
 Periodo: 2015-01-05 → 2026-01-05
 
@@ -832,10 +829,8 @@ Variabili disponibili (24):
   - value_lag3_*: lag 3 mesi (leading indicators)
 
 Indicatori: ['sentiment']</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -1011,14 +1006,10 @@ Indicatori: ['sentiment']</code></pre>
 </table>
 <p>5 rows × 24 columns</p>
 </div>
-</div>
-</div>
 </section>
-<section id="step-2-stima-gmm-con-statsmodels" class="level3 anchored" data-anchor-id="step-2-stima-gmm-con-statsmodels" data-number="4.2">
-<h3 class="anchored" data-anchor-id="step-2-stima-gmm-con-statsmodels" data-number="4.2"><span class="header-section-number">4.2</span> Step 2: Stima GMM con statsmodels</h3>
-<div id="28b2da9d" class="cell" data-execution_count="5">
+<section id="step-2-stima-gmm-con-statsmodels" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="step-2-stima-gmm-con-statsmodels"><span class="header-section-number">4.2</span> Step 2: Stima GMM con statsmodels</h3>
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.sandbox.regression.gmm <span class="im">import</span> IV2SLS</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1049,8 +1040,6 @@ Indicatori: ['sentiment']</code></pre>
 <span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"- value_lag1_sentiment: persistenza sentiment (coefficiente autoregressivo)"</span>)</span>
 <span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"- value_lag3_construction: effetto leading costruzioni"</span>)</span>
 <span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"- value_lag3_services: effetto leading servizi"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-stdout">
 <pre><code>                            IV2SLS Regression Results                            
 =================================================================================
 Dep. Variable:     value_diff1_sentiment   R-squared:                       0.006
@@ -1081,14 +1070,10 @@ Interpretazione:
 - value_lag1_sentiment: persistenza sentiment (coefficiente autoregressivo)
 - value_lag3_construction: effetto leading costruzioni
 - value_lag3_services: effetto leading servizi</code></pre>
-</div>
-</div>
 </section>
-<section id="step-3-test-validità-strumenti-sargan-test" class="level3 anchored" data-anchor-id="step-3-test-validità-strumenti-sargan-test" data-number="4.3">
-<h3 class="anchored" data-anchor-id="step-3-test-validità-strumenti-sargan-test" data-number="4.3"><span class="header-section-number">4.3</span> Step 3: Test validità strumenti (Sargan test)</h3>
-<div id="849718b4" class="cell" data-execution_count="6">
+<section id="step-3-test-validità-strumenti-sargan-test" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="step-3-test-validità-strumenti-sargan-test"><span class="header-section-number">4.3</span> Step 3: Test validità strumenti (Sargan test)</h3>
 <p>Codice</p>
-<div class="code-copy-outer-scaffold">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sargan test di sovra-identificazione</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># H0: strumenti sono validi (non correlati con errori)</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1130,8 +1115,6 @@ Interpretazione:
 <span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Interpretazione:"</span>)</span>
 <span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"- Un p-value alto (&gt;0.05) indica che gli strumenti sono ortogonali agli errori"</span>)</span>
 <span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"- Lag profondi (t-3) sono buoni strumenti perché non correlati con shock correnti"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell-output cell-output-stdout">
 <pre><code>======================================================================
 📊 SARGAN TEST DI VALIDITÀ STRUMENTI
 ======================================================================
@@ -1147,14 +1130,12 @@ Conclusione: ⚠️ Rifiutiamo H0 - Strumenti potrebbero non essere validi (p &l
 Interpretazione:
 - Un p-value alto (&gt;0.05) indica che gli strumenti sono ortogonali agli errori
 - Lag profondi (t-3) sono buoni strumenti perché non correlati con shock correnti</code></pre>
-</div>
-</div>
 </section>
 </section>
-<section id="prossimi-passi" class="level2 anchored" data-number="5" data-anchor-id="prossimi-passi">
-<h2 class="anchored" data-number="5" data-anchor-id="prossimi-passi"><span class="header-section-number">5</span> Prossimi Passi</h2>
-<section id="per-analisi-gmm-avanzata" class="level3 anchored" data-anchor-id="per-analisi-gmm-avanzata" data-number="5.1">
-<h3 class="anchored" data-anchor-id="per-analisi-gmm-avanzata" data-number="5.1"><span class="header-section-number">5.1</span> Per analisi GMM avanzata:</h3>
+<section id="prossimi-passi" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="prossimi-passi"><span class="header-section-number">5</span> Prossimi Passi</h2>
+<section id="per-analisi-gmm-avanzata" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="per-analisi-gmm-avanzata"><span class="header-section-number">5.1</span> Per analisi GMM avanzata:</h3>
 <ol type="1">
 <li><strong>Integrare variabili macro</strong> (PIL, produzione industriale, disoccupazione)
 <ul>
@@ -1184,33 +1165,33 @@ Interpretazione:
 </ol>
 </section>
 </section>
-<section id="referenze-e-risorse" class="level2 anchored" data-number="6" data-anchor-id="referenze-e-risorse">
-<h2 class="anchored" data-number="6" data-anchor-id="referenze-e-risorse"><span class="header-section-number">6</span> Referenze e Risorse</h2>
-<section id="dataset-originali" class="level3 anchored" data-anchor-id="dataset-originali" data-number="6.1">
-<h3 class="anchored" data-anchor-id="dataset-originali" data-number="6.1"><span class="header-section-number">6.1</span> Dataset originali</h3>
+<section id="referenze-e-risorse" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="referenze-e-risorse"><span class="header-section-number">6</span> Referenze e Risorse</h2>
+<section id="dataset-originali" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="dataset-originali"><span class="header-section-number">6.1</span> Dataset originali</h3>
 <ul>
 <li>Eurostat DG ECFIN: <a href="https://ec.europa.eu/eurostat/databrowser/view/ei_bssi_m_r2/default/table">Economic Sentiment Indicators</a></li>
 <li>Istat SDMX: Dataset DCSC_IESI (6_64_DF_DCSC_IESI_2)</li>
 </ul>
 </section>
-<section id="librerie-python-per-gmm" class="level3 anchored" data-anchor-id="librerie-python-per-gmm" data-number="6.2">
-<h3 class="anchored" data-anchor-id="librerie-python-per-gmm" data-number="6.2"><span class="header-section-number">6.2</span> Librerie Python per GMM</h3>
+<section id="librerie-python-per-gmm" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="librerie-python-per-gmm"><span class="header-section-number">6.2</span> Librerie Python per GMM</h3>
 <ul>
 <li><code>linearmodels</code>: Panel data econometrics</li>
 <li><code>pydynpd</code>: Dynamic panel GMM (Arellano-Bond)</li>
 <li><code>statsmodels</code>: GMM estimation framework</li>
 </ul>
 </section>
-<section id="riferimenti-bibliografici" class="level3 anchored" data-anchor-id="riferimenti-bibliografici" data-number="6.3">
-<h3 class="anchored" data-anchor-id="riferimenti-bibliografici" data-number="6.3"><span class="header-section-number">6.3</span> Riferimenti bibliografici</h3>
-<section id="metodi-gmm-e-panel-dinamici" class="level4 anchored" data-anchor-id="metodi-gmm-e-panel-dinamici" data-number="6.3.1">
-<h4 class="anchored" data-anchor-id="metodi-gmm-e-panel-dinamici" data-number="6.3.1"><span class="header-section-number">6.3.1</span> Metodi GMM e panel dinamici</h4>
+<section id="riferimenti-bibliografici" class="level3" data-number="6.3">
+<h3 data-number="6.3" class="anchored" data-anchor-id="riferimenti-bibliografici"><span class="header-section-number">6.3</span> Riferimenti bibliografici</h3>
+<section id="metodi-gmm-e-panel-dinamici" class="level4" data-number="6.3.1">
+<h4 data-number="6.3.1" class="anchored" data-anchor-id="metodi-gmm-e-panel-dinamici"><span class="header-section-number">6.3.1</span> Metodi GMM e panel dinamici</h4>
 <p>Arellano, M., &amp; Bond, S. (1991). Some Tests of Specification for Panel Data: Monte Carlo Evidence and an Application to Employment Equations. Review of Economic Studies, 58(2), 277–297.</p>
 <p>Blundell, R., &amp; Bond, S. (1998). Initial Conditions and Moment Restrictions in Dynamic Panel Data Models. Journal of Econometrics, 87(1), 115–143.</p>
 <p>Hansen, L. P. (1982). Large Sample Properties of Generalized Method of Moments Estimators. Econometrica, 50(4), 1029–1054.</p>
 </section>
-<section id="modelli-macro-e-credito-italia" class="level4 anchored" data-anchor-id="modelli-macro-e-credito-italia" data-number="6.3.2">
-<h4 class="anchored" data-anchor-id="modelli-macro-e-credito-italia" data-number="6.3.2"><span class="header-section-number">6.3.2</span> Modelli macro e credito (Italia)</h4>
+<section id="modelli-macro-e-credito-italia" class="level4" data-number="6.3.2">
+<h4 data-number="6.3.2" class="anchored" data-anchor-id="modelli-macro-e-credito-italia"><span class="header-section-number">6.3.2</span> Modelli macro e credito (Italia)</h4>
 <p>Bacchini, F., Brandimarte, C., Crivelli, P., De Santis, R., Fioramanti, M., Girardi, A., Golinelli, R., Jona-Lasinio, C., Mancini, M., Pappalardo, C., Rossi, D., Ventura, M., &amp; Vicarelli, C. (s.d.). Building the core of the Istat system of models for forecasting the Italian economy: MeMo-It. ISTAT Working Paper.</p>
 <p>Basile, R., Giallonardo, L., Girardi, A., &amp; Mantegazzi, D. (2024). Access to credit and economic complexity: Evidence from Italian provinces. Journal of Regional Science, 64(4), 1183–1204.</p>
 <p>Girardi, A., Margani, P., &amp; Ventura, M. (s.d.). An Indicator of Credit Crunch using Italian Business Surveys. ISTAT Working Paper.</p>
@@ -1219,11 +1200,11 @@ Interpretazione:
 <p><strong>Autore</strong>: Paolo Volterra<br>
 <strong>Repository</strong>: <a href=".">Claude Code - Istat Fiducia Imprese</a><br>
 <strong>Data ultimo aggiornamento</strong>: 2026-02-05</p>
-</section>
-</section>
-</section>
 
 
+</section>
+</section>
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1634,7 +1615,7 @@ Interpretazione:
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2602_FiduciaImpreseGMM/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>

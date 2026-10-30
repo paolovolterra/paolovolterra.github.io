@@ -75,6 +75,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../MCC.css">
 <meta property="og:title" content="Early Warning PMI — Fragility Score Regionale – Paolo Volterra">
@@ -164,28 +193,32 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#regressione-logistica-per-scoring-di-distress-poster-12" id="toc-regressione-logistica-per-scoring-di-distress-poster-12" class="nav-link" data-scroll-target="#regressione-logistica-per-scoring-di-distress-poster-12"><span class="header-section-number">2.1</span> Regressione logistica per scoring di distress (poster 12)</a></li>
   <li><a href="#localglmnet-xai-con-coefficienti-variabili-per-osservazione-poster-2" id="toc-localglmnet-xai-con-coefficienti-variabili-per-osservazione-poster-2" class="nav-link" data-scroll-target="#localglmnet-xai-con-coefficienti-variabili-per-osservazione-poster-2"><span class="header-section-number">2.2</span> LocalGLMnet — XAI con coefficienti variabili per osservazione (poster 2)</a></li>
   <li><a href="#random-forest-simulated-annealing-per-riduzione-falsi-positivi-poster-3" id="toc-random-forest-simulated-annealing-per-riduzione-falsi-positivi-poster-3" class="nav-link" data-scroll-target="#random-forest-simulated-annealing-per-riduzione-falsi-positivi-poster-3"><span class="header-section-number">2.3</span> Random Forest + Simulated Annealing per riduzione falsi positivi (poster 3)</a></li>
-  <li><a href="#costruzione-della-variabile-dipendente" id="toc-costruzione-della-variabile-dipendente" class="nav-link" data-scroll-target="#costruzione-della-variabile-dipendente"><span class="header-section-number">2.4</span> Costruzione della variabile dipendente</a></li>
-  <li><a href="#disegno-predittivo-e-modelli" id="toc-disegno-predittivo-e-modelli" class="nav-link" data-scroll-target="#disegno-predittivo-e-modelli"><span class="header-section-number">2.5</span> Disegno predittivo e modelli</a></li>
-  <li><a href="#backtest-temporale-2024" id="toc-backtest-temporale-2024" class="nav-link" data-scroll-target="#backtest-temporale-2024"><span class="header-section-number">2.6</span> Backtest temporale 2024</a></li>
-  <li><a href="#estensioni-testate-a-h1-nessuna-salva-il-modello" id="toc-estensioni-testate-a-h1-nessuna-salva-il-modello" class="nav-link" data-scroll-target="#estensioni-testate-a-h1-nessuna-salva-il-modello"><span class="header-section-number">2.7</span> Estensioni testate a h=1: nessuna salva il modello</a></li>
-  <li><a href="#cambiare-orizzonte-a-tre-anni-il-modello-vince" id="toc-cambiare-orizzonte-a-tre-anni-il-modello-vince" class="nav-link" data-scroll-target="#cambiare-orizzonte-a-tre-anni-il-modello-vince"><span class="header-section-number">2.8</span> Cambiare orizzonte: a tre anni il modello vince</a></li>
-  <li><a href="#score-composito-di-fragilità-ex-ante" id="toc-score-composito-di-fragilità-ex-ante" class="nav-link" data-scroll-target="#score-composito-di-fragilità-ex-ante"><span class="header-section-number">2.9</span> Score composito di fragilità ex ante</a></li>
   </ul></li>
-  <li><a href="#risultati" id="toc-risultati" class="nav-link" data-scroll-target="#risultati"><span class="header-section-number">3</span> Risultati</a>
+  <li><a href="#metodi-usati-in-questo-spinoff" id="toc-metodi-usati-in-questo-spinoff" class="nav-link" data-scroll-target="#metodi-usati-in-questo-spinoff"><span class="header-section-number">3</span> Metodi usati in questo spinoff</a>
   <ul class="collapse">
-  <li><a href="#mappa-regionale-del-fragility-score" id="toc-mappa-regionale-del-fragility-score" class="nav-link" data-scroll-target="#mappa-regionale-del-fragility-score"><span class="header-section-number">3.1</span> Mappa regionale del fragility score</a></li>
-  <li><a href="#scatter-leverage-vs-npl-rate" id="toc-scatter-leverage-vs-npl-rate" class="nav-link" data-scroll-target="#scatter-leverage-vs-npl-rate"><span class="header-section-number">3.2</span> Scatter leverage vs NPL rate</a></li>
-  <li><a href="#ranking-regionale" id="toc-ranking-regionale" class="nav-link" data-scroll-target="#ranking-regionale"><span class="header-section-number">3.3</span> Ranking regionale</a></li>
-  <li><a href="#tabella-ranking-completo" id="toc-tabella-ranking-completo" class="nav-link" data-scroll-target="#tabella-ranking-completo"><span class="header-section-number">3.4</span> Tabella ranking completo</a></li>
+  <li><a href="#struttura-del-problema-e-dati" id="toc-struttura-del-problema-e-dati" class="nav-link" data-scroll-target="#struttura-del-problema-e-dati"><span class="header-section-number">3.1</span> Struttura del problema e dati</a></li>
+  <li><a href="#costruzione-della-variabile-dipendente" id="toc-costruzione-della-variabile-dipendente" class="nav-link" data-scroll-target="#costruzione-della-variabile-dipendente"><span class="header-section-number">3.2</span> Costruzione della variabile dipendente</a></li>
+  <li><a href="#disegno-predittivo-e-modelli" id="toc-disegno-predittivo-e-modelli" class="nav-link" data-scroll-target="#disegno-predittivo-e-modelli"><span class="header-section-number">3.3</span> Disegno predittivo e modelli</a></li>
+  <li><a href="#backtest-temporale-2024" id="toc-backtest-temporale-2024" class="nav-link" data-scroll-target="#backtest-temporale-2024"><span class="header-section-number">3.4</span> Backtest temporale 2024</a></li>
+  <li><a href="#estensioni-testate-a-h1-nessuna-salva-il-modello" id="toc-estensioni-testate-a-h1-nessuna-salva-il-modello" class="nav-link" data-scroll-target="#estensioni-testate-a-h1-nessuna-salva-il-modello"><span class="header-section-number">3.5</span> Estensioni testate a h=1: nessuna salva il modello</a></li>
+  <li><a href="#cambiare-orizzonte-a-tre-anni-il-modello-vince" id="toc-cambiare-orizzonte-a-tre-anni-il-modello-vince" class="nav-link" data-scroll-target="#cambiare-orizzonte-a-tre-anni-il-modello-vince"><span class="header-section-number">3.6</span> Cambiare orizzonte: a tre anni il modello vince</a></li>
+  <li><a href="#score-composito-di-fragilità-ex-ante" id="toc-score-composito-di-fragilità-ex-ante" class="nav-link" data-scroll-target="#score-composito-di-fragilità-ex-ante"><span class="header-section-number">3.7</span> Score composito di fragilità ex ante</a></li>
   </ul></li>
-  <li><a href="#limiti-e-sviluppi" id="toc-limiti-e-sviluppi" class="nav-link" data-scroll-target="#limiti-e-sviluppi"><span class="header-section-number">4</span> Limiti e sviluppi</a>
+  <li><a href="#risultati" id="toc-risultati" class="nav-link" data-scroll-target="#risultati"><span class="header-section-number">4</span> Risultati</a>
   <ul class="collapse">
-  <li><a href="#limiti-principali" id="toc-limiti-principali" class="nav-link" data-scroll-target="#limiti-principali"><span class="header-section-number">4.1</span> Limiti principali</a></li>
-  <li><a href="#sviluppi-possibili" id="toc-sviluppi-possibili" class="nav-link" data-scroll-target="#sviluppi-possibili"><span class="header-section-number">4.2</span> Sviluppi possibili</a></li>
+  <li><a href="#mappa-regionale-del-fragility-score" id="toc-mappa-regionale-del-fragility-score" class="nav-link" data-scroll-target="#mappa-regionale-del-fragility-score"><span class="header-section-number">4.1</span> Mappa regionale del fragility score</a></li>
+  <li><a href="#scatter-leverage-vs-npl-rate" id="toc-scatter-leverage-vs-npl-rate" class="nav-link" data-scroll-target="#scatter-leverage-vs-npl-rate"><span class="header-section-number">4.2</span> Scatter leverage vs NPL rate</a></li>
+  <li><a href="#ranking-regionale" id="toc-ranking-regionale" class="nav-link" data-scroll-target="#ranking-regionale"><span class="header-section-number">4.3</span> Ranking regionale</a></li>
+  <li><a href="#tabella-ranking-completo" id="toc-tabella-ranking-completo" class="nav-link" data-scroll-target="#tabella-ranking-completo"><span class="header-section-number">4.4</span> Tabella ranking completo</a></li>
   </ul></li>
-  <li><a href="#conclusioni" id="toc-conclusioni" class="nav-link" data-scroll-target="#conclusioni"><span class="header-section-number">5</span> Conclusioni</a></li>
+  <li><a href="#limiti-e-sviluppi" id="toc-limiti-e-sviluppi" class="nav-link" data-scroll-target="#limiti-e-sviluppi"><span class="header-section-number">5</span> Limiti e sviluppi</a>
+  <ul class="collapse">
+  <li><a href="#limiti-principali" id="toc-limiti-principali" class="nav-link" data-scroll-target="#limiti-principali"><span class="header-section-number">5.1</span> Limiti principali</a></li>
+  <li><a href="#sviluppi-possibili" id="toc-sviluppi-possibili" class="nav-link" data-scroll-target="#sviluppi-possibili"><span class="header-section-number">5.2</span> Sviluppi possibili</a></li>
+  </ul></li>
+  <li><a href="#conclusioni" id="toc-conclusioni" class="nav-link" data-scroll-target="#conclusioni"><span class="header-section-number">6</span> Conclusioni</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_EarlyWarningPmi/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -244,15 +277,15 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="il-punto-di-partenza-poster-12-della-challenge-bdi" class="level2 anchored" data-number="1" data-anchor-id="il-punto-di-partenza-poster-12-della-challenge-bdi">
-<h2 class="anchored" data-number="1" data-anchor-id="il-punto-di-partenza-poster-12-della-challenge-bdi"><span class="header-section-number">1</span> Il punto di partenza: poster 12 della Challenge BdI</h2>
-<section id="la-challenge-come-agenda-setting" class="level3 anchored" data-number="1.1" data-anchor-id="la-challenge-come-agenda-setting">
-<h3 class="anchored" data-number="1.1" data-anchor-id="la-challenge-come-agenda-setting"><span class="header-section-number">1.1</span> La Challenge come agenda-setting</h3>
+<section id="il-punto-di-partenza-poster-12-della-challenge-bdi" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="il-punto-di-partenza-poster-12-della-challenge-bdi"><span class="header-section-number">1</span> Il punto di partenza: poster 12 della Challenge BdI</h2>
+<section id="la-challenge-come-agenda-setting" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="la-challenge-come-agenda-setting"><span class="header-section-number">1.1</span> La Challenge come agenda-setting</h3>
 <p>L’<strong>Innovation Data Challenge 2026</strong>, organizzata da Banca d’Italia e Central Bank of Ireland in collaborazione con sette università, non è un concorso accademico generico. È un dispositivo istituzionale: attraverso la selezione e la pubblicazione dei poster selezionati, le banche centrali indicano quali problemi considerano rilevanti, quali metodi considerano maturi e quali competenze diventano strategiche per il sistema bancario.</p>
 <p>Il messaggio sottostante ai tredici poster è coerente: <strong>l’intelligenza artificiale bancaria seria non è l’assistente che riassume testi, ma l’infrastruttura analitica che trasforma dati granulari in segnali azionabili</strong> — su frodi, resilienza, rischio sistemico, early warning, pagamenti.</p>
 </section>
-<section id="il-poster-12-liquidity-dynamics" class="level3 anchored" data-number="1.2" data-anchor-id="il-poster-12-liquidity-dynamics">
-<h3 class="anchored" data-number="1.2" data-anchor-id="il-poster-12-liquidity-dynamics"><span class="header-section-number">1.2</span> Il poster 12 — <em>Liquidity Dynamics</em></h3>
+<section id="il-poster-12-liquidity-dynamics" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="il-poster-12-liquidity-dynamics"><span class="header-section-number">1.2</span> Il poster 12 — <em>Liquidity Dynamics</em></h3>
 <p>Il poster 12 affronta la domanda: <em>i dati transazionali possono identificare le PMI finanziariamente fragili prima che la fragilità emerga nei bilanci?</em></p>
 <p><strong>Dati usati</strong>: transazioni PMI e bilanci 2024–2025 (dati sintetici IT–IE).</p>
 <p><strong>Definizione di distress</strong> (variabile dipendente, binaria): almeno una delle seguenti condizioni è vera —</p>
@@ -316,11 +349,11 @@ ul.task-list li input[type="checkbox"] {
 <hr>
 </section>
 </section>
-<section id="algoritmi-dalla-challenge-rilevanti-per-lo-spinoff" class="level2 anchored" data-number="2" data-anchor-id="algoritmi-dalla-challenge-rilevanti-per-lo-spinoff">
-<h2 class="anchored" data-number="2" data-anchor-id="algoritmi-dalla-challenge-rilevanti-per-lo-spinoff"><span class="header-section-number">2</span> Algoritmi dalla Challenge rilevanti per lo spinoff</h2>
+<section id="algoritmi-dalla-challenge-rilevanti-per-lo-spinoff" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="algoritmi-dalla-challenge-rilevanti-per-lo-spinoff"><span class="header-section-number">2</span> Algoritmi dalla Challenge rilevanti per lo spinoff</h2>
 <p>Tre metodi del PDF meritano approfondimento perché danno l’idea di come <em>costruire</em> l’early warning, non solo di <em>cosa</em> misurare.</p>
-<section id="regressione-logistica-per-scoring-di-distress-poster-12" class="level3 anchored" data-number="2.1" data-anchor-id="regressione-logistica-per-scoring-di-distress-poster-12">
-<h3 class="anchored" data-number="2.1" data-anchor-id="regressione-logistica-per-scoring-di-distress-poster-12"><span class="header-section-number">2.1</span> Regressione logistica per scoring di distress (poster 12)</h3>
+<section id="regressione-logistica-per-scoring-di-distress-poster-12" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="regressione-logistica-per-scoring-di-distress-poster-12"><span class="header-section-number">2.1</span> Regressione logistica per scoring di distress (poster 12)</h3>
 <p>La regressione logistica stima la probabilità che un’osservazione appartenga alla classe positiva (distress = 1):</p>
 <p><span class="math display">\[P(\text{distress}_i = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_{1i} + \cdots + \beta_k x_{ki})}}\]</span></p>
 <p>Vantaggi nel contesto bancario: - <strong>Coefficienti interpretabili</strong>: ogni <span class="math inline">\(\beta_j\)</span> è il log-odds ratio — quanto cambia la probabilità di distress per una variazione unitaria di <span class="math inline">\(x_j\)</span>. - <strong>Output probabilistico</strong>: produce un <em>score</em> continuo [0,1] ordinabile per priorità di intervento. - <strong>Glass-box per compliance</strong>: l’esplicitezza dei coefficienti è compatibile con i requisiti di spiegabilità (SREP, Linee guida EBA su AI). - <strong>AUC come metrica</strong>: misura la capacità discriminante del modello senza dipendere dalla soglia di classificazione.</p>
@@ -349,16 +382,16 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="localglmnet-xai-con-coefficienti-variabili-per-osservazione-poster-2" class="level3 anchored" data-number="2.2" data-anchor-id="localglmnet-xai-con-coefficienti-variabili-per-osservazione-poster-2">
-<h3 class="anchored" data-number="2.2" data-anchor-id="localglmnet-xai-con-coefficienti-variabili-per-osservazione-poster-2"><span class="header-section-number">2.2</span> LocalGLMnet — XAI con coefficienti variabili per osservazione (poster 2)</h3>
+<section id="localglmnet-xai-con-coefficienti-variabili-per-osservazione-poster-2" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="localglmnet-xai-con-coefficienti-variabili-per-osservazione-poster-2"><span class="header-section-number">2.2</span> LocalGLMnet — XAI con coefficienti variabili per osservazione (poster 2)</h3>
 <p>Il poster 2 propone un’alternativa al trade-off linearità/opacità: il <strong>LocalGLMnet</strong>, un framework “glass-box” in cui i coefficienti di regressione <em>variano per singola osservazione</em>.</p>
 <p><span class="math display">\[\hat{y}_i = \sum_j \beta_j(\mathbf{x}_i) \cdot x_{ij}\]</span></p>
 <p>dove <span class="math inline">\(\beta_j(\mathbf{x}_i)\)</span> è stimato da una rete neurale che prende in input l’intero vettore <span class="math inline">\(\mathbf{x}_i\)</span>. Il risultato è un modello: - <strong>Non lineare</strong> nelle relazioni tra feature (la rete cattura interazioni) - <strong>Interpretabile localmente</strong>: per ogni osservazione <span class="math inline">\(i\)</span>, i coefficienti <span class="math inline">\(\beta_j(\mathbf{x}_i)\)</span> hanno la stessa interpretazione di un modello lineare</p>
 <p>Rispetto a SHAP/LIME (post-hoc, approssimazioni): LocalGLMnet è un modello <em>intrinsecamente</em> spiegabile, non una spiegazione aggiunta a posteriori. Per un ufficio compliance o risk management, la differenza è sostanziale.</p>
 <p><strong>Rilevanza per questo spinoff</strong>: se si disponesse di dati individuali PMI (es. integrazione Cerved × segnalazioni BdI), LocalGLMnet sarebbe il metodo naturale per un early warning che soddisfi i requisiti EBA sulla spiegabilità dei modelli di scoring.</p>
 </section>
-<section id="random-forest-simulated-annealing-per-riduzione-falsi-positivi-poster-3" class="level3 anchored" data-number="2.3" data-anchor-id="random-forest-simulated-annealing-per-riduzione-falsi-positivi-poster-3">
-<h3 class="anchored" data-number="2.3" data-anchor-id="random-forest-simulated-annealing-per-riduzione-falsi-positivi-poster-3"><span class="header-section-number">2.3</span> Random Forest + Simulated Annealing per riduzione falsi positivi (poster 3)</h3>
+<section id="random-forest-simulated-annealing-per-riduzione-falsi-positivi-poster-3" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="random-forest-simulated-annealing-per-riduzione-falsi-positivi-poster-3"><span class="header-section-number">2.3</span> Random Forest + Simulated Annealing per riduzione falsi positivi (poster 3)</h3>
 <p>Il poster 3 affronta il problema del <strong>“cry wolf crisis”</strong> nei sistemi di rilevamento anomalie: troppi allarmi generano rumore e riducono la capacità di intervento. La soluzione è:</p>
 <ol type="1">
 <li><strong>Random Forest / Gradient Boosting</strong> per la classificazione delle anomalie (segnale di base)</li>
@@ -366,35 +399,63 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <p><span class="math display">\[T(t) = T_0 \cdot e^{-\lambda t}\]</span></p>
 <p>L’analogia con il presente lavoro riguarda il controllo dei falsi segnali. Il simulated annealing non viene applicato: con 18 regioni e un solo anno di test, ottimizzare i pesi dello score produrrebbe un elevato rischio di overfitting.</p>
+<hr>
+</section>
+</section>
+<section id="metodi-usati-in-questo-spinoff" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="metodi-usati-in-questo-spinoff"><span class="header-section-number">3</span> Metodi usati in questo spinoff</h2>
+<section id="struttura-del-problema-e-dati" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="struttura-del-problema-e-dati"><span class="header-section-number">3.1</span> Struttura del problema e dati</h3>
+<p>In assenza di dati transazionali individuali, lo spinoff traduce la logica del poster 12 al livello aggregato regionale:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 98%">
+<col style="width: 21%">
+<col style="width: 47%">
+<col style="width: 29%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">:</th>
+<th style="text-align: left;">Dimensione</th>
+<th style="text-align: left;">Poster 12 (BdI)</th>
+<th style="text-align: left;">Questo spinoff</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Dimensione Poster 12 (BdI) Questo spinoff</td>
+<td style="text-align: left;">Unità</td>
+<td style="text-align: left;">Singola impresa</td>
+<td style="text-align: left;">NUTS2 (18 regioni)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dati input</td>
+<td style="text-align: left;">Transazionali real-time</td>
+<td style="text-align: left;">Segnalazioni bancarie aggregate</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Distress</td>
+<td style="text-align: left;">ICR / current ratio / OCF</td>
+<td style="text-align: left;">Tasso sofferenze nette</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Feature</td>
+<td style="text-align: left;">Liquidity Buffer, Stress Frequency, Stress Severity</td>
+<td style="text-align: left;">Leverage, MOL/Attivo (lag-1)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Metodo</td>
+<td style="text-align: left;">Logistic regression</td>
+<td style="text-align: left;">Benchmark dinamici e panel OLS</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Metrica</td>
+<td style="text-align: left;">AUC</td>
+<td style="text-align: left;">MAE/RMSE fuori campione (2024)</td>
 </tr>
 </tbody>
 </table>
-<p>Unità Singola impresa NUTS2 (18 regioni)</p>
-<p>Dati input Transazionali real-time Segnalazioni bancarie aggregate</p>
-<p>Distress ICR / current ratio / OCF Tasso sofferenze nette</p>
-<p>Feature Liquidity Buffer, Stress Frequency, Stress Severity Leverage, MOL/Attivo (lag-1)</p>
-<p>Metodo Logistic regression Benchmark dinamici e panel OLS</p>
-<p>Metrica AUC MAE/RMSE fuori campione (2024) —————————————————————————————————————</p>
 <p><strong>Fonti dati</strong>:</p>
-<div class="cell" data-execution_count="2">
-<div id="tab-fonti" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="2">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-fonti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -441,17 +502,10 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;1: Fonti dati e tabelle Bankit.sqlite</p>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="costruzione-della-variabile-dipendente" class="level3 anchored" data-number="2.4" data-anchor-id="costruzione-della-variabile-dipendente">
-<h3 class="anchored" data-number="2.4" data-anchor-id="costruzione-della-variabile-dipendente"><span class="header-section-number">2.4</span> Costruzione della variabile dipendente</h3>
+<section id="costruzione-della-variabile-dipendente" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="costruzione-della-variabile-dipendente"><span class="header-section-number">3.2</span> Costruzione della variabile dipendente</h3>
 <p>Il <strong>tasso NPL</strong> è definito come:</p>
 <p><span class="math display">\[\text{NPL rate}_{r,t} = \frac{\text{Sofferenze nette SNF}_{r,t}}{\text{Impieghi imprese}_{r,t}} \times 100\]</span></p>
 <p>dove <span class="math inline">\(r\)</span> = regione NUTS2, <span class="math inline">\(t\)</span> = anno (snapshot dicembre).</p>
@@ -479,24 +533,12 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<div id="cell-fig-npl-trend" class="cell" data-fig-height="5" data-execution_count="3">
-<div class="cell-output cell-output-display">
-<div id="figura-npl-trend" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-npl-trend-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p><img src="figure/fig01.png" class="figure-img" role="img" width="757" height="419"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;1: Tasso NPL regionale 2018–2024 — forte discesa fino al 2023 e stabilizzazione nel 2024</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p>Il trend decrescente fino al 2023 riflette il <strong>cleanup bancario</strong> post-crisi. Nel 2024 la discesa rallenta nettamente: questo cambio di regime rende particolarmente severo il test fuori campione.</p>
 </section>
-<section id="disegno-predittivo-e-modelli" class="level3 anchored" data-number="2.5" data-anchor-id="disegno-predittivo-e-modelli">
-<h3 class="anchored" data-number="2.5" data-anchor-id="disegno-predittivo-e-modelli"><span class="header-section-number">2.5</span> Disegno predittivo e modelli</h3>
+<section id="disegno-predittivo-e-modelli" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="disegno-predittivo-e-modelli"><span class="header-section-number">3.3</span> Disegno predittivo e modelli</h3>
 <p>Il panel predittivo associa l’esito <span class="math inline">\(NPL_{r,t}\)</span> esclusivamente a informazioni disponibili in <span class="math inline">\(t-1\)</span>. La stima usa gli anni 2019–2023; il 2024 è tenuto completamente fuori campione.</p>
 <div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tecnica — lag temporale di un anno">
 <div class="callout-header d-flex align-content-center">
@@ -522,7 +564,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <p>Si confrontano quattro specificazioni: persistenza ingenua, autoregressione stimata, autoregressione con variabili di struttura e modello dinamico con effetti fissi regionali.</p>
-<p><span class="math display">\[ \begin{aligned} \text{Naive:}\quad &amp;\widehat{NPL}_{r,t}=NPL_{r,t-1} \\ \text{M0:}\quad &amp;NPL_{r,t}=\alpha+\rho NPL_{r,t-1}+\varepsilon_{r,t} \\ \text{M1:}\quad &amp;NPL_{r,t}=\alpha+\rho NPL_{r,t-1}+\beta_1 Lev_{r,t-1}+\beta_2 MOL_{r,t-1}+\varepsilon_{r,t} \\ \text{M2:}\quad &amp;NPL_{r,t}=\alpha_r+\rho NPL_{r,t-1}+\beta_1 Lev_{r,t-1}+\beta_2 MOL_{r,t-1}+\varepsilon_{r,t} \end{aligned} \]</span></p>
+<p><span class="math display">\[\begin{aligned} \text{Naive:}\quad &amp;\widehat{NPL}_{r,t}=NPL_{r,t-1} \\ \text{M0:}\quad &amp;NPL_{r,t}=\alpha+\rho NPL_{r,t-1}+\varepsilon_{r,t} \\ \text{M1:}\quad &amp;NPL_{r,t}=\alpha+\rho NPL_{r,t-1}+\beta_1 Lev_{r,t-1}+\beta_2 MOL_{r,t-1}+\varepsilon_{r,t} \\ \text{M2:}\quad &amp;NPL_{r,t}=\alpha_r+\rho NPL_{r,t-1}+\beta_1 Lev_{r,t-1}+\beta_2 MOL_{r,t-1}+\varepsilon_{r,t} \end{aligned}\]</span></p>
 <div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tecnica — benchmark autoregressivo">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -592,13 +634,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="4">
-<div id="tab-modelli" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-modelli-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -685,18 +722,11 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;2: Coefficienti stimati sul 2019–2023 — errori standard cluster NUTS2</p>
-</div>
-</div>
-</div>
-</div>
 <p>Il coefficiente di <span class="math inline">\(NPL_{t-1}\)</span> è elevato e significativo. Una volta controllata questa persistenza, leverage e MOL/Attivo non sono significativi né nel modello pooled né nel modello FE. Il precedente risultato sul leverage dipendeva quindi dall’omissione della dinamica propria del tasso NPL.</p>
 </section>
-<section id="backtest-temporale-2024" class="level3 anchored" data-number="2.6" data-anchor-id="backtest-temporale-2024">
-<h3 class="anchored" data-number="2.6" data-anchor-id="backtest-temporale-2024"><span class="header-section-number">2.6</span> Backtest temporale 2024</h3>
+<section id="backtest-temporale-2024" class="level3" data-number="3.4">
+<h3 data-number="3.4" class="anchored" data-anchor-id="backtest-temporale-2024"><span class="header-section-number">3.4</span> Backtest temporale 2024</h3>
 <div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tecnica — holdout temporale">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -720,13 +750,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="5">
-<div id="tab-backtest" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="5">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-backtest-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -778,18 +803,11 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;3: Prestazioni fuori campione sul 2024 (18 regioni)</p>
-</div>
-</div>
-</div>
-</div>
 <p>La persistenza naive ottiene RMSE 0,192. M1, che aggiunge leverage e MOL/Attivo, raggiunge 0,746: un errore quasi quattro volte superiore. Anche M2-FE (0,455) non batte il benchmark. I modelli stimati sottoprevedono sistematicamente il 2024 perché apprendono la forte discesa 2019–2023, mentre nel test il tasso si stabilizza. Non emerge quindi evidenza che le variabili di bilancio migliorino la previsione annuale del tasso NPL.</p>
 </section>
-<section id="estensioni-testate-a-h1-nessuna-salva-il-modello" class="level3 anchored" data-number="2.7" data-anchor-id="estensioni-testate-a-h1-nessuna-salva-il-modello">
-<h3 class="anchored" data-number="2.7" data-anchor-id="estensioni-testate-a-h1-nessuna-salva-il-modello"><span class="header-section-number">2.7</span> Estensioni testate a h=1: nessuna salva il modello</h3>
+<section id="estensioni-testate-a-h1-nessuna-salva-il-modello" class="level3" data-number="3.5">
+<h3 data-number="3.5" class="anchored" data-anchor-id="estensioni-testate-a-h1-nessuna-salva-il-modello"><span class="header-section-number">3.5</span> Estensioni testate a h=1: nessuna salva il modello</h3>
 <p>Prima di concludere che mancassero variabili, sono state testate altre due estensioni sullo stesso orizzonte a un anno: l’aggiunta di due feature regionali costruite ad hoc (HHI bancario su sportelli e quota di credito Costruzioni+Immobiliare, come proxy di concentrazione del mercato e di esposizione settoriale) e una riformulazione del modello in variazioni anno su anno invece che in livelli.</p>
 <table class="caption-top table">
 <colgroup>
@@ -846,8 +864,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="cambiare-orizzonte-a-tre-anni-il-modello-vince" class="level3 anchored" data-number="2.8" data-anchor-id="cambiare-orizzonte-a-tre-anni-il-modello-vince">
-<h3 class="anchored" data-number="2.8" data-anchor-id="cambiare-orizzonte-a-tre-anni-il-modello-vince"><span class="header-section-number">2.8</span> Cambiare orizzonte: a tre anni il modello vince</h3>
+<section id="cambiare-orizzonte-a-tre-anni-il-modello-vince" class="level3" data-number="3.6">
+<h3 data-number="3.6" class="anchored" data-anchor-id="cambiare-orizzonte-a-tre-anni-il-modello-vince"><span class="header-section-number">3.6</span> Cambiare orizzonte: a tre anni il modello vince</h3>
 <p>Se il problema è che a un anno il tasso si muove troppo poco perché la struttura di bilancio conti qualcosa rispetto al rumore, la domanda naturale è: cosa succede a un orizzonte più lungo, dove il livello si è spostato abbastanza da lasciare margine ai fondamentali? Ripetendo lo stesso confronto (persistenza vs.&nbsp;modello con leverage e MOL/Attivo) a 2 e 3 anni di distanza:</p>
 <table class="caption-top table">
 <thead>
@@ -909,8 +927,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p><strong>Implicazione per il progetto</strong>: l’orizzonte corretto per un early warning basato su questi dati non è un anno ma due-tre anni. Le sezioni seguenti (score composito, mappa) restano costruite sull’orizzonte a un anno per coerenza con la pipeline esistente; la revisione a orizzonte 2-3 anni è il prossimo passo naturale (v. Sviluppi possibili).</p>
 </section>
-<section id="score-composito-di-fragilità-ex-ante" class="level3 anchored" data-number="2.9" data-anchor-id="score-composito-di-fragilità-ex-ante">
-<h3 class="anchored" data-number="2.9" data-anchor-id="score-composito-di-fragilità-ex-ante"><span class="header-section-number">2.9</span> Score composito di fragilità ex ante</h3>
+<section id="score-composito-di-fragilità-ex-ante" class="level3" data-number="3.7">
+<h3 data-number="3.7" class="anchored" data-anchor-id="score-composito-di-fragilità-ex-ante"><span class="header-section-number">3.7</span> Score composito di fragilità ex ante</h3>
 <p>Per sintetizzare le tre dimensioni disponibili a fine 2023, lo score destinato al 2024 è:</p>
 <p><span class="math display">\[\text{Fragility}_{r,2024} = \frac{1}{3} \left[ z(\text{NPL}_{r,2023}) + z(\text{Leverage}_{r,2023}) - z(\text{MOL/Attivo}_{r,2023}) \right]\]</span></p>
 <div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tecnica — score composito standardizzato">
@@ -940,71 +958,30 @@ ul.task-list li input[type="checkbox"] {
 <hr>
 </section>
 </section>
-<section id="risultati" class="level2 anchored" data-number="3" data-anchor-id="risultati">
-<h2 class="anchored" data-number="3" data-anchor-id="risultati"><span class="header-section-number">3</span> Risultati</h2>
-<section id="mappa-regionale-del-fragility-score" class="level3 anchored" data-number="3.1" data-anchor-id="mappa-regionale-del-fragility-score">
-<h3 class="anchored" data-number="3.1" data-anchor-id="mappa-regionale-del-fragility-score"><span class="header-section-number">3.1</span> Mappa regionale del fragility score</h3>
-<div id="cell-fig-mappa" class="cell" data-fig-height="9" data-execution_count="6">
-<div class="cell-output cell-output-display">
-<div id="figura-mappa" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-mappa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<section id="risultati" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="risultati"><span class="header-section-number">4</span> Risultati</h2>
+<section id="mappa-regionale-del-fragility-score" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="mappa-regionale-del-fragility-score"><span class="header-section-number">4.1</span> Mappa regionale del fragility score</h3>
 <p><img src="figure/fig02.png" class="figure-img" role="img" width="741" height="883"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;2: Fragility Score ex ante 2024, costruito solo con informazioni 2023. Rosso = maggiore esposizione strutturale.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p><strong>Lazio</strong> presenta lo score più alto (+1,81), trainato dal leverage massimo (44,3%) e dal MOL/Attivo minimo (6,0%). Il dato segnala esposizione strutturale, ma non autorizza da solo una spiegazione settoriale o causale.</p>
 <p><strong>Veneto</strong> presenta lo score più basso (−1,09), grazie a leverage contenuto e MOL/Attivo elevato. Nel 2024 il suo NPL osservato è 1,40%.</p>
 <p>La debole correlazione con l’esito mostra che il ranking non coincide con il rischio creditizio osservato: Calabria e Sicilia mantengono NPL elevati nonostante leverage relativamente basso. Questo scarto richiede ulteriori variabili territoriali e settoriali.</p>
 </section>
-<section id="scatter-leverage-vs-npl-rate" class="level3 anchored" data-number="3.2" data-anchor-id="scatter-leverage-vs-npl-rate">
-<h3 class="anchored" data-number="3.2" data-anchor-id="scatter-leverage-vs-npl-rate"><span class="header-section-number">3.2</span> Scatter leverage vs NPL rate</h3>
-<div id="cell-fig-scatter" class="cell" data-fig-height="5" data-execution_count="7">
-<div class="cell-output cell-output-display">
-<div id="figura-scatter" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<section id="scatter-leverage-vs-npl-rate" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="scatter-leverage-vs-npl-rate"><span class="header-section-number">4.2</span> Scatter leverage vs NPL rate</h3>
 <p><img src="figure/fig03.png" class="figure-img" role="img" width="687" height="499"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;3: Leverage osservato nel 2023 e tasso NPL realizzato nel 2024: confronto temporale coerente, non relazione causale.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="ranking-regionale" class="level3 anchored" data-number="3.3" data-anchor-id="ranking-regionale">
-<h3 class="anchored" data-number="3.3" data-anchor-id="ranking-regionale"><span class="header-section-number">3.3</span> Ranking regionale</h3>
-<div id="cell-fig-bar" class="cell" data-fig-height="5" data-execution_count="8">
-<div class="cell-output cell-output-display">
-<div id="figura-bar" class="quarto-float quarto-figure quarto-figure-center anchored">
-<div class="figure quarto-float quarto-float-fig">
-<div aria-describedby="figura-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<section id="ranking-regionale" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="ranking-regionale"><span class="header-section-number">4.3</span> Ranking regionale</h3>
 <p><img src="figure/fig04.png" class="figure-img" role="img" width="787" height="494"></p>
-</div>
-<div class="caption">
 <p>Figura&nbsp;4: Fragility Score ex ante 2024. Le etichette riportano il tasso NPL successivamente osservato nel 2024.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="tabella-ranking-completo" class="level3 anchored" data-number="3.4" data-anchor-id="tabella-ranking-completo">
-<h3 class="anchored" data-number="3.4" data-anchor-id="tabella-ranking-completo"><span class="header-section-number">3.4</span> Tabella ranking completo</h3>
-<div class="cell" data-execution_count="9">
-<div id="tab-scores" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="9">
-<div class="figure quarto-float quarto-float-tbl">
-<div aria-describedby="tab-scores-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="9">
+<section id="tabella-ranking-completo" class="level3" data-number="4.4">
+<h3 data-number="4.4" class="anchored" data-anchor-id="tabella-ranking-completo"><span class="header-section-number">4.4</span> Tabella ranking completo</h3>
 <div>
-<table class="caption-top table table-sm table-striped small">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -1201,22 +1178,15 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div class="caption">
 <p>Tabella&nbsp;4: Fragility Score ex ante 2024 e successivo esito osservato</p>
-</div>
-</div>
-</div>
-</div>
 <p><em>Il tasso NPL 2024 è mostrato soltanto per la validazione successiva e non entra nel calcolo dello score.</em></p>
 <hr>
 </section>
 </section>
-<section id="limiti-e-sviluppi" class="level2 anchored" data-number="4" data-anchor-id="limiti-e-sviluppi">
-<h2 class="anchored" data-number="4" data-anchor-id="limiti-e-sviluppi"><span class="header-section-number">4</span> Limiti e sviluppi</h2>
-<section id="limiti-principali" class="level3 anchored" data-number="4.1" data-anchor-id="limiti-principali">
-<h3 class="anchored" data-number="4.1" data-anchor-id="limiti-principali"><span class="header-section-number">4.1</span> Limiti principali</h3>
+<section id="limiti-e-sviluppi" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="limiti-e-sviluppi"><span class="header-section-number">5</span> Limiti e sviluppi</h2>
+<section id="limiti-principali" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="limiti-principali"><span class="header-section-number">5.1</span> Limiti principali</h3>
 <ol type="1">
 <li><p><strong>Aggregazione regionale</strong>: il segnale transazionale individuale del poster BdI (Liquidity Buffer per singola PMI) non è replicabile con dati aggregati. Il tasso NPL regionale è molto più rumoroso e ritardato.</p></li>
 <li><p><strong>Assenza di cross-section sufficientemente ampia</strong>: 18 NUTS2 è un N piccolo per effetti between. Il modello è identificato dalla dimensione within (variazione annuale), che resta limitata per molte regioni.</p></li>
@@ -1227,8 +1197,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Fallacia ecologica</strong>: un indicatore regionale non permette inferenze sulla probabilità di distress della singola PMI.</p></li>
 </ol>
 </section>
-<section id="sviluppi-possibili" class="level3 anchored" data-number="4.2" data-anchor-id="sviluppi-possibili">
-<h3 class="anchored" data-number="4.2" data-anchor-id="sviluppi-possibili"><span class="header-section-number">4.2</span> Sviluppi possibili</h3>
+<section id="sviluppi-possibili" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="sviluppi-possibili"><span class="header-section-number">5.2</span> Sviluppi possibili</h3>
 <ul>
 <li><strong>Riorientare la pipeline a orizzonte 2-3 anni</strong>: priorità immediata. Il test esplorativo a h=3 batte la persistenza (RMSE 1,267 vs 2,519); da integrare negli script (<code>04_model_fe.py</code>) come modello principale, non solo come nota a margine, e da riconfermare quando arriveranno nuovi anni Cerved.</li>
 <li><strong>Dati FdG (Fondo di Garanzia)</strong>: aggiungere la quota FdG/impieghi come quarta feature — le regioni con alta dipendenza dalla garanzia pubblica potrebbero avere NPL strutturalmente più alti.</li>
@@ -1240,8 +1210,8 @@ ul.task-list li input[type="checkbox"] {
 <hr>
 </section>
 </section>
-<section id="conclusioni" class="level2 anchored" data-number="5" data-anchor-id="conclusioni">
-<h2 class="anchored" data-number="5" data-anchor-id="conclusioni"><span class="header-section-number">5</span> Conclusioni</h2>
+<section id="conclusioni" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="conclusioni"><span class="header-section-number">6</span> Conclusioni</h2>
 <p>Il poster 12 mostra che sequenze transazionali granulari possono anticipare il distress della singola PMI. Questo studio verifica se la stessa intuizione generale sopravvive usando rilevazioni annuali aggregate regionali. Non replica quindi la tecnica originale: ne costruisce un’analogia più debole e la sottopone a backtest.</p>
 <p>Il risultato principale a un anno è negativo ma informativo. Il tasso NPL precedente spiega quasi tutta la capacità di ordinamento regionale; leverage e MOL/Attivo non aggiungono coefficienti significativi. Nel 2024 la persistenza naive ottiene RMSE 0,192, contro 0,746 del modello strutturale e 0,455 del modello dinamico FE — un divario di quasi quattro volte, non un pareggio. Aggiungere concentrazione bancaria regionale ed esposizione settoriale a Costruzioni/Immobiliare non lo colma (0,724); nemmeno modellare la variazione anno su anno invece del livello (1,142). Il tasso NPL regionale a un anno si comporta come un processo vicino a un random walk: non esiste, su questo campione e a questo orizzonte, evidenza sufficiente per qualificare le variabili di bilancio come leading indicator.</p>
 <p><strong>Cambiando orizzonte, il quadro si ribalta.</strong> A tre anni di distanza il modello con leverage e MOL/Attivo batte la persistenza di un fattore due (RMSE 1,267 contro 2,519), e il margine operativo lordo su attivo diventa un predittore altamente significativo (p=0,001). Il risultato si basa su un solo anno di verifica fuori campione e va quindi trattato come promettente, non consolidato — ma sposta la domanda di fondo del progetto: non “i fondamentali di bilancio prevedono le sofferenze bancarie regionali”, ma “a quale orizzonte lo fanno”. La risposta emersa oggi è due-tre anni, non uno.</p>
@@ -1251,9 +1221,9 @@ ul.task-list li input[type="checkbox"] {
 <p>L’uso di strumenti di intelligenza artificiale generativa è dichiarato esplicitamente in quanto parte del processo di lavoro seguito nella redazione del presente documento. Tali strumenti sono stati impiegati a supporto della lettura, della sintesi, della riorganizzazione argomentativa e della revisione testuale, sempre nell’ambito di un processo pienamente controllato dall’autore.</p>
 <p>La responsabilità per le fonti utilizzate, le analisi condotte, le verifiche effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore.</p>
 <p>L’intelligenza artificiale è stata utilizzata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+
+
 </section>
-
-
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1664,7 +1634,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_EarlyWarningPmi/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
 </div>
