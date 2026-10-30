@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="OpenCUP, investimenti pubblici, CUP, open data, Italia, analisi territoriale, PNRR">
+<meta name="description" content="Il dataset OpenCUP (aggiornamento giugno 2026) raccoglie 11,7 milioni di Codici Unici di Progetto, corrispondenti a investimenti pubblici italiani dal 2000 ad oggi per un costo dichiarato complessivo di circa 4.200 miliardi di euro.">
+
+<title>OpenCUP — Investimenti Pubblici Italiani – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="OpenCUP — Investimenti Pubblici Italiani – Paolo Volterra">
+<meta property="og:description" content="Il dataset OpenCUP (aggiornamento giugno 2026) raccoglie 11,7 milioni di Codici Unici di Progetto, corrispondenti a investimenti pubblici italiani dal 2000 ad oggi per un costo dichiarato complessivo di circa 4.200 miliardi di euro.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2606_OpenCup/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="OpenCUP — Investimenti Pubblici Italiani – Paolo Volterra">
+<meta name="twitter:description" content="Il dataset OpenCUP (aggiornamento giugno 2026) raccoglie 11,7 milioni di Codici Unici di Progetto, corrispondenti a investimenti pubblici italiani dal 2000 ad oggi per un costo dichiarato complessivo di circa 4.200 miliardi di euro.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2606_OpenCup/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#il-sistema-cup-e-il-dataset-opencup" id="toc-il-sistema-cup-e-il-dataset-opencup" class="nav-link active" data-scroll-target="#il-sistema-cup-e-il-dataset-opencup"><span class="header-section-number">1</span> Il sistema CUP e il dataset OpenCUP</a>
+  <ul class="collapse">
+  <li><a href="#struttura-del-dataset" id="toc-struttura-del-dataset" class="nav-link" data-scroll-target="#struttura-del-dataset"><span class="header-section-number">1.1</span> Struttura del dataset</a></li>
+  </ul></li>
+  <li><a href="#distribuzione-temporale-il-ciclo-dellinvestimento-pubblico" id="toc-distribuzione-temporale-il-ciclo-dellinvestimento-pubblico" class="nav-link" data-scroll-target="#distribuzione-temporale-il-ciclo-dellinvestimento-pubblico"><span class="header-section-number">2</span> Distribuzione temporale: il ciclo dell’investimento pubblico</a>
+  <ul class="collapse">
+  <li><a href="#trend-20102026" id="toc-trend-20102026" class="nav-link" data-scroll-target="#trend-20102026"><span class="header-section-number">2.1</span> Trend 2010–2026</a></li>
+  </ul></li>
+  <li><a href="#distribuzione-geografica" id="toc-distribuzione-geografica" class="nav-link" data-scroll-target="#distribuzione-geografica"><span class="header-section-number">3</span> Distribuzione geografica</a></li>
+  <li><a href="#natura-e-settore-degli-interventi" id="toc-natura-e-settore-degli-interventi" class="nav-link" data-scroll-target="#natura-e-settore-degli-interventi"><span class="header-section-number">4</span> Natura e settore degli interventi</a>
+  <ul class="collapse">
+  <li><a href="#natura-dellintervento" id="toc-natura-dellintervento" class="nav-link" data-scroll-target="#natura-dellintervento"><span class="header-section-number">4.1</span> Natura dell’intervento</a></li>
+  <li><a href="#settore-di-intervento" id="toc-settore-di-intervento" class="nav-link" data-scroll-target="#settore-di-intervento"><span class="header-section-number">4.2</span> Settore di intervento</a></li>
+  </ul></li>
+  <li><a href="#fonti-di-copertura-finanziaria" id="toc-fonti-di-copertura-finanziaria" class="nav-link" data-scroll-target="#fonti-di-copertura-finanziaria"><span class="header-section-number">5</span> Fonti di copertura finanziaria</a>
+  <ul class="collapse">
+  <li><a href="#nota-pnrr" id="toc-nota-pnrr" class="nav-link" data-scroll-target="#nota-pnrr"><span class="header-section-number">5.1</span> Nota PNRR</a></li>
+  </ul></li>
+  <li><a href="#distribuzione-degli-importi-la-dualità-del-portafoglio" id="toc-distribuzione-degli-importi-la-dualità-del-portafoglio" class="nav-link" data-scroll-target="#distribuzione-degli-importi-la-dualità-del-portafoglio"><span class="header-section-number">6</span> Distribuzione degli importi: la dualità del portafoglio</a>
+  <ul class="collapse">
+  <li><a href="#statistiche-descrittive" id="toc-statistiche-descrittive" class="nav-link" data-scroll-target="#statistiche-descrittive"><span class="header-section-number">6.1</span> Statistiche descrittive</a></li>
+  <li><a href="#la-dualità-strutturale" id="toc-la-dualità-strutturale" class="nav-link" data-scroll-target="#la-dualità-strutturale"><span class="header-section-number">6.2</span> La dualità strutturale</a></li>
+  </ul></li>
+  <li><a href="#top-soggetti-titolari" id="toc-top-soggetti-titolari" class="nav-link" data-scroll-target="#top-soggetti-titolari"><span class="header-section-number">7</span> Top soggetti titolari</a>
+  <ul class="collapse">
+  <li><a href="#per-numero-di-cup" id="toc-per-numero-di-cup" class="nav-link" data-scroll-target="#per-numero-di-cup"><span class="header-section-number">7.1</span> Per numero di CUP</a></li>
+  <li><a href="#per-valore-aggregato" id="toc-per-valore-aggregato" class="nav-link" data-scroll-target="#per-valore-aggregato"><span class="header-section-number">7.2</span> Per valore aggregato</a></li>
+  </ul></li>
+  <li><a href="#sintesi-e-prossimi-passi" id="toc-sintesi-e-prossimi-passi" class="nav-link" data-scroll-target="#sintesi-e-prossimi-passi"><span class="header-section-number">8</span> Sintesi e prossimi passi</a>
+  <ul class="collapse">
+  <li><a href="#direzioni-di-approfondimento" id="toc-direzioni-di-approfondimento" class="nav-link" data-scroll-target="#direzioni-di-approfondimento"><span class="header-section-number">8.1</span> Direzioni di approfondimento</a></li>
+  <li><a href="#strumenti" id="toc-strumenti" class="nav-link" data-scroll-target="#strumenti"><span class="header-section-number">8.2</span> Strumenti</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_OpenCup/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">OpenCUP — Investimenti Pubblici Italiani</h1>
+<p class="subtitle lead">Analisi esplorativa del dataset open data, aggiornamento giugno 2026</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Investimenti pubblici</div>
+    <div class="quarto-category">Open data</div>
+    <div class="quarto-category">OpenCUP</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Il dataset OpenCUP (aggiornamento giugno 2026) raccoglie 11,7 milioni di Codici Unici di Progetto, corrispondenti a investimenti pubblici italiani dal 2000 ad oggi per un costo dichiarato complessivo di circa 4.200 miliardi di euro.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">20 giugno 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>Il dataset OpenCUP (aggiornamento giugno 2026) raccoglie 11,7 milioni di Codici Unici di Progetto, corrispondenti a investimenti pubblici italiani dal 2000 ad oggi per un costo dichiarato complessivo di circa 4.200 miliardi di euro. L’analisi esplorativa descrive la struttura del portafoglio, la distribuzione temporale, geografica e settoriale dei progetti, le fonti di copertura finanziaria e la concentrazione per soggetto titolare. Il risultato più rilevante è la forte dualità strutturale del portafoglio: l’80% dei CUP ha importo inferiore a 100.000 € e vale complessivamente il 4% del costo totale; all’opposto, 4.569 mega-progetti con costo superiore a 100 milioni di euro concentrano il 43% del valore aggregato. I riferimenti PNRR non risultano presenti nell’aggiornamento corrente come campo esplicito.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>OpenCUP, investimenti pubblici, CUP, open data, Italia, analisi territoriale, PNRR</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="il-sistema-cup-e-il-dataset-opencup" class="level2 anchored" data-number="1" data-anchor-id="il-sistema-cup-e-il-dataset-opencup">
+<h2 class="anchored" data-number="1" data-anchor-id="il-sistema-cup-e-il-dataset-opencup"><span class="header-section-number">1</span> Il sistema CUP e il dataset OpenCUP</h2>
+<p>Il <strong>Codice Unico di Progetto (CUP)</strong> è l’identificativo alfanumerico assegnato a ogni intervento di investimento pubblico ai sensi della Legge 3/2003 e del DPCM 25 settembre 2002. È obbligatorio per tutti i progetti finanziati con risorse pubbliche — nazionali, regionali, comunitarie — e per quelli inseriti nel Documento di Economia e Finanza. Il CUP segue il progetto dalla fase decisionale fino alla chiusura, permettendo in teoria la tracciabilità completa del ciclo di vita dell’investimento.</p>
+<p>Il portale <a href="https://opencup.gov.it/">OpenCUP</a> gestito dal Dipartimento per la Programmazione Economica (DIPE) della Presidenza del Consiglio pubblica l’archivio completo in formato open data con aggiornamenti periodici. L’aggiornamento esaminato in questo documento è quello di <strong>giugno 2026</strong>.</p>
+<section id="struttura-del-dataset" class="level3 anchored" data-number="1.1" data-anchor-id="struttura-del-dataset">
+<h3 class="anchored" data-number="1.1" data-anchor-id="struttura-del-dataset"><span class="header-section-number">1.1</span> Struttura del dataset</h3>
+<p>Il dataset è composto da quattro tabelle distinte, joinabili tramite il campo <code>CUP</code>:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 53%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Tabella</th>
+<th style="text-align: left;">Righe</th>
+<th style="text-align: left;">CUP univoci</th>
+<th style="text-align: left;">Nota</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>progetti</code></td>
+<td style="text-align: left;">11.732.557</td>
+<td style="text-align: left;">11.732.557</td>
+<td style="text-align: left;">62 colonne; unità di analisi principale</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>localizzazione</code></td>
+<td style="text-align: left;">13.368.351</td>
+<td style="text-align: left;">~10.200.000</td>
+<td style="text-align: left;">1,14 righe per CUP in media (un progetto può coprire più comuni)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>soggetti</code></td>
+<td style="text-align: left;">54.071</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">Anagrafica soggetti (no CUP diretto)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>fonti_copertura</code></td>
+<td style="text-align: left;">22.452.684</td>
+<td style="text-align: left;">~11.700.000</td>
+<td style="text-align: left;">~1,91 fonti per CUP in media</td>
+</tr>
+</tbody>
+</table>
+<p>La chiave <code>CUP</code> è univoca nella tabella <code>progetti</code>. Il join con <code>localizzazione</code> è uno-a-molti: un progetto può ricadere in più comuni, province o regioni. Tutte le analisi geografiche in questo documento usano <code>DISTINCT CUP, REGIONE</code> per evitare la duplicazione del costo dei progetti multi-regionali.</p>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p>Nota</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Nota tecnica — encoding.</strong> I file CSV sorgente sono in codifica Latin-1 (ISO-8859-1). DuckDB non supporta <code>encoding='latin1'</code> in <code>read_csv</code>: lo script <code>load_opencup.py</code> estrae i file ZIP, converte la codifica in UTF-8 in memoria e poi carica in <code>OUT/opencup.duckdb</code> (3,2 GB). Tempo di caricamento: ~52 secondi su disco SSD.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="distribuzione-temporale-il-ciclo-dellinvestimento-pubblico" class="level2 anchored" data-number="2" data-anchor-id="distribuzione-temporale-il-ciclo-dellinvestimento-pubblico">
+<h2 class="anchored" data-number="2" data-anchor-id="distribuzione-temporale-il-ciclo-dellinvestimento-pubblico"><span class="header-section-number">2</span> Distribuzione temporale: il ciclo dell’investimento pubblico</h2>
+<div class="quarto-figure quarto-figure-center">
+<div class="figure">
+<p><img src="figure/fig01.png" class="img-fluid figure-img" role="img"></p>
+<div class="caption">
+<p>Nuovi CUP per anno di decisione (sinistra) e distribuzione per stato (destra)</p>
+</div>
+</div>
+</div>
+<p>Il corpus copre il periodo <strong>2000–2026</strong>. I dati pre-2010 sono incompleti per effetto dell’adozione graduale del sistema CUP nelle amministrazioni periferiche. Dal 2010 in poi la copertura può considerarsi sostanzialmente completa.</p>
+<section id="trend-20102026" class="level3 anchored" data-number="2.1" data-anchor-id="trend-20102026">
+<h3 class="anchored" data-number="2.1" data-anchor-id="trend-20102026"><span class="header-section-number">2.1</span> Trend 2010–2026</h3>
+<p>La tabella seguente riporta il numero di nuovi CUP e il costo dichiarato aggregato per anno:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Anno</th>
+<th style="text-align: left;">Nuovi CUP</th>
+<th style="text-align: left;">Costo dichiarato (mld €)</th>
+<th style="text-align: left;">Costo medio (K€)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2010</td>
+<td style="text-align: left;">422.202</td>
+<td style="text-align: left;">261</td>
+<td style="text-align: left;">617</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2011</td>
+<td style="text-align: left;">437.450</td>
+<td style="text-align: left;">228</td>
+<td style="text-align: left;">521</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2012</td>
+<td style="text-align: left;">383.727</td>
+<td style="text-align: left;">161</td>
+<td style="text-align: left;">421</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2013</td>
+<td style="text-align: left;">315.340</td>
+<td style="text-align: left;">76</td>
+<td style="text-align: left;">242</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2014</td>
+<td style="text-align: left;">313.982</td>
+<td style="text-align: left;">85</td>
+<td style="text-align: left;">270</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2015</td>
+<td style="text-align: left;">346.870</td>
+<td style="text-align: left;">64</td>
+<td style="text-align: left;">185</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2016</td>
+<td style="text-align: left;">384.707</td>
+<td style="text-align: left;">85</td>
+<td style="text-align: left;">221</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2017</td>
+<td style="text-align: left;">571.187</td>
+<td style="text-align: left;">98</td>
+<td style="text-align: left;">172</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2018</td>
+<td style="text-align: left;">945.407</td>
+<td style="text-align: left;">128</td>
+<td style="text-align: left;">135</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2019</td>
+<td style="text-align: left;">684.718</td>
+<td style="text-align: left;">118</td>
+<td style="text-align: left;">172</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2020</td>
+<td style="text-align: left;">1.024.813</td>
+<td style="text-align: left;">192</td>
+<td style="text-align: left;">187</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2021</td>
+<td style="text-align: left;"><strong>1.202.880</strong></td>
+<td style="text-align: left;">254</td>
+<td style="text-align: left;">211</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2022</td>
+<td style="text-align: left;"><strong>1.197.619</strong></td>
+<td style="text-align: left;">282</td>
+<td style="text-align: left;">235</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023</td>
+<td style="text-align: left;">763.248</td>
+<td style="text-align: left;">240</td>
+<td style="text-align: left;">314</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2024</td>
+<td style="text-align: left;">734.814</td>
+<td style="text-align: left;">242</td>
+<td style="text-align: left;">330</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2025</td>
+<td style="text-align: left;">709.483</td>
+<td style="text-align: left;">359</td>
+<td style="text-align: left;"><strong>506</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2026</td>
+<td style="text-align: left;">239.128</td>
+<td style="text-align: left;">69</td>
+<td style="text-align: left;">287</td>
+</tr>
+</tbody>
+</table>
+<p>Emergono due tendenze distinte:</p>
+<ul>
+<li><p><strong>Volume</strong>: il numero di nuovi CUP ha raggiunto il picco nel biennio <strong>2021–2022</strong> (oltre 1,2 milioni/anno), riflettendo verosimilmente le misure post-pandemia, i bandi del PNRR e l’accelerazione del Piano Nazionale Complementare. Dal 2023 il volume si ridimensiona verso livelli più normali (700–760K CUP/anno).</p></li>
+<li><p><strong>Dimensione media</strong>: il costo medio per CUP ha seguito un percorso opposto — in caduta dal 2010 al 2018 (dai 617K€ ai 135K€) per effetto della crescita percentuale degli incentivi a pioggia di piccolo taglio, poi in risalita fino a 506K€ nel 2025, segnalando uno spostamento verso progetti di maggiore dimensione (infrastrutture, energia, transizione digitale).</p></li>
+</ul>
+<p><strong>Stato dei progetti:</strong> 78,8% ATTIVO (9,25M CUP), 20,4% CHIUSO (2,4M), 0,7% CHIUSO D’UFFICIO (86K).</p>
+</section>
+</section>
+<section id="distribuzione-geografica" class="level2 anchored" data-number="3" data-anchor-id="distribuzione-geografica">
+<h2 class="anchored" data-number="3" data-anchor-id="distribuzione-geografica"><span class="header-section-number">3</span> Distribuzione geografica</h2>
+<div class="quarto-figure quarto-figure-center">
+<div class="figure">
+<p><img src="figure/fig02.png" class="img-fluid figure-img" role="img"></p>
+<div class="caption">
+<p>CUP (sinistra) e costo aggregato in miliardi € (destra) per regione</p>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<div class="figure">
+<p><img src="figure/fig03.png" class="img-fluid figure-img" role="img"></p>
+<div class="caption">
+<p>Distribuzione territoriale del costo aggregato</p>
+</div>
+</div>
+</div>
+<p>La distribuzione regionale rivela una netta disomogeneità tra volume e valore degli investimenti:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 31%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Regione</th>
+<th style="text-align: left;">CUP (migliaia)</th>
+<th style="text-align: left;">Costo aggregato (mld €)</th>
+<th style="text-align: left;">Costo medio (K€)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Lombardia</td>
+<td style="text-align: left;">1.551</td>
+<td style="text-align: left;">488,5</td>
+<td style="text-align: left;">315</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Campania</td>
+<td style="text-align: left;">859</td>
+<td style="text-align: left;">472,8</td>
+<td style="text-align: left;">550</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">636</td>
+<td style="text-align: left;">423,0</td>
+<td style="text-align: left;">665</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lazio</td>
+<td style="text-align: left;">575</td>
+<td style="text-align: left;">405,9</td>
+<td style="text-align: left;">706</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Puglia</td>
+<td style="text-align: left;">593</td>
+<td style="text-align: left;">325,2</td>
+<td style="text-align: left;">549</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Veneto</td>
+<td style="text-align: left;">1.028</td>
+<td style="text-align: left;">293,6</td>
+<td style="text-align: left;">286</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Emilia-Romagna</td>
+<td style="text-align: left;">1.126</td>
+<td style="text-align: left;">275,0</td>
+<td style="text-align: left;">244</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Calabria</td>
+<td style="text-align: left;">401</td>
+<td style="text-align: left;">265,4</td>
+<td style="text-align: left;">662</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Piemonte</td>
+<td style="text-align: left;">829</td>
+<td style="text-align: left;">248,0</td>
+<td style="text-align: left;">299</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Abruzzo</td>
+<td style="text-align: left;">393</td>
+<td style="text-align: left;">235,5</td>
+<td style="text-align: left;">599</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Toscana</td>
+<td style="text-align: left;">787</td>
+<td style="text-align: left;">206,0</td>
+<td style="text-align: left;">262</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sardegna</td>
+<td style="text-align: left;">583</td>
+<td style="text-align: left;">163,1</td>
+<td style="text-align: left;">280</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">F-V Giulia</td>
+<td style="text-align: left;">490</td>
+<td style="text-align: left;">142,3</td>
+<td style="text-align: left;">290</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Liguria</td>
+<td style="text-align: left;">197</td>
+<td style="text-align: left;">131,5</td>
+<td style="text-align: left;">668</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tr-Alto Adige</td>
+<td style="text-align: left;">660</td>
+<td style="text-align: left;">122,3</td>
+<td style="text-align: left;">185</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Basilicata</td>
+<td style="text-align: left;">202</td>
+<td style="text-align: left;">121,8</td>
+<td style="text-align: left;">604</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Marche</td>
+<td style="text-align: left;">387</td>
+<td style="text-align: left;">118,8</td>
+<td style="text-align: left;">307</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Umbria</td>
+<td style="text-align: left;">239</td>
+<td style="text-align: left;">83,0</td>
+<td style="text-align: left;">347</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Molise</td>
+<td style="text-align: left;">79</td>
+<td style="text-align: left;">62,2</td>
+<td style="text-align: left;">787</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Valle d’Aosta</td>
+<td style="text-align: left;">123</td>
+<td style="text-align: left;">35,3</td>
+<td style="text-align: left;">287</td>
+</tr>
+</tbody>
+</table>
+<p>Il dato più interessante è la <strong>dissonanza tra volume e valore nel Mezzogiorno</strong>: Campania, Sicilia, Puglia e Calabria si collocano rispettivamente al 2°, 3°, 5° e 8° posto per costo aggregato, ma i loro costi medi per CUP (550–665K€) sono sensibilmente superiori alla media delle regioni del Centro-Nord. Questo schema è coerente con la destinazione dei fondi strutturali UE e delle politiche di coesione: meno progetti, ma di maggiore dimensione.</p>
+<p>Le regioni del Nord — Lombardia, Veneto, Emilia-Romagna — guidano per numero assoluto di CUP (molti piccoli incentivi a imprese), ma con taglio medio inferiore (244–315K€).</p>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p>Avviso</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I valori regionali includono i progetti localizzati in più regioni conteggiati una volta per ogni regione di localizzazione. La riga “TUTTE” (188,7 mld €) raccoglie i progetti a valenza nazionale. Il costo totale regionale è quindi un limite superiore rispetto al totale in <code>progetti</code>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="natura-e-settore-degli-interventi" class="level2 anchored" data-number="4" data-anchor-id="natura-e-settore-degli-interventi">
+<h2 class="anchored" data-number="4" data-anchor-id="natura-e-settore-degli-interventi"><span class="header-section-number">4</span> Natura e settore degli interventi</h2>
+<div class="quarto-figure quarto-figure-center">
+<div class="figure">
+<p><img src="figure/fig04.png" class="img-fluid figure-img" role="img"></p>
+<div class="caption">
+<p>Classificazione per natura (sinistra) e settore (destra)</p>
+</div>
+</div>
+</div>
+<section id="natura-dellintervento" class="level3 anchored" data-number="4.1" data-anchor-id="natura-dellintervento">
+<h3 class="anchored" data-number="4.1" data-anchor-id="natura-dellintervento"><span class="header-section-number">4.1</span> Natura dell’intervento</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Natura</th>
+<th style="text-align: left;">CUP (migliaia)</th>
+<th style="text-align: left;">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Concessione incentivi a unità produttive</td>
+<td style="text-align: left;">6.310</td>
+<td style="text-align: left;">53,8%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Realizzazione lavori pubblici</td>
+<td style="text-align: left;">1.752</td>
+<td style="text-align: left;">14,9%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Contributi ad altri soggetti</td>
+<td style="text-align: left;">1.635</td>
+<td style="text-align: left;">13,9%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Acquisto o realizzazione di servizi</td>
+<td style="text-align: left;">1.631</td>
+<td style="text-align: left;">13,9%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Acquisto di beni</td>
+<td style="text-align: left;">402</td>
+<td style="text-align: left;">3,4%</td>
+</tr>
+</tbody>
+</table>
+<p>Oltre la metà del corpus (53,8%) è costituita da <strong>concessioni di incentivi a unità produttive</strong> — ovvero contributi, crediti d’imposta e finanziamenti agevolati a imprese. Questo riflette il peso dei programmi di incentivazione industriale (Industria 4.0, Nuova Sabatini, contratti di sviluppo) e degli aiuti PAC all’agricoltura. I lavori pubblici tradizionali rappresentano solo il 15% dei CUP ma una quota assai più elevata del valore aggregato.</p>
+</section>
+<section id="settore-di-intervento" class="level3 anchored" data-number="4.2" data-anchor-id="settore-di-intervento">
+<h3 class="anchored" data-number="4.2" data-anchor-id="settore-di-intervento"><span class="header-section-number">4.2</span> Settore di intervento</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Settore</th>
+<th style="text-align: left;">CUP (migliaia)</th>
+<th style="text-align: left;">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Attività produttive, ricerca e impresa</td>
+<td style="text-align: left;">4.466</td>
+<td style="text-align: left;">38,1%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Istruzione, formazione, mercato del lavoro</td>
+<td style="text-align: left;">2.030</td>
+<td style="text-align: left;">17,3%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Infrastrutture sociali</td>
+<td style="text-align: left;">1.977</td>
+<td style="text-align: left;">16,8%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Servizi alle imprese</td>
+<td style="text-align: left;">1.140</td>
+<td style="text-align: left;">9,7%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Infrastrutture di trasporto</td>
+<td style="text-align: left;">553</td>
+<td style="text-align: left;">4,7%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Servizi per P.A. e collettività</td>
+<td style="text-align: left;">553</td>
+<td style="text-align: left;">4,7%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ricerca, sviluppo e innovazione</td>
+<td style="text-align: left;">383</td>
+<td style="text-align: left;">3,3%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Infrastrutture ambientali e idriche</td>
+<td style="text-align: left;">373</td>
+<td style="text-align: left;">3,2%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Infrastrutture energetiche</td>
+<td style="text-align: left;">164</td>
+<td style="text-align: left;">1,4%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Telecomunicazioni e ICT</td>
+<td style="text-align: left;">57</td>
+<td style="text-align: left;">0,5%</td>
+</tr>
+</tbody>
+</table>
+<p>Il settore <em>Attività produttive</em> (38%) è il più numeroso, in linea con la natura incentivistica del portafoglio. <em>Istruzione</em> (17%) e <em>Infrastrutture sociali</em> (17%) riflettono il peso dei fondi strutturali europei sui programmi scolastici e sanitari. Le infrastrutture di trasporto, energetiche e ICT, pur minoritarie in numero, concentrano un valore pro-capite molto più alto.</p>
+</section>
+</section>
+<section id="fonti-di-copertura-finanziaria" class="level2 anchored" data-number="5" data-anchor-id="fonti-di-copertura-finanziaria">
+<h2 class="anchored" data-number="5" data-anchor-id="fonti-di-copertura-finanziaria"><span class="header-section-number">5</span> Fonti di copertura finanziaria</h2>
+<div class="quarto-figure quarto-figure-center">
+<div class="figure">
+<p><img src="figure/fig05.png" class="img-fluid figure-img" role="img"></p>
+<div class="caption">
+<p>Mix delle fonti di copertura finanziaria</p>
+</div>
+</div>
+</div>
+<p>Il dataset <code>fonti_copertura</code> contiene 22,5 milioni di record — circa <strong>1,91 fonti per CUP</strong> in media, a indicare che molti progetti hanno una struttura di cofinanziamento misto. La distribuzione per tipologia di fonte è:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Fonte di copertura</th>
+<th style="text-align: left;">Record (milioni)</th>
+<th style="text-align: left;">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Statale</td>
+<td style="text-align: left;">7,05</td>
+<td style="text-align: left;">31,4%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Comunitaria</td>
+<td style="text-align: left;">5,95</td>
+<td style="text-align: left;">26,5%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Regionale</td>
+<td style="text-align: left;">4,68</td>
+<td style="text-align: left;">20,8%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Privata</td>
+<td style="text-align: left;">2,22</td>
+<td style="text-align: left;">9,9%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Altra pubblica</td>
+<td style="text-align: left;">1,19</td>
+<td style="text-align: left;">5,3%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Comunale</td>
+<td style="text-align: left;">0,97</td>
+<td style="text-align: left;">4,3%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Provinciale</td>
+<td style="text-align: left;">0,39</td>
+<td style="text-align: left;">1,7%</td>
+</tr>
+</tbody>
+</table>
+<p>La <strong>copertura comunitaria al 26,5%</strong> è il principale termometro della capacità di assorbimento dei fondi europei: rappresenta il canale FESR, FSE e FEASR per i Programmi Operativi 2014–2020 e 2021–2027. La copertura privata (9,9%) è coerente con i meccanismi di cofinanziamento obbligatorio previsti per molti incentivi alle imprese.</p>
+<section id="sec-pnrr" class="level3" data-number="5.1">
+<section id="nota-pnrr" class="level3 anchored" data-number="5.1" data-anchor-id="sec-pnrr">
+<h3 class="anchored" data-number="5.1" data-anchor-id="nota-pnrr"><span class="header-section-number">5.1</span> Nota PNRR</h3>
+<p>Il dataset non contiene riferimenti espliciti al <strong>Piano Nazionale di Ripresa e Resilienza (PNRR)</strong>: il campo <code>STRUMENTO_PROGRAMMAZIONE</code> non include la stringa “PNRR” in nessun record, e <code>ALTRE_INFORMAZIONI</code> registra soltanto 1.427 match — un numero irrilevante rispetto alla portata del Piano.</p>
+<p>Possibili spiegazioni: 1. I CUP PNRR potrebbero non essere ancora stati riversati nell’archivio OpenCUP alla data di questo aggiornamento, oppure essere inseriti in un aggiornamento successivo. 2. L’identificazione richiede un join con il sistema <strong>ReGiS</strong> (Registro nazionale degli interventi PNRR) che mantiene la mappatura CUP↔︎Misura-PNRR. 3. Parte dei progetti PNRR potrebbe essere tracciata tramite la copertura “Comunitaria” senza un’etichetta specifica.</p>
+<p>Ai fini di questo documento si usa la <strong>copertura Comunitaria (26,5%)</strong> come proxy dell’esposizione agli investimenti EU-funded, senza poter distinguere i fondi strutturali dal PNRR.</p>
+</section>
+</section>
+</section>
+<section id="distribuzione-degli-importi-la-dualità-del-portafoglio" class="level2 anchored" data-number="6" data-anchor-id="distribuzione-degli-importi-la-dualità-del-portafoglio">
+<h2 class="anchored" data-number="6" data-anchor-id="distribuzione-degli-importi-la-dualità-del-portafoglio"><span class="header-section-number">6</span> Distribuzione degli importi: la dualità del portafoglio</h2>
+<div class="quarto-figure quarto-figure-center">
+<div class="figure">
+<p><img src="figure/fig06.png" class="img-fluid figure-img" role="img"></p>
+<div class="caption">
+<p>Distribuzione di COSTO_PROGETTO: scala lineare fino a 1M€ (sinistra) e log-scale (destra)</p>
+</div>
+</div>
+</div>
+<section id="statistiche-descrittive" class="level3 anchored" data-number="6.1" data-anchor-id="statistiche-descrittive">
+<h3 class="anchored" data-number="6.1" data-anchor-id="statistiche-descrittive"><span class="header-section-number">6.1</span> Statistiche descrittive</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Statistica</th>
+<th style="text-align: left;">Valore</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">N. progetti con costo &gt; 0</td>
+<td style="text-align: left;">11.732.557</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Costo totale dichiarato</strong></td>
+<td style="text-align: left;"><strong>~4.200 miliardi €</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Minimo</td>
+<td style="text-align: left;">1 €</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1° quartile (Q1)</td>
+<td style="text-align: left;">1.630 €</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Mediana</strong></td>
+<td style="text-align: left;"><strong>10.000 €</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3° quartile (Q3)</td>
+<td style="text-align: left;">68.000 €</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Media</td>
+<td style="text-align: left;">360.000 €</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Massimo</td>
+<td style="text-align: left;">22 miliardi €</td>
+</tr>
+</tbody>
+</table>
+<p>La distribuzione è <strong>fortemente asimmetrica a destra</strong> (media 36× la mediana): la coesistenza di milioni di micro-incentivi (AgriCUP PAC, incentivi energia, contributi de minimis) e di grandi opere infrastrutturali produce una struttura bimodale.</p>
+</section>
+<section id="la-dualità-strutturale" class="level3 anchored" data-number="6.2" data-anchor-id="la-dualità-strutturale">
+<h3 class="anchored" data-number="6.2" data-anchor-id="la-dualità-strutturale"><span class="header-section-number">6.2</span> La dualità strutturale</h3>
+<p>Il dato più rilevante dell’analisi è la concentrazione del valore in pochi grandi progetti:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 27%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Fascia di importo</th>
+<th style="text-align: left;">N. CUP</th>
+<th style="text-align: left;">% CUP</th>
+<th style="text-align: left;">Costo aggregato (mld €)</th>
+<th style="text-align: left;">% costo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1 – 10.000 €</td>
+<td style="text-align: left;">5.891.000</td>
+<td style="text-align: left;"><strong>50,2%</strong></td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">0,4%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10.000 – 100.000 €</td>
+<td style="text-align: left;">3.546.000</td>
+<td style="text-align: left;">30,2%</td>
+<td style="text-align: left;">145</td>
+<td style="text-align: left;">3,4%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">100.000 – 1M €</td>
+<td style="text-align: left;">1.942.000</td>
+<td style="text-align: left;">16,6%</td>
+<td style="text-align: left;">587</td>
+<td style="text-align: left;">13,9%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1M – 10M €</td>
+<td style="text-align: left;">318.000</td>
+<td style="text-align: left;">2,7%</td>
+<td style="text-align: left;">832</td>
+<td style="text-align: left;">19,7%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10M – 100M €</td>
+<td style="text-align: left;">30.800</td>
+<td style="text-align: left;">0,3%</td>
+<td style="text-align: left;">816</td>
+<td style="text-align: left;">19,3%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>&gt; 100M €</strong></td>
+<td style="text-align: left;"><strong>4.569</strong></td>
+<td style="text-align: left;"><strong>0,04%</strong></td>
+<td style="text-align: left;"><strong>1.833</strong></td>
+<td style="text-align: left;"><strong>43,4%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>In sintesi: - <strong>L’80% dei CUP ha importo &lt; 100.000 €</strong> e vale complessivamente il <strong>4% del costo totale</strong>. - <strong>4.569 mega-progetti</strong> (meno dello 0,05% del totale) <strong>concentrano il 43% del valore aggregato</strong> — circa 1.833 miliardi di euro.</p>
+<p>Questa struttura è attesa per un sistema che aggrega incentivi de minimis (pochi euro) e grandi opere (autostrade, ferrovie, rigassificatori) sotto lo stesso identificatore. Ai fini delle politiche pubbliche, le due popolazioni richiedono strumenti analitici distinti.</p>
+</section>
+</section>
+<section id="top-soggetti-titolari" class="level2 anchored" data-number="7" data-anchor-id="top-soggetti-titolari">
+<h2 class="anchored" data-number="7" data-anchor-id="top-soggetti-titolari"><span class="header-section-number">7</span> Top soggetti titolari</h2>
+<div class="quarto-figure quarto-figure-center">
+<div class="figure">
+<p><img src="figure/fig07.png" class="img-fluid figure-img" role="img"></p>
+<div class="caption">
+<p>Top 20 soggetti per numero di CUP</p>
+</div>
+</div>
+</div>
+<section id="per-numero-di-cup" class="level3 anchored" data-number="7.1" data-anchor-id="per-numero-di-cup">
+<h3 class="anchored" data-number="7.1" data-anchor-id="per-numero-di-cup"><span class="header-section-number">7.1</span> Per numero di CUP</h3>
+<p>Il soggetto con il maggior numero di CUP è <strong>AGEA</strong> (Agenzia per le Erogazioni in Agricoltura) con circa 1,5 milioni di codici. Il numero elevato riflette la struttura a domanda individuale dei pagamenti PAC: ogni posizione aziendale agricola genera un CUP distinto per ogni annata e misura di sostegno.</p>
+</section>
+<section id="per-valore-aggregato" class="level3 anchored" data-number="7.2" data-anchor-id="per-valore-aggregato">
+<h3 class="anchored" data-number="7.2" data-anchor-id="per-valore-aggregato"><span class="header-section-number">7.2</span> Per valore aggregato</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Soggetto titolare</th>
+<th style="text-align: left;">CUP (migliaia)</th>
+<th style="text-align: left;">Costo aggregato (mld €)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Ministero delle Imprese e del Made in Italy</td>
+<td style="text-align: left;">933</td>
+<td style="text-align: left;">308,6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Soggetto privato</td>
+<td style="text-align: left;">502</td>
+<td style="text-align: left;">213,1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Rete Ferroviaria Italiana S.p.A.</td>
+<td style="text-align: left;">3,8</td>
+<td style="text-align: left;">211,4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Regione Abruzzo</td>
+<td style="text-align: left;">123</td>
+<td style="text-align: left;">155,0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ANAS S.p.A.</td>
+<td style="text-align: left;">31,7</td>
+<td style="text-align: left;">143,3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Regione Autonoma della Sicilia</td>
+<td style="text-align: left;">224</td>
+<td style="text-align: left;">79,6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Regione Puglia</td>
+<td style="text-align: left;">165</td>
+<td style="text-align: left;">76,7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ministero delle Infrastrutture e dei Trasporti</td>
+<td style="text-align: left;">27,6</td>
+<td style="text-align: left;">63,1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Regione Campania</td>
+<td style="text-align: left;">360</td>
+<td style="text-align: left;">60,9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Regione Calabria</td>
+<td style="text-align: left;">162</td>
+<td style="text-align: left;">60,8</td>
+</tr>
+</tbody>
+</table>
+<p>Alcuni spunti interpretativi:</p>
+<ul>
+<li>Il <strong>MIMIT</strong> (ex-Ministero dello Sviluppo Economico) è il soggetto con il valore aggregato più alto: 308,6 miliardi su 933K CUP, a riflettere il volume dei contratti di sviluppo, degli accordi di programma e degli incentivi Industria 4.0 erogati centralmente.</li>
+<li><strong>RFI</strong> con soli 3.800 CUP vale 211 miliardi: il rapporto costo/CUP è &gt;55 milioni € per progetto — conferma che pochi grandi investimenti ferroviari (AV, PNRR tratte, MITE) dominano il portafoglio infrastrutturale.</li>
+<li>La <strong>Regione Abruzzo</strong> (155 miliardi) appare sproporzionata rispetto al peso demografico ed economico della regione; questo può dipendere dall’attribuzione di progetti nazionali con codice territoriale abruzzese, o da programmi di sviluppo speciali (ad es. ricostruzione post-sisma L’Aquila, grandi concessioni energetiche offshore Adriatico).</li>
+<li>La voce <strong>“soggetto privato”</strong> (213 miliardi) segnala una quota rilevante di cofinanziamento privato rendicontato nel sistema CUP — coerente con la struttura incentivistica.</li>
+</ul>
+</section>
+</section>
+<section id="sintesi-e-prossimi-passi" class="level2 anchored" data-number="8" data-anchor-id="sintesi-e-prossimi-passi">
+<h2 class="anchored" data-number="8" data-anchor-id="sintesi-e-prossimi-passi"><span class="header-section-number">8</span> Sintesi e prossimi passi</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 42%">
+<col style="width: 55%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicatore</th>
+<th style="text-align: left;">Valore</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Totale CUP</td>
+<td style="text-align: left;">11,7 milioni</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Periodo</td>
+<td style="text-align: left;">2000–2026</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Costo totale dichiarato</td>
+<td style="text-align: left;">~4.200 miliardi €</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Stato: ATTIVO / CHIUSO / CHIUSO D’UFFICIO</td>
+<td style="text-align: left;">78,8% / 20,4% / 0,7%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Natura dominante</td>
+<td style="text-align: left;">Incentivi a unità produttive (53,8%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Settore dominante</td>
+<td style="text-align: left;">Attività produttive (38,1%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Copertura finanziaria prevalente</td>
+<td style="text-align: left;">Statale (31,4%), Comunitaria (26,5%), Regionale (20,8%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mediana COSTO_PROGETTO</td>
+<td style="text-align: left;">10.000 €</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mega-progetti (&gt;100M€)</td>
+<td style="text-align: left;">4.569 CUP = 43% del valore totale</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Top soggetto per CUP</td>
+<td style="text-align: left;">AGEA (~1,5M CUP)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Top soggetto per costo</td>
+<td style="text-align: left;">MIMIT (308,6 mld €)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PNRR esplicito</td>
+<td style="text-align: left;">Non presente nell’aggiornamento giugno 2026</td>
+</tr>
+</tbody>
+</table>
+<section id="direzioni-di-approfondimento" class="level3 anchored" data-number="8.1" data-anchor-id="direzioni-di-approfondimento">
+<h3 class="anchored" data-number="8.1" data-anchor-id="direzioni-di-approfondimento"><span class="header-section-number">8.1</span> Direzioni di approfondimento</h3>
+<p>Il presente documento costituisce un’esplorazione iniziale. I filoni analitici prioritari sono:</p>
+<ol type="1">
+<li><strong>Identificazione PNRR via ReGiS</strong>: join con il registro degli interventi PNRR per isolare la componente Piano Nazionale di Ripresa e Resilienza.</li>
+<li><strong>Analisi per SLL</strong>: il join con <code>opensituas</code> (codice ISTAT comune) permette di riaggregare i progetti a livello di Sistema Locale del Lavoro — unità funzionale più significativa del comune per l’analisi degli investimenti produttivi.</li>
+<li><strong>Analisi temporale della spesa</strong>: confronto tra <code>ANNO_DECISIONE</code> e stato del progetto per stimare il lag medio tra approvazione e chiusura; utile per valutare la capacità attuativa.</li>
+<li><strong>Analisi settoriale per Mezzogiorno vs.&nbsp;Centro-Nord</strong>: decomposizione del gap di costo medio tra le due aree per settore e fonte di copertura.</li>
+<li><strong>Concentrazione per soggetto</strong>: curva di Lorenz del costo per soggetto titolare; analisi di dominanza di MIMIT, RFI e ANAS nel portafoglio infrastrutturale.</li>
+</ol>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 98%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">: ::</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Problema Soluzione adottata</td>
+</tr>
+</tbody>
+</table>
+<p>Encoding Latin-1 non supportato da DuckDB Estrazione ZIP + conversione UTF-8 in memoria prima di <code>read_csv</code></p>
+<p>Join 1:N con localizzazione <code>DISTINCT CUP, REGIONE</code> prima di aggregare per evitare duplicazione del costo</p>
+<p>Valori accentati corrotti in <code>NATURA_INTERVENTO</code> Usare <code>NATURA_INTERVENTO</code> (corretta dopo conversione UTF-8)</p>
+<p><code>TIME_PERIOD</code> / <code>ANNO_DECISIONE</code> come integer Cast esplicito a INT prima dei confronti e ORDER BY</p>
+<p>PNRR non identificabile Proxy: <code>COPERTURA_FINANZIARIA = 'COMUNITARIA'</code> ———————————————————————————————————————————-</p>
+</section>
+<section id="ambiente-di-lavoro" class="level3" data-number="9.3">
+<section id="strumenti" class="level3 anchored" data-number="8.2" data-anchor-id="ambiente-di-lavoro">
+<h3 class="anchored" data-number="8.2" data-anchor-id="strumenti"><span class="header-section-number">8.2</span> Strumenti</h3>
+<p>Elaborazioni in Python (pandas, DuckDB) sul dataset completo OpenCUP.</p>
+<hr>
+<p><strong>Trasparenza sull’uso dell’intelligenza artificiale</strong></p>
+<p>L’uso di strumenti di intelligenza artificiale generativa è dichiarato esplicitamente in quanto parte del processo di lavoro seguito nella redazione del presente documento. Tali strumenti sono stati impiegati a supporto della lettura, della sintesi, della riorganizzazione argomentativa e della revisione testuale, sempre nell’ambito di un processo pienamente controllato dall’autore.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le verifiche effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore.</p>
+<p>L’intelligenza artificiale è stata utilizzata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+</section>
+</section>
+</section>
+<p>::::::: ::::::::</p>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_OpenCup/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

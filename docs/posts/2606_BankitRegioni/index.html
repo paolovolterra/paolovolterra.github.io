@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="imprese regionali, MOL, leverage, Cerved, Banca d’Italia, Economie Regionali, bilanci">
+<meta name="description" content="Redditività operativa (MOL/Attivo), leva e oneri finanziari delle imprese per regione dal ciclo Covid alla normalizzazione del 2024, su una serie consolidata dalle tavole Cerved delle Economie Regionali della Banca d’Italia.">
+
+<title>La salute finanziaria delle imprese regionali – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="La salute finanziaria delle imprese regionali – Paolo Volterra">
+<meta property="og:description" content="Redditività operativa (MOL/Attivo), leva e oneri finanziari delle imprese per regione dal ciclo Covid alla normalizzazione del 2024, su una serie consolidata dalle tavole Cerved delle Economie Regionali della Banca d’Italia.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2606_BankitRegioni/anteprima.png">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta property="og:image:height" content="1076">
+<meta property="og:image:width" content="2175">
+<meta name="twitter:title" content="La salute finanziaria delle imprese regionali – Paolo Volterra">
+<meta name="twitter:description" content="Redditività operativa (MOL/Attivo), leva e oneri finanziari delle imprese per regione dal ciclo Covid alla normalizzazione del 2024, su una serie consolidata dalle tavole Cerved delle Economie Regionali della Banca d’Italia.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2606_BankitRegioni/anteprima.png">
+<meta name="twitter:image-height" content="1076">
+<meta name="twitter:image-width" content="2175">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#fonti-e-metodologia" id="toc-fonti-e-metodologia" class="nav-link active" data-scroll-target="#fonti-e-metodologia"><span class="header-section-number">1</span> Fonti e metodologia</a></li>
+  <li><a href="#perimetro-storico-allargato-della-tavola" id="toc-perimetro-storico-allargato-della-tavola" class="nav-link" data-scroll-target="#perimetro-storico-allargato-della-tavola"><span class="header-section-number">2</span> Perimetro storico allargato della tavola</a>
+  <ul class="collapse">
+  <li><a href="#la-tavola-nelloriginale-un-esempio" id="toc-la-tavola-nelloriginale-un-esempio" class="nav-link" data-scroll-target="#la-tavola-nelloriginale-un-esempio"><span class="header-section-number">2.1</span> La tavola nell’originale: un esempio</a></li>
+  </ul></li>
+  <li><a href="#il-ciclo-recente-20182024-tre-fasi" id="toc-il-ciclo-recente-20182024-tre-fasi" class="nav-link" data-scroll-target="#il-ciclo-recente-20182024-tre-fasi"><span class="header-section-number">3</span> Il ciclo recente 2018–2024: tre fasi</a></li>
+  <li><a href="#eterogeneità-regionale-al-picco-del-ciclo" id="toc-eterogeneità-regionale-al-picco-del-ciclo" class="nav-link" data-scroll-target="#eterogeneità-regionale-al-picco-del-ciclo"><span class="header-section-number">4</span> Eterogeneità regionale al picco del ciclo</a></li>
+  <li><a href="#la-tabella-completa-copertura-regionale-20182024" id="toc-la-tabella-completa-copertura-regionale-20182024" class="nav-link" data-scroll-target="#la-tabella-completa-copertura-regionale-20182024"><span class="header-section-number">5</span> La tabella completa: copertura regionale 2018–2024</a></li>
+  <li><a href="#il-leverage-evidenza-nel-dataset-unificato" id="toc-il-leverage-evidenza-nel-dataset-unificato" class="nav-link" data-scroll-target="#il-leverage-evidenza-nel-dataset-unificato"><span class="header-section-number">6</span> Il leverage: evidenza nel dataset unificato</a></li>
+  <li><a href="#il-costo-della-leva-nel-ciclo-bce-20222024" id="toc-il-costo-della-leva-nel-ciclo-bce-20222024" class="nav-link" data-scroll-target="#il-costo-della-leva-nel-ciclo-bce-20222024"><span class="header-section-number">7</span> Il costo della leva nel ciclo BCE 2022–2024</a></li>
+  <li><a href="#raccordo-con-il-frame-territoriale-anticipato-istat" id="toc-raccordo-con-il-frame-territoriale-anticipato-istat" class="nav-link" data-scroll-target="#raccordo-con-il-frame-territoriale-anticipato-istat"><span class="header-section-number">8</span> Raccordo con il Frame Territoriale Anticipato ISTAT</a></li>
+  <li><a href="#limiti-del-dato-aggregato-regionale" id="toc-limiti-del-dato-aggregato-regionale" class="nav-link" data-scroll-target="#limiti-del-dato-aggregato-regionale"><span class="header-section-number">9</span> Limiti del dato aggregato regionale</a></li>
+  <li><a href="#sintesi-e-prospettive" id="toc-sintesi-e-prospettive" class="nav-link" data-scroll-target="#sintesi-e-prospettive"><span class="header-section-number">10</span> Sintesi e prospettive</a></li>
+  <li><a href="#prospettive-di-analisi" id="toc-prospettive-di-analisi" class="nav-link" data-scroll-target="#prospettive-di-analisi"><span class="header-section-number">11</span> Prospettive di analisi</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_BankitRegioni/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">La salute finanziaria delle imprese regionali</h1>
+<p class="subtitle lead">Redditività operativa, leva e oneri dal ciclo Covid alla normalizzazione 2024</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Banca d'Italia</div>
+    <div class="quarto-category">Imprese</div>
+    <div class="quarto-category">Regioni</div>
+    <div class="quarto-category">Credito</div>
+    <div class="quarto-category">Python</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Redditività operativa (MOL/Attivo), leva e oneri finanziari delle imprese per regione dal ciclo Covid alla normalizzazione del 2024, su una serie consolidata dalle tavole Cerved delle Economie Regionali della Banca d’Italia.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">11 giugno 2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Data di modifica</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">30 ottobre 2026</p>
+    </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.21367674">10.5281/zenodo.21367674</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>La tavola sugli indicatori economici e finanziari delle imprese nelle Economie Regionali (Banca d’Italia, fonte Cerved; A2.9/A2.x secondo l’edizione) documenta l’evoluzione della redditività operativa e della struttura finanziaria delle società di capitali italiane per regione. La catalogazione delle monografie mostra che la tavola entra nella collana nel 2017 e che le edizioni 2019 ricostruiscono serie storiche fino al 2007. La parte quantitativa di dettaglio di questo studio consolida le edizioni disponibili in un’unica serie che copre il 2007–2024 per più indici regionali, ricostruita a partire da circa 60 pubblicazioni. Il margine operativo lordo in rapporto all’attivo (MOL/Attivo) tocca il minimo recente nel 2020, rimbalza nel 2021-2023 in un contesto coerente con l’effetto dei prezzi nominali su ricavi e costi, e segna nel 2024 una flessione compatibile con la normalizzazione dei prezzi e con l’aumento del costo del lavoro. Il leverage (debiti finanziari / totale attivo) segue una traiettoria prevalentemente discendente nel tratto 2019–2024 del dataset operativo unificato.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>imprese regionali, MOL, leverage, Cerved, Banca d’Italia, Economie Regionali, bilanci</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="fonti-e-metodologia" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="fonti-e-metodologia"><span class="header-section-number">1</span> Fonti e metodologia</h2>
+<p>La tavola sugli <strong>Indicatori economici e finanziari delle imprese</strong> è una tavola dell’appendice statistica del capitolo 2 dei rapporti annuali delle Economie Regionali della Banca d’Italia <a href="#ref-bancaditalia_er">[1]</a>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> La fonte primaria è l’archivio Cerved, che raccoglie i bilanci di circa 180.000 società di capitali italiane, con una copertura regionale di 9.000–11.000 unità per le regioni più grandi. La tavola riporta undici indicatori di bilancio (tra cui MOL/Attivo, MOL/VA, Leverage, Liquidità/Attivo, PFN/Attivo, OnFin/MOL, DebFin/Fatt, DebBanc/DebFin, QuotaMLT); questa analisi si concentra sui tre che meglio riassumono redditività operativa, struttura finanziaria e costo del debito: <strong>MOL/Attivo</strong>, <strong>Leverage</strong> e <strong>OnFin/MOL</strong>. I dati usati nell’analisi non dipendono dalla numerazione formale <code>A2.9</code>: sono estratti dalla tavola sostanziale “Indicatori economici e finanziari delle imprese” in tre serie semestrali di PDF delle <em>Economie Regionali</em>. Per il periodo recente la base aggiornata copre 20 regioni per il 2018–2024, con il dato 2024 dell’Umbria integrato da una tavola Cerved-Mediocredito Centrale pubblicata separatamente dall’edizione regionale <a href="#ref-cerved_mcc_umbria">[2]</a>.</p>
+<p>Una precisazione sul <strong>ritardo temporale</strong> della fonte: i rapporti annuali regionali sono pubblicati a giugno dell’anno <span class="math inline">\(t\)</span> e analizzano l’esercizio <span class="math inline">\(t-1\)</span> per i dati di bilancio Cerved, che richiedono circa 12–18 mesi di consolidamento. I dati del primo semestre 2026 riportano quindi bilanci 2024.</p>
+<p>La copertura non è uniforme per tutti gli indicatori. La serie che ne risulta combina le edizioni semestrali disponibili e quindi mostra finestre diverse per anno e indicatore. Tutti i grafici e le tabelle sugli indicatori Cerved di questo studio derivano da un’unica serie consolidata dall’autore.</p>
+<div class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<style type="text/css">
+#T_ba9d9_row0_col0, #T_ba9d9_row1_col0, #T_ba9d9_row2_col0, #T_ba9d9_row3_col0, #T_ba9d9_row4_col0, #T_ba9d9_row5_col0, #T_ba9d9_row6_col0, #T_ba9d9_row7_col0, #T_ba9d9_row8_col0 {
+  text-align: left;
+}
+#T_ba9d9_row0_col1, #T_ba9d9_row0_col2, #T_ba9d9_row0_col3, #T_ba9d9_row0_col4, #T_ba9d9_row1_col1, #T_ba9d9_row1_col2, #T_ba9d9_row1_col3, #T_ba9d9_row1_col4, #T_ba9d9_row2_col1, #T_ba9d9_row2_col2, #T_ba9d9_row2_col3, #T_ba9d9_row2_col4, #T_ba9d9_row3_col1, #T_ba9d9_row3_col2, #T_ba9d9_row3_col3, #T_ba9d9_row3_col4, #T_ba9d9_row4_col1, #T_ba9d9_row4_col2, #T_ba9d9_row4_col3, #T_ba9d9_row4_col4, #T_ba9d9_row5_col1, #T_ba9d9_row5_col2, #T_ba9d9_row5_col3, #T_ba9d9_row5_col4, #T_ba9d9_row6_col1, #T_ba9d9_row6_col2, #T_ba9d9_row6_col3, #T_ba9d9_row6_col4, #T_ba9d9_row7_col1, #T_ba9d9_row7_col2, #T_ba9d9_row7_col3, #T_ba9d9_row7_col4, #T_ba9d9_row8_col1, #T_ba9d9_row8_col2, #T_ba9d9_row8_col3, #T_ba9d9_row8_col4 {
+  text-align: center;
+}
+</style>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicatore</th>
+<th style="text-align: left;">Regioni</th>
+<th style="text-align: left;">Anno min</th>
+<th style="text-align: left;">Anno max</th>
+<th style="text-align: left;">Osservazioni</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">MOL/Attivo</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">2007</td>
+<td style="text-align: left;">2024</td>
+<td style="text-align: left;">347</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Leverage</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">2007</td>
+<td style="text-align: left;">2024</td>
+<td style="text-align: left;">316</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">OnFin/MOL</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">2007</td>
+<td style="text-align: left;">2024</td>
+<td style="text-align: left;">319</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MOL/VA</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">2007</td>
+<td style="text-align: left;">2024</td>
+<td style="text-align: left;">343</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Liquidita/Attivo</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">2007</td>
+<td style="text-align: left;">2024</td>
+<td style="text-align: left;">153</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PFN/Attivo</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">2007</td>
+<td style="text-align: left;">2024</td>
+<td style="text-align: left;">261</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DebFin/Fatt</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">2007</td>
+<td style="text-align: left;">2024</td>
+<td style="text-align: left;">230</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DebBanc/DebFin</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">2007</td>
+<td style="text-align: left;">2024</td>
+<td style="text-align: left;">209</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QuotaMLT</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">2007</td>
+<td style="text-align: left;">2024</td>
+<td style="text-align: left;">189</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="perimetro-storico-allargato-della-tavola" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="perimetro-storico-allargato-della-tavola"><span class="header-section-number">2</span> Perimetro storico allargato della tavola</h2>
+<p>La tavola non nasce con le edizioni più recenti. La catalogazione delle monografie regionali oggi disponibili mostra che la prima occorrenza è nel <strong>2017</strong>; già quella tavola presenta una ricostruzione retrospettiva, con anni dal <strong>2007</strong> al 2015. Il salto più importante avviene nel <strong>2019</strong> <a href="#ref-bancaditalia_er_2019">[3]</a>: in quell’edizione la tavola è presente in modo molto più diffuso nelle monografie regionali e, nella maggior parte delle occorrenze rilevate, ricostruisce gli indicatori dal <strong>2007</strong> al 2017.</p>
+<p>Questo amplia il perimetro dello studio. La lettura 2018–2024 resta utile perché è il tratto più recente e più direttamente raccordabile con il ciclo Covid-inflazione-tassi; tuttavia non esaurisce la profondità informativa della fonte. Il punto rilevante non è il numero <code>A2.9</code>, ma il riconoscimento della stessa tavola Cerved nelle diverse edizioni semestrali; in questo modo si può coprire la serie lunga <strong>2007–2024</strong> su più indici regionali, sufficiente per studiare tre regimi: crisi finanziaria e debito sovrano, lunga ripresa pre-Covid, ciclo Covid-inflazione-tassi.</p>
+<p>La serie 2007–2024 utilizzata in questo studio ordina, per ogni anno/regione/indicatore, la versione più recente disponibile tra le edizioni consultate <a href="#ref-bancaditalia_er_2026h1">[4]</a>.</p>
+<section id="la-tavola-nelloriginale-un-esempio" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="la-tavola-nelloriginale-un-esempio"><span class="header-section-number">2.1</span> La tavola nell’originale: un esempio</h3>
+<p>L’immagine seguente riproduce un esempio della tavola “Indicatori economici e finanziari delle imprese” dal rapporto annuale della Puglia (edizione 2026H1, pagina 86), dove la tavola è numerata a2.9. La struttura informativa è comune alle tavole Cerved regionali, anche se la numerazione e la posizione nell’appendice possono variare: le righe riportano gli indicatori di bilancio (MOL/Attivo, Leverage, ecc.) per le società di capitali della regione nel triennio corrente e in confronto con i valori pre-pandemia. La fonte è l’archivio Cerved; l’universo di riferimento include circa 10.000 società di capitali con sede in Puglia.</p>
+<div class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div id="fig-a29-esempio" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a29-esempio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="bilanci_regionali_files/figure-markdown/fig-a29-esempio-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a29-esempio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Indicatori economici e finanziari delle imprese — esempio Puglia 2026H1, tav. a2.9 in questa edizione (analisi anno 2024). Fonte: Economie Regionali n.&nbsp;2616, Banca d’Italia, giugno 2026. Elaborazioni su dati Cerved.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="il-ciclo-recente-20182024-tre-fasi" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="il-ciclo-recente-20182024-tre-fasi"><span class="header-section-number">3</span> Il ciclo recente 2018–2024: tre fasi</h2>
+<p>Nel tratto recente coperto dal dataset operativo, la storia del MOL/Attivo delle imprese regionali italiane si articola in tre fasi nettamente distinguibili, ciascuna guidata da un fattore macroeconomico dominante. Questa non è l’intera storia disponibile nelle monografie: è il sotto-periodo più adatto a leggere il ciclo Covid, il rimbalzo nominale, il rialzo dei tassi e la normalizzazione del 2024.</p>
+<p><strong>La fase pre-Covid (2018–2019)</strong> offre la baseline di riferimento: una redditività operativa stabile, con valori generalmente compresi tra 5 e 9 punti percentuali secondo la regione. Il range inter-regionale riflette differenze strutturali nella composizione settoriale e nell’intensità patrimoniale.</p>
+<p><strong>Lo shock Covid del 2020</strong> produce il minimo strutturale di tutto il periodo. Il calo è generalizzato ma eterogeneo: in Sardegna si tocca il 2,6% (da 4,7% nel 2019), mentre regioni come Puglia, Abruzzo e Calabria mostrano flessioni più contenute. La pandemia non ha colpito i bilanci in modo uniforme: le regioni con un peso maggiore del turismo internazionale e della ristorazione hanno subito perdite più severe.</p>
+<p><strong>Il rimbalzo 2021–2023</strong> è il tratto più sorprendente della serie. A partire dal 2021, e con accelerazione nel 2022-2023, il MOL/Attivo supera sistematicamente i livelli pre-Covid in tutte le regioni. Il 2023 è l’anno di picco del periodo osservato per la quasi totalità delle regioni. Il profilo è coerente con un meccanismo nominale: l’inflazione post-Covid ha sostenuto i fatturati mentre alcuni costi, in particolare quelli del lavoro regolati dai contratti collettivi, si sono adeguati con ritardo. Il risultato è un ampliamento dei margini che non corrisponde necessariamente a un miglioramento della produttività reale.</p>
+<p><strong>La prima flessione del 2024</strong> chiude il ciclo e segnala un cambio di regime. I dati MOL/Attivo 2024 nel dataset operativo unificato mostrano una riduzione quasi generalizzata rispetto al 2023, compresa tra 0,1 e 1,6 pp; l’unica eccezione è la Calabria (+0,3 pp). La dinamica è coerente con due canali: da un lato, la normalizzazione dell’inflazione riduce il vantaggio sui fatturati nominali; dall’altro, i rinnovi dei contratti nazionali di lavoro (CCNL) del biennio 2023-2024 hanno aumentato la quota di valore aggiunto assorbita dal costo del lavoro <a href="#ref-istat_retribuzioni">[5]</a>.</p>
+<div class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div id="fig-ciclo" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ciclo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="bilanci_regionali_files/figure-markdown/fig-ciclo-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ciclo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: MOL/Attivo per area geografica, 2018–2024. Medie semplici delle regioni per area.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="eterogeneità-regionale-al-picco-del-ciclo" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="eterogeneità-regionale-al-picco-del-ciclo"><span class="header-section-number">4</span> Eterogeneità regionale al picco del ciclo</h2>
+<p>Il confronto regionale di dettaglio è condotto sul <strong>2023</strong>, non sul 2024, perché è il punto di massimo del ciclo di redditività osservato: consente quindi di leggere l’eterogeneità territoriale nel momento in cui il rimbalzo post-Covid e l’effetto nominale dell’inflazione sono più visibili. Entrambi gli anni hanno oggi copertura a 20 regioni nella fonte unica aggiornata; il 2024 misura la normalizzazione successiva, ma resta meno adatto come sezione trasversale principale perché non è il picco del ciclo.</p>
+<p>Nel 2023 il Molise registra il valore più elevato (11,2%), seguito da Abruzzo, Veneto e Basilicata (9,7%). All’estremo inferiore si collocano Liguria (7,4%) e Lazio (7,6%), comunque su livelli superiori ai minimi del 2020.</p>
+<p>Tra le regioni del Mezzogiorno emerge un dato contro-intuitivo: Molise, Abruzzo, Campania, Basilicata e Sicilia nel 2023 mostrano un MOL/Attivo superiore alla media del Centro-Nord (circa 8,5%). Questo risultato non segnala un primato produttivo, bensì una caratteristica strutturale del capitalismo meridionale: le imprese del Mezzogiorno sono mediamente meno asset-intensive — hanno meno capitale fisso per addetto e attivi patrimoniali più contenuti rispetto ai ricavi — e quindi lo stesso MOL assoluto genera un rapporto MOL/Attivo più elevato.</p>
+<div class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div id="fig-crosssection" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-crosssection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="bilanci_regionali_files/figure-markdown/fig-crosssection-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-crosssection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: MOL/Attivo per regione nel 2023 (anno di picco del ciclo). Il colore distingue Centro-Nord (blu) e Mezzogiorno (rosso).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="la-tabella-completa-copertura-regionale-20182024" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="la-tabella-completa-copertura-regionale-20182024"><span class="header-section-number">5</span> La tabella completa: copertura regionale 2018–2024</h2>
+<p>La tabella riporta la serie di <code>MOL/Attivo</code> usata nello studio. L’ordine segue la sequenza territoriale/NUTS della collana, così da rendere immediato il confronto con la numerazione delle pubblicazioni regionali. Le celle vuote indicano anni non disponibili nella fonte unica aggiornata; il 2024 è ora disponibile per tutte le 20 regioni.</p>
+<div class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<style type="text/css">
+#T_481b2_row0_col0, #T_481b2_row1_col0, #T_481b2_row2_col0, #T_481b2_row3_col0, #T_481b2_row4_col0, #T_481b2_row5_col0, #T_481b2_row6_col0, #T_481b2_row7_col0, #T_481b2_row8_col0, #T_481b2_row9_col0, #T_481b2_row10_col0, #T_481b2_row11_col0, #T_481b2_row12_col0, #T_481b2_row13_col0, #T_481b2_row14_col0, #T_481b2_row15_col0, #T_481b2_row16_col0, #T_481b2_row17_col0, #T_481b2_row18_col0, #T_481b2_row19_col0 {
+  text-align: left;
+}
+#T_481b2_row0_col1, #T_481b2_row0_col2, #T_481b2_row0_col3, #T_481b2_row0_col4, #T_481b2_row0_col5, #T_481b2_row0_col6, #T_481b2_row0_col7, #T_481b2_row1_col1, #T_481b2_row1_col2, #T_481b2_row1_col3, #T_481b2_row1_col4, #T_481b2_row1_col5, #T_481b2_row1_col6, #T_481b2_row1_col7, #T_481b2_row2_col1, #T_481b2_row2_col2, #T_481b2_row2_col3, #T_481b2_row2_col4, #T_481b2_row2_col5, #T_481b2_row2_col6, #T_481b2_row2_col7, #T_481b2_row3_col1, #T_481b2_row3_col2, #T_481b2_row3_col3, #T_481b2_row3_col4, #T_481b2_row3_col5, #T_481b2_row3_col6, #T_481b2_row3_col7, #T_481b2_row4_col1, #T_481b2_row4_col2, #T_481b2_row4_col3, #T_481b2_row4_col4, #T_481b2_row4_col5, #T_481b2_row4_col6, #T_481b2_row4_col7, #T_481b2_row5_col1, #T_481b2_row5_col2, #T_481b2_row5_col3, #T_481b2_row5_col4, #T_481b2_row5_col5, #T_481b2_row5_col6, #T_481b2_row5_col7, #T_481b2_row6_col1, #T_481b2_row6_col2, #T_481b2_row6_col3, #T_481b2_row6_col4, #T_481b2_row6_col5, #T_481b2_row6_col6, #T_481b2_row6_col7, #T_481b2_row7_col1, #T_481b2_row7_col2, #T_481b2_row7_col3, #T_481b2_row7_col4, #T_481b2_row7_col5, #T_481b2_row7_col6, #T_481b2_row7_col7, #T_481b2_row8_col1, #T_481b2_row8_col2, #T_481b2_row8_col3, #T_481b2_row8_col4, #T_481b2_row8_col5, #T_481b2_row8_col6, #T_481b2_row8_col7, #T_481b2_row9_col1, #T_481b2_row9_col2, #T_481b2_row9_col3, #T_481b2_row9_col4, #T_481b2_row9_col5, #T_481b2_row9_col6, #T_481b2_row9_col7, #T_481b2_row10_col1, #T_481b2_row10_col2, #T_481b2_row10_col3, #T_481b2_row10_col4, #T_481b2_row10_col5, #T_481b2_row10_col6, #T_481b2_row10_col7, #T_481b2_row11_col1, #T_481b2_row11_col2, #T_481b2_row11_col3, #T_481b2_row11_col4, #T_481b2_row11_col5, #T_481b2_row11_col6, #T_481b2_row11_col7, #T_481b2_row12_col1, #T_481b2_row12_col2, #T_481b2_row12_col3, #T_481b2_row12_col4, #T_481b2_row12_col5, #T_481b2_row12_col6, #T_481b2_row12_col7, #T_481b2_row13_col1, #T_481b2_row13_col2, #T_481b2_row13_col3, #T_481b2_row13_col4, #T_481b2_row13_col5, #T_481b2_row13_col6, #T_481b2_row13_col7, #T_481b2_row14_col1, #T_481b2_row14_col2, #T_481b2_row14_col3, #T_481b2_row14_col4, #T_481b2_row14_col5, #T_481b2_row14_col6, #T_481b2_row14_col7, #T_481b2_row15_col1, #T_481b2_row15_col2, #T_481b2_row15_col3, #T_481b2_row15_col4, #T_481b2_row15_col5, #T_481b2_row15_col6, #T_481b2_row15_col7, #T_481b2_row16_col1, #T_481b2_row16_col2, #T_481b2_row16_col3, #T_481b2_row16_col4, #T_481b2_row16_col5, #T_481b2_row16_col6, #T_481b2_row16_col7, #T_481b2_row17_col1, #T_481b2_row17_col2, #T_481b2_row17_col3, #T_481b2_row17_col4, #T_481b2_row17_col5, #T_481b2_row17_col6, #T_481b2_row17_col7, #T_481b2_row18_col1, #T_481b2_row18_col2, #T_481b2_row18_col3, #T_481b2_row18_col4, #T_481b2_row18_col5, #T_481b2_row18_col6, #T_481b2_row18_col7, #T_481b2_row19_col1, #T_481b2_row19_col2, #T_481b2_row19_col3, #T_481b2_row19_col4, #T_481b2_row19_col5, #T_481b2_row19_col6, #T_481b2_row19_col7 {
+  text-align: center;
+}
+</style>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Regione</th>
+<th style="text-align: left;">2018</th>
+<th style="text-align: left;">2019</th>
+<th style="text-align: left;">2020</th>
+<th style="text-align: left;">2021</th>
+<th style="text-align: left;">2022</th>
+<th style="text-align: left;">2023</th>
+<th style="text-align: left;">2024</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Piemonte</td>
+<td style="text-align: left;">6.4</td>
+<td style="text-align: left;">6.4</td>
+<td style="text-align: left;">4.8</td>
+<td style="text-align: left;">6.7</td>
+<td style="text-align: left;">7.3</td>
+<td style="text-align: left;">8.3</td>
+<td style="text-align: left;">7.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Valle d'Aosta</td>
+<td style="text-align: left;">7.7</td>
+<td style="text-align: left;">9.2</td>
+<td style="text-align: left;">7.0</td>
+<td style="text-align: left;">9.2</td>
+<td style="text-align: left;">10.0</td>
+<td style="text-align: left;">9.6</td>
+<td style="text-align: left;">9.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Lombardia</td>
+<td style="text-align: left;">7.6</td>
+<td style="text-align: left;">7.5</td>
+<td style="text-align: left;">6.1</td>
+<td style="text-align: left;">7.6</td>
+<td style="text-align: left;">8.0</td>
+<td style="text-align: left;">8.2</td>
+<td style="text-align: left;">8.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Trentino-AA</td>
+<td style="text-align: left;">8.4</td>
+<td style="text-align: left;">8.4</td>
+<td style="text-align: left;">7.2</td>
+<td style="text-align: left;">9.0</td>
+<td style="text-align: left;">10.5</td>
+<td style="text-align: left;">9.5</td>
+<td style="text-align: left;">7.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Veneto</td>
+<td style="text-align: left;">8.3</td>
+<td style="text-align: left;">8.2</td>
+<td style="text-align: left;">6.7</td>
+<td style="text-align: left;">8.6</td>
+<td style="text-align: left;">9.0</td>
+<td style="text-align: left;">9.7</td>
+<td style="text-align: left;">9.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FVG</td>
+<td style="text-align: left;">7.9</td>
+<td style="text-align: left;">7.7</td>
+<td style="text-align: left;">5.8</td>
+<td style="text-align: left;">7.7</td>
+<td style="text-align: left;">8.7</td>
+<td style="text-align: left;">7.9</td>
+<td style="text-align: left;">7.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Liguria</td>
+<td style="text-align: left;">6.3</td>
+<td style="text-align: left;">6.2</td>
+<td style="text-align: left;">5.5</td>
+<td style="text-align: left;">7.1</td>
+<td style="text-align: left;">7.5</td>
+<td style="text-align: left;">7.4</td>
+<td style="text-align: left;">6.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Emilia-Romagna</td>
+<td style="text-align: left;">6.6</td>
+<td style="text-align: left;">6.3</td>
+<td style="text-align: left;">5.3</td>
+<td style="text-align: left;">6.8</td>
+<td style="text-align: left;">7.2</td>
+<td style="text-align: left;">7.8</td>
+<td style="text-align: left;">7.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Toscana</td>
+<td style="text-align: left;">7.6</td>
+<td style="text-align: left;">9.6</td>
+<td style="text-align: left;">6.2</td>
+<td style="text-align: left;">7.7</td>
+<td style="text-align: left;">8.6</td>
+<td style="text-align: left;">8.3</td>
+<td style="text-align: left;">7.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Umbria</td>
+<td style="text-align: left;">6.6</td>
+<td style="text-align: left;">6.7</td>
+<td style="text-align: left;">5.8</td>
+<td style="text-align: left;">6.7</td>
+<td style="text-align: left;">7.4</td>
+<td style="text-align: left;">9.1</td>
+<td style="text-align: left;">8.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Marche</td>
+<td style="text-align: left;">6.5</td>
+<td style="text-align: left;">6.4</td>
+<td style="text-align: left;">5.8</td>
+<td style="text-align: left;">7.7</td>
+<td style="text-align: left;">8.4</td>
+<td style="text-align: left;">9.0</td>
+<td style="text-align: left;">8.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lazio</td>
+<td style="text-align: left;">7.3</td>
+<td style="text-align: left;">8.8</td>
+<td style="text-align: left;">6.2</td>
+<td style="text-align: left;">6.3</td>
+<td style="text-align: left;">7.7</td>
+<td style="text-align: left;">7.6</td>
+<td style="text-align: left;">7.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Abruzzo</td>
+<td style="text-align: left;">6.3</td>
+<td style="text-align: left;">6.6</td>
+<td style="text-align: left;">5.9</td>
+<td style="text-align: left;">7.5</td>
+<td style="text-align: left;">8.3</td>
+<td style="text-align: left;">9.7</td>
+<td style="text-align: left;">8.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Molise</td>
+<td style="text-align: left;">6.7</td>
+<td style="text-align: left;">7.4</td>
+<td style="text-align: left;">6.4</td>
+<td style="text-align: left;">8.1</td>
+<td style="text-align: left;">8.3</td>
+<td style="text-align: left;">11.2</td>
+<td style="text-align: left;">10.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Campania</td>
+<td style="text-align: left;">6.3</td>
+<td style="text-align: left;">7.0</td>
+<td style="text-align: left;">5.7</td>
+<td style="text-align: left;">7.6</td>
+<td style="text-align: left;">8.3</td>
+<td style="text-align: left;">9.3</td>
+<td style="text-align: left;">9.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Puglia</td>
+<td style="text-align: left;">6.7</td>
+<td style="text-align: left;">6.9</td>
+<td style="text-align: left;">6.8</td>
+<td style="text-align: left;">7.8</td>
+<td style="text-align: left;">8.0</td>
+<td style="text-align: left;">8.6</td>
+<td style="text-align: left;">8.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Basilicata</td>
+<td style="text-align: left;">7.2</td>
+<td style="text-align: left;">6.8</td>
+<td style="text-align: left;">5.7</td>
+<td style="text-align: left;">7.7</td>
+<td style="text-align: left;">7.9</td>
+<td style="text-align: left;">9.7</td>
+<td style="text-align: left;">8.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Calabria</td>
+<td style="text-align: left;">5.8</td>
+<td style="text-align: left;">6.2</td>
+<td style="text-align: left;">5.9</td>
+<td style="text-align: left;">7.2</td>
+<td style="text-align: left;">8.3</td>
+<td style="text-align: left;">8.2</td>
+<td style="text-align: left;">8.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">5.4</td>
+<td style="text-align: left;">6.0</td>
+<td style="text-align: left;">5.7</td>
+<td style="text-align: left;">7.5</td>
+<td style="text-align: left;">8.3</td>
+<td style="text-align: left;">9.1</td>
+<td style="text-align: left;">7.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sardegna</td>
+<td style="text-align: left;">5.8</td>
+<td style="text-align: left;">4.7</td>
+<td style="text-align: left;">2.6</td>
+<td style="text-align: left;">6.3</td>
+<td style="text-align: left;">9.6</td>
+<td style="text-align: left;">8.2</td>
+<td style="text-align: left;">8.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="il-leverage-evidenza-nel-dataset-unificato" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="il-leverage-evidenza-nel-dataset-unificato"><span class="header-section-number">6</span> Il leverage: evidenza nel dataset unificato</h2>
+<p>Parallelamente alla dinamica dei margini, il dataset operativo unificato mostra nel periodo 2019–2024 una traiettoria prevalentemente discendente del leverage (debiti finanziari / totale attivo) nelle regioni con tavola Cerved disponibile. In termini interpretativi, la riduzione del leverage va comunque letta insieme a PFN/Attivo e Liquidità/Attivo per distinguere deleveraging reale e riduzione apparente del debito netto.</p>
+<div class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<div id="fig-leverage" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-leverage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="bilanci_regionali_files/figure-markdown/fig-leverage-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-leverage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Leverage (debiti finanziari / totale attivo, %) per regione, 2019–2024. Fonte: dataset operativo unificato Cerved/Banca d’Italia; incluse le regioni con serie completa.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Il deleveraging non è uniforme. Nel pannello del Centro-Nord spiccano due discontinuità: il Lazio sale bruscamente nel 2021 e poi rientra gradualmente; la Valle d’Aosta raggiunge invece un picco nel 2022 prima di correggere. Nel pannello del Mezzogiorno il profilo più discontinuo è quello della Basilicata, che resta elevata nel 2022 e poi scende rapidamente nel 2023-2024. Lo studio non attribuisce queste rotture a una singola causa: trattandosi di aggregati regionali Cerved, l’interpretazione più prudente è che riflettano una combinazione di composizione settoriale, peso di poche imprese grandi, variazioni del denominatore patrimoniale e dinamica della liquidità/debito netto.</p>
+<p>Il Lazio appare tra le regioni con leverage più elevato. La lettura è coerente con quanto osservato sopra sulla possibile intensità patrimoniale dell’economia romana, ma va verificata con indicatori diretti di Attivo/VA o Attivo/addetto.</p>
+<div class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<style type="text/css">
+#T_9d338_row0_col0, #T_9d338_row1_col0, #T_9d338_row2_col0, #T_9d338_row3_col0, #T_9d338_row4_col0, #T_9d338_row5_col0, #T_9d338_row6_col0, #T_9d338_row7_col0, #T_9d338_row8_col0, #T_9d338_row9_col0, #T_9d338_row10_col0, #T_9d338_row11_col0, #T_9d338_row12_col0, #T_9d338_row13_col0, #T_9d338_row14_col0, #T_9d338_row15_col0, #T_9d338_row16_col0, #T_9d338_row17_col0, #T_9d338_row18_col0, #T_9d338_row19_col0 {
+  text-align: left;
+}
+#T_9d338_row0_col1, #T_9d338_row0_col2, #T_9d338_row0_col3, #T_9d338_row0_col4, #T_9d338_row0_col5, #T_9d338_row0_col6, #T_9d338_row1_col1, #T_9d338_row1_col2, #T_9d338_row1_col3, #T_9d338_row1_col4, #T_9d338_row1_col5, #T_9d338_row1_col6, #T_9d338_row2_col1, #T_9d338_row2_col2, #T_9d338_row2_col3, #T_9d338_row2_col4, #T_9d338_row2_col5, #T_9d338_row2_col6, #T_9d338_row3_col1, #T_9d338_row3_col2, #T_9d338_row3_col3, #T_9d338_row3_col4, #T_9d338_row3_col5, #T_9d338_row3_col6, #T_9d338_row4_col1, #T_9d338_row4_col2, #T_9d338_row4_col3, #T_9d338_row4_col4, #T_9d338_row4_col5, #T_9d338_row4_col6, #T_9d338_row5_col1, #T_9d338_row5_col2, #T_9d338_row5_col3, #T_9d338_row5_col4, #T_9d338_row5_col5, #T_9d338_row5_col6, #T_9d338_row6_col1, #T_9d338_row6_col2, #T_9d338_row6_col3, #T_9d338_row6_col4, #T_9d338_row6_col5, #T_9d338_row6_col6, #T_9d338_row7_col1, #T_9d338_row7_col2, #T_9d338_row7_col3, #T_9d338_row7_col4, #T_9d338_row7_col5, #T_9d338_row7_col6, #T_9d338_row8_col1, #T_9d338_row8_col2, #T_9d338_row8_col3, #T_9d338_row8_col4, #T_9d338_row8_col5, #T_9d338_row8_col6, #T_9d338_row9_col1, #T_9d338_row9_col2, #T_9d338_row9_col3, #T_9d338_row9_col4, #T_9d338_row9_col5, #T_9d338_row9_col6, #T_9d338_row10_col1, #T_9d338_row10_col2, #T_9d338_row10_col3, #T_9d338_row10_col4, #T_9d338_row10_col5, #T_9d338_row10_col6, #T_9d338_row11_col1, #T_9d338_row11_col2, #T_9d338_row11_col3, #T_9d338_row11_col4, #T_9d338_row11_col5, #T_9d338_row11_col6, #T_9d338_row12_col1, #T_9d338_row12_col2, #T_9d338_row12_col3, #T_9d338_row12_col4, #T_9d338_row12_col5, #T_9d338_row12_col6, #T_9d338_row13_col1, #T_9d338_row13_col2, #T_9d338_row13_col3, #T_9d338_row13_col4, #T_9d338_row13_col5, #T_9d338_row13_col6, #T_9d338_row14_col1, #T_9d338_row14_col2, #T_9d338_row14_col3, #T_9d338_row14_col4, #T_9d338_row14_col5, #T_9d338_row14_col6, #T_9d338_row15_col1, #T_9d338_row15_col2, #T_9d338_row15_col3, #T_9d338_row15_col4, #T_9d338_row15_col5, #T_9d338_row15_col6, #T_9d338_row16_col1, #T_9d338_row16_col2, #T_9d338_row16_col3, #T_9d338_row16_col4, #T_9d338_row16_col5, #T_9d338_row16_col6, #T_9d338_row17_col1, #T_9d338_row17_col2, #T_9d338_row17_col3, #T_9d338_row17_col4, #T_9d338_row17_col5, #T_9d338_row17_col6, #T_9d338_row18_col1, #T_9d338_row18_col2, #T_9d338_row18_col3, #T_9d338_row18_col4, #T_9d338_row18_col5, #T_9d338_row18_col6, #T_9d338_row19_col1, #T_9d338_row19_col2, #T_9d338_row19_col3, #T_9d338_row19_col4, #T_9d338_row19_col5, #T_9d338_row19_col6 {
+  text-align: center;
+}
+</style>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Regione</th>
+<th style="text-align: left;">2019</th>
+<th style="text-align: left;">2020</th>
+<th style="text-align: left;">2021</th>
+<th style="text-align: left;">2022</th>
+<th style="text-align: left;">2023</th>
+<th style="text-align: left;">2024</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Piemonte</td>
+<td style="text-align: left;">38.3</td>
+<td style="text-align: left;">40.1</td>
+<td style="text-align: left;">41.0</td>
+<td style="text-align: left;">38.5</td>
+<td style="text-align: left;">36.4</td>
+<td style="text-align: left;">37.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Valle d'Aosta</td>
+<td style="text-align: left;">35.4</td>
+<td style="text-align: left;">34.1</td>
+<td style="text-align: left;">38.4</td>
+<td style="text-align: left;">44.5</td>
+<td style="text-align: left;">41.0</td>
+<td style="text-align: left;">37.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Lombardia</td>
+<td style="text-align: left;">46.1</td>
+<td style="text-align: left;">44.4</td>
+<td style="text-align: left;">43.8</td>
+<td style="text-align: left;">43.8</td>
+<td style="text-align: left;">42.7</td>
+<td style="text-align: left;">42.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Trentino-AA</td>
+<td style="text-align: left;">46.9</td>
+<td style="text-align: left;">44.5</td>
+<td style="text-align: left;">44.2</td>
+<td style="text-align: left;">45.0</td>
+<td style="text-align: left;">43.3</td>
+<td style="text-align: left;">35.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Veneto</td>
+<td style="text-align: left;">39.2</td>
+<td style="text-align: left;">37.6</td>
+<td style="text-align: left;">37.0</td>
+<td style="text-align: left;">36.0</td>
+<td style="text-align: left;">34.0</td>
+<td style="text-align: left;">32.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FVG</td>
+<td style="text-align: left;">43.5</td>
+<td style="text-align: left;">44.8</td>
+<td style="text-align: left;">43.9</td>
+<td style="text-align: left;">42.9</td>
+<td style="text-align: left;">41.1</td>
+<td style="text-align: left;">39.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Liguria</td>
+<td style="text-align: left;">48.5</td>
+<td style="text-align: left;">45.5</td>
+<td style="text-align: left;">43.6</td>
+<td style="text-align: left;">44.6</td>
+<td style="text-align: left;">43.1</td>
+<td style="text-align: left;">37.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Emilia-Romagna</td>
+<td style="text-align: left;">41.0</td>
+<td style="text-align: left;">39.5</td>
+<td style="text-align: left;">38.8</td>
+<td style="text-align: left;">38.5</td>
+<td style="text-align: left;">37.3</td>
+<td style="text-align: left;">35.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Toscana</td>
+<td style="text-align: left;">43.7</td>
+<td style="text-align: left;">35.8</td>
+<td style="text-align: left;">36.7</td>
+<td style="text-align: left;">36.1</td>
+<td style="text-align: left;">34.5</td>
+<td style="text-align: left;">35.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Umbria</td>
+<td style="text-align: left;">44.6</td>
+<td style="text-align: left;">42.9</td>
+<td style="text-align: left;">41.7</td>
+<td style="text-align: left;">39.8</td>
+<td style="text-align: left;">36.2</td>
+<td style="text-align: left;">34.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Marche</td>
+<td style="text-align: left;">46.0</td>
+<td style="text-align: left;">43.5</td>
+<td style="text-align: left;">41.2</td>
+<td style="text-align: left;">40.6</td>
+<td style="text-align: left;">37.4</td>
+<td style="text-align: left;">36.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lazio</td>
+<td style="text-align: left;">49.2</td>
+<td style="text-align: left;">47.3</td>
+<td style="text-align: left;">56.2</td>
+<td style="text-align: left;">54.2</td>
+<td style="text-align: left;">50.2</td>
+<td style="text-align: left;">48.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Abruzzo</td>
+<td style="text-align: left;">43.5</td>
+<td style="text-align: left;">40.5</td>
+<td style="text-align: left;">40.3</td>
+<td style="text-align: left;">38.6</td>
+<td style="text-align: left;">36.6</td>
+<td style="text-align: left;">35.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Molise</td>
+<td style="text-align: left;">45.2</td>
+<td style="text-align: left;">42.7</td>
+<td style="text-align: left;">42.1</td>
+<td style="text-align: left;">40.0</td>
+<td style="text-align: left;">35.9</td>
+<td style="text-align: left;">33.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Campania</td>
+<td style="text-align: left;">45.4</td>
+<td style="text-align: left;">43.6</td>
+<td style="text-align: left;">41.1</td>
+<td style="text-align: left;">39.7</td>
+<td style="text-align: left;">37.7</td>
+<td style="text-align: left;">35.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Puglia</td>
+<td style="text-align: left;">49.7</td>
+<td style="text-align: left;">45.9</td>
+<td style="text-align: left;">44.3</td>
+<td style="text-align: left;">43.1</td>
+<td style="text-align: left;">41.2</td>
+<td style="text-align: left;">39.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Basilicata</td>
+<td style="text-align: left;">46.1</td>
+<td style="text-align: left;">46.0</td>
+<td style="text-align: left;">44.6</td>
+<td style="text-align: left;">45.9</td>
+<td style="text-align: left;">41.5</td>
+<td style="text-align: left;">34.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Calabria</td>
+<td style="text-align: left;">47.8</td>
+<td style="text-align: left;">43.5</td>
+<td style="text-align: left;">40.1</td>
+<td style="text-align: left;">38.5</td>
+<td style="text-align: left;">37.2</td>
+<td style="text-align: left;">35.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">43.3</td>
+<td style="text-align: left;">39.9</td>
+<td style="text-align: left;">37.6</td>
+<td style="text-align: left;">36.4</td>
+<td style="text-align: left;">34.8</td>
+<td style="text-align: left;">31.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sardegna</td>
+<td style="text-align: left;">46.9</td>
+<td style="text-align: left;">45.8</td>
+<td style="text-align: left;">45.0</td>
+<td style="text-align: left;">42.6</td>
+<td style="text-align: left;">40.1</td>
+<td style="text-align: left;">39.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="il-costo-della-leva-nel-ciclo-bce-20222024" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="il-costo-della-leva-nel-ciclo-bce-20222024"><span class="header-section-number">7</span> Il costo della leva nel ciclo BCE 2022–2024</h2>
+<p>Il rapporto <strong>OnFin/MOL</strong> — gli oneri finanziari in percentuale del margine operativo lordo — misura quanta parte del reddito operativo viene assorbita dal servizio del debito. Questa grandezza offre una lettura complementare al leverage: non è solo quanto si è indebitati, ma quanto costa quel debito rispetto alla capacità di generare cassa.</p>
+<div class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div id="fig-onfin" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-onfin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="bilanci_regionali_files/figure-markdown/fig-onfin-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-onfin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Oneri finanziari in % del MOL, 2019–2024 (media Centro-Nord vs.&nbsp;media Mezzogiorno). Fonte: dataset operativo unificato Cerved/Banca d’Italia; il salto 2022-2024 è coerente con il ciclo di rialzo BCE.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Nei dati emerge un <strong>doppio movimento 2022–2024</strong>. Il ciclo di rialzo dei tassi ufficiali BCE va collocato tra luglio 2022 e settembre 2023 <a href="#ref-ecb_key_rates">[6]</a>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Nel 2022, gli oneri finanziari in rapporto al MOL calano nonostante l’avvio del rialzo: il profilo è coerente con un MOL sostenuto dall’inflazione nominale e con un repricing del debito ancora ritardato. A partire dal 2023-2024, tuttavia, il meccanismo si inverte: il costo del debito a tasso variabile o a rinnovo più frequente aumenta, mentre il MOL si normalizza verso il basso. Il risultato è un aumento del rapporto OnFin/MOL nel 2023-2024 nelle regioni osservate.</p>
+<p>Nel campione osservato Friuli-Venezia Giulia e Lazio mostrano valori elevati di OnFin/MOL nel 2024. Questo è coerente con una maggiore esposizione al costo della leva, ma non va letto da solo come graduatoria definitiva di vulnerabilità regionale: servono anche struttura del debito, quota a tasso variabile e composizione dimensionale delle imprese.</p>
+</section>
+<section id="raccordo-con-il-frame-territoriale-anticipato-istat" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="raccordo-con-il-frame-territoriale-anticipato-istat"><span class="header-section-number">8</span> Raccordo con il Frame Territoriale Anticipato ISTAT</h2>
+<p>I dati Cerved sui bilanci forniscono la fotografia <em>ex post</em> della struttura finanziaria delle imprese. Per capire <em>perché</em> il MOL/Attivo varia tra regioni è utile affiancare un dato sul lato operativo: quanta parte del valore aggiunto viene assorbita dal costo del lavoro e qual è la produttività per addetto. Queste informazioni provengono dal <strong>Frame Territoriale Anticipato (FTA) ISTAT</strong>, qui usato come fonte esterna di raccordo <a href="#ref-istat_fta_2024">[7]</a>. I valori Cerved restano quelli della serie storica utilizzata nello studio; il raccordo con il FTA impiega esclusivamente le sue variabili operative (CdL/VA, VA/addetto).</p>
+<p>La relazione contabile di riferimento è:</p>
+<p><span class="math display">\[\frac{\mathrm{MOL}}{\mathrm{Attivo}}
+=
+\left(1 - \frac{\mathrm{CdL}}{\mathrm{VA}}\right)
+\times
+\frac{\mathrm{VA}}{\mathrm{Attivo}}\]</span></p>
+<p>Il FTA misura <code>CdL/VA</code> e <code>VA/addetto</code>; Cerved/Banca d’Italia misura <code>MOL/Attivo</code>. Lo scatter seguente non è una stima causale: serve a separare il margine operativo sul valore aggiunto dalla densità patrimoniale implicita nel denominatore <code>Attivo</code>.</p>
+<div class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display">
+<style type="text/css">
+#T_65916_row0_col0, #T_65916_row1_col0, #T_65916_row2_col0, #T_65916_row3_col0, #T_65916_row4_col0, #T_65916_row5_col0, #T_65916_row6_col0, #T_65916_row7_col0, #T_65916_row8_col0, #T_65916_row9_col0, #T_65916_row10_col0, #T_65916_row11_col0, #T_65916_row12_col0, #T_65916_row13_col0, #T_65916_row14_col0, #T_65916_row15_col0, #T_65916_row16_col0, #T_65916_row17_col0 {
+  text-align: left;
+}
+#T_65916_row0_col1, #T_65916_row0_col2, #T_65916_row0_col3, #T_65916_row0_col4, #T_65916_row1_col1, #T_65916_row1_col2, #T_65916_row1_col3, #T_65916_row1_col4, #T_65916_row2_col1, #T_65916_row2_col2, #T_65916_row2_col3, #T_65916_row2_col4, #T_65916_row3_col1, #T_65916_row3_col2, #T_65916_row3_col3, #T_65916_row3_col4, #T_65916_row4_col1, #T_65916_row4_col2, #T_65916_row4_col3, #T_65916_row4_col4, #T_65916_row5_col1, #T_65916_row5_col2, #T_65916_row5_col3, #T_65916_row5_col4, #T_65916_row6_col1, #T_65916_row6_col2, #T_65916_row6_col3, #T_65916_row6_col4, #T_65916_row7_col1, #T_65916_row7_col2, #T_65916_row7_col3, #T_65916_row7_col4, #T_65916_row8_col1, #T_65916_row8_col2, #T_65916_row8_col3, #T_65916_row8_col4, #T_65916_row9_col1, #T_65916_row9_col2, #T_65916_row9_col3, #T_65916_row9_col4, #T_65916_row10_col1, #T_65916_row10_col2, #T_65916_row10_col3, #T_65916_row10_col4, #T_65916_row11_col1, #T_65916_row11_col2, #T_65916_row11_col3, #T_65916_row11_col4, #T_65916_row12_col1, #T_65916_row12_col2, #T_65916_row12_col3, #T_65916_row12_col4, #T_65916_row13_col1, #T_65916_row13_col2, #T_65916_row13_col3, #T_65916_row13_col4, #T_65916_row14_col1, #T_65916_row14_col2, #T_65916_row14_col3, #T_65916_row14_col4, #T_65916_row15_col1, #T_65916_row15_col2, #T_65916_row15_col3, #T_65916_row15_col4, #T_65916_row16_col1, #T_65916_row16_col2, #T_65916_row16_col3, #T_65916_row16_col4, #T_65916_row17_col1, #T_65916_row17_col2, #T_65916_row17_col3, #T_65916_row17_col4 {
+  text-align: center;
+}
+</style>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Regione</th>
+<th style="text-align: left;">VA/addetto</th>
+<th style="text-align: left;">CdL/VA %</th>
+<th style="text-align: left;">MOL impl. %</th>
+<th style="text-align: left;">MOL/Attivo 2024 %</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Piemonte</td>
+<td style="text-align: left;">64,570</td>
+<td style="text-align: left;">59.5</td>
+<td style="text-align: left;">40.5</td>
+<td style="text-align: left;">7.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lombardia</td>
+<td style="text-align: left;">76,736</td>
+<td style="text-align: left;">58.8</td>
+<td style="text-align: left;">41.2</td>
+<td style="text-align: left;">8.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Trentino-AA</td>
+<td style="text-align: left;">71,008</td>
+<td style="text-align: left;">54.0</td>
+<td style="text-align: left;">46.0</td>
+<td style="text-align: left;">7.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Veneto</td>
+<td style="text-align: left;">64,551</td>
+<td style="text-align: left;">58.2</td>
+<td style="text-align: left;">41.8</td>
+<td style="text-align: left;">9.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FVG</td>
+<td style="text-align: left;">59,371</td>
+<td style="text-align: left;">63.2</td>
+<td style="text-align: left;">36.8</td>
+<td style="text-align: left;">7.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Liguria</td>
+<td style="text-align: left;">57,845</td>
+<td style="text-align: left;">61.2</td>
+<td style="text-align: left;">38.8</td>
+<td style="text-align: left;">6.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Emilia-Romagna</td>
+<td style="text-align: left;">69,299</td>
+<td style="text-align: left;">57.5</td>
+<td style="text-align: left;">42.5</td>
+<td style="text-align: left;">7.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Toscana</td>
+<td style="text-align: left;">59,267</td>
+<td style="text-align: left;">57.2</td>
+<td style="text-align: left;">42.8</td>
+<td style="text-align: left;">7.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Marche</td>
+<td style="text-align: left;">52,923</td>
+<td style="text-align: left;">60.2</td>
+<td style="text-align: left;">39.8</td>
+<td style="text-align: left;">8.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lazio</td>
+<td style="text-align: left;">67,183</td>
+<td style="text-align: left;">57.0</td>
+<td style="text-align: left;">43.0</td>
+<td style="text-align: left;">7.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Abruzzo</td>
+<td style="text-align: left;">53,500</td>
+<td style="text-align: left;">58.8</td>
+<td style="text-align: left;">41.2</td>
+<td style="text-align: left;">8.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Molise</td>
+<td style="text-align: left;">50,547</td>
+<td style="text-align: left;">54.6</td>
+<td style="text-align: left;">45.4</td>
+<td style="text-align: left;">10.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Campania</td>
+<td style="text-align: left;">48,503</td>
+<td style="text-align: left;">57.9</td>
+<td style="text-align: left;">42.1</td>
+<td style="text-align: left;">9.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Puglia</td>
+<td style="text-align: left;">43,898</td>
+<td style="text-align: left;">60.7</td>
+<td style="text-align: left;">39.3</td>
+<td style="text-align: left;">8.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Basilicata</td>
+<td style="text-align: left;">52,869</td>
+<td style="text-align: left;">54.8</td>
+<td style="text-align: left;">45.2</td>
+<td style="text-align: left;">8.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Calabria</td>
+<td style="text-align: left;">40,819</td>
+<td style="text-align: left;">57.5</td>
+<td style="text-align: left;">42.5</td>
+<td style="text-align: left;">8.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">45,239</td>
+<td style="text-align: left;">58.0</td>
+<td style="text-align: left;">42.0</td>
+<td style="text-align: left;">7.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sardegna</td>
+<td style="text-align: left;">45,048</td>
+<td style="text-align: left;">61.4</td>
+<td style="text-align: left;">38.6</td>
+<td style="text-align: left;">8.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<div id="fig-scatter-fta-cerved" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scatter-fta-cerved-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="bilanci_regionali_files/figure-markdown/fig-scatter-fta-cerved-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatter-fta-cerved-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: MOL implicito su valore aggiunto (FTA ISTAT 2024) e MOL/Attivo (Cerved/Banca d’Italia 2024). Il confronto mostra il rapporto tra marginalità operativa e redditività dell’attivo.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Tre letture sono utili per interpretare i dati Cerved. Primo, un <code>CdL/VA</code> elevato comprime il margine operativo implicito sul valore aggiunto; questo aiuta a leggere perché alcune regioni hanno <code>MOL/Attivo</code> più contenuti anche quando la produttività per addetto non è particolarmente bassa. Secondo, il Lazio non va liquidato come semplice regione a bassa redditività operativa: l’ipotesi più plausibile resta un denominatore patrimoniale elevato, coerente con una struttura produttiva più capital-intensive. Terzo, il Mezzogiorno può mostrare <code>MOL/Attivo</code> nella media o superiore anche con produttività più bassa, perché molte economie regionali meridionali sono meno asset-intensive.</p>
+</section>
+<section id="limiti-del-dato-aggregato-regionale" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="limiti-del-dato-aggregato-regionale"><span class="header-section-number">9</span> Limiti del dato aggregato regionale</h2>
+<p>La tavola Cerved è molto utile come benchmark territoriale, ma resta un dato aggregato. Due cautele sono essenziali.</p>
+<p><strong>Composizione settoriale.</strong> Il confronto diretto tra regioni può confondere effetto territoriale ed effetto ATECO. Una regione con maggiore peso di servizi, costruzioni, commercio o agroalimentare può mostrare un MOL/Attivo elevato non perché le imprese siano più efficienti, ma perché l’attivo patrimoniale richiesto per unità di output è più basso. All’opposto, manifattura avanzata, utility, infrastrutture e holding tendono a gonfiare il denominatore. Per isolare un “effetto territorio” puro servirebbe una scomposizione per settore.</p>
+<p><strong>Composizione dimensionale.</strong> La media regionale aggrega PMI, grandi imprese e gruppi societari. Questo può mascherare vulnerabilità interne: una regione con grandi imprese resilienti può avere un OnFin/MOL medio stabile anche se molte PMI locali subiscono un repricing del credito molto più severo. Di conseguenza la tavola Cerved sugli indicatori economici e finanziari è un buon benchmark di contesto, ma non sostituisce l’analisi micro di bilancio, settore, dimensione e struttura effettiva del debito.</p>
+</section>
+<section id="sintesi-e-prospettive" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="sintesi-e-prospettive"><span class="header-section-number">10</span> Sintesi e prospettive</h2>
+<p>L’analisi della tavola A2.x sulle regioni osservate nel periodo 2018–2024 restituisce un quadro articolato in cui i fattori macroeconomici di ciclo (pandemia, inflazione, politica monetaria) si sovrappongono a differenziali strutturali persistenti che riflettono la composizione produttiva e patrimoniale delle economie regionali. Il CSV operativo unificato consente inoltre una lettura dal 2007 al 2024, cioè dall’immediato pre-crisi finanziaria alla fase post-rialzo dei tassi.</p>
+<p>Il <strong>ciclo post-Covid</strong> ha in larga misura beneficiato anche le regioni strutturalmente più deboli: il rimbalzo 2021-2023 è generalizzato e i valori 2023 del Mezzogiorno superano i livelli pre-pandemici. Questa convergenza ciclica va però interpretata con cautela: è coerente con un effetto dell’inflazione nominale sui margini, non necessariamente con un recupero di produttività.</p>
+<p>Il <strong>2024</strong> chiude il ciclo espansivo. I dati disponibili per il MOL/Attivo indicano una flessione quasi generalizzata, con un calo medio di circa 0,6 pp.&nbsp;Non si tratta di una crisi, ma di una normalizzazione verso livelli che rimangono comunque superiori ai minimi del 2020. La vera sfida per il 2025-2026 — non ancora catturata dai bilanci Cerved — sarà la capacità delle imprese di assorbire i maggiori costi del lavoro attraverso guadagni di produttività, piuttosto che scaricandoli sui prezzi.</p>
+<p>In pratica le edizioni disponibili si raggruppano in tre blocchi cronologici tra loro coerenti: l’edizione 2019 copre il 2007–2017, l’edizione 2020 il 2011–2018, l’edizione 2026 il 2019–2024. Lo studio usa questa sovrapposizione come regola di consolidamento, selezionando per ogni anno/regione/indicatore la versione più recente disponibile tra le edizioni. Questa struttura è sufficiente per separare ciò che nel ciclo recente appare eccezionale da ciò che è ricorrente nella storia post-2007: redditività compressa nelle crisi, recuperi nominali, deleveraging, cambiamenti nella liquidità e sensibilità degli oneri finanziari ai regimi di tasso.</p>
+<p>Il <strong>Lazio</strong> rimane un caso da trattare separatamente, soprattutto per composizione patrimoniale e finanziaria. Il profilo laziale va verificato con indicatori diretti di intensità dell’attivo e con una scomposizione settoriale.</p>
+</section>
+<section id="prospettive-di-analisi" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="prospettive-di-analisi"><span class="header-section-number">11</span> Prospettive di analisi</h2>
+<p>La tavola Cerved contiene undici indicatori di bilancio; questo studio ne sviluppa tre. Gli altri indicatori, presenti nei dati PDF con copertura variabile, aprono linee di ricerca di primo livello.</p>
+<p><strong>Intensità di capitale: MOL/VA vs MOL/Attivo.</strong> Il rapporto <code>MOL/VA</code> (quota del valore aggiunto non assorbita dai costi diretti) cattura la marginalità lato conto economico; <code>MOL/Attivo</code> aggiunge la densità patrimoniale. Lo scarto tra i due indicatori — per regione e nel tempo — aiuta a isolare la componente di intensità di capitale. Il Lazio resta un caso da testare con <code>MOL/VA</code> e <code>MOL/Attivo</code> Cerved sullo stesso anno, oppure con un indicatore diretto di <code>Attivo/VA</code>.</p>
+<p><strong>Vulnerabilità composita al ciclo BCE.</strong> Tre indicatori — <code>OnFin/MOL</code> (costo corrente della leva), <code>DebBanc/DebFin</code> (dipendenza dal canale bancario) e <code>QuotaMLT</code> (scadenza del debito) — possono essere combinati in un indice composito di esposizione al ciclo dei tassi. Una regione con alta dipendenza bancaria, bassa quota MLT (repricing frequente) e OnFin/MOL già elevato è quella più vulnerabile a rialzi addizionali o a un rallentamento del taglio BCE. Questo indice, mappato per regione nel 2024, si presterebbe a un raccordo con i dati della Bank Lending Survey BCE sulla domanda di credito territoriale <a href="#ref-ecb_bls">[8]</a> e con le statistiche di Banca d’Italia sulle erogazioni bancarie a medio-lungo termine <a href="#ref-bancaditalia_bds">[9]</a>.</p>
+<p><strong>Liquidità/Attivo e l’eredità dei prestiti garantiti.</strong> I prestiti garantiti Covid (Fondo di Garanzia per le PMI, SACE, 2020-2021) hanno iniettato liquidità senza necessariamente finanziare investimenti fissi <a href="#ref-fondo_garanzia_mcc">[10]</a>. Il risultato atteso è un picco di <code>Liquidità/Attivo</code> nel 2020-2021, seguito da riassorbimento a velocità diversa per regione. Il confronto tra regioni manifatturiere (Emilia-Romagna, Veneto, alta propensione all’investimento) e regioni di servizi o agroindustriali (Lazio, Puglia, Basilicata) permetterebbe di verificare se il riassorbimento correla con la struttura produttiva. La stessa dinamica, letta congiuntamente a <code>Leverage</code> e <code>PFN/Attivo</code>, separa il de-leverage reale (riduzione del debito lordo) da quello apparente (aumento della liquidità che comprime il debito netto pur lasciando invariato quello lordo).</p>
+<p><strong>Dipendenza bancaria e cross-fonte con Banca d’Italia.</strong> <code>DebBanc/DebFin</code> misura la quota del debito finanziario di origine bancaria. Nelle PMI italiane questa quota supera tipicamente il 70%, con variazioni regionali poco documentate a livello sub-nazionale. La confrontabilità con i dati di Banca d’Italia sullo stock di prestiti bancari per territorio <a href="#ref-bancaditalia_bds">[9]</a> offre una triangolazione tra fonte di bilancio (Cerved) e fonte di segnalazione (BdI): se le due serie si muovono in modo divergente, il segnale è potenzialmente informativo sulla qualità del credito o su cambiamenti nella struttura del debito non catturati dalle segnalazioni aggregate.</p>
+<p><strong>Sostenibilità del debito: DebFin/Fatt.</strong> Il multiplo debiti finanziari / fatturato è un indicatore più intuitivo del leverage su attivo per le PMI a bassa intensità patrimoniale. Un’azienda commerciale con fatturato elevato rispetto all’attivo può avere un leverage apparentemente alto ma un <code>DebFin/Fatt</code> contenuto. L’analisi della distribuzione regionale nei tre benchmark 2019 (pre-Covid), 2021 (picco liquidità) e 2024 (post-normalizzazione), incrociata con <code>OnFin/MOL</code>, evidenzierebbe le regioni con maggiore fragilità potenziale al ciclo del credito.</p>
+<p><strong>Scadenza del debito: QuotaMLT.</strong> Le regioni del Mezzogiorno potrebbero mostrare una quota di debito a medio-lungo termine strutturalmente inferiore, riflettendo un accesso più limitato al credito bancario MLT. Il tendenziale allungamento delle scadenze post-2020 (effetto dei prestiti garantiti a 6-10 anni) e il suo probabile rientro nel 2024-2026 (rimborso progressivo) sono leggibili nella serie temporale <code>QuotaMLT</code> 2016-2024. Una QuotaMLT bassa in presenza di leverage elevato è il profilo di vulnerabilità al ciclo BCE più immediato da monitorare.</p>
+<hr>
+<p><strong>Trasparenza sull’uso dell’intelligenza artificiale</strong></p>
+<p>L’uso di strumenti di intelligenza artificiale generativa è dichiarato esplicitamente in quanto parte del processo di lavoro seguito nella redazione del presente documento. Tali strumenti sono stati impiegati a supporto della lettura, della sintesi, della riorganizzazione argomentativa e della revisione testuale, sempre nell’ambito di un processo pienamente controllato dall’autore.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le verifiche effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore.</p>
+<p>L’intelligenza artificiale è stata utilizzata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-bancaditalia_er" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1]</div><div class="csl-right-inline">Banca d’Italia, «Economie regionali». 2026. Disponibile su: <a href="https://www.bancaditalia.it/pubblicazioni/economie-regionali/" class="uri">https://www.bancaditalia.it/pubblicazioni/economie-regionali/</a></div>
+</div>
+<div id="ref-cerved_mcc_umbria" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2]</div><div class="csl-right-inline">Cerved e Mediocredito Centrale, «Indicatori economici e finanziari delle imprese. Umbria». 2026.</div>
+</div>
+<div id="ref-bancaditalia_er_2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3]</div><div class="csl-right-inline">Banca d’Italia, «Economie regionali 2019». 2019. Disponibile su: <a href="https://www.bancaditalia.it/pubblicazioni/economie-regionali/" class="uri">https://www.bancaditalia.it/pubblicazioni/economie-regionali/</a></div>
+</div>
+<div id="ref-bancaditalia_er_2026h1" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4]</div><div class="csl-right-inline">Banca d’Italia, «Economie regionali, primo semestre 2026». 2026. Disponibile su: <a href="https://www.bancaditalia.it/pubblicazioni/economie-regionali/" class="uri">https://www.bancaditalia.it/pubblicazioni/economie-regionali/</a></div>
+</div>
+<div id="ref-istat_retribuzioni" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5]</div><div class="csl-right-inline">ISTAT, «Retribuzioni contrattuali orarie». 2026. Disponibile su: <a href="https://www.istat.it/" class="uri">https://www.istat.it/</a></div>
+</div>
+<div id="ref-ecb_key_rates" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6]</div><div class="csl-right-inline">European Central Bank, «Key ECB interest rates». 2026. Disponibile su: <a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html" class="uri">https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html</a></div>
+</div>
+<div id="ref-istat_fta_2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7]</div><div class="csl-right-inline">ISTAT, «Frame territoriale anticipato. Anno 2024». 2026. Disponibile su: <a href="https://www.istat.it/" class="uri">https://www.istat.it/</a></div>
+</div>
+<div id="ref-ecb_bls" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8]</div><div class="csl-right-inline">European Central Bank, «Euro area bank lending survey». 2026. Disponibile su: <a href="https://www.ecb.europa.eu/stats/ecb_surveys/bank_lending_survey/html/index.en.html" class="uri">https://www.ecb.europa.eu/stats/ecb_surveys/bank_lending_survey/html/index.en.html</a></div>
+</div>
+<div id="ref-bancaditalia_bds" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9]</div><div class="csl-right-inline">Banca d’Italia, «Base dati statistica (BDS)». 2026. Disponibile su: <a href="https://infostat.bancaditalia.it/" class="uri">https://infostat.bancaditalia.it/</a></div>
+</div>
+<div id="ref-fondo_garanzia_mcc" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10]</div><div class="csl-right-inline">Mediocredito Centrale, «Fondo di Garanzia per le PMI. Rapporto annuale». 2026. Disponibile su: <a href="https://www.fondidigaranzia.it/" class="uri">https://www.fondidigaranzia.it/</a></div>
+</div>
+</div>
+
+
+</section>
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Note</h2>
+
+<ol>
+<li id="fn1"><p><strong>Convenzione di numerazione delle pubblicazioni</strong>: i codici a quattro cifre (es. 2616 = Puglia 2026H1) seguono la regola <code>YY</code> + ordine territoriale/NUTS delle 20 regioni. H1 indica il primo semestre e H2 il secondo semestre. La numerazione prosegue nell’anno anche dopo le 20 uscite regionali (pubblicazioni cross-regionali, aggiornamenti congiunturali H2). Non è quindi possibile distinguere H1 da H2 dal solo numero: occorre combinare numero, titolo, data e posizione nella sequenza. <strong>Convenzione di numerazione delle tavole</strong>: nel progetto “A2.9” è una scorciatoia convenzionale per la tavola “Indicatori economici e finanziari delle imprese” (fonte Cerved). Non è la numerazione invariabile della fonte: nelle appendici regionali la stessa tavola può comparire come A2.x diverso a seconda dell’anno, della regione e delle tavole tematiche che la precedono.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>La finestra evidenziata nella figura si riferisce al ciclo macro di rialzo anti-inflazione rilevante per i bilanci 2022-2024. L’ultimo aumento del Deposit Facility Rate (DFR), se riconducibile a una fase o a una motivazione diversa dal ciclo qui analizzato, non modifica l’interpretazione di questa finestra temporale.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script>
+// Salto interno ai riferimenti [n] e ai rimandi #… indipendente dall'URL della pagina:
+// funziona anche quando l'HTML è aperto in un iframe, in un'anteprima o con un <base> diverso.
+document.addEventListener("click", function (e) {
+  var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+  if (!a) return;
+  var id = decodeURIComponent(a.getAttribute("href").slice(1));
+  var el = id && document.getElementById(id);
+  if (!el) return;
+  e.preventDefault();
+  el.scrollIntoView({ block: "start" });
+  try { history.replaceState(null, "", "#" + id); } catch (err) {}
+}, true);
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_BankitRegioni/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

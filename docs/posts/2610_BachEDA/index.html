@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="description" content="Che cosa contiene BACH, la base dati dei bilanci aggregati delle società non finanziarie europee: paesi, settori, classi dimensionali, medie ponderate e quartili.">
+
+<title>BACH — analisi esplorativa dei bilanci aggregati delle imprese europee – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="BACH — analisi esplorativa dei bilanci aggregati delle imprese europee – Paolo Volterra">
+<meta property="og:description" content="Che cosa contiene BACH, la base dati dei bilanci aggregati delle società non finanziarie europee: paesi, settori, classi dimensionali, medie ponderate e quartili.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2610_BachEDA/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="BACH — analisi esplorativa dei bilanci aggregati delle imprese europee – Paolo Volterra">
+<meta name="twitter:description" content="Che cosa contiene BACH, la base dati dei bilanci aggregati delle società non finanziarie europee: paesi, settori, classi dimensionali, medie ponderate e quartili.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2610_BachEDA/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul class="collapse">
+  <li><a href="#il-codebook" id="toc-il-codebook" class="nav-link active" data-scroll-target="#il-codebook">1. Il codebook</a></li>
+  <li><a href="#struttura-e-copertura-del-dato" id="toc-struttura-e-copertura-del-dato" class="nav-link" data-scroll-target="#struttura-e-copertura-del-dato">2. Struttura e copertura del dato</a></li>
+  <li><a href="#controllo-di-quadratura" id="toc-controllo-di-quadratura" class="nav-link" data-scroll-target="#controllo-di-quadratura">3. Controllo di quadratura</a></li>
+  <li><a href="#confronto-fra-paesi-in-un-anno-comune" id="toc-confronto-fra-paesi-in-un-anno-comune" class="nav-link" data-scroll-target="#confronto-fra-paesi-in-un-anno-comune">4. Confronto fra paesi in un anno comune</a></li>
+  <li><a href="#serie-storiche-italia-e-grandi-paesi-dellarea-euro" id="toc-serie-storiche-italia-e-grandi-paesi-dellarea-euro" class="nav-link" data-scroll-target="#serie-storiche-italia-e-grandi-paesi-dellarea-euro">5. Serie storiche: Italia e grandi paesi dell’area euro</a></li>
+  <li><a href="#italia-per-classe-dimensionale" id="toc-italia-per-classe-dimensionale" class="nav-link" data-scroll-target="#italia-per-classe-dimensionale">6. Italia per classe dimensionale</a></li>
+  <li><a href="#manifattura-italiana-per-divisione-nace" id="toc-manifattura-italiana-per-divisione-nace" class="nav-link" data-scroll-target="#manifattura-italiana-per-divisione-nace">7. Manifattura italiana per divisione NACE</a></li>
+  <li><a href="#anomalie-da-conoscere-prima-di-usare-i-dati" id="toc-anomalie-da-conoscere-prima-di-usare-i-dati" class="nav-link" data-scroll-target="#anomalie-da-conoscere-prima-di-usare-i-dati">8. Anomalie da conoscere prima di usare i dati</a></li>
+  <li><a href="#che-cosa-resta-da-fare" id="toc-che-cosa-resta-da-fare" class="nav-link" data-scroll-target="#che-cosa-resta-da-fare">9. Che cosa resta da fare</a></li>
+  </ul>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.dev/paolovolterra/paolovolterra.github.io/blob/main/posts/2610_BachEDA/index.ipynb" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">BACH — analisi esplorativa dei bilanci aggregati delle imprese europee</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Imprese</div>
+    <div class="quarto-category">Bilanci</div>
+    <div class="quarto-category">BACH</div>
+    <div class="quarto-category">Europa</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Che cosa contiene BACH, la base dati dei bilanci aggregati delle società non finanziarie europee: paesi, settori, classi dimensionali, medie ponderate e quartili.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">14 ottobre 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Fonte</strong>: BACH, <em>Bank for the Accounts of Companies Harmonized</em>, base dati dell’European Committee of Central Balance-Sheet Data Offices (ECCBSO), ospitata dalla Banque de France. Il notebook legge il database completo <strong>direttamente dal sito</strong> a ogni esecuzione (nessuna copia locale) e il codebook dal capitolo 1.1 della guida ufficiale.</p>
+<p><strong>Che cosa contiene BACH.</strong> Dati di bilancio <strong>aggregati</strong> (non dati di singole imprese) delle società non finanziarie di 12 paesi europei, per anno, settore NACE, classe dimensionale e tipo di campione. Per ogni voce o indice sono pubblicate la media ponderata (<code>wm</code>, rapporto fra somme: pesano le imprese grandi) e i quartili <code>q1</code>, <code>q2</code> (mediana), <code>q3</code> della distribuzione per impresa (ogni impresa pesa uguale). Le voci di conto economico sono in % del fatturato, quelle di stato patrimoniale in % del totale di bilancio, gli indici in %.</p>
+<p><strong>Avvertenze della guida utente (2026).</strong></p>
+<ul>
+<li><p>Un valore mancante indica che la soglia di riservatezza non è raggiunta; zero vuol dire zero.</p></li>
+<li><p>Italia, Belgio e Portogallo hanno rilevazioni esaustive: le serie del campione «variabile» sono confrontabili nel tempo. Per gli altri paesi la guida raccomanda i campioni «scorrevoli» (stesse imprese in due anni consecutivi) per le variazioni.</p></li>
+<li><p>Fra paesi restano differenze di principi contabili e di copertura (capitolo 1.2 «Deviations» e capitolo 2 della guida).</p></li>
+<li><p>La redistribuzione dei dati è vietata; la citazione della fonte è obbligatoria (testo completo in fondo).</p></li>
+</ul>
+<div id="3afa86bf" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"3a4d181f51064bc79f06985a11d73689","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>Rilascio BACH <strong>20260914</strong> (data di estrazione dichiarata dal file). Righe caricate: <strong>349.335</strong>; colonne: <strong>183</strong>; variabili del codebook: <strong>110</strong>.</p>
+</div>
+</div>
+<section id="il-codebook" class="level2">
+<h2 class="anchored" data-anchor-id="il-codebook">1. Il codebook</h2>
+<p>Le 110 variabili si dividono in blocchi: voci di conto economico (<code>I…</code>), attivo (<code>A…</code>), passivo e patrimonio netto (<code>E…</code>, <code>L…</code>), note (<code>N…</code>) e indici (<code>r…</code>). Per gli indici la guida indica numeratore e denominatore in termini delle voci elementari.</p>
+<div id="8f817c57" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="3">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">blocco</th>
+<th style="text-align: right;">variabili</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Attivo (% totale bilancio)</td>
+<td style="text-align: right;">17</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Conto economico (% fatturato)</td>
+<td style="text-align: right;">23</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Indice: Activity and Technical Ratios</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Indice: Financial Structure Ratios</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Indice: Financial and Debt Service Ratios</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Indice: Profitability Ratios</td>
+<td style="text-align: right;">13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Indice: Working Capital Ratios</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Note (% totale bilancio)</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Passivo (% totale bilancio)</td>
+<td style="text-align: right;">26</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> la tabella conta quante grandezze BACH pubblica per ciascun blocco del bilancio; gli indici sono già calcolati dalla fonte, non vanno ricostruiti dalle voci.</p>
+</div>
+</div>
+<div id="78597a8a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="4">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 41%">
+<col style="width: 28%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">code</th>
+<th style="text-align: left;">label</th>
+<th style="text-align: left;">numeratore</th>
+<th style="text-align: left;">denominatore</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">r11</td>
+<td style="text-align: left;">Assets to Equity ratio</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">E</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">r17</td>
+<td style="text-align: left;">Current ratio (strict sense definition)</td>
+<td style="text-align: left;">(A2+A3+A41+A511+A6+A7)</td>
+<td style="text-align: left;">(L11+L21+L311+L321+L4+L5+L612)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">r22</td>
+<td style="text-align: left;">EBITDA over Interest on financial debt</td>
+<td style="text-align: left;">(I1+I2+I3+I41+I42-I5-I6-I7-I81-I83)</td>
+<td style="text-align: left;">I10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">r28</td>
+<td style="text-align: left;">Credit institutions net indebtness ratio</td>
+<td style="text-align: left;">(L2 - A7)</td>
+<td style="text-align: left;">A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">r29</td>
+<td style="text-align: left;">Financing cost (estricted sense definition)</td>
+<td style="text-align: left;">I10</td>
+<td style="text-align: left;">(L1+L2+L31)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">r32</td>
+<td style="text-align: left;">Gross operating profit / Net turnover (ROS)</td>
+<td style="text-align: left;">(I1+I2+I3+I41-I5-I6-I7-I81)</td>
+<td style="text-align: left;">I1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">r38</td>
+<td style="text-align: left;">Return on equity</td>
+<td style="text-align: left;">It3</td>
+<td style="text-align: left;">E</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">r311</td>
+<td style="text-align: left;">EBITDA - Return on investments</td>
+<td style="text-align: left;">(I1+I2+I3+I41+I42-I5-I6-I7-I81-I83)</td>
+<td style="text-align: left;">A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">r313</td>
+<td style="text-align: left;">Net Turnover annual growth rate</td>
+<td style="text-align: left;">I1(N)-I1(N-1)</td>
+<td style="text-align: left;">I1(N-1)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">r42</td>
+<td style="text-align: left;">Coefficient Employee expenses over Gross value added</td>
+<td style="text-align: left;">I7</td>
+<td style="text-align: left;">(I1+I2+I3+I41-I5-I6-I81)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">r55</td>
+<td style="text-align: left;">Days Sales Outstanding</td>
+<td style="text-align: left;">360*(A3-L5)</td>
+<td style="text-align: left;">I1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">r56</td>
+<td style="text-align: left;">Days Payables Outstanding</td>
+<td style="text-align: left;">360*(L4-A21)</td>
+<td style="text-align: left;">(I5+I6)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> questi sono gli indici usati nel resto del notebook, con la formula ufficiale. Per esempio <code>r32</code> è il margine operativo lordo diviso il fatturato, <code>r29</code> gli interessi diviso i debiti finanziari.</p>
+</div>
+</div>
+</section>
+<section id="struttura-e-copertura-del-dato" class="level2">
+<h2 class="anchored" data-anchor-id="struttura-e-copertura-del-dato">2. Struttura e copertura del dato</h2>
+<p>Ogni riga è una cella paese × anno × settore × classe dimensionale × campione. Prima di qualsiasi confronto conviene vedere quali paesi e anni sono presenti e quanto pesa la riservatezza (valori mancanti).</p>
+<div id="f93564f8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="5">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">country</th>
+<th style="text-align: right;">righe</th>
+<th style="text-align: right;">anno_min</th>
+<th style="text-align: right;">anno_max</th>
+<th style="text-align: right;">settori</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AT</td>
+<td style="text-align: right;">33698</td>
+<td style="text-align: right;">1999</td>
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">103</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BE</td>
+<td style="text-align: right;">35473</td>
+<td style="text-align: right;">1999</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">103</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DE</td>
+<td style="text-align: right;">26544</td>
+<td style="text-align: right;">1999</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">76</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ES</td>
+<td style="text-align: right;">37011</td>
+<td style="text-align: right;">1999</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">104</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FR</td>
+<td style="text-align: right;">36770</td>
+<td style="text-align: right;">1999</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">104</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HR</td>
+<td style="text-align: right;">30213</td>
+<td style="text-align: right;">2002</td>
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">104</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HU</td>
+<td style="text-align: right;">12141</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">103</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IT</td>
+<td style="text-align: right;">33717</td>
+<td style="text-align: right;">1999</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">93</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LU</td>
+<td style="text-align: right;">17757</td>
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">98</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PL</td>
+<td style="text-align: right;">27981</td>
+<td style="text-align: right;">2005</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">104</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PT</td>
+<td style="text-align: right;">34701</td>
+<td style="text-align: right;">1999</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">102</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SK</td>
+<td style="text-align: right;">23329</td>
+<td style="text-align: right;">2005</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">104</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> 12 paesi; la serie più lunga parte dal 1999, l’ultimo anno disponibile varia da paese a paese (dal 2023 al 2025), quindi i confronti fra paesi vanno fatti su un anno comune.</p>
+</div>
+</div>
+<div id="0bb1e53e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> più scuro = più imprese nel campione. Per l’Italia il campione passa da 349.133 imprese (2000) a 685.423 (2024): cambiamenti così grandi riflettono anche l’ampliamento della rilevazione, non solo la demografia d’impresa.</p>
+</div>
+</div>
+<div id="273b1dfa" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="7">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 7%">
+<col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 17%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">country</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">nb_firms</th>
+<th style="text-align: left;">employees</th>
+<th style="text-align: right;">coverage_firms</th>
+<th style="text-align: right;">coverage_turnover</th>
+<th style="text-align: right;">coverage_employees</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AT</td>
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">84194</td>
+<td style="text-align: left;">2835201</td>
+<td style="text-align: right;">37.4</td>
+<td style="text-align: right;">nan</td>
+<td style="text-align: right;">nan</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BE</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">390839</td>
+<td style="text-align: left;">1986941</td>
+<td style="text-align: right;">82.3</td>
+<td style="text-align: right;">nan</td>
+<td style="text-align: right;">91.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DE</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">34954</td>
+<td style="text-align: left;"><na></na></td>
+<td style="text-align: right;">3.6</td>
+<td style="text-align: right;">48.9</td>
+<td style="text-align: right;">nan</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ES</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">648665</td>
+<td style="text-align: left;">7587892</td>
+<td style="text-align: right;">49.1</td>
+<td style="text-align: right;">nan</td>
+<td style="text-align: right;">67.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FR</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">243287</td>
+<td style="text-align: left;">11703393</td>
+<td style="text-align: right;">nan</td>
+<td style="text-align: right;">nan</td>
+<td style="text-align: right;">nan</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HR</td>
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">159928</td>
+<td style="text-align: left;">1100429</td>
+<td style="text-align: right;">100.0</td>
+<td style="text-align: right;">100.0</td>
+<td style="text-align: right;">100.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HU</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">504740</td>
+<td style="text-align: left;">2714876</td>
+<td style="text-align: right;">100.0</td>
+<td style="text-align: right;">100.0</td>
+<td style="text-align: right;">100.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IT</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">685423</td>
+<td style="text-align: left;">10436753</td>
+<td style="text-align: right;">100.0</td>
+<td style="text-align: right;">100.0</td>
+<td style="text-align: right;">100.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LU</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">31201</td>
+<td style="text-align: left;"><na></na></td>
+<td style="text-align: right;">93.9</td>
+<td style="text-align: right;">77.3</td>
+<td style="text-align: right;">nan</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PL</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">54599</td>
+<td style="text-align: left;">5762370</td>
+<td style="text-align: right;">nan</td>
+<td style="text-align: right;">nan</td>
+<td style="text-align: right;">nan</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PT</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">560345</td>
+<td style="text-align: left;">3684795</td>
+<td style="text-align: right;">100.0</td>
+<td style="text-align: right;">100.0</td>
+<td style="text-align: right;">100.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SK</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">38605</td>
+<td style="text-align: left;">331458</td>
+<td style="text-align: right;">13.7</td>
+<td style="text-align: right;">35.6</td>
+<td style="text-align: right;">26.8</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> per l’ultimo anno di ogni paese, quante imprese e addetti coprono i dati e quale quota della popolazione di società non finanziarie rappresentano (tassi di copertura in %, dove il paese li comunica). Una copertura del fatturato alta con una copertura delle imprese bassa indica un campione sbilanciato verso le imprese grandi.</p>
+</div>
+</div>
+<div id="df6b4f93" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="8">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">country</th>
+<th style="text-align: right;">% mancanti</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">HR</td>
+<td style="text-align: right;">1.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FR</td>
+<td style="text-align: right;">2.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HU</td>
+<td style="text-align: right;">4.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BE</td>
+<td style="text-align: right;">6.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LU</td>
+<td style="text-align: right;">13.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SK</td>
+<td style="text-align: right;">15.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ES</td>
+<td style="text-align: right;">17.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IT</td>
+<td style="text-align: right;">18.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PT</td>
+<td style="text-align: right;">18.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PL</td>
+<td style="text-align: right;">19.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DE</td>
+<td style="text-align: right;">21.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AT</td>
+<td style="text-align: right;">26.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> quota media di medie ponderate assenti sul totale economia: misura voci non rilevate dal paese (deviazioni nazionali) più che la riservatezza, che a questo livello di aggregazione scatta di rado.</p>
+</div>
+</div>
+</section>
+<section id="controllo-di-quadratura" class="level2">
+<h2 class="anchored" data-anchor-id="controllo-di-quadratura">3. Controllo di quadratura</h2>
+<p>Le voci dell’attivo (A1-A7) devono sommare al 100% del totale di bilancio, e così patrimonio netto più passività (E + Lp + L1…L6). Sulle medie ponderate la somma deve tornare a 100 a meno degli arrotondamenti; scostamenti grandi segnalano voci mancanti per un paese.</p>
+<div id="9e935315" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="9">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">country</th>
+<th style="text-align: right;">anni</th>
+<th style="text-align: right;">scarto_att_max</th>
+<th style="text-align: right;">scarto_pas_max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AT</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BE</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DE</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ES</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FR</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HR</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HU</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IT</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LU</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PL</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PT</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SK</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0.37</td>
+<td style="text-align: right;">0.26</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> per 12 paesi su 12 attivo e passivo tornano a 100 entro mezzo punto in tutti gli anni: le medie ponderate delle voci di bilancio sono coerenti fra loro.</p>
+</div>
+</div>
+</section>
+<section id="confronto-fra-paesi-in-un-anno-comune" class="level2">
+<h2 class="anchored" data-anchor-id="confronto-fra-paesi-in-un-anno-comune">4. Confronto fra paesi in un anno comune</h2>
+<p>Totale economia senza holding e sedi centrali (<code>Zc</code>), tutte le classi dimensionali, campione variabile, ultimo anno disponibile per tutti i 12 paesi. Per ogni indice: media ponderata (dominata dalle imprese grandi) e mediana (impresa tipica).</p>
+<div id="66637cc7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="10">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 11%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 9%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">country</th>
+<th style="text-align: right;">MOL / fatturato wm</th>
+<th style="text-align: right;">MOL / fatturato q2</th>
+<th style="text-align: right;">ROE wm</th>
+<th style="text-align: right;">ROE q2</th>
+<th style="text-align: right;">Patrimonio netto / attivo wm</th>
+<th style="text-align: right;">EBITDA / interessi wm</th>
+<th style="text-align: right;">EBITDA / interessi q2</th>
+<th style="text-align: right;">Costo del debito finanziario wm</th>
+<th style="text-align: right;">Costo del debito finanziario q2</th>
+<th style="text-align: right;">Giorni clienti (DSO) wm</th>
+<th style="text-align: right;">Giorni clienti (DSO) q2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AT</td>
+<td style="text-align: right;">9.3</td>
+<td style="text-align: right;">11.3</td>
+<td style="text-align: right;">11.8</td>
+<td style="text-align: right;">12.8</td>
+<td style="text-align: right;">37.3</td>
+<td style="text-align: right;">756.3</td>
+<td style="text-align: right;">645.4</td>
+<td style="text-align: right;">nan</td>
+<td style="text-align: right;">nan</td>
+<td style="text-align: right;">nan</td>
+<td style="text-align: right;">nan</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BE</td>
+<td style="text-align: right;">9.2</td>
+<td style="text-align: right;">23.1</td>
+<td style="text-align: right;">12.6</td>
+<td style="text-align: right;">15.0</td>
+<td style="text-align: right;">43.6</td>
+<td style="text-align: right;">832.7</td>
+<td style="text-align: right;">1418.8</td>
+<td style="text-align: right;">4.6</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">50.4</td>
+<td style="text-align: right;">4303.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DE</td>
+<td style="text-align: right;">6.2</td>
+<td style="text-align: right;">7.1</td>
+<td style="text-align: right;">13.3</td>
+<td style="text-align: right;">13.6</td>
+<td style="text-align: right;">33.6</td>
+<td style="text-align: right;">764.3</td>
+<td style="text-align: right;">890.5</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">2.1</td>
+<td style="text-align: right;">8.0</td>
+<td style="text-align: right;">16.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ES</td>
+<td style="text-align: right;">9.8</td>
+<td style="text-align: right;">6.6</td>
+<td style="text-align: right;">8.8</td>
+<td style="text-align: right;">8.5</td>
+<td style="text-align: right;">47.6</td>
+<td style="text-align: right;">905.8</td>
+<td style="text-align: right;">1056.1</td>
+<td style="text-align: right;">3.7</td>
+<td style="text-align: right;">2.1</td>
+<td style="text-align: right;">51.4</td>
+<td style="text-align: right;">18.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FR</td>
+<td style="text-align: right;">7.0</td>
+<td style="text-align: right;">6.2</td>
+<td style="text-align: right;">11.3</td>
+<td style="text-align: right;">15.8</td>
+<td style="text-align: right;">33.5</td>
+<td style="text-align: right;">686.0</td>
+<td style="text-align: right;">1877.9</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">2.2</td>
+<td style="text-align: right;">47.5</td>
+<td style="text-align: right;">43.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HR</td>
+<td style="text-align: right;">12.2</td>
+<td style="text-align: right;">10.6</td>
+<td style="text-align: right;">11.8</td>
+<td style="text-align: right;">20.0</td>
+<td style="text-align: right;">37.5</td>
+<td style="text-align: right;">1231.4</td>
+<td style="text-align: right;">3697.2</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">34.3</td>
+<td style="text-align: right;">22.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HU</td>
+<td style="text-align: right;">9.1</td>
+<td style="text-align: right;">17.7</td>
+<td style="text-align: right;">14.9</td>
+<td style="text-align: right;">20.0</td>
+<td style="text-align: right;">44.3</td>
+<td style="text-align: right;">838.0</td>
+<td style="text-align: right;">1566.7</td>
+<td style="text-align: right;">10.7</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">46.5</td>
+<td style="text-align: right;">19.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IT</td>
+<td style="text-align: right;">9.8</td>
+<td style="text-align: right;">8.3</td>
+<td style="text-align: right;">10.0</td>
+<td style="text-align: right;">12.1</td>
+<td style="text-align: right;">36.8</td>
+<td style="text-align: right;">785.9</td>
+<td style="text-align: right;">825.0</td>
+<td style="text-align: right;">4.7</td>
+<td style="text-align: right;">4.6</td>
+<td style="text-align: right;">76.0</td>
+<td style="text-align: right;">12.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LU</td>
+<td style="text-align: right;">7.2</td>
+<td style="text-align: right;">6.1</td>
+<td style="text-align: right;">14.7</td>
+<td style="text-align: right;">11.3</td>
+<td style="text-align: right;">35.5</td>
+<td style="text-align: right;">706.4</td>
+<td style="text-align: right;">1291.4</td>
+<td style="text-align: right;">1.9</td>
+<td style="text-align: right;">0.8</td>
+<td style="text-align: right;">11.0</td>
+<td style="text-align: right;">16.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PL</td>
+<td style="text-align: right;">8.8</td>
+<td style="text-align: right;">7.4</td>
+<td style="text-align: right;">11.3</td>
+<td style="text-align: right;">16.4</td>
+<td style="text-align: right;">47.7</td>
+<td style="text-align: right;">966.9</td>
+<td style="text-align: right;">1370.0</td>
+<td style="text-align: right;">7.4</td>
+<td style="text-align: right;">7.6</td>
+<td style="text-align: right;">35.4</td>
+<td style="text-align: right;">33.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PT</td>
+<td style="text-align: right;">10.8</td>
+<td style="text-align: right;">7.0</td>
+<td style="text-align: right;">10.3</td>
+<td style="text-align: right;">7.0</td>
+<td style="text-align: right;">42.8</td>
+<td style="text-align: right;">760.5</td>
+<td style="text-align: right;">788.5</td>
+<td style="text-align: right;">4.6</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">52.5</td>
+<td style="text-align: right;">15.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SK</td>
+<td style="text-align: right;">9.8</td>
+<td style="text-align: right;">14.0</td>
+<td style="text-align: right;">26.7</td>
+<td style="text-align: right;">14.4</td>
+<td style="text-align: right;">37.7</td>
+<td style="text-align: right;">17784.6</td>
+<td style="text-align: right;">1372.5</td>
+<td style="text-align: right;">3472.3</td>
+<td style="text-align: right;">4.3</td>
+<td style="text-align: right;">47.0</td>
+<td style="text-align: right;">37.7</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> fotografia 2023 dei principali indici di bilancio. Dove la media ponderata supera di molto la mediana, i risultati del paese sono trainati dalle imprese più grandi; dove è il contrario, le grandi fanno peggio dell’impresa tipica.</p>
+</div>
+</div>
+<div id="346d3f34" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> la barra grigia va dal primo al terzo quartile delle imprese, il punto blu è l’impresa mediana, il rombo arancio la media ponderata. Lo scarto media-mediana del margine è più ampio in PT (+3.8 punti) e più piccolo in BE (-13.9).</p>
+</div>
+</div>
+</section>
+<section id="serie-storiche-italia-e-grandi-paesi-dellarea-euro" class="level2">
+<h2 class="anchored" data-anchor-id="serie-storiche-italia-e-grandi-paesi-dellarea-euro">5. Serie storiche: Italia e grandi paesi dell’area euro</h2>
+<p>Patrimonio netto in % dell’attivo e costo del debito finanziario, totale economia, campione variabile. Per Germania, Francia e Spagna il campione variabile cambia composizione da un anno all’altro (avvertenza della guida): le serie mostrano i livelli, le variazioni vanno lette con prudenza.</p>
+<div id="f44f1f33" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="12">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> a sinistra la patrimonializzazione, a destra quanto costa in media il debito. Per l’Italia il patrimonio netto passa dal 25.0% dell’attivo (2000) al 38.1% (2024). Il costo mediano del debito italiano è 5.1% nell’ultimo anno (2024), contro il 2.2% del 2020, primo anno in cui l’indice è pubblicato per l’Italia; la Francia, con la serie più lunga, è al 2.9%.</p>
+</div>
+</div>
+<div id="1a3a921b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="13">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> la crescita del fatturato calcolata sulle stesse imprese nei due anni, quindi senza l’effetto delle entrate e uscite dal campione. Il calo più forte per l’Italia è nel 2020 (-8.1%), il rimbalzo più alto nel 2021 (18.9%).</p>
+</div>
+</div>
+</section>
+<section id="italia-per-classe-dimensionale" class="level2">
+<h2 class="anchored" data-anchor-id="italia-per-classe-dimensionale">6. Italia per classe dimensionale</h2>
+<p>Piccole (&lt; 10 mln di fatturato), medie (10-50 mln) e grandi (≥ 50 mln); totale economia, campione variabile.</p>
+<div id="32568d51" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="14">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> nel 2024 l’impresa mediana piccola ha un patrimonio netto pari al 31.1% dell’attivo, la media 36.9%, la grande 36.9%; i giorni di incasso dai clienti sono 7, 83 e 71; il valore delle piccole risente della discontinuità sui crediti commerciali descritta nella sezione 8.</p>
+</div>
+</div>
+</section>
+<section id="manifattura-italiana-per-divisione-nace" class="level2">
+<h2 class="anchored" data-anchor-id="manifattura-italiana-per-divisione-nace">7. Manifattura italiana per divisione NACE</h2>
+<p>Margine operativo lordo su fatturato (mediana) per divisione della manifattura (C10-C33), ultimi otto anni, tutte le classi dimensionali, campione variabile.</p>
+<div id="2216b22b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="15">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> ogni riga è un comparto manifatturiero, ordinate dal margine più alto al più basso nel 2024: in testa C21 (13.4%), in coda C15 (5.8%). Il codice di divisione si legge con la tabella NACE della guida (es. C21 farmaceutica, C19 raffinazione).</p>
+</div>
+</div>
+</section>
+<section id="anomalie-da-conoscere-prima-di-usare-i-dati" class="level2">
+<h2 class="anchored" data-anchor-id="anomalie-da-conoscere-prima-di-usare-i-dati">8. Anomalie da conoscere prima di usare i dati</h2>
+<p>L’esplorazione ha messo in luce due discontinuità che non dipendono dall’andamento economico. Le celle seguenti le misurano direttamente sul dato; le spiegazioni proposte sono ipotesi da verificare con i produttori.</p>
+<p><strong>Belgio, giorni clienti (<code>r55</code>).</strong> L’indice è definito come 360 × (crediti commerciali − anticipi) / fatturato. Con crediti commerciali intorno al 12-13% del fatturato (<code>r52</code>), il valore atteso è dell’ordine di 40-50 giorni; i quartili pubblicati per il Belgio sono circa cento volte più alti, compatibili con un calcolo che usa il rapporto già espresso in percentuale. Nella guida la nota nazionale belga ricorda che le piccole imprese usano lo schema abbreviato e le micro lo schema micro.</p>
+<p><strong>Italia, crediti commerciali delle piccole imprese (<code>A3</code>, <code>r52</code>).</strong> Fra il 2015 e il 2016 la quota mediana dei crediti commerciali sull’attivo delle imprese con meno di 10 milioni di fatturato crolla, mentre sale quella degli altri crediti (<code>A4</code>); per le imprese grandi non succede. La guida dichiara per l’Italia «No break in time series». Lo spostamento è compatibile con una diversa classificazione dei crediti negli schemi di bilancio abbreviati delle società più piccole dal 2016; resta un’ipotesi. Fino a verifica, gli indici sui crediti commerciali delle piccole imprese italiane (<code>A3</code>, <code>r52</code>, <code>r55</code>) non sono confrontabili prima e dopo il 2016.</p>
+<div id="4e831b80" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="16">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">r52_q2</th>
+<th style="text-align: right;">r55_q2</th>
+<th style="text-align: right;">r55_wm</th>
+<th style="text-align: right;">r55_q2 / (3,6 × r52_q2)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">12.31</td>
+<td style="text-align: right;">4227.08</td>
+<td style="text-align: right;">5201.12</td>
+<td style="text-align: right;">95.38</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">12.70</td>
+<td style="text-align: right;">4360.85</td>
+<td style="text-align: right;">5659.53</td>
+<td style="text-align: right;">95.38</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">12.93</td>
+<td style="text-align: right;">4441.88</td>
+<td style="text-align: right;">5416.90</td>
+<td style="text-align: right;">95.43</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">12.65</td>
+<td style="text-align: right;">4340.68</td>
+<td style="text-align: right;">5449.43</td>
+<td style="text-align: right;">95.32</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">12.28</td>
+<td style="text-align: right;">4212.74</td>
+<td style="text-align: right;">5375.74</td>
+<td style="text-align: right;">95.29</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">12.35</td>
+<td style="text-align: right;">4203.51</td>
+<td style="text-align: right;">5395.58</td>
+<td style="text-align: right;">94.55</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">13.90</td>
+<td style="text-align: right;">46.95</td>
+<td style="text-align: right;">5751.25</td>
+<td style="text-align: right;">0.94</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">12.80</td>
+<td style="text-align: right;">4338.22</td>
+<td style="text-align: right;">52.79</td>
+<td style="text-align: right;">94.15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">12.66</td>
+<td style="text-align: right;">4303.66</td>
+<td style="text-align: right;">50.38</td>
+<td style="text-align: right;">94.43</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">11.54</td>
+<td style="text-align: right;">3943.01</td>
+<td style="text-align: right;">49.91</td>
+<td style="text-align: right;">94.91</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> l’ultima colonna confronta il DSO mediano pubblicato con 360 × crediti/fatturato: sulla scala attesa starebbe vicino a 1. Per il Belgio sta fra 94 e 95, cioè il DSO pubblicato è circa cento volte quello atteso; negli anni in cui scende vicino a 1 la scala torna quella attesa, quindi cambia anche da un anno all’altro (e fra media ponderata e quartili).</p>
+</div>
+</div>
+<div id="90c7a63b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="17">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 15%">
+<col style="width: 14%">
+<col style="width: 15%">
+<col style="width: 14%">
+<col style="width: 16%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">A3_q2 piccole</th>
+<th style="text-align: right;">A3_q2 grandi</th>
+<th style="text-align: right;">A4_q2 piccole</th>
+<th style="text-align: right;">A4_q2 grandi</th>
+<th style="text-align: right;">r52_q2 piccole</th>
+<th style="text-align: right;">r52_q2 grandi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">22.76</td>
+<td style="text-align: right;">34.29</td>
+<td style="text-align: right;">5.02</td>
+<td style="text-align: right;">4.76</td>
+<td style="text-align: right;">24.95</td>
+<td style="text-align: right;">25.64</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">22.48</td>
+<td style="text-align: right;">33.17</td>
+<td style="text-align: right;">5.05</td>
+<td style="text-align: right;">4.57</td>
+<td style="text-align: right;">25.00</td>
+<td style="text-align: right;">24.63</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">18.26</td>
+<td style="text-align: right;">32.30</td>
+<td style="text-align: right;">6.12</td>
+<td style="text-align: right;">4.64</td>
+<td style="text-align: right;">21.08</td>
+<td style="text-align: right;">24.16</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">18.40</td>
+<td style="text-align: right;">31.16</td>
+<td style="text-align: right;">6.26</td>
+<td style="text-align: right;">4.73</td>
+<td style="text-align: right;">20.41</td>
+<td style="text-align: right;">23.38</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">6.87</td>
+<td style="text-align: right;">30.72</td>
+<td style="text-align: right;">9.55</td>
+<td style="text-align: right;">4.97</td>
+<td style="text-align: right;">8.65</td>
+<td style="text-align: right;">23.77</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">4.75</td>
+<td style="text-align: right;">30.63</td>
+<td style="text-align: right;">10.55</td>
+<td style="text-align: right;">5.14</td>
+<td style="text-align: right;">5.91</td>
+<td style="text-align: right;">23.48</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">3.98</td>
+<td style="text-align: right;">29.36</td>
+<td style="text-align: right;">11.02</td>
+<td style="text-align: right;">4.99</td>
+<td style="text-align: right;">4.92</td>
+<td style="text-align: right;">22.72</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">4.22</td>
+<td style="text-align: right;">28.37</td>
+<td style="text-align: right;">10.49</td>
+<td style="text-align: right;">5.02</td>
+<td style="text-align: right;">4.73</td>
+<td style="text-align: right;">22.20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">2.98</td>
+<td style="text-align: right;">25.59</td>
+<td style="text-align: right;">10.81</td>
+<td style="text-align: right;">4.59</td>
+<td style="text-align: right;">4.49</td>
+<td style="text-align: right;">23.09</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> per le piccole imprese italiane la mediana dei crediti commerciali passa dal 18.4% dell’attivo nel 2015 al 6.9% nel 2016, mentre quella degli altri crediti sale dal 6.3% al 9.6%; per le grandi le due voci restano stabili. Un salto così netto in un solo anno, limitato alle piccole, è compatibile con un cambiamento di classificazione più che con un cambiamento dei comportamenti d’impresa.</p>
+</div>
+</div>
+</section>
+<section id="che-cosa-resta-da-fare" class="level2">
+<h2 class="anchored" data-anchor-id="che-cosa-resta-da-fare">9. Che cosa resta da fare</h2>
+<ul>
+<li><p>Confrontare la copertura BACH-Italia con le fonti già usate nel workspace sui bilanci aggregati: Mediobanca (Dati cumulativi, Medie imprese) e le tavole Banca d’Italia/Cerved A2.9 (BACH-Italia proviene dalla stessa Centrale dei Bilanci - Cerved).</p></li>
+<li><p>Confrontare il numero di imprese BACH con le statistiche strutturali sulle imprese (Eurostat <code>sbs_ovw_act</code>, ISTAT <code>161_267</code>) per misurare la copertura per settore; attenzione: le statistiche strutturali includono le imprese individuali, BACH solo le società.</p></li>
+<li><p>Usare i quartili BACH come benchmark settoriale europeo per i generatori di bilanci sintetici e per il credit scoring.</p></li>
+<li><p>Ripetere le serie per gli altri paesi sul campione scorrevole, come raccomanda la guida.</p></li>
+</ul>
+<hr>
+<p><strong>Fonte dei dati</strong> (citazione richiesta dalle condizioni d’uso):</p>
+<div id="e18b29b8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="18">
+<div class="cell-output cell-output-display cell-output-markdown">
+<blockquote class="blockquote">
+<p>BACH database: ECCBSO, Oesterreichische Nationalbank, National Bank of Belgium, Deutsche Bundesbank, Banco de España, Banque de France, Hrvatska Narodna Banka, Magyar Nemzeti Bank, Centrale dei Bilanci - Cerved srl / Banca d’Italia, Statec Luxembourg, Narodowy Bank Polski (calculations of Narodowy Bank Polski on the basis of the data from the Statistics Poland), Banco de Portugal, National Bank of Slovakia (calculations based on data from the Ministry of Finance). Rilascio 20260914, scaricato da www.bach.banque-france.fr.</p>
+</blockquote>
+</div>
+</div>
+<hr>
+<p><strong>Nota metodologica</strong></p>
+<p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
+<p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale; l’analisi è pertanto integralmente auditabile e replicabile da terzi a partire da esse. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script>
+// Salto interno ai riferimenti [n] e ai rimandi #… indipendente dall'URL della pagina:
+// funziona anche quando l'HTML è aperto in un iframe, in un'anteprima o con un <base> diverso.
+document.addEventListener("click", function (e) {
+  var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+  if (!a) return;
+  var id = decodeURIComponent(a.getAttribute("href").slice(1));
+  var el = id && document.getElementById(id);
+  if (!el) return;
+  e.preventDefault();
+  el.scrollIntoView({ block: "start" });
+  try { history.replaceState(null, "", "#" + id); } catch (err) {}
+}, true);
+</script>
+<script type="application/vnd.jupyter.widget-state+json">
+{"state":{"307fa521c20a467db4c43aa9f811778b":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":"auto"}},"3a4d181f51064bc79f06985a11d73689":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"FloatProgressModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"FloatProgressModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"ProgressView","bar_style":"","description":"","description_allow_html":false,"layout":"IPY_MODEL_307fa521c20a467db4c43aa9f811778b","max":100,"min":0,"orientation":"horizontal","style":"IPY_MODEL_bf1f9aac79c04dad990edb5cb77750db","tabbable":null,"tooltip":null,"value":100}},"bf1f9aac79c04dad990edb5cb77750db":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"ProgressStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"ProgressStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"StyleView","bar_color":"black","description_width":""}}},"version_major":2,"version_minor":0}
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/paolovolterra/paolovolterra.github.io/blob/main/posts/2610_BachEDA/index.ipynb" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

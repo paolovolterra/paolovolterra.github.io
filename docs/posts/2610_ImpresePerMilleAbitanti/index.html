@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="imprenditorialità, demografia d’impresa, imprese attive, province, OCSE, Eurostat, ISTAT, CNA">
+<meta name="description" content="Il numero di imprese attive per mille abitanti è una misura di densità del tessuto produttivo.">
+
+<title>Imprese per mille abitanti – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Imprese per mille abitanti – Paolo Volterra">
+<meta property="og:description" content="Il numero di imprese attive per mille abitanti è una misura di densità del tessuto produttivo.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2610_ImpresePerMilleAbitanti/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Imprese per mille abitanti – Paolo Volterra">
+<meta name="twitter:description" content="Il numero di imprese attive per mille abitanti è una misura di densità del tessuto produttivo.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2610_ImpresePerMilleAbitanti/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#oggetto-dellanalisi" id="toc-oggetto-dellanalisi" class="nav-link active" data-scroll-target="#oggetto-dellanalisi"><span class="header-section-number">1</span> Oggetto dell’analisi</a></li>
+  <li><a href="#il-quadro-ufficiale-di-misurazione" id="toc-il-quadro-ufficiale-di-misurazione" class="nav-link" data-scroll-target="#il-quadro-ufficiale-di-misurazione"><span class="header-section-number">2</span> Il quadro ufficiale di misurazione</a>
+  <ul class="collapse">
+  <li><a href="#un-fenomeno-multidimensionale" id="toc-un-fenomeno-multidimensionale" class="nav-link" data-scroll-target="#un-fenomeno-multidimensionale"><span class="header-section-number">2.1</span> Un fenomeno multidimensionale</a></li>
+  <li><a href="#rapporto-descrittivo-e-indicatore-di-propensione" id="toc-rapporto-descrittivo-e-indicatore-di-propensione" class="nav-link" data-scroll-target="#rapporto-descrittivo-e-indicatore-di-propensione"><span class="header-section-number">2.2</span> Rapporto descrittivo e indicatore di propensione</a></li>
+  </ul></li>
+  <li><a href="#valutazione-della-misura-proposta" id="toc-valutazione-della-misura-proposta" class="nav-link" data-scroll-target="#valutazione-della-misura-proposta"><span class="header-section-number">3</span> Valutazione della misura proposta</a>
+  <ul class="collapse">
+  <li><a href="#stock-e-processi" id="toc-stock-e-processi" class="nav-link" data-scroll-target="#stock-e-processi"><span class="header-section-number">3.1</span> Stock e processi</a></li>
+  <li><a href="#una-scomposizione-diagnostica" id="toc-una-scomposizione-diagnostica" class="nav-link" data-scroll-target="#una-scomposizione-diagnostica"><span class="header-section-number">3.2</span> Una scomposizione diagnostica</a></li>
+  <li><a href="#denominatore-e-localizzazione" id="toc-denominatore-e-localizzazione" class="nav-link" data-scroll-target="#denominatore-e-localizzazione"><span class="header-section-number">3.3</span> Denominatore e localizzazione</a></li>
+  </ul></li>
+  <li><a href="#uso-appropriato-del-rapporto" id="toc-uso-appropriato-del-rapporto" class="nav-link" data-scroll-target="#uso-appropriato-del-rapporto"><span class="header-section-number">4</span> Uso appropriato del rapporto</a></li>
+  <li><a href="#conclusioni" id="toc-conclusioni" class="nav-link" data-scroll-target="#conclusioni"><span class="header-section-number">5</span> Conclusioni</a></li>
+  <li><a href="#appendice-verifiche-sul-caso-provinciale" id="toc-appendice-verifiche-sul-caso-provinciale" class="nav-link" data-scroll-target="#appendice-verifiche-sul-caso-provinciale"><span class="header-section-number">6</span> Appendice: verifiche sul caso provinciale</a>
+  <ul class="collapse">
+  <li><a href="#ricostruzione-della-graduatoria" id="toc-ricostruzione-della-graduatoria" class="nav-link" data-scroll-target="#ricostruzione-della-graduatoria"><span class="header-section-number">6.1</span> Ricostruzione della graduatoria</a></li>
+  <li><a href="#valori-testuali-delle-grandi-città" id="toc-valori-testuali-delle-grandi-città" class="nav-link" data-scroll-target="#valori-testuali-delle-grandi-città"><span class="header-section-number">6.2</span> Valori testuali delle grandi città</a></li>
+  <li><a href="#unità-territoriali-a-doppia-crescita" id="toc-unità-territoriali-a-doppia-crescita" class="nav-link" data-scroll-target="#unità-territoriali-a-doppia-crescita"><span class="header-section-number">6.3</span> Unità territoriali a «doppia crescita»</a></li>
+  </ul></li>
+  <li><a href="#riferimenti" id="toc-riferimenti" class="nav-link" data-scroll-target="#riferimenti">Riferimenti</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2610_ImpresePerMilleAbitanti/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Imprese per mille abitanti</h1>
+<p class="subtitle lead">Che cosa misura il rapporto e perché non basta a identificare la propensione imprenditoriale</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Imprese</div>
+    <div class="quarto-category">Territorio</div>
+    <div class="quarto-category">Istat</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Il numero di imprese attive per mille abitanti è una misura di densità del tessuto produttivo.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">8 ottobre 2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Data di modifica</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">8 ottobre 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p><strong>Italiano.</strong> Il numero di imprese attive per mille abitanti è una misura di densità del tessuto produttivo. Uno studio provinciale pubblicato nel 2026 lo denomina «tasso di imprenditorialità» e lo interpreta come rappresentazione della diffusione della voglia e della possibilità di intraprendere. Questa nota valuta tale interpretazione alla luce del quadro OCSE-Eurostat adottato dall’ISTAT. In quel quadro l’imprenditorialità è un fenomeno multidimensionale, osservato attraverso determinanti, performance e impatto; le statistiche ufficiali privilegiano natalità, mortalità, sopravvivenza, crescita e occupazione delle imprese. Il rapporto fra stock di imprese e residenti non identifica separatamente questi processi. Per identità contabile dipende sia dagli addetti nelle imprese per abitante sia dalla dimensione media; risente inoltre della struttura settoriale, della popolazione scelta come denominatore e della localizzazione per sede. L’applicazione alle province italiane mostra che la misura contiene informazione economica, ma non consente da sola di attribuire le differenze territoriali a una diversa propensione imprenditoriale. Le verifiche numeriche dello studio provinciale sono riportate separatamente in appendice.</p>
+    <p><strong>English.</strong> Active enterprises per thousand inhabitants measure the density of the productive fabric. A provincial study published in 2026 labels this ratio an “entrepreneurship rate” and interprets it as representing how widely the willingness and opportunity to undertake business activity are distributed. This paper assesses that interpretation against the OECD-Eurostat framework adopted by the Italian National Institute of Statistics. In that framework entrepreneurship is multidimensional and is observed through determinants, performance and impact; official statistics focus on business births, deaths, survival, growth and employment. A stock of enterprises relative to residents does not separately identify these processes. By accounting identity, it depends on both employment in enterprises per inhabitant and average firm size; it is also affected by sectoral structure, the population used as denominator and head-office location. The application to Italian provinces shows that the ratio contains economic information, but cannot by itself attribute territorial differences to entrepreneurial propensity. Numerical checks of the provincial study are reported separately in the appendix.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>imprenditorialità, demografia d’impresa, imprese attive, province, OCSE, Eurostat, ISTAT, CNA</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="oggetto-dellanalisi" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Oggetto dell’analisi</h1>
+<p>Nel luglio 2026 l’Area Studi e Ricerche della CNA ha pubblicato un’analisi della distribuzione territoriale di imprese e addetti <span class="citation" data-cites="cna2026province"><a href="#ref-cna2026province" role="doc-biblioref">[1]</a></span>. Il documento definisce «tasso di imprenditorialità» il numero di imprese attive ogni mille abitanti e lo considera l’indicatore forse più appropriato per rappresentare la propensione imprenditoriale di un territorio. Secondo lo studio, la quota molto elevata di imprese con meno di dieci addetti rende il rapporto una rappresentazione di quanto la voglia e la possibilità di intraprendere siano diffuse nella popolazione. La stessa interpretazione è stata ripresa da CRIBIS, che presenta Prato, Milano e Rimini come le province con maggiore propensione imprenditoriale e usa la graduatoria CNA come base dell’articolo <span class="citation" data-cites="zuffetti2026province"><a href="#ref-zuffetti2026province" role="doc-biblioref">[2]</a></span>. La ripresa ha valore documentale per osservare la circolazione dell’etichetta, ma non costituisce una validazione indipendente della misura.</p>
+<p>Questa proposizione contiene due passaggi distinti. Il primo è descrittivo: rapportare le imprese alla popolazione consente di confrontare territori di diversa dimensione. Il secondo è interpretativo: le differenze nel rapporto sono attribuite a una diversa propensione imprenditoriale. L’analisi che segue riguarda questo secondo passaggio. Non assume che lo studio ignori l’eterogeneità territoriale: il documento richiama esplicitamente distretti produttivi, turismo, grandi imprese, impiego pubblico, agricoltura, demografia, immigrazione, mercati, capitale sociale, infrastrutture, credito e burocrazia. La questione è se un solo rapporto di stock permetta di sintetizzare tali meccanismi e di identificarli come propensione a intraprendere.</p>
+</section>
+<section id="il-quadro-ufficiale-di-misurazione" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Il quadro ufficiale di misurazione</h1>
+<section id="un-fenomeno-multidimensionale" class="level2 anchored" data-number="2.1" data-anchor-id="un-fenomeno-multidimensionale">
+<h2 class="anchored" data-number="2.1" data-anchor-id="un-fenomeno-multidimensionale"><span class="header-section-number">2.1</span> Un fenomeno multidimensionale</h2>
+<p>Il quadro adottato dall’ISTAT deriva dall’Entrepreneurship Indicators Programme dell’OCSE e di Eurostat <span class="citation" data-cites="istat2017imprenditorialita"><a href="#ref-istat2017imprenditorialita" role="doc-biblioref">[3]</a></span>. L’imprenditorialità è associata alla ricerca di creazione di valore attraverso la nascita o l’espansione di un’attività economica, l’introduzione di prodotti e processi e l’accesso a nuovi mercati. Il sistema di misurazione distingue tre categorie:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 37%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Categoria</th>
+<th style="text-align: left;">Domanda</th>
+<th style="text-align: left;">Principali misure</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Determinanti</td>
+<td style="text-align: left;">Quali condizioni favoriscono o frenano l’attività imprenditoriale?</td>
+<td style="text-align: left;">Regolazione, mercato, credito, ricerca e sviluppo, capacità e cultura imprenditoriali</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Performance</td>
+<td style="text-align: left;">Quali processi e risultati caratterizzano le imprese?</td>
+<td style="text-align: left;">Natalità, mortalità, turnover, sopravvivenza, imprese ad alta crescita e gazelle</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Impatto</td>
+<td style="text-align: left;">Quali effetti produce l’attività imprenditoriale?</td>
+<td style="text-align: left;">Occupazione, crescita economica e altri risultati sociali</td>
+</tr>
+</tbody>
+</table>
+<p><em>In parole semplici:</em> l’imprenditorialità non è rappresentata da un solo conteggio. Il quadro ufficiale separa le condizioni che la rendono possibile, ciò che accade alle imprese e gli effetti prodotti.</p>
+<p>La scheda qualità più recente dell’ISTAT conferma questa impostazione operativa <span class="citation" data-cites="istat2024qualitaimprenditorialita"><a href="#ref-istat2024qualitaimprenditorialita" role="doc-biblioref">[4]</a></span>. La popolazione delle imprese attive è la base osservata; gli indicatori riguardano nascite e cessazioni reali, sopravvivenza fino a cinque anni, imprese ad elevata crescita e addetti. Le nascite escludono fusioni, scorpori e altre trasformazioni di unità già esistenti; le cessazioni sono confermate dopo due anni per escludere le riattivazioni. Nel volume metodologico l’ISTAT considera il tasso di natalità delle imprese con dipendenti più significativo, ai fini dell’imprenditorialità, dello stesso tasso calcolato su tutte le imprese attive <span class="citation" data-cites="istat2017imprenditorialita"><a href="#ref-istat2017imprenditorialita" role="doc-biblioref">[3]</a></span>.</p>
+</section>
+<section id="rapporto-descrittivo-e-indicatore-di-propensione" class="level2 anchored" data-number="2.2" data-anchor-id="rapporto-descrittivo-e-indicatore-di-propensione">
+<h2 class="anchored" data-number="2.2" data-anchor-id="rapporto-descrittivo-e-indicatore-di-propensione"><span class="header-section-number">2.2</span> Rapporto descrittivo e indicatore di propensione</h2>
+<p>L’ISTAT pubblica anche il numero di imprese per mille abitanti, denominandolo in modo descrittivo <span class="citation" data-cites="istat2025noiitalia"><a href="#ref-istat2025noiitalia" role="doc-biblioref">[5]</a></span>. La presenza di questa statistica ufficiale non basta però ad assegnarle il significato di propensione imprenditoriale. Per sostenere tale interpretazione occorrerebbe mostrare che il rapporto varia coerentemente con manifestazioni osservabili del fenomeno, come la nascita di nuove imprese, la loro sopravvivenza, la crescita o l’ingresso di nuovi imprenditori, e che conserva tale relazione una volta considerate struttura settoriale e condizioni territoriali.</p>
+</section>
+</section>
+<section id="valutazione-della-misura-proposta" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Valutazione della misura proposta</h1>
+<section id="stock-e-processi" class="level2 anchored" data-number="3.1" data-anchor-id="stock-e-processi">
+<h2 class="anchored" data-number="3.1" data-anchor-id="stock-e-processi"><span class="header-section-number">3.1</span> Stock e processi</h2>
+<p>Le imprese attive in un anno costituiscono uno stock formato da coorti nate in periodi diversi. Il suo livello dipende dalle nascite, dalle cessazioni, dalla sopravvivenza e dalle trasformazioni avvenute nel tempo. Due territori possono avere lo stesso numero di imprese per abitante pur presentando dinamiche opposte: uno può avere molte nuove imprese e molte cessazioni; l’altro poche nascite e imprese longeve. Il rapporto non distingue queste configurazioni e non osserva direttamente la decisione corrente di intraprendere.</p>
+<p>La motivazione fondata sul peso delle microimprese non risolve il problema. Il fatto che la maggioranza delle imprese abbia meno di dieci addetti descrive la distribuzione dimensionale, ma non dimostra che ogni impresa attiva rappresenti nella stessa misura propensione, opportunità o capacità imprenditoriale. Nel registro statistico rientrano lavoratori autonomi, liberi professionisti e imprese organizzate in forme e settori molto differenti <span class="citation" data-cites="istat2015strutturaimprese"><a href="#ref-istat2015strutturaimprese" role="doc-biblioref">[6]</a></span>.</p>
+</section>
+<section id="una-scomposizione-diagnostica" class="level2 anchored" data-number="3.2" data-anchor-id="una-scomposizione-diagnostica">
+<h2 class="anchored" data-number="3.2" data-anchor-id="una-scomposizione-diagnostica"><span class="header-section-number">3.2</span> Una scomposizione diagnostica</h2>
+<p>Il rapporto può essere riscritto mediante un’identità contabile:</p>
+<p><span class="math display">\[ \frac{\text{imprese}}{\text{residenti}} = \frac{\text{addetti}/\text{residenti}} {\text{addetti}/\text{imprese}}. \]</span></p>
+<p>L’identità non confuta la misura e non stabilisce quale componente determini le differenze territoriali. Mostra però che lo stesso valore può derivare dalla quantità di lavoro presente nelle imprese, dalla dimensione media o da combinazioni diverse delle due grandezze. Per attribuire il rapporto a una propensione individuale serve quindi evidenza ulteriore.</p>
+<p>Fra le province italiane la correlazione di rango del rapporto con gli addetti nelle imprese per abitante è 0,80; quella con la dimensione media è 0,51. Il primo legame è più stretto, ma il confronto fra due correlazioni non scompone la varianza e non identifica relazioni causali. Indica soltanto che la graduatoria provinciale riflette in misura rilevante la diversa intensità dell’occupazione nelle imprese.</p>
+<div id="cell-fig-scomposizione" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div id="figura-scomposizione" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-scomposizione-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig01.svg" class="img-fluid figure-img" role="img"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;1: Imprese attive e addetti nelle imprese per 1.000 abitanti nelle province italiane, 2024. Le linee tratteggiate indicano dimensioni medie costanti di 3, 4 e 5 addetti per impresa.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><em>In parole semplici:</em> salire nel grafico significa avere più imprese rispetto ai residenti; spostarsi a destra significa avere più addetti nelle imprese. Province alla stessa altezza possono raggiungere lo stesso rapporto con quantità di lavoro e dimensioni medie differenti.</p>
+<p>Savona e Bologna hanno quasi lo stesso rapporto: 91,7 e 91,6 imprese ogni mille abitanti. A Savona gli addetti sono 254 ogni mille abitanti e la dimensione media è 2,8; a Bologna i valori sono 425 e 4,6. La coincidenza del rapporto non implica quindi equivalenza della struttura produttiva né dimostra una propensione imprenditoriale identica.</p>
+</section>
+<section id="denominatore-e-localizzazione" class="level2 anchored" data-number="3.3" data-anchor-id="denominatore-e-localizzazione">
+<h2 class="anchored" data-number="3.3" data-anchor-id="denominatore-e-localizzazione"><span class="header-section-number">3.3</span> Denominatore e localizzazione</h2>
+<p>La popolazione residente è un denominatore disponibile e confrontabile, ma non coincide sempre con la popolazione esposta alle opportunità economiche del territorio. Nelle località turistiche la domanda comprende visitatori non residenti; nelle aree metropolitane intervengono pendolari in entrata e in uscita; la quota di popolazione in età lavorativa varia tra territori. Questi elementi non rendono inutile il rapporto, ma ne limitano l’interpretazione comportamentale.</p>
+<p>Distinto è il problema della localizzazione del numeratore. Le imprese sono attribuite alla sede; gli addetti di un’impresa plurilocalizzata possono lavorare in unità locali situate in altre province. Il volume ISTAT dedicato all’imprenditorialità territoriale tratta separatamente imprese, unità locali, proiezione esterna e attrattività proprio per evitare di sovrapporre sede dell’organizzazione e luogo dell’attività <span class="citation" data-cites="istat2017imprenditorialita"><a href="#ref-istat2017imprenditorialita" role="doc-biblioref">[3]</a></span>.</p>
+</section>
+</section>
+<section id="uso-appropriato-del-rapporto" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Uso appropriato del rapporto</h1>
+<p>Il numero di imprese per mille abitanti è utile per descrivere quanto è numerosa la popolazione delle imprese rispetto alla popolazione residente. Può segnalare territori nei quali approfondire la composizione settoriale, le forme giuridiche, la demografia d’impresa e il mercato del lavoro. Non è invece sufficiente, senza validazione, per ordinare i territori secondo la voglia o la possibilità di intraprendere.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 39%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Domanda conoscitiva</th>
+<th style="text-align: left;">Misura pertinente</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Quante imprese sono presenti rispetto alla popolazione?</td>
+<td style="text-align: left;">Imprese attive per residente</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Quante nuove iniziative economiche nascono?</td>
+<td style="text-align: left;">Tasso di natalità delle imprese, preferibilmente distinguendo quelle con dipendenti</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Quanto sono persistenti?</td>
+<td style="text-align: left;">Sopravvivenza a tre e cinque anni</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Quante sviluppano occupazione?</td>
+<td style="text-align: left;">Addetti delle nuove imprese, imprese ad alta crescita e gazelle</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chi intraprende?</td>
+<td style="text-align: left;">Caratteristiche degli imprenditori, ingressi e forme giuridiche</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Quali condizioni favoriscono l’attività?</td>
+<td style="text-align: left;">Indicatori di credito, regolazione, mercato, competenze, ricerca e cultura</td>
+</tr>
+</tbody>
+</table>
+<p><em>In parole semplici:</em> ogni domanda richiede una misura diversa. Il rapporto fra imprese e abitanti risponde a una domanda di consistenza, mentre propensione, nascita, sopravvivenza e crescita descrivono processi differenti.</p>
+<p>Un indicatore composito sarebbe possibile, ma richiederebbe una teoria esplicita, la scelta motivata delle dimensioni, regole di normalizzazione e ponderazione, analisi di sensibilità e validazione rispetto a esiti osservabili. Il rapporto ISTAT sulla competitività del 2020 offre un esempio del procedimento: definisce la reattività delle imprese, la stima sulle unità elementari, ne separa le componenti dirette e indirette e soltanto dopo la aggrega per settori e territori <span class="citation" data-cites="istat2020competitivita"><a href="#ref-istat2020competitivita" role="doc-biblioref">[7]</a></span>. Lo studio provinciale non propone questa costruzione: attribuisce un significato ampio a un singolo rapporto descrittivo.</p>
+</section>
+<section id="conclusioni" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Conclusioni</h1>
+<p>Lo studio CNA non ignora la complessità territoriale e individua numerosi fattori plausibili alla base delle differenze provinciali. Il limite riguarda il passaggio dalla descrizione all’interpretazione: il numero di imprese attive per mille abitanti viene denominato «tasso di imprenditorialità» senza una validazione che lo colleghi in modo univoco alla voglia e alla possibilità di intraprendere.</p>
+<p>Il quadro OCSE-Eurostat adottato dall’ISTAT tratta l’imprenditorialità come un sistema di determinanti, performance e impatti. Le statistiche di demografia d’impresa osservano nascite, cessazioni, sopravvivenza, crescita e occupazione, distinguendo lo stock delle imprese attive dai processi che lo modificano. Questo è il termine di confronto appropriato.</p>
+<p>La scomposizione contabile e l’applicazione provinciale non dimostrano che il rapporto sia privo di informazione. Mostrano che esso combina intensità occupazionale e dimensione media e che valori uguali possono corrispondere a strutture differenti. La formulazione più prudente è quindi «imprese attive per mille abitanti» o «densità di imprese». L’espressione «propensione imprenditoriale» richiede misure ulteriori e una validazione empirica esplicita.</p>
+</section>
+<section id="appendice-verifiche-sul-caso-provinciale" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Appendice: verifiche sul caso provinciale</h1>
+<p>Le verifiche che seguono riguardano la coerenza interna dei dati pubblicati. Non costituiscono il fondamento della valutazione concettuale, che resterebbe invariata anche se tutte le tabelle fossero perfettamente coerenti.</p>
+<section id="ricostruzione-della-graduatoria" class="level2 anchored" data-number="6.1" data-anchor-id="ricostruzione-della-graduatoria">
+<h2 class="anchored" data-number="6.1" data-anchor-id="ricostruzione-della-graduatoria"><span class="header-section-number">6.1</span> Ricostruzione della graduatoria</h2>
+<p>Dividendo le imprese attive 2024 riportate nello studio per la popolazione residente al 1° gennaio 2024 si ottiene lo stesso valore, al decimale, per <strong>106 province su 107</strong> e un dato nazionale di 80,6 <span class="citation" data-cites="eurostat2025pjanaggr3"><a href="#ref-eurostat2025pjanaggr3" role="doc-biblioref">[8]</a></span>. L’unica eccezione è Cremona: la tabella 2 riporta 87,4, mentre imprese e residenti pubblicati implicano 68,8.</p>
+</section>
+<section id="valori-testuali-delle-grandi-città" class="level2 anchored" data-number="6.2" data-anchor-id="valori-testuali-delle-grandi-città">
+<h2 class="anchored" data-number="6.2" data-anchor-id="valori-testuali-delle-grandi-città"><span class="header-section-number">6.2</span> Valori testuali delle grandi città</h2>
+<div class="cell" data-execution_count="3">
+<div id="tab-testo" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-testo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="3">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 28%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Provincia</th>
+<th style="text-align: left;">Testo dello studio</th>
+<th style="text-align: left;">Tabella 2</th>
+<th style="text-align: left;">Ricalcolo</th>
+<th style="text-align: left;">Posizione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Milano</td>
+<td style="text-align: left;">106,4</td>
+<td style="text-align: left;">110,6</td>
+<td style="text-align: left;">110,6</td>
+<td style="text-align: left;">2ª</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Firenze</td>
+<td style="text-align: left;">96,6</td>
+<td style="text-align: left;">98,2</td>
+<td style="text-align: left;">98,2</td>
+<td style="text-align: left;">4ª</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Roma</td>
+<td style="text-align: left;">88,7</td>
+<td style="text-align: left;">92,1</td>
+<td style="text-align: left;">92,1</td>
+<td style="text-align: left;">10ª</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Napoli</td>
+<td style="text-align: left;">66,7</td>
+<td style="text-align: left;">69,7</td>
+<td style="text-align: left;">69,7</td>
+<td style="text-align: left;">82ª</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Palermo</td>
+<td style="text-align: left;">57,5</td>
+<td style="text-align: left;">59,6</td>
+<td style="text-align: left;">59,6</td>
+<td style="text-align: left;">100ª</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;1: Imprese per 1.000 abitanti: valori citati nel testo, valori della tabella 2 e ricalcolo con la popolazione al 1° gennaio 2024</p>
+</div>
+</div>
+</div>
+</div>
+<p><em>In parole semplici:</em> per cinque grandi città i valori scritti nel commento non coincidono con la tabella. Il ricalcolo con la popolazione ufficiale conferma i valori tabellari.</p>
+</section>
+<section id="unità-territoriali-a-doppia-crescita" class="level2 anchored" data-number="6.3" data-anchor-id="unità-territoriali-a-doppia-crescita">
+<h2 class="anchored" data-number="6.3" data-anchor-id="unità-territoriali-a-doppia-crescita"><span class="header-section-number">6.3</span> Unità territoriali a «doppia crescita»</h2>
+<p>Lo studio indica 17 province sopra la media nazionale sia per crescita delle imprese sia per crescita degli addetti, mentre la tavola ne elenca 21. Taranto è inclusa, ma la sua crescita degli addetti e la media sono entrambe pubblicate come +17,2%: con i valori arrotondati non si può stabilire se la prima sia strettamente superiore. La Sardegna, presentata come aggregato regionale, supera entrambe le soglie ma non compare nell’elenco.</p>
+<div class="cell" data-execution_count="4">
+<div id="tab-crescita" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-crescita-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="4">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 5%">
+<col style="width: 25%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Gruppo</th>
+<th style="text-align: left;">Testo</th>
+<th style="text-align: left;">Elenco pubblicato</th>
+<th style="text-align: left;">Ricalcolo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Imprese e addetti sopra la media</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">21 (con Taranto, senza Sardegna)</td>
+<td style="text-align: left;">21 (20 province e Sardegna)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Solo imprese sopra la media</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Solo addetti sopra la media</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Imprese sopra la media, addetti indistinguibili dalla media</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">1 (Taranto)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Entrambi sotto la media</td>
+<td style="text-align: left;">71</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">71</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;2: Classificazione sui valori arrotondati pubblicati per crescita 2014-2024 di imprese e addetti</p>
+</div>
+</div>
+</div>
+</div>
+<p><em>In parole semplici:</em> testo, elenco e ricalcolo non restituiscono lo stesso numero di territori. Taranto non è distinguibile dalla media alla precisione pubblicata, quindi il totale non può essere considerato definitivo senza dati non arrotondati.</p>
+</section>
+</section>
+<section id="riferimenti" class="level1 unnumbered">
+<h1 class="unnumbered">Riferimenti</h1>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-cna2026province" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[1]
+</div>
+<div class="csl-right-inline">
+CNA, «Le province dove più si fa impresa. Analisi della distribuzione territoriale delle imprese italiane», CNA — Indagini CNA, 2026.
+</div>
+</div>
+</div>
+<div id="ref-zuffetti2026province" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[2]
+</div>
+<div class="csl-right-inline">
+N. Zuffetti, <a href="https://www.cribis.com/it/approfondimenti/imprenditorialita-italia-province-imprese/">«Prato, Milano e Rimini sono le province con maggiore propensione imprenditoriale»</a>. Consultato: 8 ottobre 2026. [Online].
+</div>
+</div>
+<div id="ref-istat2017imprenditorialita" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[3]
+</div>
+<div class="csl-right-inline">
+Istituto nazionale di statistica, <em>L’imprenditorialità nelle regioni italiane: caratteri strutturali e socio-economici</em>. Roma: Istat, 2017.
+</div>
+</div>
+<div id="ref-istat2024qualitaimprenditorialita" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[4]
+</div>
+<div class="csl-right-inline">
+Istituto nazionale di statistica, <a href="https://www.istat.it/scheda-qualita/demografia-dimpresa-e-indicatori-di-imprenditorialita/">«Demografia d’impresa e indicatori di imprenditorialità»</a>. Consultato: 8 ottobre 2026. [Online].
+</div>
+</div>
+<div id="ref-istat2025noiitalia" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[5]
+</div>
+<div class="csl-right-inline">
+ISTAT, <a href="https://noi-italia.istat.it/">«Noi Italia. 100 statistiche per capire il Paese in cui viviamo — Industria e servizi: strutture produttive»</a>. 2025.
+</div>
+</div>
+<div id="ref-istat2015strutturaimprese" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[6]
+</div>
+<div class="csl-right-inline">
+ISTAT, <a href="https://www.istat.it/it/files//2015/07/Nota-metodologica11.pdf">«Struttura e dimensione delle imprese. Nota metodologica»</a>, Istituto Nazionale di Statistica, 2015.
+</div>
+</div>
+<div id="ref-istat2020competitivita" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[7]
+</div>
+<div class="csl-right-inline">
+Istituto nazionale di statistica, <a href="https://www.istat.it/storage/settori-produttivi/2020/Rapporto-competitivit%C3%A0.pdf">«Rapporto sulla competitività dei settori produttivi: edizione 2020»</a>, Istat, Roma, 2020. Consultato: 8 ottobre 2026. [Online].
+</div>
+</div>
+<div id="ref-eurostat2025pjanaggr3" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[8]
+</div>
+<div class="csl-right-inline">
+Eurostat, <a href="https://ec.europa.eu/eurostat/databrowser/view/demo_r_pjanaggr3/default/table">«Population on 1 January by broad age group, sex and NUTS 3 region (demo_r_pjanaggr3)»</a>. 2025.
+</div>
+</div>
+<hr>
+<p><strong>Nota metodologica</strong></p>
+<p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
+<p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale, così che i dati e le affermazioni possano essere controllati da terzi. La riproduzione integrale dei risultati richiede anche il codice, le estrazioni, i filtri e i parametri impiegati nell’elaborazione. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+</section>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2610_ImpresePerMilleAbitanti/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

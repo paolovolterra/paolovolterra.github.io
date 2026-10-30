@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="ESRB, CISS, rischio sistemico, P/E, stabilità finanziaria, area euro">
+<meta name="description" content="L’ESRB Risk Dashboard aggrega due classi di indicatori: lo stress finanziario (CISS e sottoindici) e le valutazioni di mercato (P/E azionario).">
+
+<title>Variabili ESRB: a cosa servono – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Variabili ESRB: a cosa servono – Paolo Volterra">
+<meta property="og:description" content="L’ESRB Risk Dashboard aggrega due classi di indicatori: lo stress finanziario (CISS e sottoindici) e le valutazioni di mercato (P/E azionario).">
+<meta property="og:image" content="https://paolovolterra.com/posts/2604_VariabiliESRB/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Variabili ESRB: a cosa servono – Paolo Volterra">
+<meta name="twitter:description" content="L’ESRB Risk Dashboard aggrega due classi di indicatori: lo stress finanziario (CISS e sottoindici) e le valutazioni di mercato (P/E azionario).">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2604_VariabiliESRB/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#perché-esistono-queste-variabili" id="toc-perché-esistono-queste-variabili" class="nav-link active" data-scroll-target="#perché-esistono-queste-variabili"><span class="header-section-number">1</span> Perché esistono queste variabili</a></li>
+  <li><a href="#il-ciss-stress-finanziario-composito" id="toc-il-ciss-stress-finanziario-composito" class="nav-link" data-scroll-target="#il-ciss-stress-finanziario-composito"><span class="header-section-number">2</span> Il CISS: stress finanziario composito</a>
+  <ul class="collapse">
+  <li><a href="#cosa-misura" id="toc-cosa-misura" class="nav-link" data-scroll-target="#cosa-misura"><span class="header-section-number">2.1</span> Cosa misura</a></li>
+  <li><a href="#i-sette-sottoindici" id="toc-i-sette-sottoindici" class="nav-link" data-scroll-target="#i-sette-sottoindici"><span class="header-section-number">2.2</span> I sette sottoindici</a>
+  <ul class="collapse">
+  <li><a href="#mercato-monetario-ss_mmn" id="toc-mercato-monetario-ss_mmn" class="nav-link" data-scroll-target="#mercato-monetario-ss_mmn"><span class="header-section-number">2.2.1</span> Mercato monetario (<code>SS_MMN</code>)</a></li>
+  <li><a href="#intermediari-finanziari-ss_fin" id="toc-intermediari-finanziari-ss_fin" class="nav-link" data-scroll-target="#intermediari-finanziari-ss_fin"><span class="header-section-number">2.2.2</span> Intermediari finanziari (<code>SS_FIN</code>)</a></li>
+  <li><a href="#mercato-obbligazionario-ss_bmn" id="toc-mercato-obbligazionario-ss_bmn" class="nav-link" data-scroll-target="#mercato-obbligazionario-ss_bmn"><span class="header-section-number">2.2.3</span> Mercato obbligazionario (<code>SS_BMN</code>)</a></li>
+  <li><a href="#mercato-valutario-ss_fxn" id="toc-mercato-valutario-ss_fxn" class="nav-link" data-scroll-target="#mercato-valutario-ss_fxn"><span class="header-section-number">2.2.4</span> Mercato valutario (<code>SS_FXN</code>)</a></li>
+  <li><a href="#mercato-azionario-ss_emn" id="toc-mercato-azionario-ss_emn" class="nav-link" data-scroll-target="#mercato-azionario-ss_emn"><span class="header-section-number">2.2.5</span> Mercato azionario (<code>SS_EMN</code>)</a></li>
+  <li><a href="#settore-consumer-ss_con" id="toc-settore-consumer-ss_con" class="nav-link" data-scroll-target="#settore-consumer-ss_con"><span class="header-section-number">2.2.6</span> Settore consumer (<code>SS_CON</code>)</a></li>
+  <li><a href="#stress-sovrano-sov_ewn" id="toc-stress-sovrano-sov_ewn" class="nav-link" data-scroll-target="#stress-sovrano-sov_ewn"><span class="header-section-number">2.2.7</span> Stress sovrano (<code>SOV_EWN</code>)</a></li>
+  </ul></li>
+  <li><a href="#come-leggere-il-ciss-soglie-orientative" id="toc-come-leggere-il-ciss-soglie-orientative" class="nav-link" data-scroll-target="#come-leggere-il-ciss-soglie-orientative"><span class="header-section-number">2.3</span> Come leggere il CISS: soglie orientative</a></li>
+  </ul></li>
+  <li><a href="#implicazioni-per-lanalisi-del-credito" id="toc-implicazioni-per-lanalisi-del-credito" class="nav-link" data-scroll-target="#implicazioni-per-lanalisi-del-credito"><span class="header-section-number">3</span> Implicazioni per l’analisi del credito</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2604_VariabiliESRB/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Variabili ESRB: a cosa servono</h1>
+<p class="subtitle lead">CISS, P/E e rischio sistemico europeo — guida all’uso analitico</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Rischio sistemico</div>
+    <div class="quarto-category">ESRB</div>
+    <div class="quarto-category">Mercati finanziari</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    L’ESRB Risk Dashboard aggrega due classi di indicatori: lo stress finanziario (CISS e sottoindici) e le valutazioni di mercato (P/E azionario).
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2 aprile 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>L’ESRB Risk Dashboard aggrega due classi di indicatori: lo stress finanziario (CISS e sottoindici) e le valutazioni di mercato (P/E azionario). Il documento spiega cosa misura ciascuna variabile, perché è rilevante per l’analisi del rischio sistemico e come le due classi si leggono in modo integrato per individuare configurazioni di vulnerabilità latente.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>ESRB, CISS, rischio sistemico, P/E, stabilità finanziaria, area euro</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="perché-esistono-queste-variabili" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Perché esistono queste variabili</h1>
+<p>L’<strong>European Systemic Risk Board</strong> ha il mandato di identificare i rischi per la stabilità finanziaria dell’UE <em>prima</em> che si materializzino. Il problema è che il rischio sistemico non è direttamente osservabile: lo si inferisce da segnali di mercato.</p>
+<p>Il Dashboard ESRB combina due tipi di segnale:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 17%">
+<col style="width: 60%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Classe</th>
+<th style="text-align: left;">Variabile principale</th>
+<th style="text-align: left;">Cosa cattura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Stress realizzato</strong></td>
+<td style="text-align: left;">CISS e sottoindici</td>
+<td style="text-align: left;">Quanto stress c’è <em>adesso</em> nei mercati finanziari</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Vulnerabilità latente</strong></td>
+<td style="text-align: left;">P/E ratio azionario</td>
+<td style="text-align: left;">Quanto sono “stirate” le valutazioni, cioè quanto spazio c’è per una correzione</td>
+</tr>
+</tbody>
+</table>
+<p>Il punto cruciale è che le due classi possono <strong>divergere</strong>: basso stress oggi non significa basso rischio domani. È esattamente la configurazione più pericolosa — e quella attuale, come vedremo.</p>
+<hr>
+</section>
+<section id="il-ciss-stress-finanziario-composito" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Il CISS: stress finanziario composito</h1>
+<section id="cosa-misura" class="level2 anchored" data-number="2.1" data-anchor-id="cosa-misura">
+<h2 class="anchored" data-number="2.1" data-anchor-id="cosa-misura"><span class="header-section-number">2.1</span> Cosa misura</h2>
+<p>Il <strong>CISS</strong> (<em>Composite Indicator of Systemic Stress</em>) è pubblicato dalla BCE e misura il livello di stress <em>simultaneo</em> in cinque segmenti del sistema finanziario dell’area euro. Il valore va da 0 (nessuno stress) a 1 (stress massimo storico).</p>
+<p>La caratteristica distintiva del CISS rispetto a un semplice indice di volatilità è che pesa i sottoindici in funzione della <strong>correlazione tra i segmenti</strong>: quando lo stress è diffuso su più mercati contemporaneamente, il CISS sale in modo più che proporzionale. È questa correlazione il cuore del rischio sistemico.</p>
+<div id="7fee1ad6" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+<div class="figure">
+<p><img src="figure/fig01.png" class="img-fluid figure-img" role="img" width="820"></p>
+</div>
+</div>
+</div>
+</div>
+<p><em>Figura 1 — CISS composito con contributo dei sottoindici (area euro, 2007–oggi). Fonte: ECB Data Portal.</em></p>
+</section>
+<section id="i-sette-sottoindici" class="level2 anchored" data-number="2.2" data-anchor-id="i-sette-sottoindici">
+<h2 class="anchored" data-number="2.2" data-anchor-id="i-sette-sottoindici"><span class="header-section-number">2.2</span> I sette sottoindici</h2>
+<p>Il CISS aggrega sette segmenti. Ognuno ha un significato analitico preciso:</p>
+<section id="mercato-monetario-ss_mmn" class="level3 anchored" data-number="2.2.1" data-anchor-id="mercato-monetario-ss_mmn">
+<h3 class="anchored" data-number="2.2.1" data-anchor-id="mercato-monetario-ss_mmn"><span class="header-section-number">2.2.1</span> Mercato monetario (<code>SS_MMN</code>)</h3>
+<p>Misura la tensione nel mercato interbancario e dei pronti contro termine. È il primo segmento a stressarsi in una crisi di liquidità: il collasso di Lehman (settembre 2008) è chiaramente visibile come picco isolato.</p>
+<p><strong>Utile per</strong>: segnali precoce di credit crunch interbancario; monitoraggio della trasmissione della politica monetaria.</p>
+</section>
+<section id="intermediari-finanziari-ss_fin" class="level3 anchored" data-number="2.2.2" data-anchor-id="intermediari-finanziari-ss_fin">
+<h3 class="anchored" data-number="2.2.2" data-anchor-id="intermediari-finanziari-ss_fin"><span class="header-section-number">2.2.2</span> Intermediari finanziari (<code>SS_FIN</code>)</h3>
+<p>Stress nel settore bancario e assicurativo, misurato da spread CDS, volatilità azionaria delle banche e distanza dal default. Riflette la percezione del rischio di controparte.</p>
+<p><strong>Utile per</strong>: valutare la solidità percepita del sistema bancario; anticipare restrizioni all’offerta di credito.</p>
+</section>
+<section id="mercato-obbligazionario-ss_bmn" class="level3 anchored" data-number="2.2.3" data-anchor-id="mercato-obbligazionario-ss_bmn">
+<h3 class="anchored" data-number="2.2.3" data-anchor-id="mercato-obbligazionario-ss_bmn"><span class="header-section-number">2.2.3</span> Mercato obbligazionario (<code>SS_BMN</code>)</h3>
+<p>Tensione nel mercato dei titoli di Stato e corporate bond: spread, liquidità, volatilità dei rendimenti. Il picco 2011–2012 della crisi del debito sovrano è il segnale dominante.</p>
+<p><strong>Utile per</strong>: monitorare il rischio di frammentazione del mercato dei capitali; prezzare il rischio di rifinanziamento degli Stati.</p>
+</section>
+<section id="mercato-valutario-ss_fxn" class="level3 anchored" data-number="2.2.4" data-anchor-id="mercato-valutario-ss_fxn">
+<h3 class="anchored" data-number="2.2.4" data-anchor-id="mercato-valutario-ss_fxn"><span class="header-section-number">2.2.4</span> Mercato valutario (<code>SS_FXN</code>)</h3>
+<p>Volatilità e movimenti direzionali anomali nei cambi dell’euro. Tendenzialmente più basso degli altri in regime di euro, ma si attiva in periodi di risk-off globale.</p>
+<p><strong>Utile per</strong>: valutare pressioni esterne e flight-to-safety transfrontalieri.</p>
+</section>
+<section id="mercato-azionario-ss_emn" class="level3 anchored" data-number="2.2.5" data-anchor-id="mercato-azionario-ss_emn">
+<h3 class="anchored" data-number="2.2.5" data-anchor-id="mercato-azionario-ss_emn"><span class="header-section-number">2.2.5</span> Mercato azionario (<code>SS_EMN</code>)</h3>
+<p>Volatilità realizzata e implicita degli indici azionari europei, insieme alla dispersione dei rendimenti. Cattura le correzioni di borsa ma non la sopravvalutazione.</p>
+<p><strong>Utile per</strong>: misurare il sentiment di mercato; non per misurare il rischio di valutazione (quello è il P/E).</p>
+</section>
+<section id="settore-consumer-ss_con" class="level3 anchored" data-number="2.2.6" data-anchor-id="settore-consumer-ss_con">
+<h3 class="anchored" data-number="2.2.6" data-anchor-id="settore-consumer-ss_con"><span class="header-section-number">2.2.6</span> Settore consumer (<code>SS_CON</code>)</h3>
+<p>Variabile meno standard: cattura lo stress percepito dalle famiglie e dalle imprese non finanziarie, tipicamente tramite indicatori di fiducia e spread sul credito al consumo.</p>
+<p><strong>Utile per</strong>: monitorare la trasmissione dello stress finanziario all’economia reale.</p>
+</section>
+<section id="stress-sovrano-sov_ewn" class="level3 anchored" data-number="2.2.7" data-anchor-id="stress-sovrano-sov_ewn">
+<h3 class="anchored" data-number="2.2.7" data-anchor-id="stress-sovrano-sov_ewn"><span class="header-section-number">2.2.7</span> Stress sovrano (<code>SOV_EWN</code>)</h3>
+<p>Componente specifica al rischio sovrano dell’area euro: spread sui BTP, Bonos, OAT rispetto al Bund. È strutturalmente il sottoindice con il livello più alto in media, dato il problema storico del rischio di ridenominazione.</p>
+<p><strong>Utile per</strong>: valutare la frammentazione finanziaria nell’area euro; monitorare la sostenibilità del debito pubblico.</p>
+<hr>
+</section>
+</section>
+<section id="come-leggere-il-ciss-soglie-orientative" class="level2 anchored" data-number="2.3" data-anchor-id="come-leggere-il-ciss-soglie-orientative">
+<h2 class="anchored" data-number="2.3" data-anchor-id="come-leggere-il-ciss-soglie-orientative"><span class="header-section-number">2.3</span> Come leggere il CISS: soglie orientative</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Valore CISS</th>
+<th style="text-align: left;">Interpretazione</th>
+<th style="text-align: left;">Esempi storici</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">&lt; 0.10</td>
+<td style="text-align: left;">Calma finanziaria</td>
+<td style="text-align: left;">2014–2019 (pre-Covid)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.10 – 0.30</td>
+<td style="text-align: left;">Stress moderato</td>
+<td style="text-align: left;">2022–2023 post-guerra</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0.30 – 0.50</td>
+<td style="text-align: left;">Stress elevato</td>
+<td style="text-align: left;">Covid marzo 2020</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">&gt; 0.50</td>
+<td style="text-align: left;">Stress sistemico</td>
+<td style="text-align: left;">Lehman 2008, crisi sovrana 2011</td>
+</tr>
+</tbody>
+</table>
+<div id="40b1f0c7" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+<div class="figure">
+<p><img src="figure/fig02.png" class="img-fluid figure-img" role="img" width="820"></p>
+</div>
+</div>
+</div>
+</div>
+<p><em>Figura 2 — CISS dal 2022: lo stress è sceso da picchi elevati a livelli contenuti nonostante il contesto geopolitico. Fonte: ECB Data Portal.</em></p>
+<p>Il grafico mostra la <strong>caduta del CISS nel 2024–2026</strong>: i mercati hanno metabolizzato guerra, SVB e rialzi BCE senza fratture sistemiche. Ma questo <em>non</em> significa assenza di rischio — significa assenza di stress <em>percepito</em>. È qui che entra il P/E.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 99%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">::::</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Serie ESRB Cosa rappresenta P/E tipico Perché differisce</td>
+</tr>
+</tbody>
+</table>
+<p><strong>EU non-financial corporations</strong> Indice STOXX600 escluso finanziario 18–22 Include tech, industriali, farmaceutici — alta crescita attesa</p>
+<p><strong>EU main index</strong> STOXX Europe 600 14–18 Media ponderata di tutti i settori</p>
+<p><strong>EU banking sector</strong> STOXX Eur 600 Banks 7–12 Le banche trattano strutturalmente a sconto: rischio regolatorio, ciclo creditizio, opacità del bilancio</p>
+<p><strong>EU insurance sector</strong> STOXX Eur 600 Insurance 10–14 Settore difensivo, P/E intermedio ——————————————————————————————————————————————————————————————————</p>
+<p>Il <strong>basso P/E delle banche</strong> non è necessariamente un segnale di economicità: riflette il fatto che il mercato incorpora una probabilità di perdite future (crediti deteriorati, rischio di credito, rischio duration) che deprime il denominatore atteso. Quando il P/E bancario scende ulteriormente durante una crisi, il mercato sta prezzando un deterioramento degli utili <em>futuri</em>, non solo volatilità.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 12%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">:</th>
+<th style="text-align: center;">no-insiem eme {numb</th>
+<th style="text-align: left;">e .section .level1 number=“4”} er=“4”}</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">CISS composito Stress sovrano Stress equity P/E non-financial P/E banking</td>
+<td style="text-align: center;">~0.06 ~0.05 ~0.05 ~22 ~10</td>
+<td style="text-align: left;">✅ Basso — mercati calmi ✅ Basso — spread contenuti ✅ Basso — volatilità contenuta ⚠️ Elevato — vicino ai massimi 2021 ⚠️ Basso strutturale — margine ridotto</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sintesi**: il rischi</td>
+<td style="text-align: center;">o non è n</td>
+<td style="text-align: left;">ei bilanci bancari né nei mercati finanziari oggi. È nelle <em>aspettative implicite nei prezzi</em>. Un P/E a 22 sul non-financial sconta crescita degli utili, disinflazione ordinata e tassi stabili. Un cambio di scenario — energetico, geopolitico, monetario — non ha bisogno di essere una crisi per innescare la correzione: basta una revisione delle aspettative.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="implicazioni-per-lanalisi-del-credito" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Implicazioni per l’analisi del credito</h1>
+<p>Per un ufficio studi bancario, la lettura integrata di questi indicatori produce due output operativi:</p>
+<p><strong>1. Early warning sul ciclo del credito</strong></p>
+<p>Il CISS stress sugli intermediari finanziari (<code>SS_FIN</code>) anticipa tipicamente di 2–4 trimestri il deterioramento della qualità degli impieghi. Integrarlo con i dati BankIT (NPL, coverage ratio, erogazioni) permette di costruire un nowcasting del rischio di credito settoriale.</p>
+<p><strong>2. Calibrazione degli scenari di stress</strong></p>
+<p>Un P/E alto all’inizio dello scenario implica che lo shock si trasmette con più forza: la correzione azionaria è amplificata, il collateral si deprezza di più, il risk appetite cala. Quindi scenari avversi calibrati in periodi di P/E elevato devono avere perdite più ampie rispetto agli stessi scenari in periodi di P/E compresso.</p>
+<hr>
+<p><em>Ultima osservazione dati: 31 marzo 2026. Fonte CISS: ECB Data Portal. Fonte P/E: proxy ETF iShares (la serie storica fedele è proprietaria LSEG).</em></p>
+</section>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2604_VariabiliESRB/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

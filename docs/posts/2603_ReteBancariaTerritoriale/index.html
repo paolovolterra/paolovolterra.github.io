@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="banche, sportelli, digital banking, Banca d’Italia, TDB20207, TFR10194, rete bancaria">
+<meta name="description" content="Analisi della rete bancaria italiana nel periodo 2015–2025 a partire dalle statistiche ufficiali Banca d’Italia (Bankit.sqlite).">
+
+<title>Rete bancaria territoriale in Italia – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Rete bancaria territoriale in Italia – Paolo Volterra">
+<meta property="og:description" content="Analisi della rete bancaria italiana nel periodo 2015–2025 a partire dalle statistiche ufficiali Banca d’Italia (Bankit.sqlite).">
+<meta property="og:image" content="https://paolovolterra.com/posts/2603_ReteBancariaTerritoriale/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Rete bancaria territoriale in Italia – Paolo Volterra">
+<meta name="twitter:description" content="Analisi della rete bancaria italiana nel periodo 2015–2025 a partire dalle statistiche ufficiali Banca d’Italia (Bankit.sqlite).">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2603_ReteBancariaTerritoriale/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#la-contrazione-della-rete-fisica" id="toc-la-contrazione-della-rete-fisica" class="nav-link active" data-scroll-target="#la-contrazione-della-rete-fisica"><span class="header-section-number">1</span> La contrazione della rete fisica</a>
+  <ul class="collapse">
+  <li><a href="#sportelli-banche-e-copertura-territoriale" id="toc-sportelli-banche-e-copertura-territoriale" class="nav-link" data-scroll-target="#sportelli-banche-e-copertura-territoriale"><span class="header-section-number">1.1</span> Sportelli, banche e copertura territoriale</a></li>
+  </ul></li>
+  <li><a href="#composizione-del-sistema-per-tipo-di-intermediario" id="toc-composizione-del-sistema-per-tipo-di-intermediario" class="nav-link" data-scroll-target="#composizione-del-sistema-per-tipo-di-intermediario"><span class="header-section-number">2</span> Composizione del sistema per tipo di intermediario</a>
+  <ul class="collapse">
+  <li><a href="#spa-bcc-popolari-filiali-estere" id="toc-spa-bcc-popolari-filiali-estere" class="nav-link" data-scroll-target="#spa-bcc-popolari-filiali-estere"><span class="header-section-number">2.1</span> SpA, BCC, Popolari, filiali estere</a></li>
+  </ul></li>
+  <li><a href="#depositi-e-prestiti-bancari" id="toc-depositi-e-prestiti-bancari" class="nav-link" data-scroll-target="#depositi-e-prestiti-bancari"><span class="header-section-number">3</span> Depositi e prestiti bancari</a>
+  <ul class="collapse">
+  <li><a href="#dinamica-del-risparmio-e-del-credito-tfr10194" id="toc-dinamica-del-risparmio-e-del-credito-tfr10194" class="nav-link" data-scroll-target="#dinamica-del-risparmio-e-del-credito-tfr10194"><span class="header-section-number">3.1</span> Dinamica del risparmio e del credito (TFR10194)</a></li>
+  </ul></li>
+  <li><a href="#la-rete-poste-italiane-a-confronto" id="toc-la-rete-poste-italiane-a-confronto" class="nav-link" data-scroll-target="#la-rete-poste-italiane-a-confronto"><span class="header-section-number">4</span> La rete Poste Italiane a confronto</a>
+  <ul class="collapse">
+  <li><a href="#un-presidio-alternativo-tspag010" id="toc-un-presidio-alternativo-tspag010" class="nav-link" data-scroll-target="#un-presidio-alternativo-tspag010"><span class="header-section-number">4.1</span> Un presidio alternativo (TSPAG010)</a></li>
+  </ul></li>
+  <li><a href="#atm-contrazione-più-lenta-degli-sportelli" id="toc-atm-contrazione-più-lenta-degli-sportelli" class="nav-link" data-scroll-target="#atm-contrazione-più-lenta-degli-sportelli"><span class="header-section-number">5</span> ATM: contrazione più lenta degli sportelli</a>
+  <ul class="collapse">
+  <li><a href="#terminali-installati-dalle-banche-tspag110" id="toc-terminali-installati-dalle-banche-tspag110" class="nav-link" data-scroll-target="#terminali-installati-dalle-banche-tspag110"><span class="header-section-number">5.1</span> Terminali installati dalle banche (TSPAG110)</a></li>
+  </ul></li>
+  <li><a href="#digital-banking-la-crescita-dei-canali-remoti" id="toc-digital-banking-la-crescita-dei-canali-remoti" class="nav-link" data-scroll-target="#digital-banking-la-crescita-dei-canali-remoti"><span class="header-section-number">6</span> Digital banking: la crescita dei canali remoti</a>
+  <ul class="collapse">
+  <li><a href="#home-banking-e-phone-banking-tspag120" id="toc-home-banking-e-phone-banking-tspag120" class="nav-link" data-scroll-target="#home-banking-e-phone-banking-tspag120"><span class="header-section-number">6.1</span> Home banking e phone banking (TSPAG120)</a></li>
+  </ul></li>
+  <li><a href="#sintesi-fisico-vs-digitale" id="toc-sintesi-fisico-vs-digitale" class="nav-link" data-scroll-target="#sintesi-fisico-vs-digitale"><span class="header-section-number">7</span> Sintesi: fisico vs digitale</a>
+  <ul class="collapse">
+  <li><a href="#la-sostituzione-strutturale-in-un-grafico" id="toc-la-sostituzione-strutturale-in-un-grafico" class="nav-link" data-scroll-target="#la-sostituzione-strutturale-in-un-grafico"><span class="header-section-number">7.1</span> La sostituzione strutturale in un grafico</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2603_ReteBancariaTerritoriale/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Rete bancaria territoriale in Italia</h1>
+<p class="subtitle lead">Sportelli, depositi, prestiti e canali digitali — Banca d’Italia, 2015–2025</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Banche</div>
+    <div class="quarto-category">Territori</div>
+    <div class="quarto-category">Banca d'Italia</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Analisi della rete bancaria italiana nel periodo 2015–2025 a partire dalle statistiche ufficiali Banca d’Italia (Bankit.sqlite).
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">29 marzo 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>Analisi della rete bancaria italiana nel periodo 2015–2025 a partire dalle statistiche ufficiali Banca d’Italia (Bankit.sqlite). Vengono esaminati la contrazione degli sportelli fisici, la composizione del sistema per tipo di intermediario (SpA, BCC, Popolari, Estere), le dinamiche di depositi e prestiti, il confronto con la rete Poste Italiane e la crescita dei canali digitali (home banking, ATM). Il filo conduttore è la sostituzione strutturale tra presenza fisica e accesso digitale ai servizi bancari.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>banche, sportelli, digital banking, Banca d’Italia, TDB20207, TFR10194, rete bancaria</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="la-contrazione-della-rete-fisica" class="level2 anchored" data-number="1" data-anchor-id="la-contrazione-della-rete-fisica">
+<h2 class="anchored" data-number="1" data-anchor-id="la-contrazione-della-rete-fisica"><span class="header-section-number">1</span> La contrazione della rete fisica</h2>
+<section id="sportelli-banche-e-copertura-territoriale" class="level3 anchored" data-number="1.1" data-anchor-id="sportelli-banche-e-copertura-territoriale">
+<h3 class="anchored" data-number="1.1" data-anchor-id="sportelli-banche-e-copertura-territoriale"><span class="header-section-number">1.1</span> Sportelli, banche e copertura territoriale</h3>
+<p>La presenza fisica del sistema bancario italiano si misura su tre dimensioni: il numero di <strong>banche</strong> (per sede amministrativa), il numero di <strong>sportelli</strong> (per localizzazione fisica) e i <strong>comuni serviti</strong>, cioè i comuni con almeno una filiale aperta al pubblico.</p>
+<p>I dati della tabella che segue mostrano l’evoluzione dal 2015 al 2024. Il numero di banche con sede in Italia è diminuito in modo pressoché continuo: da un lato le fusioni tra istituti minori (in particolare nel comparto BCC a seguito della riforma del credito cooperativo del 2016), dall’altro le uscite per incorporazione nei grandi gruppi. Va tenuto presente che i grandi gruppi nazionali — Intesa Sanpaolo, UniCredit, Banco BPM — non compaiono nel conteggio delle banche di una singola area geografica se la loro sede legale è altrove: il dato rispecchia quindi principalmente l’universo delle banche locali e regionali.</p>
+<p>Il calo degli sportelli è più rapido e pronunciato: in dieci anni l’Italia ha perso oltre un terzo delle proprie filiali bancarie fisiche. La riduzione è stata accelerata dalla pressione sui costi operativi, dalla crescita del digital banking e, dopo il 2020, dall’effetto acceleratore della pandemia sui comportamenti finanziari della clientela. I comuni privi di sportelli sono in costante aumento.</p>
+<div class="cell" data-execution_count="3">
+<div id="tab-rete" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-rete-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="15">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Anno</th>
+<th style="text-align: left;">Banche</th>
+<th style="text-align: left;">Comuni serviti</th>
+<th style="text-align: left;">Sportelli</th>
+<th style="text-align: left;">Sportelli / 100k ab.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2025</td>
+<td style="text-align: left;">414</td>
+<td style="text-align: left;">4,468</td>
+<td style="text-align: left;">19,140</td>
+<td style="text-align: left;">32.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2024</td>
+<td style="text-align: left;">420</td>
+<td style="text-align: left;">4,548</td>
+<td style="text-align: left;">19,655</td>
+<td style="text-align: left;">33.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023</td>
+<td style="text-align: left;">428</td>
+<td style="text-align: left;">4,651</td>
+<td style="text-align: left;">20,160</td>
+<td style="text-align: left;">34.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2022</td>
+<td style="text-align: left;">438</td>
+<td style="text-align: left;">4,785</td>
+<td style="text-align: left;">20,985</td>
+<td style="text-align: left;">36.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2021</td>
+<td style="text-align: left;">456</td>
+<td style="text-align: left;">4,902</td>
+<td style="text-align: left;">21,650</td>
+<td style="text-align: left;">37.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2020</td>
+<td style="text-align: left;">474</td>
+<td style="text-align: left;">5,102</td>
+<td style="text-align: left;">23,480</td>
+<td style="text-align: left;">39.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2019</td>
+<td style="text-align: left;">488</td>
+<td style="text-align: left;">5,221</td>
+<td style="text-align: left;">24,312</td>
+<td style="text-align: left;">41.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2018</td>
+<td style="text-align: left;">505</td>
+<td style="text-align: left;">5,368</td>
+<td style="text-align: left;">25,409</td>
+<td style="text-align: left;">42.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2017</td>
+<td style="text-align: left;">538</td>
+<td style="text-align: left;">5,523</td>
+<td style="text-align: left;">27,374</td>
+<td style="text-align: left;">45.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2016</td>
+<td style="text-align: left;">604</td>
+<td style="text-align: left;">5,618</td>
+<td style="text-align: left;">29,027</td>
+<td style="text-align: left;">48.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2015</td>
+<td style="text-align: left;">643</td>
+<td style="text-align: left;">5,732</td>
+<td style="text-align: left;">30,258</td>
+<td style="text-align: left;">50.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;1: TDB20207 — Banche, sportelli, comuni serviti e densità. Fonte: Banca d’Italia.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="cell-fig-rete" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div id="figura-rete" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-rete-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig01.png" class="figure-img" role="img" width="1070" height="469"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;1: Sportelli fisici (asse sx) e banche per sede (asse dx) — Italia, 2015–2025. Fonte: Banca d’Italia, TDB20207.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Il grafico sopra sovrappone le due serie su assi distinti per rendere confrontabile il ritmo di riduzione. Sportelli e banche calano insieme, ma con elasticità diversa: la chiusura di sportelli accelera a partire dal 2018-2019, quando i piani industriali dei grandi gruppi hanno cominciato a produrre effetti. Le banche con sede locale resistono un po’ di più nella prima fase, poi cedono anch’esse dopo la riforma delle BCC.</p>
+<div id="cell-fig-copertura" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div id="figura-copertura" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-copertura-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig02.png" class="figure-img" role="img" width="1187" height="470"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;2: Comuni con almeno uno sportello (sx) e densità ogni 100k abitanti (dx) — Italia. Fonte: Banca d’Italia, TDB20207/TDB20220.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>La copertura territoriale è la dimensione più critica dal punto di vista dell’inclusione finanziaria. Il numero di comuni con almeno uno sportello scende in modo pressoché lineare, segnalando che la contrazione non è solo quantitativa ma anche geografica: le aree interne e i piccoli comuni perdono l’unica filiale presente, con effetti che ricadono in misura sproporzionata su anziani, lavoratori autonomi e piccole imprese meno digitalizzate. La densità ogni 100.000 abitanti è un indicatore complementare che normalizza per la demografia: anche tenendo conto dello spopolamento di alcune aree, la riduzione rimane marcata.</p>
+<hr>
+</section>
+</section>
+<section id="composizione-del-sistema-per-tipo-di-intermediario" class="level2 anchored" data-number="2" data-anchor-id="composizione-del-sistema-per-tipo-di-intermediario">
+<h2 class="anchored" data-number="2" data-anchor-id="composizione-del-sistema-per-tipo-di-intermediario"><span class="header-section-number">2</span> Composizione del sistema per tipo di intermediario</h2>
+<section id="spa-bcc-popolari-filiali-estere" class="level3 anchored" data-number="2.1" data-anchor-id="spa-bcc-popolari-filiali-estere">
+<h3 class="anchored" data-number="2.1" data-anchor-id="spa-bcc-popolari-filiali-estere"><span class="header-section-number">2.1</span> SpA, BCC, Popolari, filiali estere</h3>
+<p>Il sistema bancario italiano non è omogeneo: convivono banche costituite come società per azioni (tipicamente le grandi banche commerciali), banche popolari a voto capitario, banche di credito cooperativo a mutualità prevalente e filiali di intermediari esteri. Ognuna di queste categorie ha seguito una traiettoria distinta nell’ultimo decennio.</p>
+<p>Le <strong>SpA</strong> dominano per numero di sportelli ma la loro quota sul totale si riduce, effetto delle chiusure sistematiche nei piani di razionalizzazione dei grandi gruppi. Le <strong>banche popolari</strong> hanno subito la ristrutturazione imposta dalla riforma del 2015-2016 (obbligo di trasformazione in SpA per le dieci maggiori per attivo), che ha accelerato fusioni e incorporazioni. Le <strong>BCC</strong> mostrano la maggiore resilienza: il modello mutualistico, il radicamento locale e l’orientamento verso la clientela retail di prossimità rendono meno urgente la riduzione capillare della rete fisica, almeno rispetto ai grandi gruppi. Le <strong>filiali estere</strong> sono una componente minoritaria ma stabile, concentrata prevalentemente nelle aree metropolitane.</p>
+<div id="cell-fig-tipo" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<div id="figura-tipo" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-tipo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig03.png" class="figure-img" role="img" width="1428" height="470"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;3: Numero di banche (sx) e sportelli (dx) per tipo di intermediario — Italia. Fonte: Banca d’Italia, TDB20207.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Lo stacked bar a sinistra (numero di banche per sede) permette di distinguere i due movimenti principali: la contrazione delle Popolari, che si concentra nel quinquennio 2016-2020, e la graduale riduzione delle BCC per effetto delle aggregazioni in gruppi cooperativi previste dalla riforma. Il pannello a destra (sportelli) amplifica queste tendenze: le SpA pesano in modo sproporzionato sulla perdita di sportelli in valore assoluto, ma la loro quota relativa resta dominante lungo tutto il periodo.</p>
+<p>Un elemento da tenere presente nell’interpretazione: il dato per sede amministrativa tende a concentrare le banche SpA nelle piazze finanziarie principali (Milano, Torino, Roma), mentre le BCC e le Popolari presentano una distribuzione geografica molto più diffusa. Analizzando i dati per area NUTS2 o NUTS3 questa asimmetria emerge chiaramente.</p>
+<hr>
+</section>
+</section>
+<section id="depositi-e-prestiti-bancari" class="level2 anchored" data-number="3" data-anchor-id="depositi-e-prestiti-bancari">
+<h2 class="anchored" data-number="3" data-anchor-id="depositi-e-prestiti-bancari"><span class="header-section-number">3</span> Depositi e prestiti bancari</h2>
+<section id="dinamica-del-risparmio-e-del-credito-tfr10194" class="level3 anchored" data-number="3.1" data-anchor-id="dinamica-del-risparmio-e-del-credito-tfr10194">
+<h3 class="anchored" data-number="3.1" data-anchor-id="dinamica-del-risparmio-e-del-credito-tfr10194"><span class="header-section-number">3.1</span> Dinamica del risparmio e del credito (TFR10194)</h3>
+<p>I dati TFR10194 misurano, per localizzazione dello sportello, il volume dei depositi della clientela (conti correnti, depositi a risparmio, esclusi i pronti contro termine) e degli impieghi bancari verso la clientela non finanziaria (mutui, finanziamenti, fidi, esclusi anch’essi i PCT). L’aggregazione è annuale e copre tutte le banche operative nell’area, indipendentemente dalla loro sede.</p>
+<div class="cell" data-execution_count="7">
+<div id="tab-dep" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="7">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-dep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="19">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Anno</th>
+<th style="text-align: left;">Depositi (Mld €)</th>
+<th style="text-align: left;">Prestiti (Mld €)</th>
+<th style="text-align: left;">LTD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2025</td>
+<td style="text-align: left;">1,624.5</td>
+<td style="text-align: left;">1,440.9</td>
+<td style="text-align: left;">88.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2024</td>
+<td style="text-align: left;">1,583.1</td>
+<td style="text-align: left;">1,415.7</td>
+<td style="text-align: left;">89.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023</td>
+<td style="text-align: left;">1,546.9</td>
+<td style="text-align: left;">1,429.5</td>
+<td style="text-align: left;">92.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2022</td>
+<td style="text-align: left;">1,601.0</td>
+<td style="text-align: left;">1,480.3</td>
+<td style="text-align: left;">92.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2021</td>
+<td style="text-align: left;">1,601.9</td>
+<td style="text-align: left;">1,481.2</td>
+<td style="text-align: left;">92.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2020</td>
+<td style="text-align: left;">1,493.2</td>
+<td style="text-align: left;">1,468.6</td>
+<td style="text-align: left;">98.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2019</td>
+<td style="text-align: left;">1,330.8</td>
+<td style="text-align: left;">1,429.5</td>
+<td style="text-align: left;">107.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2018</td>
+<td style="text-align: left;">1,257.1</td>
+<td style="text-align: left;">1,476.7</td>
+<td style="text-align: left;">117.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2017</td>
+<td style="text-align: left;">1,224.4</td>
+<td style="text-align: left;">1,526.9</td>
+<td style="text-align: left;">124.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2016</td>
+<td style="text-align: left;">1,169.8</td>
+<td style="text-align: left;">1,568.8</td>
+<td style="text-align: left;">134.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2015</td>
+<td style="text-align: left;">1,103.7</td>
+<td style="text-align: left;">1,586.2</td>
+<td style="text-align: left;">143.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2014</td>
+<td style="text-align: left;">1,044.2</td>
+<td style="text-align: left;">1,586.1</td>
+<td style="text-align: left;">151.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2013</td>
+<td style="text-align: left;">1,006.5</td>
+<td style="text-align: left;">1,619.7</td>
+<td style="text-align: left;">160.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2012</td>
+<td style="text-align: left;">987.8</td>
+<td style="text-align: left;">1,693.7</td>
+<td style="text-align: left;">171.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2011</td>
+<td style="text-align: left;">918.7</td>
+<td style="text-align: left;">1,728.6</td>
+<td style="text-align: left;">188.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2010</td>
+<td style="text-align: left;">922.1</td>
+<td style="text-align: left;">1,689.4</td>
+<td style="text-align: left;">183.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2009</td>
+<td style="text-align: left;">905.1</td>
+<td style="text-align: left;">1,561.2</td>
+<td style="text-align: left;">172.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2008</td>
+<td style="text-align: left;">801.4</td>
+<td style="text-align: left;">1,565.7</td>
+<td style="text-align: left;">195.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2007</td>
+<td style="text-align: left;">749.4</td>
+<td style="text-align: left;">1,500.7</td>
+<td style="text-align: left;">200.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2006</td>
+<td style="text-align: left;">727.6</td>
+<td style="text-align: left;">1,369.7</td>
+<td style="text-align: left;">188.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2005</td>
+<td style="text-align: left;">690.7</td>
+<td style="text-align: left;">1,238.0</td>
+<td style="text-align: left;">179.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2004</td>
+<td style="text-align: left;">644.5</td>
+<td style="text-align: left;">1,150.4</td>
+<td style="text-align: left;">178.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2003</td>
+<td style="text-align: left;">611.5</td>
+<td style="text-align: left;">1,089.8</td>
+<td style="text-align: left;">178.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2002</td>
+<td style="text-align: left;">583.3</td>
+<td style="text-align: left;">1,026.8</td>
+<td style="text-align: left;">176.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2001</td>
+<td style="text-align: left;">550.3</td>
+<td style="text-align: left;">970.9</td>
+<td style="text-align: left;">176.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2000</td>
+<td style="text-align: left;">520.0</td>
+<td style="text-align: left;">910.7</td>
+<td style="text-align: left;">175.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1999</td>
+<td style="text-align: left;">518.1</td>
+<td style="text-align: left;">811.5</td>
+<td style="text-align: left;">156.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1998</td>
+<td style="text-align: left;">506.2</td>
+<td style="text-align: left;">742.4</td>
+<td style="text-align: left;">146.7</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;2: TFR10194 — Depositi e prestiti bancari, Italia. Miliardi di euro. Fonte: Banca d’Italia.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="cell-fig-dep" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<div id="figura-dep" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-dep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig04.png" class="figure-img" role="img" width="1427" height="470"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;4: Depositi e prestiti bancari — Italia, 1998–2024. Miliardi di euro. Fonte: Banca d’Italia, TFR10194.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>I depositi bancari mostrano una crescita quasi ininterrotta lungo l’intero arco temporale. L’accelerazione più marcata si osserva nel 2020-2021: la pandemia ha compresso i consumi e gonfiato la liquidità delle famiglie, che è confluita in larga parte sui conti correnti bancari, anche per effetto del calo dei tassi che rendeva poco costosa la giacenza. Il successivo ciclo di rialzo dei tassi BCE (2022-2023) avrebbe potuto generare deflussi verso forme di risparmio più remunerative; nella pratica, l’effetto è stato più contenuto del previsto, anche per la lentezza con cui le banche hanno trasmesso i rialzi alla raccolta.</p>
+<p>I prestiti seguono una dinamica diversa: crescono fino al 2022, poi si contraggono visibilmente. Il rialzo dei tassi ha compresso sia la domanda (costo del debito più elevato per famiglie e imprese) sia l’offerta (criteri di concessione più stringenti in risposta al deterioramento del merito creditizio). Il <strong>loan-to-deposit ratio</strong> (LTD), riportato nel pannello di destra e nella tabella, è il rapporto tra prestiti e depositi: valori superiori a 100% indicano che la banca finanzia gli impieghi anche con raccolta diversa dai depositi (obbligazioni, mercato interbancario); valori in calo segnalano che la raccolta supera gli impieghi, tipicamente in fasi di riduzione del credito o di accumulo di liquidità.</p>
+<hr>
+</section>
+</section>
+<section id="la-rete-poste-italiane-a-confronto" class="level2 anchored" data-number="4" data-anchor-id="la-rete-poste-italiane-a-confronto">
+<h2 class="anchored" data-number="4" data-anchor-id="la-rete-poste-italiane-a-confronto"><span class="header-section-number">4</span> La rete Poste Italiane a confronto</h2>
+<section id="un-presidio-alternativo-tspag010" class="level3 anchored" data-number="4.1" data-anchor-id="un-presidio-alternativo-tspag010">
+<h3 class="anchored" data-number="4.1" data-anchor-id="un-presidio-alternativo-tspag010"><span class="header-section-number">4.1</span> Un presidio alternativo (TSPAG010)</h3>
+<p>Un elemento spesso trascurato nell’analisi dell’accesso ai servizi finanziari è la rete di <strong>Poste Italiane</strong>. Gli uffici postali, distribuiti capillarmente sul territorio nazionale incluse le aree interne e montane, erogano servizi bancari di base (BancoPosta, Postepay) e fungono da alternativa de facto agli sportelli bancari nei comuni in cui questi sono stati chiusi.</p>
+<div id="cell-fig-poste" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div id="figura-poste" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-poste-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig05.png" class="figure-img" role="img" width="1066" height="470"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;5: Sportelli bancari vs uffici postali — Italia. Dati nazionali, escl. breakdown geografico. Fonte: Banca d’Italia, TSPAG010.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Il confronto è netto: la rete di Poste Italiane è significativamente più stabile di quella bancaria. Gli uffici postali non sono soggetti alle stesse pressioni economiche degli sportelli bancari — non competono sulla raccolta di depositi a costo di mercato, non hanno costi di compliance comparabili, e la loro presenza sul territorio è in parte garantita da obblighi di servizio universale. In molti comuni italiani, specialmente nell’Appennino e nelle isole minori, l’ufficio postale è rimasto l’unico punto di accesso fisico a servizi di pagamento, bonifici e risparmio postale.</p>
+<p>Questo dato ha implicazioni rilevanti per la policy: la contrazione degli sportelli bancari non si traduce necessariamente in esclusione finanziaria totale, ma dipende in misura crescente dalla tenuta della rete postale come infrastruttura di prossimità. È un fattore da considerare nell’analisi dei deserts bancari a livello comunale.</p>
+<p><strong>Nota metodologica:</strong> TSPAG010 non dispone di un breakdown geografico regionale o provinciale; il dato è esclusivamente nazionale.</p>
+<hr>
+</section>
+</section>
+<section id="atm-contrazione-più-lenta-degli-sportelli" class="level2 anchored" data-number="5" data-anchor-id="atm-contrazione-più-lenta-degli-sportelli">
+<h2 class="anchored" data-number="5" data-anchor-id="atm-contrazione-più-lenta-degli-sportelli"><span class="header-section-number">5</span> ATM: contrazione più lenta degli sportelli</h2>
+<section id="terminali-installati-dalle-banche-tspag110" class="level3 anchored" data-number="5.1" data-anchor-id="terminali-installati-dalle-banche-tspag110">
+<h3 class="anchored" data-number="5.1" data-anchor-id="terminali-installati-dalle-banche-tspag110"><span class="header-section-number">5.1</span> Terminali installati dalle banche (TSPAG110)</h3>
+<p>Gli ATM (Automated Teller Machine) rappresentano una forma di presenza bancaria fisica alternativa allo sportello con operatore. La serie TSPAG110 misura il numero totale di ATM attivi installati da banche, sia presso filiali bancarie che in luoghi pubblici, centri commerciali, stazioni e presso esercenti.</p>
+<div id="cell-fig-atm" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display">
+<div id="figura-atm" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-atm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig06.png" class="figure-img" role="img" width="945" height="410"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;6: ATM attivi installati dalle banche — Italia. Fonte: Banca d’Italia, TSPAG110.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>A differenza degli sportelli, il numero di ATM mostra una contrazione più contenuta e tardiva. Questo riflette una logica economica precisa: installare e mantenere un ATM costa molto meno che tenere aperta una filiale con personale. Le banche hanno quindi sostituito parte degli sportelli con ATM off-site, riducendo il costo fisso della presenza territoriale mantenendo però un punto di accesso al contante. La crescita degli ATM multifunzione (che permettono versamenti, ricariche e operazioni dispositive oltre al prelievo) ha ampliato la funzionalità di questi terminali, avvicinandoli a una forma ridotta di sportello automatico.</p>
+<p>Va osservato tuttavia che l’ATM non è un sostituto completo dello sportello: non gestisce pratiche di finanziamento, consulenza, apertura rapporti, problemi operativi complessi. La clientela meno digitalizzata e meno autonoma — anziani, immigrati, soggetti in difficoltà finanziaria — necessita dell’operatore umano per una gamma rilevante di operazioni.</p>
+<hr>
+</section>
+</section>
+<section id="digital-banking-la-crescita-dei-canali-remoti" class="level2 anchored" data-number="6" data-anchor-id="digital-banking-la-crescita-dei-canali-remoti">
+<h2 class="anchored" data-number="6" data-anchor-id="digital-banking-la-crescita-dei-canali-remoti"><span class="header-section-number">6</span> Digital banking: la crescita dei canali remoti</h2>
+<section id="home-banking-e-phone-banking-tspag120" class="level3 anchored" data-number="6.1" data-anchor-id="home-banking-e-phone-banking-tspag120">
+<h3 class="anchored" data-number="6.1" data-anchor-id="home-banking-e-phone-banking-tspag120"><span class="header-section-number">6.1</span> Home banking e phone banking (TSPAG120)</h3>
+<p>La serie TSPAG120 riporta il numero di clienti che accedono ai servizi bancari tramite canali remoti: <strong>home corporate banking</strong> per le famiglie (HCB famiglie), <strong>home corporate banking</strong> per le imprese (HCB imprese) e <strong>phone banking</strong> (accesso via telefono, sia IVR automatico sia operatore). Il dato è disponibile con breakdown geografico, a differenza delle serie TSPAG050 che misura gli utenti di servizi informativi/dispositivi su base esclusivamente nazionale.</p>
+<div id="cell-fig-dig" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<div id="figura-dig" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-dig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig07.png" class="figure-img" role="img" width="1066" height="470"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;7: Clienti digital banking — Italia. Fonte: Banca d’Italia, TSPAG120.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>L’home banking per le famiglie cresce in modo sostenuto lungo tutto il periodo, con un’accelerazione visibile dopo il 2020: la pandemia ha spinto anche segmenti di clientela tradizionalmente riluttanti al digitale (fascia 55-70 anni) verso l’accesso online ai propri conti. La disponibilità di app bancarie sempre più intuitive ha abbassato la barriera all’adozione. Oggi la grande maggioranza dei correntisti italiani ha almeno accesso informativo al proprio conto via internet o mobile.</p>
+<p>L’HCB imprese cresce più lentamente in termini di numero di clienti, ma è il canale su cui si concentrano i volumi di valore più elevati: bonifici massivi, rendiconti di cassa, pagamenti fiscali e previdenziali, tesoreria aziendale. Per le PMI, l’accesso ai servizi dispositivi via corporate banking rappresenta un elemento di efficienza operativa rilevante.</p>
+<p>Il phone banking è invece in declino strutturale, sostituito dal canale app e web. Rimane rilevante come canale di assistenza e per operazioni che richiedono autenticazione forte con operatore, ma la sua quota sul totale dei canali remoti si assottiglia anno dopo anno.</p>
+<hr>
+</section>
+</section>
+<section id="sintesi-fisico-vs-digitale" class="level2 anchored" data-number="7" data-anchor-id="sintesi-fisico-vs-digitale">
+<h2 class="anchored" data-number="7" data-anchor-id="sintesi-fisico-vs-digitale"><span class="header-section-number">7</span> Sintesi: fisico vs digitale</h2>
+<section id="la-sostituzione-strutturale-in-un-grafico" class="level3 anchored" data-number="7.1" data-anchor-id="la-sostituzione-strutturale-in-un-grafico">
+<h3 class="anchored" data-number="7.1" data-anchor-id="la-sostituzione-strutturale-in-un-grafico"><span class="header-section-number">7.1</span> La sostituzione strutturale in un grafico</h3>
+<div id="cell-fig-index" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display">
+<div id="figura-index" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig08.png" class="figure-img" role="img" width="1069" height="470"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;8: Indice fisico vs digitale (base=primo anno comune=100) — Italia. Fonte: elaborazioni su Banca d’Italia.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Questo grafico è la sintesi dell’intero documento. Indicizzando le tre serie al valore del primo anno comune, si rende visibile la <strong>sostituzione strutturale</strong> in atto nel sistema bancario italiano: i clienti di home banking crescono di multipli rispetto alla base, mentre gli sportelli fisici calano di circa un terzo nello stesso arco temporale. Gli ATM seguono una traiettoria intermedia — meno volatili degli sportelli, molto meno dinamici del digitale.</p>
+<p>La divergenza tra la curva digitale e quelle fisiche non è semplicemente un fenomeno tecnologico. È il risultato di incentivi economici precisi: ogni sportello chiuso genera risparmi di costo rilevanti (affitti, personale, energy), mentre ogni nuovo cliente HCB ha un costo di acquisizione e gestione marginale bassissimo. Le banche hanno quindi razionalmente spostato la propria infrastruttura verso il digitale, trasferendo sul cliente l’onere dell’adozione tecnologica.</p>
+<p>Le implicazioni per la policy sono duplici. Sul versante dell’<strong>inclusione finanziaria</strong>, la riduzione degli sportelli crea zone d’ombra per i segmenti meno digitalizzati della popolazione; il presidio postale e gli ATM attenuano ma non eliminano questo rischio. Sul versante della <strong>competitività del sistema</strong>, la trasformazione digitale ha abbassato le barriere all’ingresso per nuovi operatori (neobank, fintech) che non devono sostenere i costi di una rete fisica, aumentando la pressione competitiva sulle banche tradizionali proprio nel segmento retail delle famiglie.</p>
+<hr>
+<p><em>Fonte: Banca d’Italia</em> <em>Tabelle: TDB20207 (rete bancaria), TDB20220 (densità), TFR10194 (depositi/prestiti), TSPAG010 (confronto Poste), TSPAG110 (ATM), TSPAG120 (digital banking)</em></p>
+</section>
+</section>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2603_ReteBancariaTerritoriale/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

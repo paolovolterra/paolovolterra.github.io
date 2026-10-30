@@ -1,0 +1,2639 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="description" content="Generazione, archetipi e uso per testare motori automatici di analisi">
+
+<title>Dati sintetici di bilancio – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Dati sintetici di bilancio – Paolo Volterra">
+<meta property="og:description" content="Generazione, archetipi e uso per testare motori automatici di analisi">
+<meta property="og:image" content="https://paolovolterra.com/posts/2607_DatiSinteticiBilancio/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Dati sintetici di bilancio – Paolo Volterra">
+<meta name="twitter:description" content="Generazione, archetipi e uso per testare motori automatici di analisi">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2607_DatiSinteticiBilancio/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#sintesi" id="toc-sintesi" class="nav-link active" data-scroll-target="#sintesi"><span class="header-section-number">1</span> Sintesi</a></li>
+  <li><a href="#premessa-il-problema-dei-dati-di-bilancio" id="toc-premessa-il-problema-dei-dati-di-bilancio" class="nav-link" data-scroll-target="#premessa-il-problema-dei-dati-di-bilancio"><span class="header-section-number">2</span> Premessa: il problema dei dati di bilancio</a></li>
+  <li><a href="#cosa-sono-i-dati-sintetici" id="toc-cosa-sono-i-dati-sintetici" class="nav-link" data-scroll-target="#cosa-sono-i-dati-sintetici"><span class="header-section-number">3</span> Cosa sono i dati sintetici</a></li>
+  <li><a href="#perche-generarli" id="toc-perche-generarli" class="nav-link" data-scroll-target="#perche-generarli"><span class="header-section-number">4</span> Perche’ generarli</a></li>
+  <li><a href="#come-sono-stati-generati" id="toc-come-sono-stati-generati" class="nav-link" data-scroll-target="#come-sono-stati-generati"><span class="header-section-number">5</span> Come sono stati generati</a></li>
+  <li><a href="#gli-archetipi" id="toc-gli-archetipi" class="nav-link" data-scroll-target="#gli-archetipi"><span class="header-section-number">6</span> Gli archetipi</a></li>
+  <li><a href="#i-parametri-dati-allalgoritmo" id="toc-i-parametri-dati-allalgoritmo" class="nav-link" data-scroll-target="#i-parametri-dati-allalgoritmo"><span class="header-section-number">7</span> I parametri dati all’algoritmo</a></li>
+  <li><a href="#variabili-prodotte" id="toc-variabili-prodotte" class="nav-link" data-scroll-target="#variabili-prodotte"><span class="header-section-number">8</span> Variabili prodotte</a></li>
+  <li><a href="#esempio-di-bilancio-riclassificato" id="toc-esempio-di-bilancio-riclassificato" class="nav-link" data-scroll-target="#esempio-di-bilancio-riclassificato"><span class="header-section-number">9</span> Esempio di bilancio riclassificato</a>
+  <ul class="collapse">
+  <li><a href="#situazione-patrimoniale-riclassificata" id="toc-situazione-patrimoniale-riclassificata" class="nav-link" data-scroll-target="#situazione-patrimoniale-riclassificata"><span class="header-section-number">9.1</span> Situazione patrimoniale riclassificata</a></li>
+  <li><a href="#conto-economico-riclassificato" id="toc-conto-economico-riclassificato" class="nav-link" data-scroll-target="#conto-economico-riclassificato"><span class="header-section-number">9.2</span> Conto economico riclassificato</a></li>
+  <li><a href="#indicatori-sintetici-del-caso-critico" id="toc-indicatori-sintetici-del-caso-critico" class="nav-link" data-scroll-target="#indicatori-sintetici-del-caso-critico"><span class="header-section-number">9.3</span> Indicatori sintetici del caso critico</a></li>
+  </ul></li>
+  <li><a href="#controlli-di-coerenza" id="toc-controlli-di-coerenza" class="nav-link" data-scroll-target="#controlli-di-coerenza"><span class="header-section-number">10</span> Controlli di coerenza</a></li>
+  <li><a href="#uso-per-testare-un-motore-automatico" id="toc-uso-per-testare-un-motore-automatico" class="nav-link" data-scroll-target="#uso-per-testare-un-motore-automatico"><span class="header-section-number">11</span> Uso per testare un motore automatico</a></li>
+  <li><a href="#quanto-screma-il-motore" id="toc-quanto-screma-il-motore" class="nav-link" data-scroll-target="#quanto-screma-il-motore"><span class="header-section-number">12</span> Quanto screma il motore</a></li>
+  <li><a href="#quali-regole-pesano-di-piu" id="toc-quali-regole-pesano-di-piu" class="nav-link" data-scroll-target="#quali-regole-pesano-di-piu"><span class="header-section-number">13</span> Quali regole pesano di piu’</a></li>
+  <li><a href="#come-usare-il-dataset" id="toc-come-usare-il-dataset" class="nav-link" data-scroll-target="#come-usare-il-dataset"><span class="header-section-number">14</span> Come usare il dataset</a>
+  <ul class="collapse">
+  <li><a href="#formazione" id="toc-formazione" class="nav-link" data-scroll-target="#formazione"><span class="header-section-number">14.1</span> Formazione</a></li>
+  <li><a href="#taratura-dei-filtri" id="toc-taratura-dei-filtri" class="nav-link" data-scroll-target="#taratura-dei-filtri"><span class="header-section-number">14.2</span> Taratura dei filtri</a></li>
+  <li><a href="#stress-test" id="toc-stress-test" class="nav-link" data-scroll-target="#stress-test"><span class="header-section-number">14.3</span> Stress test</a></li>
+  <li><a href="#documentazione-metodologica" id="toc-documentazione-metodologica" class="nav-link" data-scroll-target="#documentazione-metodologica"><span class="header-section-number">14.4</span> Documentazione metodologica</a></li>
+  </ul></li>
+  <li><a href="#limiti" id="toc-limiti" class="nav-link" data-scroll-target="#limiti"><span class="header-section-number">15</span> Limiti</a></li>
+  <li><a href="#prossimi-sviluppi" id="toc-prossimi-sviluppi" class="nav-link" data-scroll-target="#prossimi-sviluppi"><span class="header-section-number">16</span> Prossimi sviluppi</a></li>
+  <li><a href="#estensione-settore-e-territorio" id="toc-estensione-settore-e-territorio" class="nav-link" data-scroll-target="#estensione-settore-e-territorio"><span class="header-section-number">17</span> Estensione: settore e territorio</a>
+  <ul class="collapse">
+  <li><a href="#fonti-interne-gia-disponibili" id="toc-fonti-interne-gia-disponibili" class="nav-link" data-scroll-target="#fonti-interne-gia-disponibili"><span class="header-section-number">17.1</span> Fonti interne gia’ disponibili</a></li>
+  <li><a href="#aree-territoriali-mediobanca" id="toc-aree-territoriali-mediobanca" class="nav-link" data-scroll-target="#aree-territoriali-mediobanca"><span class="header-section-number">17.2</span> Aree territoriali Mediobanca</a></li>
+  <li><a href="#settori-mediobanca" id="toc-settori-mediobanca" class="nav-link" data-scroll-target="#settori-mediobanca"><span class="header-section-number">17.3</span> Settori Mediobanca</a></li>
+  <li><a href="#esempio-di-logica-settoriale" id="toc-esempio-di-logica-settoriale" class="nav-link" data-scroll-target="#esempio-di-logica-settoriale"><span class="header-section-number">17.4</span> Esempio di logica settoriale</a></li>
+  <li><a href="#esempio-di-logica-territoriale" id="toc-esempio-di-logica-territoriale" class="nav-link" data-scroll-target="#esempio-di-logica-territoriale"><span class="header-section-number">17.5</span> Esempio di logica territoriale</a></li>
+  <li><a href="#come-incorporarlo-nel-generatore" id="toc-come-incorporarlo-nel-generatore" class="nav-link" data-scroll-target="#come-incorporarlo-nel-generatore"><span class="header-section-number">17.6</span> Come incorporarlo nel generatore</a></li>
+  <li><a href="#caveat-metodologico" id="toc-caveat-metodologico" class="nav-link" data-scroll-target="#caveat-metodologico"><span class="header-section-number">17.7</span> Caveat metodologico</a></li>
+  </ul></li>
+  <li><a href="#estensione-dati-sintetici-da-esperienza-di-lavoro" id="toc-estensione-dati-sintetici-da-esperienza-di-lavoro" class="nav-link" data-scroll-target="#estensione-dati-sintetici-da-esperienza-di-lavoro"><span class="header-section-number">18</span> Estensione: dati sintetici da esperienza di lavoro</a>
+  <ul class="collapse">
+  <li><a href="#pattern-esperienziali" id="toc-pattern-esperienziali" class="nav-link" data-scroll-target="#pattern-esperienziali"><span class="header-section-number">18.1</span> Pattern esperienziali</a></li>
+  <li><a href="#come-entra-nel-generatore" id="toc-come-entra-nel-generatore" class="nav-link" data-scroll-target="#come-entra-nel-generatore"><span class="header-section-number">18.2</span> Come entra nel generatore</a></li>
+  <li><a href="#perche-e-utile" id="toc-perche-e-utile" class="nav-link" data-scroll-target="#perche-e-utile"><span class="header-section-number">18.3</span> Perche’ e’ utile</a></li>
+  <li><a href="#caveat" id="toc-caveat" class="nav-link" data-scroll-target="#caveat"><span class="header-section-number">18.4</span> Caveat</a></li>
+  </ul></li>
+  <li><a href="#riferimenti-accademici-utili" id="toc-riferimenti-accademici-utili" class="nav-link" data-scroll-target="#riferimenti-accademici-utili"><span class="header-section-number">19</span> Riferimenti accademici utili</a>
+  <ul class="collapse">
+  <li><a href="#dati-sintetici-e-disclosure-control" id="toc-dati-sintetici-e-disclosure-control" class="nav-link" data-scroll-target="#dati-sintetici-e-disclosure-control"><span class="header-section-number">19.1</span> Dati sintetici e disclosure control</a></li>
+  <li><a href="#dati-tabellari-sintetici-e-machine-learning" id="toc-dati-tabellari-sintetici-e-machine-learning" class="nav-link" data-scroll-target="#dati-tabellari-sintetici-e-machine-learning"><span class="header-section-number">19.2</span> Dati tabellari sintetici e machine learning</a></li>
+  <li><a href="#classificazione-squilibri-di-classe-e-rischio-di-credito" id="toc-classificazione-squilibri-di-classe-e-rischio-di-credito" class="nav-link" data-scroll-target="#classificazione-squilibri-di-classe-e-rischio-di-credito"><span class="header-section-number">19.3</span> Classificazione, squilibri di classe e rischio di credito</a></li>
+  <li><a href="#benchmark-reale-delle-medie-imprese-italiane" id="toc-benchmark-reale-delle-medie-imprese-italiane" class="nav-link" data-scroll-target="#benchmark-reale-delle-medie-imprese-italiane"><span class="header-section-number">19.4</span> Benchmark reale delle medie imprese italiane</a></li>
+  <li><a href="#collegamento-con-questo-progetto" id="toc-collegamento-con-questo-progetto" class="nav-link" data-scroll-target="#collegamento-con-questo-progetto"><span class="header-section-number">19.5</span> Collegamento con questo progetto</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">20</span> 20 References</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2607_DatiSinteticiBilancio/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Dati sintetici di bilancio</h1>
+<p class="subtitle lead">Generazione, archetipi e uso per testare motori automatici di analisi</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Dati sintetici</div>
+    <div class="quarto-category">Bilanci</div>
+    <div class="quarto-category">Imprese</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Generazione, archetipi e uso per testare motori automatici di analisi
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">14 luglio 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="sintesi" class="level2 anchored" data-number="1" data-anchor-id="sintesi">
+<h2 class="anchored" data-number="1" data-anchor-id="sintesi"><span class="header-section-number">1</span> Sintesi</h2>
+<p>Questo documento descrive un piccolo laboratorio per generare <strong>dati sintetici di bilancio</strong> e usarli per provare un motore automatico di analisi.</p>
+<p>L’idea nasce da un problema pratico: se vogliamo spiegare, testare o stressare un algoritmo di lettura dei bilanci, non sempre e’ opportuno usare dati reali. I dati reali possono contenere informazioni riconoscibili, possono essere coperti da vincoli di riservatezza e possono rendere difficile condividere esempi didattici.</p>
+<p>I dati sintetici risolvono questo problema quando sono costruiti bene:</p>
+<ul>
+<li>non rappresentano imprese reali;</li>
+<li>mantengono una struttura economico-finanziaria plausibile;</li>
+<li>permettono di creare molti casi diversi;</li>
+<li>consentono di misurare quanto un algoritmo screma, filtra o segnala casi critici;</li>
+<li>rendono esplicite le regole usate per generare il campione.</li>
+</ul>
+<p>Nel progetto sono stati generati 1000 bilanci sintetici e un primo motore di screening trasparente. Lo screening classifica ogni impresa sintetica in <code>PASS</code>, <code>WATCH</code> o <code>REJECT</code>.</p>
+<div id="38ba4ab0" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">metrica</th>
+<th style="text-align: left;">valore</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: left;">Imprese sintetiche generate</td>
+<td style="text-align: left;">1000</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: left;">Archetipi disponibili</td>
+<td style="text-align: left;">7</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: left;">Bilanci quadrati</td>
+<td style="text-align: left;">1000/1000</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td style="text-align: left;">Output screening disponibili</td>
+<td style="text-align: left;">REJECT, WATCH, PASS</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="premessa-il-problema-dei-dati-di-bilancio" class="level2 anchored" data-number="2" data-anchor-id="premessa-il-problema-dei-dati-di-bilancio">
+<h2 class="anchored" data-number="2" data-anchor-id="premessa-il-problema-dei-dati-di-bilancio"><span class="header-section-number">2</span> Premessa: il problema dei dati di bilancio</h2>
+<p>Una premessa di contesto riguarda la disponibilita’ dei bilanci societari in Italia.</p>
+<p>I bilanci depositati dalle societa’ sono documenti pubblici in senso giuridico: esistono nel Registro delle Imprese e possono essere richiesti. Tuttavia, per un uso analitico sistematico, la situazione e’ diversa. Nella pratica l’accesso avviene spesso per singola impresa, tramite visure, atti o bilanci scaricati puntualmente, con costi e interfacce pensate piu’ per la consultazione documentale che per il riuso massivo come open data.</p>
+<p>Questo crea una frizione importante:</p>
+<ul>
+<li>il dato esiste;</li>
+<li>il dato e’ formalmente pubblico;</li>
+<li>ma non e’ normalmente disponibile come dataset aperto, bulk, machine-readable e liberamente riusabile;</li>
+<li>l’analisi su larga scala richiede quindi acquisto di dati, scraping, estrazioni puntuali o fonti proprietarie.</li>
+</ul>
+<p>Il tema si collega alla politica europea sugli open data. La Direttiva Open Data e PSI <span class="citation" data-cites="eu2019opendata">(<a href="#ref-eu2019opendata" role="doc-biblioref">European Parliament and Council of the European Union 2019</a>)</span> promuove il riuso dell’informazione del settore pubblico e introduce il principio degli <strong>high-value datasets</strong>. Tra le categorie di alto valore rientrano anche i dati su <strong>companies and company ownership</strong>, cioe’ imprese e titolarita societaria. Il Regolamento di esecuzione sugli high-value datasets <span class="citation" data-cites="eu2023hvd">(<a href="#ref-eu2023hvd" role="doc-biblioref">European Commission 2023</a>)</span> rafforza l’idea che alcune basi dati pubbliche debbano essere rese disponibili con condizioni tecniche e giuridiche favorevoli al riuso.</p>
+<p>Questa osservazione va formulata con precisione: non si assume qui che esista gia’ un obbligo europeo pienamente operativo di pubblicare in open data tutti i bilanci completi delle societa’ italiane. Il punto e’ piu’ pragmatico: c’e’ una tensione evidente tra l’obiettivo europeo di riuso dei dati pubblici ad alto valore e l’attuale disponibilita’ operativa dei bilanci societari italiani, che rimane prevalentemente puntuale e a pagamento.</p>
+<p>In altri paesi esistono esperienze piu’ vicine a dataset analitici aperti o facilmente riusabili. Un esempio utile e’ la documentazione di dataset su bilanci societari norvegesi <span class="citation" data-cites="wahlstrom2022">(<a href="#ref-wahlstrom2022" role="doc-biblioref">Wahlstrøm 2022</a>)</span>, che mostra il valore di una base dati ampia e strutturata sui financial statements aziendali.</p>
+<p>In questo contesto, i dati sintetici non sostituiscono l’open data reale. Servono pero’ a tre scopi:</p>
+<ol type="1">
+<li>costruire esempi condivisibili senza dati riservati o proprietari;</li>
+<li>sviluppare e testare motori di analisi prima di applicarli a basi dati reali;</li>
+<li>rendere esplicite regole, indicatori e soglie in un ambiente controllato.</li>
+</ol>
+<p>C’e’ anche un aspetto culturale. La disponibilita’ di dati di bilancio aperti, strutturati e riusabili non aiuterebbe solo chi sviluppa algoritmi. Aiuterebbe anche:</p>
+<ul>
+<li>chi redige i bilanci, per comprendere meglio come le informazioni vengono lette e confrontate;</li>
+<li>chi li legge, per allenarsi su casi, ratios, riclassificazioni e segnali di rischio;</li>
+<li>chi li spiega, per costruire esempi verificabili e non dipendenti da singoli documenti proprietari;</li>
+<li>chi fa ricerca, per confrontare metodi e risultati su basi comuni;</li>
+<li>chi sviluppa strumenti, per migliorare controlli, parser e motori di analisi.</li>
+</ul>
+<p>Una community che puo’ lavorare su dati aperti o su dataset sintetici ben documentati tende a produrre sinergie: corregge errori, propone metriche, confronta approcci, costruisce esempi didattici e aumenta la conoscenza condivisa. In questo senso il dato non e’ solo materia prima per modelli automatici, ma infrastruttura culturale.</p>
+</section>
+<section id="cosa-sono-i-dati-sintetici" class="level2 anchored" data-number="3" data-anchor-id="cosa-sono-i-dati-sintetici">
+<h2 class="anchored" data-number="3" data-anchor-id="cosa-sono-i-dati-sintetici"><span class="header-section-number">3</span> Cosa sono i dati sintetici</h2>
+<p>Per dati sintetici intendiamo dati generati artificialmente, ma costruiti per assomigliare a una certa famiglia di fenomeni reali.</p>
+<p>Nel nostro caso il fenomeno e’ il bilancio di una societa’. Un bilancio sintetico non e’ il bilancio di una vera impresa, ma deve avere almeno alcune caratteristiche realistiche:</p>
+<ul>
+<li>ricavi in un ordine di grandezza credibile;</li>
+<li>margini compatibili con lo scenario aziendale;</li>
+<li>capitale circolante plausibile;</li>
+<li>debiti e patrimonio netto coerenti con la rischiosita’ del caso;</li>
+<li>stato patrimoniale che quadra;</li>
+<li>indicatori bancari interpretabili.</li>
+</ul>
+<p>Il punto importante e’ che “sintetico” non significa “casuale senza regole”. Un numero casuale puo’ essere inutile; un dato sintetico deve essere governato da ipotesi esplicite.</p>
+<p>La letteratura sui dati sintetici nasce anche nel campo della protezione della riservatezza statistica: l’idea e’ produrre dati utilizzabili per analisi senza rilasciare direttamente microdati sensibili <span class="citation" data-cites="rubin1993 little1993 drechsler2023">(<a href="#ref-rubin1993" role="doc-biblioref">Rubin 1993</a>; <a href="#ref-little1993" role="doc-biblioref">Little 1993</a>; <a href="#ref-drechsler2023" role="doc-biblioref">Drechsler and Haensch 2023</a>)</span>. In anni piu’ recenti il tema si e’ esteso alla generazione di dati tabellari per machine learning, benchmarking e condivisione controllata di dataset <span class="citation" data-cites="patki2016 xu2019ctgan stoian2025survey">(<a href="#ref-patki2016" role="doc-biblioref">Patki et al.&nbsp;2016</a>; <a href="#ref-xu2019ctgan" role="doc-biblioref">Xu et al.&nbsp;2019</a>; <a href="#ref-stoian2025survey" role="doc-biblioref">Stoian et al.&nbsp;2025</a>)</span>.</p>
+</section>
+<section id="perche-generarli" class="level2 anchored" data-number="4" data-anchor-id="perche-generarli">
+<h2 class="anchored" data-number="4" data-anchor-id="perche-generarli"><span class="header-section-number">4</span> Perche’ generarli</h2>
+<p>I dati sintetici servono soprattutto quando vogliamo lavorare sul metodo.</p>
+<p>Esempi:</p>
+<ul>
+<li>spiegare come funziona un motore di analisi;</li>
+<li>costruire case study senza esporre una societa’ reale;</li>
+<li>testare filtri automatici;</li>
+<li>verificare se le soglie sono troppo severe o troppo permissive;</li>
+<li>produrre casi estremi, come crisi di liquidita’ o forte indebitamento;</li>
+<li>creare dataset per esercizi, formazione o benchmark.</li>
+</ul>
+<p>Nel lavoro su XBRL il problema era mostrare il processo end-to-end senza trasformare il caso in esposizione di una societa’ reale. Qui facciamo un passo ulteriore: invece di anonimizzare un bilancio reale, generiamo molti bilanci fittizi con regole controllate.</p>
+</section>
+<section id="come-sono-stati-generati" class="level2 anchored" data-number="5" data-anchor-id="come-sono-stati-generati">
+<h2 class="anchored" data-number="5" data-anchor-id="come-sono-stati-generati"><span class="header-section-number">5</span> Come sono stati generati</h2>
+<p>Il generatore e’ contenuto nel file <code>synthetic_balance_generator.py</code>.</p>
+<p>Il flusso e’ il seguente:</p>
+<ol type="1">
+<li>viene scelto casualmente un archetipo aziendale;</li>
+<li>vengono estratti i driver principali dentro i range previsti per quell’archetipo;</li>
+<li>vengono calcolati conto economico, stato patrimoniale e indicatori;</li>
+<li>viene forzata la quadratura minima dello stato patrimoniale;</li>
+<li>il dataset viene esportato in CSV ed Excel.</li>
+</ol>
+<p>La generazione e’ riproducibile: usando lo stesso <code>seed</code>, si ottiene lo stesso dataset.</p>
+<div class="code-copy-outer-scaffold">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> synthetic_balance_generator.py <span class="at">--n</span> 1000 <span class="at">--seed</span> 42</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Gli output principali sono:</p>
+<ul>
+<li><code>OUT/bilanci_sintetici.csv</code>;</li>
+<li><code>OUT/bilanci_sintetici.xlsx</code>;</li>
+<li><code>OUT/archetipi.xlsx</code>;</li>
+<li><code>OUT/archetipi_A4_trasposta.xlsx</code>;</li>
+<li><code>OUT/parametri_algoritmo.xlsx</code>.</li>
+</ul>
+</section>
+<section id="gli-archetipi" class="level2 anchored" data-number="6" data-anchor-id="gli-archetipi">
+<h2 class="anchored" data-number="6" data-anchor-id="gli-archetipi"><span class="header-section-number">6</span> Gli archetipi</h2>
+<p>Gli archetipi sono profili economico-finanziari. Non sono imprese reali: sono stampi logici usati per generare casi diversi.</p>
+<div id="4d0b6304" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">archetipo</th>
+<th style="text-align: left;">descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: left;">sana_stabile</td>
+<td style="text-align: left;">Impresa equilibrata: margini buoni, leva conte...</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: left;">crescita</td>
+<td style="text-align: left;">Impresa in espansione: ricavi in aumento, fabb...</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: left;">margini_bassi</td>
+<td style="text-align: left;">Impresa con volumi anche elevati ma redditivit...</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td style="text-align: left;">indebitata</td>
+<td style="text-align: left;">Impresa operativa ma con struttura finanziaria...</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td style="text-align: left;">tensione_liquidita</td>
+<td style="text-align: left;">Impresa con assorbimento di cassa: incassi len...</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td style="text-align: left;">crisi</td>
+<td style="text-align: left;">Impresa in deterioramento: ricavi in calo, EBI...</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td style="text-align: left;">turnaround</td>
+<td style="text-align: left;">Impresa in recupero: crescita moderata, margin...</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Ogni archetipo ha range diversi per ricavi, crescita, margini, leva finanziaria, patrimonio netto e capitale circolante. In questo modo il dataset contiene imprese sane, imprese in crescita, imprese fragili e imprese in crisi.</p>
+<p>La tabella seguente e’ la versione ruotata, pensata per lettura e stampa A4.</p>
+<div id="1aa3b476" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">variabile</th>
+<th style="text-align: left;">unita</th>
+<th style="text-align: left;">sana_stabile</th>
+<th style="text-align: left;">crescita</th>
+<th style="text-align: left;">margini_bassi</th>
+<th style="text-align: left;">indebitata</th>
+<th style="text-align: left;">tensione_liquidita</th>
+<th style="text-align: left;">crisi</th>
+<th style="text-align: left;">turnaround</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: left;">Descrizione</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">Impresa equilibrata: margini buoni, leva conte...</td>
+<td style="text-align: left;">Impresa in espansione: ricavi in aumento, fabb...</td>
+<td style="text-align: left;">Impresa con volumi anche elevati ma redditivit...</td>
+<td style="text-align: left;">Impresa operativa ma con struttura finanziaria...</td>
+<td style="text-align: left;">Impresa con assorbimento di cassa: incassi len...</td>
+<td style="text-align: left;">Impresa in deterioramento: ricavi in calo, EBI...</td>
+<td style="text-align: left;">Impresa in recupero: crescita moderata, margin...</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: left;">Ricavi</td>
+<td style="text-align: left;">EUR</td>
+<td style="text-align: left;">8.0 - 80.0 mln</td>
+<td style="text-align: left;">5.0 - 60.0 mln</td>
+<td style="text-align: left;">15.0 - 120.0 mln</td>
+<td style="text-align: left;">10.0 - 100.0 mln</td>
+<td style="text-align: left;">8.0 - 70.0 mln</td>
+<td style="text-align: left;">5.0 - 50.0 mln</td>
+<td style="text-align: left;">6.0 - 65.0 mln</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: left;">Crescita ricavi</td>
+<td style="text-align: left;">%</td>
+<td style="text-align: left;">-3.0% - 6.0%</td>
+<td style="text-align: left;">10.0% - 35.0%</td>
+<td style="text-align: left;">-2.0% - 8.0%</td>
+<td style="text-align: left;">-5.0% - 10.0%</td>
+<td style="text-align: left;">-10.0% - 4.0%</td>
+<td style="text-align: left;">-30.0% - -5.0%</td>
+<td style="text-align: left;">0.0% - 18.0%</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td style="text-align: left;">EBITDA margin</td>
+<td style="text-align: left;">%</td>
+<td style="text-align: left;">10.0% - 18.0%</td>
+<td style="text-align: left;">8.0% - 16.0%</td>
+<td style="text-align: left;">2.5% - 6.5%</td>
+<td style="text-align: left;">6.0% - 12.0%</td>
+<td style="text-align: left;">3.5% - 9.5%</td>
+<td style="text-align: left;">-8.0% - 3.5%</td>
+<td style="text-align: left;">3.0% - 11.0%</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td style="text-align: left;">Ammortamenti / ricavi</td>
+<td style="text-align: left;">%</td>
+<td style="text-align: left;">1.5% - 3.5%</td>
+<td style="text-align: left;">1.8% - 4.0%</td>
+<td style="text-align: left;">0.8% - 2.5%</td>
+<td style="text-align: left;">1.5% - 3.5%</td>
+<td style="text-align: left;">1.2% - 3.0%</td>
+<td style="text-align: left;">1.0% - 3.0%</td>
+<td style="text-align: left;">1.2% - 3.2%</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td style="text-align: left;">PFN / EBITDA</td>
+<td style="text-align: left;">x</td>
+<td style="text-align: left;">0.4x - 1.8x</td>
+<td style="text-align: left;">1.0x - 3.0x</td>
+<td style="text-align: left;">1.5x - 4.2x</td>
+<td style="text-align: left;">3.5x - 6.5x</td>
+<td style="text-align: left;">2.8x - 5.5x</td>
+<td style="text-align: left;">4.5x - 9.0x</td>
+<td style="text-align: left;">2.0x - 4.8x</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td style="text-align: left;">Patrimonio netto / attivo</td>
+<td style="text-align: left;">%</td>
+<td style="text-align: left;">32.0% - 55.0%</td>
+<td style="text-align: left;">22.0% - 42.0%</td>
+<td style="text-align: left;">18.0% - 38.0%</td>
+<td style="text-align: left;">8.0% - 25.0%</td>
+<td style="text-align: left;">10.0% - 30.0%</td>
+<td style="text-align: left;">2.0% - 18.0%</td>
+<td style="text-align: left;">12.0% - 32.0%</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td style="text-align: left;">Giorni magazzino</td>
+<td style="text-align: left;">gg</td>
+<td style="text-align: left;">35 - 85</td>
+<td style="text-align: left;">55 - 130</td>
+<td style="text-align: left;">40 - 100</td>
+<td style="text-align: left;">65 - 150</td>
+<td style="text-align: left;">95 - 190</td>
+<td style="text-align: left;">100 - 220</td>
+<td style="text-align: left;">70 - 150</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td style="text-align: left;">Giorni clienti</td>
+<td style="text-align: left;">gg</td>
+<td style="text-align: left;">45 - 95</td>
+<td style="text-align: left;">55 - 120</td>
+<td style="text-align: left;">45 - 105</td>
+<td style="text-align: left;">70 - 150</td>
+<td style="text-align: left;">90 - 180</td>
+<td style="text-align: left;">95 - 210</td>
+<td style="text-align: left;">65 - 150</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td style="text-align: left;">Giorni fornitori</td>
+<td style="text-align: left;">gg</td>
+<td style="text-align: left;">45 - 110</td>
+<td style="text-align: left;">55 - 130</td>
+<td style="text-align: left;">50 - 125</td>
+<td style="text-align: left;">65 - 145</td>
+<td style="text-align: left;">35 - 85</td>
+<td style="text-align: left;">25 - 75</td>
+<td style="text-align: left;">55 - 130</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td style="text-align: left;">Tasso interesse</td>
+<td style="text-align: left;">%</td>
+<td style="text-align: left;">3.5% - 6.5%</td>
+<td style="text-align: left;">4.5% - 8.0%</td>
+<td style="text-align: left;">4.5% - 8.5%</td>
+<td style="text-align: left;">6.0% - 11.0%</td>
+<td style="text-align: left;">6.0% - 12.0%</td>
+<td style="text-align: left;">8.0% - 15.0%</td>
+<td style="text-align: left;">5.5% - 10.5%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="i-parametri-dati-allalgoritmo" class="level2 anchored" data-number="7" data-anchor-id="i-parametri-dati-allalgoritmo">
+<h2 class="anchored" data-number="7" data-anchor-id="i-parametri-dati-allalgoritmo"><span class="header-section-number">7</span> I parametri dati all’algoritmo</h2>
+<p>La tabella <code>parametri_algoritmo</code> descrive che cosa riceve il generatore come input logico.</p>
+<p>La distinzione principale e’:</p>
+<ul>
+<li><strong>random per archetipo</strong>: il valore e’ estratto dentro un range che dipende dallo scenario;</li>
+<li><strong>random comune</strong>: il valore e’ estratto da un range uguale per tutti;</li>
+<li><strong>derivato</strong>: il valore non viene estratto, ma calcolato da altri valori;</li>
+<li><strong>controllo</strong>: il valore serve a verificare la coerenza finale.</li>
+</ul>
+<div id="a055d530" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">area</th>
+<th style="text-align: left;">parametro</th>
+<th style="text-align: left;">tipo</th>
+<th style="text-align: left;">distribuzione</th>
+<th style="text-align: left;">valori</th>
+<th style="text-align: left;">uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: left;">generale</td>
+<td style="text-align: left;">archetipo</td>
+<td style="text-align: left;">random</td>
+<td style="text-align: left;">scelta uniforme</td>
+<td style="text-align: left;">sana_stabile, crescita, margini_bassi, indebit...</td>
+<td style="text-align: left;">Sceglie lo scenario economico-finanziario dell...</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: left;">generale</td>
+<td style="text-align: left;">ricavi</td>
+<td style="text-align: left;">random per archetipo</td>
+<td style="text-align: left;">uniforme continua</td>
+<td style="text-align: left;">Vedi righe ricavi_min/ricavi_max nella tabella...</td>
+<td style="text-align: left;">Dimensiona l'azienda e alimenta la maggior par...</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: left;">generale</td>
+<td style="text-align: left;">crescita ricavi</td>
+<td style="text-align: left;">random per archetipo</td>
+<td style="text-align: left;">uniforme continua</td>
+<td style="text-align: left;">Vedi crescita_min_pct/crescita_max_pct.</td>
+<td style="text-align: left;">Ricostruisce i ricavi dell'anno precedente e c...</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td style="text-align: left;">conto economico</td>
+<td style="text-align: left;">EBITDA margin</td>
+<td style="text-align: left;">random per archetipo</td>
+<td style="text-align: left;">uniforme continua</td>
+<td style="text-align: left;">Vedi ebitda_margin_min_pct/ebitda_margin_max_pct.</td>
+<td style="text-align: left;">Determina EBITDA = ricavi * EBITDA margin.</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td style="text-align: left;">conto economico</td>
+<td style="text-align: left;">ammortamenti / ricavi</td>
+<td style="text-align: left;">random per archetipo</td>
+<td style="text-align: left;">uniforme continua</td>
+<td style="text-align: left;">Vedi ammortamenti_ricavi_min_pct/ammortamenti_...</td>
+<td style="text-align: left;">Determina ammortamenti = ricavi * percentuale;...</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td style="text-align: left;">conto economico</td>
+<td style="text-align: left;">aliquota fiscale effettiva</td>
+<td style="text-align: left;">random comune</td>
+<td style="text-align: left;">uniforme continua</td>
+<td style="text-align: left;">20% - 30%, solo se risultato ante imposte posi...</td>
+<td style="text-align: left;">Determina imposte; se il risultato ante impost...</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td style="text-align: left;">conto economico</td>
+<td style="text-align: left;">tasso interesse</td>
+<td style="text-align: left;">random per archetipo</td>
+<td style="text-align: left;">uniforme continua</td>
+<td style="text-align: left;">Vedi tasso_interesse_min_pct/tasso_interesse_m...</td>
+<td style="text-align: left;">Determina oneri finanziari = debito finanziari...</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td style="text-align: left;">struttura finanziaria</td>
+<td style="text-align: left;">PFN / EBITDA target</td>
+<td style="text-align: left;">random per archetipo</td>
+<td style="text-align: left;">uniforme continua</td>
+<td style="text-align: left;">Vedi pfn_ebitda_min/pfn_ebitda_max.</td>
+<td style="text-align: left;">Determina la posizione finanziaria netta inizi...</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td style="text-align: left;">struttura finanziaria</td>
+<td style="text-align: left;">patrimonio netto / attivo</td>
+<td style="text-align: left;">random per archetipo</td>
+<td style="text-align: left;">uniforme continua</td>
+<td style="text-align: left;">Vedi patrimonio_attivo_min_pct/patrimonio_atti...</td>
+<td style="text-align: left;">Determina il patrimonio netto come quota dell'...</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td style="text-align: left;">capitale circolante</td>
+<td style="text-align: left;">giorni magazzino</td>
+<td style="text-align: left;">random per archetipo</td>
+<td style="text-align: left;">uniforme intera</td>
+<td style="text-align: left;">Vedi giorni_magazzino_min/giorni_magazzino_max.</td>
+<td style="text-align: left;">Determina rimanenze = acquisti stimati * giorn...</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td style="text-align: left;">capitale circolante</td>
+<td style="text-align: left;">giorni clienti</td>
+<td style="text-align: left;">random per archetipo</td>
+<td style="text-align: left;">uniforme intera</td>
+<td style="text-align: left;">Vedi giorni_clienti_min/giorni_clienti_max.</td>
+<td style="text-align: left;">Determina crediti commerciali = ricavi * giorn...</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td style="text-align: left;">capitale circolante</td>
+<td style="text-align: left;">giorni fornitori</td>
+<td style="text-align: left;">random per archetipo</td>
+<td style="text-align: left;">uniforme intera</td>
+<td style="text-align: left;">Vedi giorni_fornitori_min/giorni_fornitori_max.</td>
+<td style="text-align: left;">Determina debiti fornitori = acquisti stimati ...</td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td style="text-align: left;">capitale circolante</td>
+<td style="text-align: left;">costo del venduto / ricavi</td>
+<td style="text-align: left;">random comune</td>
+<td style="text-align: left;">uniforme continua</td>
+<td style="text-align: left;">55% - 78%</td>
+<td style="text-align: left;">Stima gli acquisti/costo del venduto usati per...</td>
+</tr>
+<tr class="even">
+<td>13</td>
+<td style="text-align: left;">attivo</td>
+<td style="text-align: left;">cassa / ricavi</td>
+<td style="text-align: left;">random comune</td>
+<td style="text-align: left;">uniforme continua</td>
+<td style="text-align: left;">1% - 8%, minimo tecnico 20.000 EUR</td>
+<td style="text-align: left;">Determina disponibilita liquide.</td>
+</tr>
+<tr class="odd">
+<td>14</td>
+<td style="text-align: left;">attivo</td>
+<td style="text-align: left;">immobilizzazioni / ricavi</td>
+<td style="text-align: left;">random comune</td>
+<td style="text-align: left;">uniforme continua</td>
+<td style="text-align: left;">12% - 55%</td>
+<td style="text-align: left;">Determina immobilizzazioni iniziali.</td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td style="text-align: left;">passivo</td>
+<td style="text-align: left;">quota debito bancario corrente</td>
+<td style="text-align: left;">random comune</td>
+<td style="text-align: left;">uniforme continua</td>
+<td style="text-align: left;">35% - 85% del debito bancario</td>
+<td style="text-align: left;">Usata per stimare le passivita correnti e quin...</td>
+</tr>
+<tr class="odd">
+<td>16</td>
+<td style="text-align: left;">quadratura</td>
+<td style="text-align: left;">altri debiti e fondi</td>
+<td style="text-align: left;">derivato</td>
+<td style="text-align: left;">formula</td>
+<td style="text-align: left;">totale attivo - patrimonio netto - debiti forn...</td>
+<td style="text-align: left;">Voce di quadratura del passivo; se negativa, i...</td>
+</tr>
+<tr class="even">
+<td>17</td>
+<td style="text-align: left;">validazione</td>
+<td style="text-align: left;">check_quadratura</td>
+<td style="text-align: left;">derivato</td>
+<td style="text-align: left;">controllo booleano</td>
+<td style="text-align: left;">totale_attivo == totale_passivo_pn</td>
+<td style="text-align: left;">Verifica minima di coerenza contabile del bila...</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Questa tabella e’ importante perche’ rende il dataset auditabile. Se un archetipo produce troppe imprese respinte, possiamo capire se il problema nasce dai range di leva, dai margini, dai giorni clienti o da altre ipotesi.</p>
+<p>Nella letteratura sui dati sintetici, questa distinzione tra generazione e valutazione e’ centrale: non basta creare dati realistici, bisogna anche misurarne utilita’, fedelta’ statistica, rischio di disclosure e coerenza con vincoli di dominio <span class="citation" data-cites="raab2017 raab2021 hassan2023">(<a href="#ref-raab2017" role="doc-biblioref">Raab et al.&nbsp;2017</a>, <a href="#ref-raab2021" role="doc-biblioref">2021</a>; <a href="#ref-hassan2023" role="doc-biblioref">Hassan et al.&nbsp;2023</a>)</span>.</p>
+</section>
+<section id="variabili-prodotte" class="level2 anchored" data-number="8" data-anchor-id="variabili-prodotte">
+<h2 class="anchored" data-number="8" data-anchor-id="variabili-prodotte"><span class="header-section-number">8</span> Variabili prodotte</h2>
+<p>Il dataset finale contiene variabili economiche, patrimoniali e indicatori.</p>
+<div id="36169da8" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">variabile</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: left;">company_id</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: left;">ragione_sociale</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: left;">archetipo</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td style="text-align: left;">ricavi_anno_precedente</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td style="text-align: left;">ricavi</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td style="text-align: left;">crescita_ricavi_pct</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td style="text-align: left;">ebitda</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td style="text-align: left;">ebitda_margin_pct</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td style="text-align: left;">ammortamenti</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td style="text-align: left;">ebit</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td style="text-align: left;">oneri_finanziari</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td style="text-align: left;">risultato_ante_imposte</td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td style="text-align: left;">imposte</td>
+</tr>
+<tr class="even">
+<td>13</td>
+<td style="text-align: left;">utile_netto</td>
+</tr>
+<tr class="odd">
+<td>14</td>
+<td style="text-align: left;">rimanenze</td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td style="text-align: left;">crediti_commerciali</td>
+</tr>
+<tr class="odd">
+<td>16</td>
+<td style="text-align: left;">disponibilita_liquide</td>
+</tr>
+<tr class="even">
+<td>17</td>
+<td style="text-align: left;">immobilizzazioni</td>
+</tr>
+<tr class="odd">
+<td>18</td>
+<td style="text-align: left;">totale_attivo</td>
+</tr>
+<tr class="even">
+<td>19</td>
+<td style="text-align: left;">patrimonio_netto</td>
+</tr>
+<tr class="odd">
+<td>20</td>
+<td style="text-align: left;">debiti_bancari</td>
+</tr>
+<tr class="even">
+<td>21</td>
+<td style="text-align: left;">debiti_fornitori</td>
+</tr>
+<tr class="odd">
+<td>22</td>
+<td style="text-align: left;">altri_debiti_fondi</td>
+</tr>
+<tr class="even">
+<td>23</td>
+<td style="text-align: left;">totale_passivo_pn</td>
+</tr>
+<tr class="odd">
+<td>24</td>
+<td style="text-align: left;">posizione_finanziaria_netta</td>
+</tr>
+<tr class="even">
+<td>25</td>
+<td style="text-align: left;">pfp_ebitda</td>
+</tr>
+<tr class="odd">
+<td>26</td>
+<td style="text-align: left;">interest_coverage</td>
+</tr>
+<tr class="even">
+<td>27</td>
+<td style="text-align: left;">current_ratio</td>
+</tr>
+<tr class="odd">
+<td>28</td>
+<td style="text-align: left;">giorni_magazzino</td>
+</tr>
+<tr class="even">
+<td>29</td>
+<td style="text-align: left;">giorni_clienti</td>
+</tr>
+<tr class="odd">
+<td>30</td>
+<td style="text-align: left;">giorni_fornitori</td>
+</tr>
+<tr class="even">
+<td>31</td>
+<td style="text-align: left;">check_quadratura</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Alcune variabili sono direttamente generate, altre sono derivate:</p>
+<ul>
+<li><code>ricavi</code>, <code>crescita_ricavi_pct</code>, <code>ebitda_margin_pct</code> descrivono la dinamica economica;</li>
+<li><code>ebitda</code>, <code>ebit</code>, <code>utile_netto</code> sintetizzano la redditivita’;</li>
+<li><code>rimanenze</code>, <code>crediti_commerciali</code>, <code>debiti_fornitori</code> descrivono il capitale circolante;</li>
+<li><code>patrimonio_netto</code>, <code>debiti_bancari</code>, <code>posizione_finanziaria_netta</code> descrivono la struttura finanziaria;</li>
+<li><code>pfp_ebitda</code>, <code>interest_coverage</code>, <code>current_ratio</code> sono indicatori usati nello screening;</li>
+<li><code>check_quadratura</code> verifica che lo stato patrimoniale sintetico quadri.</li>
+</ul>
+</section>
+<section id="esempio-di-bilancio-riclassificato" class="level2 anchored" data-number="9" data-anchor-id="esempio-di-bilancio-riclassificato">
+<h2 class="anchored" data-number="9" data-anchor-id="esempio-di-bilancio-riclassificato"><span class="header-section-number">9</span> Esempio di bilancio riclassificato</h2>
+<p>Per rendere piu’ concreto il dataset, prendiamo una singola impresa sintetica con criticita’ evidenti e la rappresentiamo in forma riclassificata.</p>
+<p>La scelta di un caso problematico e’ didatticamente utile: il lettore puo’ confrontare i prospetti con i ratios e verificare se lo screening automatico ha intercettato segnali coerenti.</p>
+<p>Questa non e’ una riclassificazione civilistica completa. E’ una vista didattica, utile per mostrare come i dati generati possano essere letti da un analista:</p>
+<ul>
+<li>nello stato patrimoniale distinguiamo attivo corrente, immobilizzazioni, patrimonio netto e debiti;</li>
+<li>nel conto economico distinguiamo ricavi, EBITDA, EBIT, gestione finanziaria, imposte e utile netto.</li>
+</ul>
+<div id="4b7a2309" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">campo</th>
+<th style="text-align: left;">valore</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: left;">Company ID</td>
+<td style="text-align: left;">SYN00005</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: left;">Ragione sociale</td>
+<td style="text-align: left;">Impresa Sintetica 00005 S.p.A.</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: left;">Archetipo</td>
+<td style="text-align: left;">crisi</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td style="text-align: left;">Ricavi</td>
+<td style="text-align: left;">36.0 mln EUR</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td style="text-align: left;">Esito screening</td>
+<td style="text-align: left;">REJECT</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td style="text-align: left;">Numero fail</td>
+<td style="text-align: left;">5</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td style="text-align: left;">Motivi fail</td>
+<td style="text-align: left;">utile_non_gravemente_negativo; ebitda_positivo...</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<section id="situazione-patrimoniale-riclassificata" class="level3 anchored" data-number="9.1" data-anchor-id="situazione-patrimoniale-riclassificata">
+<h3 class="anchored" data-number="9.1" data-anchor-id="situazione-patrimoniale-riclassificata"><span class="header-section-number">9.1</span> Situazione patrimoniale riclassificata</h3>
+<p>La situazione patrimoniale riclassificata mostra da un lato gli impieghi, cioe’ dove sono investite le risorse, e dall’altro le fonti, cioe’ come quegli impieghi sono finanziati.</p>
+<div id="9cb14373" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">Attivo riclassificato</th>
+<th style="text-align: left;">EUR</th>
+<th style="text-align: left;">Fonti riclassificate</th>
+<th style="text-align: left;">EUR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: left;">Rimanenze</td>
+<td style="text-align: left;">8906000</td>
+<td style="text-align: left;">Patrimonio netto</td>
+<td style="text-align: left;">2970000.0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: left;">Crediti commerciali</td>
+<td style="text-align: left;">12712000</td>
+<td style="text-align: left;">Debiti bancari</td>
+<td style="text-align: left;">2734000.0</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: left;">Disponibilita liquide</td>
+<td style="text-align: left;">2734000</td>
+<td style="text-align: left;">Debiti fornitori</td>
+<td style="text-align: left;">1710000.0</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td style="text-align: left;">Totale attivo corrente</td>
+<td style="text-align: left;">24352000</td>
+<td style="text-align: left;">Altri debiti e fondi</td>
+<td style="text-align: left;">34808000.0</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td style="text-align: left;">Immobilizzazioni</td>
+<td style="text-align: left;">17870000</td>
+<td style="text-align: left;">Totale passivo e patrimonio netto</td>
+<td style="text-align: left;">42222000.0</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td style="text-align: left;">Totale attivo</td>
+<td style="text-align: left;">42222000</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">NaN</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>L’uguaglianza tra <code>Totale attivo</code> e <code>Totale passivo e patrimonio netto</code> e’ il controllo minimo di quadratura.</p>
+<div id="ec11951e" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">controllo</th>
+<th style="text-align: left;">EUR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: left;">Totale attivo</td>
+<td style="text-align: left;">42222000</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: left;">Totale passivo e patrimonio netto</td>
+<td style="text-align: left;">42222000</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: left;">Differenza</td>
+<td style="text-align: left;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="conto-economico-riclassificato" class="level3 anchored" data-number="9.2" data-anchor-id="conto-economico-riclassificato">
+<h3 class="anchored" data-number="9.2" data-anchor-id="conto-economico-riclassificato"><span class="header-section-number">9.2</span> Conto economico riclassificato</h3>
+<p>Il conto economico riclassificato parte dai ricavi e arriva all’utile netto, evidenziando i principali margini intermedi.</p>
+<div id="f9750ea0" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">Voce</th>
+<th style="text-align: left;">EUR</th>
+<th style="text-align: left;">% ricavi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: left;">Ricavi</td>
+<td style="text-align: left;">35967000</td>
+<td style="text-align: left;">1.000000</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: left;">EBITDA</td>
+<td style="text-align: left;">-1536000</td>
+<td style="text-align: left;">-0.042706</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: left;">Ammortamenti</td>
+<td style="text-align: left;">-912000</td>
+<td style="text-align: left;">-0.025357</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td style="text-align: left;">EBIT</td>
+<td style="text-align: left;">-2448000</td>
+<td style="text-align: left;">-0.068062</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td style="text-align: left;">Oneri finanziari</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0.000000</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td style="text-align: left;">Risultato ante imposte</td>
+<td style="text-align: left;">-2448000</td>
+<td style="text-align: left;">-0.068062</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td style="text-align: left;">Imposte</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0.000000</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td style="text-align: left;">Utile netto</td>
+<td style="text-align: left;">-2448000</td>
+<td style="text-align: left;">-0.068062</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="indicatori-sintetici-del-caso-critico" class="level3 anchored" data-number="9.3" data-anchor-id="indicatori-sintetici-del-caso-critico">
+<h3 class="anchored" data-number="9.3" data-anchor-id="indicatori-sintetici-del-caso-critico"><span class="header-section-number">9.3</span> Indicatori sintetici del caso critico</h3>
+<p>Gli indicatori permettono di collegare bilancio e screening automatico.</p>
+<div id="878a71f0" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="11">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">indicatore</th>
+<th style="text-align: left;">valore</th>
+<th style="text-align: left;">lettura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: left;">EBITDA margin</td>
+<td style="text-align: left;">-0.042707</td>
+<td style="text-align: left;">redditivita operativa</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: left;">PFN / EBITDA</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">leva finanziaria</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: left;">Interest coverage</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">copertura oneri finanziari</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td style="text-align: left;">Current ratio</td>
+<td style="text-align: left;">6.834911</td>
+<td style="text-align: left;">liquidita corrente</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td style="text-align: left;">Giorni magazzino</td>
+<td style="text-align: left;">151.000000</td>
+<td style="text-align: left;">capitale circolante</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td style="text-align: left;">Giorni clienti</td>
+<td style="text-align: left;">129.000000</td>
+<td style="text-align: left;">incasso crediti</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td style="text-align: left;">Giorni fornitori</td>
+<td style="text-align: left;">29.000000</td>
+<td style="text-align: left;">dilazione fornitori</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Nel caso scelto, l’esito <code>REJECT</code> non deriva da una decisione opaca. I motivi sono riportati nella tabella iniziale e possono essere verificati nei ratios: margini, utile, leva, copertura degli oneri finanziari e liquidita’ corrente.</p>
+</section>
+</section>
+<section id="controlli-di-coerenza" class="level2 anchored" data-number="10" data-anchor-id="controlli-di-coerenza">
+<h2 class="anchored" data-number="10" data-anchor-id="controlli-di-coerenza"><span class="header-section-number">10</span> Controlli di coerenza</h2>
+<p>Il controllo minimo e’ la quadratura dello stato patrimoniale:</p>
+<div id="60f3b0e0" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">check_quadratura</th>
+<th style="text-align: left;">n</th>
+<th style="text-align: left;">pct</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: left;">True</td>
+<td style="text-align: left;">1000</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Nel dataset generato, tutti i casi quadrano. Questo non significa che ogni bilancio sia civilisticamente completo, ma significa che la struttura base e’ coerente.</p>
+<p>Un secondo controllo e’ la distribuzione degli archetipi:</p>
+<div id="e57afebb" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">archetipo</th>
+<th style="text-align: left;">n</th>
+<th style="text-align: left;">pct</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: left;">crescita</td>
+<td style="text-align: left;">156</td>
+<td style="text-align: left;">0.156</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td style="text-align: left;">crisi</td>
+<td style="text-align: left;">138</td>
+<td style="text-align: left;">0.138</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: left;">indebitata</td>
+<td style="text-align: left;">145</td>
+<td style="text-align: left;">0.145</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td style="text-align: left;">margini_bassi</td>
+<td style="text-align: left;">136</td>
+<td style="text-align: left;">0.136</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td style="text-align: left;">sana_stabile</td>
+<td style="text-align: left;">148</td>
+<td style="text-align: left;">0.148</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td style="text-align: left;">tensione_liquidita</td>
+<td style="text-align: left;">140</td>
+<td style="text-align: left;">0.140</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td style="text-align: left;">turnaround</td>
+<td style="text-align: left;">137</td>
+<td style="text-align: left;">0.137</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="uso-per-testare-un-motore-automatico" class="level2 anchored" data-number="11" data-anchor-id="uso-per-testare-un-motore-automatico">
+<h2 class="anchored" data-number="11" data-anchor-id="uso-per-testare-un-motore-automatico"><span class="header-section-number">11</span> Uso per testare un motore automatico</h2>
+<p>Una volta creati i bilanci sintetici, possiamo usarli per verificare un motore di screening.</p>
+<p>Il motore e’ contenuto in <code>screening_engine.py</code> ed e’ volutamente trasparente: ogni regola e’ leggibile e il risultato finale dipende dai fail registrati.</p>
+<div class="code-copy-outer-scaffold">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> screening_engine.py <span class="at">--input</span> OUT/bilanci_sintetici.csv</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Gli esiti sono:</p>
+<ul>
+<li><code>PASS</code>: supera tutti i filtri;</li>
+<li><code>WATCH</code>: non ha fail bloccanti, ma presenta segnali da approfondire;</li>
+<li><code>REJECT</code>: fallisce almeno una regola bloccante.</li>
+</ul>
+<div id="96a1bf65" class="cell" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">esito</th>
+<th style="text-align: left;">n</th>
+<th style="text-align: left;">pct</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: left;">PASS</td>
+<td style="text-align: left;">539</td>
+<td style="text-align: left;">0.539</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: left;">WATCH</td>
+<td style="text-align: left;">370</td>
+<td style="text-align: left;">0.370</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: left;">REJECT</td>
+<td style="text-align: left;">91</td>
+<td style="text-align: left;">0.091</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="quanto-screma-il-motore" class="level2 anchored" data-number="12" data-anchor-id="quanto-screma-il-motore">
+<h2 class="anchored" data-number="12" data-anchor-id="quanto-screma-il-motore"><span class="header-section-number">12</span> Quanto screma il motore</h2>
+<p>La tabella seguente mostra la scrematura per archetipo.</p>
+<div id="b5f4a0ca" class="cell" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">screening_esito</th>
+<th style="text-align: left;">archetipo</th>
+<th style="text-align: left;">PASS</th>
+<th style="text-align: left;">WATCH</th>
+<th style="text-align: left;">REJECT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">crescita</td>
+<td style="text-align: left;">129</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">crisi</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">47</td>
+<td style="text-align: left;">91</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">indebitata</td>
+<td style="text-align: left;">46</td>
+<td style="text-align: left;">99</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">margini_bassi</td>
+<td style="text-align: left;">73</td>
+<td style="text-align: left;">63</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">sana_stabile</td>
+<td style="text-align: left;">135</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">tensione_liquidita</td>
+<td style="text-align: left;">64</td>
+<td style="text-align: left;">76</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">turnaround</td>
+<td style="text-align: left;">92</td>
+<td style="text-align: left;">45</td>
+<td style="text-align: left;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Questo tipo di tabella e’ utile per capire se il motore si comporta come atteso. Per esempio, e’ ragionevole che l’archetipo <code>crisi</code> generi molti <code>REJECT</code>, mentre <code>sana_stabile</code> dovrebbe produrre molti <code>PASS</code>.</p>
+</section>
+<section id="quali-regole-pesano-di-piu" class="level2 anchored" data-number="13" data-anchor-id="quali-regole-pesano-di-piu">
+<h2 class="anchored" data-number="13" data-anchor-id="quali-regole-pesano-di-piu"><span class="header-section-number">13</span> Quali regole pesano di piu’</h2>
+<p>Ogni riga del dataset mantiene anche l’esito delle singole regole. Possiamo quindi contare quali filtri intervengono piu’ spesso.</p>
+<div id="ef04cccd" class="cell" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="16">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">regola</th>
+<th style="text-align: left;">fail_n</th>
+<th style="text-align: left;">fail_pct</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>6</td>
+<td style="text-align: left;">pfp_ebitda_massimo</td>
+<td style="text-align: left;">298</td>
+<td style="text-align: left;">0.298</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td style="text-align: left;">ebitda_margin_minimo</td>
+<td style="text-align: left;">220</td>
+<td style="text-align: left;">0.220</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td style="text-align: left;">interest_coverage_minimo</td>
+<td style="text-align: left;">166</td>
+<td style="text-align: left;">0.166</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td style="text-align: left;">current_ratio_minimo</td>
+<td style="text-align: left;">103</td>
+<td style="text-align: left;">0.103</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td style="text-align: left;">ebitda_positivo</td>
+<td style="text-align: left;">91</td>
+<td style="text-align: left;">0.091</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td style="text-align: left;">crescita_non_crollo</td>
+<td style="text-align: left;">59</td>
+<td style="text-align: left;">0.059</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td style="text-align: left;">utile_non_gravemente_negativo</td>
+<td style="text-align: left;">58</td>
+<td style="text-align: left;">0.058</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td style="text-align: left;">quadratura</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0.000</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td style="text-align: left;">ricavi_minimi</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0.000</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td style="text-align: left;">patrimonio_netto_positivo</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0.000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Questa analisi permette di rispondere a una domanda concreta: il motore sta scartando perche’ le imprese sono davvero deboli, oppure perche’ una soglia e’ troppo rigida?</p>
+</section>
+<section id="come-usare-il-dataset" class="level2 anchored" data-number="14" data-anchor-id="come-usare-il-dataset">
+<h2 class="anchored" data-number="14" data-anchor-id="come-usare-il-dataset"><span class="header-section-number">14</span> Come usare il dataset</h2>
+<p>Il dataset sintetico puo’ essere usato in diversi modi.</p>
+<section id="formazione" class="level3 anchored" data-number="14.1" data-anchor-id="formazione">
+<h3 class="anchored" data-number="14.1" data-anchor-id="formazione"><span class="header-section-number">14.1</span> Formazione</h3>
+<p>Si possono mostrare casi <code>PASS</code>, <code>WATCH</code> e <code>REJECT</code> e chiedere al lettore di capire quali variabili guidano l’esito.</p>
+</section>
+<section id="taratura-dei-filtri" class="level3 anchored" data-number="14.2" data-anchor-id="taratura-dei-filtri">
+<h3 class="anchored" data-number="14.2" data-anchor-id="taratura-dei-filtri"><span class="header-section-number">14.2</span> Taratura dei filtri</h3>
+<p>Si possono cambiare le soglie dello screening e misurare subito l’effetto:</p>
+<ul>
+<li>quanti casi passano;</li>
+<li>quanti finiscono in watchlist;</li>
+<li>quanti vengono respinti;</li>
+<li>quali archetipi vengono penalizzati.</li>
+</ul>
+</section>
+<section id="stress-test" class="level3 anchored" data-number="14.3" data-anchor-id="stress-test">
+<h3 class="anchored" data-number="14.3" data-anchor-id="stress-test"><span class="header-section-number">14.3</span> Stress test</h3>
+<p>Si possono aumentare i casi di crisi, alzare la leva, ridurre i margini o peggiorare i giorni clienti per vedere se il motore intercetta il deterioramento.</p>
+</section>
+<section id="documentazione-metodologica" class="level3 anchored" data-number="14.4" data-anchor-id="documentazione-metodologica">
+<h3 class="anchored" data-number="14.4" data-anchor-id="documentazione-metodologica"><span class="header-section-number">14.4</span> Documentazione metodologica</h3>
+<p>Le tabelle <code>archetipi</code> e <code>parametri_algoritmo</code> permettono di spiegare da dove vengono i numeri. Questo evita che il dataset sembri una scatola nera.</p>
+</section>
+</section>
+<section id="limiti" class="level2 anchored" data-number="15" data-anchor-id="limiti">
+<h2 class="anchored" data-number="15" data-anchor-id="limiti"><span class="header-section-number">15</span> Limiti</h2>
+<p>Questo progetto non genera un bilancio civilistico completo. Genera una rappresentazione sintetica utile per analisi, screening e didattica.</p>
+<p>I limiti principali sono:</p>
+<ul>
+<li>alcune voci sono aggregate;</li>
+<li>non esiste una nota integrativa completa;</li>
+<li>non c’e’ ancora un rendiconto finanziario dettagliato;</li>
+<li>le relazioni contabili sono semplificate;</li>
+<li>non e’ ancora generato un XBRL sintetico completo;</li>
+<li>le soglie del motore di screening sono convenzioni di prassi (PFN/EBITDA, interest coverage, current ratio, marginalita’ minima), non stime derivate da un campione di imprese con esito noto (fallite vs sane).</li>
+</ul>
+<p>Questi limiti sono accettabili per testare un motore di screening. Per un simulatore contabile piu’ rigoroso, il passo successivo sarebbe costruire un modello con piu’ vincoli, piu’ voci e una generazione coerente dei flussi di cassa.</p>
+<p>Sull’ultimo punto vale una precisazione. La letteratura classica sulla previsione del fallimento aziendale mostra che le soglie sui ratios andrebbero calibrate confrontando campioni reali di imprese fallite e non fallite, non fissate per convenzione <span class="citation" data-cites="beaver1966 altman1968 ohlson1980">(<a href="#ref-beaver1966" role="doc-biblioref">Beaver 1966</a>; <a href="#ref-altman1968" role="doc-biblioref">Altman 1968</a>; <a href="#ref-ohlson1980" role="doc-biblioref">Ohlson 1980</a>)</span>. Le fonti aggregate disponibili per la taratura di questo progetto (medie di sistema regionali, medie di campioni di imprese sopravvissute) descrivono popolazioni gia’ filtrate verso l’alto: utili per posizionare un archetipo rispetto alla media osservata, non per stimare una soglia minima di viabilita’, che richiederebbe la dispersione o i percentili di un campione non selezionato, comprensivo di casi di default. In assenza di questo dato, le soglie restano convenzionali per scelta esplicita, non per omissione.</p>
+</section>
+<section id="prossimi-sviluppi" class="level2 anchored" data-number="16" data-anchor-id="prossimi-sviluppi">
+<h2 class="anchored" data-number="16" data-anchor-id="prossimi-sviluppi"><span class="header-section-number">16</span> Prossimi sviluppi</h2>
+<p>Evoluzioni naturali:</p>
+<ol type="1">
+<li>generare anche un rendiconto finanziario sintetico;</li>
+<li>aggiungere un rating atteso per ogni archetipo;</li>
+<li>distinguere settore industriale, commercio, servizi e costruzioni;</li>
+<li>produrre note narrative sintetiche;</li>
+<li>esportare i casi in JSON;</li>
+<li>generare XBRL sintetici;</li>
+<li>confrontare piu’ motori di screening sugli stessi 1000 casi.</li>
+</ol>
+<p>Il valore del dataset aumenta quando ogni scelta rimane tracciabile: archetipo, parametri, formule, esiti e motivi di scarto.</p>
+<p>La prospettiva di fondo e’ comunitaria: rendere disponibili esempi, regole e dataset controllati permette a professionisti diversi di parlare la stessa lingua. Il redattore del bilancio vede come il dato viene interpretato; l’analista vede da quali ipotesi nascono i ratios; il docente puo’ spiegare casi complessi senza usare informazioni sensibili; lo sviluppatore puo’ testare strumenti in modo riproducibile.</p>
+<p>Anche quando il dataset e’ sintetico, se e’ ben documentato puo’ diventare uno spazio comune di apprendimento.</p>
+</section>
+<section id="estensione-settore-e-territorio" class="level2 anchored" data-number="17" data-anchor-id="estensione-settore-e-territorio">
+<h2 class="anchored" data-number="17" data-anchor-id="estensione-settore-e-territorio"><span class="header-section-number">17</span> Estensione: settore e territorio</h2>
+<p>Il modello puo’ essere ulteriormente caratterizzato introducendo due assi aggiuntivi:</p>
+<ul>
+<li><strong>settore merceologico</strong>;</li>
+<li><strong>area territoriale</strong>.</li>
+</ul>
+<p>In questo modo ogni impresa sintetica non sarebbe piu’ definita solo da un archetipo finanziario, per esempio <code>sana_stabile</code> o <code>crisi</code>, ma da una combinazione:</p>
+<pre class="text"><code>archetipo finanziario x settore x territorio</code></pre>
+<p>Esempio:</p>
+<pre class="text"><code>crescita x meccanico x Nord Est
+tensione_liquidita x metallurgico x Nord Ovest
+sana_stabile x alimentare x Sud e Isole</code></pre>
+<p>Questa estensione e’ utile perche’ molte variabili di bilancio non dipendono solo dalla salute finanziaria dell’impresa, ma anche dal tipo di attivita’ e dal contesto territoriale.</p>
+<section id="fonti-interne-gia-disponibili" class="level3 anchored" data-number="17.1" data-anchor-id="fonti-interne-gia-disponibili">
+<h3 class="anchored" data-number="17.1" data-anchor-id="fonti-interne-gia-disponibili"><span class="header-section-number">17.1</span> Fonti interne gia’ disponibili</h3>
+<p>Nei progetti gia’ presenti sono stati individuati materiali utili:</p>
+<ul>
+<li><code>20260630_MediobancaMedieImprese</code>;</li>
+<li><code>20260212_Mediobanca</code>;</li>
+<li><code>20260507_AiBilanci/IN/mediobanca</code>;</li>
+<li>progetti Bankitalia/Unimpresa con dimensioni ATECO e territorio.</li>
+</ul>
+<p>Il progetto piu’ pertinente e’ <code>20260630_MediobancaMedieImprese</code>, che lavora sul dataset Mediobanca/Unioncamere/Tagliacarne “Le medie imprese industriali italiane (2015-2024)” <span class="citation" data-cites="mediobanca2026medie">(<a href="#ref-mediobanca2026medie" role="doc-biblioref">Area Studi Mediobanca and Centro Studi delle Camere di Commercio Guglielmo Tagliacarne 2026</a>)</span>.</p>
+<p>Da quel lavoro emergono due informazioni operative importanti:</p>
+<ol type="1">
+<li>le aree territoriali sono disponibili su un insieme chiuso 2015-2024;</li>
+<li>i settori usati in alcuni report sono cluster settoriali Mediobanca, non necessariamente codici ATECO ufficiali.</li>
+</ol>
+</section>
+<section id="aree-territoriali-mediobanca" class="level3 anchored" data-number="17.2" data-anchor-id="aree-territoriali-mediobanca">
+<h3 class="anchored" data-number="17.2" data-anchor-id="aree-territoriali-mediobanca"><span class="header-section-number">17.2</span> Aree territoriali Mediobanca</h3>
+<p>Per l’insieme chiuso 2015-2024 delle medie imprese industriali, i cluster geografici sono:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Area</th>
+<th style="text-align: right;">Codice</th>
+<th style="text-align: right;">N. societa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Italia</td>
+<td style="text-align: right;">88001077</td>
+<td style="text-align: right;">1.821</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nord Ovest</td>
+<td style="text-align: right;">88001078</td>
+<td style="text-align: right;">745</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nord Est</td>
+<td style="text-align: right;">88001079</td>
+<td style="text-align: right;">680</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Centro</td>
+<td style="text-align: right;">88004010</td>
+<td style="text-align: right;">234</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sud e Isole</td>
+<td style="text-align: right;">88004011</td>
+<td style="text-align: right;">162</td>
+</tr>
+</tbody>
+</table>
+<p>Queste aree possono diventare profili territoriali nel generatore. Per esempio, il territorio potrebbe modificare:</p>
+<ul>
+<li>crescita ricavi;</li>
+<li>export share;</li>
+<li>costo del lavoro su valore aggiunto;</li>
+<li>redditivita’;</li>
+<li>intensita’ di circolante;</li>
+<li>probabilita’ di tensione finanziaria.</li>
+</ul>
+</section>
+<section id="settori-mediobanca" class="level3 anchored" data-number="17.3" data-anchor-id="settori-mediobanca">
+<h3 class="anchored" data-number="17.3" data-anchor-id="settori-mediobanca"><span class="header-section-number">17.3</span> Settori Mediobanca</h3>
+<p>I cluster settoriali individuati sono:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Settore Mediobanca</th>
+<th style="text-align: right;">Codice</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Alimentare</td>
+<td style="text-align: right;">88005202</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Beni per la persona e la casa</td>
+<td style="text-align: right;">88005203</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Carta e stampa</td>
+<td style="text-align: right;">88005204</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chimico e farmaceutico</td>
+<td style="text-align: right;">88005205</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Meccanico</td>
+<td style="text-align: right;">88005206</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Metallurgico</td>
+<td style="text-align: right;">88005207</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Altri Settori</td>
+<td style="text-align: right;">88005208</td>
+</tr>
+</tbody>
+</table>
+<p>Nota metodologica: questi gruppi vanno chiamati <strong>settori Mediobanca</strong> o <strong>cluster settoriali Mediobanca</strong>. Non vanno chiamati direttamente ATECO, salvo costruire e verificare un mapping granulare verso ATECO.</p>
+</section>
+<section id="esempio-di-logica-settoriale" class="level3 anchored" data-number="17.4" data-anchor-id="esempio-di-logica-settoriale">
+<h3 class="anchored" data-number="17.4" data-anchor-id="esempio-di-logica-settoriale"><span class="header-section-number">17.4</span> Esempio di logica settoriale</h3>
+<p>I settori potrebbero introdurre moltiplicatori o range specifici:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Settore</th>
+<th style="text-align: left;">Effetto atteso nel generatore</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Alimentare</td>
+<td style="text-align: left;">ricavi piu resilienti, margini medi, minore volatilita</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Meccanico</td>
+<td style="text-align: left;">maggiore export, dimensione media piu elevata, ciclicita industriale</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chimico e farmaceutico</td>
+<td style="text-align: left;">margini piu alti, maggiore intensita di capitale</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Metallurgico</td>
+<td style="text-align: left;">margini piu bassi, maggiore volatilita, sensibilita a commodity</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Carta e stampa</td>
+<td style="text-align: left;">volumi piu contenuti, crescita piu fragile</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Beni persona/casa</td>
+<td style="text-align: left;">export rilevante, margini medi, sensibilita a domanda finale</td>
+</tr>
+</tbody>
+</table>
+<p>Questi effetti non sostituirebbero l’archetipo finanziario. Lo modulerebbero.</p>
+</section>
+<section id="esempio-di-logica-territoriale" class="level3 anchored" data-number="17.5" data-anchor-id="esempio-di-logica-territoriale">
+<h3 class="anchored" data-number="17.5" data-anchor-id="esempio-di-logica-territoriale"><span class="header-section-number">17.5</span> Esempio di logica territoriale</h3>
+<p>Le aree potrebbero introdurre differenze di contesto:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 71%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Area</th>
+<th style="text-align: left;">Effetto atteso nel generatore</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Nord Ovest</td>
+<td style="text-align: left;">maggiore export e dimensione media, buona patrimonializzazione</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nord Est</td>
+<td style="text-align: left;">forte manifattura esportatrice, capitale circolante rilevante</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Centro</td>
+<td style="text-align: left;">profilo intermedio, buona redditivita in alcuni cluster</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sud e Isole</td>
+<td style="text-align: left;">minore dimensione media, possibile crescita piu vivace in specifici anni, campione piu piccolo</td>
+</tr>
+</tbody>
+</table>
+<p>Anche qui serve cautela: l’effetto territoriale va tarato su dati osservati e non trasformato in stereotipo economico.</p>
+</section>
+<section id="come-incorporarlo-nel-generatore" class="level3 anchored" data-number="17.6" data-anchor-id="come-incorporarlo-nel-generatore">
+<h3 class="anchored" data-number="17.6" data-anchor-id="come-incorporarlo-nel-generatore"><span class="header-section-number">17.6</span> Come incorporarlo nel generatore</h3>
+<p>Una versione successiva del generatore potrebbe lavorare cosi’:</p>
+<ol type="1">
+<li>scegliere un archetipo finanziario;</li>
+<li>scegliere un settore;</li>
+<li>scegliere un’area territoriale;</li>
+<li>applicare i range base dell’archetipo;</li>
+<li>applicare moltiplicatori settoriali;</li>
+<li>applicare moltiplicatori territoriali;</li>
+<li>generare il bilancio;</li>
+<li>conservare nel dataset le tre etichette: <code>archetipo</code>, <code>settore</code>, <code>area</code>.</li>
+</ol>
+<p>Il risultato sarebbe un dataset piu’ realistico, perche’ permetterebbe di testare se il motore automatico discrimina correttamente tra:</p>
+<ul>
+<li>rischio finanziario dell’impresa;</li>
+<li>ciclicita’ del settore;</li>
+<li>specificita’ territoriale;</li>
+<li>dimensione e struttura del capitale circolante.</li>
+</ul>
+</section>
+<section id="caveat-metodologico" class="level3 anchored" data-number="17.7" data-anchor-id="caveat-metodologico">
+<h3 class="anchored" data-number="17.7" data-anchor-id="caveat-metodologico"><span class="header-section-number">17.7</span> Caveat metodologico</h3>
+<p>Il progetto Mediobanca sulle medie imprese segnala un punto importante: le analisi territoriali e quelle settoriali possono riferirsi a universi campionari diversi.</p>
+<p>In particolare:</p>
+<ul>
+<li>le aree geografiche usano l’insieme chiuso 2015-2024;</li>
+<li>alcuni cluster settoriali usano l’insieme chiuso 1996-2024;</li>
+<li>il campione settoriale puo’ essere piu’ selezionato e soggetto a survivor bias;</li>
+<li>il numero di societa per singolo settore non sempre e’ disponibile.</li>
+</ul>
+<p>Quindi, per costruire dati sintetici robusti, settore e territorio dovrebbero essere usati come profili di simulazione, non come riproduzione meccanica di frequenze campionarie non perfettamente confrontabili.</p>
+</section>
+</section>
+<section id="estensione-dati-sintetici-da-esperienza-di-lavoro" class="level2 anchored" data-number="18" data-anchor-id="estensione-dati-sintetici-da-esperienza-di-lavoro">
+<h2 class="anchored" data-number="18" data-anchor-id="estensione-dati-sintetici-da-esperienza-di-lavoro"><span class="header-section-number">18</span> Estensione: dati sintetici da esperienza di lavoro</h2>
+<p>Un altro modo per costruire dati sintetici e’ partire dall’esperienza professionale.</p>
+<p>Questo approccio non parte prima dalle distribuzioni statistiche, ma dai casi che un analista, un gestore o un ufficio crediti incontra nella pratica. L’obiettivo e’ generare imprese sintetiche che raccontino una storia aziendale riconoscibile.</p>
+<p>In questo senso ci sono due approcci complementari:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 45%">
+<col style="width: 22%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Approccio</th>
+<th style="text-align: left;">Punto di partenza</th>
+<th style="text-align: left;">Vantaggio</th>
+<th style="text-align: left;">Rischio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Data-driven</td>
+<td style="text-align: left;">dataset osservati, medie, varianze, correlazioni</td>
+<td style="text-align: left;">plausibilita statistica</td>
+<td style="text-align: left;">casi medi poco narrativi</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Expert-driven</td>
+<td style="text-align: left;">esperienza di lavoro, casistiche ricorrenti, segnali di allarme</td>
+<td style="text-align: left;">realismo operativo e didattico</td>
+<td style="text-align: left;">rischio di soggettivita</td>
+</tr>
+</tbody>
+</table>
+<p>La soluzione piu’ solida e’ ibrida: usare i dati reali per definire ordini di grandezza e range, e usare l’esperienza per costruire pattern aziendali credibili.</p>
+<section id="pattern-esperienziali" class="level3 anchored" data-number="18.1" data-anchor-id="pattern-esperienziali">
+<h3 class="anchored" data-number="18.1" data-anchor-id="pattern-esperienziali"><span class="header-section-number">18.1</span> Pattern esperienziali</h3>
+<p>Un pattern esperienziale descrive una situazione aziendale tipica. Non e’ ancora un bilancio, ma una traccia narrativa che modifica i numeri.</p>
+<p>Esempi:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 30%">
+<col style="width: 28%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Pattern</th>
+<th style="text-align: left;">Segnale tipico</th>
+<th style="text-align: left;">Effetto sui dati sintetici</th>
+<th style="text-align: left;">Lettura per l’analista</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Crescita che assorbe cassa</td>
+<td style="text-align: left;">ricavi in aumento ma clienti e magazzino crescono di piu</td>
+<td style="text-align: left;">aumento crediti, rimanenze e PFN</td>
+<td style="text-align: left;">crescita non autofinanziata</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Margini compressi</td>
+<td style="text-align: left;">EBITDA margin basso o in calo</td>
+<td style="text-align: left;">MOL debole, interest coverage fragile</td>
+<td style="text-align: left;">poco spazio per assorbire shock</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sottocapitalizzazione</td>
+<td style="text-align: left;">patrimonio netto basso rispetto all’attivo</td>
+<td style="text-align: left;">leva elevata, PFN/EBITDA piu critico</td>
+<td style="text-align: left;">struttura finanziaria fragile</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tensione fornitori</td>
+<td style="text-align: left;">fornitori meno disponibili a finanziare l’impresa</td>
+<td style="text-align: left;">giorni fornitori bassi, passivo corrente piu rigido</td>
+<td style="text-align: left;">minore elasticita di cassa</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Magazzino eccessivo</td>
+<td style="text-align: left;">rimanenze alte rispetto ai ricavi</td>
+<td style="text-align: left;">current ratio apparentemente buono ma liquidita lenta</td>
+<td style="text-align: left;">rischio obsolescenza o invenduto</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Utile positivo ma cassa debole</td>
+<td style="text-align: left;">conto economico accettabile, circolante assorbente</td>
+<td style="text-align: left;">utile netto positivo, PFN in peggioramento</td>
+<td style="text-align: left;">redditivita non trasformata in liquidita</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Debito costoso</td>
+<td style="text-align: left;">tassi elevati o debito bancario alto</td>
+<td style="text-align: left;">oneri finanziari elevati, copertura bassa</td>
+<td style="text-align: left;">rischio sostenibilita del debito</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Turnaround incompleto</td>
+<td style="text-align: left;">margini in recupero ma leva ancora alta</td>
+<td style="text-align: left;">EBITDA positivo, PFN/EBITDA ancora debole</td>
+<td style="text-align: left;">miglioramento fragile</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Crisi di domanda</td>
+<td style="text-align: left;">ricavi in calo e costi rigidi</td>
+<td style="text-align: left;">EBITDA negativo, utile negativo</td>
+<td style="text-align: left;">problema industriale prima che finanziario</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Stagionalita sfavorevole</td>
+<td style="text-align: left;">fotografia di fine anno penalizzante</td>
+<td style="text-align: left;">magazzino o crediti elevati in una data specifica</td>
+<td style="text-align: left;">serve lettura del ciclo operativo</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="come-entra-nel-generatore" class="level3 anchored" data-number="18.2" data-anchor-id="come-entra-nel-generatore">
+<h3 class="anchored" data-number="18.2" data-anchor-id="come-entra-nel-generatore"><span class="header-section-number">18.2</span> Come entra nel generatore</h3>
+<p>Nel generatore attuale ogni impresa nasce da un archetipo finanziario. In una versione piu’ ricca, ogni impresa potrebbe nascere da quattro dimensioni:</p>
+<pre class="text"><code>archetipo finanziario x settore x territorio x pattern esperienziale</code></pre>
+<p>Esempio:</p>
+<pre class="text"><code>crescita x meccanico x Nord Est x crescita che assorbe cassa
+crisi x metallurgico x Nord Ovest x margini compressi
+turnaround x alimentare x Sud e Isole x debito costoso</code></pre>
+<p>Il pattern esperienziale agirebbe come un modificatore dei parametri:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 41%">
+<col style="width: 55%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Pattern</th>
+<th style="text-align: left;">Parametri modificati</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Crescita che assorbe cassa</td>
+<td style="text-align: left;">giorni clienti, giorni magazzino, PFN/EBITDA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Margini compressi</td>
+<td style="text-align: left;">EBITDA margin, utile netto, interest coverage</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sottocapitalizzazione</td>
+<td style="text-align: left;">patrimonio netto / attivo, debiti bancari</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tensione fornitori</td>
+<td style="text-align: left;">giorni fornitori, current ratio</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Magazzino eccessivo</td>
+<td style="text-align: left;">giorni magazzino, rimanenze / ricavi</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Debito costoso</td>
+<td style="text-align: left;">tasso interesse, oneri finanziari</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Turnaround incompleto</td>
+<td style="text-align: left;">crescita ricavi, EBITDA margin, PFN/EBITDA</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="perche-e-utile" class="level3 anchored" data-number="18.3" data-anchor-id="perche-e-utile">
+<h3 class="anchored" data-number="18.3" data-anchor-id="perche-e-utile"><span class="header-section-number">18.3</span> Perche’ e’ utile</h3>
+<p>Questo approccio e’ utile soprattutto per formazione e validazione.</p>
+<p>Un motore automatico puo’ essere testato non solo su imprese “casuali”, ma su casi costruiti per verificare se riconosce situazioni specifiche:</p>
+<ul>
+<li>intercetta una crisi industriale?</li>
+<li>distingue una crescita sana da una crescita che brucia cassa?</li>
+<li>segnala un’impresa redditizia ma sottocapitalizzata?</li>
+<li>penalizza troppo un caso stagionale?</li>
+<li>confonde liquidita apparente e liquidita effettiva?</li>
+</ul>
+<p>In questo modo il dataset sintetico diventa un vero banco di prova. Non contiene solo numeri plausibili, ma casi intenzionali.</p>
+</section>
+<section id="caveat" class="level3 anchored" data-number="18.4" data-anchor-id="caveat">
+<h3 class="anchored" data-number="18.4" data-anchor-id="caveat"><span class="header-section-number">18.4</span> Caveat</h3>
+<p>L’esperienza professionale e’ preziosa, ma va disciplinata.</p>
+<p>Per evitare che il generatore rifletta solo intuizioni soggettive, ogni pattern dovrebbe avere:</p>
+<ul>
+<li>una descrizione chiara;</li>
+<li>variabili impattate;</li>
+<li>direzione dell’impatto;</li>
+<li>intensita minima e massima;</li>
+<li>esempi di ratios attesi;</li>
+<li>criteri di validazione.</li>
+</ul>
+<p>In pratica, l’esperienza deve diventare una tabella di regole esplicite. Solo cosi’ puo’ essere discussa, corretta e migliorata.</p>
+</section>
+</section>
+<section id="riferimenti-accademici-utili" class="level2 anchored" data-number="19" data-anchor-id="riferimenti-accademici-utili">
+<h2 class="anchored" data-number="19" data-anchor-id="riferimenti-accademici-utili"><span class="header-section-number">19</span> Riferimenti accademici utili</h2>
+<p>La costruzione di questo laboratorio puo’ appoggiarsi a quattro filoni di letteratura e dati.</p>
+<section id="dati-sintetici-e-disclosure-control" class="level3 anchored" data-number="19.1" data-anchor-id="dati-sintetici-e-disclosure-control">
+<h3 class="anchored" data-number="19.1" data-anchor-id="dati-sintetici-e-disclosure-control"><span class="header-section-number">19.1</span> Dati sintetici e disclosure control</h3>
+<p>Il primo filone riguarda la generazione di dati sintetici per rendere accessibili dataset sensibili. I riferimenti classici sono Rubin <span class="citation" data-cites="rubin1993">(<a href="#ref-rubin1993" role="doc-biblioref">1993</a>)</span> e Little <span class="citation" data-cites="little1993">(<a href="#ref-little1993" role="doc-biblioref">1993</a>)</span>, poi sviluppati in lavori su microdati parzialmente sintetici e metodi pratici di sintesi <span class="citation" data-cites="reiter2005 nowok2016 raab2017">(<a href="#ref-reiter2005" role="doc-biblioref">Reiter 2005</a>; <a href="#ref-nowok2016" role="doc-biblioref">Nowok et al.&nbsp;2016</a>; <a href="#ref-raab2017" role="doc-biblioref">Raab et al.&nbsp;2017</a>)</span>.</p>
+<p>Questi lavori sono utili per due ragioni:</p>
+<ul>
+<li>chiariscono che il dato sintetico non e’ un semplice dato inventato;</li>
+<li>propongono criteri per valutare utilita’ statistica e rischio residuo di identificazione.</li>
+</ul>
+</section>
+<section id="dati-tabellari-sintetici-e-machine-learning" class="level3 anchored" data-number="19.2" data-anchor-id="dati-tabellari-sintetici-e-machine-learning">
+<h3 class="anchored" data-number="19.2" data-anchor-id="dati-tabellari-sintetici-e-machine-learning"><span class="header-section-number">19.2</span> Dati tabellari sintetici e machine learning</h3>
+<p>Il secondo filone riguarda la generazione di dati tabellari con modelli statistici o generativi. Qui rientrano strumenti come Synthetic Data Vault <span class="citation" data-cites="patki2016">(<a href="#ref-patki2016" role="doc-biblioref">Patki et al.&nbsp;2016</a>)</span> e modelli GAN per tabelle, come TGAN/CTGAN <span class="citation" data-cites="xu2018tgan xu2019ctgan">(<a href="#ref-xu2018tgan" role="doc-biblioref">Xu and Veeramachaneni 2018</a>; <a href="#ref-xu2019ctgan" role="doc-biblioref">Xu et al.&nbsp;2019</a>)</span>.</p>
+<p>Per il nostro progetto questi riferimenti sono utili come confronto metodologico. Noi non stiamo ancora usando un modello generativo profondo: stiamo costruendo un generatore parametrico, domain-driven ed expert-driven. Pero’ i criteri di valutazione restano simili:</p>
+<ul>
+<li>fedelta’ delle distribuzioni;</li>
+<li>conservazione delle relazioni tra variabili;</li>
+<li>utilita’ per task downstream;</li>
+<li>controllo dei casi estremi;</li>
+<li>rischio di generare dati implausibili.</li>
+</ul>
+</section>
+<section id="classificazione-squilibri-di-classe-e-rischio-di-credito" class="level3 anchored" data-number="19.3" data-anchor-id="classificazione-squilibri-di-classe-e-rischio-di-credito">
+<h3 class="anchored" data-number="19.3" data-anchor-id="classificazione-squilibri-di-classe-e-rischio-di-credito"><span class="header-section-number">19.3</span> Classificazione, squilibri di classe e rischio di credito</h3>
+<p>Il terzo filone riguarda l’uso dei ratios per individuare fragilita’ aziendali. I lavori classici di Beaver, Altman e Ohlson mostrano come informazioni di bilancio e indicatori finanziari possano essere usati per predire fallimento o distress <span class="citation" data-cites="beaver1966 altman1968 ohlson1980">(<a href="#ref-beaver1966" role="doc-biblioref">Beaver 1966</a>; <a href="#ref-altman1968" role="doc-biblioref">Altman 1968</a>; <a href="#ref-ohlson1980" role="doc-biblioref">Ohlson 1980</a>)</span>.</p>
+<p>Per la parte di screening automatico e’ utile anche il riferimento a SMOTE <span class="citation" data-cites="chawla2002">(<a href="#ref-chawla2002" role="doc-biblioref">Chawla et al.&nbsp;2002</a>)</span>, non perche’ il nostro generatore usi SMOTE, ma perche’ mostra una logica importante: quando i casi critici sono pochi, si possono generare osservazioni sintetiche per testare meglio classificatori e filtri.</p>
+</section>
+<section id="benchmark-reale-delle-medie-imprese-italiane" class="level3 anchored" data-number="19.4" data-anchor-id="benchmark-reale-delle-medie-imprese-italiane">
+<h3 class="anchored" data-number="19.4" data-anchor-id="benchmark-reale-delle-medie-imprese-italiane"><span class="header-section-number">19.4</span> Benchmark reale delle medie imprese italiane</h3>
+<p>Il quarto filone non e’ letteratura metodologica ma un dataset di riferimento: il rapporto Area Studi Mediobanca - Centro Studi Tagliacarne “Le medie imprese industriali italiane (2015-2024)” <span class="citation" data-cites="mediobanca2026medie">(<a href="#ref-mediobanca2026medie" role="doc-biblioref">Area Studi Mediobanca and Centro Studi delle Camere di Commercio Guglielmo Tagliacarne 2026</a>)</span>, gia’ usato nel progetto collegato <code>20260630_MediobancaMedieImprese</code>.</p>
+<p>Questo rapporto e’ utile come ancoraggio empirico esterno:</p>
+<ul>
+<li>fornisce ordini di grandezza reali (ricavi, margini, leva, capitale circolante) su un campione di 1.821 societa italiane, utili per verificare che i range degli archetipi non siano arbitrari;</li>
+<li>offre cluster territoriali e settoriali gia’ pronti (si veda la sezione “Estensione: settore e territorio”) per una futura versione del generatore che moduli gli archetipi per area e settore;</li>
+<li>ricorda un limite metodologico da rispettare anche qui: campioni chiusi e survivor bias possono distorcere le frequenze osservate, quindi vanno usati come riferimento di ordine di grandezza e non riprodotti meccanicamente.</li>
+</ul>
+</section>
+<section id="collegamento-con-questo-progetto" class="level3 anchored" data-number="19.5" data-anchor-id="collegamento-con-questo-progetto">
+<h3 class="anchored" data-number="19.5" data-anchor-id="collegamento-con-questo-progetto"><span class="header-section-number">19.5</span> Collegamento con questo progetto</h3>
+<p>Il nostro approccio e’ volutamente piu’ semplice dei modelli generativi avanzati:</p>
+<ul>
+<li>non apprende automaticamente una distribuzione da microdati reali;</li>
+<li>usa archetipi e parametri espliciti;</li>
+<li>incorpora conoscenza esperienziale;</li>
+<li>produce dati auditabili;</li>
+<li>permette di testare regole di screening in modo trasparente.</li>
+</ul>
+<p>Questa impostazione e’ adatta a un uso didattico e metodologico. Per usi predittivi o regolamentari servirebbero invece validazioni piu’ forti: confronto con dati osservati, misure formali di utilita’, privacy risk assessment e backtesting su task specifici.</p>
+</section>
+</section>
+<section id="references" class="level2 unnumbered" data-number="20">
+
+</section>
+<div id="quarto-appendix" class="default">
+<section id="quarto-bibliography" class="quarto-appendix-contents" role="doc-bibliography">
+<section id="references" class="level2 anchored quarto-appendix-heading" data-number="20">
+<h2 class="anchored quarto-appendix-heading" data-number="20" data-anchor-id="references"><span class="header-section-number">20</span> 20 References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-altman1968" class="csl-entry" role="listitem">
+Altman, Edward I. 1968. “Financial Ratios, Discriminant Analysis and the Prediction of Corporate Bankruptcy.” <em>The Journal of Finance</em> 23 (4): 589–609. <a href="https://doi.org/10.1111/j.1540-6261.1968.tb00843.x" class="uri">https://doi.org/10.1111/j.1540-6261.1968.tb00843.x</a>.
+</div>
+<div id="ref-mediobanca2026medie" class="csl-entry" role="listitem">
+Area Studi Mediobanca, and Centro Studi delle Camere di Commercio Guglielmo Tagliacarne. 2026. <em>Le Medie Imprese Industriali Italiane (2015–2024)</em>. 25th ed.&nbsp;Mediobanca Unioncamere.
+</div>
+<div id="ref-beaver1966" class="csl-entry" role="listitem">
+Beaver, William H. 1966. “Financial Ratios as Predictors of Failure.” <em>Journal of Accounting Research</em> 4: 71–111.
+</div>
+<div id="ref-chawla2002" class="csl-entry" role="listitem">
+Chawla, Nitesh V., Kevin W. Bowyer, Lawrence O. Hall, and W. Philip Kegelmeyer. 2002. “SMOTE: Synthetic Minority over-Sampling Technique.” <em>Journal of Artificial Intelligence Research</em> 16: 321–57. <a href="https://doi.org/10.1613/jair.953" class="uri">https://doi.org/10.1613/jair.953</a>.
+</div>
+<div id="ref-drechsler2023" class="csl-entry" role="listitem">
+Drechsler, Jörg, and Anna-Carolina Haensch. 2023. <em>30 Years of Synthetic Data</em>. <a href="https://arxiv.org/abs/2304.02107" class="uri">https://arxiv.org/abs/2304.02107</a>.
+</div>
+<div id="ref-eu2023hvd" class="csl-entry" role="listitem">
+European Commission. 2023. <em>Commission Implementing Regulation (EU) 2023/138 Laying down a List of Specific High-Value Datasets and the Arrangements for Their Publication and Re-Use</em>. Official Journal of the European Union. <a href="https://data.europa.eu/eli/reg_impl/2023/138/oj" class="uri">https://data.europa.eu/eli/reg_impl/2023/138/oj</a>.
+</div>
+<div id="ref-eu2019opendata" class="csl-entry" role="listitem">
+European Parliament and Council of the European Union. 2019. <em>Directive (EU) 2019/1024 of 20 June 2019 on Open Data and the Re-Use of Public Sector Information</em>. Official Journal of the European Union. <a href="https://data.europa.eu/eli/dir/2019/1024/oj" class="uri">https://data.europa.eu/eli/dir/2019/1024/oj</a>.
+</div>
+<div id="ref-hassan2023" class="csl-entry" role="listitem">
+Hassan, Conor, Robert Salomone, and Kerrie Mengersen. 2023. <em>Deep Generative Models, Synthetic Tabular Data, and Differential Privacy: An Overview and Synthesis</em>. <a href="https://arxiv.org/abs/2307.15424" class="uri">https://arxiv.org/abs/2307.15424</a>.
+</div>
+<div id="ref-little1993" class="csl-entry" role="listitem">
+Little, Roderick J. A. 1993. “Statistical Analysis of Masked Data.” <em>Journal of Official Statistics</em> 9 (2): 407–26.
+</div>
+<div id="ref-nowok2016" class="csl-entry" role="listitem">
+Nowok, Beata, Gillian M. Raab, and Chris Dibben. 2016. “<span class="nocase">synthpop</span>: Bespoke Creation of Synthetic Data in R.” <em>Journal of Statistical Software</em> 74 (11): 1–26. <a href="https://doi.org/10.18637/jss.v074.i11" class="uri">https://doi.org/10.18637/jss.v074.i11</a>.
+</div>
+<div id="ref-ohlson1980" class="csl-entry" role="listitem">
+Ohlson, James A. 1980. “Financial Ratios and the Probabilistic Prediction of Bankruptcy.” <em>Journal of Accounting Research</em> 18 (1): 109–31. <a href="https://doi.org/10.2307/2490395" class="uri">https://doi.org/10.2307/2490395</a>.
+</div>
+<div id="ref-patki2016" class="csl-entry" role="listitem">
+Patki, Neha, Roy Wedge, and Kalyan Veeramachaneni. 2016. “The Synthetic Data Vault.” <em>2016 IEEE International Conference on Data Science and Advanced Analytics (DSAA)</em>, 399–410. <a href="https://doi.org/10.1109/DSAA.2016.49" class="uri">https://doi.org/10.1109/DSAA.2016.49</a>.
+</div>
+<div id="ref-raab2017" class="csl-entry" role="listitem">
+Raab, Gillian M., Beata Nowok, and Chris Dibben. 2017. <em>Guidelines for Producing Useful Synthetic Data</em>. <a href="https://arxiv.org/abs/1712.04078" class="uri">https://arxiv.org/abs/1712.04078</a>.
+</div>
+<div id="ref-raab2021" class="csl-entry" role="listitem">
+Raab, Gillian M., Beata Nowok, and Chris Dibben. 2021. <em>Assessing, Visualizing and Improving the Utility of Synthetic Data</em>. <a href="https://arxiv.org/abs/2109.12717" class="uri">https://arxiv.org/abs/2109.12717</a>.
+</div>
+<div id="ref-reiter2005" class="csl-entry" role="listitem">
+Reiter, Jerome P. 2005. “Using CART to Generate Partially Synthetic Public Use Microdata.” <em>Journal of Official Statistics</em> 21 (3): 441–62.
+</div>
+<div id="ref-rubin1993" class="csl-entry" role="listitem">
+Rubin, Donald B. 1993. “Discussion: Statistical Disclosure Limitation.” <em>Journal of Official Statistics</em> 9 (2): 461–68.
+</div>
+<div id="ref-stoian2025survey" class="csl-entry" role="listitem">
+Stoian, Mihaela Cătălina, Eleonora Giunchiglia, and Thomas Lukasiewicz. 2025. <em>A Survey on Tabular Data Generation: Utility, Alignment, Fidelity, Privacy, and Beyond</em>. <a href="https://arxiv.org/abs/2503.05954" class="uri">https://arxiv.org/abs/2503.05954</a>.
+</div>
+<div id="ref-wahlstrom2022" class="csl-entry" role="listitem">
+Wahlstrøm, Ranik Raaen. 2022. <em>Financial Statements of Companies in Norway</em>. <a href="https://arxiv.org/abs/2203.12842" class="uri">https://arxiv.org/abs/2203.12842</a>.
+</div>
+<div id="ref-xu2019ctgan" class="csl-entry" role="listitem">
+Xu, Lei, Maria Skoularidou, Alfredo Cuesta-Infante, and Kalyan Veeramachaneni. 2019. <em>Modeling Tabular Data Using Conditional GAN</em>. <a href="https://arxiv.org/abs/1907.00503" class="uri">https://arxiv.org/abs/1907.00503</a>.
+</div>
+<div id="ref-xu2018tgan" class="csl-entry" role="listitem">
+Xu, Lei, and Kalyan Veeramachaneni. 2018. <em>Synthesizing Tabular Data Using Generative Adversarial Networks</em>. <a href="https://arxiv.org/abs/1811.11264" class="uri">https://arxiv.org/abs/1811.11264</a>.
+</div>
+</div>
+</section>
+</section>
+</div>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2607_DatiSinteticiBilancio/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

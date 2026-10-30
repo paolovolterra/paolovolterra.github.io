@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="Istat, SLL">
+<meta name="description" content="Lo studio ISTAT sui Sistemi Locali del Lavoro (SLL) fornisce una mappatura completa e aggiornata della specializzazione produttiva del territorio italiano, classificando i 515 SLL in quattro macro-classi e 17 gruppi.">
+
+<title>Utilizzo dei Sistemi Locali del Lavoro (SLL) in Ambito Bancario – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Utilizzo dei Sistemi Locali del Lavoro (SLL) in Ambito Bancario – Paolo Volterra">
+<meta property="og:description" content="Lo studio ISTAT sui Sistemi Locali del Lavoro (SLL) fornisce una mappatura completa e aggiornata della specializzazione produttiva del territorio italiano, classificando i 515 SLL in quattro macro-classi e 17 gruppi.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2602_SllInBanca/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Utilizzo dei Sistemi Locali del Lavoro (SLL) in Ambito Bancario – Paolo Volterra">
+<meta name="twitter:description" content="Lo studio ISTAT sui Sistemi Locali del Lavoro (SLL) fornisce una mappatura completa e aggiornata della specializzazione produttiva del territorio italiano, classificando i 515 SLL in quattro macro-classi e 17 gruppi.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2602_SllInBanca/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#documento-di-riferimento" id="toc-documento-di-riferimento" class="nav-link active" data-scroll-target="#documento-di-riferimento"><span class="header-section-number">1</span> Documento di riferimento</a></li>
+  <li><a href="#classificazione-dei-sistemi-locali-del-lavoro" id="toc-classificazione-dei-sistemi-locali-del-lavoro" class="nav-link" data-scroll-target="#classificazione-dei-sistemi-locali-del-lavoro"><span class="header-section-number">2</span> 2. CLASSIFICAZIONE DEI SISTEMI LOCALI DEL LAVORO</a>
+  <ul class="collapse">
+  <li><a href="#le-quattro-macro-classi" id="toc-le-quattro-macro-classi" class="nav-link" data-scroll-target="#le-quattro-macro-classi"><span class="header-section-number">2.1</span> 2.1 Le quattro macro-classi</a></li>
+  </ul></li>
+  <li><a href="#centro-nord-tabella-ruotata" id="toc-centro-nord-tabella-ruotata" class="nav-link" data-scroll-target="#centro-nord-tabella-ruotata"><span class="header-section-number">3</span> CENTRO-NORD (tabella ruotata)</a></li>
+  <li><a href="#mezzogiorno-tabella-ruotata" id="toc-mezzogiorno-tabella-ruotata" class="nav-link" data-scroll-target="#mezzogiorno-tabella-ruotata"><span class="header-section-number">4</span> MEZZOGIORNO (tabella ruotata)</a></li>
+  <li><a href="#applicazioni-bancarie-dello-studio-istat" id="toc-applicazioni-bancarie-dello-studio-istat" class="nav-link" data-scroll-target="#applicazioni-bancarie-dello-studio-istat"><span class="header-section-number">5</span> APPLICAZIONI BANCARIE DELLO STUDIO ISTAT</a>
+  <ul class="collapse">
+  <li><a href="#gestione-del-rischio-creditizio" id="toc-gestione-del-rischio-creditizio" class="nav-link" data-scroll-target="#gestione-del-rischio-creditizio"><span class="header-section-number">5.1</span> GESTIONE DEL RISCHIO CREDITIZIO</a></li>
+  <li><a href="#sviluppo-prodotti-e-servizi-dedicati" id="toc-sviluppo-prodotti-e-servizi-dedicati" class="nav-link" data-scroll-target="#sviluppo-prodotti-e-servizi-dedicati"><span class="header-section-number">5.2</span> SVILUPPO PRODOTTI E SERVIZI DEDICATI</a></li>
+  <li><a href="#supporto-alla-due-diligence-e-ma" id="toc-supporto-alla-due-diligence-e-ma" class="nav-link" data-scroll-target="#supporto-alla-due-diligence-e-ma"><span class="header-section-number">5.3</span> SUPPORTO ALLA DUE DILIGENCE E M&amp;A</a></li>
+  <li><a href="#gestione-delle-crisi-e-workout" id="toc-gestione-delle-crisi-e-workout" class="nav-link" data-scroll-target="#gestione-delle-crisi-e-workout"><span class="header-section-number">5.4</span> GESTIONE DELLE CRISI E WORKOUT</a></li>
+  </ul></li>
+  <li><a href="#integrazione-con-altre-fonti-dati-bancarie" id="toc-integrazione-con-altre-fonti-dati-bancarie" class="nav-link" data-scroll-target="#integrazione-con-altre-fonti-dati-bancarie"><span class="header-section-number">6</span> INTEGRAZIONE CON ALTRE FONTI DATI BANCARIE</a>
+  <ul class="collapse">
+  <li><a href="#integrazione-con-centrale-rischi-banca-ditalia" id="toc-integrazione-con-centrale-rischi-banca-ditalia" class="nav-link" data-scroll-target="#integrazione-con-centrale-rischi-banca-ditalia"><span class="header-section-number">6.1</span> Integrazione con Centrale Rischi Banca d’Italia</a></li>
+  <li><a href="#integrazione-con-cervedcrif" id="toc-integrazione-con-cervedcrif" class="nav-link" data-scroll-target="#integrazione-con-cervedcrif"><span class="header-section-number">6.2</span> Integrazione con Cerved/Crif</a></li>
+  <li><a href="#integrazione-con-dati-interni-crm-data-warehouse" id="toc-integrazione-con-dati-interni-crm-data-warehouse" class="nav-link" data-scroll-target="#integrazione-con-dati-interni-crm-data-warehouse"><span class="header-section-number">6.3</span> Integrazione con dati interni (CRM, Data Warehouse)</a></li>
+  <li><a href="#kpi-per-lo-sviluppo-commerciale" id="toc-kpi-per-lo-sviluppo-commerciale" class="nav-link" data-scroll-target="#kpi-per-lo-sviluppo-commerciale"><span class="header-section-number">6.4</span> KPI per lo sviluppo commerciale</a></li>
+  </ul></li>
+  <li><a href="#casi-duso-operativi" id="toc-casi-duso-operativi" class="nav-link" data-scroll-target="#casi-duso-operativi"><span class="header-section-number">7</span> CASI D’USO OPERATIVI</a>
+  <ul class="collapse">
+  <li><a href="#caso-1-istruttoria-di-credito-per-pmi-manifatturiera" id="toc-caso-1-istruttoria-di-credito-per-pmi-manifatturiera" class="nav-link" data-scroll-target="#caso-1-istruttoria-di-credito-per-pmi-manifatturiera"><span class="header-section-number">7.1</span> CASO 1: Istruttoria di credito per PMI manifatturiera</a></li>
+  <li><a href="#caso-3-gestione-npl-e-ristrutturazioni" id="toc-caso-3-gestione-npl-e-ristrutturazioni" class="nav-link" data-scroll-target="#caso-3-gestione-npl-e-ristrutturazioni"><span class="header-section-number">7.2</span> CASO 3: Gestione NPL e ristrutturazioni</a></li>
+  </ul></li>
+  <li><a href="#limiti-e-cautele-nellutilizzo-dei-dati-sll" id="toc-limiti-e-cautele-nellutilizzo-dei-dati-sll" class="nav-link" data-scroll-target="#limiti-e-cautele-nellutilizzo-dei-dati-sll"><span class="header-section-number">8</span> LIMITI E CAUTELE NELL’UTILIZZO DEI DATI SLL</a>
+  <ul class="collapse">
+  <li><a href="#limiti-metodologici" id="toc-limiti-metodologici" class="nav-link" data-scroll-target="#limiti-metodologici"><span class="header-section-number">8.1</span> Limiti metodologici</a></li>
+  <li><a href="#necessità-di-integrazione" id="toc-necessità-di-integrazione" class="nav-link" data-scroll-target="#necessità-di-integrazione"><span class="header-section-number">8.2</span> Necessità di integrazione</a></li>
+  <li><a href="#aggiornamento-e-monitoraggio" id="toc-aggiornamento-e-monitoraggio" class="nav-link" data-scroll-target="#aggiornamento-e-monitoraggio"><span class="header-section-number">8.3</span> Aggiornamento e monitoraggio</a></li>
+  </ul></li>
+  <li><a href="#implementazione-in-banca-roadmap" id="toc-implementazione-in-banca-roadmap" class="nav-link" data-scroll-target="#implementazione-in-banca-roadmap"><span class="header-section-number">9</span> IMPLEMENTAZIONE IN BANCA: ROADMAP</a>
+  <ul class="collapse">
+  <li><a href="#fase-1-assessment-mese-1-2" id="toc-fase-1-assessment-mese-1-2" class="nav-link" data-scroll-target="#fase-1-assessment-mese-1-2"><span class="header-section-number">9.1</span> Fase 1: Assessment (Mese 1-2)</a></li>
+  <li><a href="#fase-2-integrazione-sistemi-mese-3-4" id="toc-fase-2-integrazione-sistemi-mese-3-4" class="nav-link" data-scroll-target="#fase-2-integrazione-sistemi-mese-3-4"><span class="header-section-number">9.2</span> Fase 2: Integrazione sistemi (Mese 3-4)</a></li>
+  <li><a href="#fase-3-processi-e-governance-mese-5-6" id="toc-fase-3-processi-e-governance-mese-5-6" class="nav-link" data-scroll-target="#fase-3-processi-e-governance-mese-5-6"><span class="header-section-number">9.3</span> Fase 3: Processi e governance (Mese 5-6)</a></li>
+  <li><a href="#fase-4-sviluppo-commerciale-mese-7-12" id="toc-fase-4-sviluppo-commerciale-mese-7-12" class="nav-link" data-scroll-target="#fase-4-sviluppo-commerciale-mese-7-12"><span class="header-section-number">9.4</span> Fase 4: Sviluppo commerciale (Mese 7-12)</a></li>
+  </ul></li>
+  <li><a href="#conclusioni" id="toc-conclusioni" class="nav-link" data-scroll-target="#conclusioni"><span class="header-section-number">10</span> CONCLUSIONI</a>
+  <ul class="collapse">
+  <li><a href="#vantaggi-principali-per-la-banca" id="toc-vantaggi-principali-per-la-banca" class="nav-link" data-scroll-target="#vantaggi-principali-per-la-banca"><span class="header-section-number">10.1</span> Vantaggi principali per la banca:</a></li>
+  <li><a href="#fattori-critici-di-successo" id="toc-fattori-critici-di-successo" class="nav-link" data-scroll-target="#fattori-critici-di-successo"><span class="header-section-number">10.2</span> Fattori critici di successo:</a></li>
+  </ul></li>
+  <li><a href="#allegati-e-riferimenti" id="toc-allegati-e-riferimenti" class="nav-link" data-scroll-target="#allegati-e-riferimenti"><span class="header-section-number">11</span> ALLEGATI E RIFERIMENTI</a>
+  <ul class="collapse">
+  <li><a href="#fonti-dati-istat" id="toc-fonti-dati-istat" class="nav-link" data-scroll-target="#fonti-dati-istat"><span class="header-section-number">11.1</span> Fonti dati ISTAT</a></li>
+  <li><a href="#altre-fonti-utili" id="toc-altre-fonti-utili" class="nav-link" data-scroll-target="#altre-fonti-utili"><span class="header-section-number">11.2</span> Altre fonti utili</a></li>
+  <li><a href="#contatti-istat-per-approfondimenti" id="toc-contatti-istat-per-approfondimenti" class="nav-link" data-scroll-target="#contatti-istat-per-approfondimenti"><span class="header-section-number">11.3</span> Contatti ISTAT per approfondimenti</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2602_SllInBanca/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Utilizzo dei Sistemi Locali del Lavoro (SLL) in Ambito Bancario</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Sistemi locali del lavoro</div>
+    <div class="quarto-category">Territori</div>
+    <div class="quarto-category">Credito</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Lo studio ISTAT sui Sistemi Locali del Lavoro (SLL) fornisce una mappatura completa e aggiornata della specializzazione produttiva del territorio italiano, classificando i 515 SLL in quattro macro-classi e 17 gruppi.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">14 febbraio 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>Lo studio ISTAT sui Sistemi Locali del Lavoro (SLL) fornisce una mappatura completa e aggiornata della specializzazione produttiva del territorio italiano, classificando i 515 SLL in quattro macro-classi e 17 gruppi. Questo strumento rappresenta una fonte informativa strategica per il sistema bancario, consentendo analisi territoriali approfondite per la gestione del rischio creditizio, la pianificazione commerciale e lo sviluppo di prodotti finanziari mirati.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>Istat, SLL</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="documento-di-riferimento" class="level2 anchored" data-number="1" data-anchor-id="documento-di-riferimento">
+<h2 class="anchored" data-number="1" data-anchor-id="documento-di-riferimento"><span class="header-section-number">1</span> Documento di riferimento</h2>
+<p><strong>Titolo</strong>: La specializzazione produttiva prevalente dei Sistemi locali del lavoro – Anno 2021</p>
+<p><strong>Fonte</strong>: ISTAT - Statistica Focus (12 febbraio 2026)</p>
+<p><strong>Copertura</strong>: 515 Sistemi Locali del Lavoro in Italia</p>
+<p><strong>Anno di riferimento</strong>: 2021</p>
+<hr>
+<p><img src="figure/fig01.jpg" class="img-fluid" role="img"></p>
+</section>
+<section id="classificazione-dei-sistemi-locali-del-lavoro" class="level2 anchored" data-number="2" data-anchor-id="classificazione-dei-sistemi-locali-del-lavoro">
+<h2 class="anchored" data-number="2" data-anchor-id="classificazione-dei-sistemi-locali-del-lavoro"><span class="header-section-number">2</span> 2. CLASSIFICAZIONE DEI SISTEMI LOCALI DEL LAVORO</h2>
+<section id="le-quattro-macro-classi" class="level3 anchored" data-anchor-id="le-quattro-macro-classi" data-number="2.1">
+<h3 class="anchored" data-anchor-id="le-quattro-macro-classi" data-number="2.1"><span class="header-section-number">2.1</span> 2.1 Le quattro macro-classi</h3>
+<section id="classe-a---sl-del-made-in-italy-156-sistemi-303-del-totale" class="level4 anchored" data-anchor-id="classe-a---sl-del-made-in-italy-156-sistemi-303-del-totale" data-number="2.1.1">
+<h4 class="anchored" data-anchor-id="classe-a---sl-del-made-in-italy-156-sistemi-303-del-totale" data-number="2.1.1"><span class="header-section-number">2.1.1</span> <strong>Classe A - SL del “Made in Italy” (156 sistemi, 30,3% del totale)</strong></h4>
+<ul>
+<li><strong>Popolazione</strong>: 23,6% della popolazione italiana (circa 14 milioni di persone)</li>
+<li><strong>Superficie</strong>: 28,4% del territorio nazionale</li>
+<li><strong>Valore aggiunto</strong>: 23,3% del totale Industria e Servizi</li>
+<li><strong>Produttività media</strong>: 53 mila euro per addetto</li>
+<li><strong>Settori prevalenti</strong>:
+<ul>
+<li>Agro-alimentare (37 SL)</li>
+<li>Tessile e abbigliamento (16 SL)</li>
+<li>Pelli, cuoio e calzature (26 SL)</li>
+<li>Legno e mobili (25 SL)</li>
+<li>Gioielli, occhiali e strumenti musicali (8 SL)</li>
+<li>Fabbricazione di macchine e apparecchiature elettriche (24 SL)</li>
+</ul></li>
+<li><strong>Distribuzione geografica</strong>: Centro-Nord (valore aggiunto per addetto: 34,5 mila euro nel Mezzogiorno vs 53 mila euro nel Centro-Nord)</li>
+</ul>
+</section>
+<section id="classe-b---sl-manifatturieri-dellindustria-pesante-111-sistemi-216" class="level4 anchored" data-anchor-id="classe-b---sl-manifatturieri-dellindustria-pesante-111-sistemi-216" data-number="2.1.2">
+<h4 class="anchored" data-anchor-id="classe-b---sl-manifatturieri-dellindustria-pesante-111-sistemi-216" data-number="2.1.2"><span class="header-section-number">2.1.2</span> <strong>Classe B - SL manifatturieri dell’industria pesante (111 sistemi, 21,6%)</strong></h4>
+<ul>
+<li><strong>Popolazione</strong>: 25,6% della popolazione</li>
+<li><strong>Addetti</strong>: 26,5% degli addetti totali</li>
+<li><strong>Settori prevalenti</strong>:
+<ul>
+<li>Fabbricazione di mezzi di trasporto (23 SL)</li>
+<li>Produzione e lavorazione dei metalli (20 SL)</li>
+<li>Materiali da costruzione e ceramica (23 SL)</li>
+<li>Chimica, plastica e farmaceutica (21 SL)</li>
+<li>Carta e editoria (7 SL)</li>
+<li>Porti e cantieri navali (17 SL)</li>
+</ul></li>
+<li><strong>Caratteristiche</strong>: Maggiore dimensione media delle unità locali, densità abitativa e imprenditoriale più elevate nel Mezzogiorno</li>
+</ul>
+</section>
+<section id="classe-c---sl-non-manifatturieri-124-sistemi-241" class="level4 anchored" data-anchor-id="classe-c---sl-non-manifatturieri-124-sistemi-241" data-number="2.1.3">
+<h4 class="anchored" data-anchor-id="classe-c---sl-non-manifatturieri-124-sistemi-241" data-number="2.1.3"><span class="header-section-number">2.1.3</span> <strong>Classe C - SL non manifatturieri (124 sistemi, 24,1%)</strong></h4>
+<ul>
+<li><strong>Popolazione</strong>: 38,8% (circa 23 milioni di abitanti)</li>
+<li><strong>Gruppi</strong>:
+<ul>
+<li><strong>C1</strong>: SL urbani ad alta specializzazione (8 SL) - produttività 68,3 mila euro/addetto</li>
+<li><strong>C2</strong>: SL urbani pluri-specializzati (15 SL) - produttività 57,3 mila euro/addetto</li>
+<li><strong>C3</strong>: SL urbani non specializzati (16 SL) - produttività 43,2 mila euro/addetto</li>
+<li><strong>C4</strong>: SL turistici (85 SL) - produttività 43,1 mila euro/addetto</li>
+</ul></li>
+<li><strong>Caratteristiche</strong>: Presenza di grandi città, elevata densità abitativa (317,9 abitanti/km² al Centro-Nord)</li>
+</ul>
+</section>
+<section id="classe-d---sl-non-specializzati-124-sistemi-241" class="level4 anchored" data-anchor-id="classe-d---sl-non-specializzati-124-sistemi-241" data-number="2.1.4">
+<h4 class="anchored" data-anchor-id="classe-d---sl-non-specializzati-124-sistemi-241" data-number="2.1.4"><span class="header-section-number">2.1.4</span> <strong>Classe D - SL non specializzati (124 sistemi, 24,1%)</strong></h4>
+<ul>
+<li><strong>Caratteristiche</strong>: 50 mila abitanti o meno, nessuna specializzazione produttiva rilevante</li>
+<li><strong>Distribuzione</strong>: Prevalentemente Mezzogiorno (26 in Calabria, 40 in Sicilia)</li>
+<li><strong>Produttività</strong>: Molto limitata - 18,9% degli addetti, solo il 6,0% del valore aggiunto complessivo</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="centro-nord-tabella-ruotata" class="level2 anchored" data-number="3" data-anchor-id="centro-nord-tabella-ruotata">
+<h2 class="anchored" data-number="3" data-anchor-id="centro-nord-tabella-ruotata"><span class="header-section-number">3</span> CENTRO-NORD (tabella ruotata)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 25%">
+<col style="width: 19%">
+<col style="width: 27%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicatore</th>
+<th style="text-align: left;">A – Made in Italy</th>
+<th style="text-align: left;">B – Industria pesante</th>
+<th style="text-align: left;">C – Non manifatturieri</th>
+<th style="text-align: left;">D – Non specializzati</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">N. SL</td>
+<td style="text-align: left;">156 (prevalenti qui)</td>
+<td style="text-align: left;">111</td>
+<td style="text-align: left;">124</td>
+<td style="text-align: left;">marginali</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Peso demografico</td>
+<td style="text-align: left;">23,6% nazionale</td>
+<td style="text-align: left;">25,6% nazionale</td>
+<td style="text-align: left;">38,8% nazionale</td>
+<td style="text-align: left;">n.d.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Peso economico</td>
+<td style="text-align: left;">23,3% VA Industria+Servizi</td>
+<td style="text-align: left;">26,5% addetti</td>
+<td style="text-align: left;">n.d.</td>
+<td style="text-align: left;">n.d.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Produttività</td>
+<td style="text-align: left;"><strong>53.000 € / addetto</strong></td>
+<td style="text-align: left;">n.d.</td>
+<td style="text-align: left;"><strong>fino a 68.300 € (C1)</strong></td>
+<td style="text-align: left;">bassa</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Caratteristiche</td>
+<td style="text-align: left;">Manifattura tradizionale specializzata</td>
+<td style="text-align: left;">Poli industriali strutturati</td>
+<td style="text-align: left;">Grandi città; alta densità (317,9 ab/km²)</td>
+<td style="text-align: left;">Residuali</td>
+</tr>
+</tbody>
+</table>
+<p><em>Osservazione strutturale: nel Centro-Nord si concentra la parte ad alta produttività (Classe A e C1/C2). Il sistema appare più diversificato e con maggiore intensità di valore aggiunto per addetto.</em></p>
+</section>
+<section id="mezzogiorno-tabella-ruotata" class="level2 anchored" data-number="4" data-anchor-id="mezzogiorno-tabella-ruotata">
+<h2 class="anchored" data-number="4" data-anchor-id="mezzogiorno-tabella-ruotata"><span class="header-section-number">4</span> MEZZOGIORNO (tabella ruotata)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 16%">
+<col style="width: 27%">
+<col style="width: 15%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicatore</th>
+<th style="text-align: left;">A – Made in Italy</th>
+<th style="text-align: left;">B – Industria pesante</th>
+<th style="text-align: left;">C – Non manifatturieri</th>
+<th style="text-align: left;">D – Non specializzati</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">N. SL</td>
+<td style="text-align: left;">presenti</td>
+<td style="text-align: left;">presenti</td>
+<td style="text-align: left;">presenti</td>
+<td style="text-align: left;">26 Calabria; 40 Sicilia</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Peso demografico</td>
+<td style="text-align: left;">incluso nel 23,6% nazionale</td>
+<td style="text-align: left;">incluso nel 25,6% nazionale</td>
+<td style="text-align: left;">incluso nel 38,8% nazionale</td>
+<td style="text-align: left;">n.d.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Peso economico</td>
+<td style="text-align: left;">incluso nel 23,3% VA</td>
+<td style="text-align: left;">incluso nel 26,5% addetti</td>
+<td style="text-align: left;">n.d.</td>
+<td style="text-align: left;"><strong>6,0% VA totale</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Produttività</td>
+<td style="text-align: left;"><strong>34.500 € / addetto</strong></td>
+<td style="text-align: left;">n.d.</td>
+<td style="text-align: left;">43.100–57.300 €</td>
+<td style="text-align: left;">molto bassa</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Caratteristiche</td>
+<td style="text-align: left;">Gap −18.500 € vs CN (≈ −35%)</td>
+<td style="text-align: left;">Densità imprenditoriale relativamente più elevata</td>
+<td style="text-align: left;">Urbanità meno polarizzata</td>
+<td style="text-align: left;">Sistemi &lt;50.000 abitanti; assenza specializzazione</td>
+</tr>
+</tbody>
+</table>
+<p><em>Osservazione strutturale: nel Mezzogiorno si concentra la Classe D e si registra un evidente divario di produttività nella Classe A (−18.500 € per addetto rispetto al Centro-Nord, pari a circa −35%).</em></p>
+<div id="fcb2c45e" class="cell" data-execution_count="1">
+<p>Codice</p>
+<div class="code-copy-outer-scaffold">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"../OUT/data/istat_sll2021_classificazione.csv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df.groupby([<span class="st">'den_classe'</span>, <span class="st">'den_gruppo'</span>])[<span class="st">'pop_2021_12_31'</span>].<span class="bu">sum</span>().reset_index()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">den_classe</th>
+<th style="text-align: left;">den_gruppo</th>
+<th style="text-align: left;">pop_2021_12_31</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: left;">SL del "Made in Italy"</td>
+<td style="text-align: left;">Sistemi locali dei gioielli, degli occhiali e ...</td>
+<td style="text-align: left;">787273</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: left;">SL del "Made in Italy"</td>
+<td style="text-align: left;">Sistemi locali del legno e dei mobili</td>
+<td style="text-align: left;">2289587</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: left;">SL del "Made in Italy"</td>
+<td style="text-align: left;">Sistemi locali del tessile e dell'abbigliamento</td>
+<td style="text-align: left;">2087831</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td style="text-align: left;">SL del "Made in Italy"</td>
+<td style="text-align: left;">Sistemi locali dell'agro-alimentare</td>
+<td style="text-align: left;">3407614</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td style="text-align: left;">SL del "Made in Italy"</td>
+<td style="text-align: left;">Sistemi locali della fabbricazione di macchine...</td>
+<td style="text-align: left;">2786382</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td style="text-align: left;">SL del "Made in Italy"</td>
+<td style="text-align: left;">Sistemi locali delle pelli, cuoio e calzature</td>
+<td style="text-align: left;">2565195</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td style="text-align: left;">SL manifatturieri dell'industria pesante</td>
+<td style="text-align: left;">Sistemi locali dei materiali da costruzione e ...</td>
+<td style="text-align: left;">1239573</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td style="text-align: left;">SL manifatturieri dell'industria pesante</td>
+<td style="text-align: left;">Sistemi locali della carta e dell'editoria</td>
+<td style="text-align: left;">553176</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td style="text-align: left;">SL manifatturieri dell'industria pesante</td>
+<td style="text-align: left;">Sistemi locali della chimica, plastica e farma...</td>
+<td style="text-align: left;">2784818</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td style="text-align: left;">SL manifatturieri dell'industria pesante</td>
+<td style="text-align: left;">Sistemi locali della fabbricazione di mezzi di...</td>
+<td style="text-align: left;">3935584</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td style="text-align: left;">SL manifatturieri dell'industria pesante</td>
+<td style="text-align: left;">Sistemi locali della produzione e lavorazione ...</td>
+<td style="text-align: left;">2233035</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td style="text-align: left;">SL manifatturieri dell'industria pesante</td>
+<td style="text-align: left;">Sistemi locali portuali e dei cantieri navali</td>
+<td style="text-align: left;">6175608</td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td style="text-align: left;">SL non manifatturieri</td>
+<td style="text-align: left;">Sistemi locali turistici</td>
+<td style="text-align: left;">2679855</td>
+</tr>
+<tr class="even">
+<td>13</td>
+<td style="text-align: left;">SL non manifatturieri</td>
+<td style="text-align: left;">Sistemi locali urbani ad alta specializzazione</td>
+<td style="text-align: left;">9737866</td>
+</tr>
+<tr class="odd">
+<td>14</td>
+<td style="text-align: left;">SL non manifatturieri</td>
+<td style="text-align: left;">Sistemi locali urbani non specializzati</td>
+<td style="text-align: left;">3942835</td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td style="text-align: left;">SL non manifatturieri</td>
+<td style="text-align: left;">Sistemi locali urbani pluri-specializzati</td>
+<td style="text-align: left;">6530925</td>
+</tr>
+<tr class="odd">
+<td>16</td>
+<td style="text-align: left;">SL non manifatturieri</td>
+<td style="text-align: left;">sistemi locali turistici</td>
+<td style="text-align: left;">18817</td>
+</tr>
+<tr class="even">
+<td>17</td>
+<td style="text-align: left;">SL non specializzati</td>
+<td style="text-align: left;">Sistemi locali non specializzati</td>
+<td style="text-align: left;">5274159</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="applicazioni-bancarie-dello-studio-istat" class="level2 anchored" data-number="5" data-anchor-id="applicazioni-bancarie-dello-studio-istat">
+<h2 class="anchored" data-number="5" data-anchor-id="applicazioni-bancarie-dello-studio-istat"><span class="header-section-number">5</span> APPLICAZIONI BANCARIE DELLO STUDIO ISTAT</h2>
+<section id="gestione-del-rischio-creditizio" class="level3 anchored" data-anchor-id="gestione-del-rischio-creditizio" data-number="5.1">
+<h3 class="anchored" data-anchor-id="gestione-del-rischio-creditizio" data-number="5.1"><span class="header-section-number">5.1</span> GESTIONE DEL RISCHIO CREDITIZIO</h3>
+<section id="a.-analisi-del-rischio-di-concentrazione-settoriale-e-territoriale" class="level4 anchored" data-anchor-id="a.-analisi-del-rischio-di-concentrazione-settoriale-e-territoriale" data-number="5.1.1">
+<h4 class="anchored" data-anchor-id="a.-analisi-del-rischio-di-concentrazione-settoriale-e-territoriale" data-number="5.1.1"><span class="header-section-number">5.1.1</span> <strong>A. Analisi del rischio di concentrazione settoriale e territoriale</strong></h4>
+<p><strong>Caso d’uso</strong>: Una banca con forte presenza in Veneto e Friuli-Venezia Giulia analizza il proprio portafoglio crediti alle PMI.</p>
+<p><strong>Utilizzo dei dati SLL</strong>: - Identificare i territori del “triangolo del salotto” (SL del legno e dei mobili in Puglia e Basilicata) per valutare l’esposizione creditizia verso questo specifico cluster produttivo - Verificare la concentrazione su settori del Made in Italy (tessile, abbigliamento) che rappresentano il 7,8% degli addetti in questi territori - Mappare l’esposizione verso SL con produttività inferiore alla media (es. 41mila euro per addetto nel tessile/abbigliamento vs 53mila euro media Made in Italy)</p>
+<p><strong>Metriche chiave da monitorare</strong>: - <strong>Densità imprenditoriale</strong> (unità locali per km²): indicatore di vivacità economica del territorio - <strong>Dimensione media delle unità locali</strong> (addetti/unità locali): proxy della solidità delle imprese - <strong>Produttività del lavoro</strong>: capacità di generare valore aggiunto - <strong>Distribuzione Centro-Nord/Mezzogiorno</strong>: differenziali significativi di performance economica</p>
+</section>
+<section id="b.-valutazione-del-merito-creditizio-territoriale" class="level4 anchored" data-anchor-id="b.-valutazione-del-merito-creditizio-territoriale" data-number="5.1.2">
+<h4 class="anchored" data-anchor-id="b.-valutazione-del-merito-creditizio-territoriale" data-number="5.1.2"><span class="header-section-number">5.1.2</span> <strong>B. Valutazione del merito creditizio territoriale</strong></h4>
+<p><strong>Esempio pratico</strong>: Richiesta di finanziamento da parte di un’impresa manifatturiera a Faenza (Emilia-Romagna).</p>
+<p><strong>Analisi tramite SLL</strong>: - Faenza appartiene al gruppo dei materiali da costruzione e ceramica (classe B3) - Produttività del lavoro: 57,3 mila euro per addetto (superiore alla media nazionale) - Densità abitativa: 86,3 abitanti/km² (indicatore di urbanizzazione moderata) - Specializzazione consolidata in produzioni artigianali di alta qualità (ceramica di Faenza)</p>
+<p><strong>Valutazione creditizia</strong>: - ✅ Territorio con specializzazione produttiva consolidata - ✅ Produttività superiore alla media del comparto manifatturiero pesante - ✅ Presenza di cluster industriale con tradizione storica - ⚠️ Monitorare la dipendenza da singoli settori/mercati</p>
+</section>
+<section id="c.-stress-test-settoriali-e-territoriali" class="level4 anchored" data-anchor-id="c.-stress-test-settoriali-e-territoriali" data-number="5.1.3">
+<h4 class="anchored" data-anchor-id="c.-stress-test-settoriali-e-territoriali" data-number="5.1.3"><span class="header-section-number">5.1.3</span> <strong>C. Stress test settoriali e territoriali</strong></h4>
+<p><strong>Scenario</strong>: Crisi del settore turistico (come durante COVID-19)</p>
+<p><strong>Utilizzo dei dati SLL</strong>: - Identificare i 85 SL turistici (classe C4) che rappresentano il 3,8% del valore aggiunto - Mappare le aree a maggior rischio: zone costiere al meridione, Trentino-Alto Adige, località alpine - Valutare l’esposizione del portafoglio crediti verso questi territori - Stimare l’impatto su 2,7 milioni di abitanti (4,6% della popolazione nazionale)</p>
+<p><strong>Azioni mitiganti</strong>: - Diversificazione territoriale dei nuovi impieghi - Accantonamenti prudenziali su crediti concentrati in SL turistici - Rimodulazione dei limiti di esposizione per cluster produttivi vulnerabili</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 98%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">:</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Territorio Specializzazione Prodotti bancari prioritari</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Brianza (Lombardia)</strong> Legno e mobili, macchine (Made in Italy gruppo A6) Credito agrario, finanziamenti per macchinari, factoring per dilazioni pagamento</p>
+<p><strong>Emilia-Romagna</strong> Mezzi di trasporto, meccanica (Industria pesante B1) Project financing, leasing industriale, credito export</p>
+<p><strong>Toscana centrale</strong> Pelli, cuoio e calzature (Made in Italy gruppo A3) Anticipo fatture, finanziamenti stagionali, crediti per export moda</p>
+<p><strong>Milano, Roma, Bologna</strong> Urbani ad alta specializzazione (C1) Mutui residenziali premium, gestione patrimoniale, servizi digitali</p>
+<p><strong>Sardegna costiera</strong> Turistici (C4) Credito stagionale, finanziamenti per ristrutturazioni, POS e servizi di pagamento ———————————————————————————————————————————————————————–</p>
+<hr>
+</section>
+</section>
+<section id="sviluppo-prodotti-e-servizi-dedicati" class="level3 anchored" data-anchor-id="sviluppo-prodotti-e-servizi-dedicati" data-number="5.2">
+<h3 class="anchored" data-anchor-id="sviluppo-prodotti-e-servizi-dedicati" data-number="5.2"><span class="header-section-number">5.2</span> SVILUPPO PRODOTTI E SERVIZI DEDICATI</h3>
+<section id="a.-prodotti-settoriali-verticali" class="level4 anchored" data-anchor-id="a.-prodotti-settoriali-verticali" data-number="5.2.1">
+<h4 class="anchored" data-anchor-id="a.-prodotti-settoriali-verticali" data-number="5.2.1"><span class="header-section-number">5.2.1</span> <strong>A. Prodotti settoriali “verticali”</strong></h4>
+<p><strong>Esempio 1: “Prestito Made in Italy”</strong> - <strong>Target</strong>: Imprese dei 156 SL Made in Italy - <strong>Caratteristiche</strong>: - Tassi agevolati per investimenti in digitalizzazione e sostenibilità - Importi fino a 500.000 euro - Priorità a territori con produttività superiore a 40 mila euro/addetto - <strong>Territori prioritari</strong>: Centro-Nord (produttività 34,5 mila euro Mezzogiorno vs 53 mila Centro-Nord)</p>
+<p><strong>Esempio 2: “Finanziamento Industria 4.0 per SL manifatturieri pesanti”</strong> - <strong>Target</strong>: Imprese dei 111 SL manifatturieri industria pesante (classe B) - <strong>Caratteristiche</strong>: - Finanziamenti per automazione, robotica, intelligenza artificiale - Periodi di ammortamento lunghi (fino a 10 anni) - Affiancamento consulenziale per transizione digitale - <strong>Focus geografico</strong>: SL con dimensione media unità locali elevata (proxy di imprese strutturate)</p>
+</section>
+<section id="b.-prodotti-territoriali-orizzontali" class="level4 anchored" data-anchor-id="b.-prodotti-territoriali-orizzontali" data-number="5.2.2">
+<h4 class="anchored" data-anchor-id="b.-prodotti-territoriali-orizzontali" data-number="5.2.2"><span class="header-section-number">5.2.2</span> <strong>B. Prodotti territoriali “orizzontali”</strong></h4>
+<p><strong>Esempio: “Sostegno SL non specializzati”</strong> - <strong>Target</strong>: 124 SL non specializzati (classe D), prevalentemente Mezzogiorno - <strong>Razionale</strong>: Territori con bassa produttività (6,0% valore aggiunto, 18,9% addetti) necessitano di supporto per sviluppo economico - <strong>Caratteristiche</strong>: - Microcredito per avvio attività - Garanzie pubbliche (es. Fondo di Garanzia PMI) - Tassi calmierati con contributo di enti locali/regionali - Formazione imprenditoriale inclusa</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 98%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">:</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Indicatore Centro-Nord Mezzogiorno Differenziale</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Densità abitativa (ab/km²) - Made in Italy</strong> 182,1 122,7 +48%</p>
+<p><strong>Densità imprenditoriale (UL/km²) - Made in Italy</strong> 16,5 9,0 +83%</p>
+<p><strong>Produttività (k€/addetto) - Made in Italy</strong> 53,0 34,5 +54%</p>
+<p><strong>Densità abitativa - Manifatturieri pesanti</strong> 185,3 304,5 -39%</p>
+<p><strong>Produttività - Manifatturieri pesanti</strong> 53,3 41,3 +29% ————————————————————————————————————–</p>
+<p><strong>Implicazioni per la banca</strong>: - <strong>Pricing differenziato</strong>: Tassi più competitivi per territori ad alta produttività - <strong>Limiti di esposizione</strong>: Maggiore prudenza su territori Mezzogiorno con produttività inferiore - <strong>Strategia di diversificazione</strong>: Bilanciare portafoglio tra Centro-Nord e Sud</p>
+</section>
+<section id="b.-identificazione-di-outlier-positivi-e-negativi" class="level4 anchored" data-anchor-id="b.-identificazione-di-outlier-positivi-e-negativi" data-number="5.2.3">
+<h4 class="anchored" data-anchor-id="b.-identificazione-di-outlier-positivi-e-negativi" data-number="5.2.3"><span class="header-section-number">5.2.3</span> <strong>B. Identificazione di outlier positivi e negativi</strong></h4>
+<p><strong>Outlier positivi</strong> (opportunità): - <strong>Avezzano (Abruzzo)</strong>: SL del Made in Italy (fabbricazione macchine) con produttività elevata nonostante localizzazione nel Mezzogiorno - <strong>SL della chimica, plastica e farmaceutica al Sud</strong>: Battipaglia, Milazzo, Gela, Siracusa - produttività e dimensione media unità locali superiori alla media</p>
+<p><strong>Outlier negativi</strong> (rischi): - <strong>SL non specializzati con densità abitativa bassissima</strong>: Mezzogiorno - 80,6 ab/km² vs 93,4 Centro-Nord - <strong>SL turistici con alta stagionalità</strong>: rischio di flussi di cassa discontinui</p>
+<hr>
+</section>
+</section>
+<section id="supporto-alla-due-diligence-e-ma" class="level3 anchored" data-anchor-id="supporto-alla-due-diligence-e-ma" data-number="5.3">
+<h3 class="anchored" data-anchor-id="supporto-alla-due-diligence-e-ma" data-number="5.3"><span class="header-section-number">5.3</span> SUPPORTO ALLA DUE DILIGENCE E M&amp;A</h3>
+<section id="caso-duso-una-banca-supporta-un-cliente-nellacquisizione-di-unimpresa-nel-settore-tessileabbigliamento-in-veneto." class="level4 anchored" data-anchor-id="caso-duso-una-banca-supporta-un-cliente-nellacquisizione-di-unimpresa-nel-settore-tessileabbigliamento-in-veneto." data-number="5.3.1">
+<h4 class="anchored" data-anchor-id="caso-duso-una-banca-supporta-un-cliente-nellacquisizione-di-unimpresa-nel-settore-tessileabbigliamento-in-veneto." data-number="5.3.1"><span class="header-section-number">5.3.1</span> <strong>Caso d’uso</strong>: Una banca supporta un cliente nell’acquisizione di un’impresa nel settore tessile/abbigliamento in Veneto.</h4>
+<p><strong>Analisi territoriale tramite SLL</strong>:</p>
+<ol type="1">
+<li><strong>Identificazione del SL di riferimento</strong>
+<ul>
+<li>Verifica se il SL appartiene al gruppo A2 (tessile e abbigliamento) - 16 SL in Italia</li>
+<li>Localizzazione: Centro-Nord (densità abitativa 291,8 ab/km², imprenditoriale 24,4 UL/km²)</li>
+</ul></li>
+<li><strong>Benchmarking produttività</strong>
+<ul>
+<li>Produttività del lavoro gruppo A2: 50,1 mila euro per addetto</li>
+<li>Confronto con target di acquisizione: se significativamente inferiore, richiede approfondimenti</li>
+</ul></li>
+<li><strong>Analisi del cluster industriale</strong>
+<ul>
+<li>Presenza di fornitori e clienti nel territorio (indotto)</li>
+<li>Dimensione media unità locali: 4,2 addetti (indicatore di frammentazione settore)</li>
+<li>Quota valore aggiunto: 2,2% del totale industria e servizi</li>
+</ul></li>
+<li><strong>Valutazione rischi specifici</strong>
+<ul>
+<li>Produttività inferiore alla media Made in Italy (50,1 vs 53,0 mila euro)</li>
+<li>Settore maturo con pressione competitiva da paesi low-cost</li>
+<li>Necessità di investimenti in digitalizzazione e automazione</li>
+</ul></li>
+</ol>
+<p><strong>Output per il cliente</strong>: - <strong>Valutazione economica</strong>: Stima del valore equo basata su multipli di settore e territorio - <strong>Piano di integrazione</strong>: Sinergie con altre imprese del cluster - <strong>Finanziabilità dell’operazione</strong>: Struttura di finanziamento ottimale</p>
+<hr>
+</section>
+</section>
+<section id="gestione-delle-crisi-e-workout" class="level3 anchored" data-anchor-id="gestione-delle-crisi-e-workout" data-number="5.4">
+<h3 class="anchored" data-anchor-id="gestione-delle-crisi-e-workout" data-number="5.4"><span class="header-section-number">5.4</span> GESTIONE DELLE CRISI E WORKOUT</h3>
+<section id="scenario-unimpresa-in-difficoltà-finanziaria-opera-nel-settore-dei-materiali-da-costruzione-in-calabria." class="level4 anchored" data-anchor-id="scenario-unimpresa-in-difficoltà-finanziaria-opera-nel-settore-dei-materiali-da-costruzione-in-calabria." data-number="5.4.1">
+<h4 class="anchored" data-anchor-id="scenario-unimpresa-in-difficoltà-finanziaria-opera-nel-settore-dei-materiali-da-costruzione-in-calabria." data-number="5.4.1"><span class="header-section-number">5.4.1</span> <strong>Scenario</strong>: Un’impresa in difficoltà finanziaria opera nel settore dei materiali da costruzione in Calabria.</h4>
+<p><strong>Analisi tramite SLL</strong>:</p>
+<ol type="1">
+<li><strong>Contestualizzazione territoriale</strong>
+<ul>
+<li>Verifica appartenenza al gruppo B3 (materiali costruzione e ceramica)</li>
+<li>Calabria: presenza limitata di SL manifatturieri (prevalenza SL non specializzati classe D)</li>
+<li>Produttività Mezzogiorno gruppo B3: significativamente inferiore al Centro-Nord</li>
+</ul></li>
+<li><strong>Valutazione prospettive di recupero</strong>
+<ul>
+<li>❌ Territorio con bassa densità imprenditoriale (poche opportunità di cessione/aggregazione)</li>
+<li>❌ Produttività inferiore alla media (difficoltà di turnaround)</li>
+<li>✅ Eventuale specializzazione locale (es. ceramica di Squillace) può rappresentare un valore</li>
+</ul></li>
+<li><strong>Strategie di workout</strong>
+<ul>
+<li><strong>Opzione A - Ristrutturazione in loco</strong>: Se l’impresa ha un posizionamento competitivo nel cluster locale</li>
+<li><strong>Opzione B - Cessione a competitor Centro-Nord</strong>: Se esistono sinergie con acquirenti in territori più produttivi</li>
+<li><strong>Opzione C - Liquidazione</strong>: Se non vi sono prospettive di recupero</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+</section>
+</section>
+<section id="integrazione-con-altre-fonti-dati-bancarie" class="level2 anchored" data-number="6" data-anchor-id="integrazione-con-altre-fonti-dati-bancarie">
+<h2 class="anchored" data-number="6" data-anchor-id="integrazione-con-altre-fonti-dati-bancarie"><span class="header-section-number">6</span> INTEGRAZIONE CON ALTRE FONTI DATI BANCARIE</h2>
+<section id="integrazione-con-centrale-rischi-banca-ditalia" class="level3 anchored" data-anchor-id="integrazione-con-centrale-rischi-banca-ditalia" data-number="6.1">
+<h3 class="anchored" data-anchor-id="integrazione-con-centrale-rischi-banca-ditalia" data-number="6.1"><span class="header-section-number">6.1</span> Integrazione con Centrale Rischi Banca d’Italia</h3>
+<p><strong>Valore aggiunto</strong>: Combinare i dati SLL con l’andamento creditizio degli affidamenti per territorio e settore.</p>
+<p><strong>Analisi possibili</strong>: - Correlazione tra produttività del lavoro SLL e tasso di default dei finanziamenti - Identificazione di early warning signals territoriali (es. aumento NPL in specifici SLL) - Ottimizzazione del pricing risk-based per territorio e settore</p>
+</section>
+<section id="integrazione-con-cervedcrif" class="level3 anchored" data-anchor-id="integrazione-con-cervedcrif" data-number="6.2">
+<h3 class="anchored" data-anchor-id="integrazione-con-cervedcrif" data-number="6.2"><span class="header-section-number">6.2</span> Integrazione con Cerved/Crif</h3>
+<p><strong>Valore aggiunto</strong>: Arricchire il profilo delle imprese con la dimensione territoriale-settoriale SLL.</p>
+<p><strong>Esempi</strong>: - Score creditizio differenziato per SLL di appartenenza - Benchmark performance economico-finanziarie vs.&nbsp;media SLL - Segnalazioni automatiche per imprese con performance anomale rispetto al territorio</p>
+</section>
+<section id="integrazione-con-dati-interni-crm-data-warehouse" class="level3 anchored" data-anchor-id="integrazione-con-dati-interni-crm-data-warehouse" data-number="6.3">
+<h3 class="anchored" data-anchor-id="integrazione-con-dati-interni-crm-data-warehouse" data-number="6.3"><span class="header-section-number">6.3</span> Integrazione con dati interni (CRM, Data Warehouse)</h3>
+<p><strong>Dashboard operativa suggerita</strong>:</p>
+<pre><code>ESPOSIZIONE CREDITIZIA PER MACRO-CLASSE SLL
+┌─────────────────────────────────────────────────────────────┐
+│ Classe A - Made in Italy                                    │
+│ ████████████████████░░░░░░░░ 35% (€1,2 mld)                │
+│ NPL ratio: 3,2% | Prod. media: 53k€/add | Territori: 156   │
+├─────────────────────────────────────────────────────────────┤
+│ Classe B - Manifatturieri pesanti                           │
+│ █████████████████░░░░░░░░░░░░ 28% (€950 mln)               │
+│ NPL ratio: 2,8% | Prod. media: 50k€/add | Territori: 111   │
+├─────────────────────────────────────────────────────────────┤
+│ Classe C - Non manifatturieri                               │
+│ ████████████████░░░░░░░░░░░░░ 25% (€850 mln)               │
+│ NPL ratio: 2,5% | Prod. media: 55k€/add | Territori: 124   │
+├─────────────────────────────────────────────────────────────┤
+│ Classe D - Non specializzati                                │
+│ ███████░░░░░░░░░░░░░░░░░░░░░░ 12% (€400 mln)               │
+│ NPL ratio: 5,1% | Prod. media: 35k€/add | Territori: 124   │
+└─────────────────────────────────────────────────────────────┘</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 98%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">:</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">KPI Formula Target Fonte dato</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Indice di concentrazione SLL</strong> HHI su esposizioni per singolo SLL &lt; 0,15 Portafoglio crediti + Classificazione ISTAT</p>
+<p><strong>Tasso di copertura territori ad alta produttività</strong> % impieghi in SLL con produttività &gt; 50k€/add &gt; 60% Tabelle ISTAT + Portafoglio crediti</p>
+<p><strong>Esposizione Mezzogiorno adjusted</strong> (Esposizione Mezz. × Differenziale produttività) / Totale impieghi &lt; 20% Tabelle territoriali ISTAT</p>
+<p><strong>Diversificazione settoriale per macro-classe</strong> Indice di entropia Shannon per le 4 classi SLL &gt; 1,2 Classificazione ISTAT ——————————————————————————————————————————————————————————————–</p>
+</section>
+<section id="kpi-per-lo-sviluppo-commerciale" class="level3 anchored" data-anchor-id="kpi-per-lo-sviluppo-commerciale" data-number="6.4">
+<h3 class="anchored" data-anchor-id="kpi-per-lo-sviluppo-commerciale" data-number="6.4"><span class="header-section-number">6.4</span> KPI per lo sviluppo commerciale</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 34%">
+<col style="width: 11%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">KPI</th>
+<th style="text-align: left;">Formula</th>
+<th style="text-align: left;">Target</th>
+<th style="text-align: left;">Fonte dato</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Market share in SL ad alto potenziale</strong></td>
+<td style="text-align: left;">Impieghi banca / Totale impieghi sistema in SL target</td>
+<td style="text-align: left;">&gt; 15%</td>
+<td style="text-align: left;">ABI + Selezione SL prioritari</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Copertura territoriale Made in Italy</strong></td>
+<td style="text-align: left;">N° SL Made in Italy con presenza banca / 156</td>
+<td style="text-align: left;">&gt; 40%</td>
+<td style="text-align: left;">Rete sportelli + Classificazione ISTAT</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Penetrazione PMI in cluster produttivi</strong></td>
+<td style="text-align: left;">N° clienti PMI in SL specializzati / Totale imprese SL</td>
+<td style="text-align: left;">&gt; 25%</td>
+<td style="text-align: left;">CRM + Dati ISTAT unità locali</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="casi-duso-operativi" class="level2 anchored" data-number="7" data-anchor-id="casi-duso-operativi">
+<h2 class="anchored" data-number="7" data-anchor-id="casi-duso-operativi"><span class="header-section-number">7</span> CASI D’USO OPERATIVI</h2>
+<section id="caso-1-istruttoria-di-credito-per-pmi-manifatturiera" class="level3 anchored" data-anchor-id="caso-1-istruttoria-di-credito-per-pmi-manifatturiera" data-number="7.1">
+<h3 class="anchored" data-anchor-id="caso-1-istruttoria-di-credito-per-pmi-manifatturiera" data-number="7.1"><span class="header-section-number">7.1</span> CASO 1: Istruttoria di credito per PMI manifatturiera</h3>
+<p><strong>Situazione</strong>: Richiesta di finanziamento 500.000 euro per investimenti da parte di “Rossi Meccanica Srl” a Reggio Emilia.</p>
+<p><strong>Step 1 - Identificazione SL</strong> - Reggio Emilia appartiene a un SL della classe B (manifatturieri industria pesante) - Gruppo specifico: B1 - Fabbricazione di mezzi di trasporto</p>
+<p><strong>Step 2 - Analisi indicatori territoriali</strong> - Produttività del lavoro: 62,7 mila euro/addetto (superiore alla media nazionale 50k€) - Densità imprenditoriale: 4,2 UL/km² (elevata) - Dimensione media UL: 4,2 addetti (settore con piccole imprese specializzate)</p>
+<p><strong>Step 3 - Benchmark aziendale vs SL</strong> - Fatturato per dipendente Rossi Meccanica: 180.000 euro - Valore aggiunto per addetto: 65.000 euro ✅ (&gt; media SL) - Marginalità: 8,5% ✅ (in linea con settore)</p>
+<p><strong>Step 4 - Valutazione rischio</strong> - ✅ Territorio con specializzazione consolidata e alta produttività - ✅ Performance aziendali superiori alla media SL - ✅ Settore con prospettive positive (automotive, meccatronica) - ⚠️ Monitorare dipendenza da grandi clienti OEM</p>
+<p><strong>Decisione</strong>: <strong>APPROVATO</strong> - Tasso BCe + spread 180 bp (in linea con rating B+)</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 97%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">:</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">SL Popolazione Produttività (k€/add) Densità impr. (UL/km²) Vocazione</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Avezzano</strong> ~70.000 55,2 14,4 Meccanica</p>
+<p><strong>L’Aquila</strong> ~73.000 44,0 8,9 Servizi/PA</p>
+<p><strong>Teramo costa</strong> ~85.000 39,7 12,6 Turistico ———————————————————————————————-</p>
+<p><strong>Step 3 - Analisi potenziale commerciale</strong> - <strong>Avezzano</strong>: ✅ Alta produttività, vocazione industriale, presenza PMI strutturate → Target: corporate banking - <strong>L’Aquila</strong>: ⚠️ Produttività media, dipendenza da PA, post-terremoto → Target: retail, mutui ricostruzione - <strong>Teramo costa</strong>: ⚠️ Stagionalità turistica, produttività inferiore → Target: retail, credito al consumo</p>
+<p><strong>Decisione</strong>: <strong>Avezzano prioritario</strong> - Posizionamento su PMI manifatturiere export-oriented</p>
+<hr>
+</section>
+<section id="caso-3-gestione-npl-e-ristrutturazioni" class="level3 anchored" data-anchor-id="caso-3-gestione-npl-e-ristrutturazioni" data-number="7.2">
+<h3 class="anchored" data-anchor-id="caso-3-gestione-npl-e-ristrutturazioni" data-number="7.2"><span class="header-section-number">7.2</span> CASO 3: Gestione NPL e ristrutturazioni</h3>
+<p><strong>Situazione</strong>: Portafoglio NPL (Non-Performing Loans) della banca con concentrazione in SL turistici post-COVID.</p>
+<p><strong>Step 1 - Mappatura NPL per classe SLL</strong> - Classe A (Made in Italy): 2,8% NPL ratio ✅ - Classe B (Manifatturieri pesanti): 2,5% NPL ratio ✅ - Classe C (Non manifatturieri): 4,2% NPL ratio ⚠️ - Di cui C4 (Turistici): <strong>7,8% NPL ratio</strong> ❌ - Classe D (Non specializzati): 5,1% NPL ratio ⚠️</p>
+<p><strong>Step 2 - Analisi territoriale NPL turistici</strong> - 85 SL turistici interessati - Concentrazione: Sardegna, località alpine, coste meridionali - Produttività pre-crisi: 43,1 mila euro/addetto (già inferiore alla media) - Produttività post-COVID: stimata -35% → circa 28 mila euro/addetto</p>
+<p><strong>Step 3 - Strategie di workout</strong></p>
+<p><strong>Opzione A - Ristrutturazione (territori vocati)</strong> - Target: SL turistici con forte vocazione (es. Dolomiti, Costa Smeralda) - Condizioni: allungamento scadenze, moratoria interessi, covenant meno stringenti - Razionale: domanda turistica in ripresa, asset immobiliari di valore</p>
+<p><strong>Opzione B - Cessione NPL (territori marginali)</strong> - Target: SL turistici marginali con produttività &lt; 30k€/addetto - Modalità: cessione a servicer specializzati o fondi distressed - Razionale: basse prospettive di recupero, liberazione capitale</p>
+<p><strong>Opzione C - Conversione debt-to-equity</strong> - Target: strutture turistiche di pregio in SL ad alta vocazione - Modalità: acquisizione asset, successiva valorizzazione e cessione - Razionale: recupero valore superiore rispetto a liquidazione</p>
+<p><strong>Risultato atteso</strong>: Riduzione NPL ratio classe C4 dal 7,8% al 4,5% in 24 mesi.</p>
+<hr>
+</section>
+</section>
+<section id="limiti-e-cautele-nellutilizzo-dei-dati-sll" class="level2 anchored" data-number="8" data-anchor-id="limiti-e-cautele-nellutilizzo-dei-dati-sll">
+<h2 class="anchored" data-number="8" data-anchor-id="limiti-e-cautele-nellutilizzo-dei-dati-sll"><span class="header-section-number">8</span> LIMITI E CAUTELE NELL’UTILIZZO DEI DATI SLL</h2>
+<section id="limiti-metodologici" class="level3 anchored" data-anchor-id="limiti-metodologici" data-number="8.1">
+<h3 class="anchored" data-anchor-id="limiti-metodologici" data-number="8.1"><span class="header-section-number">8.1</span> Limiti metodologici</h3>
+<ol type="1">
+<li><strong>Riferimento temporale</strong>: Dati riferiti al 2021 - necessario aggiornamento con trend più recenti</li>
+<li><strong>Aggregazione territoriale</strong>: I SLL non coincidono con confini amministrativi (province, comuni)</li>
+<li><strong>Specializzazione prevalente</strong>: Un SL può avere economie diversificate oltre alla specializzazione principale</li>
+<li><strong>Medie territoriali</strong>: Eterogeneità interna al singolo SL non rilevata</li>
+</ol>
+</section>
+<section id="necessità-di-integrazione" class="level3 anchored" data-anchor-id="necessità-di-integrazione" data-number="8.2">
+<h3 class="anchored" data-anchor-id="necessità-di-integrazione" data-number="8.2"><span class="header-section-number">8.2</span> Necessità di integrazione</h3>
+<p>I dati SLL <strong>NON sostituiscono</strong> ma <strong>integrano</strong> le analisi creditizie tradizionali:</p>
+<ul>
+<li>✅ Utilizzare SLL per analisi territoriale e settoriale</li>
+<li>✅ Combinare con analisi bilancio, centrale rischi, score creditizio</li>
+<li>✅ Contestualizzare performance aziendale rispetto al territorio</li>
+<li>❌ Non utilizzare come unico criterio decisionale</li>
+<li>❌ Non ignorare specificità della singola impresa</li>
+</ul>
+</section>
+<section id="aggiornamento-e-monitoraggio" class="level3 anchored" data-anchor-id="aggiornamento-e-monitoraggio" data-number="8.3">
+<h3 class="anchored" data-anchor-id="aggiornamento-e-monitoraggio" data-number="8.3"><span class="header-section-number">8.3</span> Aggiornamento e monitoraggio</h3>
+<p><strong>Raccomandazioni</strong>: - Aggiornare annualmente la classificazione SLL con nuove statistiche ISTAT - Monitorare variazioni significative di produttività e specializzazione - Integrare con dati congiunturali (indici di fiducia, ordini, fatturato) - Utilizzare fonti locali (Camere di Commercio, associazioni di categoria) per approfondimenti</p>
+<hr>
+</section>
+</section>
+<section id="implementazione-in-banca-roadmap" class="level2 anchored" data-number="9" data-anchor-id="implementazione-in-banca-roadmap">
+<h2 class="anchored" data-number="9" data-anchor-id="implementazione-in-banca-roadmap"><span class="header-section-number">9</span> IMPLEMENTAZIONE IN BANCA: ROADMAP</h2>
+<section id="fase-1-assessment-mese-1-2" class="level3 anchored" data-anchor-id="fase-1-assessment-mese-1-2" data-number="9.1">
+<h3 class="anchored" data-anchor-id="fase-1-assessment-mese-1-2" data-number="9.1"><span class="header-section-number">9.1</span> Fase 1: Assessment (Mese 1-2)</h3>
+<p>Acquisizione dati ISTAT SLL completi (file dataset)</p>
+<p>Mappatura portafoglio crediti su classificazione SLL</p>
+<p>Analisi gap tra esposizione attuale e target strategici</p>
+<p>Identificazione quick wins (es. territori da presidiare)</p>
+</section>
+<section id="fase-2-integrazione-sistemi-mese-3-4" class="level3 anchored" data-anchor-id="fase-2-integrazione-sistemi-mese-3-4" data-number="9.2">
+<h3 class="anchored" data-anchor-id="fase-2-integrazione-sistemi-mese-3-4" data-number="9.2"><span class="header-section-number">9.2</span> Fase 2: Integrazione sistemi (Mese 3-4)</h3>
+<p>Caricamento classificazione SLL in Data Warehouse</p>
+<p>Join con anagrafica imprese (via codice comune/località)</p>
+<p>Sviluppo dashboard direzionali Power BI / Tableau</p>
+<p>Integrazione in strumenti istruttoria crediti</p>
+</section>
+<section id="fase-3-processi-e-governance-mese-5-6" class="level3 anchored" data-anchor-id="fase-3-processi-e-governance-mese-5-6" data-number="9.3">
+<h3 class="anchored" data-anchor-id="fase-3-processi-e-governance-mese-5-6" data-number="9.3"><span class="header-section-number">9.3</span> Fase 3: Processi e governance (Mese 5-6)</h3>
+<p>Aggiornamento policy creditizie con criteri SLL</p>
+<p>Formazione gestore/credito su utilizzo dati SLL</p>
+<p>Definizione KPI e reporting per Comitato Rischi</p>
+<p>Creazione playbook operativi per casistiche ricorrenti</p>
+</section>
+<section id="fase-4-sviluppo-commerciale-mese-7-12" class="level3 anchored" data-anchor-id="fase-4-sviluppo-commerciale-mese-7-12" data-number="9.4">
+<h3 class="anchored" data-anchor-id="fase-4-sviluppo-commerciale-mese-7-12" data-number="9.4"><span class="header-section-number">9.4</span> Fase 4: Sviluppo commerciale (Mese 7-12)</h3>
+<p>Segmentazione clientela attuale per SLL</p>
+<p>Sviluppo prodotti verticali per specializzazioni produttive</p>
+<p>Campagne marketing territoriali mirate</p>
+<p>Pianificazione rete commerciale con criteri SLL</p>
+<hr>
+</section>
+</section>
+<section id="conclusioni" class="level2 anchored" data-number="10" data-anchor-id="conclusioni">
+<h2 class="anchored" data-number="10" data-anchor-id="conclusioni"><span class="header-section-number">10</span> CONCLUSIONI</h2>
+<p>Lo studio ISTAT sui Sistemi Locali del Lavoro rappresenta uno <strong>strumento strategico fondamentale</strong> per il sistema bancario italiano, offrendo una mappatura granulare e aggiornata delle specializzazioni produttive territoriali.</p>
+<section id="vantaggi-principali-per-la-banca" class="level3 anchored" data-anchor-id="vantaggi-principali-per-la-banca" data-number="10.1">
+<h3 class="anchored" data-anchor-id="vantaggi-principali-per-la-banca" data-number="10.1"><span class="header-section-number">10.1</span> Vantaggi principali per la banca:</h3>
+<ol type="1">
+<li><strong>Gestione rischio più efficace</strong>: Identificazione e mitigazione di concentrazioni settoriali e territoriali</li>
+<li><strong>Pricing più accurato</strong>: Differenziazione tassi in base a produttività e solidità territoriale</li>
+<li><strong>Sviluppo commerciale mirato</strong>: Presidio di territori ad alto potenziale, prodotti verticali dedicati</li>
+<li><strong>Due diligence territoriale</strong>: Valutazione contesto economico per M&amp;A, nuove filiali, partnership</li>
+<li><strong>Supporto alla clientela</strong>: Consulenza qualificata su trend territoriali e opportunità di sviluppo</li>
+</ol>
+</section>
+<section id="fattori-critici-di-successo" class="level3 anchored" data-anchor-id="fattori-critici-di-successo" data-number="10.2">
+<h3 class="anchored" data-anchor-id="fattori-critici-di-successo" data-number="10.2"><span class="header-section-number">10.2</span> Fattori critici di successo:</h3>
+<ul>
+<li>✅ Integrazione con sistemi informativi bancari esistenti</li>
+<li>✅ Formazione del personale commerciale e creditizio</li>
+<li>✅ Aggiornamento periodico dei dati e monitoraggio trend</li>
+<li>✅ Combinazione con altre fonti informative (Centrale Rischi, bilanci, rating)</li>
+<li>✅ Approccio pragmatico: utilizzare SLL come supporto decisionale, non come criterio esclusivo</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="allegati-e-riferimenti" class="level2 anchored" data-number="11" data-anchor-id="allegati-e-riferimenti">
+<h2 class="anchored" data-number="11" data-anchor-id="allegati-e-riferimenti"><span class="header-section-number">11</span> ALLEGATI E RIFERIMENTI</h2>
+<section id="fonti-dati-istat" class="level3 anchored" data-anchor-id="fonti-dati-istat" data-number="11.1">
+<h3 class="anchored" data-anchor-id="fonti-dati-istat" data-number="11.1"><span class="header-section-number">11.1</span> Fonti dati ISTAT</h3>
+<ul>
+<li><strong>Portale ISTAT</strong>: https://www.istat.it/</li>
+<li><strong>Sezione Sistemi Locali del Lavoro</strong>: https://www.istat.it/it/archivio/156224</li>
+<li><strong>Dataset completo</strong>: https://www.istat.it/wp-content/uploads/2025/10/FocusSLL2021.pdf</li>
+<li><strong>Sistema Informativo Territoriale (SITUAS)</strong>: https://situas.istat.it/web/#/home</li>
+</ul>
+</section>
+<section id="altre-fonti-utili" class="level3 anchored" data-anchor-id="altre-fonti-utili" data-number="11.2">
+<h3 class="anchored" data-anchor-id="altre-fonti-utili" data-number="11.2"><span class="header-section-number">11.2</span> Altre fonti utili</h3>
+<ul>
+<li><strong>Banca d’Italia</strong> - Economie regionali: https://www.bancaditalia.it/pubblicazioni/economie-regionali/</li>
+<li><strong>Cerved</strong> - Rapporti settoriali e territoriali</li>
+<li><strong>Unioncamere</strong> - Osservatori economici territoriali</li>
+<li><strong>OECD</strong> - Regional statistics</li>
+</ul>
+</section>
+<section id="contatti-istat-per-approfondimenti" class="level3 anchored" data-anchor-id="contatti-istat-per-approfondimenti" data-number="11.3">
+<h3 class="anchored" data-anchor-id="contatti-istat-per-approfondimenti" data-number="11.3"><span class="header-section-number">11.3</span> Contatti ISTAT per approfondimenti</h3>
+<ul>
+<li>Sandro Cruciani: sandro.cruciani@istat.it</li>
+<li>Daniela Ichim: daniela.ichim@istat.it</li>
+<li>Marianna Mantuano: marianna.mantuano@istat.it</li>
+</ul>
+<hr>
+<p><strong>Documento redatto il</strong>: 14 febbraio 2026 <strong>Prossimo aggiornamento</strong>: Febbraio 2027 (in seguito a pubblicazione nuovi dati ISTAT) <strong>Versione</strong>: 1.0</p>
+</section>
+</section>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2602_SllInBanca/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

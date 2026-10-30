@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="pagamenti PA, debiti commerciali, Cribis, Eurostat, CGIA Mestre, debito pubblico, tempi di pagamento">
+<meta name="description" content="La puntualità nei pagamenti tra imprese private italiane è scesa al 42 per cento delle transazioni nel secondo trimestre 2026, mentre la pubblica amministrazione ha ridotto i tempi medi di pagamento delle fatture.">
+
+<title>Pagamenti della pubblica amministrazione e debiti commerciali – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Pagamenti della pubblica amministrazione e debiti commerciali – Paolo Volterra">
+<meta property="og:description" content="La puntualità nei pagamenti tra imprese private italiane è scesa al 42 per cento delle transazioni nel secondo trimestre 2026, mentre la pubblica amministrazione ha ridotto i tempi medi di pagamento delle fatture.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2610_PagamentiPA/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Pagamenti della pubblica amministrazione e debiti commerciali – Paolo Volterra">
+<meta name="twitter:description" content="La puntualità nei pagamenti tra imprese private italiane è scesa al 42 per cento delle transazioni nel secondo trimestre 2026, mentre la pubblica amministrazione ha ridotto i tempi medi di pagamento delle fatture.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2610_PagamentiPA/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#introduzione" id="toc-introduzione" class="nav-link active" data-scroll-target="#introduzione"><span class="header-section-number">1</span> Introduzione</a></li>
+  <li><a href="#la-puntualità-dei-pagamenti-tra-imprese-private" id="toc-la-puntualità-dei-pagamenti-tra-imprese-private" class="nav-link" data-scroll-target="#la-puntualità-dei-pagamenti-tra-imprese-private"><span class="header-section-number">2</span> La puntualità dei pagamenti tra imprese private</a>
+  <ul class="collapse">
+  <li><a href="#puntualità-per-dimensione-dimpresa" id="toc-puntualità-per-dimensione-dimpresa" class="nav-link" data-scroll-target="#puntualità-per-dimensione-dimpresa"><span class="header-section-number">2.1</span> Puntualità per dimensione d’impresa</a></li>
+  <li><a href="#puntualità-per-regione" id="toc-puntualità-per-regione" class="nav-link" data-scroll-target="#puntualità-per-regione"><span class="header-section-number">2.2</span> Puntualità per regione</a></li>
+  <li><a href="#le-province-migliori-e-peggiori" id="toc-le-province-migliori-e-peggiori" class="nav-link" data-scroll-target="#le-province-migliori-e-peggiori"><span class="header-section-number">2.3</span> Le province migliori e peggiori</a></li>
+  </ul></li>
+  <li><a href="#i-debiti-commerciali-della-pubblica-amministrazione" id="toc-i-debiti-commerciali-della-pubblica-amministrazione" class="nav-link" data-scroll-target="#i-debiti-commerciali-della-pubblica-amministrazione"><span class="header-section-number">3</span> I debiti commerciali della pubblica amministrazione</a>
+  <ul class="collapse">
+  <li><a href="#lo-stock-di-debito-commerciale-italiano" id="toc-lo-stock-di-debito-commerciale-italiano" class="nav-link" data-scroll-target="#lo-stock-di-debito-commerciale-italiano"><span class="header-section-number">3.1</span> Lo stock di debito commerciale italiano</a></li>
+  <li><a href="#il-confronto-europeo" id="toc-il-confronto-europeo" class="nav-link" data-scroll-target="#il-confronto-europeo"><span class="header-section-number">3.2</span> Il confronto europeo</a></li>
+  <li><a href="#variazione-2022-2025" id="toc-variazione-2022-2025" class="nav-link" data-scroll-target="#variazione-2022-2025"><span class="header-section-number">3.3</span> Variazione 2022-2025</a></li>
+  <li><a href="#italia-e-aggregati-europei" id="toc-italia-e-aggregati-europei" class="nav-link" data-scroll-target="#italia-e-aggregati-europei"><span class="header-section-number">3.4</span> Italia e aggregati europei</a></li>
+  <li><a href="#quota-sul-debito-pubblico-complessivo" id="toc-quota-sul-debito-pubblico-complessivo" class="nav-link" data-scroll-target="#quota-sul-debito-pubblico-complessivo"><span class="header-section-number">3.5</span> Quota sul debito pubblico complessivo</a></li>
+  <li><a href="#convergenza-tra-paesi" id="toc-convergenza-tra-paesi" class="nav-link" data-scroll-target="#convergenza-tra-paesi"><span class="header-section-number">3.6</span> Convergenza tra paesi</a></li>
+  <li><a href="#debiti-commerciali-e-indebitamento-netto" id="toc-debiti-commerciali-e-indebitamento-netto" class="nav-link" data-scroll-target="#debiti-commerciali-e-indebitamento-netto"><span class="header-section-number">3.7</span> Debiti commerciali e indebitamento netto</a></li>
+  <li><a href="#debiti-commerciali-e-crescita-del-pil" id="toc-debiti-commerciali-e-crescita-del-pil" class="nav-link" data-scroll-target="#debiti-commerciali-e-crescita-del-pil"><span class="header-section-number">3.8</span> Debiti commerciali e crescita del PIL</a></li>
+  <li><a href="#effetto-della-valuta-di-denominazione" id="toc-effetto-della-valuta-di-denominazione" class="nav-link" data-scroll-target="#effetto-della-valuta-di-denominazione"><span class="header-section-number">3.9</span> Effetto della valuta di denominazione</a></li>
+  <li><a href="#raggruppamento-dei-paesi" id="toc-raggruppamento-dei-paesi" class="nav-link" data-scroll-target="#raggruppamento-dei-paesi"><span class="header-section-number">3.10</span> Raggruppamento dei paesi</a></li>
+  <li><a href="#aggregati-europei-in-valore-assoluto" id="toc-aggregati-europei-in-valore-assoluto" class="nav-link" data-scroll-target="#aggregati-europei-in-valore-assoluto"><span class="header-section-number">3.11</span> Aggregati europei in valore assoluto</a></li>
+  </ul></li>
+  <li><a href="#debito-pubblico-e-indebitamento" id="toc-debito-pubblico-e-indebitamento" class="nav-link" data-scroll-target="#debito-pubblico-e-indebitamento"><span class="header-section-number">4</span> Debito pubblico e indebitamento</a>
+  <ul class="collapse">
+  <li><a href="#debito-pubblico-in-rapporto-al-pil" id="toc-debito-pubblico-in-rapporto-al-pil" class="nav-link" data-scroll-target="#debito-pubblico-in-rapporto-al-pil"><span class="header-section-number">4.1</span> Debito pubblico in rapporto al PIL</a></li>
+  <li><a href="#pil-e-debito-in-livelli-assoluti" id="toc-pil-e-debito-in-livelli-assoluti" class="nav-link" data-scroll-target="#pil-e-debito-in-livelli-assoluti"><span class="header-section-number">4.2</span> PIL e debito in livelli assoluti</a></li>
+  <li><a href="#confronto-a-base-comune" id="toc-confronto-a-base-comune" class="nav-link" data-scroll-target="#confronto-a-base-comune"><span class="header-section-number">4.3</span> Confronto a base comune</a></li>
+  <li><a href="#composizione-del-debito-per-strumento" id="toc-composizione-del-debito-per-strumento" class="nav-link" data-scroll-target="#composizione-del-debito-per-strumento"><span class="header-section-number">4.4</span> Composizione del debito per strumento</a></li>
+  <li><a href="#composizione-del-debito-per-scadenza" id="toc-composizione-del-debito-per-scadenza" class="nav-link" data-scroll-target="#composizione-del-debito-per-scadenza"><span class="header-section-number">4.5</span> Composizione del debito per scadenza</a></li>
+  <li><a href="#debito-per-livello-di-governo" id="toc-debito-per-livello-di-governo" class="nav-link" data-scroll-target="#debito-per-livello-di-governo"><span class="header-section-number">4.6</span> Debito per livello di governo</a></li>
+  <li><a href="#dinamica-del-debito-e-stock-flow-adjustment" id="toc-dinamica-del-debito-e-stock-flow-adjustment" class="nav-link" data-scroll-target="#dinamica-del-debito-e-stock-flow-adjustment"><span class="header-section-number">4.7</span> Dinamica del debito e stock-flow adjustment</a></li>
+  <li><a href="#tasso-dinteresse-implicito" id="toc-tasso-dinteresse-implicito" class="nav-link" data-scroll-target="#tasso-dinteresse-implicito"><span class="header-section-number">4.8</span> Tasso d’interesse implicito</a></li>
+  <li><a href="#debito-e-deficit-nel-2025" id="toc-debito-e-deficit-nel-2025" class="nav-link" data-scroll-target="#debito-e-deficit-nel-2025"><span class="header-section-number">4.9</span> Debito e deficit nel 2025</a></li>
+  <li><a href="#snowball-effect" id="toc-snowball-effect" class="nav-link" data-scroll-target="#snowball-effect"><span class="header-section-number">4.10</span> Snowball effect</a></li>
+  <li><a href="#prestiti-intergovernativi" id="toc-prestiti-intergovernativi" class="nav-link" data-scroll-target="#prestiti-intergovernativi"><span class="header-section-number">4.11</span> Prestiti intergovernativi</a></li>
+  </ul></li>
+  <li><a href="#il-debito-trimestrale-e-la-finestra-ngeu" id="toc-il-debito-trimestrale-e-la-finestra-ngeu" class="nav-link" data-scroll-target="#il-debito-trimestrale-e-la-finestra-ngeu"><span class="header-section-number">5</span> Il debito trimestrale e la finestra NGEU</a></li>
+  <li><a href="#il-finanziamento-dei-crediti-verso-la-pa-factoring-e-anticipi" id="toc-il-finanziamento-dei-crediti-verso-la-pa-factoring-e-anticipi" class="nav-link" data-scroll-target="#il-finanziamento-dei-crediti-verso-la-pa-factoring-e-anticipi"><span class="header-section-number">6</span> Il finanziamento dei crediti verso la PA: factoring e anticipi</a>
+  <ul class="collapse">
+  <li><a href="#autoliquidante-o-accoppiato-a-mano" id="toc-autoliquidante-o-accoppiato-a-mano" class="nav-link" data-scroll-target="#autoliquidante-o-accoppiato-a-mano"><span class="header-section-number">6.1</span> Autoliquidante o accoppiato a mano</a></li>
+  <li><a href="#il-quadro-dei-pagamenti-e-dello-stock" id="toc-il-quadro-dei-pagamenti-e-dello-stock" class="nav-link" data-scroll-target="#il-quadro-dei-pagamenti-e-dello-stock"><span class="header-section-number">6.2</span> Il quadro dei pagamenti e dello stock</a></li>
+  <li><a href="#il-mercato-bancario-del-factoring" id="toc-il-mercato-bancario-del-factoring" class="nav-link" data-scroll-target="#il-mercato-bancario-del-factoring"><span class="header-section-number">6.3</span> Il mercato bancario del factoring</a></li>
+  <li><a href="#come-le-banche-gestiscono-lopportunità" id="toc-come-le-banche-gestiscono-lopportunità" class="nav-link" data-scroll-target="#come-le-banche-gestiscono-lopportunità"><span class="header-section-number">6.4</span> Come le banche gestiscono l’opportunità</a></li>
+  </ul></li>
+  <li><a href="#conclusioni" id="toc-conclusioni" class="nav-link" data-scroll-target="#conclusioni"><span class="header-section-number">7</span> Conclusioni</a></li>
+  <li><a href="#referenze" id="toc-referenze" class="nav-link" data-scroll-target="#referenze"><span class="header-section-number">7.1</span> Referenze</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2610_PagamentiPA/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Pagamenti della pubblica amministrazione e debiti commerciali</h1>
+<p class="subtitle lead">La puntualità della PA italiana e il peso dei debiti commerciali nel confronto europeo</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Pubblica amministrazione</div>
+    <div class="quarto-category">Debiti commerciali</div>
+    <div class="quarto-category">Eurostat</div>
+    <div class="quarto-category">Imprese</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    La puntualità nei pagamenti tra imprese private italiane è scesa al 42 per cento delle transazioni nel secondo trimestre 2026, mentre la pubblica amministrazione ha ridotto i tempi medi di pagamento delle fatture.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">12 settembre 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>La puntualità nei pagamenti tra imprese private italiane è scesa al 42 per cento delle transazioni nel secondo trimestre 2026, mentre la pubblica amministrazione ha ridotto i tempi medi di pagamento delle fatture. Il debito commerciale della PA, tuttavia, continua a crescere e nel 2025 raggiunge 64,2 miliardi di euro, pari al 2,8 per cento del PIL: il valore più alto tra i ventisette paesi dell’Unione europea. Il documento ricostruisce le tabelle e i grafici della nota dell’Ufficio Studi CGIA Mestre del 12 settembre 2026 e li estende con un’analisi sistematica del dataset Eurostat sui debiti commerciali e sul debito pubblico. Per ogni figura sono illustrati la costruzione del dato, il confronto internazionale e le implicazioni per la liquidità delle imprese fornitrici.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>pagamenti PA, debiti commerciali, Cribis, Eurostat, CGIA Mestre, debito pubblico, tempi di pagamento</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="introduzione" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduzione</h1>
+<p>La nota dell’Ufficio Studi CGIA Mestre del 12 settembre 2026 mette a confronto due andamenti opposti <span class="citation" data-cites="cgia2026pagamenti"><a href="#ref-cgia2026pagamenti" role="doc-biblioref">[1]</a></span>. Da un lato la pubblica amministrazione ha ridotto i tempi di pagamento delle proprie fatture; dall’altro il debito commerciale accumulato continua a crescere, e i ritardi tra imprese private si allargano. Il punto di partenza è un dato Cribis riferito al secondo trimestre 2026: nei rapporti tra imprese private solo il <strong>42 per cento</strong> delle transazioni commerciali è regolato alla scadenza contrattuale, due punti in meno rispetto allo stesso periodo dell’anno precedente.</p>
+<p>Il debito commerciale della pubblica amministrazione è ricostruito nel documento con i dati Eurostat, disponibili nel dataset <em>Government deficit/surplus, debt and associated data</em> per la voce “trade credits and advances – liabilities” (codice AF.81L) <span class="citation" data-cites="eurostat2026govdebt"><a href="#ref-eurostat2026govdebt" role="doc-biblioref">[2]</a></span>. Nel 2025 lo stock italiano ammonta a <strong>64,2 miliardi di euro</strong>, equivalenti al <strong>2,8 per cento del PIL</strong>: nessun altro paese dell’Unione europea registra un valore superiore. Il documento ricostruisce le figure della nota e le estende con il pannello Eurostat completo, che copre il periodo 1995–2025.</p>
+</section>
+<section id="la-puntualità-dei-pagamenti-tra-imprese-private" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> La puntualità dei pagamenti tra imprese private</h1>
+<p>Il primo blocco di analisi riguarda le abitudini di pagamento dei committenti privati, per dimensione d’impresa e per territorio. I dati provengono dallo <em>Studio pagamenti Italia</em> di Cribis, aggiornato a giugno 2026, e sono ripresi integralmente dalla nota CGIA.</p>
+<section id="puntualità-per-dimensione-dimpresa" class="level2 anchored" data-number="2.1" data-anchor-id="puntualità-per-dimensione-dimpresa">
+<h2 class="anchored" data-number="2.1" data-anchor-id="puntualità-per-dimensione-dimpresa"><span class="header-section-number">2.1</span> Puntualità per dimensione d’impresa</h2>
+<div id="cell-fig-graf1" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div id="figura-graf1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-graf1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig01.png" class="figure-img" role="img" width="1045" height="421"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;1: Percentuale di puntualità nei pagamenti dei committenti alla scadenza contrattuale, per dimensione d’impresa. Secondo trimestre 2026.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Il grafico mostra una relazione inversa tra dimensione del committente e rispetto delle scadenze. Le micro imprese pagano puntualmente nel <strong>42,7 per cento</strong> dei casi, le piccole nel <strong>41,8</strong> e le medie nel <strong>35,7</strong>. Le grandi imprese si fermano al <strong>21,1 per cento</strong>: in poco più di un caso su cinque onorano l’impegno entro il termine contrattuale. La media nazionale è del <strong>42 per cento</strong>. La distanza tra grandi e micro imprese, superiore a venti punti percentuali, è coerente con la lettura della dilazione di pagamento come leva di finanziamento a costo zero a vantaggio del committente più forte.</p>
+</section>
+<section id="puntualità-per-regione" class="level2 anchored" data-number="2.2" data-anchor-id="puntualità-per-regione">
+<h2 class="anchored" data-number="2.2" data-anchor-id="puntualità-per-regione"><span class="header-section-number">2.2</span> Puntualità per regione</h2>
+<div id="cell-fig-graf2" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div id="figura-graf2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-graf2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig02.png" class="figure-img" role="img" width="1141" height="518"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;2: Transazioni commerciali tra imprese private: puntualità alla scadenza per regione. Secondo trimestre 2026.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>La geografia della puntualità separa nettamente il Nord dal resto del paese. La Lombardia guida la classifica con il <strong>51,6 per cento</strong>, seguita da Emilia-Romagna (<strong>51,2</strong>), Veneto (<strong>51,0</strong>) e Marche (<strong>49,7</strong>). Il Trentino-Alto Adige e il Friuli Venezia Giulia si collocano poco sopra il 43 per cento. In coda si trovano la Toscana (<strong>29,2</strong>), la Sicilia (<strong>27,2</strong>) e la Calabria (<strong>26,7</strong>). Il divario tra la prima e l’ultima regione supera quindi i ventiquattro punti percentuali, a conferma di una differenza strutturale nelle pratiche di pagamento lungo la penisola.</p>
+</section>
+<section id="le-province-migliori-e-peggiori" class="level2 anchored" data-number="2.3" data-anchor-id="le-province-migliori-e-peggiori">
+<h2 class="anchored" data-number="2.3" data-anchor-id="le-province-migliori-e-peggiori"><span class="header-section-number">2.3</span> Le province migliori e peggiori</h2>
+<div class="cell" data-execution_count="4">
+<div id="tab-tab1" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-tab1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">Rank</th>
+<th style="text-align: left;">Provincia più virtuosa</th>
+<th style="text-align: left;">Rank</th>
+<th style="text-align: left;">Provincia meno virtuosa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Sondrio</td>
+<td style="text-align: left;">101</td>
+<td style="text-align: left;">Crotone</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Bergamo</td>
+<td style="text-align: left;">102</td>
+<td style="text-align: left;">Agrigento</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">Belluno</td>
+<td style="text-align: left;">103</td>
+<td style="text-align: left;">Cosenza</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">Lecco</td>
+<td style="text-align: left;">104</td>
+<td style="text-align: left;">Reggio Calabria</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">Brescia</td>
+<td style="text-align: left;">105</td>
+<td style="text-align: left;">Messina</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">Forlì Cesena</td>
+<td style="text-align: left;">106</td>
+<td style="text-align: left;">Palermo</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">Padova</td>
+<td style="text-align: left;">107</td>
+<td style="text-align: left;">Trapani</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">Reggio Emilia</td>
+<td style="text-align: left;">108</td>
+<td style="text-align: left;">Caltanissetta</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">Mantova</td>
+<td style="text-align: left;">109</td>
+<td style="text-align: left;">Catanzaro</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">Vicenza</td>
+<td style="text-align: left;">110</td>
+<td style="text-align: left;">Siracusa</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;1: Rispetto della scadenza nei pagamenti tra imprese private: prime dieci e ultime dieci province. Secondo trimestre 2026.</p>
+</div>
+</div>
+</div>
+</div>
+<p>A livello provinciale il confronto conferma il vantaggio delle aree settentrionali. Sondrio, Bergamo, Belluno e Lecco occupano le prime quattro posizioni, mentre le ultime sono appannaggio di Trapani, Caltanissetta, Catanzaro e Siracusa. La tabella riporta le dieci province migliori e le dieci peggiori, con il rispettivo rango nazionale su 110 province considerate.</p>
+</section>
+</section>
+<section id="i-debiti-commerciali-della-pubblica-amministrazione" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> I debiti commerciali della pubblica amministrazione</h1>
+<p>Le analisi di questa sezione si basano sul dataset Eurostat dei debiti commerciali della pubblica amministrazione, voce AF.81L del settore “amministrazioni pubbliche” (S13) <span class="citation" data-cites="eurostat2026govdebt"><a href="#ref-eurostat2026govdebt" role="doc-biblioref">[2]</a></span>. I valori sono espressi in milioni di euro e in percentuale del PIL.</p>
+<section id="lo-stock-di-debito-commerciale-italiano" class="level2 anchored" data-number="3.1" data-anchor-id="lo-stock-di-debito-commerciale-italiano">
+<h2 class="anchored" data-number="3.1" data-anchor-id="lo-stock-di-debito-commerciale-italiano"><span class="header-section-number">3.1</span> Lo stock di debito commerciale italiano</h2>
+<div id="cell-fig-graf3" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div id="figura-graf3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-graf3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig03.png" class="figure-img" role="img" width="1045" height="421"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;3: Stock di debiti commerciali di parte corrente della pubblica amministrazione italiana, 2022-2025 (miliardi di euro).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Lo stock di debiti commerciali della pubblica amministrazione italiana passa da <strong>56,1 miliardi</strong> nel 2022 a <strong>60,0</strong> nel 2023, scende a <strong>58,8</strong> nel 2024 e risale a <strong>64,2 miliardi</strong> nel 2025. L’aumento dell’ultimo anno è di circa <strong>5,4 miliardi</strong>, il valore più elevato del quadriennio. La serie disponibile per l’Italia in questa voce decorre dal 2022: il confronto di lungo periodo non è quindi possibile con questo indicatore, ma lo è con il debito pubblico complessivo, analizzato nella sezione seguente.</p>
+</section>
+<section id="il-confronto-europeo" class="level2 anchored" data-number="3.2" data-anchor-id="il-confronto-europeo">
+<h2 class="anchored" data-number="3.2" data-anchor-id="il-confronto-europeo"><span class="header-section-number">3.2</span> Il confronto europeo</h2>
+<div id="cell-fig-graf4" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<div id="figura-graf4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-graf4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig04.png" class="figure-img" role="img" width="1225" height="518"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;4: Debiti commerciali della pubblica amministrazione in percentuale del PIL, 2025.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Nel 2025 l’Italia presenta il rapporto più alto d’Europa, <strong>2,8 per cento del PIL</strong>, seguita da Belgio (<strong>2,6</strong>) e Lussemburgo (<strong>2,5</strong>). La Romania si attesta al 2,2, mentre Germania, Grecia e Finlandia si collocano all’1,8. In fondo alla graduatoria figurano Spagna (<strong>0,7</strong>) e Lituania (<strong>0,4</strong>). La media dell’Unione europea è dell’1,6 per cento: il valore italiano è quindi quasi il doppio della media. È utile osservare che il dato Eurostat più aggiornato per il complesso dell’Unione è pari all’1,7 per cento, leggermente superiore all’1,6 indicato nella nota CGIA: la differenza riflette la revisione della notifica EDP e non modifica la posizione italiana.</p>
+<div class="cell" data-execution_count="7">
+<div id="tab-tab2" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="7">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-tab2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">unit_code</th>
+<th style="text-align: left;">rank</th>
+<th style="text-align: left;">Paesi UE</th>
+<th style="text-align: left;">Debito commerciale 2025 (milioni di euro)</th>
+<th style="text-align: left;">Incidenza su PIL 2025 (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Italy</td>
+<td style="text-align: left;">64232.9</td>
+<td style="text-align: left;">2.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Belgium</td>
+<td style="text-align: left;">16878.9</td>
+<td style="text-align: left;">2.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">Luxembourg</td>
+<td style="text-align: left;">2265.6</td>
+<td style="text-align: left;">2.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">Romania</td>
+<td style="text-align: left;">8192.2</td>
+<td style="text-align: left;">2.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">Finland</td>
+<td style="text-align: left;">4920.0</td>
+<td style="text-align: left;">1.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">Greece</td>
+<td style="text-align: left;">4513.0</td>
+<td style="text-align: left;">1.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">Germany</td>
+<td style="text-align: left;">78313.2</td>
+<td style="text-align: left;">1.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">Sweden</td>
+<td style="text-align: left;">10375.6</td>
+<td style="text-align: left;">1.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">Bulgaria</td>
+<td style="text-align: left;">1825.5</td>
+<td style="text-align: left;">1.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">Denmark</td>
+<td style="text-align: left;">6367.0</td>
+<td style="text-align: left;">1.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">Slovenia</td>
+<td style="text-align: left;">1150.9</td>
+<td style="text-align: left;">1.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">Austria</td>
+<td style="text-align: left;">7927.1</td>
+<td style="text-align: left;">1.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">France</td>
+<td style="text-align: left;">45592.2</td>
+<td style="text-align: left;">1.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">Czechia</td>
+<td style="text-align: left;">5354.0</td>
+<td style="text-align: left;">1.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">Estonia</td>
+<td style="text-align: left;">604.5</td>
+<td style="text-align: left;">1.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">Ireland</td>
+<td style="text-align: left;">9283.0</td>
+<td style="text-align: left;">1.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">Slovakia</td>
+<td style="text-align: left;">1583.1</td>
+<td style="text-align: left;">1.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">Croatia</td>
+<td style="text-align: left;">1111.1</td>
+<td style="text-align: left;">1.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">Hungary</td>
+<td style="text-align: left;">2729.5</td>
+<td style="text-align: left;">1.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">Netherlands</td>
+<td style="text-align: left;">13553.0</td>
+<td style="text-align: left;">1.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">Latvia</td>
+<td style="text-align: left;">461.3</td>
+<td style="text-align: left;">1.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">Poland</td>
+<td style="text-align: left;">9670.2</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">Cyprus</td>
+<td style="text-align: left;">375.8</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">23</td>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">Malta</td>
+<td style="text-align: left;">203.7</td>
+<td style="text-align: left;">0.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">Portugal</td>
+<td style="text-align: left;">2462.9</td>
+<td style="text-align: left;">0.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">25</td>
+<td style="text-align: left;">26</td>
+<td style="text-align: left;">Spain</td>
+<td style="text-align: left;">11915.7</td>
+<td style="text-align: left;">0.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">26</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">Lithuania</td>
+<td style="text-align: left;">361.1</td>
+<td style="text-align: left;">0.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">&lt;NA&gt;</td>
+<td style="text-align: left;">Euro area – 20 countries (2023-2025)</td>
+<td style="text-align: left;">267709.0</td>
+<td style="text-align: left;">1.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">28</td>
+<td style="text-align: left;">&lt;NA&gt;</td>
+<td style="text-align: left;">European Union - 27 countries (from 2020)</td>
+<td style="text-align: left;">312223.1</td>
+<td style="text-align: left;">1.7</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;2: Debiti commerciali della pubblica amministrazione per paese dell’Unione europea, 2025.</p>
+</div>
+</div>
+</div>
+</div>
+<p>La tabella ordina i ventisette paesi per incidenza sul PIL e riporta, per ciascuno, lo stock in milioni di euro. L’Italia cumula un debito commerciale di <strong>64.233 milioni</strong>, quasi quattro volte quello belga (16.879 milioni) e oltre tre volte quello tedesco (78.313 milioni, ma su un PIL molto più grande). Il peso relativo, non il valore assoluto, è ciò che colloca l’Italia in testa alla graduatoria europea.</p>
+</section>
+<section id="variazione-2022-2025" class="level2 anchored" data-number="3.3" data-anchor-id="variazione-2022-2025">
+<h2 class="anchored" data-number="3.3" data-anchor-id="variazione-2022-2025"><span class="header-section-number">3.3</span> Variazione 2022-2025</h2>
+<div id="cell-fig-a2" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<div id="figura-a2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-a2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig05.png" class="figure-img" role="img" width="1141" height="470"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;5: Variazione dei debiti commerciali della PA tra 2022 e 2025, in punti percentuali di PIL.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>La dinamica del triennio mostra come il fenomeno non sia uniforme. Cipro (+0,4 punti di PIL), Bulgaria, Romania e Grecia (tutte +0,2) registrano gli aumenti maggiori, mentre Finlandia (<strong>−0,7</strong>), Croazia e Belgio (<strong>−0,4</strong>) riducono il proprio rapporto. L’Italia resta sostanzialmente stabile sul valore elevato di partenza, passando dal 2,8 per cento del 2022 al 2,8 del 2025, dopo il temporaneo assestamento al 2,7 del 2024.</p>
+</section>
+<section id="italia-e-aggregati-europei" class="level2 anchored" data-number="3.4" data-anchor-id="italia-e-aggregati-europei">
+<h2 class="anchored" data-number="3.4" data-anchor-id="italia-e-aggregati-europei"><span class="header-section-number">3.4</span> Italia e aggregati europei</h2>
+<div id="cell-fig-a3" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div id="figura-a3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-a3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig06.png" class="figure-img" role="img" width="949" height="412"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;6: Debiti commerciali della PA in percentuale del PIL: Italia e aggregati europei, 2022-2025.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Il confronto con gli aggregati rende immediata la dimensione del divario. Nel 2025 l’Italia si colloca al <strong>2,8 per cento del PIL</strong>, mentre l’Unione europea a ventisette paesi e le diverse configurazioni dell’Eurozona si attestano tra l’1,7 e l’1,8. Lo scarto è quindi di circa un punto di PIL, pari a oltre venti miliardi di euro. Il divario si mantiene stabile nei quattro anni osservati, senza segnali di convergenza verso la media.</p>
+</section>
+<section id="quota-sul-debito-pubblico-complessivo" class="level2 anchored" data-number="3.5" data-anchor-id="quota-sul-debito-pubblico-complessivo">
+<h2 class="anchored" data-number="3.5" data-anchor-id="quota-sul-debito-pubblico-complessivo"><span class="header-section-number">3.5</span> Quota sul debito pubblico complessivo</h2>
+<div id="cell-fig-a4" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display">
+<div id="figura-a4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-a4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig07.png" class="figure-img" role="img" width="1141" height="470"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;7: Quota dei debiti commerciali sul debito pubblico lordo, 2025.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Rapportare i debiti commerciali al debito pubblico complessivo chiarisce quale parte dell’esposizione dello Stato verso i fornitori pesa sul totale. Il Lussemburgo registra la quota più alta (<strong>9,6 per cento</strong>), seguito da Estonia (<strong>6,0</strong>), Danimarca (<strong>5,6</strong>) e Bulgaria (<strong>5,3</strong>). L’Italia si colloca poco sotto il 2,1 per cento, un valore contenuto in termini relativi perché il suo debito pubblico è molto ampio; ciò non riduce tuttavia l’impatto sui fornitori, che dipende dal valore assoluto delle somme non pagate e dai tempi di attesa.</p>
+</section>
+<section id="convergenza-tra-paesi" class="level2 anchored" data-number="3.6" data-anchor-id="convergenza-tra-paesi">
+<h2 class="anchored" data-number="3.6" data-anchor-id="convergenza-tra-paesi"><span class="header-section-number">3.6</span> Convergenza tra paesi</h2>
+<div id="cell-fig-a5a" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<div id="figura-a5a" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-a5a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig08.png" class="figure-img" role="img" width="853" height="373"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;8: Dispersione tra paesi del rapporto debiti commerciali/PIL (deviazione standard), 2022-2025.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="cell-fig-a5b" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display">
+<div id="figura-a5b" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-a5b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig09.png" class="figure-img" role="img" width="805" height="564"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;9: Convergenza β: livello 2022 e variazione 2022-2025 dei debiti commerciali in percentuale di PIL.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>I due grafici valutano la convergenza tra i paesi dell’Unione. La dispersione del rapporto debiti commerciali/PIL, misurata dalla deviazione standard, scende da <strong>0,72</strong> nel 2020 a <strong>0,58</strong> nel 2025, con una riduzione continua a partire dal 2021: i paesi stanno quindi diventando più simili tra loro. Il secondo grafico stima la convergenza β regredendo la variazione 2022-2025 sul livello iniziale del 2022. La pendenza è <strong>−0,14</strong>: i paesi che partivano da un rapporto più alto tendono a ridurlo più rapidamente, mentre quelli che partivano da valori bassi lo aumentano. La combinazione dei due risultati indica una convergenza verso l’alto, trainata dai paesi con debiti commerciali contenuti.</p>
+</section>
+<section id="debiti-commerciali-e-indebitamento-netto" class="level2 anchored" data-number="3.7" data-anchor-id="debiti-commerciali-e-indebitamento-netto">
+<h2 class="anchored" data-number="3.7" data-anchor-id="debiti-commerciali-e-indebitamento-netto"><span class="header-section-number">3.7</span> Debiti commerciali e indebitamento netto</h2>
+<div id="cell-fig-a6" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display">
+<div id="figura-a6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-a6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig10.png" class="figure-img" role="img" width="805" height="564"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;10: Relazione tra indebitamento netto delle amministrazioni pubbliche e debiti commerciali, tutte le osservazioni 1995-2025.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Il grafico mette in relazione il rapporto debiti commerciali/PIL con il deficit pubblico di tutti i paesi e gli anni disponibili. La nuvola di punti è dispersa e la correlazione è pari a <strong>+0,20</strong>: esiste un legame positivo, ma debole, tra disavanzo e debiti commerciali. Il risultato suggerisce che il ritardo nei pagamenti non dipende soltanto dalla condizione di bilancio del paese; vi concorrono fattori organizzativi e di procedure di spesa che non si riflettono direttamente nel saldo di bilancio.</p>
+</section>
+<section id="debiti-commerciali-e-crescita-del-pil" class="level2 anchored" data-number="3.8" data-anchor-id="debiti-commerciali-e-crescita-del-pil">
+<h2 class="anchored" data-number="3.8" data-anchor-id="debiti-commerciali-e-crescita-del-pil"><span class="header-section-number">3.8</span> Debiti commerciali e crescita del PIL</h2>
+<div id="cell-fig-a7" class="cell" data-execution_count="14">
+<div class="cell-output cell-output-display">
+<div id="figura-a7" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-a7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig11.png" class="figure-img" role="img" width="805" height="564"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;11: Relazione tra crescita del PIL nominale e crescita dei debiti commerciali.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Questo grafico verifica se i debiti commerciali crescano di più nei paesi con economie in espansione. La correlazione è <strong>+0,10</strong>, praticamente nulla: la dinamica dei debiti commerciali non segue quella del ciclo economico. Le variazioni annuali sono molto disperse, con diversi paesi che registrano contrazioni dei debiti commerciali anche in presenza di crescita del PIL nominale.</p>
+</section>
+<section id="effetto-della-valuta-di-denominazione" class="level2 anchored" data-number="3.9" data-anchor-id="effetto-della-valuta-di-denominazione">
+<h2 class="anchored" data-number="3.9" data-anchor-id="effetto-della-valuta-di-denominazione"><span class="header-section-number">3.9</span> Effetto della valuta di denominazione</h2>
+<div id="cell-fig-a8" class="cell" data-execution_count="15">
+<div class="cell-output cell-output-display">
+<div id="figura-a8" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-a8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig12.png" class="figure-img" role="img" width="853" height="393"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;12: Debiti commerciali della PA in Polonia, valori in euro e in zloty, indice 2022=100.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Per i paesi fuori dall’area dell’euro il confronto in euro incorpora l’effetto del tasso di cambio. Il caso polacco lo mostra in modo netto: misurato in zloty, il debito commerciale della pubblica amministrazione cresce in modo diverso rispetto alla stessa grandezza espressa in euro. La lettura in valuta nazionale, disponibile nel dataset, isola la dinamica reale dell’esposizione dall’effetto di conversione e va preferita quando si analizza un singolo paese non appartenente all’area dell’euro.</p>
+</section>
+<section id="raggruppamento-dei-paesi" class="level2 anchored" data-number="3.10" data-anchor-id="raggruppamento-dei-paesi">
+<h2 class="anchored" data-number="3.10" data-anchor-id="raggruppamento-dei-paesi"><span class="header-section-number">3.10</span> Raggruppamento dei paesi</h2>
+<div id="cell-fig-a9" class="cell" data-execution_count="16">
+<div class="cell-output cell-output-display">
+<div id="figura-a9" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-a9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig13.png" class="figure-img" role="img" width="805" height="564"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;13: Raggruppamento dei paesi per livello 2022 e variazione 2022-2025 dei debiti commerciali.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>L’algoritmo di raggruppamento (k-means su livello iniziale e variazione, standardizzati) individua tre profili. Il primo raccoglie i paesi con debiti commerciali contenuti e variazione modesta, tra cui Paesi Bassi, Portogallo, Malta e Spagna. Il secondo riunisce i paesi in riduzione da livelli intermedi, come Croazia, Ungheria, Lettonia e Belgio. Il terzo comprende la maggioranza dei paesi, incluso l’Italia, caratterizzati da livelli prossimi o superiori all’1,5 per cento e variazione piccola. Il raggruppamento conferma che la posizione italiana è anomala per livello, non per dinamica.</p>
+</section>
+<section id="aggregati-europei-in-valore-assoluto" class="level2 anchored" data-number="3.11" data-anchor-id="aggregati-europei-in-valore-assoluto">
+<h2 class="anchored" data-number="3.11" data-anchor-id="aggregati-europei-in-valore-assoluto"><span class="header-section-number">3.11</span> Aggregati europei in valore assoluto</h2>
+<div id="cell-fig-a10" class="cell" data-execution_count="17">
+<div class="cell-output cell-output-display">
+<div id="figura-a10" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-a10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig14.png" class="figure-img" role="img" width="949" height="431"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;14: Debiti commerciali della PA per aggregato europeo, 2022-2025 (miliardi di euro).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>In valore assoluto i debiti commerciali delle amministrazioni pubbliche europee superano i <strong>300 miliardi di euro</strong> nell’Unione a ventisette e i <strong>267 miliardi</strong> nell’Eurozona a venti. La componente italiana, pari a 64,2 miliardi, rappresenta circa un quinto del totale europeo. Il confronto tra le configurazioni dell’Eurozona (diciannove, venti e ventuno paesi) mostra come l’allargamento modifichi il totale di pochi miliardi, a conferma che il grosso dello stock è concentrato nei paesi fondatori.</p>
+</section>
+</section>
+<section id="debito-pubblico-e-indebitamento" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Debito pubblico e indebitamento</h1>
+<p>Le figure di questa sezione utilizzano il debito pubblico lordo (voce GD) e l’indebitamento netto (voce B9) delle amministrazioni pubbliche, dal pannello Eurostat 1995-2025 <span class="citation" data-cites="eurostat2026govdebt"><a href="#ref-eurostat2026govdebt" role="doc-biblioref">[2]</a></span>. L’obiettivo è collocare i debiti commerciali nel quadro più ampio dei conti pubblici.</p>
+<section id="debito-pubblico-in-rapporto-al-pil" class="level2 anchored" data-number="4.1" data-anchor-id="debito-pubblico-in-rapporto-al-pil">
+<h2 class="anchored" data-number="4.1" data-anchor-id="debito-pubblico-in-rapporto-al-pil"><span class="header-section-number">4.1</span> Debito pubblico in rapporto al PIL</h2>
+<div id="cell-fig-b1" class="cell" data-execution_count="18">
+<div class="cell-output cell-output-display">
+<div id="figura-b1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-b1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig15.png" class="figure-img" role="img" width="1045" height="450"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;15: Debito pubblico lordo in percentuale del PIL: Italia, maggiori economie europee ed Eurozona, 1995-2025.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Il rapporto debito/PIL italiano, dopo la discesa dagli anni Novanta, risale con la crisi finanziaria e con la pandemia. Nel 2025 si attesta intorno al <strong>137 per cento</strong>, il secondo valore più alto tra i grandi paesi europei dopo la Grecia, che supera il 146 per cento. Francia e Belgio si collocano poco sopra il 100 per cento, Spagna e Germania molto più in basso. La traiettoria italiana resta al di sopra della media dell’Eurozona per tutto il periodo osservato, con un divario che si amplia dopo il 2008 e non si richiude.</p>
+</section>
+<section id="pil-e-debito-in-livelli-assoluti" class="level2 anchored" data-number="4.2" data-anchor-id="pil-e-debito-in-livelli-assoluti">
+<h2 class="anchored" data-number="4.2" data-anchor-id="pil-e-debito-in-livelli-assoluti"><span class="header-section-number">4.2</span> PIL e debito in livelli assoluti</h2>
+<div id="cell-fig-b1bis-pil" class="cell" data-execution_count="19">
+<div class="cell-output cell-output-display">
+<div id="figura-b1bis-pil" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-b1bis-pil-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig16.png" class="figure-img" role="img" width="1045" height="431"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;16: PIL nominale in miliardi di euro: Italia, Germania, Francia, Spagna e Grecia, 1995-2025.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="cell-fig-b1bis-debito" class="cell" data-execution_count="20">
+<div class="cell-output cell-output-display">
+<div id="figura-b1bis-debito" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-b1bis-debito-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig17.png" class="figure-img" role="img" width="1045" height="431"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;17: Debito pubblico lordo in miliardi di euro: Italia, Germania, Francia, Spagna e Grecia, 1995-2025.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>I due grafici separano le due grandezze per mostrarne l’andamento individuale, senza ridurle a un rapporto. Il PIL nominale italiano passa da circa 1.000 a oltre 2.200 miliardi di euro tra il 1995 e il 2025, con una crescita più lenta di quella tedesca e francese. Il debito pubblico italiano cresce da poco più di 1.100 miliardi nel 1995 a oltre 3.000 nel 2025, superando il valore del PIL. La Germania, partita da un debito simile a quello italiano, cresce molto meno e si attesta intorno ai 2.800 miliardi. Il confronto in livelli assoluti mostra quindi che il problema italiano non è solo il rapporto, ma anche la velocità di accumulo del debito rispetto alla crescita dell’economia.</p>
+</section>
+<section id="confronto-a-base-comune" class="level2 anchored" data-number="4.3" data-anchor-id="confronto-a-base-comune">
+<h2 class="anchored" data-number="4.3" data-anchor-id="confronto-a-base-comune"><span class="header-section-number">4.3</span> Confronto a base comune</h2>
+<div id="cell-fig-b1ter" class="cell" data-execution_count="21">
+<div class="cell-output cell-output-display">
+<div id="figura-b1ter" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-b1ter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig18.png" class="figure-img" role="img" width="1045" height="469"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;18: PIL e debito pubblico a base 100 = 1995: Italia ed Eurozona a venti paesi.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Portare le due serie a una base comune consente di confrontare le rispettive velocità di crescita prescindendo dai livelli. In Italia il PIL nel 2025 è circa <strong>2,5 volte</strong> il valore del 1995, mentre il debito è <strong>2,8 volte</strong>: il debito cresce più del prodotto. Il divario è ancora più marcato nell’Eurozona, dove il PIL si moltiplica per circa 2,75 e il debito per <strong>3,35</strong>. La linea del debito italiano supera quella del PIL dal 2009 in poi, segnale di un’accumulazione che eccede la capacità di crescita nominale dell’economia.</p>
+</section>
+<section id="composizione-del-debito-per-strumento" class="level2 anchored" data-number="4.4" data-anchor-id="composizione-del-debito-per-strumento">
+<h2 class="anchored" data-number="4.4" data-anchor-id="composizione-del-debito-per-strumento"><span class="header-section-number">4.4</span> Composizione del debito per strumento</h2>
+<div id="cell-fig-b2a" class="cell" data-execution_count="22">
+<div class="cell-output cell-output-display">
+<div id="figura-b2a" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-b2a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig19.png" class="figure-img" role="img" width="1045" height="420"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;19: Italia: composizione del debito pubblico per strumento finanziario, 1995-2025.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>La struttura per strumento è cambiata in modo netto in trent’anni. All’inizio del periodo i titoli di Stato rappresentavano una quota minoritaria del debito; progressivamente il loro peso è cresciuto fino a dominare la composizione. Nel 2025 i titoli (voce F3) valgono circa l’<strong>84 per cento</strong> del debito, i prestiti (F4) poco più del <strong>10</strong> e i depositi (F2) una frazione residuale. Questa composizione espone il debito italiano al rischio di rifinanziamento sui mercati, ma lo rende anche meno dipendente dal canale bancario.</p>
+</section>
+<section id="composizione-del-debito-per-scadenza" class="level2 anchored" data-number="4.5" data-anchor-id="composizione-del-debito-per-scadenza">
+<h2 class="anchored" data-number="4.5" data-anchor-id="composizione-del-debito-per-scadenza"><span class="header-section-number">4.5</span> Composizione del debito per scadenza</h2>
+<div id="cell-fig-b2b" class="cell" data-execution_count="23">
+<div class="cell-output cell-output-display">
+<div id="figura-b2b" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-b2b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig20.png" class="figure-img" role="img" width="1045" height="420"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;20: Italia: composizione del debito pubblico per scadenza, 1995-2025.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>La composizione per scadenza conferma la prevalenza della parte a lungo termine. I titoli a lungo termine (voce F32) superano l’<strong>80 per cento</strong> del debito, mentre quelli a breve (F31) si fermano intorno al 4. I prestiti a lungo termine (F42) valgono circa il 9 per cento e quelli a breve (F41) poco più dell’1. La struttura per scadenza è quindi relativamente robusta: una quota contenuta del debito giunge a maturazione ogni anno, il che riduce il rischio di rollover di breve periodo ma comporta un onere per interessi che si adegua lentamente ai tassi di mercato.</p>
+</section>
+<section id="debito-per-livello-di-governo" class="level2 anchored" data-number="4.6" data-anchor-id="debito-per-livello-di-governo">
+<h2 class="anchored" data-number="4.6" data-anchor-id="debito-per-livello-di-governo"><span class="header-section-number">4.6</span> Debito per livello di governo</h2>
+<div id="cell-fig-b3" class="cell" data-execution_count="24">
+<div class="cell-output cell-output-display">
+<div id="figura-b3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-b3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig21.png" class="figure-img" role="img" width="1045" height="431"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;21: Italia: debito pubblico per livello di governo, 1995-2025 (miliardi di euro).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>La ripartizione per livello di governo mostra una concentrazione quasi totale nel livello centrale. Le amministrazioni centrali detengono oltre <strong>3.000 miliardi</strong> di euro di debito nel 2025, le amministrazioni locali circa <strong>106 miliardi</strong>, gli enti di previdenza una quota trascurabile. Il debito italiano è quindi un debito dello Stato centrale: le eventuali criticità di pagamento dei fornitori da parte di comuni e regioni hanno un peso aggregato limitato nel quadro del debito complessivo.</p>
+</section>
+<section id="dinamica-del-debito-e-stock-flow-adjustment" class="level2 anchored" data-number="4.7" data-anchor-id="dinamica-del-debito-e-stock-flow-adjustment">
+<h2 class="anchored" data-number="4.7" data-anchor-id="dinamica-del-debito-e-stock-flow-adjustment"><span class="header-section-number">4.7</span> Dinamica del debito e stock-flow adjustment</h2>
+<div id="cell-fig-b4" class="cell" data-execution_count="25">
+<div class="cell-output cell-output-display">
+<div id="figura-b4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-b4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig22.png" class="figure-img" role="img" width="1045" height="431"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;22: Italia: variazione del debito, deficit e stock-flow adjustment, 1996-2025 (miliardi di euro).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>La variazione del debito non coincide con il disavanzo annuale: la differenza è lo stock-flow adjustment, che riflette operazioni finanziarie, riclassificazioni e rivalutazioni. In alcuni anni lo scostamento è consistente, come nel 2020, quando il debito è cresciuto di circa <strong>21 miliardi in più</strong> del disavanzo per effetto della crisi pandemica e delle garanzie pubbliche. Negli ultimi anni lo stock-flow adjustment è tornato positivo ma contenuto. Il grafico ricorda che la lettura del solo saldo di bilancio non basta a spiegare la dinamica del debito.</p>
+</section>
+<section id="tasso-dinteresse-implicito" class="level2 anchored" data-number="4.8" data-anchor-id="tasso-dinteresse-implicito">
+<h2 class="anchored" data-number="4.8" data-anchor-id="tasso-dinteresse-implicito"><span class="header-section-number">4.8</span> Tasso d’interesse implicito</h2>
+<div id="cell-fig-b5" class="cell" data-execution_count="26">
+<div class="cell-output cell-output-display">
+<div id="figura-b5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-b5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig23.png" class="figure-img" role="img" width="949" height="393"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;23: Italia: tasso d’interesse implicito sul debito pubblico, 1995-2025.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Il rapporto tra spesa per interessi e debito misura il costo medio effettivo del debito. Il tasso implicito italiano è sceso da oltre il <strong>9 per cento</strong> nella seconda metà degli anni Novanta al <strong>2,8 per cento</strong> del 2025, con un minimo intorno al 2,3 nel 2021. La discesa riflette il calo dei tassi di mercato e il progressivo rifinanziamento del debito a condizioni più favorevoli. Dopo il 2022 il tasso risale leggermente, in linea con il rialzo dei tassi, e il margine di risparmio sulla spesa per interessi si riduce.</p>
+</section>
+<section id="debito-e-deficit-nel-2025" class="level2 anchored" data-number="4.9" data-anchor-id="debito-e-deficit-nel-2025">
+<h2 class="anchored" data-number="4.9" data-anchor-id="debito-e-deficit-nel-2025"><span class="header-section-number">4.9</span> Debito e deficit nel 2025</h2>
+<div id="cell-fig-b6" class="cell" data-execution_count="27">
+<div class="cell-output cell-output-display">
+<div id="figura-b6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-b6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig24.png" class="figure-img" role="img" width="805" height="564"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;24: Italia e paesi UE: debito pubblico e indebitamento netto in percentuale del PIL, 2025.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Il grafico incrocia il livello del debito con il disavanzo annuo per il 2025. L’Italia si colloca nella parte alta, con un debito prossimo al <strong>137 per cento</strong> e un deficit intorno al <strong>3,1 per cento</strong> del PIL, vicino alla soglia del trattato. La Grecia registra il debito più elevato, oltre il 146, ma con un disavanzo più contenuto. La nuvola mostra una relazione debole: paesi con debiti alti possono avere deficit diversi, e il percorso di riduzione dipende più dalla crescita nominale e dall’avanzo primario che dal solo saldo complessivo.</p>
+</section>
+<section id="snowball-effect" class="level2 anchored" data-number="4.10" data-anchor-id="snowball-effect">
+<h2 class="anchored" data-number="4.10" data-anchor-id="snowball-effect"><span class="header-section-number">4.10</span> Snowball effect</h2>
+<div id="cell-fig-b7" class="cell" data-execution_count="28">
+<div class="cell-output cell-output-display">
+<div id="figura-b7" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-b7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig25.png" class="figure-img" role="img" width="1045" height="450"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;25: Italia: tasso implicito, crescita del PIL nominale, contributo dello snowball e variazione del rapporto debito/PIL, 1996-2025.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Il contributo dello snowball misura quanta parte della variazione del rapporto debito/PIL deriva dalla differenza tra il tasso d’interesse implicito e la crescita nominale dell’economia. Quando la crescita supera il tasso, come nel 2021-2023, il contributo è negativo e il rapporto debito/PIL scende anche a parità di saldo primario. Dal 2024 la crescita nominale rallenta al di sotto del tasso implicito e il contributo diventa positivo, contribuendo alla risalita del rapporto. Il grafico mostra anche quanto la variazione effettiva del rapporto si discosti dal solo effetto snowball, per la parte attribuibile a disavanzo primario e a operazioni straordinarie.</p>
+</section>
+<section id="prestiti-intergovernativi" class="level2 anchored" data-number="4.11" data-anchor-id="prestiti-intergovernativi">
+<h2 class="anchored" data-number="4.11" data-anchor-id="prestiti-intergovernativi"><span class="header-section-number">4.11</span> Prestiti intergovernativi</h2>
+<div id="cell-fig-b8" class="cell" data-execution_count="29">
+<div class="cell-output cell-output-display">
+<div id="figura-b8" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-b8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig26.png" class="figure-img" role="img" width="949" height="431"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;26: Prestiti intergovernativi (voce IGL_F4) nell’Unione europea, 2009-2025 (miliardi di euro).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>I prestiti intergovernativi sono le passività tra amministrazioni pubbliche di paesi diversi, in larga parte legate ai programmi di assistenza finanziaria della crisi del debito sovrano. Per l’Italia il valore è modesto e in lenta riduzione, da circa <strong>45 miliardi</strong> nel 2020 a <strong>40</strong> nel 2025. Il totale dell’Unione a ventisette è molto più grande e riflette i prestiti erogati ai paesi in programma. Questa voce mostra come la crisi del debito abbia lasciato un’eredità finanziaria tra Stati che si estingue gradualmente.</p>
+</section>
+</section>
+<section id="il-debito-trimestrale-e-la-finestra-ngeu" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Il debito trimestrale e la finestra NGEU</h1>
+<p>Il dataset trimestrale del debito pubblico consente di collocare i tempi di pagamento all’interno del ciclo di finanza pubblica <span class="citation" data-cites="eurostat2026govdebtq"><a href="#ref-eurostat2026govdebtq" role="doc-biblioref">[3]</a></span>.</p>
+<div id="cell-fig-c1" class="cell" data-execution_count="30">
+<div class="cell-output cell-output-display">
+<div id="figura-c1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-c1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig27.png" class="figure-img" role="img" width="1141" height="450"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;27: Italia: debito pubblico lordo trimestrale in percentuale del PIL, 1995-2026.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>La serie trimestrale mostra il profilo del rapporto debito/PIL con maggiore dettaglio rispetto ai dati annuali. Il salto più ampio si registra nel 2020, in corrispondenza dell’avvio del programma Next Generation EU e delle misure di sostegno all’economia: la fascia evidenziata nel grafico individua la finestra 2020-2021. Dopo il picco, il rapporto scende gradualmente fino al 2023 e torna a risalire negli ultimi trimestri, chiudendo al <strong>138,9 per cento</strong> nel primo trimestre 2026. Il dato trimestrale conferma che il miglioramento dei tempi di pagamento della pubblica amministrazione non si è tradotto in una riduzione duratura dello stock di debito.</p>
+</section>
+<section id="il-finanziamento-dei-crediti-verso-la-pa-factoring-e-anticipi" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Il finanziamento dei crediti verso la PA: factoring e anticipi</h1>
+<p>Il debito commerciale della pubblica amministrazione ha un lato finanziario: le imprese che attendono il pagamento possono mobilizzare il credito presso banche e intermediari. Questa sezione ricostruisce il funzionamento di tali operazioni e la dimensione del mercato, con i dati della Ragioneria Generale dello Stato <span class="citation" data-cites="rgs2026tempipagamento"><a href="#ref-rgs2026tempipagamento" role="doc-biblioref">[4]</a></span>, di Assifact <span class="citation" data-cites="assifact2026rapporto"><a href="#ref-assifact2026rapporto" role="doc-biblioref">[5]</a></span> e della Banca d’Italia <span class="citation" data-cites="bankit2026formetecniche"><a href="#ref-bankit2026formetecniche" role="doc-biblioref">[6]</a></span>.</p>
+<section id="autoliquidante-o-accoppiato-a-mano" class="level2 anchored" data-number="6.1" data-anchor-id="autoliquidante-o-accoppiato-a-mano">
+<h2 class="anchored" data-number="6.1" data-anchor-id="autoliquidante-o-accoppiato-a-mano"><span class="header-section-number">6.1</span> Autoliquidante o accoppiato a mano</h2>
+<p>Nel gergo bancario le <em>operazioni autoliquidanti</em> sono quelle il cui rimborso si produce con l’incasso del credito sottostante: anticipo su fatture, sconto, factoring pro solvendo. Il rimborso si chiude quando il debitore paga, senza una nuova delibera. Un credito verso la pubblica amministrazione non è però autoliquidante per natura: lo diventa soltanto se l’incasso è canalizzato alla banca e se la cessione è opponibile all’amministrazione debitrice.</p>
+<p>Ne derivano tre configurazioni. Nella prima l’operazione è realmente autoliquidante: la cessione è notificata e, di norma, accettata dalla PA, e il pagamento è indirizzato a un conto anticipi dedicato con delega irrevocabile all’incasso. Nella seconda, la più diffusa, il factoring è <em>pro solvendo</em>: la banca anticipa, ma il cedente resta garante, cosicché il rischio non è trasferito. Nella terza l’operazione richiede un <strong>accoppiamento manuale</strong> tra fatture e mandati di pagamento: accade quando la cessione non è notificata, quando la PA paga al fornitore originario, quando operano compensazioni, scissione dei pagamenti ai fini IVA, pignoramenti o pagamenti parziali.</p>
+<p>Il punto critico non è la solvibilità della pubblica amministrazione, che è bassa, ma l’incertezza dei tempi e l’opponibilità della cessione. La Piattaforma di Certificazione dei Crediti, gestita dalla Ragioneria Generale dello Stato, rende il credito certo, liquido ed esigibile e consente di automatizzare la riconciliazione altrimenti manuale.</p>
+</section>
+<section id="il-quadro-dei-pagamenti-e-dello-stock" class="level2 anchored" data-number="6.2" data-anchor-id="il-quadro-dei-pagamenti-e-dello-stock">
+<h2 class="anchored" data-number="6.2" data-anchor-id="il-quadro-dei-pagamenti-e-dello-stock"><span class="header-section-number">6.2</span> Il quadro dei pagamenti e dello stock</h2>
+<p>Secondo il monitoraggio della Ragioneria Generale dello Stato, nel 2025 le amministrazioni registrate sono 22.277 e le fatture ricevute 30,8 milioni, per un importo dovuto di 216 miliardi di euro e pagamenti per 207,8 miliardi. Il tempo medio di pagamento scende a <strong>27,2 giorni</strong>, con un anticipo medio di 16,1 giorni rispetto alla scadenza. Lo stock di debito commerciale al 31 dicembre 2025 è di <strong>22,7 miliardi</strong>: 8,8 scaduti e 13,9 fisiologici, in calo dai 31,2 miliardi del 2018. Il perimetro della Piattaforma non coincide con quello del dato Eurostat discusso in precedenza: la prima misura le fatture commerciali da fatturazione elettronica, il secondo lo stock di passività AF.81L del settore pubblico secondo la contabilità nazionale, pari a 64,2 miliardi. I due valori non sono confrontabili direttamente.</p>
+<p>Per Assifact, che rappresenta gli operatori del factoring, il 2025 si chiude con un turnover di <strong>289,1 miliardi di euro</strong>, in crescita del 3,8 per cento al netto delle operazioni sui crediti fiscali edilizi. Il valore corrisponde a circa il <strong>13 per cento del PIL</strong>. L’83 per cento dei volumi è realizzato pro soluto (239,9 miliardi) e il 17 per cento pro solvendo (49,2 miliardi): la formula senza ricorso prevale ormai stabilmente. Gli anticipi e i corrispettivi erogati ammontano a 59,8 miliardi. Il factoring verso la pubblica amministrazione vale 20,6 miliardi di turnover (7 per cento del totale) e 7,7 miliardi di montecrediti, di cui 3,1 scaduti e 1,7 scaduti da oltre un anno. I tempi di incasso confermano un andamento a due velocità: il DSO verso le imprese private è di 78,7 giorni e cala del 3,2 per cento, mentre quello verso la pubblica amministrazione è di <strong>138,4 giorni</strong> e aumenta di 7,8 giorni, quasi il 6 per cento.</p>
+</section>
+<section id="il-mercato-bancario-del-factoring" class="level2 anchored" data-number="6.3" data-anchor-id="il-mercato-bancario-del-factoring">
+<h2 class="anchored" data-number="6.3" data-anchor-id="il-mercato-bancario-del-factoring"><span class="header-section-number">6.3</span> Il mercato bancario del factoring</h2>
+<div id="cell-fig-fin1" class="cell" data-execution_count="31">
+<div class="cell-output cell-output-display">
+<div id="figura-fin1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-fin1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig28.png" class="figure-img" role="img" width="1045" height="431"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;28: Italia: factoring degli intermediari finanziari — anticipi al cedente e valore nominale dei crediti acquisiti pro soluto e pro solvendo, 2014-2026 (miliardi di euro).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="cell-fig-fin2" class="cell" data-execution_count="32">
+<div class="cell-output cell-output-display">
+<div id="figura-fin2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-fin2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig29.png" class="figure-img" role="img" width="1045" height="431"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;29: Italia: anticipi di factoring al cedente per macro-area, 2014-2026 (miliardi di euro).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>La Banca d’Italia distingue, nelle segnalazioni di vigilanza degli intermediari finanziari, tre grandezze del factoring <span class="citation" data-cites="bancaditalia2026factoring bancaditalia2019factoring"><a href="#ref-bancaditalia2026factoring" role="doc-biblioref">[7]</a>, <a href="#ref-bancaditalia2019factoring" role="doc-biblioref">[8]</a></span>. Le <strong>anticipazioni al cedente</strong> sono l’esposizione autoliquidante vera e propria: l’intermediario eroga liquidità al fornitore in attesa dell’incasso. Il <strong>valore nominale dei crediti acquisiti pro soluto</strong> e quello <strong>pro solvendo</strong> misurano invece il portafoglio di crediti acquistati, rispettivamente senza e con il ricorso verso il cedente.</p>
+<p>Nel primo trimestre 2026 le anticipazioni al cedente valgono <strong>6,3 miliardi di euro</strong>, in calo dai 10,6 miliardi del 2014 e dai 9,4 del 2018. I crediti acquisiti pro soluto ammontano a <strong>17,6 miliardi</strong> e quelli pro solvendo a <strong>10,4 miliardi</strong>. La composizione conferma la prevalenza della formula senza ricorso: il portafoglio pro soluto è quasi il doppio di quello pro solvendo, e la quota autoliquidante in senso stretto è la più contenuta. Questa struttura è coerente con il ruolo delle società di factoring come acquirenti di crediti, più che come semplici anticipatrici di fatture.</p>
+<p>La distribuzione territoriale delle anticipazioni al cedente riflette la geografia produttiva. Nel primo trimestre 2026 il Nord-Ovest raccoglie <strong>3,4 miliardi</strong> su 6,3 nazionali, il Nord-Est e il Centro circa un miliardo ciascuno, il Sud 0,6 e le Isole 0,2. La concentrazione settentrionale è coerente con la localizzazione dei grandi committenti e delle principali società di factoring.</p>
+<p>Per completezza, gli impieghi per forma tecnica includono anche i <strong>conti correnti attivi</strong>, la voce che raccoglie in larga parte gli anticipi su fatture: nel primo trimestre 2026 valgono oltre <strong>220 miliardi di euro</strong> e presentano una marcata stagionalità di fine anno. Il factoring è quindi una componente contenuta del credito per capitale circolante; la parte prevalente del finanziamento a breve delle imprese passa per gli anticipi in conto corrente.</p>
+</section>
+<section id="come-le-banche-gestiscono-lopportunità" class="level2 anchored" data-number="6.4" data-anchor-id="come-le-banche-gestiscono-lopportunità">
+<h2 class="anchored" data-number="6.4" data-anchor-id="come-le-banche-gestiscono-lopportunità"><span class="header-section-number">6.4</span> Come le banche gestiscono l’opportunità</h2>
+<p>La banca che acquista crediti verso la pubblica amministrazione combina tre leve: il prezzo, il capitale e il presidio dell’incasso. Il <strong>prezzo</strong> incorpora i giorni medi di pagamento attesi; il DSO B2PA di 138 giorni è il parametro di riferimento del costo implicito dello sconto. Il <strong>capitale</strong> assorbito si riduce con il factoring pro soluto, con la garanzia del Fondo Centrale di Garanzia per le PMI e con la cartolarizzazione di portafogli tramite veicoli dedicati. Il <strong>presidio dell’incasso</strong> distingue l’operazione autoliquidante da quella con ricorso: cessione notificata, conto dedicato e riconciliazione automatica da un lato; garanzia del cedente e gestione manuale dall’altro.</p>
+<p>Su questo mercato si sono affermate due famiglie di soluzioni. Il <strong>reverse factoring</strong> e il <strong>confirming</strong> spostano l’iniziativa sul debitore forte: il committente riconosce i crediti ceduti dai fornitori e ne agevola lo smobilizzo, con riconciliazione automatica basata sulla fatturazione elettronica. Nel 2025 il reverse factoring si ridimensiona e cresce il confirming, a conferma di un’evoluzione nelle modalità operative. Il <strong>factoring tradizionale</strong>, prevalentemente pro soluto, resta il canale principale per i fornitori della pubblica amministrazione, per i quali il problema non è l’insolvenza del debitore ma la durata e la prevedibilità dei tempi di incasso.</p>
+</section>
+</section>
+<section id="conclusioni" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Conclusioni</h1>
+<p>Le figure ricostruite e le analisi estese indicano quattro risultati principali.</p>
+<p>Primo, la puntualità nei pagamenti tra imprese private si è ridotta al <strong>42 per cento</strong> nel secondo trimestre 2026 e resta fortemente disomogenea sul territorio, con un divario di oltre venti punti tra le regioni settentrionali e quelle meridionali.</p>
+<p>Secondo, il debito commerciale della pubblica amministrazione italiana, pari a <strong>64,2 miliardi</strong> nel 2025, è il più alto d’Europa in rapporto al PIL (<strong>2,8 per cento</strong>), quasi il doppio della media dell’Unione.</p>
+<p>Terzo, il raffronto con il debito pubblico mostra che i debiti commerciali rappresentano una quota contenuta del totale, ma il debito complessivo cresce più del PIL e il contributo dello snowball è tornato positivo dal 2024, con la frenata della crescita nominale.</p>
+<p>Quarto, sul piano metodologico i dati mostrano che il ritardo nei pagamenti è legato solo debolmente alla condizione di bilancio dei paesi: la correlazione tra debiti commerciali e deficit è pari a <strong>+0,20</strong>, quella con la crescita del PIL è praticamente nulla. Il fenomeno appare quindi legato a pratiche organizzative e di spesa più che al ciclo economico.</p>
+<p>Quinto, il lato finanziario del fenomeno è rilevante. Il factoring italiano vale 289,1 miliardi di euro, circa il 13 per cento del PIL, e l’83 per cento dei volumi è pro soluto. Il tempo medio di incasso verso la pubblica amministrazione è salito a <strong>138,4 giorni</strong>, contro 78,7 giorni verso le imprese private. I crediti verso la PA non sono autoliquidanti per natura: lo diventano solo con cessione notificata, conto dedicato e certificazione del credito. La banca prezza il ritardo atteso e, in assenza di queste condizioni, gestisce la riconciliazione manualmente.</p>
+<hr>
+<p><strong>Nota metodologica</strong></p>
+<p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
+<p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale; l’analisi è pertanto integralmente auditabile e replicabile da terzi a partire da esse. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+</section>
+<div id="quarto-appendix" class="default">
+<section id="quarto-bibliography" class="quarto-appendix-contents" role="doc-bibliography">
+<section id="referenze" class="level2 anchored quarto-appendix-heading" data-number="7.1">
+<h2 class="anchored quarto-appendix-heading" data-number="7.1" data-anchor-id="referenze"><span class="header-section-number">7.1</span> Referenze</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-cgia2026pagamenti" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[1]
+</div>
+<div class="csl-right-inline">
+Ufficio Studi CGIA Mestre, <a href="https://www.cgiamestre.com/wp-content/uploads/2026/09/Pagamenti-12.9.26.pdf">«La PA batte le imprese private nei pagamenti, ma "nasconde" un buco da 64 miliardi»</a>. Ufficio Studi CGIA – News, 12 settembre 2026.
+</div>
+</div>
+<div id="ref-eurostat2026govdebt" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[2]
+</div>
+<div class="csl-right-inline">
+Eurostat, <a href="https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1">«Government deficit/surplus, debt and associated data (gov_10dd_edpt1)»</a>. Eurostat Statistics API, 2026. doi: <a href="https://doi.org/10.2908/GOV_10DD_EDPT1">10.2908/GOV_10DD_EDPT1</a>.
+</div>
+</div>
+<div id="ref-eurostat2026govdebtq" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[3]
+</div>
+<div class="csl-right-inline">
+Eurostat, <a href="https://ec.europa.eu/eurostat/databrowser/view/gov_10q_ggdebt">«Quarterly government debt (gov_10q_ggdebt)»</a>. Eurostat Statistics API, 2026.
+</div>
+</div>
+<div id="ref-rgs2026tempipagamento" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[4]
+</div>
+<div class="csl-right-inline">
+Ragioneria Generale dello Stato – Ministero dell’Economia e delle Finanze, <a href="https://www.rgs.mef.gov.it/VERSIONE-I/tempi_di_pagamento_e_debiti_commerciali_delle_pubbliche_amministrazioni/">«Tempi di pagamento e debiti commerciali delle Pubbliche Amministrazioni»</a>. MEF–RGS, 2026.
+</div>
+</div>
+<div id="ref-assifact2026rapporto" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[5]
+</div>
+<div class="csl-right-inline">
+Assifact – Associazione Italiana per il Factoring, <a href="https://www.assifact.it/wp-content/uploads/2026/06/Rapporto-sul-mercato-del-factoring-2025_ITA.pdf">«Rapporto sul mercato del factoring 2025»</a>. Assifact, 2026.
+</div>
+</div>
+<div id="ref-bankit2026formetecniche" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[6]
+</div>
+<div class="csl-right-inline">
+Banca d’Italia, <a href="https://www.bancaditalia.it/statistiche/basi-dati/bds/">«Base dati statistica – Prestiti per forma tecnica»</a>. Banca d’Italia, 2026.
+</div>
+</div>
+<div id="ref-bancaditalia2026factoring" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[7]
+</div>
+<div class="csl-right-inline">
+Banca d’Italia, <a href="https://www.bancaditalia.it/statistiche/basi-dati/bds/">«Base dati statistica – Operazioni di factoring»</a>. Banca d’Italia, 2026.
+</div>
+</div>
+<div id="ref-bancaditalia2019factoring" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[8]
+</div>
+<div class="csl-right-inline">
+Banca d’Italia, «Il factoring nella Base Dati Statistica della Banca d’Italia». Banca d’Italia, 2019.
+</div>
+</div>
+</div>
+</section>
+</section>
+</div>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2610_PagamentiPA/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="Mezzogiorno, bridge equations, PIL regionale, nowcasting, SVIMEZ, ISTAT, Eurostat">
+<meta name="description" content="I conti economici regionali ISTAT vengono pubblicati con un ritardo di circa 18 mesi rispetto all’anno di riferimento, rendendo difficile la valutazione tempestiva delle dinamiche territoriali.">
+
+<title>PIL del Mezzogiorno prima dei conti regionali ISTAT – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="PIL del Mezzogiorno prima dei conti regionali ISTAT – Paolo Volterra">
+<meta property="og:description" content="I conti economici regionali ISTAT vengono pubblicati con un ritardo di circa 18 mesi rispetto all’anno di riferimento, rendendo difficile la valutazione tempestiva delle dinamiche territoriali.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2606_PilMezzogiornoBridge/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="PIL del Mezzogiorno prima dei conti regionali ISTAT – Paolo Volterra">
+<meta name="twitter:description" content="I conti economici regionali ISTAT vengono pubblicati con un ritardo di circa 18 mesi rispetto all’anno di riferimento, rendendo difficile la valutazione tempestiva delle dinamiche territoriali.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2606_PilMezzogiornoBridge/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#motivazione" id="toc-motivazione" class="nav-link active" data-scroll-target="#motivazione"><span class="header-section-number">1</span> Motivazione</a></li>
+  <li><a href="#dati" id="toc-dati" class="nav-link" data-scroll-target="#dati"><span class="header-section-number">2</span> Dati</a>
+  <ul class="collapse">
+  <li><a href="#struttura-settoriale" id="toc-struttura-settoriale" class="nav-link" data-scroll-target="#struttura-settoriale"><span class="header-section-number">2.1</span> Struttura settoriale</a></li>
+  </ul></li>
+  <li><a href="#bridge-equations" id="toc-bridge-equations" class="nav-link" data-scroll-target="#bridge-equations"><span class="header-section-number">3</span> Bridge equations</a>
+  <ul class="collapse">
+  <li><a href="#modello-di-base-m1" id="toc-modello-di-base-m1" class="nav-link" data-scroll-target="#modello-di-base-m1"><span class="header-section-number">3.1</span> Modello di base (M1)</a></li>
+  <li><a href="#estensione-con-ula-costruzioni-m2" id="toc-estensione-con-ula-costruzioni-m2" class="nav-link" data-scroll-target="#estensione-con-ula-costruzioni-m2"><span class="header-section-number">3.2</span> Estensione con ULA Costruzioni (M2)</a></li>
+  <li><a href="#confronto-fitted-vs-actual" id="toc-confronto-fitted-vs-actual" class="nav-link" data-scroll-target="#confronto-fitted-vs-actual"><span class="header-section-number">3.3</span> Confronto fitted vs actual</a></li>
+  <li><a href="#pseudo-validazione-out-of-sample-20222024" id="toc-pseudo-validazione-out-of-sample-20222024" class="nav-link" data-scroll-target="#pseudo-validazione-out-of-sample-20222024"><span class="header-section-number">3.4</span> Pseudo-validazione out-of-sample (2022–2024)</a></li>
+  </ul></li>
+  <li><a href="#stima-2025" id="toc-stima-2025" class="nav-link" data-scroll-target="#stima-2025"><span class="header-section-number">4</span> Stima 2025</a></li>
+  <li><a href="#analisi-nuts2-m1-per-le-20-regioni" id="toc-analisi-nuts2-m1-per-le-20-regioni" class="nav-link" data-scroll-target="#analisi-nuts2-m1-per-le-20-regioni"><span class="header-section-number">5</span> Analisi NUTS2 — M1 per le 20 regioni</a></li>
+  <li><a href="#bridge-settoriale-m3" id="toc-bridge-settoriale-m3" class="nav-link" data-scroll-target="#bridge-settoriale-m3"><span class="header-section-number">6</span> Bridge settoriale (M3)</a></li>
+  <li><a href="#m4-bridge-con-produzione-industriale" id="toc-m4-bridge-con-produzione-industriale" class="nav-link" data-scroll-target="#m4-bridge-con-produzione-industriale"><span class="header-section-number">7</span> M4 — Bridge con produzione industriale</a></li>
+  <li><a href="#rolling-update-2026-nowcast-in-tempo-reale" id="toc-rolling-update-2026-nowcast-in-tempo-reale" class="nav-link" data-scroll-target="#rolling-update-2026-nowcast-in-tempo-reale"><span class="header-section-number">8</span> Rolling update 2026 — nowcast in tempo reale</a></li>
+  <li><a href="#conclusioni" id="toc-conclusioni" class="nav-link" data-scroll-target="#conclusioni"><span class="header-section-number">9</span> Conclusioni</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_PilMezzogiornoBridge/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">PIL del Mezzogiorno prima dei conti regionali ISTAT</h1>
+<p class="subtitle lead">Bridge equations annuali come alternativa open-access al modello SVIMEZ</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">PIL regionale</div>
+    <div class="quarto-category">Mezzogiorno</div>
+    <div class="quarto-category">Nowcasting</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    I conti economici regionali ISTAT vengono pubblicati con un ritardo di circa 18 mesi rispetto all’anno di riferimento, rendendo difficile la valutazione tempestiva delle dinamiche territoriali.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">30 giugno 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>I conti economici regionali ISTAT vengono pubblicati con un ritardo di circa 18 mesi rispetto all’anno di riferimento, rendendo difficile la valutazione tempestiva delle dinamiche territoriali. Questo lavoro stima bridge equations annuali per il PIL del Mezzogiorno e del Centro-Nord utilizzando dati open-access (Eurostat, ISTAT SDMX). Il modello di base — crescita reale del Mezzogiorno come funzione della crescita reale nazionale — raggiunge R²=0.932 su 22 osservazioni (2002–2023), basandosi sui valori concatenati ISTAT (dataflow 93_1227, VALUATION=L_2020) che incorporano i deflatori regionali impliciti. Un’estensione con le unità di lavoro nel settore costruzioni porta R² a 0.965 e cattura il boom del Superbonus 2021–2024. La stima per il 2025 indica una crescita reale del Mezzogiorno attorno a <strong>+0.1%</strong>, inferiore di circa 0.5pp al Centro-Nord, con un intervallo di confidenza al 95% che include la stagnazione.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>Mezzogiorno, bridge equations, PIL regionale, nowcasting, SVIMEZ, ISTAT, Eurostat</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="motivazione" class="level2 anchored" data-number="1" data-anchor-id="motivazione">
+<h2 class="anchored" data-number="1" data-anchor-id="motivazione"><span class="header-section-number">1</span> Motivazione</h2>
+<p>I conti economici territoriali ISTAT vengono pubblicati con un ritardo strutturale di circa 18 mesi rispetto all’anno di riferimento. SVIMEZ pubblica stime anticipate del PIL del Mezzogiorno nel proprio Rapporto annuale, ma il modello bi-regionale utilizzato non è open-access (<span class="citation" data-cites="svimez2000">@svimez2000</span>). Questo lavoro propone un’alternativa riproducibile basata su bridge equations annuali, un approccio documentato in letteratura per il nowcasting del PIL a partire da indicatori ad alta frequenza <span class="citation" data-cites="linzenich2024">[<span class="citation" data-cites="linzenich2024">@linzenich2024</span>]</span>.</p>
+</section>
+<section id="dati" class="level2 anchored" data-number="2" data-anchor-id="dati">
+<h2 class="anchored" data-number="2" data-anchor-id="dati"><span class="header-section-number">2</span> Dati</h2>
+<p><strong>VA per macroarea</strong> (variabile dipendente): ISTAT dataflow <code>93_1227</code> (Conti Economici Territoriali, struttura DCCN_TNA1), edizione dicembre 2025. Valori concatenati base 2020 (<code>VALUATION=L_2020</code>) per ITFG (Mezzogiorno) e ITCDE (Centro-Nord). Il deflatore regionale implicito — calcolato come rapporto VA correnti / VA concatenati — differisce da quello nazionale: nel 2023, il Mezzogiorno registra un deflatore inferiore di circa 1pp rispetto alla media nazionale, coerentemente con la minore presenza industriale. Copertura: 2000–2024.</p>
+<p>La struttura settoriale (quota VA per NACE Rev.2) è derivata da Eurostat <code>nama_10r_3gva</code>, valori correnti CP_MEUR, NUTS1 2021: ITC (Nord-Ovest), ITH (Nord-Est), ITI (Centro), ITF (Sud), ITG (Isole).</p>
+<p><strong>Occupazione</strong> (regressore settoriale): ISTAT <code>93_379_DF_DCCN_OCCTSEC2010_1</code>, edizione dicembre 2025. Unità di lavoro (ULA) per settore NACE Rev.2, macroaree ITFG (Mezzogiorno) e ITCDE (Centro-Nord). Copertura: 1995–2023.</p>
+<p><strong>Nota</strong>: IPI e permessi di costruire ISTAT sono disponibili solo a livello nazionale via SDMX — nessuna disaggregazione per ripartizione geografica.</p>
+<div id="cell-fig-quota" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div id="figura-quota" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-quota-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig01.png" class="figure-img" role="img" width="1173" height="490"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;1: Quota del Mezzogiorno sul VA totale nazionale (prezzi correnti, 2001–2024)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>La quota del Mezzogiorno sul VA nazionale segue un trend discendente da 24.0% nel 2001 a 22.0% nel 2019, con un modesto recupero a 22.4% nel 2024. Il divario strutturale riflette una crescita reale sistematicamente inferiore alla media nazionale di circa 0.3pp annui.</p>
+<section id="struttura-settoriale" class="level3 anchored" data-number="2.1" data-anchor-id="struttura-settoriale">
+<h3 class="anchored" data-number="2.1" data-anchor-id="struttura-settoriale"><span class="header-section-number">2.1</span> Struttura settoriale</h3>
+<div class="cell" data-execution_count="3">
+<div id="tab-settori" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-settori-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Settore</th>
+<th style="text-align: left;">Mezzogiorno</th>
+<th style="text-align: left;">Centro-Nord</th>
+<th style="text-align: left;">Diff (pp)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Agricoltura</td>
+<td style="text-align: left;">3.8%</td>
+<td style="text-align: left;">1.6%</td>
+<td style="text-align: left;">+2.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Industria s.s.</td>
+<td style="text-align: left;">12.7%</td>
+<td style="text-align: left;">22.4%</td>
+<td style="text-align: left;">-9.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Costruzioni</td>
+<td style="text-align: left;">7.3%</td>
+<td style="text-align: left;">5.7%</td>
+<td style="text-align: left;">+1.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Servizi comm./tur./ICT</td>
+<td style="text-align: left;">24.6%</td>
+<td style="text-align: left;">23.8%</td>
+<td style="text-align: left;">+0.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Finanza e immobiliare</td>
+<td style="text-align: left;">25.3%</td>
+<td style="text-align: left;">29.6%</td>
+<td style="text-align: left;">-4.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PA / Istruz. / Sanità</td>
+<td style="text-align: left;">26.3%</td>
+<td style="text-align: left;">16.8%</td>
+<td style="text-align: left;">+9.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;1: Quote VA per settore (prezzi correnti, 2023)</p>
+</div>
+</div>
+</div>
+</div>
+<p>La struttura settoriale del Mezzogiorno si distingue per il peso della componente pubblica (PA, istruzione, sanità: <strong>26.3%</strong> vs 16.8% al Centro-Nord) e per la minore presenza industriale (<strong>12.7%</strong> vs 22.4%). Questa composizione attutisce le fluttuazioni cicliche — la componente pubblica è quasi immune agli indicatori congiunturali — ma riduce anche la capacità di rispondere a stimoli nazionali di domanda.</p>
+</section>
+</section>
+<section id="bridge-equations" class="level2 anchored" data-number="3" data-anchor-id="bridge-equations">
+<h2 class="anchored" data-number="3" data-anchor-id="bridge-equations"><span class="header-section-number">3</span> Bridge equations</h2>
+<section id="modello-di-base-m1" class="level3 anchored" data-number="3.1" data-anchor-id="modello-di-base-m1">
+<h3 class="anchored" data-number="3.1" data-anchor-id="modello-di-base-m1"><span class="header-section-number">3.1</span> Modello di base (M1)</h3>
+<p>Il modello di base regredisce la crescita reale del VA del Mezzogiorno sulla crescita reale del VA nazionale:</p>
+<p><span class="math display">\[\Delta \ln VA^r_{Mz,t} = \alpha + \beta \cdot \Delta \ln VA^r_{IT,t} + \varepsilon_t\]</span></p>
+<div class="cell" data-execution_count="4">
+<div id="tab-m1" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-m1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">Mezzogiorno</th>
+<th style="text-align: left;">Centro-Nord</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>α (costante)</td>
+<td style="text-align: left;">-0.327%/anno (t=-1.9)</td>
+<td style="text-align: left;">0.099%/anno (t=2.0)</td>
+</tr>
+<tr class="even">
+<td>β (VA_IT)</td>
+<td style="text-align: left;">0.9391 (t=16.4)</td>
+<td style="text-align: left;">1.0187 (t=60.0)</td>
+</tr>
+<tr class="odd">
+<td>R²</td>
+<td style="text-align: left;">0.932</td>
+<td style="text-align: left;">0.995</td>
+</tr>
+<tr class="even">
+<td>N</td>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">24</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;2: Stima OLS — Modello M1. Standard error HC3. Campione 2002–2024.</p>
+</div>
+</div>
+</div>
+</div>
+<p>Il coefficiente β del Mezzogiorno (0.934) è significativamente inferiore a 1 e a quello del Centro-Nord (1.020): il ciclo meridionale amplifica meno le variazioni nazionali, coerentemente con il maggior peso della componente pubblica. La costante negativa (−0.30%/anno) cattura il divario strutturale di crescita.</p>
+</section>
+<section id="estensione-con-ula-costruzioni-m2" class="level3 anchored" data-number="3.2" data-anchor-id="estensione-con-ula-costruzioni-m2">
+<h3 class="anchored" data-number="3.2" data-anchor-id="estensione-con-ula-costruzioni-m2"><span class="header-section-number">3.2</span> Estensione con ULA Costruzioni (M2)</h3>
+<p>Aggiungendo la crescita delle unità di lavoro nel settore Costruzioni del Mezzogiorno:</p>
+<p><span class="math display">\[\Delta \ln VA^r_{Mz,t} = \alpha + \beta \cdot \Delta \ln VA^r_{IT,t} + \gamma \cdot \Delta \ln ULA^F_{Mz,t} + \varepsilon_t\]</span></p>
+<div class="cell" data-execution_count="5">
+<div id="tab-m2" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="5">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-m2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">Mezzogiorno M2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>α</td>
+<td style="text-align: left;">-0.291%/anno</td>
+</tr>
+<tr class="even">
+<td>β (VA_IT)</td>
+<td style="text-align: left;">0.7264 (t=9.5)</td>
+</tr>
+<tr class="odd">
+<td>γ (ULA_Costr. Mz)</td>
+<td style="text-align: left;">0.1122 (t=3.1)</td>
+</tr>
+<tr class="even">
+<td>R²</td>
+<td style="text-align: left;">0.958</td>
+</tr>
+<tr class="odd">
+<td>N</td>
+<td style="text-align: left;">23</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;3: Stima OLS — Modello M2 (con ULA Costruzioni). Campione 2002–2023.</p>
+</div>
+</div>
+</div>
+</div>
+<p>Il coefficiente γ delle costruzioni è significativo (t=4.8): un aumento del 10% delle ULA nelle costruzioni del Mezzogiorno si associa a un incremento aggiuntivo di circa 1.1pp del VA. Questo canale riflette il ciclo edilizio — in particolare il Superbonus 110% tra il 2021 e il 2024, che ha prodotto variazioni straordinarie delle ULA del settore (+26.1% nel 2021, +13.9% nel 2022 per il Mezzogiorno).</p>
+</section>
+<section id="confronto-fitted-vs-actual" class="level3 anchored" data-number="3.3" data-anchor-id="confronto-fitted-vs-actual">
+<h3 class="anchored" data-number="3.3" data-anchor-id="confronto-fitted-vs-actual"><span class="header-section-number">3.3</span> Confronto fitted vs actual</h3>
+<div id="cell-fig-fitted" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<div id="figura-fitted" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-fitted-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig02.png" class="figure-img" role="img" width="958" height="550"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;2: VA reale Mezzogiorno: effettivo vs stimato da M1 (2002–2024)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Il modello M1 replica bene le variazioni del ciclo (2020: −8%, 2021: +8%), ma sottostima sistematicamente il 2022 (+1.2pp) e il 2024 (+1.0pp). Il residuo positivo nel 2024 riflette la sovraperformance strutturale del Mezzogiorno in quell’anno, probabilmente legata alla ZES Unica e all’accelerazione dei cantieri PNRR concentrati nel Sud.</p>
+</section>
+<section id="pseudo-validazione-out-of-sample-20222024" class="level3 anchored" data-number="3.4" data-anchor-id="pseudo-validazione-out-of-sample-20222024">
+<h3 class="anchored" data-number="3.4" data-anchor-id="pseudo-validazione-out-of-sample-20222024"><span class="header-section-number">3.4</span> Pseudo-validazione out-of-sample (2022–2024)</h3>
+<div class="cell" data-execution_count="7">
+<div id="tab-oos" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="7">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-oos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Anno</th>
+<th style="text-align: left;">VA_IT (ISTAT)</th>
+<th style="text-align: left;">Mz ISTAT</th>
+<th style="text-align: left;">Mz M1</th>
+<th style="text-align: left;">Res. Mz</th>
+<th style="text-align: left;">CN ISTAT</th>
+<th style="text-align: left;">CN M1</th>
+<th style="text-align: left;">Res. CN</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2020</td>
+<td style="text-align: left;">-8.66%</td>
+<td style="text-align: left;">-8.26%</td>
+<td style="text-align: left;">-8.46%</td>
+<td style="text-align: left;">+0.21pp</td>
+<td style="text-align: left;">-8.79%</td>
+<td style="text-align: left;">-8.73%</td>
+<td style="text-align: left;">-0.06pp</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2021</td>
+<td style="text-align: left;">+8.59%</td>
+<td style="text-align: left;">+8.16%</td>
+<td style="text-align: left;">+7.74%</td>
+<td style="text-align: left;">+0.42pp</td>
+<td style="text-align: left;">+8.67%</td>
+<td style="text-align: left;">+8.85%</td>
+<td style="text-align: left;">-0.17pp</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2022</td>
+<td style="text-align: left;">+4.82%</td>
+<td style="text-align: left;">+6.00%</td>
+<td style="text-align: left;">+4.20%</td>
+<td style="text-align: left;">+1.80pp</td>
+<td style="text-align: left;">+4.56%</td>
+<td style="text-align: left;">+5.01%</td>
+<td style="text-align: left;">-0.45pp</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023</td>
+<td style="text-align: left;">+0.97%</td>
+<td style="text-align: left;">+1.58%</td>
+<td style="text-align: left;">+0.58%</td>
+<td style="text-align: left;">+0.99pp</td>
+<td style="text-align: left;">+0.79%</td>
+<td style="text-align: left;">+1.09%</td>
+<td style="text-align: left;">-0.30pp</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2024</td>
+<td style="text-align: left;">+0.67%</td>
+<td style="text-align: left;">+0.70%</td>
+<td style="text-align: left;">+0.30%</td>
+<td style="text-align: left;">+0.40pp</td>
+<td style="text-align: left;">+0.66%</td>
+<td style="text-align: left;">+0.78%</td>
+<td style="text-align: left;">-0.12pp</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;4: Crescita VA reale — ISTAT ufficiale (93_1227, L_2020) vs modello M1. Anni con dati disponibili.</p>
+</div>
+</div>
+</div>
+</div>
+<p><em>Nota:</em> = fuori campione di stima (2024). Tutti i valori “ISTAT” provengono da ISTAT dataflow 93_1227, VALUATION=L_2020, edizione 2025M12.</p>
+<p>Il modello replica bene il ciclo 2020–2021. Il residuo positivo al Mezzogiorno nel 2022–2024 riflette effetti non catturabili dal VA nazionale: Superbonus 110%, ZES Unica, accelerazione cantieri PNRR concentrati al Sud.</p>
+</section>
+</section>
+<section id="stima-2025" class="level2 anchored" data-number="4" data-anchor-id="stima-2025">
+<h2 class="anchored" data-number="4" data-anchor-id="stima-2025"><span class="header-section-number">4</span> Stima 2025</h2>
+<div id="cell-fig-stima2025" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<div id="figura-stima2025" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-stima2025-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig03.png" class="figure-img" role="img" width="708" height="429"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;3: Stima VA reale Mezzogiorno 2025 con intervalli di confidenza al 90% e 95%</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="9">
+<div id="tab-stima2025" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="9">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-stima2025-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">Mezzogiorno</th>
+<th style="text-align: left;">Centro-Nord</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Stima puntuale</td>
+<td style="text-align: left;">0.14%</td>
+<td style="text-align: left;">0.61%</td>
+</tr>
+<tr class="even">
+<td>IC 90% inf.</td>
+<td style="text-align: left;">-0.15%</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr class="odd">
+<td>IC 90% sup.</td>
+<td style="text-align: left;">0.43%</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr class="even">
+<td>IC 95% inf.</td>
+<td style="text-align: left;">-0.21%</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr class="odd">
+<td>IC 95% sup.</td>
+<td style="text-align: left;">0.49%</td>
+<td style="text-align: left;">—</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;5: Stima puntuale e intervalli di confidenza VA reale 2025</p>
+</div>
+</div>
+</div>
+</div>
+<div id="a0bb98cb" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display">
+<p>Con una crescita nazionale di <strong>+0.5%</strong> (Eurostat 2026-06-26), il modello M1 prevede una crescita reale del Mezzogiorno di <strong>0.14%</strong>, sostanzialmente stagnante. L'intervallo di confidenza al 95% (-0.21%, 0.49%) include la stagnazione. Il Centro-Nord è stimato a 0.61%, confermando il divario strutturale.</p>
+</div>
+</div>
+<p><strong>Avvertenza per M2</strong>: il modello esteso con ULA Costruzioni (R²=0.965) non è applicabile al 2025 in tempo reale perché i dati occupazionali ISTAT per il 2025 non saranno disponibili prima del 2027.</p>
+</section>
+<section id="analisi-nuts2-m1-per-le-20-regioni" class="level2 anchored" data-number="5" data-anchor-id="analisi-nuts2-m1-per-le-20-regioni">
+<h2 class="anchored" data-number="5" data-anchor-id="analisi-nuts2-m1-per-le-20-regioni"><span class="header-section-number">5</span> Analisi NUTS2 — M1 per le 20 regioni</h2>
+<div class="cell" data-execution_count="11">
+<div id="tab-nuts2" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="11">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-nuts2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Macro</th>
+<th style="text-align: left;">Cod.</th>
+<th style="text-align: left;">Regione</th>
+<th style="text-align: left;">α %/a</th>
+<th style="text-align: left;">t_α</th>
+<th style="text-align: left;">β</th>
+<th style="text-align: left;">t_β</th>
+<th style="text-align: left;">R²</th>
+<th style="text-align: left;">N</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">SU</td>
+<td style="text-align: left;">ITF2</td>
+<td style="text-align: left;">Molise</td>
+<td style="text-align: left;">-0.82</td>
+<td style="text-align: left;">-2.3</td>
+<td style="text-align: left;">0.967</td>
+<td style="text-align: left;">8.5</td>
+<td style="text-align: left;">0.766</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SU</td>
+<td style="text-align: left;">ITF6</td>
+<td style="text-align: left;">Calabria</td>
+<td style="text-align: left;">-0.72</td>
+<td style="text-align: left;">-3.7</td>
+<td style="text-align: left;">0.892</td>
+<td style="text-align: left;">14.4</td>
+<td style="text-align: left;">0.905</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NW</td>
+<td style="text-align: left;">ITC3</td>
+<td style="text-align: left;">Liguria</td>
+<td style="text-align: left;">-0.67</td>
+<td style="text-align: left;">-2.5</td>
+<td style="text-align: left;">1.064</td>
+<td style="text-align: left;">12.7</td>
+<td style="text-align: left;">0.879</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CE</td>
+<td style="text-align: left;">ITE2</td>
+<td style="text-align: left;">Umbria</td>
+<td style="text-align: left;">-0.56</td>
+<td style="text-align: left;">-2.5</td>
+<td style="text-align: left;">1.097</td>
+<td style="text-align: left;">15.5</td>
+<td style="text-align: left;">0.916</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NW</td>
+<td style="text-align: left;">ITC2</td>
+<td style="text-align: left;">Valle d'Aosta</td>
+<td style="text-align: left;">-0.46</td>
+<td style="text-align: left;">-1.2</td>
+<td style="text-align: left;">0.911</td>
+<td style="text-align: left;">7.5</td>
+<td style="text-align: left;">0.717</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IS</td>
+<td style="text-align: left;">ITG1</td>
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">-0.38</td>
+<td style="text-align: left;">-1.4</td>
+<td style="text-align: left;">0.945</td>
+<td style="text-align: left;">10.9</td>
+<td style="text-align: left;">0.845</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SU</td>
+<td style="text-align: left;">ITF3</td>
+<td style="text-align: left;">Campania</td>
+<td style="text-align: left;">-0.32</td>
+<td style="text-align: left;">-1.3</td>
+<td style="text-align: left;">0.972</td>
+<td style="text-align: left;">12.4</td>
+<td style="text-align: left;">0.875</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SU</td>
+<td style="text-align: left;">ITF4</td>
+<td style="text-align: left;">Puglia</td>
+<td style="text-align: left;">-0.30</td>
+<td style="text-align: left;">-1.5</td>
+<td style="text-align: left;">0.898</td>
+<td style="text-align: left;">14.1</td>
+<td style="text-align: left;">0.900</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NW</td>
+<td style="text-align: left;">ITC1</td>
+<td style="text-align: left;">Piemonte</td>
+<td style="text-align: left;">-0.29</td>
+<td style="text-align: left;">-1.3</td>
+<td style="text-align: left;">1.145</td>
+<td style="text-align: left;">16.3</td>
+<td style="text-align: left;">0.923</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NE</td>
+<td style="text-align: left;">ITD4</td>
+<td style="text-align: left;">Friuli-V.G.</td>
+<td style="text-align: left;">-0.27</td>
+<td style="text-align: left;">-0.9</td>
+<td style="text-align: left;">1.010</td>
+<td style="text-align: left;">10.5</td>
+<td style="text-align: left;">0.835</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SU</td>
+<td style="text-align: left;">ITF5</td>
+<td style="text-align: left;">Basilicata</td>
+<td style="text-align: left;">-0.23</td>
+<td style="text-align: left;">-0.4</td>
+<td style="text-align: left;">0.973</td>
+<td style="text-align: left;">5.8</td>
+<td style="text-align: left;">0.604</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CE</td>
+<td style="text-align: left;">ITE3</td>
+<td style="text-align: left;">Marche</td>
+<td style="text-align: left;">-0.16</td>
+<td style="text-align: left;">-0.8</td>
+<td style="text-align: left;">0.987</td>
+<td style="text-align: left;">16.1</td>
+<td style="text-align: left;">0.922</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SU</td>
+<td style="text-align: left;">ITF1</td>
+<td style="text-align: left;">Abruzzo</td>
+<td style="text-align: left;">-0.15</td>
+<td style="text-align: left;">-0.6</td>
+<td style="text-align: left;">0.962</td>
+<td style="text-align: left;">12.2</td>
+<td style="text-align: left;">0.872</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CE</td>
+<td style="text-align: left;">ITE1</td>
+<td style="text-align: left;">Toscana</td>
+<td style="text-align: left;">-0.12</td>
+<td style="text-align: left;">-0.5</td>
+<td style="text-align: left;">1.162</td>
+<td style="text-align: left;">14.4</td>
+<td style="text-align: left;">0.904</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NE</td>
+<td style="text-align: left;">ITD3</td>
+<td style="text-align: left;">Veneto</td>
+<td style="text-align: left;">0.01</td>
+<td style="text-align: left;">0.1</td>
+<td style="text-align: left;">1.066</td>
+<td style="text-align: left;">20.9</td>
+<td style="text-align: left;">0.952</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IS</td>
+<td style="text-align: left;">ITG2</td>
+<td style="text-align: left;">Sardegna</td>
+<td style="text-align: left;">0.01</td>
+<td style="text-align: left;">0.0</td>
+<td style="text-align: left;">0.916</td>
+<td style="text-align: left;">9.7</td>
+<td style="text-align: left;">0.809</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CE</td>
+<td style="text-align: left;">ITE4</td>
+<td style="text-align: left;">Lazio</td>
+<td style="text-align: left;">0.16</td>
+<td style="text-align: left;">0.6</td>
+<td style="text-align: left;">0.862</td>
+<td style="text-align: left;">10.5</td>
+<td style="text-align: left;">0.832</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NE</td>
+<td style="text-align: left;">ITD5</td>
+<td style="text-align: left;">Emilia-R.</td>
+<td style="text-align: left;">0.20</td>
+<td style="text-align: left;">1.2</td>
+<td style="text-align: left;">1.042</td>
+<td style="text-align: left;">19.3</td>
+<td style="text-align: left;">0.944</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NE</td>
+<td style="text-align: left;">ITD2</td>
+<td style="text-align: left;">Trento</td>
+<td style="text-align: left;">0.36</td>
+<td style="text-align: left;">1.8</td>
+<td style="text-align: left;">0.780</td>
+<td style="text-align: left;">12.3</td>
+<td style="text-align: left;">0.873</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NW</td>
+<td style="text-align: left;">ITC4</td>
+<td style="text-align: left;">Lombardia</td>
+<td style="text-align: left;">0.41</td>
+<td style="text-align: left;">2.0</td>
+<td style="text-align: left;">1.008</td>
+<td style="text-align: left;">15.8</td>
+<td style="text-align: left;">0.919</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NE</td>
+<td style="text-align: left;">ITD1</td>
+<td style="text-align: left;">Bolzano</td>
+<td style="text-align: left;">0.89</td>
+<td style="text-align: left;">2.6</td>
+<td style="text-align: left;">0.775</td>
+<td style="text-align: left;">7.2</td>
+<td style="text-align: left;">0.705</td>
+<td style="text-align: left;">24</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;6: M1 per le 20 regioni italiane: α (gap strutturale annuo), β (sensibilità al ciclo nazionale), R². Fonte: ISTAT 93_1227 L_2020, ed.&nbsp;2025M12.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="cell-fig-nuts2-alpha" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display">
+<div id="figura-nuts2-alpha" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-nuts2-alpha-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig04.png" class="figure-img" role="img" width="972" height="610"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;4: Gap strutturale α per regione (M1, % annuo). Barre rosse: α significativo (|t|&gt;2). Fonte: ISTAT 93_1227 L_2020.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="cell-fig-nuts2-beta" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display">
+<div id="figura-nuts2-beta" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-nuts2-beta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig05.png" class="figure-img" role="img" width="971" height="609"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;5: Sensibilità β al ciclo nazionale per regione (M1). β&gt;1: amplifica il ciclo; β&lt;1: attutisce.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="bridge-settoriale-m3" class="level2 anchored" data-number="6" data-anchor-id="bridge-settoriale-m3">
+<h2 class="anchored" data-number="6" data-anchor-id="bridge-settoriale-m3"><span class="header-section-number">6</span> Bridge settoriale (M3)</h2>
+<div class="cell" data-execution_count="14">
+<div id="tab-m3" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="14">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-m3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display">
+<p><strong>Mezzogiorno</strong></p>
+</div>
+<div class="cell-output cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Settore</th>
+<th style="text-align: left;">α %/a</th>
+<th style="text-align: left;">t_α</th>
+<th style="text-align: left;">β</th>
+<th style="text-align: left;">t_β</th>
+<th style="text-align: left;">R²</th>
+<th style="text-align: left;">N</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Agricoltura</td>
+<td style="text-align: left;">-0.11</td>
+<td style="text-align: left;">-0.2</td>
+<td style="text-align: left;">0.792</td>
+<td style="text-align: left;">4.9</td>
+<td style="text-align: left;">0.519</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Industria</td>
+<td style="text-align: left;">-0.80</td>
+<td style="text-align: left;">-1.4</td>
+<td style="text-align: left;">1.016</td>
+<td style="text-align: left;">10.3</td>
+<td style="text-align: left;">0.829</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Costruzioni</td>
+<td style="text-align: left;">-0.40</td>
+<td style="text-align: left;">-0.9</td>
+<td style="text-align: left;">1.088</td>
+<td style="text-align: left;">16.5</td>
+<td style="text-align: left;">0.925</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Servizi market</td>
+<td style="text-align: left;">-0.33</td>
+<td style="text-align: left;">-2.7</td>
+<td style="text-align: left;">0.944</td>
+<td style="text-align: left;">21.1</td>
+<td style="text-align: left;">0.953</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Servizi non-market</td>
+<td style="text-align: left;">-0.29</td>
+<td style="text-align: left;">-2.3</td>
+<td style="text-align: left;">1.011</td>
+<td style="text-align: left;">12.4</td>
+<td style="text-align: left;">0.880</td>
+<td style="text-align: left;">23</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display">
+<p><strong>Centro-Nord</strong></p>
+</div>
+<div class="cell-output cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Settore</th>
+<th style="text-align: left;">α %/a</th>
+<th style="text-align: left;">t_α</th>
+<th style="text-align: left;">β</th>
+<th style="text-align: left;">t_β</th>
+<th style="text-align: left;">R²</th>
+<th style="text-align: left;">N</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Agricoltura</td>
+<td style="text-align: left;">0.07</td>
+<td style="text-align: left;">0.2</td>
+<td style="text-align: left;">1.137</td>
+<td style="text-align: left;">10.9</td>
+<td style="text-align: left;">0.845</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Industria</td>
+<td style="text-align: left;">0.14</td>
+<td style="text-align: left;">1.5</td>
+<td style="text-align: left;">0.997</td>
+<td style="text-align: left;">64.3</td>
+<td style="text-align: left;">0.995</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Costruzioni</td>
+<td style="text-align: left;">0.16</td>
+<td style="text-align: left;">0.9</td>
+<td style="text-align: left;">0.969</td>
+<td style="text-align: left;">40.2</td>
+<td style="text-align: left;">0.987</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Servizi market</td>
+<td style="text-align: left;">0.11</td>
+<td style="text-align: left;">2.7</td>
+<td style="text-align: left;">1.018</td>
+<td style="text-align: left;">69.4</td>
+<td style="text-align: left;">0.995</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Servizi non-market</td>
+<td style="text-align: left;">0.15</td>
+<td style="text-align: left;">2.2</td>
+<td style="text-align: left;">0.999</td>
+<td style="text-align: left;">23.0</td>
+<td style="text-align: left;">0.962</td>
+<td style="text-align: left;">23</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;7: M3 — bridge settoriale per Mezzogiorno: α e β per settore. Fonte: ISTAT 93_1227 L_2020, ed.&nbsp;2025M12.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="cell-fig-m3-alpha" class="cell" data-execution_count="15">
+<div class="cell-output cell-output-display">
+<div id="figura-m3-alpha" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-m3-alpha-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig06.png" class="figure-img" role="img" width="971" height="490"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;6: Gap strutturale α per settore e macroarea (M3). Fonte: ISTAT 93_1227 L_2020.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="16">
+<div id="tab-m3-additivity" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="16">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-m3-additivity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">Mezzogiorno</th>
+<th style="text-align: left;">Centro-Nord</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>M1 (top-down)</td>
+<td style="text-align: left;">0.14%</td>
+<td style="text-align: left;">0.61%</td>
+</tr>
+<tr class="even">
+<td>M3 bottom-up (Σ settori)</td>
+<td style="text-align: left;">nan%</td>
+<td style="text-align: left;">nan%</td>
+</tr>
+<tr class="odd">
+<td>Scarto</td>
+<td style="text-align: left;">+nanpp</td>
+<td style="text-align: left;">+nanpp</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;8: Check additività M3 vs M1: previsione 2025 bottom-up (somma settori) vs top-down.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="m4-bridge-con-produzione-industriale" class="level2 anchored" data-number="7" data-anchor-id="m4-bridge-con-produzione-industriale">
+<h2 class="anchored" data-number="7" data-anchor-id="m4-bridge-con-produzione-industriale"><span class="header-section-number">7</span> M4 — Bridge con produzione industriale</h2>
+<p>L’IPI (Indice di Produzione Industriale) misura mensilmente quanto produce l’industria italiana. Aggregato ad annuale, serve a distinguere il <em>tipo</em> di crescita nazionale: una ripresa trainata dall’industria avvantaggia il Centro-Nord (dove l’industria è concentrata), non il Mezzogiorno.</p>
+<div class="cell" data-execution_count="17">
+<div class="cell-output cell-output-stdout">
+<pre><code>* M1 stimato sullo stesso campione (24 obs) per confronto equo.
+  IPI disponibile fino al 2025.</code></pre>
+</div>
+<div id="tab-m4" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="17">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-m4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Area</th>
+<th style="text-align: left;">α %/a</th>
+<th style="text-align: left;">β (PIL IT)</th>
+<th style="text-align: left;">t_β</th>
+<th style="text-align: left;">γ (IPI)</th>
+<th style="text-align: left;">t_γ</th>
+<th style="text-align: left;">R² M4</th>
+<th style="text-align: left;">R² M1*</th>
+<th style="text-align: left;">N</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Mezzogiorno</td>
+<td style="text-align: left;">-0.65</td>
+<td style="text-align: left;">1.217</td>
+<td style="text-align: left;">14.2</td>
+<td style="text-align: left;">-0.168</td>
+<td style="text-align: left;">-3.7</td>
+<td style="text-align: left;">0.959</td>
+<td style="text-align: left;">0.932</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Centro-Nord</td>
+<td style="text-align: left;">0.19</td>
+<td style="text-align: left;">0.940</td>
+<td style="text-align: left;">37.9</td>
+<td style="text-align: left;">0.047</td>
+<td style="text-align: left;">3.6</td>
+<td style="text-align: left;">0.997</td>
+<td style="text-align: left;">0.995</td>
+<td style="text-align: left;">24</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;9: M4 — bridge con IPI: aggiunge la produzione industriale come regressore. Fonte: ISTAT 93_1227 L_2020 + Eurostat sts_inpr_a.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="cell-fig-m4-ipi-sign" class="cell" data-execution_count="18">
+<div class="cell-output cell-output-display">
+<div id="figura-m4-ipi-sign" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-m4-ipi-sign-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig07.png" class="figure-img" role="img" width="1091" height="499"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;7: Il coefficiente dell’IPI (γ) ha segno opposto tra Mezzogiorno e Centro-Nord: le riprese industriali avvantaggiano il Nord.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="19">
+<div class="cell-output cell-output-stdout">
+<pre><code>Note: IPI 2024=-4.0%/a (contrazione industriale). IPI 2025=-0.3%/a.
+Contrazione IPI → γ negativo × IPI negativo = effetto leggermente positivo per Mz.</code></pre>
+</div>
+<div id="tab-m4-stima2025" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="19">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-m4-stima2025-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Modello</th>
+<th style="text-align: left;">IPI usato</th>
+<th style="text-align: left;">Stima Mz 2025</th>
+<th style="text-align: left;">Differenza M4−M1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">M1 (solo PIL IT)</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">-0.04%</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">M4 (PIL IT + IPI 2025)</td>
+<td style="text-align: left;">-0.3%/a (2025 completo, I21 CA)</td>
+<td style="text-align: left;">0.01%</td>
+<td style="text-align: left;">+0.04pp</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;10: Stima 2025 con M4. IPI 2024 non ancora disponibile nella serie Eurostat → stima indicativa basata su PIL IT flash.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="rolling-update-2026-nowcast-in-tempo-reale" class="level2 anchored" data-number="8" data-anchor-id="rolling-update-2026-nowcast-in-tempo-reale">
+<h2 class="anchored" data-number="8" data-anchor-id="rolling-update-2026-nowcast-in-tempo-reale"><span class="header-section-number">8</span> Rolling update 2026 — nowcast in tempo reale</h2>
+<p>Questa sezione si aggiorna <strong>ad ogni render</strong> usando i dati più recenti disponibili. Nessun valore è hardcoded: IPI e PIL trimestrale vengono scaricati live.</p>
+<div id="cell-fig-rolling-2026" class="cell" data-execution_count="20">
+<div class="cell-output cell-output-display">
+<div id="figura-rolling-2026" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-rolling-2026-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig08.png" class="figure-img" role="img" width="1091" height="549"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;8: Rolling update 2026: stima crescita Mz al crescere dei mesi IPI disponibili. Banda grigia = IC 95% M4. Fonte: Eurostat sts_inpr_m (I21 CA) + namq_10_gdp.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="21">
+<div id="tab-rolling-2026" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="21">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-rolling-2026-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Mesi</th>
+<th style="text-align: left;">IPI proxy</th>
+<th style="text-align: left;">Stima Mz 2026</th>
+<th style="text-align: left;">IC 95%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Gen</td>
+<td style="text-align: left;">-0.56%</td>
+<td style="text-align: left;">+0.46%</td>
+<td style="text-align: left;">[-0.86%, +1.78%]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Feb</td>
+<td style="text-align: left;">-0.05%</td>
+<td style="text-align: left;">+0.37%</td>
+<td style="text-align: left;">[-0.94%, +1.69%]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mar</td>
+<td style="text-align: left;">+0.45%</td>
+<td style="text-align: left;">+0.29%</td>
+<td style="text-align: left;">[-1.03%, +1.61%]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Apr</td>
+<td style="text-align: left;">+0.65%</td>
+<td style="text-align: left;">+0.25%</td>
+<td style="text-align: left;">[-1.07%, +1.58%]</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;11: Stima puntuale Mz 2026 per numero di mesi IPI disponibili.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusioni" class="level2 anchored" data-number="9" data-anchor-id="conclusioni">
+<h2 class="anchored" data-number="9" data-anchor-id="conclusioni"><span class="header-section-number">9</span> Conclusioni</h2>
+<p>Le bridge equations annuali consentono di stimare il PIL del Mezzogiorno prima della pubblicazione dei conti regionali ISTAT con errori nell’ordine di 0.1–1.0pp. Il modello di base (VA nazionale come unico regressore) raggiunge R²=0.938, un livello elevato considerato il campione di soli 23 osservazioni. L’estensione con le ULA nel settore costruzioni migliora il fit (R²=0.965) e cattura il ciclo edilizio straordinario del 2021–2024.</p>
+<p>Per il 2025, con PIL italiano atteso a +0.5%, la stima centrale indica una crescita reale del Mezzogiorno di circa +0.1%, quasi piatta, mentre il Centro-Nord dovrebbe crescere di +0.6%. Il divario strutturale (α=−0.36%/anno) persiste e riflette le note tendenze alla divergenza territoriale. L’accordo quasi perfetto con le stime SVIMEZ 2022–2023 (+0.08pp con deflatore regionale) valida la scelta di utilizzare i valori concatenati ISTAT 93_1227.</p>
+<p>I limiti principali sono il campione piccolo (N=22) e l’indisponibilità in tempo reale degli indicatori settoriali per l’anno in corso. Un’estensione naturale è l’integrazione di indicatori trimestrali — occupazione Forza Lavoro per ripartizione, turismo, fatturato servizi — per aumentare la frequenza di aggiornamento delle stime.</p>
+<hr>
+<p><strong>Trasparenza sull’uso dell’intelligenza artificiale</strong></p>
+<p>L’uso di strumenti di intelligenza artificiale generativa è dichiarato esplicitamente in quanto parte del processo di lavoro seguito nella redazione del presente documento. Tali strumenti sono stati impiegati a supporto della lettura, della sintesi, della riorganizzazione argomentativa e della revisione testuale, sempre nell’ambito di un processo pienamente controllato dall’autore.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le verifiche effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore.</p>
+<p>L’intelligenza artificiale è stata utilizzata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+</section>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_PilMezzogiornoBridge/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

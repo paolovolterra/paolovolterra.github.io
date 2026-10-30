@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="early warning, PMI, sofferenze, leverage, panel regression, fragility score, Banca d’Italia, orizzonte previsivo">
+<meta name="description" content="L’Innovation Data Challenge 2026 di Banca d’Italia e Central Bank of Ireland ha prodotto un poster (pagina 12 — Liquidity Dynamics) che dimostra la capacità di anticipare la fragilità finanziaria delle PMI usando dati transazionali.">
+
+<title>Early Warning PMI — Fragility Score Regionale – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Early Warning PMI — Fragility Score Regionale – Paolo Volterra">
+<meta property="og:description" content="L’Innovation Data Challenge 2026 di Banca d’Italia e Central Bank of Ireland ha prodotto un poster (pagina 12 — Liquidity Dynamics) che dimostra la capacità di anticipare la fragilità finanziaria delle PMI usando dati transazionali.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2606_EarlyWarningPmi/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Early Warning PMI — Fragility Score Regionale – Paolo Volterra">
+<meta name="twitter:description" content="L’Innovation Data Challenge 2026 di Banca d’Italia e Central Bank of Ireland ha prodotto un poster (pagina 12 — Liquidity Dynamics) che dimostra la capacità di anticipare la fragilità finanziaria delle PMI usando dati transazionali.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2606_EarlyWarningPmi/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#il-punto-di-partenza-poster-12-della-challenge-bdi" id="toc-il-punto-di-partenza-poster-12-della-challenge-bdi" class="nav-link active" data-scroll-target="#il-punto-di-partenza-poster-12-della-challenge-bdi"><span class="header-section-number">1</span> Il punto di partenza: poster 12 della Challenge BdI</a>
+  <ul class="collapse">
+  <li><a href="#la-challenge-come-agenda-setting" id="toc-la-challenge-come-agenda-setting" class="nav-link" data-scroll-target="#la-challenge-come-agenda-setting"><span class="header-section-number">1.1</span> La Challenge come agenda-setting</a></li>
+  <li><a href="#il-poster-12-liquidity-dynamics" id="toc-il-poster-12-liquidity-dynamics" class="nav-link" data-scroll-target="#il-poster-12-liquidity-dynamics"><span class="header-section-number">1.2</span> Il poster 12 — <em>Liquidity Dynamics</em></a></li>
+  </ul></li>
+  <li><a href="#algoritmi-dalla-challenge-rilevanti-per-lo-spinoff" id="toc-algoritmi-dalla-challenge-rilevanti-per-lo-spinoff" class="nav-link" data-scroll-target="#algoritmi-dalla-challenge-rilevanti-per-lo-spinoff"><span class="header-section-number">2</span> Algoritmi dalla Challenge rilevanti per lo spinoff</a>
+  <ul class="collapse">
+  <li><a href="#regressione-logistica-per-scoring-di-distress-poster-12" id="toc-regressione-logistica-per-scoring-di-distress-poster-12" class="nav-link" data-scroll-target="#regressione-logistica-per-scoring-di-distress-poster-12"><span class="header-section-number">2.1</span> Regressione logistica per scoring di distress (poster 12)</a></li>
+  <li><a href="#localglmnet-xai-con-coefficienti-variabili-per-osservazione-poster-2" id="toc-localglmnet-xai-con-coefficienti-variabili-per-osservazione-poster-2" class="nav-link" data-scroll-target="#localglmnet-xai-con-coefficienti-variabili-per-osservazione-poster-2"><span class="header-section-number">2.2</span> LocalGLMnet — XAI con coefficienti variabili per osservazione (poster 2)</a></li>
+  <li><a href="#random-forest-simulated-annealing-per-riduzione-falsi-positivi-poster-3" id="toc-random-forest-simulated-annealing-per-riduzione-falsi-positivi-poster-3" class="nav-link" data-scroll-target="#random-forest-simulated-annealing-per-riduzione-falsi-positivi-poster-3"><span class="header-section-number">2.3</span> Random Forest + Simulated Annealing per riduzione falsi positivi (poster 3)</a></li>
+  <li><a href="#costruzione-della-variabile-dipendente" id="toc-costruzione-della-variabile-dipendente" class="nav-link" data-scroll-target="#costruzione-della-variabile-dipendente"><span class="header-section-number">2.4</span> Costruzione della variabile dipendente</a></li>
+  <li><a href="#disegno-predittivo-e-modelli" id="toc-disegno-predittivo-e-modelli" class="nav-link" data-scroll-target="#disegno-predittivo-e-modelli"><span class="header-section-number">2.5</span> Disegno predittivo e modelli</a></li>
+  <li><a href="#backtest-temporale-2024" id="toc-backtest-temporale-2024" class="nav-link" data-scroll-target="#backtest-temporale-2024"><span class="header-section-number">2.6</span> Backtest temporale 2024</a></li>
+  <li><a href="#estensioni-testate-a-h1-nessuna-salva-il-modello" id="toc-estensioni-testate-a-h1-nessuna-salva-il-modello" class="nav-link" data-scroll-target="#estensioni-testate-a-h1-nessuna-salva-il-modello"><span class="header-section-number">2.7</span> Estensioni testate a h=1: nessuna salva il modello</a></li>
+  <li><a href="#cambiare-orizzonte-a-tre-anni-il-modello-vince" id="toc-cambiare-orizzonte-a-tre-anni-il-modello-vince" class="nav-link" data-scroll-target="#cambiare-orizzonte-a-tre-anni-il-modello-vince"><span class="header-section-number">2.8</span> Cambiare orizzonte: a tre anni il modello vince</a></li>
+  <li><a href="#score-composito-di-fragilità-ex-ante" id="toc-score-composito-di-fragilità-ex-ante" class="nav-link" data-scroll-target="#score-composito-di-fragilità-ex-ante"><span class="header-section-number">2.9</span> Score composito di fragilità ex ante</a></li>
+  </ul></li>
+  <li><a href="#risultati" id="toc-risultati" class="nav-link" data-scroll-target="#risultati"><span class="header-section-number">3</span> Risultati</a>
+  <ul class="collapse">
+  <li><a href="#mappa-regionale-del-fragility-score" id="toc-mappa-regionale-del-fragility-score" class="nav-link" data-scroll-target="#mappa-regionale-del-fragility-score"><span class="header-section-number">3.1</span> Mappa regionale del fragility score</a></li>
+  <li><a href="#scatter-leverage-vs-npl-rate" id="toc-scatter-leverage-vs-npl-rate" class="nav-link" data-scroll-target="#scatter-leverage-vs-npl-rate"><span class="header-section-number">3.2</span> Scatter leverage vs NPL rate</a></li>
+  <li><a href="#ranking-regionale" id="toc-ranking-regionale" class="nav-link" data-scroll-target="#ranking-regionale"><span class="header-section-number">3.3</span> Ranking regionale</a></li>
+  <li><a href="#tabella-ranking-completo" id="toc-tabella-ranking-completo" class="nav-link" data-scroll-target="#tabella-ranking-completo"><span class="header-section-number">3.4</span> Tabella ranking completo</a></li>
+  </ul></li>
+  <li><a href="#limiti-e-sviluppi" id="toc-limiti-e-sviluppi" class="nav-link" data-scroll-target="#limiti-e-sviluppi"><span class="header-section-number">4</span> Limiti e sviluppi</a>
+  <ul class="collapse">
+  <li><a href="#limiti-principali" id="toc-limiti-principali" class="nav-link" data-scroll-target="#limiti-principali"><span class="header-section-number">4.1</span> Limiti principali</a></li>
+  <li><a href="#sviluppi-possibili" id="toc-sviluppi-possibili" class="nav-link" data-scroll-target="#sviluppi-possibili"><span class="header-section-number">4.2</span> Sviluppi possibili</a></li>
+  </ul></li>
+  <li><a href="#conclusioni" id="toc-conclusioni" class="nav-link" data-scroll-target="#conclusioni"><span class="header-section-number">5</span> Conclusioni</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_EarlyWarningPmi/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Early Warning PMI — Fragility Score Regionale</h1>
+<p class="subtitle lead">Dalla logica transazionale a un indicatore annuale regionale: verifica fuori campione</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">PMI</div>
+    <div class="quarto-category">Rischio di credito</div>
+    <div class="quarto-category">Regioni</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    L’Innovation Data Challenge 2026 di Banca d’Italia e Central Bank of Ireland ha prodotto un poster (pagina 12 — <em>Liquidity Dynamics</em>) che dimostra la capacità di anticipare la fragilità finanziaria delle PMI usando dati transazionali.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">20 giugno 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>L’Innovation Data Challenge 2026 di Banca d’Italia e Central Bank of Ireland ha prodotto un poster (pagina 12 — <em>Liquidity Dynamics</em>) che dimostra la capacità di anticipare la fragilità finanziaria delle PMI usando dati transazionali. Questo documento ne traduce la logica, senza replicarne la tecnica, su dati annuali aggregati regionali: tasso di sofferenza NUTS2 da Banca d’Italia e rapporti di bilancio Cerved. I modelli sono stimati sul 2019–2023 e verificati fuori campione sul 2024. Dopo avere controllato per il tasso NPL precedente, leverage e MOL/Attivo non risultano statisticamente informativi a un anno; nessun modello — nemmeno aggiungendo concentrazione bancaria regionale o esposizione settoriale — batte la semplice persistenza nel test 2024. Cambiando orizzonte a tre anni, tuttavia, il modello batte la persistenza di un fattore due e il margine operativo lordo su attivo diventa altamente significativo: il progetto va riletto come un early warning a due-tre anni, non a uno. Lo score ex ante attuale, costruito sull’orizzonte a un anno, resta un indicatore esplorativo di fragilità territoriale, non un sistema validato di early warning delle singole PMI.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>early warning, PMI, sofferenze, leverage, panel regression, fragility score, Banca d’Italia, orizzonte previsivo</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="il-punto-di-partenza-poster-12-della-challenge-bdi" class="level2 anchored" data-number="1" data-anchor-id="il-punto-di-partenza-poster-12-della-challenge-bdi">
+<h2 class="anchored" data-number="1" data-anchor-id="il-punto-di-partenza-poster-12-della-challenge-bdi"><span class="header-section-number">1</span> Il punto di partenza: poster 12 della Challenge BdI</h2>
+<section id="la-challenge-come-agenda-setting" class="level3 anchored" data-number="1.1" data-anchor-id="la-challenge-come-agenda-setting">
+<h3 class="anchored" data-number="1.1" data-anchor-id="la-challenge-come-agenda-setting"><span class="header-section-number">1.1</span> La Challenge come agenda-setting</h3>
+<p>L’<strong>Innovation Data Challenge 2026</strong>, organizzata da Banca d’Italia e Central Bank of Ireland in collaborazione con sette università, non è un concorso accademico generico. È un dispositivo istituzionale: attraverso la selezione e la pubblicazione dei poster selezionati, le banche centrali indicano quali problemi considerano rilevanti, quali metodi considerano maturi e quali competenze diventano strategiche per il sistema bancario.</p>
+<p>Il messaggio sottostante ai tredici poster è coerente: <strong>l’intelligenza artificiale bancaria seria non è l’assistente che riassume testi, ma l’infrastruttura analitica che trasforma dati granulari in segnali azionabili</strong> — su frodi, resilienza, rischio sistemico, early warning, pagamenti.</p>
+</section>
+<section id="il-poster-12-liquidity-dynamics" class="level3 anchored" data-number="1.2" data-anchor-id="il-poster-12-liquidity-dynamics">
+<h3 class="anchored" data-number="1.2" data-anchor-id="il-poster-12-liquidity-dynamics"><span class="header-section-number">1.2</span> Il poster 12 — <em>Liquidity Dynamics</em></h3>
+<p>Il poster 12 affronta la domanda: <em>i dati transazionali possono identificare le PMI finanziariamente fragili prima che la fragilità emerga nei bilanci?</em></p>
+<p><strong>Dati usati</strong>: transazioni PMI e bilanci 2024–2025 (dati sintetici IT–IE).</p>
+<p><strong>Definizione di distress</strong> (variabile dipendente, binaria): almeno una delle seguenti condizioni è vera —</p>
+<p><span class="math display">\[\text{ICR} &lt; 1{,}5 \quad \text{OR} \quad \text{Current Ratio} &lt; 1 \quad \text{OR} \quad \text{OCF} &lt; 0\]</span></p>
+<p><strong>Tre indicatori transazionali</strong> (feature engineering dal conto corrente):</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 44%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicatore</th>
+<th style="text-align: left;">Definizione</th>
+<th style="text-align: left;">Analogia bilancio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Liquidity Buffer</strong></td>
+<td style="text-align: left;">Saldo medio disponibile / uscite medie</td>
+<td style="text-align: left;">Liquidità corrente</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Stress Frequency</strong></td>
+<td style="text-align: left;">% giorni con saldo sotto soglia critica</td>
+<td style="text-align: left;">Frequenza tensione di cassa</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Stress Severity Ratio</strong></td>
+<td style="text-align: left;">Deficit medio nei giorni critici / saldo medio</td>
+<td style="text-align: left;">Intensità dello stress</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Modello</strong>: regressione logistica con variabili standardizzate.</p>
+<p><strong>Performance</strong>: AUC = 0,657 — statisticamente significativo, capacità di ordinare un’impresa distressed sopra una sana nel 66% dei casi.</p>
+<p><strong>Il passaggio chiave</strong>: i dati transazionali <em>anticipano</em> il bilancio. Non sostituiscono l’analisi economico-finanziaria, ma la rendono <em>forward-looking</em>: il segnale di fragilità emerge dai flussi di cassa prima di comparire nelle voci di stato patrimoniale.</p>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p>Nota</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Collegamento con altri poster della Challenge</strong></p>
+<p>Anche i poster 2 (LocalGLMnet per anomaly detection), 3 (Random Forest + Simulated Annealing per resilienza), 9 (early warning operativo con threshold latenza) e 11 (welfare costs dei payment glitches) condividono la stessa logica: trasformare dati grezzi in indicatori precoci di rischio. Il poster 12 è quello più direttamente collegabile al credito PMI e ai bilanci bancari.</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="algoritmi-dalla-challenge-rilevanti-per-lo-spinoff" class="level2 anchored" data-number="2" data-anchor-id="algoritmi-dalla-challenge-rilevanti-per-lo-spinoff">
+<h2 class="anchored" data-number="2" data-anchor-id="algoritmi-dalla-challenge-rilevanti-per-lo-spinoff"><span class="header-section-number">2</span> Algoritmi dalla Challenge rilevanti per lo spinoff</h2>
+<p>Tre metodi del PDF meritano approfondimento perché danno l’idea di come <em>costruire</em> l’early warning, non solo di <em>cosa</em> misurare.</p>
+<section id="regressione-logistica-per-scoring-di-distress-poster-12" class="level3 anchored" data-number="2.1" data-anchor-id="regressione-logistica-per-scoring-di-distress-poster-12">
+<h3 class="anchored" data-number="2.1" data-anchor-id="regressione-logistica-per-scoring-di-distress-poster-12"><span class="header-section-number">2.1</span> Regressione logistica per scoring di distress (poster 12)</h3>
+<p>La regressione logistica stima la probabilità che un’osservazione appartenga alla classe positiva (distress = 1):</p>
+<p><span class="math display">\[P(\text{distress}_i = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_{1i} + \cdots + \beta_k x_{ki})}}\]</span></p>
+<p>Vantaggi nel contesto bancario: - <strong>Coefficienti interpretabili</strong>: ogni <span class="math inline">\(\beta_j\)</span> è il log-odds ratio — quanto cambia la probabilità di distress per una variazione unitaria di <span class="math inline">\(x_j\)</span>. - <strong>Output probabilistico</strong>: produce un <em>score</em> continuo [0,1] ordinabile per priorità di intervento. - <strong>Glass-box per compliance</strong>: l’esplicitezza dei coefficienti è compatibile con i requisiti di spiegabilità (SREP, Linee guida EBA su AI). - <strong>AUC come metrica</strong>: misura la capacità discriminante del modello senza dipendere dalla soglia di classificazione.</p>
+<p><strong>Limitazione principale</strong>: assume relazione lineare tra le feature trasformate e il log-odds. Non cattura interazioni complesse senza engineering esplicito delle feature.</p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tecnica del poster — regressione logistica">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>Tecnica del poster — regressione logistica
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p><span class="screen-reader-only">Nota</span>Tecnica del poster — regressione logistica</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>È appropriata nel poster perché l’esito della singola impresa è binario e le osservazioni transazionali sono granulari. Non viene trasferita a questo studio: qui l’esito è un tasso regionale continuo, per cui si usano regressioni lineari e metriche di errore fuori campione.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="localglmnet-xai-con-coefficienti-variabili-per-osservazione-poster-2" class="level3 anchored" data-number="2.2" data-anchor-id="localglmnet-xai-con-coefficienti-variabili-per-osservazione-poster-2">
+<h3 class="anchored" data-number="2.2" data-anchor-id="localglmnet-xai-con-coefficienti-variabili-per-osservazione-poster-2"><span class="header-section-number">2.2</span> LocalGLMnet — XAI con coefficienti variabili per osservazione (poster 2)</h3>
+<p>Il poster 2 propone un’alternativa al trade-off linearità/opacità: il <strong>LocalGLMnet</strong>, un framework “glass-box” in cui i coefficienti di regressione <em>variano per singola osservazione</em>.</p>
+<p><span class="math display">\[\hat{y}_i = \sum_j \beta_j(\mathbf{x}_i) \cdot x_{ij}\]</span></p>
+<p>dove <span class="math inline">\(\beta_j(\mathbf{x}_i)\)</span> è stimato da una rete neurale che prende in input l’intero vettore <span class="math inline">\(\mathbf{x}_i\)</span>. Il risultato è un modello: - <strong>Non lineare</strong> nelle relazioni tra feature (la rete cattura interazioni) - <strong>Interpretabile localmente</strong>: per ogni osservazione <span class="math inline">\(i\)</span>, i coefficienti <span class="math inline">\(\beta_j(\mathbf{x}_i)\)</span> hanno la stessa interpretazione di un modello lineare</p>
+<p>Rispetto a SHAP/LIME (post-hoc, approssimazioni): LocalGLMnet è un modello <em>intrinsecamente</em> spiegabile, non una spiegazione aggiunta a posteriori. Per un ufficio compliance o risk management, la differenza è sostanziale.</p>
+<p><strong>Rilevanza per questo spinoff</strong>: se si disponesse di dati individuali PMI (es. integrazione Cerved × segnalazioni BdI), LocalGLMnet sarebbe il metodo naturale per un early warning che soddisfi i requisiti EBA sulla spiegabilità dei modelli di scoring.</p>
+</section>
+<section id="random-forest-simulated-annealing-per-riduzione-falsi-positivi-poster-3" class="level3 anchored" data-number="2.3" data-anchor-id="random-forest-simulated-annealing-per-riduzione-falsi-positivi-poster-3">
+<h3 class="anchored" data-number="2.3" data-anchor-id="random-forest-simulated-annealing-per-riduzione-falsi-positivi-poster-3"><span class="header-section-number">2.3</span> Random Forest + Simulated Annealing per riduzione falsi positivi (poster 3)</h3>
+<p>Il poster 3 affronta il problema del <strong>“cry wolf crisis”</strong> nei sistemi di rilevamento anomalie: troppi allarmi generano rumore e riducono la capacità di intervento. La soluzione è:</p>
+<ol type="1">
+<li><strong>Random Forest / Gradient Boosting</strong> per la classificazione delle anomalie (segnale di base)</li>
+<li><strong>Simulated Annealing</strong> per ottimizzare la soglia di allerta — l’algoritmo cerca la soglia che massimizza la funzione obiettivo (tipicamente F1-score o combinazione di precisione/richiamo) navigando lo spazio delle soluzioni con perturbazioni casuali accettabili con probabilità decrescente</li>
+</ol>
+<p><span class="math display">\[T(t) = T_0 \cdot e^{-\lambda t}\]</span></p>
+<p>L’analogia con il presente lavoro riguarda il controllo dei falsi segnali. Il simulated annealing non viene applicato: con 18 regioni e un solo anno di test, ottimizzare i pesi dello score produrrebbe un elevato rischio di overfitting.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 98%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">:</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Dimensione Poster 12 (BdI) Questo spinoff</td>
+</tr>
+</tbody>
+</table>
+<p>Unità Singola impresa NUTS2 (18 regioni)</p>
+<p>Dati input Transazionali real-time Segnalazioni bancarie aggregate</p>
+<p>Distress ICR / current ratio / OCF Tasso sofferenze nette</p>
+<p>Feature Liquidity Buffer, Stress Frequency, Stress Severity Leverage, MOL/Attivo (lag-1)</p>
+<p>Metodo Logistic regression Benchmark dinamici e panel OLS</p>
+<p>Metrica AUC MAE/RMSE fuori campione (2024) —————————————————————————————————————</p>
+<p><strong>Fonti dati</strong>:</p>
+<div class="cell" data-execution_count="2">
+<div id="tab-fonti" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="2">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-fonti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">Variabile</th>
+<th style="text-align: left;">Tabella/File</th>
+<th style="text-align: left;">Chiavi</th>
+<th style="text-align: left;">Copertura</th>
+<th style="text-align: left;">Unità VALORE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: left;">NPL rate (Y)</td>
+<td style="text-align: left;">TRI30211</td>
+<td style="text-align: left;">S11, FENEC=55100033, NUTS2</td>
+<td style="text-align: left;">2009–2025, trim.</td>
+<td style="text-align: left;">Milioni €</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: left;">Impieghi (denominatore)</td>
+<td style="text-align: left;">TDB10224</td>
+<td style="text-align: left;">SBI25, FENEC=52000139, ENTE=1070001, NUTS2</td>
+<td style="text-align: left;">2011–2025, mens.</td>
+<td style="text-align: left;">Migliaia € (÷1000)</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: left;">MOL/Attivo, Leverage (X)</td>
+<td style="text-align: left;">Bankit_ratios_20182023.csv (Cerved A2.9)</td>
+<td style="text-align: left;">20 sigle regionali</td>
+<td style="text-align: left;">2018–2023, annuale</td>
+<td style="text-align: left;">Percentuale</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td style="text-align: left;">CdL/VA (validazione)</td>
+<td style="text-align: left;">FTA ISTAT Tavola_1 2024</td>
+<td style="text-align: left;">20 regioni</td>
+<td style="text-align: left;">2024, cross-section</td>
+<td style="text-align: left;">Percentuale</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;1: Fonti dati e tabelle Bankit.sqlite</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="costruzione-della-variabile-dipendente" class="level3 anchored" data-number="2.4" data-anchor-id="costruzione-della-variabile-dipendente">
+<h3 class="anchored" data-number="2.4" data-anchor-id="costruzione-della-variabile-dipendente"><span class="header-section-number">2.4</span> Costruzione della variabile dipendente</h3>
+<p>Il <strong>tasso NPL</strong> è definito come:</p>
+<p><span class="math display">\[\text{NPL rate}_{r,t} = \frac{\text{Sofferenze nette SNF}_{r,t}}{\text{Impieghi imprese}_{r,t}} \times 100\]</span></p>
+<p>dove <span class="math inline">\(r\)</span> = regione NUTS2, <span class="math inline">\(t\)</span> = anno (snapshot dicembre).</p>
+<p>Nota tecnica: TRI30211 (numeratore) usa SET_CTP=<code>S11</code> (sole SNF), mentre TDB10224 (denominatore) usa SET_CTP=<code>SBI25</code> (SNF + famiglie produttrici). La leggera sovrastima del denominatore produce una lieve sottostima del tasso, uniforme tra regioni — non altera la variazione cross-regionale.</p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tecnica — rapporto tra stock omogenei nel tempo">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>Tecnica — rapporto tra stock omogenei nel tempo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p><span class="screen-reader-only">Nota</span>Tecnica — rapporto tra stock omogenei nel tempo</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il rapporto NPL/impieghi normalizza le sofferenze per la dimensione del mercato creditizio regionale. Si usano snapshot di dicembre per evitare che frequenze diverse delle fonti introducano confronti infrannuali. Il mismatch S11/SBI25 impone di interpretare il risultato come proxy, non come NPL ratio regolamentare.</p>
+</div>
+</div>
+</div>
+<div id="cell-fig-npl-trend" class="cell" data-fig-height="5" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div id="figura-npl-trend" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-npl-trend-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig01.png" class="figure-img" role="img" width="757" height="419"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;1: Tasso NPL regionale 2018–2024 — forte discesa fino al 2023 e stabilizzazione nel 2024</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Il trend decrescente fino al 2023 riflette il <strong>cleanup bancario</strong> post-crisi. Nel 2024 la discesa rallenta nettamente: questo cambio di regime rende particolarmente severo il test fuori campione.</p>
+</section>
+<section id="disegno-predittivo-e-modelli" class="level3 anchored" data-number="2.5" data-anchor-id="disegno-predittivo-e-modelli">
+<h3 class="anchored" data-number="2.5" data-anchor-id="disegno-predittivo-e-modelli"><span class="header-section-number">2.5</span> Disegno predittivo e modelli</h3>
+<p>Il panel predittivo associa l’esito <span class="math inline">\(NPL_{r,t}\)</span> esclusivamente a informazioni disponibili in <span class="math inline">\(t-1\)</span>. La stima usa gli anni 2019–2023; il 2024 è tenuto completamente fuori campione.</p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tecnica — lag temporale di un anno">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>Tecnica — lag temporale di un anno
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p><span class="screen-reader-only">Consiglio</span>Tecnica — lag temporale di un anno</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il lag impone l’ordine informativo necessario a un early warning: le caratteristiche 2023 possono spiegare o prevedere il 2024, non il contrario. Questa scelta elimina il leakage presente quando il CdL/VA 2024 veniva associato agli anni precedenti. Il CdL/VA resta disponibile soltanto come confronto descrittivo esterno.</p>
+</div>
+</div>
+</div>
+<p>Si confrontano quattro specificazioni: persistenza ingenua, autoregressione stimata, autoregressione con variabili di struttura e modello dinamico con effetti fissi regionali.</p>
+<p><span class="math display">\[ \begin{aligned} \text{Naive:}\quad &amp;\widehat{NPL}_{r,t}=NPL_{r,t-1} \\ \text{M0:}\quad &amp;NPL_{r,t}=\alpha+\rho NPL_{r,t-1}+\varepsilon_{r,t} \\ \text{M1:}\quad &amp;NPL_{r,t}=\alpha+\rho NPL_{r,t-1}+\beta_1 Lev_{r,t-1}+\beta_2 MOL_{r,t-1}+\varepsilon_{r,t} \\ \text{M2:}\quad &amp;NPL_{r,t}=\alpha_r+\rho NPL_{r,t-1}+\beta_1 Lev_{r,t-1}+\beta_2 MOL_{r,t-1}+\varepsilon_{r,t} \end{aligned} \]</span></p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tecnica — benchmark autoregressivo">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>Tecnica — benchmark autoregressivo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p><span class="screen-reader-only">Nota</span>Tecnica — benchmark autoregressivo</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il tasso NPL è fortemente persistente. Prima di attribuire capacità anticipatrice a leverage e MOL/Attivo bisogna verificare se migliorano una previsione basata sul solo NPL precedente. La regola naive è il benchmark operativo più difficile da battere quando la serie si stabilizza.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tecnica — effetti fissi regionali">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>Tecnica — effetti fissi regionali
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p><span class="screen-reader-only">Nota</span>Tecnica — effetti fissi regionali</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Le dummy NUTS2 controllano caratteristiche regionali costanti e non osservate. Sono utili come diagnostica <em>within-region</em>, ma con appena cinque anni di training un modello dinamico FE è esposto a Nickell bias; non viene quindi interpretato causalmente.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tecnica — errori standard cluster">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>Tecnica — errori standard cluster
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p><span class="screen-reader-only">Nota</span>Tecnica — errori standard cluster</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Gli errori sono clusterizzati per NUTS2 per ammettere eteroschedasticità e correlazione seriale all’interno della stessa regione. Con 18 cluster l’inferenza resta approssimata e i p-value vanno letti con cautela.</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div id="tab-modelli" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-modelli-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">modello</th>
+<th style="text-align: left;">variabile</th>
+<th style="text-align: left;">coef</th>
+<th style="text-align: left;">se_cluster</th>
+<th style="text-align: left;">pvalue</th>
+<th style="text-align: left;">sign</th>
+<th style="text-align: left;">r2_adj</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: left;">M0_AR</td>
+<td style="text-align: left;">npl_rate_lag1</td>
+<td style="text-align: left;">0.751</td>
+<td style="text-align: left;">0.015</td>
+<td style="text-align: left;">0.000</td>
+<td style="text-align: left;">***</td>
+<td style="text-align: left;">0.919</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: left;">M1_AR_struttura</td>
+<td style="text-align: left;">npl_rate_lag1</td>
+<td style="text-align: left;">0.756</td>
+<td style="text-align: left;">0.021</td>
+<td style="text-align: left;">0.000</td>
+<td style="text-align: left;">***</td>
+<td style="text-align: left;">0.917</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: left;">M1_AR_struttura</td>
+<td style="text-align: left;">mol_attivo_lag1</td>
+<td style="text-align: left;">-0.007</td>
+<td style="text-align: left;">0.061</td>
+<td style="text-align: left;">0.904</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">0.917</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td style="text-align: left;">M1_AR_struttura</td>
+<td style="text-align: left;">leverage_lag1</td>
+<td style="text-align: left;">-0.014</td>
+<td style="text-align: left;">0.025</td>
+<td style="text-align: left;">0.562</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">0.917</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td style="text-align: left;">M2_FE_dinamico</td>
+<td style="text-align: left;">npl_rate_lag1</td>
+<td style="text-align: left;">0.802</td>
+<td style="text-align: left;">0.051</td>
+<td style="text-align: left;">0.000</td>
+<td style="text-align: left;">***</td>
+<td style="text-align: left;">0.900</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td style="text-align: left;">M2_FE_dinamico</td>
+<td style="text-align: left;">mol_attivo_lag1</td>
+<td style="text-align: left;">0.093</td>
+<td style="text-align: left;">0.091</td>
+<td style="text-align: left;">0.305</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">0.900</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td style="text-align: left;">M2_FE_dinamico</td>
+<td style="text-align: left;">leverage_lag1</td>
+<td style="text-align: left;">-0.085</td>
+<td style="text-align: left;">0.088</td>
+<td style="text-align: left;">0.336</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">0.900</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;2: Coefficienti stimati sul 2019–2023 — errori standard cluster NUTS2</p>
+</div>
+</div>
+</div>
+</div>
+<p>Il coefficiente di <span class="math inline">\(NPL_{t-1}\)</span> è elevato e significativo. Una volta controllata questa persistenza, leverage e MOL/Attivo non sono significativi né nel modello pooled né nel modello FE. Il precedente risultato sul leverage dipendeva quindi dall’omissione della dinamica propria del tasso NPL.</p>
+</section>
+<section id="backtest-temporale-2024" class="level3 anchored" data-number="2.6" data-anchor-id="backtest-temporale-2024">
+<h3 class="anchored" data-number="2.6" data-anchor-id="backtest-temporale-2024"><span class="header-section-number">2.6</span> Backtest temporale 2024</h3>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tecnica — holdout temporale">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>Tecnica — holdout temporale
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p><span class="screen-reader-only">Consiglio</span>Tecnica — holdout temporale</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il 2024 non partecipa alla stima: simula una previsione reale prodotta a fine 2023. MAE misura l’errore medio assoluto; RMSE penalizza maggiormente gli errori grandi. È una verifica più pertinente dell’R² in-sample per stabilire se esiste capacità di early warning.</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div id="tab-backtest" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="5">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-backtest-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">modello</th>
+<th style="text-align: left;">mae_2024</th>
+<th style="text-align: left;">rmse_2024</th>
+<th style="text-align: left;">bias_2024</th>
+<th style="text-align: left;">correlazione_2024</th>
+<th style="text-align: left;">n_test</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: left;">NAIVE_persistenza</td>
+<td style="text-align: left;">0.152</td>
+<td style="text-align: left;">0.192</td>
+<td style="text-align: left;">0.129</td>
+<td style="text-align: left;">0.985</td>
+<td style="text-align: left;">18</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: left;">M0_AR</td>
+<td style="text-align: left;">0.755</td>
+<td style="text-align: left;">0.775</td>
+<td style="text-align: left;">-0.755</td>
+<td style="text-align: left;">0.985</td>
+<td style="text-align: left;">18</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: left;">M1_AR_struttura</td>
+<td style="text-align: left;">0.727</td>
+<td style="text-align: left;">0.746</td>
+<td style="text-align: left;">-0.727</td>
+<td style="text-align: left;">0.984</td>
+<td style="text-align: left;">18</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td style="text-align: left;">M2_FE_dinamico</td>
+<td style="text-align: left;">0.433</td>
+<td style="text-align: left;">0.455</td>
+<td style="text-align: left;">-0.433</td>
+<td style="text-align: left;">0.980</td>
+<td style="text-align: left;">18</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;3: Prestazioni fuori campione sul 2024 (18 regioni)</p>
+</div>
+</div>
+</div>
+</div>
+<p>La persistenza naive ottiene RMSE 0,192. M1, che aggiunge leverage e MOL/Attivo, raggiunge 0,746: un errore quasi quattro volte superiore. Anche M2-FE (0,455) non batte il benchmark. I modelli stimati sottoprevedono sistematicamente il 2024 perché apprendono la forte discesa 2019–2023, mentre nel test il tasso si stabilizza. Non emerge quindi evidenza che le variabili di bilancio migliorino la previsione annuale del tasso NPL.</p>
+</section>
+<section id="estensioni-testate-a-h1-nessuna-salva-il-modello" class="level3 anchored" data-number="2.7" data-anchor-id="estensioni-testate-a-h1-nessuna-salva-il-modello">
+<h3 class="anchored" data-number="2.7" data-anchor-id="estensioni-testate-a-h1-nessuna-salva-il-modello"><span class="header-section-number">2.7</span> Estensioni testate a h=1: nessuna salva il modello</h3>
+<p>Prima di concludere che mancassero variabili, sono state testate altre due estensioni sullo stesso orizzonte a un anno: l’aggiunta di due feature regionali costruite ad hoc (HHI bancario su sportelli e quota di credito Costruzioni+Immobiliare, come proxy di concentrazione del mercato e di esposizione settoriale) e una riformulazione del modello in variazioni anno su anno invece che in livelli.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 18%">
+<col style="width: 46%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Estensione</th>
+<th style="text-align: right;">RMSE 2024</th>
+<th style="text-align: left;">Esito</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">M1 (livelli, leverage+MOL/Attivo)</td>
+<td style="text-align: right;">0,746</td>
+<td style="text-align: left;">baseline già scartata</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">M1 + HHI regionale + quota Costruzioni/Immobiliare</td>
+<td style="text-align: right;">0,724</td>
+<td style="text-align: left;">nessun miglioramento, variabili non significative (p=0,186 e p=0,523)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Modello in differenze (momentum del calo)</td>
+<td style="text-align: right;">1,142</td>
+<td style="text-align: left;">peggiore di tutti</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Diagnosi: è la specificazione, non le variabili mancanti">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>Diagnosi: è la specificazione, non le variabili mancanti
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p><span class="screen-reader-only">Importante</span>Diagnosi: è la specificazione, non le variabili mancanti</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il fatto che aggiungere due covariate economicamente sensate non sposti il risultato, e che passare ai livelli-in-differenze peggiori ulteriormente, indica che il problema non è l’assenza di una feature dimenticata. Il tasso NPL regionale a un anno si comporta empiricamente come un processo vicino a un random walk: il valore di oggi resta il miglior predittore di quello di domani, e ogni tentativo di aggiungere struttura introduce più errore di stima di quanto tolga di bias.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="cambiare-orizzonte-a-tre-anni-il-modello-vince" class="level3 anchored" data-number="2.8" data-anchor-id="cambiare-orizzonte-a-tre-anni-il-modello-vince">
+<h3 class="anchored" data-number="2.8" data-anchor-id="cambiare-orizzonte-a-tre-anni-il-modello-vince"><span class="header-section-number">2.8</span> Cambiare orizzonte: a tre anni il modello vince</h3>
+<p>Se il problema è che a un anno il tasso si muove troppo poco perché la struttura di bilancio conti qualcosa rispetto al rumore, la domanda naturale è: cosa succede a un orizzonte più lungo, dove il livello si è spostato abbastanza da lasciare margine ai fondamentali? Ripetendo lo stesso confronto (persistenza vs.&nbsp;modello con leverage e MOL/Attivo) a 2 e 3 anni di distanza:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Orizzonte</th>
+<th style="text-align: right;">N training</th>
+<th style="text-align: right;">RMSE persistenza</th>
+<th style="text-align: right;">RMSE modello</th>
+<th style="text-align: left;">Vince</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1 anno</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">0,192</td>
+<td style="text-align: right;">0,746</td>
+<td style="text-align: left;">persistenza (3,9×)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2 anni</td>
+<td style="text-align: right;">72</td>
+<td style="text-align: right;">0,537</td>
+<td style="text-align: right;">1,248</td>
+<td style="text-align: left;">persistenza (2,3×)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>3 anni</strong></td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">2,519</td>
+<td style="text-align: right;"><strong>1,267</strong></td>
+<td style="text-align: left;"><strong>modello (2,0×)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>A tre anni il margine operativo lordo su attivo diventa altamente significativo (coefficiente -0,304, p=0,001): più redditività oggi, meno sofferenze tra tre anni — un ritardo economicamente sensato, coerente con un canale in cui la redditività condiziona la capacità di servizio del debito nel medio periodo, non nel mese successivo.</p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Limite del risultato a tre anni">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>Limite del risultato a tre anni
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p><span class="screen-reader-only">Avviso</span>Limite del risultato a tre anni</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Con soli sei anni di dati Cerved (2018–2023), il test a h=3 dispone di un solo anno di verifica fuori campione (2024, da un’origine 2021) e 54 osservazioni di stima. È un segnale promettente e coerente con l’intuizione economica, non ancora un risultato validato con vera cross-validation temporale. Andrà riconfermato quando saranno disponibili più anni di indicatori Cerved.</p>
+</div>
+</div>
+</div>
+<p><strong>Implicazione per il progetto</strong>: l’orizzonte corretto per un early warning basato su questi dati non è un anno ma due-tre anni. Le sezioni seguenti (score composito, mappa) restano costruite sull’orizzonte a un anno per coerenza con la pipeline esistente; la revisione a orizzonte 2-3 anni è il prossimo passo naturale (v. Sviluppi possibili).</p>
+</section>
+<section id="score-composito-di-fragilità-ex-ante" class="level3 anchored" data-number="2.9" data-anchor-id="score-composito-di-fragilità-ex-ante">
+<h3 class="anchored" data-number="2.9" data-anchor-id="score-composito-di-fragilità-ex-ante"><span class="header-section-number">2.9</span> Score composito di fragilità ex ante</h3>
+<p>Per sintetizzare le tre dimensioni disponibili a fine 2023, lo score destinato al 2024 è:</p>
+<p><span class="math display">\[\text{Fragility}_{r,2024} = \frac{1}{3} \left[ z(\text{NPL}_{r,2023}) + z(\text{Leverage}_{r,2023}) - z(\text{MOL/Attivo}_{r,2023}) \right]\]</span></p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tecnica — score composito standardizzato">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>Tecnica — score composito standardizzato
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p><span class="screen-reader-only">Nota</span>Tecnica — score composito standardizzato</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Gli z-score rendono confrontabili variabili con scale diverse; i segni incorporano la direzione economica attesa. Tutte le componenti precedono l’esito 2024, che resta escluso dalla costruzione. I pesi uguali sono trasparenti ma non stimati: lo score ordina esposizioni strutturali e non rappresenta una probabilità calibrata di distress.</p>
+</div>
+</div>
+</div>
+<p>La correlazione di rango tra score e NPL osservato nel 2024 è 0,282: positiva ma debole. Lo score deve quindi essere considerato esplorativo.</p>
+<hr>
+</section>
+</section>
+<section id="risultati" class="level2 anchored" data-number="3" data-anchor-id="risultati">
+<h2 class="anchored" data-number="3" data-anchor-id="risultati"><span class="header-section-number">3</span> Risultati</h2>
+<section id="mappa-regionale-del-fragility-score" class="level3 anchored" data-number="3.1" data-anchor-id="mappa-regionale-del-fragility-score">
+<h3 class="anchored" data-number="3.1" data-anchor-id="mappa-regionale-del-fragility-score"><span class="header-section-number">3.1</span> Mappa regionale del fragility score</h3>
+<div id="cell-fig-mappa" class="cell" data-fig-height="9" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<div id="figura-mappa" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-mappa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig02.png" class="figure-img" role="img" width="741" height="883"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;2: Fragility Score ex ante 2024, costruito solo con informazioni 2023. Rosso = maggiore esposizione strutturale.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Lazio</strong> presenta lo score più alto (+1,81), trainato dal leverage massimo (44,3%) e dal MOL/Attivo minimo (6,0%). Il dato segnala esposizione strutturale, ma non autorizza da solo una spiegazione settoriale o causale.</p>
+<p><strong>Veneto</strong> presenta lo score più basso (−1,09), grazie a leverage contenuto e MOL/Attivo elevato. Nel 2024 il suo NPL osservato è 1,40%.</p>
+<p>La debole correlazione con l’esito mostra che il ranking non coincide con il rischio creditizio osservato: Calabria e Sicilia mantengono NPL elevati nonostante leverage relativamente basso. Questo scarto richiede ulteriori variabili territoriali e settoriali.</p>
+</section>
+<section id="scatter-leverage-vs-npl-rate" class="level3 anchored" data-number="3.2" data-anchor-id="scatter-leverage-vs-npl-rate">
+<h3 class="anchored" data-number="3.2" data-anchor-id="scatter-leverage-vs-npl-rate"><span class="header-section-number">3.2</span> Scatter leverage vs NPL rate</h3>
+<div id="cell-fig-scatter" class="cell" data-fig-height="5" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<div id="figura-scatter" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig03.png" class="figure-img" role="img" width="687" height="499"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;3: Leverage osservato nel 2023 e tasso NPL realizzato nel 2024: confronto temporale coerente, non relazione causale.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ranking-regionale" class="level3 anchored" data-number="3.3" data-anchor-id="ranking-regionale">
+<h3 class="anchored" data-number="3.3" data-anchor-id="ranking-regionale"><span class="header-section-number">3.3</span> Ranking regionale</h3>
+<div id="cell-fig-bar" class="cell" data-fig-height="5" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<div id="figura-bar" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig04.png" class="figure-img" role="img" width="787" height="494"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;4: Fragility Score ex ante 2024. Le etichette riportano il tasso NPL successivamente osservato nel 2024.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="tabella-ranking-completo" class="level3 anchored" data-number="3.4" data-anchor-id="tabella-ranking-completo">
+<h3 class="anchored" data-number="3.4" data-anchor-id="tabella-ranking-completo"><span class="header-section-number">3.4</span> Tabella ranking completo</h3>
+<div class="cell" data-execution_count="9">
+<div id="tab-scores" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="9">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-scores-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">NUTS2</th>
+<th style="text-align: left;">Regione</th>
+<th style="text-align: left;">NPL 2023 (%)</th>
+<th style="text-align: left;">Leverage 2023 (%)</th>
+<th style="text-align: left;">MOL/Attivo 2023 (%)</th>
+<th style="text-align: left;">Fragility Score (z)</th>
+<th style="text-align: left;">NPL osservato 2024 (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: left;">ITI4</td>
+<td style="text-align: left;">Lazio</td>
+<td style="text-align: left;">3.07</td>
+<td style="text-align: left;">44.3</td>
+<td style="text-align: left;">6.0</td>
+<td style="text-align: left;">+1.81</td>
+<td style="text-align: left;">2.78</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: left;">ITG2</td>
+<td style="text-align: left;">Sardegna</td>
+<td style="text-align: left;">3.42</td>
+<td style="text-align: left;">39.2</td>
+<td style="text-align: left;">8.7</td>
+<td style="text-align: left;">+0.63</td>
+<td style="text-align: left;">3.22</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: left;">ITC3</td>
+<td style="text-align: left;">Liguria</td>
+<td style="text-align: left;">1.53</td>
+<td style="text-align: left;">43.1</td>
+<td style="text-align: left;">7.4</td>
+<td style="text-align: left;">+0.62</td>
+<td style="text-align: left;">1.39</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td style="text-align: left;">ITF4</td>
+<td style="text-align: left;">Puglia</td>
+<td style="text-align: left;">2.43</td>
+<td style="text-align: left;">40.3</td>
+<td style="text-align: left;">8.8</td>
+<td style="text-align: left;">+0.29</td>
+<td style="text-align: left;">2.42</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td style="text-align: left;">ITF6</td>
+<td style="text-align: left;">Calabria</td>
+<td style="text-align: left;">3.36</td>
+<td style="text-align: left;">35.4</td>
+<td style="text-align: left;">8.8</td>
+<td style="text-align: left;">+0.17</td>
+<td style="text-align: left;">3.10</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td style="text-align: left;">ITC4</td>
+<td style="text-align: left;">Lombardia</td>
+<td style="text-align: left;">1.24</td>
+<td style="text-align: left;">42.5</td>
+<td style="text-align: left;">8.3</td>
+<td style="text-align: left;">+0.17</td>
+<td style="text-align: left;">1.24</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td style="text-align: left;">ITF3</td>
+<td style="text-align: left;">Campania</td>
+<td style="text-align: left;">3.18</td>
+<td style="text-align: left;">37.4</td>
+<td style="text-align: left;">9.5</td>
+<td style="text-align: left;">+0.10</td>
+<td style="text-align: left;">3.16</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td style="text-align: left;">ITH4</td>
+<td style="text-align: left;">Friuli-VG</td>
+<td style="text-align: left;">1.15</td>
+<td style="text-align: left;">40.8</td>
+<td style="text-align: left;">7.8</td>
+<td style="text-align: left;">+0.10</td>
+<td style="text-align: left;">1.05</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td style="text-align: left;">ITG1</td>
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">3.31</td>
+<td style="text-align: left;">34.5</td>
+<td style="text-align: left;">9.1</td>
+<td style="text-align: left;">-0.03</td>
+<td style="text-align: left;">2.85</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td style="text-align: left;">ITF5</td>
+<td style="text-align: left;">Basilicata</td>
+<td style="text-align: left;">1.71</td>
+<td style="text-align: left;">41.4</td>
+<td style="text-align: left;">9.7</td>
+<td style="text-align: left;">-0.16</td>
+<td style="text-align: left;">1.47</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td style="text-align: left;">ITH5</td>
+<td style="text-align: left;">Emilia-R.</td>
+<td style="text-align: left;">1.47</td>
+<td style="text-align: left;">37.0</td>
+<td style="text-align: left;">7.9</td>
+<td style="text-align: left;">-0.19</td>
+<td style="text-align: left;">1.29</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td style="text-align: left;">ITI3</td>
+<td style="text-align: left;">Marche</td>
+<td style="text-align: left;">2.05</td>
+<td style="text-align: left;">37.1</td>
+<td style="text-align: left;">9.0</td>
+<td style="text-align: left;">-0.26</td>
+<td style="text-align: left;">2.19</td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td style="text-align: left;">ITC1</td>
+<td style="text-align: left;">Piemonte</td>
+<td style="text-align: left;">1.50</td>
+<td style="text-align: left;">36.8</td>
+<td style="text-align: left;">8.2</td>
+<td style="text-align: left;">-0.28</td>
+<td style="text-align: left;">1.43</td>
+</tr>
+<tr class="even">
+<td>13</td>
+<td style="text-align: left;">ITF1</td>
+<td style="text-align: left;">Abruzzo</td>
+<td style="text-align: left;">2.56</td>
+<td style="text-align: left;">36.4</td>
+<td style="text-align: left;">9.7</td>
+<td style="text-align: left;">-0.32</td>
+<td style="text-align: left;">2.44</td>
+</tr>
+<tr class="odd">
+<td>14</td>
+<td style="text-align: left;">ITI2</td>
+<td style="text-align: left;">Umbria</td>
+<td style="text-align: left;">2.13</td>
+<td style="text-align: left;">36.2</td>
+<td style="text-align: left;">9.1</td>
+<td style="text-align: left;">-0.35</td>
+<td style="text-align: left;">1.95</td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td style="text-align: left;">ITI1</td>
+<td style="text-align: left;">Toscana</td>
+<td style="text-align: left;">2.02</td>
+<td style="text-align: left;">34.6</td>
+<td style="text-align: left;">8.5</td>
+<td style="text-align: left;">-0.38</td>
+<td style="text-align: left;">2.05</td>
+</tr>
+<tr class="odd">
+<td>16</td>
+<td style="text-align: left;">ITF2</td>
+<td style="text-align: left;">Molise</td>
+<td style="text-align: left;">2.66</td>
+<td style="text-align: left;">35.7</td>
+<td style="text-align: left;">11.3</td>
+<td style="text-align: left;">-0.82</td>
+<td style="text-align: left;">2.41</td>
+</tr>
+<tr class="even">
+<td>17</td>
+<td style="text-align: left;">ITH3</td>
+<td style="text-align: left;">Veneto</td>
+<td style="text-align: left;">1.37</td>
+<td style="text-align: left;">33.8</td>
+<td style="text-align: left;">9.7</td>
+<td style="text-align: left;">-1.09</td>
+<td style="text-align: left;">1.40</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;4: Fragility Score ex ante 2024 e successivo esito osservato</p>
+</div>
+</div>
+</div>
+</div>
+<p><em>Il tasso NPL 2024 è mostrato soltanto per la validazione successiva e non entra nel calcolo dello score.</em></p>
+<hr>
+</section>
+</section>
+<section id="limiti-e-sviluppi" class="level2 anchored" data-number="4" data-anchor-id="limiti-e-sviluppi">
+<h2 class="anchored" data-number="4" data-anchor-id="limiti-e-sviluppi"><span class="header-section-number">4</span> Limiti e sviluppi</h2>
+<section id="limiti-principali" class="level3 anchored" data-number="4.1" data-anchor-id="limiti-principali">
+<h3 class="anchored" data-number="4.1" data-anchor-id="limiti-principali"><span class="header-section-number">4.1</span> Limiti principali</h3>
+<ol type="1">
+<li><p><strong>Aggregazione regionale</strong>: il segnale transazionale individuale del poster BdI (Liquidity Buffer per singola PMI) non è replicabile con dati aggregati. Il tasso NPL regionale è molto più rumoroso e ritardato.</p></li>
+<li><p><strong>Assenza di cross-section sufficientemente ampia</strong>: 18 NUTS2 è un N piccolo per effetti between. Il modello è identificato dalla dimensione within (variazione annuale), che resta limitata per molte regioni.</p></li>
+<li><p><strong>Un solo lag</strong>: le variabili di struttura finanziaria a t−1 potrebbero avere lag ottimale più lungo. Con 6 anni di Cerved (2018–2023) il panel è troppo corto per testare lag multipli.</p></li>
+<li><p><strong>Denominatore</strong>: TDB10224 (SBI25) include le famiglie produttrici; TRI30211 (S11) le esclude. La leggera mismatch sistematica non altera il ranking regionale ma produce una sottostima uniforme del tasso NPL.</p></li>
+<li><p><strong>Cambio di regime nel 2024</strong>: i modelli apprendono il cleanup 2019–2023 e sottostimano la successiva stabilizzazione. Un solo anno holdout non consente di distinguere un fallimento permanente da instabilità temporanea.</p></li>
+<li><p><strong>Pesi dello score non stimati</strong>: la media semplice degli z-score è trasparente ma normativa. La correlazione di rango 0,282 con l’esito 2024 è troppo debole per un impiego operativo.</p></li>
+<li><p><strong>Fallacia ecologica</strong>: un indicatore regionale non permette inferenze sulla probabilità di distress della singola PMI.</p></li>
+</ol>
+</section>
+<section id="sviluppi-possibili" class="level3 anchored" data-number="4.2" data-anchor-id="sviluppi-possibili">
+<h3 class="anchored" data-number="4.2" data-anchor-id="sviluppi-possibili"><span class="header-section-number">4.2</span> Sviluppi possibili</h3>
+<ul>
+<li><strong>Riorientare la pipeline a orizzonte 2-3 anni</strong>: priorità immediata. Il test esplorativo a h=3 batte la persistenza (RMSE 1,267 vs 2,519); da integrare negli script (<code>04_model_fe.py</code>) come modello principale, non solo come nota a margine, e da riconfermare quando arriveranno nuovi anni Cerved.</li>
+<li><strong>Dati FdG (Fondo di Garanzia)</strong>: aggiungere la quota FdG/impieghi come quarta feature — le regioni con alta dipendenza dalla garanzia pubblica potrebbero avere NPL strutturalmente più alti.</li>
+<li><strong>Lag multipli</strong>: con una serie TRI più lunga (disponibile dal 2009), stimare il lag ottimale per il leverage con cross-correlation analysis, ora che si sa che il lag conta (h=1 fallisce, h=3 funziona).</li>
+<li><strong>Specificazione log-lineare</strong>: <code>log(NPL rate)</code> come dipendente per evitare previsioni negative e ridurre l’eteroschedasticità.</li>
+<li><strong>Dati individuali</strong>: integrazione con Cerved per PMI individuali — consentirebbe di replicare fedelmente la logistic regression del poster 12 con feature di bilancio al posto di quelle transazionali.</li>
+<li><strong>Serie più lunga e rolling backtest</strong>: ripetere la valutazione su più anni e confrontare sempre i modelli con persistenza e media storica, specialmente a h=3 dove il campione di verifica resta di un solo anno.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="conclusioni" class="level2 anchored" data-number="5" data-anchor-id="conclusioni">
+<h2 class="anchored" data-number="5" data-anchor-id="conclusioni"><span class="header-section-number">5</span> Conclusioni</h2>
+<p>Il poster 12 mostra che sequenze transazionali granulari possono anticipare il distress della singola PMI. Questo studio verifica se la stessa intuizione generale sopravvive usando rilevazioni annuali aggregate regionali. Non replica quindi la tecnica originale: ne costruisce un’analogia più debole e la sottopone a backtest.</p>
+<p>Il risultato principale a un anno è negativo ma informativo. Il tasso NPL precedente spiega quasi tutta la capacità di ordinamento regionale; leverage e MOL/Attivo non aggiungono coefficienti significativi. Nel 2024 la persistenza naive ottiene RMSE 0,192, contro 0,746 del modello strutturale e 0,455 del modello dinamico FE — un divario di quasi quattro volte, non un pareggio. Aggiungere concentrazione bancaria regionale ed esposizione settoriale a Costruzioni/Immobiliare non lo colma (0,724); nemmeno modellare la variazione anno su anno invece del livello (1,142). Il tasso NPL regionale a un anno si comporta come un processo vicino a un random walk: non esiste, su questo campione e a questo orizzonte, evidenza sufficiente per qualificare le variabili di bilancio come leading indicator.</p>
+<p><strong>Cambiando orizzonte, il quadro si ribalta.</strong> A tre anni di distanza il modello con leverage e MOL/Attivo batte la persistenza di un fattore due (RMSE 1,267 contro 2,519), e il margine operativo lordo su attivo diventa un predittore altamente significativo (p=0,001). Il risultato si basa su un solo anno di verifica fuori campione e va quindi trattato come promettente, non consolidato — ma sposta la domanda di fondo del progetto: non “i fondamentali di bilancio prevedono le sofferenze bancarie regionali”, ma “a quale orizzonte lo fanno”. La risposta emersa oggi è due-tre anni, non uno.</p>
+<p>Lo score ex ante identifica il Lazio come regione maggiormente esposta secondo la combinazione scelta, ma la correlazione di rango con l’NPL 2024 è soltanto 0,282 — costruito e validato sull’orizzonte a un anno che si è rivelato il meno promettente. Il prodotto finale resta oggi un <strong>indicatore esplorativo di fragilità territoriale</strong>, utile per formulare ipotesi e organizzare il monitoraggio, non un sistema validato di early warning né uno strumento di scoring delle singole PMI. Il prossimo passo naturale è ricostruirlo sull’orizzonte a tre anni, dove il segnale è più forte.</p>
+<hr>
+<p><strong>Trasparenza sull’uso dell’intelligenza artificiale</strong></p>
+<p>L’uso di strumenti di intelligenza artificiale generativa è dichiarato esplicitamente in quanto parte del processo di lavoro seguito nella redazione del presente documento. Tali strumenti sono stati impiegati a supporto della lettura, della sintesi, della riorganizzazione argomentativa e della revisione testuale, sempre nell’ambito di un processo pienamente controllato dall’autore.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le verifiche effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore.</p>
+<p>L’intelligenza artificiale è stata utilizzata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+</section>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_EarlyWarningPmi/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

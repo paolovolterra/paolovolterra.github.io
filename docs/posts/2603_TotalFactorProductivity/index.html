@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="TFP, produttività, catching-up, Italia, Penn World Tables">
+<meta name="description" content="Analisi comparata IT, DE, FR, ES, US (1954–2023)">
+
+<title>Total Factor Productivity – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Total Factor Productivity – Paolo Volterra">
+<meta property="og:description" content="Analisi comparata IT, DE, FR, ES, US (1954–2023)">
+<meta property="og:image" content="https://paolovolterra.com/posts/2603_TotalFactorProductivity/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Total Factor Productivity – Paolo Volterra">
+<meta name="twitter:description" content="Analisi comparata IT, DE, FR, ES, US (1954–2023)">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2603_TotalFactorProductivity/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#perché-studiare-la-total-factor-productivity" id="toc-perché-studiare-la-total-factor-productivity" class="nav-link active" data-scroll-target="#perché-studiare-la-total-factor-productivity"><span class="header-section-number">1</span> Perché studiare la Total Factor Productivity</a></li>
+  <li><a href="#il-quadro-generale" id="toc-il-quadro-generale" class="nav-link" data-scroll-target="#il-quadro-generale"><span class="header-section-number">2</span> Il quadro generale</a></li>
+  <li><a href="#crescita-cumulata-e-cagr-per-sottoperiodo" id="toc-crescita-cumulata-e-cagr-per-sottoperiodo" class="nav-link" data-scroll-target="#crescita-cumulata-e-cagr-per-sottoperiodo"><span class="header-section-number">3</span> Crescita cumulata e CAGR per sottoperiodo</a></li>
+  <li><a href="#il-caso-italia-una-frattura-che-non-si-è-mai-chiusa" id="toc-il-caso-italia-una-frattura-che-non-si-è-mai-chiusa" class="nav-link" data-scroll-target="#il-caso-italia-una-frattura-che-non-si-è-mai-chiusa"><span class="header-section-number">4</span> Il caso Italia: una frattura che non si è mai chiusa</a></li>
+  <li><a href="#la-crisi-del-2008-lultimo-shock-generalizzato" id="toc-la-crisi-del-2008-lultimo-shock-generalizzato" class="nav-link" data-scroll-target="#la-crisi-del-2008-lultimo-shock-generalizzato"><span class="header-section-number">5</span> La crisi del 2008: l’ultimo shock generalizzato</a></li>
+  <li><a href="#conclusioni" id="toc-conclusioni" class="nav-link" data-scroll-target="#conclusioni"><span class="header-section-number">6</span> Conclusioni</a></li>
+  <li><a href="#implicazioni-produttività-credito-e-la-prossima-frontiera" id="toc-implicazioni-produttività-credito-e-la-prossima-frontiera" class="nav-link" data-scroll-target="#implicazioni-produttività-credito-e-la-prossima-frontiera"><span class="header-section-number">7</span> Implicazioni: produttività, credito e la prossima frontiera</a>
+  <ul class="collapse">
+  <li><a href="#la-tesi-in-sintesi" id="toc-la-tesi-in-sintesi" class="nav-link" data-scroll-target="#la-tesi-in-sintesi"><span class="header-section-number">7.1</span> La tesi in sintesi</a></li>
+  <li><a href="#tfp-e-rischio-di-credito" id="toc-tfp-e-rischio-di-credito" class="nav-link" data-scroll-target="#tfp-e-rischio-di-credito"><span class="header-section-number">7.2</span> TFP e rischio di credito</a></li>
+  <li><a href="#il-prossimo-shock-intelligenza-artificiale-e-digitale" id="toc-il-prossimo-shock-intelligenza-artificiale-e-digitale" class="nav-link" data-scroll-target="#il-prossimo-shock-intelligenza-artificiale-e-digitale"><span class="header-section-number">7.3</span> Il prossimo shock: intelligenza artificiale e digitale</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2603_TotalFactorProductivity/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Total Factor Productivity</h1>
+<p class="subtitle lead">Analisi comparata IT, DE, FR, ES, US (1954–2023)</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Produttività</div>
+    <div class="quarto-category">Crescita</div>
+    <div class="quarto-category">Confronti internazionali</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Analisi comparata IT, DE, FR, ES, US (1954–2023)
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">29 marzo 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>TFP, produttività, catching-up, Italia, Penn World Tables</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="perché-studiare-la-total-factor-productivity" class="level2 anchored" data-anchor-id="perché-studiare-la-total-factor-productivity" data-number="1">
+<h2 class="anchored" data-anchor-id="perché-studiare-la-total-factor-productivity" data-number="1"><span class="header-section-number">1</span> Perché studiare la Total Factor Productivity</h2>
+<p>Quando si vuole capire perché alcune economie crescono e altre ristagnano, il PIL da solo non basta. Un paese può produrre di più semplicemente accumulando più capitale fisico — costruendo fabbriche, acquistando macchinari — oppure portando più lavoratori nel mercato. Ma questi fattori sono soggetti a rendimenti decrescenti: prima o poi si esauriscono. La domanda davvero interessante è un’altra: quanta crescita otteniamo <em>a parità</em> di input? Quanto riusciamo a fare con le stesse risorse?</p>
+<p>Questa quota “residuale” della crescita è la <strong>Total Factor Productivity</strong> (TFP), detta anche residuo di Solow dal nome dell’economista che la formalizzò negli anni Cinquanta. In senso lato la TFP misura il progresso tecnologico, la qualità delle istituzioni, l’efficienza nell’allocazione delle risorse, la capacità innovativa di un sistema economico. Non è osservabile direttamente: si stima sottraendo al tasso di crescita del PIL il contributo del lavoro e del capitale. Proprio per questo è la variabile più difficile da far crescere con le politiche economiche ordinarie, e la più rivelatrice di quanto un’economia sia davvero moderna.</p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Il residuo di Solow">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>Il residuo di Solow
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p><span class="screen-reader-only">Nota</span>Il residuo di Solow</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Robert Solow (1956) parte dalla funzione di produzione aggregata <span class="math inline">\(Y = A \cdot F(K, L)\)</span>, dove <span class="math inline">\(Y\)</span> è il PIL, <span class="math inline">\(K\)</span> il capitale, <span class="math inline">\(L\)</span> il lavoro e <span class="math inline">\(A\)</span> un moltiplicatore che cattura l’efficienza complessiva del sistema. Prendendo i tassi di crescita e indicando con <span class="math inline">\(\alpha\)</span> la quota del reddito che remunera il capitale (empiricamente ≈ 0,33):</p>
+<p><span class="math display">\[\frac{\dot{A}}{A} = \frac{\dot{Y}}{Y} - \alpha\frac{\dot{K}}{K} - (1-\alpha)\frac{\dot{L}}{L}\]</span></p>
+<p>Il termine a sinistra — la crescita di <span class="math inline">\(A\)</span> — <strong>non si osserva direttamente</strong>: si ottiene per differenza dopo aver stimato i contributi di capitale e lavoro. Per questo Solow lo chiamò <em>residuo</em>. Nel suo articolo del 1957 applicò il metodo all’economia americana 1909–1949 e trovò che circa l’87 % della crescita pro capite era spiegata da questo residuo, non dall’accumulazione di capitale. Il risultato fu sorprendente: la maggior parte della crescita economica è “tecnologia” in senso lato, non mattoni e ore lavorate.</p>
+</div>
+</div>
+</div>
+<p>L’analisi che segue utilizza le serie della <strong>Penn World Tables</strong> (versione 10.x) distribuite tramite il database FRED della Fed di St.&nbsp;Louis. La serie <code>RTFPNAXXXA632NRUG</code> fornisce la TFP a prezzi nazionali costanti, con base di riferimento 2017, per cinque paesi: Italia, Germania, Francia, Spagna e Stati Uniti. Per rendere confrontabili le traiettorie storiche indipendentemente dai livelli assoluti di partenza, normalizziamo ogni serie a <strong>1,0 nell’anno 1954</strong>: in questo modo il grafico mostra <em>di quanto è cambiata</em> la produttività di ciascun paese rispetto a quella base comune. Copertura temporale: 1954–2023 (ultimo dato disponibile).</p>
+</section>
+<section id="il-quadro-generale" class="level2 anchored" data-anchor-id="il-quadro-generale" data-number="2">
+<h2 class="anchored" data-anchor-id="il-quadro-generale" data-number="2"><span class="header-section-number">2</span> Il quadro generale</h2>
+<div class="quarto-figure quarto-figure-center">
+<div class="figure">
+<p><img src="figure/loc_tfp_5paesi.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<div class="caption">
+<p>TFP normalizzata 1954–2023: cinque paesi a confronto</p>
+</div>
+</div>
+</div>
+<p>Il grafico racconta settant’anni di storia economica in una sola immagine. Tre fasi emergono con chiarezza.</p>
+<p>Nella prima fase — la <strong>fascia verde</strong>, 1954–1974 — tutte le economie crescono, ma a velocità molto diverse. Gli USA partono già sulla frontiera tecnologica mondiale: avendo già incorporato le innovazioni del dopoguerra, il loro margine di miglioramento è più stretto, e il CAGR della TFP si ferma allo 0,89 % annuo. Le economie europee invece inseguono: Francia (+3,54 % annuo), Spagna (+3,38 %), Italia (+2,86 %), Germania (+2,75 %) sfruttano il meccanismo del <em>catching-up</em> — importano tecnologie già collaudate dagli USA, riorganizzano la produzione, modernizzano il tessuto industriale. È l’età dell’oro della crescita europea.</p>
+<p>La <strong>linea tratteggiata rossa</strong> del 1974 interrompe bruscamente questa parabola. Con il primo shock petrolifero il costo energetico quadruplica, rendendo obsoleta una parte consistente dello stock di capitale fisico costruito su energia a buon mercato. La seconda fase — la <strong>fascia rosa</strong>, 1974–1987 — è quella della stagflazione: crescita lenta, inflazione alta, ristrutturazioni dolorose. I paesi reagiscono in modo diverso, e qui le traiettorie cominciano a divergere.</p>
+<p>La terza fase, dal 1987 in poi, vede una parziale ripresa in Germania (+1,15 % annuo tra 1987 e 2008) e Spagna, mentre Francia e soprattutto Italia faticano a ritrovare un sentiero stabile. La crisi del 2008 chiude il ciclo con un calo generalizzato, dal quale solo gli USA escono rapidamente.</p>
+</section>
+<section id="crescita-cumulata-e-cagr-per-sottoperiodo" class="level2 anchored" data-anchor-id="crescita-cumulata-e-cagr-per-sottoperiodo" data-number="3">
+<h2 class="anchored" data-anchor-id="crescita-cumulata-e-cagr-per-sottoperiodo" data-number="3"><span class="header-section-number">3</span> Crescita cumulata e CAGR per sottoperiodo</h2>
+<p>Le due tabelle seguenti scompongono la storia in quattro archi temporali definiti dagli eventi strutturali: l’età dell’oro (1954–1974), la stagflazione (1974–1987), la lunga ripresa pre-crisi (1987–2008) e il periodo post-crisi finanziaria (2008–2023). La prima tabella mostra la variazione cumulata totale in ciascun periodo; la seconda il tasso di crescita medio annuo composto (CAGR), che normalizza per la durata diversa di ciascun arco e rende i periodi direttamente confrontabili.</p>
+<div id="b550fa31" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div id="T_385f9" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="T_385f9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Paese</th>
+<th style="text-align: left;">IT</th>
+<th style="text-align: left;">DE</th>
+<th style="text-align: left;">FR</th>
+<th style="text-align: left;">ES</th>
+<th style="text-align: left;">US</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Periodo</td>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;">&nbsp;</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1954–1974</td>
+<td style="text-align: left;">75.6%</td>
+<td style="text-align: left;">71.9%</td>
+<td style="text-align: left;">100.4%</td>
+<td style="text-align: left;">94.6%</td>
+<td style="text-align: left;">19.5%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1974–1987</td>
+<td style="text-align: left;">-0.2%</td>
+<td style="text-align: left;">10.8%</td>
+<td style="text-align: left;">13.9%</td>
+<td style="text-align: left;">18.0%</td>
+<td style="text-align: left;">4.5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1987–2008</td>
+<td style="text-align: left;">-8.7%</td>
+<td style="text-align: left;">27.2%</td>
+<td style="text-align: left;">14.1%</td>
+<td style="text-align: left;">-8.7%</td>
+<td style="text-align: left;">16.2%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2008–2023</td>
+<td style="text-align: left;">-9.8%</td>
+<td style="text-align: left;">3.5%</td>
+<td style="text-align: left;">-6.8%</td>
+<td style="text-align: left;">-2.0%</td>
+<td style="text-align: left;">7.6%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;1: Crescita TFP cumulata (%)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Leggendo la tabella cumulata per colonna si vede subito la differenza tra paesi che hanno saputo ripartire dopo il 1974 e paesi che non ce l’hanno fatta. Francia e Germania accumulano crescita positiva anche nei periodi difficili; l’Italia è l’unica a mostrare segno negativo già dal secondo sottoperiodo e non lo recupera mai.</p>
+<div id="3c7e4bba" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="3">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Paese</th>
+<th style="text-align: left;">IT</th>
+<th style="text-align: left;">DE</th>
+<th style="text-align: left;">FR</th>
+<th style="text-align: left;">ES</th>
+<th style="text-align: left;">US</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Periodo</td>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;">&nbsp;</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Età dell'oro (1954–1974)</td>
+<td style="text-align: left;">2.86%</td>
+<td style="text-align: left;">2.75%</td>
+<td style="text-align: left;">3.54%</td>
+<td style="text-align: left;">3.38%</td>
+<td style="text-align: left;">0.89%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Stagflazione (1974–1987)</td>
+<td style="text-align: left;">-0.02%</td>
+<td style="text-align: left;">0.80%</td>
+<td style="text-align: left;">1.01%</td>
+<td style="text-align: left;">1.28%</td>
+<td style="text-align: left;">0.34%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ripresa (1987–2008)</td>
+<td style="text-align: left;">-0.43%</td>
+<td style="text-align: left;">1.15%</td>
+<td style="text-align: left;">0.63%</td>
+<td style="text-align: left;">-0.43%</td>
+<td style="text-align: left;">0.72%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Crisi e oltre (2008–2023)</td>
+<td style="text-align: left;">-0.69%</td>
+<td style="text-align: left;">0.23%</td>
+<td style="text-align: left;">-0.47%</td>
+<td style="text-align: left;">-0.13%</td>
+<td style="text-align: left;">0.49%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="il-caso-italia-una-frattura-che-non-si-è-mai-chiusa" class="level2 anchored" data-anchor-id="il-caso-italia-una-frattura-che-non-si-è-mai-chiusa" data-number="4">
+<h2 class="anchored" data-anchor-id="il-caso-italia-una-frattura-che-non-si-è-mai-chiusa" data-number="4"><span class="header-section-number">4</span> Il caso Italia: una frattura che non si è mai chiusa</h2>
+<div class="quarto-figure quarto-figure-center">
+<div class="figure">
+<p><img src="figure/loc_tfp_italia_vs_altri.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<div class="caption">
+<p>Sinistra: base 1954 = 1. Destra: re-normalizzata al 1974 per isolare la stagnazione post-shock</p>
+</div>
+</div>
+</div>
+<p>Il pannello di destra del grafico è il più eloquente: re-normalizzando tutte le serie al 1974, emerge con nettezza che l’Italia è l’unico paese che non torna mai stabilmente sopra la propria linea di base post-shock. Le altre economie — chi prima, chi dopo — ritrovano un sentiero di crescita della produttività. L’Italia no.</p>
+<p>Perché? La letteratura economica suggerisce una combinazione di fattori strutturali che si sono stratificati nel tempo. Primo, il sistema produttivo italiano è dominato da piccole e medie imprese che, pur flessibili, investono poco in ricerca e sviluppo e faticano a scalare. Secondo, la specializzazione nei settori tradizionali (tessile, abbigliamento, meccanica leggera) ha subito la concorrenza dei paesi emergenti proprio negli anni in cui si sarebbero dovuti realizzare gli investimenti in innovazione. Terzo, il mercato dei capitali e del lavoro ha presentato rigidità che hanno rallentato la riallocazione delle risorse verso attività a più alta produttività. Infine, le inefficienze della pubblica amministrazione e il costo della burocrazia hanno compresso i rendimenti privati dell’investimento.</p>
+<p>Il risultato numerico è senza appello: nei 49 anni compresi tra il 1974 e il 2023, la TFP italiana è diminuita in media dello <strong>0,40 % ogni anno</strong>. La perdita cumulata rispetto al 1974 è del <strong>−17,9 %</strong>. Nello stesso arco temporale la Germania ha guadagnato il +47 %, la Spagna il +36 %, la Francia il +23 %. Il divario con la frontiera tecnologica, invece di ridursi come ci si attenderebbe da un paese che partiva indietro, si è allargato.</p>
+<div id="01ca4e47" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div id="T_a9523" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="T_a9523-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">&nbsp;</th>
+<th style="text-align: left;">Valore</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">TFP Italia 1974</td>
+<td style="text-align: left;">1.756000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TFP Italia 2023</td>
+<td style="text-align: left;">1.442000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Variazione cumulata</td>
+<td style="text-align: left;">-17.9%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CAGR 1974–2023</td>
+<td style="text-align: left;">-0.402%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;2: Italia: indicatori chiave post-1974</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="la-crisi-del-2008-lultimo-shock-generalizzato" class="level2 anchored" data-anchor-id="la-crisi-del-2008-lultimo-shock-generalizzato" data-number="5">
+<h2 class="anchored" data-anchor-id="la-crisi-del-2008-lultimo-shock-generalizzato" data-number="5"><span class="header-section-number">5</span> La crisi del 2008: l’ultimo shock generalizzato</h2>
+<div class="quarto-figure quarto-figure-center">
+<div class="figure">
+<p><img src="figure/loc_tfp_crisi2008.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<div class="caption">
+<p>Impatto della crisi finanziaria 2008 sulla TFP</p>
+</div>
+</div>
+</div>
+<p>La crisi finanziaria globale del 2008–2009 è l’ultimo grande evento esogeno che colpisce la produttività in modo sincronizzato. Il canale di trasmissione è diverso da quello del 1974: non è un rincaro dell’energia a rendere obsoleto il capitale, ma il credit crunch — il brusco razionamento del credito bancario — che blocca gli investimenti, comprime la domanda e accelera la distruzione di imprese. Le imprese più vulnerabili, quelle con meno liquidità e più esposte ai mercati finanziari, escono dal mercato o ridimensionano drasticamente; la produttività media dell’economia cade perché sopravvivono soprattutto le imprese che erano già meno dinamiche.</p>
+<p>Il grafico mostra la finestra 2004–2015 per mettere in evidenza l’ampiezza e la velocità del crollo. La tabella quantifica la variazione della TFP nel biennio più acuto (2008–2010):</p>
+<div id="45f2834b" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div id="T_83221" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="T_83221-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">&nbsp;</th>
+<th style="text-align: left;">Var. TFP 2008→2010</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Paese</td>
+<td style="text-align: left;">&nbsp;</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IT</td>
+<td style="text-align: left;">-3.5%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DE</td>
+<td style="text-align: left;">-2.2%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FR</td>
+<td style="text-align: left;">-1.9%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ES</td>
+<td style="text-align: left;">-0.9%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">US</td>
+<td style="text-align: left;">+1.9%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;3: Variazione TFP 2008–2010</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Tutti i paesi europei registrano cali: da −0,9 % della Spagna a −3,5 % dell’Italia. Solo gli Stati Uniti invertono la tendenza già entro il 2010 (+1,9 %), grazie alla rapidità della risposta di politica monetaria, alla flessibilità del mercato del lavoro e alla maggiore capacità delle imprese americane di riallocare risorse verso settori ad alta produttività come il digitale.</p>
+<p>Per l’Italia il 2008 rappresenta il colpo di grazia a una produttività che era già ferma da tre decenni. Non si tratta soltanto di un rimbalzo ciclico negativo: i dati mostrano che dopo il 2010 la TFP italiana non recupera i livelli pre-crisi, consolidando una traiettoria di declino strutturale che affonda le radici nel 1974.</p>
+</section>
+<section id="conclusioni" class="level2 anchored" data-anchor-id="conclusioni" data-number="6">
+<h2 class="anchored" data-anchor-id="conclusioni" data-number="6"><span class="header-section-number">6</span> Conclusioni</h2>
+<p>L’analisi conferma e quantifica quattro affermazioni che sintetizzano settant’anni di divergenza nella produttività europea.</p>
+<p><strong>1. Il catching-up è reale, ma dipende dalla distanza dalla frontiera.</strong> Nell’età dell’oro gli USA crescono lentamente (0,89 % annuo) perché non hanno nessuno da imitare: devono innovare ex novo. Le economie europee, ancora lontane dalla frontiera, importano tecnologie già testate, riorganizzano la produzione su modelli americani e crescono a ritmi quasi quattro volte superiori. Questo meccanismo — il <em>catching-up</em> di Gerschenkron — spiega perché i paesi arretrati possano convergere rapidamente, ma anche perché la convergenza rallenta una volta che il divario si riduce.</p>
+<p><strong>2. Il 1974 è uno spartiacque, non un rallentamento.</strong> Il primo shock petrolifero non è un ciclo negativo passeggero: provoca una caduta strutturale della crescita della produttività in tutti i paesi. La differenza tra chi riesce a ripartire e chi no dipende dalla capacità di riallocare il capitale verso tecnologie non energivore, di ristrutturare il tessuto industriale e di mantenere investimenti in istruzione e ricerca anche nei periodi di austerità fiscale.</p>
+<p><strong>3. L’Italia è un caso a sé.</strong> È l’unico paese con CAGR della TFP negativo su tutti i sottoperiodi successivi al 1974. La TFP italiana nel 2023 è inferiore del 17,9 % rispetto al 1974: mezzo secolo perduto sul fronte dell’efficienza produttiva. Questo non significa che l’economia italiana non abbia prodotto ricchezza nel periodo, ma che l’ha fatto principalmente accumulando input — più capitale, più ore lavorate — e non migliorando l’efficienza con cui li utilizza. Un sentiero insostenibile nel lungo periodo.</p>
+<p><strong>4. Il 2008 amplifica i divari preesistenti.</strong> La crisi finanziaria colpisce tutti, ma non allo stesso modo. I paesi che erano riusciti a costruire una base produttiva solida nel trentennio precedente (Germania in testa) assorbono lo shock e riprendono. I paesi che arrivavano al 2008 già indeboliti — Italia in primo luogo — escono dalla crisi con una produttività ancora più lontana dalla frontiera. La politica economica post-2008 si è concentrata soprattutto sul consolidamento fiscale e sulla tenuta del sistema bancario; le riforme strutturali necessarie a riaccendere la crescita della TFP sono rimaste in larga parte incompiute.</p>
+</section>
+<section id="implicazioni-produttività-credito-e-la-prossima-frontiera" class="level2 anchored" data-anchor-id="implicazioni-produttività-credito-e-la-prossima-frontiera" data-number="7">
+<h2 class="anchored" data-anchor-id="implicazioni-produttività-credito-e-la-prossima-frontiera" data-number="7"><span class="header-section-number">7</span> Implicazioni: produttività, credito e la prossima frontiera</h2>
+<section id="la-tesi-in-sintesi" class="level3 anchored" data-anchor-id="la-tesi-in-sintesi" data-number="7.1">
+<h3 class="anchored" data-anchor-id="la-tesi-in-sintesi" data-number="7.1"><span class="header-section-number">7.1</span> La tesi in sintesi</h3>
+<p>L’Italia non è un paese che cresce poco: è un paese che da cinquant’anni fatica a trasformare le risorse in produttività. Il meccanismo di diffusione tecnologica che aveva alimentato il miracolo economico si è inceppato nel 1974 e non è mai stato riparato. Il risultato è che ogni shock esogeno — energetico nel 1974, finanziario nel 2008 — trova il sistema produttivo italiano già in posizione difensiva e produce effetti asimmetrici rispetto agli altri paesi europei.</p>
+<p>Questa distinzione non è accademica. Ha conseguenze dirette sul profilo di rischio delle imprese, sull’allocazione del credito e sulla valutazione della capacità di rimborso a medio termine.</p>
+</section>
+<section id="tfp-e-rischio-di-credito" class="level3 anchored" data-anchor-id="tfp-e-rischio-di-credito" data-number="7.2">
+<h3 class="anchored" data-anchor-id="tfp-e-rischio-di-credito" data-number="7.2"><span class="header-section-number">7.2</span> TFP e rischio di credito</h3>
+<p>Il divario di produttività si traduce in modo meccanico sulla redditività delle imprese. Un’impresa operante in un settore a TFP stagnante o decrescente deve compensare la perdita di efficienza con aumenti di prezzo — difficili in mercati aperti alla concorrenza internazionale — oppure comprimendo margini e investimenti. Nel lungo periodo, bassa TFP significa:</p>
+<ul>
+<li><strong>Minori flussi di cassa liberi</strong> disponibili per il servizio del debito, a parità di fatturato;</li>
+<li><strong>Maggiore esposizione agli shock di costo</strong> (energia, materie prime, salari) perché l’inefficienza produttiva riduce i cuscinetti di margine;</li>
+<li><strong>Difficoltà strutturali a crescere</strong> che rendono il debito bancario una soluzione di liquidità, non di investimento.</li>
+</ul>
+<p>La Germania ha accumulato +47 % di TFP tra il 1974 e il 2023; l’Italia ha perso il 17,9 %. Il differenziale — 64 punti percentuali in mezzo secolo — non è riassorbibile con cicli congiunturali favorevoli. Si tratta di uno scarto strutturale che un’analisi del merito creditizio corretta dovrebbe scontare nella valutazione delle PMI manifatturiere italiane, specialmente quelle operanti nei settori a più bassa intensità tecnologica.</p>
+</section>
+<section id="il-prossimo-shock-intelligenza-artificiale-e-digitale" class="level3 anchored" data-anchor-id="il-prossimo-shock-intelligenza-artificiale-e-digitale" data-number="7.3">
+<h3 class="anchored" data-anchor-id="il-prossimo-shock-intelligenza-artificiale-e-digitale" data-number="7.3"><span class="header-section-number">7.3</span> Il prossimo shock: intelligenza artificiale e digitale</h3>
+<p>Lo shock energetico del 1974 ha reso obsoleta una parte del capitale fisico costruito su energia a buon mercato. Lo shock AI degli anni 2020 rischia di rendere obsoleta una parte del capitale umano e organizzativo costruito su lavoro manuale a medio contenuto cognitivo — esattamente la specializzazione produttiva dove l’Italia è sovrarappresentata.</p>
+<p>I paesi che hanno mantenuto — o ricostruito — un meccanismo efficiente di diffusione tecnologica (Stati Uniti, Germania, in misura minore Francia) assorbono questo shock trasformandolo in guadagni di produttività. I paesi che arrivano al 2025 con una TFP già in declino rischiano invece di subire un effetto sostituzione senza contropartita: le attività a basso valore aggiunto vengono automatizzate, ma la capacità di generarne di nuove ad alto valore rimane compressa dalle stesse rigidità strutturali che hanno bloccato la crescita della TFP nei decenni precedenti.</p>
+<p>Il monitoraggio della TFP settoriale — già disponibile attraverso le serie Penn World Tables e i dati ISTAT sulla competitività — diventa quindi uno strumento di early warning per identificare le filiere dove il rischio di obsolescenza sistemica è più elevato, e dove la qualità del portafoglio crediti delle banche esposte a quelle filiere richiede un’attenzione aggiuntiva.</p>
+</section>
+</section>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2603_TotalFactorProductivity/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

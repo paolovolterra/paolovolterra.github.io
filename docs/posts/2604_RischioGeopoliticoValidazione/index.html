@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="ATECO 2025, rischio geopolitico, validazione, intensità energetica, export, input-output">
+<meta name="description" content="La nota verifica la coerenza della classificazione settoriale di rischio geopolitico (Medio / Medio-Alto / Alto per sezione ATECO) rispetto a tre proxy esterne indipendenti derivate da fonti Eurostat: intensità energetica (nrg_bal_s 2022), dipendenza da consumi intermedi (nama_10_a64 2022) ed…">
+
+<title>Validazione esterna dell’indicatore di rischio geopolitico settoriale – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Validazione esterna dell’indicatore di rischio geopolitico settoriale – Paolo Volterra">
+<meta property="og:description" content="La nota verifica la coerenza della classificazione settoriale di rischio geopolitico (Medio / Medio-Alto / Alto per sezione ATECO) rispetto a tre proxy esterne indipendenti derivate da fonti Eurostat: intensità energetica (nrg_bal_s 2022), dipendenza da consumi intermedi (nama_10_a64 2022) ed…">
+<meta property="og:image" content="https://paolovolterra.com/posts/2604_RischioGeopoliticoValidazione/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Validazione esterna dell’indicatore di rischio geopolitico settoriale – Paolo Volterra">
+<meta name="twitter:description" content="La nota verifica la coerenza della classificazione settoriale di rischio geopolitico (Medio / Medio-Alto / Alto per sezione ATECO) rispetto a tre proxy esterne indipendenti derivate da fonti Eurostat: intensità energetica (nrg_bal_s 2022), dipendenza da consumi intermedi (nama_10_a64 2022) ed…">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2604_RischioGeopoliticoValidazione/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#obiettivo-e-impostazione-metodologica" id="toc-obiettivo-e-impostazione-metodologica" class="nav-link active" data-scroll-target="#obiettivo-e-impostazione-metodologica"><span class="header-section-number">1</span> Obiettivo e impostazione metodologica</a>
+  <ul class="collapse">
+  <li><a href="#fonti-dati" id="toc-fonti-dati" class="nav-link" data-scroll-target="#fonti-dati"><span class="header-section-number">1.1</span> Fonti dati</a></li>
+  <li><a href="#score-composito-esterno" id="toc-score-composito-esterno" class="nav-link" data-scroll-target="#score-composito-esterno"><span class="header-section-number">1.2</span> Score composito esterno</a></li>
+  </ul></li>
+  <li><a href="#le-tre-dimensioni-dello-score-esterno" id="toc-le-tre-dimensioni-dello-score-esterno" class="nav-link" data-scroll-target="#le-tre-dimensioni-dello-score-esterno"><span class="header-section-number">2</span> Le tre dimensioni dello score esterno</a></li>
+  <li><a href="#il-confronto-classificazione-interna-vs-evidenze-esterne" id="toc-il-confronto-classificazione-interna-vs-evidenze-esterne" class="nav-link" data-scroll-target="#il-confronto-classificazione-interna-vs-evidenze-esterne"><span class="header-section-number">3</span> Il confronto: classificazione interna vs evidenze esterne</a></li>
+  <li><a href="#principali-evidenze" id="toc-principali-evidenze" class="nav-link" data-scroll-target="#principali-evidenze"><span class="header-section-number">4</span> Principali evidenze</a>
+  <ul class="collapse">
+  <li><a href="#sezione-b-estrazione-di-minerali" id="toc-sezione-b-estrazione-di-minerali" class="nav-link" data-scroll-target="#sezione-b-estrazione-di-minerali"><span class="header-section-number">4.1</span> Sezione B — Estrazione di minerali</a></li>
+  <li><a href="#sezione-n-noleggio-agenzie-supporto-alle-imprese" id="toc-sezione-n-noleggio-agenzie-supporto-alle-imprese" class="nav-link" data-scroll-target="#sezione-n-noleggio-agenzie-supporto-alle-imprese"><span class="header-section-number">4.2</span> Sezione N — Noleggio, agenzie, supporto alle imprese</a></li>
+  <li><a href="#sezioni-f-i-j-e-costruzioni-alloggio-ict-acquarifiuti" id="toc-sezioni-f-i-j-e-costruzioni-alloggio-ict-acquarifiuti" class="nav-link" data-scroll-target="#sezioni-f-i-j-e-costruzioni-alloggio-ict-acquarifiuti"><span class="header-section-number">4.3</span> Sezioni F, I, J, E — Costruzioni, Alloggio, ICT, Acqua/rifiuti</a></li>
+  </ul></li>
+  <li><a href="#limiti-metodologici" id="toc-limiti-metodologici" class="nav-link" data-scroll-target="#limiti-metodologici"><span class="header-section-number">5</span> Limiti metodologici</a>
+  <ul class="collapse">
+  <li><a href="#il-mapping-iea-nace-è-parziale-per-i-servizi" id="toc-il-mapping-iea-nace-è-parziale-per-i-servizi" class="nav-link" data-scroll-target="#il-mapping-iea-nace-è-parziale-per-i-servizi"><span class="header-section-number">5.1</span> 1. Il mapping IEA → NACE è parziale per i servizi</a></li>
+  <li><a href="#anni-di-riferimento-eterogenei" id="toc-anni-di-riferimento-eterogenei" class="nav-link" data-scroll-target="#anni-di-riferimento-eterogenei"><span class="header-section-number">5.2</span> 2. Anni di riferimento eterogenei</a></li>
+  <li><a href="#lo-score-esterno-misura-esposizione-strutturale-non-geopolitica-diretta" id="toc-lo-score-esterno-misura-esposizione-strutturale-non-geopolitica-diretta" class="nav-link" data-scroll-target="#lo-score-esterno-misura-esposizione-strutturale-non-geopolitica-diretta"><span class="header-section-number">5.3</span> 3. Lo score esterno misura esposizione strutturale, non geopolitica diretta</a></li>
+  <li><a href="#il-confronto-è-a-livello-di-sezione-a-n-non-di-divisione" id="toc-il-confronto-è-a-livello-di-sezione-a-n-non-di-divisione" class="nav-link" data-scroll-target="#il-confronto-è-a-livello-di-sezione-a-n-non-di-divisione"><span class="header-section-number">5.4</span> 4. Il confronto è a livello di sezione (A-N), non di divisione</a></li>
+  </ul></li>
+  <li><a href="#conclusioni" id="toc-conclusioni" class="nav-link" data-scroll-target="#conclusioni"><span class="header-section-number">6</span> Conclusioni</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2604_RischioGeopoliticoValidazione/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Validazione esterna dell’indicatore di rischio geopolitico settoriale</h1>
+<p class="subtitle lead">Confronto con proxy Eurostat: intensità energetica, dipendenza da input, esposizione commerciale</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Rischio geopolitico</div>
+    <div class="quarto-category">Settori</div>
+    <div class="quarto-category">Eurostat</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    La nota verifica la coerenza della classificazione settoriale di rischio geopolitico (Medio / Medio-Alto / Alto per sezione ATECO) rispetto a tre proxy esterne indipendenti derivate da fonti Eurostat: intensità energetica (nrg_bal_s 2022), dipendenza da consumi intermedi (nama_10_a64 2022) ed…
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">30 aprile 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>La nota verifica la coerenza della classificazione settoriale di rischio geopolitico (Medio / Medio-Alto / Alto per sezione ATECO) rispetto a tre proxy esterne indipendenti derivate da fonti Eurostat: intensità energetica (nrg_bal_s 2022), dipendenza da consumi intermedi (nama_10_a64 2022) ed esposizione alle esportazioni (SBS V15110 2019). Le tre dimensioni sono combinate in uno score composito esterno, normalizzato e confrontato con la classificazione interna. Su 13 sezioni ATECO, 6 risultano coerenti con le evidenze esterne; 1 presenta segnali di possibile sovrastima (G — commercio); 6 evidenziano possibili sottostime, in particolare nei trasporti marittimi/fluviali, nell’estrazione mineraria (B) e nei servizi di supporto alle imprese (N).</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>ATECO 2025, rischio geopolitico, validazione, intensità energetica, export, input-output</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="obiettivo-e-impostazione-metodologica" class="level2 anchored" data-number="1" data-anchor-id="obiettivo-e-impostazione-metodologica">
+<h2 class="anchored" data-number="1" data-anchor-id="obiettivo-e-impostazione-metodologica"><span class="header-section-number">1</span> Obiettivo e impostazione metodologica</h2>
+<p>La classificazione di rischio geopolitico adottata in questo lavoro assegna a ciascuna divisione ATECO 2025 un livello di rischio (Medio, Medio-Alto, Alto) sulla base di criteri prevalentemente qualitativi e di valutazione esperta. Questa nota pone una domanda semplice e operativamente rilevante:</p>
+<blockquote class="blockquote">
+<p><em>I settori classificati come più rischiosi mostrano, nei dati osservabili, caratteristiche coerenti con un’esposizione geopolitica elevata?</em></p>
+</blockquote>
+<p>La risposta richiede di costruire un <strong>indice di confronto esterno</strong> basato su proxy quantitative e indipendenti dall’indicatore interno. Le proxy utilizzate sono tre:</p>
+<ol type="1">
+<li><p><strong>Intensità energetica</strong>: il consumo finale di energia per unità di valore aggiunto è un indicatore consolidato di esposizione agli shock sui mercati energetici, che rappresentano il principale canale di trasmissione della crisi in Medio Oriente.</p></li>
+<li><p><strong>Dipendenza da consumi intermedi</strong>: la quota di input intermedi sull’output totale misura quanto un settore dipenda da forniture esterne — incluse quelle internazionali — ed è quindi un proxy della sua vulnerabilità alle interruzioni di filiera.</p></li>
+<li><p><strong>Esposizione alle esportazioni</strong>: la quota di esportazioni sull’output misura l’integrazione del settore nei mercati internazionali e la sua sensibilità a variazioni dei flussi commerciali globali.</p></li>
+</ol>
+<section id="fonti-dati" class="level3 anchored" data-number="1.1" data-anchor-id="fonti-dati">
+<h3 class="anchored" data-number="1.1" data-anchor-id="fonti-dati"><span class="header-section-number">1.1</span> Fonti dati</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 36%">
+<col style="width: 13%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Proxy</th>
+<th style="text-align: left;">Dataset Eurostat</th>
+<th style="text-align: left;">Anno</th>
+<th style="text-align: left;">Unità</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Intensità energetica</td>
+<td style="text-align: left;"><code>nrg_bal_s</code> (IEA sectoral)</td>
+<td style="text-align: left;">2022</td>
+<td style="text-align: left;">TJ / MLN EUR VA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dipendenza da input</td>
+<td style="text-align: left;"><code>nama_10_a64</code> (P2/P1)</td>
+<td style="text-align: left;">2022</td>
+<td style="text-align: left;">quota 0–1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Export intensity</td>
+<td style="text-align: left;"><code>sbs_na_sca_r2</code> (V15110 / P1)</td>
+<td style="text-align: left;">2019</td>
+<td style="text-align: left;">quota 0–1</td>
+</tr>
+</tbody>
+</table>
+<p>Il mapping tra settori IEA (utilizzati in <code>nrg_bal_s</code>) e sezioni NACE/ATECO è semplificato: i sub-settori industriali (acciaio, chimica, minerali non metalliferi, ecc.) sono aggregati alla sezione C; i trasporti IEA (FC_TRA_E) alla sezione H; i servizi commerciali e pubblici (FC_OTH_CP_E) alle sezioni di servizi proporzionalmente al valore aggiunto. La sezione D (energia) incorpora la quota di autoconsumo dell’industria residua.</p>
+</section>
+<section id="score-composito-esterno" class="level3 anchored" data-number="1.2" data-anchor-id="score-composito-esterno">
+<h3 class="anchored" data-number="1.2" data-anchor-id="score-composito-esterno"><span class="header-section-number">1.2</span> Score composito esterno</h3>
+<p>Le tre proxy vengono normalizzate min-max e aggregate con pesi prefissati:</p>
+<p><span class="math display">\[\text{Score\_ext} = 0.35 \times \text{energy\_norm} + 0.35 \times \text{input\_norm} + 0.30 \times \text{export\_norm}\]</span></p>
+<p>Lo score composito viene poi convertito in classi (tercili) comparabili con la classificazione interna: basso → Medio, medio → Medio-Alto, alto → Alto.</p>
+</section>
+</section>
+<section id="le-tre-dimensioni-dello-score-esterno" class="level2 anchored" data-number="2" data-anchor-id="le-tre-dimensioni-dello-score-esterno">
+<h2 class="anchored" data-number="2" data-anchor-id="le-tre-dimensioni-dello-score-esterno"><span class="header-section-number">2</span> Le tre dimensioni dello score esterno</h2>
+<div id="cell-fig-tre-dimensioni" class="cell" data-execution_count="2">
+<p>Codice</p>
+<div class="code-copy-outer-scaffold">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="fl">4.5</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dim_info <span class="op">=</span> [</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"score_energy"</span>, <span class="st">"Intensità energetica</span><span class="ch">\n</span><span class="st">(energia / VA)"</span>, <span class="st">"#8e44ad"</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"score_input"</span>,  <span class="st">"Dipendenza da input</span><span class="ch">\n</span><span class="st">(input intermedi / output)"</span>, <span class="st">"#2980b9"</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"score_export"</span>, <span class="st">"Esposizione export</span><span class="ch">\n</span><span class="st">(export / output)"</span>, <span class="st">"#27ae60"</span>),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, (col, title, color) <span class="kw">in</span> <span class="bu">zip</span>(axes, dim_info):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    sub <span class="op">=</span> val.sort_values(col, ascending<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    ax.barh(sub[<span class="st">"sezione"</span>], sub[col], color<span class="op">=</span>color, height<span class="op">=</span><span class="fl">0.65</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Score 0–1"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    ax.set_title(title, fontweight<span class="op">=</span><span class="st">"bold"</span>, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(<span class="dv">0</span>, <span class="fl">1.1</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, (_, row) <span class="kw">in</span> <span class="bu">enumerate</span>(sub.iterrows()):</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        ax.text(row[col] <span class="op">+</span> <span class="fl">0.02</span>, i, <span class="ss">f"</span><span class="sc">{</span>row[col]<span class="sc">:.2f}</span><span class="ss">"</span>, va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"OUT/fig_validation_dimensioni.png"</span>, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="figura-tre-dimensioni" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-tre-dimensioni-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig01.png" class="figure-img" role="img" width="1138" height="422"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;1: Tre proxy di esposizione geopolitica per sezione ATECO (score normalizzato 0–1)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Le tre proxy catturano aspetti distinti dell’esposizione geopolitica:</p>
+<ul>
+<li><p><strong>Intensità energetica</strong>: domina nei trasporti (H) e nell’energia (D), riflette l’esposizione diretta agli shock petroliferi e del gas naturale. Sezione H: 17,9 TJ/MLN EUR di VA, valore 8 volte superiore alla media dei servizi.</p></li>
+<li><p><strong>Dipendenza da input</strong>: la manifattura (C) e l’energia (D) mostrano la quota più alta di input intermedi sull’output (75–76%), indicando catene di fornitura dense e potenzialmente vulnerabili. L’immobiliare (L) è la sezione con la dipendenza da input più bassa (14%), coerentemente con la sua natura di settore labour/capital intensive a bassa trasformazione.</p></li>
+<li><p><strong>Esposizione export</strong>: estrazione (B) ed energia (D) mostrano elevata intensità di esportazione. Il dato per i servizi di supporto alle imprese (N) — relativamente alto — riflette le esportazioni di servizi di logistica integrata e noleggio internazionale registrate nell’anno di riferimento SBS.</p></li>
+</ul>
+</section>
+<section id="il-confronto-classificazione-interna-vs-evidenze-esterne" class="level2 anchored" data-number="3" data-anchor-id="il-confronto-classificazione-interna-vs-evidenze-esterne">
+<h2 class="anchored" data-number="3" data-anchor-id="il-confronto-classificazione-interna-vs-evidenze-esterne"><span class="header-section-number">3</span> Il confronto: classificazione interna vs evidenze esterne</h2>
+<div id="cell-fig-confronto-scatter" class="cell" data-execution_count="3">
+<p>Codice</p>
+<div class="code-copy-outer-scaffold">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Jitter orizzontale per leggibilità</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>jitter <span class="op">=</span> np.random.uniform(<span class="op">-</span><span class="fl">0.08</span>, <span class="fl">0.08</span>, <span class="bu">len</span>(val))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>col_esito <span class="op">=</span> {<span class="st">"Coerente"</span>: <span class="st">"#27ae60"</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Possibile sovrastima interna"</span>: <span class="st">"#e67e22"</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Possibile sottostima interna"</span>: <span class="st">"#c0392b"</span>}</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _, row <span class="kw">in</span> val.iterrows():</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    color <span class="op">=</span> col_esito.get(row[<span class="st">"esito"</span>], <span class="st">"#999"</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    ax.scatter(row[<span class="st">"rischio_num"</span>] <span class="op">+</span> <span class="fl">0.02</span>, row[<span class="st">"score_esterno"</span>],</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>               color<span class="op">=</span>color, s<span class="op">=</span><span class="dv">120</span>, zorder<span class="op">=</span><span class="dv">5</span>, edgecolors<span class="op">=</span><span class="st">"white"</span>, linewidth<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    ax.annotate(row[<span class="st">"sezione"</span>], (row[<span class="st">"rischio_num"</span>] <span class="op">+</span> <span class="fl">0.02</span>, row[<span class="st">"score_esterno"</span>]),</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                textcoords<span class="op">=</span><span class="st">"offset points"</span>, xytext<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">0</span>), va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Banda di coerenza (±1 livello)</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>ax.axhspan(<span class="dv">0</span>, <span class="fl">0.33</span>, alpha<span class="op">=</span><span class="fl">0.06</span>, color<span class="op">=</span><span class="st">"#f1c40f"</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>ax.axhspan(<span class="fl">0.33</span>, <span class="fl">0.66</span>, alpha<span class="op">=</span><span class="fl">0.06</span>, color<span class="op">=</span><span class="st">"#e67e22"</span>)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>ax.axhspan(<span class="fl">0.66</span>, <span class="fl">1.0</span>, alpha<span class="op">=</span><span class="fl">0.06</span>, color<span class="op">=</span><span class="st">"#c0392b"</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Classificazione interna (1=Medio, 2=Medio/Alto, 3=Alto)"</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Score esterno composito (0–1)"</span>)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Coerenza classificazione interna vs evidenze esterne"</span>, fontweight<span class="op">=</span><span class="st">"bold"</span>)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>ax.set_xticks([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels([<span class="st">"Medio"</span>, <span class="st">"Medio/Alto"</span>, <span class="st">"Alto"</span>])</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>, <span class="fl">0.85</span>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>handles <span class="op">=</span> [mpatches.Patch(color<span class="op">=</span>v, label<span class="op">=</span>k) <span class="cf">for</span> k,v <span class="kw">in</span> col_esito.items()]</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>ax.legend(handles<span class="op">=</span>handles, loc<span class="op">=</span><span class="st">"upper left"</span>, fontsize<span class="op">=</span><span class="dv">8</span>, framealpha<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"OUT/fig_validation_scatter.png"</span>, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="figura-confronto-scatter" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-confronto-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig02.png" class="figure-img" role="img" width="758" height="470"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;2: Classificazione interna vs score esterno per sezione ATECO</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<p>Codice</p>
+<div class="code-copy-outer-scaffold">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>desc_sez <span class="op">=</span> {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A"</span>:<span class="st">"Agricoltura, silvicoltura e pesca"</span>,<span class="st">"B"</span>:<span class="st">"Estrazione di minerali"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C"</span>:<span class="st">"Attività manifatturiere"</span>,<span class="st">"D"</span>:<span class="st">"Fornitura di energia elettrica, gas"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"E"</span>:<span class="st">"Fornitura di acqua, rifiuti"</span>,<span class="st">"F"</span>:<span class="st">"Costruzioni"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"G"</span>:<span class="st">"Commercio all'ingrosso e al dettaglio"</span>,<span class="st">"H"</span>:<span class="st">"Trasporto e magazzinaggio"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"I"</span>:<span class="st">"Alloggio e ristorazione"</span>,<span class="st">"J"</span>:<span class="st">"Servizi ICT"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"L"</span>:<span class="st">"Attività immobiliari"</span>,<span class="st">"M"</span>:<span class="st">"Attività professionali e scientifiche"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"N"</span>:<span class="st">"Noleggio, agenzie, supporto alle imprese"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>esito_symbol <span class="op">=</span> {</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Coerente"</span>: <span class="st">"✔ Coerente"</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Possibile sovrastima interna"</span>: <span class="st">"▼ Possibile sovrastima"</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Possibile sottostima interna"</span>: <span class="st">"▲ Possibile sottostima"</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>tab <span class="op">=</span> val[[<span class="st">"sezione"</span>,<span class="st">"rischio_label"</span>,<span class="st">"score_esterno"</span>,<span class="st">"score_ext_label"</span>,<span class="st">"esito"</span>]].copy()</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>tab[<span class="st">"Sezione"</span>] <span class="op">=</span> tab[<span class="st">"sezione"</span>]</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>tab[<span class="st">"Descrizione"</span>] <span class="op">=</span> tab[<span class="st">"sezione"</span>].<span class="bu">map</span>(desc_sez)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>tab[<span class="st">"Rischio interno"</span>] <span class="op">=</span> tab[<span class="st">"rischio_label"</span>]</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>tab[<span class="st">"Score esterno"</span>] <span class="op">=</span> tab[<span class="st">"score_esterno"</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="ss">f"</span><span class="sc">{</span>x<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>tab[<span class="st">"Classe esterna"</span>] <span class="op">=</span> tab[<span class="st">"score_ext_label"</span>]</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>tab[<span class="st">"Esito"</span>] <span class="op">=</span> tab[<span class="st">"esito"</span>].<span class="bu">map</span>(esito_symbol)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>tab_out <span class="op">=</span> tab[[<span class="st">"Sezione"</span>,<span class="st">"Descrizione"</span>,<span class="st">"Rischio interno"</span>,<span class="st">"Score esterno"</span>,<span class="st">"Classe esterna"</span>,<span class="st">"Esito"</span>]].copy()</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>tab_out[<span class="st">"_sort"</span>] <span class="op">=</span> tab[<span class="st">"score_esterno"</span>]</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>tab_out.sort_values(<span class="st">"_sort"</span>, ascending<span class="op">=</span><span class="va">False</span>).drop(columns<span class="op">=</span><span class="st">"_sort"</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tab-confronto" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-confronto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">Sezione</th>
+<th style="text-align: left;">Descrizione</th>
+<th style="text-align: left;">Rischio interno</th>
+<th style="text-align: left;">Score esterno</th>
+<th style="text-align: left;">Classe esterna</th>
+<th style="text-align: left;">Esito</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: left;">H</td>
+<td style="text-align: left;">Trasporto e magazzinaggio</td>
+<td style="text-align: left;">Alto</td>
+<td style="text-align: left;">0.744</td>
+<td style="text-align: left;">Alto</td>
+<td style="text-align: left;">✔ Coerente</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Estrazione di minerali</td>
+<td style="text-align: left;">Medio/Alto</td>
+<td style="text-align: left;">0.627</td>
+<td style="text-align: left;">Alto</td>
+<td style="text-align: left;">▲ Possibile sottostima</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Fornitura di energia elettrica, gas</td>
+<td style="text-align: left;">Alto</td>
+<td style="text-align: left;">0.472</td>
+<td style="text-align: left;">Alto</td>
+<td style="text-align: left;">✔ Coerente</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Attività manifatturiere</td>
+<td style="text-align: left;">Alto</td>
+<td style="text-align: left;">0.466</td>
+<td style="text-align: left;">Alto</td>
+<td style="text-align: left;">✔ Coerente</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">Noleggio, agenzie, supporto alle imprese</td>
+<td style="text-align: left;">Medio</td>
+<td style="text-align: left;">0.464</td>
+<td style="text-align: left;">Alto</td>
+<td style="text-align: left;">▲ Possibile sottostima</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td style="text-align: left;">E</td>
+<td style="text-align: left;">Fornitura di acqua, rifiuti</td>
+<td style="text-align: left;">Medio</td>
+<td style="text-align: left;">0.434</td>
+<td style="text-align: left;">Medio/Alto</td>
+<td style="text-align: left;">▲ Possibile sottostima</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td style="text-align: left;">J</td>
+<td style="text-align: left;">Servizi ICT</td>
+<td style="text-align: left;">Medio</td>
+<td style="text-align: left;">0.358</td>
+<td style="text-align: left;">Medio/Alto</td>
+<td style="text-align: left;">▲ Possibile sottostima</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: left;">Costruzioni</td>
+<td style="text-align: left;">Medio</td>
+<td style="text-align: left;">0.351</td>
+<td style="text-align: left;">Medio/Alto</td>
+<td style="text-align: left;">▲ Possibile sottostima</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Alloggio e ristorazione</td>
+<td style="text-align: left;">Medio</td>
+<td style="text-align: left;">0.310</td>
+<td style="text-align: left;">Medio/Alto</td>
+<td style="text-align: left;">▲ Possibile sottostima</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td style="text-align: left;">G</td>
+<td style="text-align: left;">Commercio all'ingrosso e al dettaglio</td>
+<td style="text-align: left;">Medio/Alto</td>
+<td style="text-align: left;">0.298</td>
+<td style="text-align: left;">Medio</td>
+<td style="text-align: left;">▼ Possibile sovrastima</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Agricoltura, silvicoltura e pesca</td>
+<td style="text-align: left;">Medio</td>
+<td style="text-align: left;">0.262</td>
+<td style="text-align: left;">Medio</td>
+<td style="text-align: left;">✔ Coerente</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: left;">Attività professionali e scientifiche</td>
+<td style="text-align: left;">Medio</td>
+<td style="text-align: left;">0.222</td>
+<td style="text-align: left;">Medio</td>
+<td style="text-align: left;">✔ Coerente</td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td style="text-align: left;">L</td>
+<td style="text-align: left;">Attività immobiliari</td>
+<td style="text-align: left;">Medio</td>
+<td style="text-align: left;">0.100</td>
+<td style="text-align: left;">Medio</td>
+<td style="text-align: left;">✔ Coerente</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;1: Confronto classificazione interna vs score esterno per sezione ATECO</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="principali-evidenze" class="level2 anchored" data-number="4" data-anchor-id="principali-evidenze">
+<h2 class="anchored" data-number="4" data-anchor-id="principali-evidenze"><span class="header-section-number">4</span> Principali evidenze</h2>
+<p>Su 13 sezioni analizzate:</p>
+<ul>
+<li><p><strong>6 coerenti</strong>: le sezioni H (Trasporti), D (Energia), C (Manifattura), A (Agricoltura), M (Servizi professionali) e L (Immobiliare) presentano una classificazione interna allineata alle evidenze esterne. In particolare, le tre sezioni classificate Alto internamente (H, D, C) ricevono tutte punteggi alti o medio-alti dall’analisi esterna.</p></li>
+<li><p><strong>1 possibile sovrastima</strong> — sezione G (Commercio): la classificazione interna Medio-Alto non trova pieno riscontro nello score esterno (Medio), che riflette intensità energetica bassa e dipendenza da input nella media dei servizi. Tuttavia, la classificazione Medio-Alto per G rimane difendibile in ottica di policy: il commercio all’ingrosso (div. 46) e al dettaglio (div. 47) fungono da intermediari di prodotti con elevata esposizione geopolitica, anche se il settore in quanto tale non è ad alta intensità di input energetici.</p></li>
+<li><p><strong>6 possibili sottostime</strong> — B, E, F, I, J, N: queste sezioni, classificate internamente Medio o Medio-Alto, mostrano score esterni superiori alla classe assegnata. Le motivazioni variano per settore:</p></li>
+</ul>
+<section id="sezione-b-estrazione-di-minerali" class="level3 anchored" data-number="4.1" data-anchor-id="sezione-b-estrazione-di-minerali">
+<h3 class="anchored" data-number="4.1" data-anchor-id="sezione-b-estrazione-di-minerali"><span class="header-section-number">4.1</span> Sezione B — Estrazione di minerali</h3>
+<p>L’indicatore interno assegna un mix Alto/Medio-Alto alle divisioni dell’estrattivo. Lo score esterno colloca B nella classe Alto, principalmente per l’elevata quota di esportazioni di materie prime (indicatore V15110 SBS) e l’alta dipendenza da input. Il segnale è coerente con la natura dell’estrattivo: materie prime come nichel, rame e minerali critici hanno mercati fortemente influenzati da dinamiche geopolitiche.</p>
+</section>
+<section id="sezione-n-noleggio-agenzie-supporto-alle-imprese" class="level3 anchored" data-number="4.2" data-anchor-id="sezione-n-noleggio-agenzie-supporto-alle-imprese">
+<h3 class="anchored" data-number="4.2" data-anchor-id="sezione-n-noleggio-agenzie-supporto-alle-imprese"><span class="header-section-number">4.2</span> Sezione N — Noleggio, agenzie, supporto alle imprese</h3>
+<p>La sezione N mostra un’esposizione commerciale elevata (8,6% di export su output nel 2019 secondo SBS), superiore a quanto suggerisce la classificazione Medio. La componente rilevante è il noleggio di macchinari e attrezzature industriali a clientela internazionale e i servizi di logistica contrattuale, che creano esposizione indiretta a mercati esteri.</p>
+</section>
+<section id="sezioni-f-i-j-e-costruzioni-alloggio-ict-acquarifiuti" class="level3 anchored" data-number="4.3" data-anchor-id="sezioni-f-i-j-e-costruzioni-alloggio-ict-acquarifiuti">
+<h3 class="anchored" data-number="4.3" data-anchor-id="sezioni-f-i-j-e-costruzioni-alloggio-ict-acquarifiuti"><span class="header-section-number">4.3</span> Sezioni F, I, J, E — Costruzioni, Alloggio, ICT, Acqua/rifiuti</h3>
+<p>Per queste sezioni lo score esterno si colloca in classe Medio-Alto per effetto combinato della dipendenza da input intermedi (materiali da costruzione, attrezzature ICT, reagenti per il trattamento acque) e di flussi commerciali transfrontalieri non trascurabili. La classificazione interna Medio è conservativa ma operativamente difendibile, in quanto questi settori non hanno esposizione diretta alle rotte commerciali del Medio Oriente.</p>
+</section>
+</section>
+<section id="limiti-metodologici" class="level2 anchored" data-number="5" data-anchor-id="limiti-metodologici">
+<h2 class="anchored" data-number="5" data-anchor-id="limiti-metodologici"><span class="header-section-number">5</span> Limiti metodologici</h2>
+<section id="il-mapping-iea-nace-è-parziale-per-i-servizi" class="level3 anchored" data-number="5.1" data-anchor-id="il-mapping-iea-nace-è-parziale-per-i-servizi">
+<h3 class="anchored" data-number="5.1" data-anchor-id="il-mapping-iea-nace-è-parziale-per-i-servizi"><span class="header-section-number">5.1</span> 1. Il mapping IEA → NACE è parziale per i servizi</h3>
+<p>I dati energetici Eurostat (<code>nrg_bal_s</code>) disaggregano l’industria con dettaglio sub-settoriale (acciaio, chimica, minerali) ma riportano i servizi come aggregato (<code>FC_OTH_CP_E</code>). L’allocazione alle sezioni di servizi in proporzione al valore aggiunto introduce uniformità artificiale nell’intensità energetica delle sezioni F–N, limitando il potere discriminante della dimensione energetica per i non-industriali.</p>
+</section>
+<section id="anni-di-riferimento-eterogenei" class="level3 anchored" data-number="5.2" data-anchor-id="anni-di-riferimento-eterogenei">
+<h3 class="anchored" data-number="5.2" data-anchor-id="anni-di-riferimento-eterogenei"><span class="header-section-number">5.2</span> 2. Anni di riferimento eterogenei</h3>
+<p>I tre indicatori si riferiscono ad anni diversi (2019 per SBS export, 2022 per energia e conti nazionali). Il 2019 per le esportazioni evita le distorsioni COVID del 2020–2021 ma potrebbe non catturare ristrutturazioni recenti (es. supply chain reshoring post-2022).</p>
+</section>
+<section id="lo-score-esterno-misura-esposizione-strutturale-non-geopolitica-diretta" class="level3 anchored" data-number="5.3" data-anchor-id="lo-score-esterno-misura-esposizione-strutturale-non-geopolitica-diretta">
+<h3 class="anchored" data-number="5.3" data-anchor-id="lo-score-esterno-misura-esposizione-strutturale-non-geopolitica-diretta"><span class="header-section-number">5.3</span> 3. Lo score esterno misura esposizione strutturale, non geopolitica diretta</h3>
+<p>Le tre proxy misurano la struttura produttiva e commerciale del settore, non la sua effettiva esposizione alla crisi in Medio Oriente. Un settore con alta export intensity ma orientato a mercati non coinvolti (es. USA, Cina) riceve un punteggio elevato anche se la sua esposizione mediorientale è bassa.</p>
+</section>
+<section id="il-confronto-è-a-livello-di-sezione-a-n-non-di-divisione" class="level3 anchored" data-number="5.4" data-anchor-id="il-confronto-è-a-livello-di-sezione-a-n-non-di-divisione">
+<h3 class="anchored" data-number="5.4" data-anchor-id="il-confronto-è-a-livello-di-sezione-a-n-non-di-divisione"><span class="header-section-number">5.4</span> 4. Il confronto è a livello di sezione (A-N), non di divisione</h3>
+<p>L’indicatore interno opera a livello di divisione (2 cifre) e sotto-divisione, catturando eterogeneità interna che lo score esterno — costruito per sezione — non può vedere. Il caso più evidente è la sezione C (manifattura): al suo interno coesistono divisioni ad Alto rischio (es. 19 raffinazione, 24 metallurgia) e divisioni Medio (es. 10 alimentare, 31 mobili), che lo score aggregato appiattisce.</p>
+</section>
+</section>
+<section id="conclusioni" class="level2 anchored" data-number="6" data-anchor-id="conclusioni">
+<h2 class="anchored" data-number="6" data-anchor-id="conclusioni"><span class="header-section-number">6</span> Conclusioni</h2>
+<p>La validazione esterna conferma la coerenza di fondo della classificazione per i settori ad alta intensità energetica e industriale (H, D, C). Emerge tuttavia uno spazio di possibile revisione metodologica in due direzioni:</p>
+<ol type="1">
+<li><p><strong>Verso l’alto</strong> (possibili sottostime): l’estrazione mineraria (B) e i servizi di noleggio e supporto (N) mostrano esposizioni commerciali non pienamente catturate dalla classificazione corrente. Una revisione delle divisioni 08–09 (minerali non ferrosi) e delle divisioni 77–82 (noleggio industriale, logistica contrattuale) potrebbe essere opportuna.</p></li>
+<li><p><strong>Verso il basso</strong> (possibile sovrastima): il commercio (G) presenta un’esposizione strutturale nella media dei servizi, anche se il suo ruolo di intermediario di merci ad alto rischio giustifica la classificazione Medio-Alto su base operativa.</p></li>
+</ol>
+<p>Il risultato più importante della validazione non è il punteggio, ma la <strong>conferma che la dimensione energetica e la dipendenza da input sono i driver dominanti</strong> dell’esposizione geopolitica osservabile — coerentemente con l’impatto della crisi in Medio Oriente sulle forniture di idrocarburi e sulle rotte di trasporto marittimo.</p>
+<hr>
+<p><em>Dati: Eurostat <code>nama_10_a64</code> (2022), <code>nrg_bal_s</code> (2022), <code>sbs_na_sca_r2</code> V15110 (2019). Elaborazione e mapping IEA→NACE a cura dell’autore.</em></p>
+</section>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2604_RischioGeopoliticoValidazione/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

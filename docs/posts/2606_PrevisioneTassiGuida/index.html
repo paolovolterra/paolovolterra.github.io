@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="description" content="Guida in 7 passi per chi non è economista — con i numeri del ciclo 2022–2026">
+
+<title>Come si costruisce una previsione sui tassi bancari – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Come si costruisce una previsione sui tassi bancari – Paolo Volterra">
+<meta property="og:description" content="Guida in 7 passi per chi non è economista — con i numeri del ciclo 2022–2026">
+<meta property="og:image" content="https://paolovolterra.com/posts/2606_PrevisioneTassiGuida/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Come si costruisce una previsione sui tassi bancari – Paolo Volterra">
+<meta name="twitter:description" content="Guida in 7 passi per chi non è economista — con i numeri del ciclo 2022–2026">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2606_PrevisioneTassiGuida/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#il-problema-che-vogliamo-risolvere" id="toc-il-problema-che-vogliamo-risolvere" class="nav-link active" data-scroll-target="#il-problema-che-vogliamo-risolvere"><span class="header-section-number">1</span> Il problema che vogliamo risolvere</a></li>
+  <li><a href="#passo-1-capire-chi-comanda-davvero-sui-tassi" id="toc-passo-1-capire-chi-comanda-davvero-sui-tassi" class="nav-link" data-scroll-target="#passo-1-capire-chi-comanda-davvero-sui-tassi"><span class="header-section-number">2</span> Passo 1 — Capire chi comanda davvero sui tassi</a></li>
+  <li><a href="#passo-2-raccogliere-i-dati-storici" id="toc-passo-2-raccogliere-i-dati-storici" class="nav-link" data-scroll-target="#passo-2-raccogliere-i-dati-storici"><span class="header-section-number">3</span> Passo 2 — Raccogliere i dati storici</a></li>
+  <li><a href="#passo-3-stimare-quanto-si-trasmette-il-coefficiente-β" id="toc-passo-3-stimare-quanto-si-trasmette-il-coefficiente-β" class="nav-link" data-scroll-target="#passo-3-stimare-quanto-si-trasmette-il-coefficiente-β"><span class="header-section-number">4</span> Passo 3 — Stimare quanto si trasmette (il coefficiente β)</a></li>
+  <li><a href="#passo-4-costruire-gli-scenari-sul-driver" id="toc-passo-4-costruire-gli-scenari-sul-driver" class="nav-link" data-scroll-target="#passo-4-costruire-gli-scenari-sul-driver"><span class="header-section-number">5</span> Passo 4 — Costruire gli scenari sul driver</a></li>
+  <li><a href="#passo-5-applicare-β-per-ottenere-la-previsione" id="toc-passo-5-applicare-β-per-ottenere-la-previsione" class="nav-link" data-scroll-target="#passo-5-applicare-β-per-ottenere-la-previsione"><span class="header-section-number">6</span> Passo 5 — Applicare β per ottenere la previsione</a></li>
+  <li><a href="#passo-6-confrontare-con-benchmark-esterni" id="toc-passo-6-confrontare-con-benchmark-esterni" class="nav-link" data-scroll-target="#passo-6-confrontare-con-benchmark-esterni"><span class="header-section-number">7</span> Passo 6 — Confrontare con benchmark esterni</a></li>
+  <li><a href="#passo-7-leggere-i-risultati" id="toc-passo-7-leggere-i-risultati" class="nav-link" data-scroll-target="#passo-7-leggere-i-risultati"><span class="header-section-number">8</span> Passo 7 — Leggere i risultati</a></li>
+  <li><a href="#i-limiti-del-modello" id="toc-i-limiti-del-modello" class="nav-link" data-scroll-target="#i-limiti-del-modello"><span class="header-section-number">9</span> I limiti del modello</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_PrevisioneTassiGuida/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Come si costruisce una previsione sui tassi bancari</h1>
+<p class="subtitle lead">Guida in 7 passi per chi non è economista — con i numeri del ciclo 2022–2026</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Tassi</div>
+    <div class="quarto-category">Banche</div>
+    <div class="quarto-category">Previsioni</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Guida in 7 passi per chi non è economista — con i numeri del ciclo 2022–2026
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">26 giugno 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div style="position:sticky;top:0;z-index:999;background:#1a2744;padding:9px 28px;font-family:'Source Sans Pro','Helvetica Neue',sans-serif;font-size:0.875em;display:flex;gap:0;align-items:center;border-bottom:3px solid #c9a84c;box-shadow:0 2px 8px rgba(0,0,0,.35)">
+<p><span style="color:#c9a84c;font-weight:700;letter-spacing:.04em;margin-right:20px">HUB TASSI 2026</span> <a href="index.html" style="color:#e8e8e8;text-decoration:none;padding:4px 12px;border-radius:3px;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='transparent'">Previsioni</a> <a href="glossario.html" style="color:#e8e8e8;text-decoration:none;padding:4px 12px;border-radius:3px;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='transparent'">Glossario</a> <a href="guida_profano.html" style="color:#e8e8e8;text-decoration:none;padding:4px 12px;border-radius:3px;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='transparent'">Guida</a> <a href="stress_test.html" style="color:#e8e8e8;text-decoration:none;padding:4px 12px;border-radius:3px;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='transparent'">Stress&nbsp;Test</a> <a href="canali.html" style="color:#e8e8e8;text-decoration:none;padding:4px 12px;border-radius:3px;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='transparent'">Canali</a> <span style="margin-left:auto;color:#8899aa;font-size:.8em;font-style:italic">dati BCE · MIR Italia</span></p>
+</div>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p>Consiglio</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Questo documento è scritto per chi non è economista.</strong> Spiega passo per passo come si costruisce una previsione quantitativa sui tassi bancari italiani, partendo dal tasso di policy della BCE e arrivando alle proiezioni concrete per mutui e depositi. Per i risultati numerici già pronti, vai alle <a href="index.html">Previsioni H2 2026</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<section id="il-problema-che-vogliamo-risolvere" class="level2 anchored" data-anchor-id="il-problema-che-vogliamo-risolvere" data-number="1">
+<h2 class="anchored" data-anchor-id="il-problema-che-vogliamo-risolvere" data-number="1"><span class="header-section-number">1</span> Il problema che vogliamo risolvere</h2>
+<p>Quando la Banca Centrale Europea decide di alzare i tassi di interesse, sui giornali si legge che “i mutui costeranno di più” o che “i risparmi renderanno di più”. Ma di quanto, esattamente? E dopo quanto tempo? E vale allo stesso modo per tutti i tipi di prestito e di deposito?</p>
+<p>Queste domande sembrano semplici ma richiedono un metodo rigoroso per essere risposte. Al momento di scrivere questo documento (dati al 2026-07-01), il DFR BCE è al 2.50% e l’Euribor 3M è a 2.62%. Le banche italiane applicano tassi che vanno dal 0.19% sui conti correnti fino al 3.73% sui prestiti alle imprese a breve termine. Come si prevede dove saranno questi tassi a dicembre 2026?</p>
+<hr>
+</section>
+<section id="passo-1-capire-chi-comanda-davvero-sui-tassi" class="level2 anchored" data-anchor-id="passo-1-capire-chi-comanda-davvero-sui-tassi" data-number="2">
+<h2 class="anchored" data-anchor-id="passo-1-capire-chi-comanda-davvero-sui-tassi" data-number="2"><span class="header-section-number">2</span> Passo 1 — Capire chi comanda davvero sui tassi</h2>
+<p>Il primo errore che si commette è pensare che la BCE fissi direttamente il tasso del mutuo o del conto corrente. Non è così. La BCE fissa un tasso di riferimento, chiamato <strong>DFR</strong> (Deposit Facility Rate), che è il tasso che la BCE paga alle banche commerciali sui soldi che queste parcheggiano presso di lei. È un tasso “all’ingrosso”, che riguarda i rapporti tra la BCE e le banche — non tra le banche e i clienti finali.</p>
+<p>Il tasso del mutuo o del conto corrente è fissato dalla singola banca commerciale, che segue la propria logica di costi e ricavi. Tuttavia, esiste una catena di trasmissione che collega il DFR della BCE ai tassi che il cliente finale paga o riceve:</p>
+<p><strong>La BCE alza il DFR</strong> → Le banche commerciali trovano più costoso finanziarsi sul mercato interbancario. Il mercato interbancario funziona a un tasso chiamato <strong>Euribor 3M</strong> — il tasso a cui le banche si prestano tra loro a 3 mesi — che segue il DFR con uno spread stabile di circa 10–15bp.</p>
+<p><strong>L’Euribor 3M sale</strong> → Le banche usano l’Euribor come riferimento per prezzare i prestiti a tasso variabile. Se un mutuo è “Euribor + 1,5%”, e l’Euribor sale dal 2,37% al 2,62%, il tasso del mutuo sale di conseguenza.</p>
+<p><strong>I tassi a lungo termine si muovono</strong> → Per i prodotti a tasso fisso (mutui fissi, obbligazioni) il riferimento non è l’Euribor ma i tassi di mercato a lungo termine — tipicamente il rendimento del Bund tedesco a 10 anni o il tasso swap (IRS) a 10 anni. Questi si muovono in modo meno diretto rispetto al DFR.</p>
+<p><strong>Le banche aggiustano i propri listini</strong> → Solo alla fine di questa catena la banca commerciale decide come riprezzare mutui, prestiti alle imprese, conti correnti, depositi a termine. E qui entra in gioco la concorrenza: se nessuna banca concorrente alza i tassi sui depositi, la mia banca non ha incentivo a farlo.</p>
+<hr>
+</section>
+<section id="passo-2-raccogliere-i-dati-storici" class="level2 anchored" data-anchor-id="passo-2-raccogliere-i-dati-storici" data-number="3">
+<h2 class="anchored" data-anchor-id="passo-2-raccogliere-i-dati-storici" data-number="3"><span class="header-section-number">3</span> Passo 2 — Raccogliere i dati storici</h2>
+<p>Per costruire una previsione statistica, il punto di partenza sono i dati storici. Abbiamo bisogno di due serie temporali mensili, possibilmente lunghe almeno 5–10 anni.</p>
+<p><strong>Serie 1 — il driver</strong>: il tasso che guida il sistema, scelto in base al tipo di prodotto bancario. Per i prestiti variabili è l’Euribor 3M; per i depositi è il DFR; per i mutui fissi è il tasso swap a 10 anni.</p>
+<p><strong>Serie 2 — il tasso bancario italiano</strong>: si scarica dal sito della BCE (ECB Statistical Data Warehouse) dove sono pubblicate, mese per mese dal 2003, le statistiche MIR (MFI Interest Rates) per ogni paese dell’area euro.</p>
+<p>Come si sono mossi i dati negli ultimi anni:</p>
+<div id="0ca13258" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div id="T_c5d58" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="T_c5d58-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Mese</th>
+<th style="text-align: left;">DFR BCE (%)</th>
+<th style="text-align: left;">Mutui variabili (%)</th>
+<th style="text-align: left;">Depositi termine (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Gennaio 2022</td>
+<td style="text-align: left;">0.00</td>
+<td style="text-align: left;">1.47</td>
+<td style="text-align: left;">0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Luglio 2022</td>
+<td style="text-align: left;">0.50</td>
+<td style="text-align: left;">1.89</td>
+<td style="text-align: left;">0.18</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dicembre 2022</td>
+<td style="text-align: left;">2.00</td>
+<td style="text-align: left;">2.85</td>
+<td style="text-align: left;">0.62</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Settembre 2023</td>
+<td style="text-align: left;">4.00</td>
+<td style="text-align: left;">4.85</td>
+<td style="text-align: left;">1.44</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Settembre 2025</td>
+<td style="text-align: left;">2.00</td>
+<td style="text-align: left;">2.80</td>
+<td style="text-align: left;">1.42</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Aprile 2026</td>
+<td style="text-align: left;">2.25</td>
+<td style="text-align: left;">2.99</td>
+<td style="text-align: left;">2.47</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;1: Evoluzione storica: DFR vs tassi bancari italiani (MIR)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Anche a occhio si vede che esiste una relazione: quando il DFR sale, i tassi sui mutui salgono. Ma non della stessa quantità: il DFR è salito di 4 punti percentuali, mentre i mutui sono saliti di circa 3,4 punti. E i depositi a termine, pur salendo, sono rimasti molto al di sotto della variazione del DFR. Questa asimmetria è già un segnale che la relazione è più complessa di una semplice proporzione.</p>
+<hr>
+</section>
+<section id="passo-3-stimare-quanto-si-trasmette-il-coefficiente-β" class="level2 anchored" data-anchor-id="passo-3-stimare-quanto-si-trasmette-il-coefficiente-β" data-number="4">
+<h2 class="anchored" data-anchor-id="passo-3-stimare-quanto-si-trasmette-il-coefficiente-β" data-number="4"><span class="header-section-number">4</span> Passo 3 — Stimare quanto si trasmette (il coefficiente β)</h2>
+<p>Il cuore del modello è stimare, con precisione statistica, quanto di ogni variazione del DFR si trasmette ai tassi bancari. Questo si fa con una regressione lineare OLS (Ordinary Least Squares):</p>
+<pre><code>variazione_tasso_bancario(mese t) = β × variazione_DFR(mese t − lag)</code></pre>
+<p>Il coefficiente β — detto anche “coefficiente di pass-through” — misura la quota di ogni variazione del DFR che si trasmette al tasso bancario. I risultati per i principali tassi italiani sono:</p>
+<div id="b28871c0" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div id="T_223a2" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="T_223a2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Tasso bancario</th>
+<th style="text-align: left;">β stimato</th>
+<th style="text-align: left;">Interpretazione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Prestiti imprese breve termine</td>
+<td style="text-align: left;">0.638</td>
+<td style="text-align: left;">Per ogni +100bp DFR → +64bp sul tasso</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mutui variabili</td>
+<td style="text-align: left;">0.575</td>
+<td style="text-align: left;">Per ogni +100bp DFR → +57bp sul tasso</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mutui fissi</td>
+<td style="text-align: left;">0.292</td>
+<td style="text-align: left;">Solo 29bp trasmessi — driver è il tasso lungo (Bund), non DFR</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Conti correnti famiglie</td>
+<td style="text-align: left;">0.052</td>
+<td style="text-align: left;">Quasi zero: le banche non alzano i depositi a vista</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Depositi a termine famiglie</td>
+<td style="text-align: left;">0.430</td>
+<td style="text-align: left;">Ancora meno: i depositi vincolati si muovono pochissimo</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;2: Coefficienti di pass-through β — stima OLS su ciclo 2022–2026</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Questi numeri rivelano un’asimmetria strutturale: le banche alzano abbastanza rapidamente i tassi sui prestiti (β tra 0,58 e 0,64), mentre sui depositi a <strong>vista</strong> restano vischiosi (β tra 0,05 e 0,12). I <strong>depositi a termine</strong>, invece, si adeguano di più (β ≈ 0,43), segno che la concorrenza sulla raccolta vincolata è attiva. La vischiosità dei conti correnti — i correntisti italiani spostano poco i risparmi finché non lo fanno, le banche non hanno incentivo a pagare di più — resta la ragione principale dei margini bancari elevati del 2023–2024.</p>
+<hr>
+</section>
+<section id="passo-4-costruire-gli-scenari-sul-driver" class="level2 anchored" data-anchor-id="passo-4-costruire-gli-scenari-sul-driver" data-number="5">
+<h2 class="anchored" data-anchor-id="passo-4-costruire-gli-scenari-sul-driver" data-number="5"><span class="header-section-number">5</span> Passo 4 — Costruire gli scenari sul driver</h2>
+<p>Non sappiamo con certezza dove andrà il DFR nei prossimi sei mesi. Nessuno lo sa — nemmeno la BCE stessa. Quindi costruiamo tre scenari alternativi che rappresentano altrettante possibili evoluzioni del contesto macroeconomico.</p>
+<div id="0e6cb506" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="4">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Scenario</th>
+<th style="text-align: left;">DFR dic-26</th>
+<th style="text-align: left;">ΔDFR</th>
+<th style="text-align: left;">Quando si materializza</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Benigno (fermo)</td>
+<td style="text-align: left;">2.50%</td>
+<td style="text-align: left;">0bp</td>
+<td style="text-align: left;">De-escalation geopolitica rapida, BCE in pausa</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Base (= BCE)</td>
+<td style="text-align: left;">2.75%</td>
+<td style="text-align: left;">+25bp</td>
+<td style="text-align: left;">Inflazione scende gradualmente, un rialzo precauzionale</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Avverso (+60bp)</td>
+<td style="text-align: left;">3.10%</td>
+<td style="text-align: left;">+60bp</td>
+<td style="text-align: left;">Shock energetico persistente, BCE costretta ad alzare più aggressivamente</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Vale la pena notare che questi scenari non sono equiprobabili: al momento della stesura, il mercato assegna la maggiore probabilità allo scenario Base, con code significative verso l’Avverso.</p>
+<hr>
+</section>
+<section id="passo-5-applicare-β-per-ottenere-la-previsione" class="level2 anchored" data-anchor-id="passo-5-applicare-β-per-ottenere-la-previsione" data-number="6">
+<h2 class="anchored" data-anchor-id="passo-5-applicare-β-per-ottenere-la-previsione" data-number="6"><span class="header-section-number">6</span> Passo 5 — Applicare β per ottenere la previsione</h2>
+<p>Una volta definiti gli scenari sul driver, la previsione è un calcolo aritmetico semplice:</p>
+<pre><code>Tasso_previsto = Tasso_attuale + β × variazione_DFR</code></pre>
+<p>Esempio concreto per i mutui variabili (β = 0.57, tasso attuale = 2.99%):</p>
+<div id="ac8ff715" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="5">
+<ul>
+<li><strong>Scenario Benigno</strong>: ΔDFR = 0bp → previsto = 2.99% + 0.57 × 0 = <strong>2.99%</strong></li>
+<li><strong>Scenario Base</strong>: ΔDFR = +25bp → previsto = 2.99% + 0.57 × 0.25 = <strong>3.13%</strong></li>
+<li><strong>Scenario Avverso</strong>: ΔDFR = +60bp → previsto = 2.99% + 0.57 × 0.60 = <strong>3.34%</strong></li>
+</ul>
+</div>
+</div>
+<p>I numeri sembrano piccoli — +15bp o +35bp. Ma su un mutuo da 200.000 euro a 25 anni, ogni +25bp corrisponde a circa <strong>+30 euro al mese di rata aggiuntiva</strong>.</p>
+<hr>
+</section>
+<section id="passo-6-confrontare-con-benchmark-esterni" class="level2 anchored" data-anchor-id="passo-6-confrontare-con-benchmark-esterni" data-number="7">
+<h2 class="anchored" data-anchor-id="passo-6-confrontare-con-benchmark-esterni" data-number="7"><span class="header-section-number">7</span> Passo 6 — Confrontare con benchmark esterni</h2>
+<p>Prima di presentare i risultati, si confrontano le proprie previsioni con quelle di altri analisti, per verificare se si è in linea o se si è sistematicamente sopra o sotto.</p>
+<p><strong>BCE — proiezioni staff giugno 2026</strong>: assumono un Euribor 3M medio 2026 di circa 2,4–2,5% (corretto post-rialzo giugno). Questo implica DFR ~2,50% a fine 2026 — identico al nostro scenario Base. La previsione centrale è allineata con quella dell’istituzione più informata.</p>
+<p><strong>Intesa Sanpaolo Research</strong>: stima DFR 2,50% fine 2026 con rischio orientato verso l’Avverso. Coerente con il nostro Base.</p>
+<hr>
+</section>
+<section id="passo-7-leggere-i-risultati" class="level2 anchored" data-anchor-id="passo-7-leggere-i-risultati" data-number="8">
+<h2 class="anchored" data-anchor-id="passo-7-leggere-i-risultati" data-number="8"><span class="header-section-number">8</span> Passo 7 — Leggere i risultati</h2>
+<div id="df0a2f0c" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div id="T_3ed93" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="T_3ed93-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Tasso bancario</th>
+<th style="text-align: left;">Oggi (%)</th>
+<th style="text-align: left;">Benigno (%)</th>
+<th style="text-align: left;">Base (%)</th>
+<th style="text-align: left;">Avverso (%)</th>
+<th style="text-align: left;">Variazione Base</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Prestiti imprese (breve)</td>
+<td style="text-align: left;">3.73</td>
+<td style="text-align: left;">3.73</td>
+<td style="text-align: left;">3.89</td>
+<td style="text-align: left;">4.11</td>
+<td style="text-align: left;">+16bp</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mutui variabili</td>
+<td style="text-align: left;">2.99</td>
+<td style="text-align: left;">2.99</td>
+<td style="text-align: left;">3.13</td>
+<td style="text-align: left;">3.34</td>
+<td style="text-align: left;">+14bp</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mutui fissi</td>
+<td style="text-align: left;">3.56</td>
+<td style="text-align: left;">3.56</td>
+<td style="text-align: left;">3.63</td>
+<td style="text-align: left;">3.74</td>
+<td style="text-align: left;">+7bp</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Conti correnti famiglie</td>
+<td style="text-align: left;">0.19</td>
+<td style="text-align: left;">0.19</td>
+<td style="text-align: left;">0.20</td>
+<td style="text-align: left;">0.22</td>
+<td style="text-align: left;">+1bp</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Depositi a termine</td>
+<td style="text-align: left;">2.47</td>
+<td style="text-align: left;">2.47</td>
+<td style="text-align: left;">2.58</td>
+<td style="text-align: left;">2.73</td>
+<td style="text-align: left;">+11bp</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;3: Previsione tassi bancari italiani dic-2026 — dati correnti al 2026-07-01</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>La prima cosa che salta all’occhio è l’asimmetria: i tassi attivi (prestiti) salgono significativamente anche nel Base (+{python} f”{B_NFC * d_bas * 100:.0f}bp” per le imprese), mentre i tassi passivi (depositi) rimangono quasi fermi (+1–2bp). Questo è il meccanismo attraverso cui i margini bancari si allargano in un ciclo di rialzi.</p>
+<hr>
+</section>
+<section id="i-limiti-del-modello" class="level2 anchored" data-anchor-id="i-limiti-del-modello" data-number="9">
+<h2 class="anchored" data-anchor-id="i-limiti-del-modello" data-number="9"><span class="header-section-number">9</span> I limiti del modello</h2>
+<p>Questo modello è volutamente semplice. La sua forza è la trasparenza e la robustezza su orizzonti brevi (6 mesi). Ma ci sono almeno quattro situazioni in cui la previsione potrebbe essere sistematicamente sbagliata.</p>
+<p><strong>Il β potrebbe non essere stabile.</strong> Stimato su dati 2022–2026, un periodo molto specifico. Se cambia la struttura competitiva del mercato bancario (es. ingresso di operatori digitali che pagano di più sui depositi), il β storico non è più valido.</p>
+<p><strong>I mutui fissi hanno il driver sbagliato nel modello semplice.</strong> In realtà dipendono principalmente dai tassi swap a lungo termine. Nelle versioni aggiornate del modello si usa sempre il tasso Bund/IRS a 10 anni come driver per i mutui fissi (R² sale da 0,18 a 0,76).</p>
+<p><strong>I depositi possono ripartire all’improvviso.</strong> Il β dei depositi a termine è 0.43 nel periodo storico, ma questo riflette un contesto di bassa concorrenza. Se scatta uno spostamento di liquidità verso BTP o conti online, il β effettivo potrebbe essere anche 10 volte più alto.</p>
+<p><strong>Gli shock non modellati esistono.</strong> Se lo spread BTP-Bund si allargasse bruscamente (es. da 79bp a 200bp), il costo di finanziamento delle banche italiane salirebbe indipendentemente dal DFR. Per catturare questo rischio servono stress test espliciti (vedi <a href="stress_test.html">Stress Test e Permacrisi</a>).</p>
+<hr>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p>Nota</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Approfondimenti collegati</strong></p>
+<ul>
+<li><a href="index.html">Previsioni H2 2026</a> — i risultati del modello completo</li>
+<li><a href="glossario.html">Glossario</a> — definizioni di tutte le sigle usate</li>
+<li><a href="stress_test.html">Stress test e permacrisi</a> — cosa succede oltre il modello lineare</li>
+<li><a href="canali.html">Canali di trasmissione</a> — i meccanismi che il β non cattura</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Trasparenza sull’uso dell’intelligenza artificiale</strong></p>
+<p>L’uso di strumenti di intelligenza artificiale generativa è dichiarato esplicitamente in quanto parte del processo di lavoro seguito nella redazione del presente documento. Tali strumenti sono stati impiegati a supporto della lettura, della sintesi, della riorganizzazione argomentativa e della revisione testuale, sempre nell’ambito di un processo pienamente controllato dall’autore.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le verifiche effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore.</p>
+<p>L’intelligenza artificiale è stata utilizzata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+</section>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_PrevisioneTassiGuida/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

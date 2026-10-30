@@ -1,0 +1,2629 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="description" content="Quante imprese usano fido, prestiti, leasing, garanzie pubbliche e capitale proprio secondo il Censimento Istat 2025, quanto pesano le stesse fonti nei bilanci delle società di capitali (BACH) se il credito va ai settori che innovano e come si colloca l’Italia in Europa (Eurostat CIS, BCE SAFE).">
+
+<title>Censimento permanente delle imprese 2025: le fonti di finanziamento, a confronto con BACH – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Censimento permanente delle imprese 2025: le fonti di finanziamento, a confronto con BACH – Paolo Volterra">
+<meta property="og:description" content="Quante imprese usano fido, prestiti, leasing, garanzie pubbliche e capitale proprio secondo il Censimento Istat 2025, quanto pesano le stesse fonti nei bilanci delle società di capitali (BACH) se il credito va ai settori che innovano e come si colloca l’Italia in Europa (Eurostat CIS, BCE SAFE).">
+<meta property="og:image" content="https://paolovolterra.com/posts/2610_CensimentoImpreseFinanza/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Censimento permanente delle imprese 2025: le fonti di finanziamento, a confronto con BACH – Paolo Volterra">
+<meta name="twitter:description" content="Quante imprese usano fido, prestiti, leasing, garanzie pubbliche e capitale proprio secondo il Censimento Istat 2025, quanto pesano le stesse fonti nei bilanci delle società di capitali (BACH) se il credito va ai settori che innovano e come si colloca l’Italia in Europa (Eurostat CIS, BCE SAFE).">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2610_CensimentoImpreseFinanza/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul class="collapse">
+  <li><a href="#luniverso-e-il-controllo-delle-tavole" id="toc-luniverso-e-il-controllo-delle-tavole" class="nav-link active" data-scroll-target="#luniverso-e-il-controllo-delle-tavole">1. L’universo e il controllo delle tavole</a></li>
+  <li><a href="#fonti-di-finanziamento-2022-e-2025" id="toc-fonti-di-finanziamento-2022-e-2025" class="nav-link" data-scroll-target="#fonti-di-finanziamento-2022-e-2025">2. Fonti di finanziamento: 2022 e 2025</a></li>
+  <li><a href="#per-classe-di-addetti" id="toc-per-classe-di-addetti" class="nav-link" data-scroll-target="#per-classe-di-addetti">3. Per classe di addetti</a></li>
+  <li><a href="#perché-le-imprese-ricorrono-al-finanziamento-esterno" id="toc-perché-le-imprese-ricorrono-al-finanziamento-esterno" class="nav-link" data-scroll-target="#perché-le-imprese-ricorrono-al-finanziamento-esterno">4. Perché le imprese ricorrono al finanziamento esterno</a></li>
+  <li><a href="#prestiti-richiesti-e-ottenuti" id="toc-prestiti-richiesti-e-ottenuti" class="nav-link" data-scroll-target="#prestiti-richiesti-e-ottenuti">5. Prestiti richiesti e ottenuti</a></li>
+  <li><a href="#ricapitalizzazione-solo-2025" id="toc-ricapitalizzazione-solo-2025" class="nav-link" data-scroll-target="#ricapitalizzazione-solo-2025">6. Ricapitalizzazione (solo 2025)</a></li>
+  <li><a href="#confronto-con-bach-per-macrosettore" id="toc-confronto-con-bach-per-macrosettore" class="nav-link" data-scroll-target="#confronto-con-bach-per-macrosettore">7. Confronto con BACH per macrosettore</a></li>
+  <li><a href="#confronto-con-bach-per-divisione" id="toc-confronto-con-bach-per-divisione" class="nav-link" data-scroll-target="#confronto-con-bach-per-divisione">8. Confronto con BACH per divisione</a></li>
+  <li><a href="#credito-e-innovazione-per-divisione" id="toc-credito-e-innovazione-per-divisione" class="nav-link" data-scroll-target="#credito-e-innovazione-per-divisione">9. Credito e innovazione per divisione</a></li>
+  <li><a href="#il-confronto-europeo-cis-2022-e-safe" id="toc-il-confronto-europeo-cis-2022-e-safe" class="nav-link" data-scroll-target="#il-confronto-europeo-cis-2022-e-safe">10. Il confronto europeo: CIS 2022 e SAFE</a></li>
+  <li><a href="#limiti" id="toc-limiti" class="nav-link" data-scroll-target="#limiti">11. Limiti</a></li>
+  </ul>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.dev/paolovolterra/paolovolterra.github.io/blob/main/posts/2610_CensimentoImpreseFinanza/index.ipynb" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Censimento permanente delle imprese 2025: le fonti di finanziamento, a confronto con BACH</h1>
+<p class="subtitle lead">Diffusione fra le imprese (Istat) e peso nei bilanci (BACH), Italia, edizioni 2022 e 2025</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Imprese</div>
+    <div class="quarto-category">Credito</div>
+    <div class="quarto-category">Istat</div>
+    <div class="quarto-category">BACH</div>
+    <div class="quarto-category">Censimento</div>
+    <div class="quarto-category">Innovazione</div>
+    <div class="quarto-category">Europa</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Quante imprese usano fido, prestiti, leasing, garanzie pubbliche e capitale proprio secondo il Censimento Istat 2025, quanto pesano le stesse fonti nei bilanci delle società di capitali (BACH) se il credito va ai settori che innovano e come si colloca l’Italia in Europa (Eurostat CIS, BCE SAFE).
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">30 ottobre 2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Data di modifica</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">30 ottobre 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Fonte</strong>: Istat, <em>Censimento permanente delle imprese 2025: primi risultati</em> (29 ottobre 2026) e Appendice statistica; per il confronto, l’Appendice dell’edizione 2022 e il database BACH (Italia). Le appendici xlsx si leggono dai file originali Istat, BACH si scarica a ogni esecuzione.</p>
+<p><strong>Che cosa contiene.</strong> La Rilevazione multiscopo chiede a un campione di circa 265mila imprese con almeno 3 addetti quali fonti di finanziamento hanno usato, perché sono ricorse al credito esterno, se hanno chiesto e ottenuto prestiti, se intendono ricapitalizzarsi. Le risposte sono riportate all’universo (stime con decimali): <strong>quante imprese</strong> usano una fonte, non <strong>quanto</strong> debito o capitale. La terza edizione ha anno di riferimento 2025; la seconda il 2022.</p>
+<p><strong>Perché interessa per BACH.</strong> BACH misura le stesse fonti dal lato del bilancio, in percentuale del totale attivo: debiti verso banche a breve (<code>L21</code>) e a medio-lungo termine (<code>L22</code>), debiti commerciali (<code>L4</code>), altri debiti finanziari, soprattutto infragruppo (<code>L31</code>), obbligazioni (<code>L1</code>), patrimonio netto (<code>E</code>). Le due fonti guardano lo stesso fenomeno da due lati: diffusione fra le imprese contro peso nei bilanci.</p>
+<p><strong>Limiti strutturali per il confronto.</strong></p>
+<ul>
+<li><p>Unità diverse: la Rilevazione conta imprese (ogni impresa pesa uno), BACH somma bilanci (la media ponderata riflette le imprese grandi).</p></li>
+<li><p>Classi diverse: la Rilevazione classifica per addetti, BACH per fatturato; nessun raccordo esatto.</p></li>
+<li><p>Anni diversi: Rilevazione 2022 e 2025, BACH Italia fino al 2024.</p></li>
+<li><p>Universo: la Rilevazione include imprese individuali e società di persone con almeno 3 addetti; BACH Italia le sole società di capitali con bilancio depositato.</p></li>
+</ul>
+<div id="e98fa074" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="2">
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>Appendici lette: 2025 <code>Appendice-statistica_Rilevazione-Multiscopo-Censimento-imprese.xlsx</code>, 2022 <code>Appendice-statistica-Censimprese.xlsx</code>. Rilascio BACH: <strong>20260914</strong>.</p>
+</div>
+</div>
+<section id="luniverso-e-il-controllo-delle-tavole" class="level2">
+<h2 class="anchored" data-anchor-id="luniverso-e-il-controllo-delle-tavole">1. L’universo e il controllo delle tavole</h2>
+<p>Ogni tavola ha un blocco di valori assoluti e uno di percentuali. Il notebook legge i valori assoluti e ricalcola le percentuali; il confronto con quelle pubblicate controlla la lettura.</p>
+<div id="e2d48711" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="3">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 15%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">settore</th>
+<th style="text-align: left;">classe</th>
+<th style="text-align: right;">imprese 2022</th>
+<th style="text-align: right;">imprese 2025</th>
+<th style="text-align: right;">var. %</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Industria in senso stretto</td>
+<td style="text-align: left;">Totale</td>
+<td style="text-align: right;">188,255.0</td>
+<td style="text-align: right;">181,807.7</td>
+<td style="text-align: right;">-3.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Industria in senso stretto</td>
+<td style="text-align: left;">3-9</td>
+<td style="text-align: right;">116,334.0</td>
+<td style="text-align: right;">107,763.9</td>
+<td style="text-align: right;">-7.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Industria in senso stretto</td>
+<td style="text-align: left;">10-19</td>
+<td style="text-align: right;">40,188.0</td>
+<td style="text-align: right;">39,822.8</td>
+<td style="text-align: right;">-0.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Industria in senso stretto</td>
+<td style="text-align: left;">20-49</td>
+<td style="text-align: right;">20,325.0</td>
+<td style="text-align: right;">21,715.0</td>
+<td style="text-align: right;">6.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Industria in senso stretto</td>
+<td style="text-align: left;">50-99</td>
+<td style="text-align: right;">6,349.0</td>
+<td style="text-align: right;">6,950.0</td>
+<td style="text-align: right;">9.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Industria in senso stretto</td>
+<td style="text-align: left;">100-249</td>
+<td style="text-align: right;">3,507.0</td>
+<td style="text-align: right;">3,857.0</td>
+<td style="text-align: right;">10.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Industria in senso stretto</td>
+<td style="text-align: left;">250 e oltre</td>
+<td style="text-align: right;">1,552.0</td>
+<td style="text-align: right;">1,699.0</td>
+<td style="text-align: right;">9.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Costruzioni</td>
+<td style="text-align: left;">Totale</td>
+<td style="text-align: right;">122,215.0</td>
+<td style="text-align: right;">129,324.0</td>
+<td style="text-align: right;">5.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Costruzioni</td>
+<td style="text-align: left;">3-9</td>
+<td style="text-align: right;">98,277.0</td>
+<td style="text-align: right;">100,359.0</td>
+<td style="text-align: right;">2.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Costruzioni</td>
+<td style="text-align: left;">10-19</td>
+<td style="text-align: right;">16,985.0</td>
+<td style="text-align: right;">19,877.0</td>
+<td style="text-align: right;">17.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Costruzioni</td>
+<td style="text-align: left;">20-49</td>
+<td style="text-align: right;">5,428.0</td>
+<td style="text-align: right;">7,089.0</td>
+<td style="text-align: right;">30.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Costruzioni</td>
+<td style="text-align: left;">50-99</td>
+<td style="text-align: right;">1,045.0</td>
+<td style="text-align: right;">1,352.0</td>
+<td style="text-align: right;">29.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Costruzioni</td>
+<td style="text-align: left;">100-249</td>
+<td style="text-align: right;">368.0</td>
+<td style="text-align: right;">503.0</td>
+<td style="text-align: right;">36.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Costruzioni</td>
+<td style="text-align: left;">250 e oltre</td>
+<td style="text-align: right;">112.0</td>
+<td style="text-align: right;">144.0</td>
+<td style="text-align: right;">28.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Commercio</td>
+<td style="text-align: left;">Totale</td>
+<td style="text-align: right;">247,732.0</td>
+<td style="text-align: right;">234,376.0</td>
+<td style="text-align: right;">-5.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Commercio</td>
+<td style="text-align: left;">3-9</td>
+<td style="text-align: right;">207,403.0</td>
+<td style="text-align: right;">192,151.0</td>
+<td style="text-align: right;">-7.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Commercio</td>
+<td style="text-align: left;">10-19</td>
+<td style="text-align: right;">27,494.0</td>
+<td style="text-align: right;">27,894.0</td>
+<td style="text-align: right;">1.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Commercio</td>
+<td style="text-align: left;">20-49</td>
+<td style="text-align: right;">9,074.0</td>
+<td style="text-align: right;">10,020.0</td>
+<td style="text-align: right;">10.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Commercio</td>
+<td style="text-align: left;">50-99</td>
+<td style="text-align: right;">2,164.0</td>
+<td style="text-align: right;">2,492.0</td>
+<td style="text-align: right;">15.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Commercio</td>
+<td style="text-align: left;">100-249</td>
+<td style="text-align: right;">1,043.0</td>
+<td style="text-align: right;">1,191.0</td>
+<td style="text-align: right;">14.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Commercio</td>
+<td style="text-align: left;">250 e oltre</td>
+<td style="text-align: right;">554.0</td>
+<td style="text-align: right;">628.0</td>
+<td style="text-align: right;">13.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Altri servizi</td>
+<td style="text-align: left;">Totale</td>
+<td style="text-align: right;">449,602.2</td>
+<td style="text-align: right;">459,810.1</td>
+<td style="text-align: right;">2.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Altri servizi</td>
+<td style="text-align: left;">3-9</td>
+<td style="text-align: right;">372,092.0</td>
+<td style="text-align: right;">365,218.9</td>
+<td style="text-align: right;">-1.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Altri servizi</td>
+<td style="text-align: left;">10-19</td>
+<td style="text-align: right;">50,144.2</td>
+<td style="text-align: right;">60,238.2</td>
+<td style="text-align: right;">20.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Altri servizi</td>
+<td style="text-align: left;">20-49</td>
+<td style="text-align: right;">17,786.0</td>
+<td style="text-align: right;">23,129.0</td>
+<td style="text-align: right;">30.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Altri servizi</td>
+<td style="text-align: left;">50-99</td>
+<td style="text-align: right;">5,044.0</td>
+<td style="text-align: right;">6,071.0</td>
+<td style="text-align: right;">20.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Altri servizi</td>
+<td style="text-align: left;">100-249</td>
+<td style="text-align: right;">2,942.0</td>
+<td style="text-align: right;">3,339.0</td>
+<td style="text-align: right;">13.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Altri servizi</td>
+<td style="text-align: left;">250 e oltre</td>
+<td style="text-align: right;">1,594.0</td>
+<td style="text-align: right;">1,814.0</td>
+<td style="text-align: right;">13.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Totale</td>
+<td style="text-align: left;">Totale</td>
+<td style="text-align: right;">1,007,804.2</td>
+<td style="text-align: right;">1,005,317.8</td>
+<td style="text-align: right;">-0.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Totale</td>
+<td style="text-align: left;">3-9</td>
+<td style="text-align: right;">794,106.0</td>
+<td style="text-align: right;">765,492.8</td>
+<td style="text-align: right;">-3.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Totale</td>
+<td style="text-align: left;">10-19</td>
+<td style="text-align: right;">134,811.2</td>
+<td style="text-align: right;">147,832.0</td>
+<td style="text-align: right;">9.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Totale</td>
+<td style="text-align: left;">20-49</td>
+<td style="text-align: right;">52,613.0</td>
+<td style="text-align: right;">61,953.0</td>
+<td style="text-align: right;">17.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Totale</td>
+<td style="text-align: left;">50-99</td>
+<td style="text-align: right;">14,602.0</td>
+<td style="text-align: right;">16,865.0</td>
+<td style="text-align: right;">15.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Totale</td>
+<td style="text-align: left;">100-249</td>
+<td style="text-align: right;">7,860.0</td>
+<td style="text-align: right;">8,890.0</td>
+<td style="text-align: right;">13.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Totale</td>
+<td style="text-align: left;">250 e oltre</td>
+<td style="text-align: right;">3,812.0</td>
+<td style="text-align: right;">4,285.0</td>
+<td style="text-align: right;">12.4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> l’universo della Rilevazione passa da 1.007.804 a 1.005.318 imprese con almeno 3 addetti. Calano le microimprese (3-9 addetti) e crescono tutte le altre classi: lo stesso spostamento verso imprese più grandi che il comunicato documenta con il registro ASIA.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> La tabella conta le imprese dell’universo della Rilevazione: imprese attive con almeno 3 addetti nell’industria e nei servizi, esclusa la finanza. I valori hanno decimali perché sono stime campionarie riportate all’universo, non un conteggio. Le grandezze strutturali dell’edizione 2025 si riferiscono al 2024 (registro statistico delle imprese attive), quelle dell’edizione 2022 al 2021; le risposte al questionario riguardano invece l’anno della rilevazione.</p>
+<p>Fra le due edizioni il totale resta quasi fermo (−0,2%), ma la composizione cambia. Le microimprese da 3 a 9 addetti scendono del 3,6%, le classi da 10 addetti in su crescono fra il 9,7% e il 17,8%. I macrosettori si muovono in direzioni diverse: commercio (−5,4%) e industria in senso stretto (−3,4%) perdono imprese, costruzioni (+5,8%) e altri servizi (+2,3%) ne guadagnano.</p>
+<p>Questa tabella è il denominatore di tutto il notebook. Un cambiamento di composizione pesa sulle quote aggregate: se crescono le classi più grandi, che usano più spesso il credito bancario, la quota totale può salire anche senza che una singola classe cambi comportamento. La sezione 3 controlla questo effetto classe per classe.</p>
+<div id="3ec6f25b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> in ogni macrosettore le barre arancioni (calo) stanno in alto, fra le microimprese, e quelle blu (crescita) nelle classi più grandi. Le costruzioni sono l’unico macrosettore in cui crescono anche le microimprese (2,1%).</p>
+</div>
+</div>
+<p><strong>Commento.</strong> Il grafico mostra la variazione 2022-2025 classe per classe. In tre macrosettori su quattro le microimprese calano: −7,4% nell’industria in senso stretto e nel commercio, −1,8% negli altri servizi. Le costruzioni sono l’eccezione: crescono anche le microimprese (+2,1%) e le classi da 20 addetti in su aumentano fra il 28,6 e il 36,7%. Negli altri servizi la crescita più forte è fra 20 e 49 addetti (+30,0%).</p>
+<p>Le barre non dicono quanto pesa ciascuna classe. Le microimprese sono il 76,1% delle imprese nel 2025: il loro calo del 3,6% vale circa 28.600 imprese, più dell’aumento di tutte le altre classi messe insieme (circa 26.100). Per questo il totale scende leggermente anche se quasi tutte le barre sono blu.</p>
+<div id="4c48d4ab" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="5">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 11%">
+<col style="width: 47%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">anno</th>
+<th style="text-align: right;">tavola</th>
+<th style="text-align: left;">contenuto</th>
+<th style="text-align: right;">scarto massimo (punti %)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: left;">fonti di finanziamento</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: left;">fonti di finanziamento, divisioni</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: left;">motivi del finanziamento esterno</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: left;">prestiti richiesti e ottenuti</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: left;">fonti di finanziamento</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: left;">fonti di finanziamento, divisioni</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: left;">motivi del finanziamento esterno</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: left;">prestiti richiesti e ottenuti</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: left;">ricapitalizzazione</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: left;">motivi della mancata ricapitalizzazione</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> le percentuali ricalcolate dai valori assoluti coincidono con quelle pubblicate da Istat: la lettura delle tavole è corretta.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> La tabella controlla la lettura delle tavole. Per ogni tavola usata si ricalcolano le percentuali dai valori assoluti e si confrontano con quelle pubblicate da Istat nello stesso foglio; lo scarto massimo è zero in tutte. Ogni tavola usa il suo denominatore: l’universo per le fonti di finanziamento, le imprese che ricorrono a finanziamenti esterni per i motivi, le imprese che hanno chiesto un prestito per l’esito, le società di capitali per la ricapitalizzazione.</p>
+<p>Il controllo dice che i numeri del notebook sono quelli di Istat; non dice nulla sulla precisione delle stime. L’appendice non pubblica gli errori campionari cella per cella, quindi le differenze di pochi decimi di punto fra due anni o due classi piccole vanno lette con cautela. Due voci hanno cambiato nome fra le edizioni. «Finanziamenti pubblici» (2022) e «Finanziamenti pubblici nazionali» (2025) sono trattate come la stessa voce, come fa Istat nel comunicato; i motivi «responsabilità sociale ed ambientale» (2022) e «sostenibilità ambientale» (2025) restano separati.</p>
+</section>
+<section id="fonti-di-finanziamento-2022-e-2025" class="level2">
+<h2 class="anchored" data-anchor-id="fonti-di-finanziamento-2022-e-2025">2. Fonti di finanziamento: 2022 e 2025</h2>
+<p>Quota di imprese che dichiara di aver usato ciascuna fonte fra le principali (risposta multipla).</p>
+<div id="bc0284c3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="6">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 67%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">fonte</th>
+<th style="text-align: right;">% 2022</th>
+<th style="text-align: right;">% 2025</th>
+<th style="text-align: right;">diff. punti</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Autofinanziamento</td>
+<td style="text-align: right;">80.29</td>
+<td style="text-align: right;">81.40</td>
+<td style="text-align: right;">1.12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Credito bancario a medio o lungo termine (12 mesi e oltre)</td>
+<td style="text-align: right;">28.15</td>
+<td style="text-align: right;">27.92</td>
+<td style="text-align: right;">-0.23</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Credito bancario a breve termine (meno di 12 mesi)</td>
+<td style="text-align: right;">11.53</td>
+<td style="text-align: right;">14.19</td>
+<td style="text-align: right;">2.67</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Leasing o factoring</td>
+<td style="text-align: right;">9.12</td>
+<td style="text-align: right;">11.71</td>
+<td style="text-align: right;">2.59</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Credito commerciale</td>
+<td style="text-align: right;">5.52</td>
+<td style="text-align: right;">6.93</td>
+<td style="text-align: right;">1.42</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Equity (mezzi propri)</td>
+<td style="text-align: right;">2.73</td>
+<td style="text-align: right;">4.42</td>
+<td style="text-align: right;">1.69</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Incentivi e/o agevolazioni pubbliche</td>
+<td style="text-align: right;">3.55</td>
+<td style="text-align: right;">3.37</td>
+<td style="text-align: right;">-0.17</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Altre fonti di finanziamento esterno</td>
+<td style="text-align: right;">2.51</td>
+<td style="text-align: right;">2.97</td>
+<td style="text-align: right;">0.47</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Contributi e/o fondi UE</td>
+<td style="text-align: right;">2.46</td>
+<td style="text-align: right;">2.55</td>
+<td style="text-align: right;">0.08</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Finanziamenti pubblici nazionali</td>
+<td style="text-align: right;">2.02</td>
+<td style="text-align: right;">1.71</td>
+<td style="text-align: right;">-0.32</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Prestiti intra-gruppo</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">0.09</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cambiali finanziarie</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">-0.01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Venture capital e/o private equity</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">0.14</td>
+<td style="text-align: right;">0.06</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Prestiti su titoli</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">-0.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Equity derivante da aumento di capitale in IPO (Initial Public Offering)</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Project finance</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Crowd-funding</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Minibond</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">-0.01</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> l’autofinanziamento resta la fonte di gran lunga più diffusa (81,4%). Fra le fonti esterne crescono il credito bancario a breve (11,5 → 14,2%), leasing e factoring e il credito commerciale; il credito a medio-lungo termine è fermo. L’equity passa da 2,7 a 4,4%.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> La domanda chiede le principali fonti di finanziamento usate nell’anno, con risposta multipla: le quote non sommano a 100. L’ordine delle prime due fonti non cambia. L’autofinanziamento resta di gran lunga la più diffusa (dall’80,3 all’81,4%), il credito bancario a medio-lungo termine la seconda (dal 28,2 al 27,9%).</p>
+<p>I movimenti più ampi sono fra le fonti esterne a breve. Il credito bancario a breve guadagna 2,7 punti (dall’11,5 al 14,2%), leasing e factoring 2,6 punti (dal 9,1 all’11,7%), il credito commerciale 1,4 punti (dal 5,5 al 6,9%). L’equity da mezzi propri passa dal 2,7 al 4,4%.</p>
+<p>Il sostegno pubblico è stabile o in lieve calo: incentivi e agevolazioni dal 3,5 al 3,4%, finanziamenti pubblici nazionali dal 2,0 all’1,7%, contributi e fondi UE intorno al 2,5%. Gli strumenti di mercato restano marginali: venture capital, quotazione, project finance, crowdfunding e minibond stanno ciascuno sotto lo 0,2% delle imprese.</p>
+<p>Nel comunicato Istat legge questi movimenti alla luce della discesa dei tassi della BCE nel 2025, dopo i rialzi del 2022: è l’interpretazione della fonte, non un risultato di questa tabella.</p>
+<div id="5701052a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> 11 fonti superano lo 0,5% delle imprese nel 2025. L’autofinanziamento ha una scala a parte; fra le altre il credito bancario a medio-lungo termine resta la seconda fonte, ma il passo avanti più lungo è del credito a breve e di leasing e factoring.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> Il grafico riporta le fonti usate da almeno lo 0,5% delle imprese nel 2025. L’autofinanziamento sta in un pannello a parte perché la sua scala, intorno all’80%, schiaccerebbe tutte le altre. Il punto grigio è il 2022, quello colorato il 2025: blu se la quota sale, arancione se scende.</p>
+<p>I segmenti più lunghi sono quelli del credito bancario a breve e di leasing e factoring. Le tre voci arancioni (credito bancario a medio-lungo termine, incentivi pubblici, finanziamenti pubblici nazionali) si muovono di pochi decimi di punto: a questa distanza la differenza fra salire e scendere è più piccola dell’incertezza di una stima campionaria.</p>
+<div id="12c72412" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> salgono in tutti i macrosettori: banca, breve, credito commerciale, leasing o factoring, equity, intra-gruppo. Il credito bancario a medio-lungo termine varia fra -0,8 e 0,4 punti.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> Lo stesso confronto per macrosettore mostra che i movimenti non vengono da un solo settore. Il credito bancario a breve sale ovunque: industria in senso stretto dal 17,3 al 20,1%, commercio dal 13,0 al 16,5%, costruzioni dal 13,0 al 15,6%, altri servizi dal 7,9 al 10,3%. Il credito commerciale sale in tutti e quattro (nel commercio dal 7,9 al 10,5%), e così leasing e factoring, equity e prestiti infragruppo.</p>
+<p>Il credito a medio-lungo termine è quasi fermo: cala di pochi decimi in industria, costruzioni e commercio e cresce di 0,3 punti negli altri servizi. L’industria in senso stretto resta il macrosettore più legato al credito bancario, gli altri servizi il meno legato; le costruzioni raddoppiano la quota di imprese che usa l’equity (dal 2,1 al 4,3%). I prestiti infragruppo restano sotto l’1,5% ovunque, perché riguardano soprattutto le imprese che appartengono a un gruppo.</p>
+</section>
+<section id="per-classe-di-addetti" class="level2">
+<h2 class="anchored" data-anchor-id="per-classe-di-addetti">3. Per classe di addetti</h2>
+<p>Le stesse quote per classe di addetti, totale dei settori.</p>
+<div id="ea95ece1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 12%">
+<col style="width: 16%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 7%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">classe di addetti</th>
+<th style="text-align: right;">Banca, breve</th>
+<th style="text-align: right;">Banca, medio-lungo</th>
+<th style="text-align: right;">Credito commerciale</th>
+<th style="text-align: right;">Leasing o factoring</th>
+<th style="text-align: right;">Equity</th>
+<th style="text-align: right;">Intra-gruppo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">3-9</td>
+<td style="text-align: right;">+2.5</td>
+<td style="text-align: right;">-0.6</td>
+<td style="text-align: right;">+1.3</td>
+<td style="text-align: right;">+2.2</td>
+<td style="text-align: right;">+1.6</td>
+<td style="text-align: right;">+0.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10-19</td>
+<td style="text-align: right;">+2.2</td>
+<td style="text-align: right;">-0.1</td>
+<td style="text-align: right;">+1.4</td>
+<td style="text-align: right;">+2.3</td>
+<td style="text-align: right;">+2.0</td>
+<td style="text-align: right;">-0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">20-49</td>
+<td style="text-align: right;">+1.7</td>
+<td style="text-align: right;">-1.9</td>
+<td style="text-align: right;">+1.3</td>
+<td style="text-align: right;">+2.8</td>
+<td style="text-align: right;">+1.6</td>
+<td style="text-align: right;">-0.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">50-99</td>
+<td style="text-align: right;">+2.1</td>
+<td style="text-align: right;">-1.7</td>
+<td style="text-align: right;">+1.5</td>
+<td style="text-align: right;">+3.4</td>
+<td style="text-align: right;">+1.8</td>
+<td style="text-align: right;">-0.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">100-249</td>
+<td style="text-align: right;">+1.3</td>
+<td style="text-align: right;">-1.5</td>
+<td style="text-align: right;">+1.1</td>
+<td style="text-align: right;">+3.4</td>
+<td style="text-align: right;">+1.6</td>
+<td style="text-align: right;">-0.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">250 e oltre</td>
+<td style="text-align: right;">+0.9</td>
+<td style="text-align: right;">+1.3</td>
+<td style="text-align: right;">+0.0</td>
+<td style="text-align: right;">+4.9</td>
+<td style="text-align: right;">-1.0</td>
+<td style="text-align: right;">-0.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> nel grafico, i livelli 2025: usa il credito bancario a breve il 31,5% delle imprese con 250 addetti e oltre, contro 11,9% delle microimprese. Nella tabella, la variazione 2022-2025 in punti: il credito a breve cresce di più fra le microimprese (2,5) che fra le grandi (0,9); leasing e factoring al contrario (2,2 contro 4,9).</p>
+</div>
+</div>
+<p><strong>Commento.</strong> Per classe di addetti la diffusione delle fonti esterne cresce con la dimensione. Nel 2025 usa il credito bancario a breve l’11,9% delle microimprese e il 31,5% delle imprese con 250 addetti e oltre; i prestiti infragruppo vanno dallo 0,4 al 15,4%. Il credito a medio-lungo termine fa eccezione: tocca il massimo fra 50 e 99 addetti (43,0%) e scende fra le imprese più grandi (40,6%).</p>
+<p>La tabella sotto il grafico risponde alla domanda lasciata aperta nella sezione 1. L’aumento del credito a breve c’è in ogni classe, da +0,9 punti fra le grandi a +2,5 fra le microimprese: non è solo un effetto della composizione. Leasing e factoring crescono invece di più fra le grandi (+4,9 punti contro +2,2). Le imprese con 250 addetti e oltre sono l’unica classe in cui l’equity cala (−1,0 punti) e il credito a medio-lungo termine sale (+1,3).</p>
+</section>
+<section id="perché-le-imprese-ricorrono-al-finanziamento-esterno" class="level2">
+<h2 class="anchored" data-anchor-id="perché-le-imprese-ricorrono-al-finanziamento-esterno">4. Perché le imprese ricorrono al finanziamento esterno</h2>
+<p>Quota sulle imprese che hanno fatto ricorso a finanziamenti esterni (risposta multipla).</p>
+<div id="cb548abe" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="10">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 72%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">motivo</th>
+<th style="text-align: right;">% 2022</th>
+<th style="text-align: right;">% 2025</th>
+<th style="text-align: right;">diff. punti</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Esigenze di liquidità e/o capitale liquido</td>
+<td style="text-align: right;">43.1</td>
+<td style="text-align: right;">39.0</td>
+<td style="text-align: right;">-4.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Attività ordinaria (es: personale, spese correnti, ecc.)</td>
+<td style="text-align: right;">37.5</td>
+<td style="text-align: right;">37.0</td>
+<td style="text-align: right;">-0.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Investimenti per l’ampliamento della capacità produttiva</td>
+<td style="text-align: right;">29.8</td>
+<td style="text-align: right;">33.2</td>
+<td style="text-align: right;">3.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Altro motivo</td>
+<td style="text-align: right;">20.3</td>
+<td style="text-align: right;">22.5</td>
+<td style="text-align: right;">2.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Investimenti in nuove tecnologie di tipo digitale</td>
+<td style="text-align: right;">8.9</td>
+<td style="text-align: right;">7.5</td>
+<td style="text-align: right;">-1.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Investimenti per implementare misure finalizzate alla sostenibilità ambientale</td>
+<td style="text-align: right;">nan</td>
+<td style="text-align: right;">3.8</td>
+<td style="text-align: right;">nan</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Investimenti in nuove tecnologie di tipo non digitale (es: tecnologie green)</td>
+<td style="text-align: right;">2.4</td>
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">0.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Internazionalizzazione</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Partecipazione (anche azionaria) in altre imprese</td>
+<td style="text-align: right;">0.6</td>
+<td style="text-align: right;">0.8</td>
+<td style="text-align: right;">0.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Investimenti per implementare misure finalizzate alla responsabilità sociale ed ambientale</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">nan</td>
+<td style="text-align: right;">nan</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> ricorrono a finanziamenti esterni 459.615 imprese nel 2025 (45,7% dell’universo; 44,1% nel 2022). Il bisogno di liquidità resta il primo motivo ma scende; sale l’ampliamento della capacità produttiva.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> Qui il denominatore cambia: sono le imprese che hanno fatto ricorso a finanziamenti esterni, 459.615 nel 2025, cioè il 45,7% dell’universo (44,1% nel 2022). Anche questa domanda ammette più risposte.</p>
+<p>I tre motivi principali restano gli stessi. Le esigenze di liquidità scendono dal 43,1 al 39,0%, l’attività ordinaria (personale, spese correnti) è stabile intorno al 37%, l’ampliamento della capacità produttiva sale dal 29,8 al 33,2%. Fra gli investimenti specifici, le nuove tecnologie digitali scendono dall’8,9 al 7,5%, quelle non digitali salgono dal 2,4 al 2,8%.</p>
+<p>Il quadro è di un credito esterno meno legato al bisogno di cassa e un po’ più agli investimenti in capacità. Nel comunicato Istat aggiunge che le imprese piccole ricorrono al credito esterno soprattutto per l’attività corrente, quelle grandi per investire. La voce sulla sostenibilità ambientale (2025) e quella sulla responsabilità sociale e ambientale (2022) sono domande diverse e non si confrontano.</p>
+<div id="6f38b80f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> i tre motivi principali restano liquidità, attività ordinaria e ampliamento della capacità produttiva; fra il 2022 e il 2025 i primi due perdono terreno e il terzo ne guadagna. Le misure di sostenibilità ambientale (2025) e di responsabilità sociale e ambientale (2022) sono domande diverse: un solo punto ciascuna.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> Il grafico ordina i motivi per la quota del 2025. Le due voci arancioni in alto (liquidità e attività ordinaria) indicano un ricorso al credito meno legato alla gestione corrente; il segmento blu dell’ampliamento della capacità produttiva è il movimento opposto. Le voci in fondo riguardano pochi punti percentuali: internazionalizzazione e partecipazioni in altre imprese restano sotto il 2% di chi ricorre al credito esterno.</p>
+</section>
+<section id="prestiti-richiesti-e-ottenuti" class="level2">
+<h2 class="anchored" data-anchor-id="prestiti-richiesti-e-ottenuti">5. Prestiti richiesti e ottenuti</h2>
+<p>Quota di imprese che ha chiesto un prestito a banche o altri intermediari e, fra queste, esito della richiesta. Nel 2022 la tavola riportava anche se il prestito era assistito da garanzia pubblica; nell’edizione 2025 quella domanda non c’è più.</p>
+<div id="df95b1ab" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="12">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 16%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 20%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">anno</th>
+<th style="text-align: right;">richiesto prestito % imprese</th>
+<th style="text-align: right;">Sì, per l’ammontare richiesto % richiedenti</th>
+<th style="text-align: right;">Sì, ma per ammontare inferiore % richiedenti</th>
+<th style="text-align: right;">Esito non ancora noto % richiedenti</th>
+<th style="text-align: right;">No % richiedenti</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">24.0</td>
+<td style="text-align: right;">84.4</td>
+<td style="text-align: right;">9.5</td>
+<td style="text-align: right;">2.6</td>
+<td style="text-align: right;">3.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">23.8</td>
+<td style="text-align: right;">85.6</td>
+<td style="text-align: right;">8.2</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">2.4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> la quota di imprese che chiede un prestito passa da 24,0 a 23,8%. Fra chi lo chiede, nel 2025 lo ottiene per l’intero importo l’85,6%; i rifiuti sono 2,4% (3,5% nel 2022).</p>
+</div>
+</div>
+<p><strong>Commento.</strong> La quota di imprese che ha chiesto un prestito a banche o altri intermediari è stabile: 24,0% nel 2022, 23,8% nel 2025. Fra chi l’ha chiesto, la quota che lo ottiene per l’intero importo sale dall’84,4 all’85,6%, quella che lo ottiene per un importo inferiore scende dal 9,5 all’8,2%, i rifiuti scendono dal 3,5 al 2,4%.</p>
+<p>Due cautele. L’esito non ancora noto sale dal 2,6 al 3,9%: una parte delle richieste del 2025 era ancora in istruttoria e il suo esito finale non è nella tavola. La base delle percentuali sull’esito sono le imprese che hanno chiesto un prestito, come nella figura 25 del comunicato; nel testo del comunicato il 2,4% di rifiuti è riferito invece alle imprese con almeno 3 addetti. Sul totale delle imprese i rifiuti sarebbero circa lo 0,6%.</p>
+<p>Secondo Istat, tre imprese su quattro non hanno chiesto prestiti e l’80,3% di queste non ne aveva bisogno (77% nel 2022).</p>
+<div id="557b4e84" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="13">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> ogni barra è il 100% delle imprese che hanno chiesto un prestito. La parte scura (prestito concesso per intero) copre quasi tutta la barra in entrambi gli anni; la parte arancione (rifiutato) è sottile e si assottiglia nel 2025.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> Ogni barra è il 100% delle imprese che hanno chiesto un prestito. La parte scura, il prestito concesso per intero, occupa più dell’84% in entrambi gli anni. La differenza fra le due barre sta nelle code: si accorcia la parte concessa per un importo inferiore, si allunga quella con esito non ancora noto, si assottiglia quella dei rifiuti.</p>
+<div id="e48fe29d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="14">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 19%">
+<col style="width: 5%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">classe di addetti</th>
+<th style="text-align: right;">Sì, completamente</th>
+<th style="text-align: right;">Sì, parzialmente</th>
+<th style="text-align: right;">No</th>
+<th style="text-align: right;">con garanzia (totale o parziale)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">3-9</td>
+<td style="text-align: right;">19.4</td>
+<td style="text-align: right;">27.3</td>
+<td style="text-align: right;">53.2</td>
+<td style="text-align: right;">46.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10-19</td>
+<td style="text-align: right;">14.5</td>
+<td style="text-align: right;">37.4</td>
+<td style="text-align: right;">48.1</td>
+<td style="text-align: right;">51.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">20-49</td>
+<td style="text-align: right;">14.1</td>
+<td style="text-align: right;">41.6</td>
+<td style="text-align: right;">44.3</td>
+<td style="text-align: right;">55.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">50-99</td>
+<td style="text-align: right;">12.1</td>
+<td style="text-align: right;">42.7</td>
+<td style="text-align: right;">45.2</td>
+<td style="text-align: right;">54.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">100-249</td>
+<td style="text-align: right;">9.8</td>
+<td style="text-align: right;">39.4</td>
+<td style="text-align: right;">50.8</td>
+<td style="text-align: right;">49.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">250 e oltre</td>
+<td style="text-align: right;">7.3</td>
+<td style="text-align: right;">26.5</td>
+<td style="text-align: right;">66.2</td>
+<td style="text-align: right;">33.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Totale</td>
+<td style="text-align: right;">17.6</td>
+<td style="text-align: right;">31.1</td>
+<td style="text-align: right;">51.3</td>
+<td style="text-align: right;">48.7</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> solo edizione 2022. Fra le imprese che hanno chiesto un prestito, il 48,7% lo ha avuto assistito in tutto o in parte da garanzia pubblica; la quota più alta è fra 20-49 addetti (55,7%), la più bassa fra 250 e oltre addetti (33,8%). È il dato che si collega al Fondo di garanzia per le PMI; l’edizione 2025 non permette di aggiornarlo.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> Solo l’edizione 2022 chiedeva se il prestito era assistito da una garanzia pubblica. Fra le imprese con almeno 3 addetti che avevano chiesto un prestito, il 48,7% aveva una garanzia pubblica: completa per il 17,6%, parziale per il 31,1%. Le tre colonne sommano al 100% delle imprese che hanno chiesto un prestito, comprese quelle che non l’hanno ottenuto.</p>
+<p>La forma della garanzia cambia con la dimensione. La garanzia completa è più frequente fra le microimprese (19,4%) e scende fino al 7,3% fra le imprese con 250 addetti e oltre. La garanzia parziale prevale fra 10 e 249 addetti, con un massimo del 42,7% fra 50 e 99. Nel complesso la quota garantita più alta è fra 20 e 49 addetti (55,7%), la più bassa fra le imprese più grandi (33,8%).</p>
+<p>È il dato della Rilevazione che si collega al Fondo di garanzia per le PMI. L’edizione 2025 non ripete la domanda: non si può dire da questa fonte se la quota di prestiti garantiti sia cresciuta o calata.</p>
+<div id="abb19288" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="15">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> la garanzia completa (blu scuro) pesa di più fra le microimprese, quella parziale (azzurro) fra le imprese da 10 a 249 addetti; fra le imprese con 250 addetti e oltre entrambe sono più rare.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> Il grafico separa la garanzia completa (blu) da quella parziale (azzurro). La lunghezza totale della barra disegna una curva: sale dalle microimprese fino alla classe 20-49 e poi scende, con un calo netto fra le imprese con 250 addetti e oltre. Il blu invece si accorcia con continuità al crescere della dimensione: più l’impresa è piccola, più spesso la garanzia copre tutto il prestito.</p>
+</section>
+<section id="ricapitalizzazione-solo-2025" class="level2">
+<h2 class="anchored" data-anchor-id="ricapitalizzazione-solo-2025">6. Ricapitalizzazione (solo 2025)</h2>
+<p>Le tavole 45-48 sono nuove nell’edizione 2025 e riguardano le sole società di capitali.</p>
+<div id="64bef3bc" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="16">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 26%">
+<col style="width: 15%">
+<col style="width: 19%">
+<col style="width: 20%">
+<col style="width: 2%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">classe di addetti</th>
+<th style="text-align: right;">attuato % società</th>
+<th style="text-align: right;">Sì, con l’apporto di capitale privato di fondi di private equity o IPOs</th>
+<th style="text-align: right;">Sì, con l’apporto di capitale dei soci</th>
+<th style="text-align: right;">Sì, con l’apporto di capitale privato di nuovi soci</th>
+<th style="text-align: right;">Sì, con il sostegno di incentivi pubblici o contributi</th>
+<th style="text-align: right;">No</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">3-9</td>
+<td style="text-align: right;">9.1</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">5.2</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.4</td>
+<td style="text-align: right;">90.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10-19</td>
+<td style="text-align: right;">10.8</td>
+<td style="text-align: right;">0.8</td>
+<td style="text-align: right;">5.9</td>
+<td style="text-align: right;">0.9</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">89.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">20-49</td>
+<td style="text-align: right;">10.6</td>
+<td style="text-align: right;">0.8</td>
+<td style="text-align: right;">5.8</td>
+<td style="text-align: right;">1.1</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: right;">89.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">50-99</td>
+<td style="text-align: right;">11.5</td>
+<td style="text-align: right;">1.2</td>
+<td style="text-align: right;">6.3</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">2.6</td>
+<td style="text-align: right;">88.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">100-249</td>
+<td style="text-align: right;">10.1</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">6.1</td>
+<td style="text-align: right;">1.1</td>
+<td style="text-align: right;">1.6</td>
+<td style="text-align: right;">89.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">250 e oltre</td>
+<td style="text-align: right;">11.1</td>
+<td style="text-align: right;">1.7</td>
+<td style="text-align: right;">6.8</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">1.2</td>
+<td style="text-align: right;">88.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Totale</td>
+<td style="text-align: right;">9.7</td>
+<td style="text-align: right;">0.6</td>
+<td style="text-align: right;">5.5</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.6</td>
+<td style="text-align: right;">90.3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> il 9,7% delle società di capitali prevede una ricapitalizzazione; il canale principale è il capitale dei soci (5,5 punti, poco più della metà), poi gli incentivi pubblici. Private equity e quotazione restano marginali anche fra le società con 250 addetti e oltre (1,7%).</p>
+</div>
+</div>
+<p><strong>Commento.</strong> Le tavole sulla ricapitalizzazione sono nuove nell’edizione 2025 e riguardano solo le società di capitali con almeno 3 addetti, circa 482mila. Il 9,7%, quasi 47mila società, ha attuato o prevede una ricapitalizzazione.</p>
+<p>Il canale prevalente è il capitale dei soci (5,5% delle società), seguito dagli incentivi pubblici o contributi (2,6%), dai nuovi soci (1,0%) e dai fondi di private equity o dalla quotazione (0,6%). La quota che si ricapitalizza varia poco con la dimensione, dal 9,1% delle microimprese all’11,5% della classe 50-99. Cambia invece il canale: il capitale dei soci sale dal 5,2 al 6,8% andando dalle micro alle grandi, private equity e quotazione dallo 0,5 all’1,7%, mentre gli incentivi pubblici toccano il massimo fra 10 e 19 addetti (3,1%) e scendono all’1,2% fra le grandi.</p>
+<p>Nel comunicato Istat segnala una propensione più alta nel Mezzogiorno (12,0%).</p>
+<div id="5c1ab861" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="17">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> la barra intera è la quota di società che prevede una ricapitalizzazione: circa una su dieci in ogni classe. Il blu scuro (capitale dei soci) è sempre la parte più lunga; l’arancione (private equity o quotazione) si allunga con la dimensione ma resta sotto il 2%.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> La barra intera è la quota di società che prevede una ricapitalizzazione, quasi la stessa in ogni classe: circa una su dieci. La parte blu scura, il capitale dei soci, è sempre la più lunga. La parte arancione, private equity o quotazione, si allunga con la dimensione ma resta sotto il 2% anche fra le società con 250 addetti e oltre. L’azzurro degli incentivi pubblici si accorcia nelle classi più grandi: le imprese che ne fanno il canale prevalente sono soprattutto piccole.</p>
+<div id="53e544d7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="18">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 14%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 10%">
+<col style="width: 24%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">classe di addetti</th>
+<th style="text-align: right;">Mantenere inalterato l’assetto proprietario</th>
+<th style="text-align: right;">Impossibilità da parte dei soci a conferire nuovi capitali</th>
+<th style="text-align: right;">Difficoltà di accesso a capitale esterno (pubblico o privato)</th>
+<th style="text-align: right;">Mancanza di adeguati incentivi</th>
+<th style="text-align: right;">Non erano previsti piani di espansione o investimento di dimensione rilevante</th>
+<th style="text-align: right;">Altro motivo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">3-9</td>
+<td style="text-align: right;">48.2</td>
+<td style="text-align: right;">7.8</td>
+<td style="text-align: right;">2.2</td>
+<td style="text-align: right;">4.3</td>
+<td style="text-align: right;">33.1</td>
+<td style="text-align: right;">20.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10-19</td>
+<td style="text-align: right;">52.6</td>
+<td style="text-align: right;">6.3</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: right;">28.8</td>
+<td style="text-align: right;">21.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">20-49</td>
+<td style="text-align: right;">53.5</td>
+<td style="text-align: right;">4.7</td>
+<td style="text-align: right;">1.1</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">26.9</td>
+<td style="text-align: right;">23.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">50-99</td>
+<td style="text-align: right;">53.7</td>
+<td style="text-align: right;">3.2</td>
+<td style="text-align: right;">0.9</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">24.4</td>
+<td style="text-align: right;">26.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">100-249</td>
+<td style="text-align: right;">51.7</td>
+<td style="text-align: right;">2.3</td>
+<td style="text-align: right;">0.6</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">22.7</td>
+<td style="text-align: right;">30.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">250 e oltre</td>
+<td style="text-align: right;">47.4</td>
+<td style="text-align: right;">1.2</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">0.6</td>
+<td style="text-align: right;">19.8</td>
+<td style="text-align: right;">39.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Totale</td>
+<td style="text-align: right;">50.0</td>
+<td style="text-align: right;">6.9</td>
+<td style="text-align: right;">1.8</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">30.9</td>
+<td style="text-align: right;">21.2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> chi non si ricapitalizza lo fa soprattutto per scelta (non cambiare l’assetto proprietario, nessun piano di investimento rilevante), meno per vincoli (soci senza capitali, accesso difficile al capitale esterno).</p>
+</div>
+</div>
+<p><strong>Commento.</strong> La tabella riguarda le società di capitali che non prevedono una ricapitalizzazione, circa 435mila, con risposta multipla. La metà indica la volontà di mantenere invariato l’assetto proprietario (50,0%), quasi una su tre l’assenza di piani di espansione o investimento rilevanti (30,9%). I vincoli pesano poco: soci senza capitali da conferire 6,9%, incentivi inadeguati 3,5%, accesso difficile al capitale esterno 1,8%.</p>
+<p>Con la dimensione i vincoli si riducono. L’impossibilità dei soci di conferire capitale passa dal 7,8% delle microimprese all’1,2% delle grandi; anche la mancanza di piani di investimento scende, dal 33,1 al 19,8%. L’assetto proprietario resta intorno alla metà in tutte le classi, fra il 47,4 e il 53,7%. Cresce invece con la dimensione l’«altro motivo», dal 20,1 al 39,4%: fra le società più grandi quattro su dieci indicano un motivo che il questionario non prevede.</p>
+<div id="77a19e47" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="19">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> le due barre blu (scelte) sommano 80,9 punti, le tre azzurre (vincoli) 12,2; la risposta è multipla, quindi le somme possono superare 100.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> Il grafico separa le scelte (blu) dai vincoli (azzurro); l’«altro motivo» è in grigio perché non si sa a quale gruppo appartenga. Le due scelte sommano 80,9 punti, i tre vincoli 12,2. Poiché la risposta è multipla, le due somme non dicono quante società indicano almeno una scelta o almeno un vincolo, ma il rapporto fra le due resta netto.</p>
+</section>
+<section id="confronto-con-bach-per-macrosettore" class="level2">
+<h2 class="anchored" data-anchor-id="confronto-con-bach-per-macrosettore">7. Confronto con BACH per macrosettore</h2>
+<p>BACH Italia, società non finanziarie, campione variabile, tutte le classi: voci del passivo in % del totale attivo. I macrosettori della Rilevazione si ricompongono dalle sezioni BACH, ponderando per il totale attivo. Industria in senso stretto = B-E; Costruzioni = F; Commercio = G; Altri servizi = H, I, J, L, M (senza sedi centrali), N, R, divisioni S95 e S96. Mancano in BACH le sezioni P (istruzione) e Q (sanità), presenti nella Rilevazione.</p>
+<div id="22ce4dcf" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="20">
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>Totale ricomposto contro <code>Zc</code> (totale BACH), debiti bancari a breve 2024: 6,28% contro 6,27%.</p>
+</div>
+</div>
+<div id="6a335e2a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="21">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 19%">
+<col style="width: 16%">
+<col style="width: 9%">
+<col style="width: 15%">
+<col style="width: 9%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">voce</th>
+<th style="text-align: left;">macrosettore</th>
+<th style="text-align: right;">Istat % imprese 2022</th>
+<th style="text-align: right;">Istat 2025</th>
+<th style="text-align: right;">BACH % attivo 2022</th>
+<th style="text-align: right;">BACH 2024</th>
+<th style="text-align: left;">stessa direzione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Banca, breve</td>
+<td style="text-align: left;">Industria in senso stretto</td>
+<td style="text-align: right;">17.3</td>
+<td style="text-align: right;">20.1</td>
+<td style="text-align: right;">5.3</td>
+<td style="text-align: right;">4.8</td>
+<td style="text-align: left;">no</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Banca, breve</td>
+<td style="text-align: left;">Costruzioni</td>
+<td style="text-align: right;">13.0</td>
+<td style="text-align: right;">15.6</td>
+<td style="text-align: right;">4.7</td>
+<td style="text-align: right;">4.2</td>
+<td style="text-align: left;">no</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Banca, breve</td>
+<td style="text-align: left;">Commercio</td>
+<td style="text-align: right;">13.0</td>
+<td style="text-align: right;">16.5</td>
+<td style="text-align: right;">6.2</td>
+<td style="text-align: right;">5.9</td>
+<td style="text-align: left;">no</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Banca, breve</td>
+<td style="text-align: left;">Altri servizi</td>
+<td style="text-align: right;">7.9</td>
+<td style="text-align: right;">10.3</td>
+<td style="text-align: right;">11.8</td>
+<td style="text-align: right;">9.6</td>
+<td style="text-align: left;">no</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Banca, breve</td>
+<td style="text-align: left;">Totale</td>
+<td style="text-align: right;">11.5</td>
+<td style="text-align: right;">14.2</td>
+<td style="text-align: right;">7.2</td>
+<td style="text-align: right;">6.3</td>
+<td style="text-align: left;">no</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Banca, medio-lungo</td>
+<td style="text-align: left;">Industria in senso stretto</td>
+<td style="text-align: right;">35.7</td>
+<td style="text-align: right;">35.0</td>
+<td style="text-align: right;">7.1</td>
+<td style="text-align: right;">6.1</td>
+<td style="text-align: left;">sì</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Banca, medio-lungo</td>
+<td style="text-align: left;">Costruzioni</td>
+<td style="text-align: right;">30.9</td>
+<td style="text-align: right;">30.4</td>
+<td style="text-align: right;">8.0</td>
+<td style="text-align: right;">7.1</td>
+<td style="text-align: left;">sì</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Banca, medio-lungo</td>
+<td style="text-align: left;">Commercio</td>
+<td style="text-align: right;">30.2</td>
+<td style="text-align: right;">29.9</td>
+<td style="text-align: right;">5.9</td>
+<td style="text-align: right;">4.9</td>
+<td style="text-align: left;">sì</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Banca, medio-lungo</td>
+<td style="text-align: left;">Altri servizi</td>
+<td style="text-align: right;">23.1</td>
+<td style="text-align: right;">23.4</td>
+<td style="text-align: right;">6.3</td>
+<td style="text-align: right;">5.5</td>
+<td style="text-align: left;">no</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Banca, medio-lungo</td>
+<td style="text-align: left;">Totale</td>
+<td style="text-align: right;">28.1</td>
+<td style="text-align: right;">27.9</td>
+<td style="text-align: right;">6.8</td>
+<td style="text-align: right;">5.8</td>
+<td style="text-align: left;">sì</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Credito commerciale</td>
+<td style="text-align: left;">Industria in senso stretto</td>
+<td style="text-align: right;">8.6</td>
+<td style="text-align: right;">9.8</td>
+<td style="text-align: right;">18.8</td>
+<td style="text-align: right;">16.9</td>
+<td style="text-align: left;">no</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Credito commerciale</td>
+<td style="text-align: left;">Costruzioni</td>
+<td style="text-align: right;">4.6</td>
+<td style="text-align: right;">6.7</td>
+<td style="text-align: right;">20.1</td>
+<td style="text-align: right;">20.7</td>
+<td style="text-align: left;">sì</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Credito commerciale</td>
+<td style="text-align: left;">Commercio</td>
+<td style="text-align: right;">7.9</td>
+<td style="text-align: right;">10.5</td>
+<td style="text-align: right;">26.2</td>
+<td style="text-align: right;">25.9</td>
+<td style="text-align: left;">no</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Credito commerciale</td>
+<td style="text-align: left;">Altri servizi</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">4.1</td>
+<td style="text-align: right;">12.2</td>
+<td style="text-align: right;">11.3</td>
+<td style="text-align: left;">no</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Credito commerciale</td>
+<td style="text-align: left;">Totale</td>
+<td style="text-align: right;">5.5</td>
+<td style="text-align: right;">6.9</td>
+<td style="text-align: right;">18.4</td>
+<td style="text-align: right;">17.1</td>
+<td style="text-align: left;">no</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Equity</td>
+<td style="text-align: left;">Industria in senso stretto</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">4.7</td>
+<td style="text-align: right;">39.5</td>
+<td style="text-align: right;">42.2</td>
+<td style="text-align: left;">sì</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Equity</td>
+<td style="text-align: left;">Costruzioni</td>
+<td style="text-align: right;">2.1</td>
+<td style="text-align: right;">4.3</td>
+<td style="text-align: right;">27.4</td>
+<td style="text-align: right;">30.4</td>
+<td style="text-align: left;">sì</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Equity</td>
+<td style="text-align: left;">Commercio</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">3.8</td>
+<td style="text-align: right;">35.2</td>
+<td style="text-align: right;">37.4</td>
+<td style="text-align: left;">sì</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Equity</td>
+<td style="text-align: left;">Altri servizi</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: right;">4.7</td>
+<td style="text-align: right;">31.1</td>
+<td style="text-align: right;">33.5</td>
+<td style="text-align: left;">sì</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Equity</td>
+<td style="text-align: left;">Totale</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">4.4</td>
+<td style="text-align: right;">35.6</td>
+<td style="text-align: right;">38.1</td>
+<td style="text-align: left;">sì</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Intra-gruppo</td>
+<td style="text-align: left;">Industria in senso stretto</td>
+<td style="text-align: right;">1.1</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">11.2</td>
+<td style="text-align: right;">10.4</td>
+<td style="text-align: left;">no</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Intra-gruppo</td>
+<td style="text-align: left;">Costruzioni</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">8.9</td>
+<td style="text-align: right;">8.5</td>
+<td style="text-align: left;">no</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Intra-gruppo</td>
+<td style="text-align: left;">Commercio</td>
+<td style="text-align: right;">0.6</td>
+<td style="text-align: right;">0.7</td>
+<td style="text-align: right;">7.7</td>
+<td style="text-align: right;">7.8</td>
+<td style="text-align: left;">sì</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Intra-gruppo</td>
+<td style="text-align: left;">Altri servizi</td>
+<td style="text-align: right;">0.8</td>
+<td style="text-align: right;">0.8</td>
+<td style="text-align: right;">15.5</td>
+<td style="text-align: right;">17.1</td>
+<td style="text-align: left;">sì</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Intra-gruppo</td>
+<td style="text-align: left;">Totale</td>
+<td style="text-align: right;">0.8</td>
+<td style="text-align: right;">0.8</td>
+<td style="text-align: right;">11.6</td>
+<td style="text-align: right;">11.7</td>
+<td style="text-align: left;">sì</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> in 13 casi su 25 le due fonti si muovono nella stessa direzione; per voce: banca, breve 0 su 5; banca, medio-lungo 4 su 5; credito commerciale 1 su 5; equity 5 su 5; intra-gruppo 3 su 5. L’equity concorda ovunque. Il credito bancario a breve diverge ovunque: più imprese lo usano, ma pesa meno nei bilanci BACH.</p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>Per capire se la divergenza dipende dal peso delle grandi imprese nella media ponderata, la distribuzione BACH del debito bancario a breve (totale <code>Zc</code>). La mediana è 0,00%: più di metà delle società non ha debiti bancari a breve, quindi la mediana non è informativa. Il terzo quartile passa da 0,91% (2022) a 0,81% (2024), la media ponderata da 7,13 a 6,27%. Scende anche il terzo quartile: la divergenza non viene solo dalle grandi imprese; resta la differenza fra «usare» una fonte, anche per un importo piccolo, e il suo peso sul totale attivo.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> La tabella accosta, per ogni voce e macrosettore, la quota di imprese che usa la fonte (Istat, 2022 e 2025) e il peso della voce corrispondente nel bilancio delle società non finanziarie (BACH, 2022 e 2024, in % del totale attivo). Il raccordo fra le voci è: credito bancario a breve con i debiti verso banche entro 12 mesi (<code>L21</code>), a medio-lungo con quelli oltre 12 mesi (<code>L22</code>), credito commerciale con i debiti verso fornitori (<code>L4</code>), equity con il patrimonio netto (<code>E</code>), prestiti infragruppo con gli altri debiti finanziari (<code>L31</code>).</p>
+<p>Le due fonti vanno nella stessa direzione in 13 casi su 25. L’equity concorda in tutti i macrosettori: più imprese usano i mezzi propri e il patrimonio netto pesa di più sull’attivo (dal 35,6 al 38,1% nel totale). Il credito bancario a medio-lungo concorda in quattro casi su cinque; fa eccezione negli altri servizi, dove la quota Istat sale di 0,3 punti e il peso BACH scende. Il credito commerciale concorda solo nelle costruzioni.</p>
+<p>Il credito bancario a breve non concorda in nessun macrosettore: più imprese lo usano, ma pesa meno nei bilanci (dal 7,2 al 6,3% dell’attivo nel totale ricomposto). Il paragrafo sotto la tabella mostra che scende anche il terzo quartile BACH, quindi la divergenza non viene solo dalle imprese grandi. Una lettura compatibile, da verificare, è che più imprese usino un fido per importi piccoli rispetto all’attivo. Restano le differenze di metodo: anni diversi (BACH arriva al 2024), unità diverse (imprese contro bilanci), universi diversi (la Rilevazione comprende imprese individuali e società di persone).</p>
+<div id="f2bd6ae6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="22">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 16%">
+<col style="width: 23%">
+<col style="width: 24%">
+<col style="width: 10%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">anno</th>
+<th style="text-align: right;">Banca, breve</th>
+<th style="text-align: right;">Banca, medio-lungo</th>
+<th style="text-align: right;">Credito commerciale</th>
+<th style="text-align: right;">Equity</th>
+<th style="text-align: right;">Intra-gruppo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">6.1</td>
+<td style="text-align: right;">6.7</td>
+<td style="text-align: right;">18.5</td>
+<td style="text-align: right;">34.2</td>
+<td style="text-align: right;">11.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">7.7</td>
+<td style="text-align: right;">7.4</td>
+<td style="text-align: right;">17.5</td>
+<td style="text-align: right;">36.3</td>
+<td style="text-align: right;">10.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">6.3</td>
+<td style="text-align: right;">5.8</td>
+<td style="text-align: right;">17.1</td>
+<td style="text-align: right;">38.1</td>
+<td style="text-align: right;">11.7</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> la tabella riporta le stesse serie per il 2018, 2021 e 2024. Fra il 2021 e il 2024: banca, breve 7,7 → 6,3%; banca, medio-lungo 7,4 → 5,8%; credito commerciale 17,5 → 17,1%; equity 36,3 → 38,1%; intra-gruppo 10,1 → 11,7%.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> Le serie BACH coprono il 2018-2024 per il totale ricomposto delle società non finanziarie. Il debito bancario, a breve e a medio-lungo, sale dal 2019 al 2021 (nel 2021 a breve 7,7%, a medio-lungo 7,4% dell’attivo) e poi scende fino al 2024 (6,3 e 5,8%). Il patrimonio netto cresce per tutto il periodo, dal 34,2% del 2018 al 38,1% del 2024; i debiti verso fornitori calano leggermente (dal 18,5 al 17,1%); gli altri debiti finanziari, soprattutto infragruppo, tornano nel 2024 al livello del 2018 (11,7%).</p>
+<p>Il picco del 2021 è compatibile con i prestiti garantiti del periodo pandemico, ma è un’ipotesi: il notebook non scompone il debito per tipo di prestito. Il 2022, anno della seconda edizione della Rilevazione, cade già nella fase di discesa.</p>
+</section>
+<section id="confronto-con-bach-per-divisione" class="level2">
+<h2 class="anchored" data-anchor-id="confronto-con-bach-per-divisione">8. Confronto con BACH per divisione</h2>
+<p>Per ogni divisione Ateco presente in entrambe le fonti: quota di imprese che usa la fonte (Istat 2025) contro peso della voce nel bilancio (BACH 2024), come media ponderata e come terzo quartile. La mediana BACH non serve: per i debiti bancari è zero nella grande maggioranza delle divisioni (più di metà delle società non ne ha). Se le due fonti descrivono lo stesso fenomeno, le divisioni in cui più imprese usano il credito bancario dovrebbero essere anche quelle con più debito bancario in bilancio.</p>
+<div id="24788970" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="23">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">voce</th>
+<th style="text-align: left;">statistica BACH</th>
+<th style="text-align: right;">divisioni</th>
+<th style="text-align: right;">Spearman</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Banca, breve</td>
+<td style="text-align: left;">media ponderata</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">0.46</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Banca, breve</td>
+<td style="text-align: left;">terzo quartile</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">0.81</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Banca, medio-lungo</td>
+<td style="text-align: left;">media ponderata</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">0.32</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Banca, medio-lungo</td>
+<td style="text-align: left;">terzo quartile</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">0.77</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Credito commerciale</td>
+<td style="text-align: left;">media ponderata</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">0.45</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Credito commerciale</td>
+<td style="text-align: left;">terzo quartile</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">0.61</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Equity</td>
+<td style="text-align: left;">media ponderata</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">0.06</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Equity</td>
+<td style="text-align: left;">terzo quartile</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">0.28</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Intra-gruppo</td>
+<td style="text-align: left;">media ponderata</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">0.36</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Intra-gruppo</td>
+<td style="text-align: left;">terzo quartile</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">0.47</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> 71 divisioni in comune. Un indice di Spearman vicino a 1 vuol dire che l’ordine delle divisioni è lo stesso nelle due fonti, vicino a 0 che non c’è relazione. Il legame più forte è per banca, breve (terzo quartile, 0,81); per l’equity è debole (0,28 al massimo): usare l’aumento di capitale come fonte nell’anno non dice quanto patrimonio netto ha già l’impresa. Divisioni con mediana BACH pari a zero: banca, breve 64; banca, medio-lungo 68; credito commerciale 20; equity 0; intra-gruppo 69.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> Il confronto per divisione Ateco guarda la sezione trasversale: in quali settori una fonte è più diffusa e in quali pesa di più nei bilanci. L’indice di Spearman misura quanto le due fonti ordinano le 71 divisioni comuni nello stesso modo.</p>
+<p>Con il terzo quartile BACH il legame è forte per il credito bancario a breve (0,81) e a medio-lungo (0,77), buono per il credito commerciale (0,61), più debole per l’intra-gruppo (0,47) e per l’equity (0,28). Con la media ponderata i valori sono più bassi, perché la media riflette le poche società grandi di ogni divisione mentre la Rilevazione conta le imprese. La mediana non si usa: per i debiti bancari è zero nella grande maggioranza delle divisioni.</p>
+<p>Il risultato completa quello della sezione 7. Le due fonti concordano su dove si usa il credito bancario, non su come cambia nel tempo. Per l’equity il legame debole ha una spiegazione semplice: la Rilevazione chiede se l’impresa ha usato i mezzi propri come fonte nell’anno, BACH misura il patrimonio netto accumulato.</p>
+<div id="11506dfc" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="24">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> ogni punto è una divisione. Se la nuvola sale verso destra, le divisioni in cui più imprese usano il credito bancario sono anche quelle in cui le società più indebitate con le banche (terzo quartile) hanno più debito bancario in bilancio.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> Ogni punto è una divisione Ateco. Le nuvole salgono verso destra: le divisioni in cui più imprese usano il credito bancario sono quelle in cui le società più indebitate con le banche hanno più debito in bilancio. Le divisioni manifatturiere ad alta intensità di capitale, come la metallurgia (C24) per il breve e le bevande (C11) per il medio-lungo, stanno in alto a destra.</p>
+<p>Alcuni punti estremi dipendono da divisioni con pochissime imprese. L’industria del tabacco (C12) ha 6 imprese nella Rilevazione e un terzo di esse usa il credito a breve; l’estrazione di petrolio e gas (B06) ne ha circa 7, nessuna con credito a breve. Su numeri così piccoli una sola risposta sposta la quota di molti punti: il legame si legge sull’insieme, non sui singoli punti.</p>
+<div id="a7762eb3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="25">
+<div class="cell-output cell-output-display cell-output-markdown">
+<blockquote class="blockquote">
+<p>Istat, Censimento permanente delle imprese - Rilevazione multiscopo, Appendice statistica (edizioni 2022 e 2025). — BACH database: ECCBSO, Oesterreichische Nationalbank, National Bank of Belgium, Deutsche Bundesbank, Banco de España, Banque de France, Hrvatska Narodna Banka, Magyar Nemzeti Bank, Centrale dei Bilanci - Cerved srl / Banca d’Italia, Statec Luxembourg, Narodowy Bank Polski (calculations of Narodowy Bank Polski on the basis of the data from the Statistics Poland), Banco de Portugal, National Bank of Slovakia (calculations based on data from the Ministry of Finance). Rilascio BACH 20260914.</p>
+</blockquote>
+</div>
+</div>
+</section>
+<section id="credito-e-innovazione-per-divisione" class="level2">
+<h2 class="anchored" data-anchor-id="credito-e-innovazione-per-divisione">9. Credito e innovazione per divisione</h2>
+<p>L’esito delle domande di prestito dice come rispondono le banche a chi chiede credito; non dice se il credito va a chi innova. La stessa Rilevazione 2025 contiene le altre domande: attività di innovazione, ricerca e sviluppo, intensità degli investimenti in tecnologie e digitalizzazione, intelligenza artificiale, cloud, nuovi prodotti, accordi formali con altre imprese, competenze digitali. Le tavole pubblicate le riportano per divisione Ateco, non per impresa: l’incrocio si fa fra divisioni.</p>
+<p>Per ogni divisione con almeno 1.000 imprese si calcolano tre indicatori di credito e otto di innovazione, tutti in quota di imprese. L’indice di Spearman misura se le divisioni si ordinano allo stesso modo. Le divisioni con imprese più grandi chiedono più credito e innovano di più: la colonna «al netto della dimensione» toglie l’effetto della quota di imprese con almeno 10 addetti (correlazione parziale sui ranghi).</p>
+<div id="734d3771" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="26">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 4%">
+<col style="width: 15%">
+<col style="width: 6%">
+<col style="width: 17%">
+<col style="width: 9%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">indicatore di innovazione</th>
+<th style="text-align: right;">prestito</th>
+<th style="text-align: right;">prestito, al netto della dimensione</th>
+<th style="text-align: right;">ridotto/negato</th>
+<th style="text-align: right;">ridotto/negato, al netto della dimensione</th>
+<th style="text-align: right;">credito per digitale</th>
+<th style="text-align: right;">credito per digitale, al netto della dimensione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">attività di innovazione</td>
+<td style="text-align: right;">0.29</td>
+<td style="text-align: right;">-0.03</td>
+<td style="text-align: right;">-0.26</td>
+<td style="text-align: right;">-0.24</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: right;">0.82</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R&amp;S interna</td>
+<td style="text-align: right;">0.36</td>
+<td style="text-align: right;">-0.09</td>
+<td style="text-align: right;">-0.14</td>
+<td style="text-align: right;">-0.10</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">0.66</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">investimenti in tecnologie e digitalizzazione, intensità alta o media</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">-0.03</td>
+<td style="text-align: right;">-0.30</td>
+<td style="text-align: right;">-0.28</td>
+<td style="text-align: right;">0.88</td>
+<td style="text-align: right;">0.90</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">almeno una tecnologia IA</td>
+<td style="text-align: right;">-0.08</td>
+<td style="text-align: right;">-0.21</td>
+<td style="text-align: right;">-0.23</td>
+<td style="text-align: right;">-0.22</td>
+<td style="text-align: right;">0.66</td>
+<td style="text-align: right;">0.66</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">servizi cloud</td>
+<td style="text-align: right;">-0.05</td>
+<td style="text-align: right;">-0.25</td>
+<td style="text-align: right;">-0.31</td>
+<td style="text-align: right;">-0.30</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">0.61</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nuovi beni o servizi (trasformazione innovativa)</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">-0.00</td>
+<td style="text-align: right;">-0.22</td>
+<td style="text-align: right;">-0.19</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">0.73</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">accordi formali con altre imprese</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">-0.04</td>
+<td style="text-align: right;">-0.10</td>
+<td style="text-align: right;">-0.08</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">0.09</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">competenze digitali avanzate (imprese con 10+ addetti)</td>
+<td style="text-align: right;">-0.03</td>
+<td style="text-align: right;">-0.09</td>
+<td style="text-align: right;">-0.33</td>
+<td style="text-align: right;">-0.32</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">0.75</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>Divisioni: 59 (almeno 1.000 imprese con 3 addetti e oltre). Con questo numero di divisioni un indice sotto 0,26 in valore assoluto non si distingue da zero (soglia approssimata 2/√n).</p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> le divisioni in cui più imprese chiedono un prestito innovano poco più delle altre (indice da -0,08 a 0,36), e il legame sparisce o si inverte quando si tiene conto della dimensione delle imprese (da -0,25 a -0,00). Dove si innova di più, i prestiti ridotti o negati sono un po’ meno frequenti: il segno è negativo per tutti gli indicatori, ma supera la soglia solo in 3 casi su 8 al netto della dimensione. L’ultima coppia di colonne è alta quasi per costruzione: chi usa il credito esterno per investimenti digitali sta già innovando.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> La tabella accosta, divisione per divisione, quanto le imprese usano il credito e quanto innovano. Prima colonna di ogni coppia: correlazione semplice fra i ranghi; seconda: la stessa al netto della quota di imprese con almeno 10 addetti.</p>
+<p>Chiedere un prestito e innovare vanno insieme solo in apparenza. L’indice semplice arriva a 0,36 per la ricerca e sviluppo interna e a 0,29 per le attività di innovazione, ma al netto della dimensione scende fra −0,25 e 0,00. Le divisioni con imprese più grandi chiedono più prestiti e innovano di più; a parità di dimensione la domanda di credito non dice quanto si innova. Per intelligenza artificiale e cloud il segno al netto della dimensione è anzi negativo (−0,21 e −0,25): sono tecnologie diffuse nei servizi, dove il prestito bancario si chiede meno.</p>
+<p>L’esito della richiesta segue un altro schema. La quota di prestiti ridotti o negati è più bassa dove si innova di più per tutti e otto gli indicatori, e resta tale al netto della dimensione. Il legame però è debole: supera la soglia di circa 0,26 per le attività di innovazione, gli investimenti in tecnologie, il cloud e le competenze digitali avanzate, non per la ricerca e sviluppo, l’intelligenza artificiale, i nuovi prodotti e gli accordi formali. Una lettura possibile, non verificabile con queste tavole: le banche razionano meno i settori più innovativi perché vi trovano imprese più solide; oppure le imprese dei settori innovativi chiedono importi che sanno di poter ottenere.</p>
+<p>La terza coppia di colonne è alta (0,60-0,90) quasi per costruzione. Chi dichiara di usare il credito esterno per investimenti digitali è già un’impresa che innova; dice però che, dove il credito finanzia la trasformazione digitale, questa avviene nei settori già più innovativi. Gli accordi formali con altre imprese non si legano a nessuno dei tre indicatori di credito.</p>
+<div id="6ee9c54b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="27">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-28-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> ogni punto è una divisione. A sinistra la nuvola sale appena: chiedere un prestito è comune sia dove si innova poco sia dove si innova molto. A destra scende di poco: dove più imprese innovano, le richieste ridotte o respinte sono un po’ meno frequenti, con molta dispersione.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> Il grafico mostra le due relazioni principali della tabella sull’indicatore più ampio, la quota di imprese impegnate in attività di innovazione nel biennio 2024-2025. L’area del punto è il numero di imprese, ma nell’indice di Spearman ogni divisione pesa uno: la ristorazione (I56, 142.594 imprese) conta quanto la ricerca scientifica (M72, 1.488).</p>
+<p>Le divisioni più innovative sono la ricerca scientifica (M72, 84%), la produzione di software (J62, 80%) e l’elettronica (C26, 70%); le meno innovative le lotterie, scommesse e case da gioco (R92), le attività immobiliari (L68) e la ristorazione (I56), fra il 20 e il 25%. Agli estremi la differenza nel credito c’è: chiede un prestito il 10-20% delle imprese nelle tre divisioni meno innovative, il 19-32% nelle tre più innovative. In mezzo la dispersione è ampia: fra le divisioni con almeno 1.000 imprese la quota va dal 14% al 38% (decimo e novantesimo percentile) a ogni livello di innovazione, e il software chiede prestiti meno della mediana (19% contro 26%).</p>
+<p>Questo incrocio risponde a una domanda limitata: i settori in cui il credito circola di più sono anche quelli che innovano di più? La risposta è «poco, e per lo più per la dimensione delle imprese». Non dice se le singole imprese che ottengono credito innovano, né se il credito produce innovazione: per questo servono dati per impresa.</p>
+<div id="f5bae07f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="28">
+<div class="cell-output cell-output-display cell-output-markdown">
+<blockquote class="blockquote">
+<p>Istat, Censimento permanente delle imprese - Rilevazione multiscopo, Appendice statistica (edizioni 2022 e 2025). Tavole 12, 14, 32, 36, 38, 42, 44, 60, 63 dell’edizione 2025.</p>
+</blockquote>
+</div>
+</div>
+</section>
+<section id="il-confronto-europeo-cis-2022-e-safe" class="level2">
+<h2 class="anchored" data-anchor-id="il-confronto-europeo-cis-2022-e-safe">10. Il confronto europeo: CIS 2022 e SAFE</h2>
+<p>La Rilevazione multiscopo non ha un termine di paragone estero. Due indagini armonizzate lo danno, con universi e periodi diversi.</p>
+<ul>
+<li><p>La <em>Community Innovation Survey</em> 2022 di Eurostat (CIS) riguarda le imprese con almeno 10 addetti e il triennio 2020-2022: per le imprese che innovano dice se hanno cercato debito o capitale di rischio, se lo hanno ottenuto e se lo hanno usato per ricerca e innovazione.</p></li>
+<li><p>L’indagine BCE sull’accesso al credito delle imprese (<em>Survey on the Access to Finance of Enterprises</em>, SAFE) riguarda le piccole e medie imprese, micro comprese, ed è semestrale: dice per quali scopi le imprese usano la finanza esterna e com’è andata la domanda di prestito.</p></li>
+</ul>
+<p>I tre periodi non coincidono: CIS 2020-2022, anni dei prestiti garantiti per la pandemia; Rilevazione Istat 2025; SAFE dal 2023 al primo semestre 2026.</p>
+<div id="0c56dcdf" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="29">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 49%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 11%">
+<col style="width: 10%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">imprese innovative, % (CIS 2022)</th>
+<th style="text-align: right;">Italia</th>
+<th style="text-align: left;">UE27</th>
+<th style="text-align: right;">Germania</th>
+<th style="text-align: left;">Francia</th>
+<th style="text-align: right;">Spagna</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">hanno cercato un prestito</td>
+<td style="text-align: right;">43.9</td>
+<td style="text-align: left;">n.d.</td>
+<td style="text-align: right;">30.2</td>
+<td style="text-align: left;">n.d.</td>
+<td style="text-align: right;">37.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">… e lo hanno ottenuto (% di chi l’ha cercato)</td>
+<td style="text-align: right;">96.8</td>
+<td style="text-align: left;">n.d.</td>
+<td style="text-align: right;">93.2</td>
+<td style="text-align: left;">n.d.</td>
+<td style="text-align: right;">95.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">hanno usato il prestito per R&amp;S o innovazione</td>
+<td style="text-align: right;">22.7</td>
+<td style="text-align: left;">12.5</td>
+<td style="text-align: right;">6.8</td>
+<td style="text-align: left;">24.0</td>
+<td style="text-align: right;">14.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">… (% di chi ha ottenuto un prestito)</td>
+<td style="text-align: right;">53.4</td>
+<td style="text-align: left;">38.0</td>
+<td style="text-align: right;">24.0</td>
+<td style="text-align: left;">41.4</td>
+<td style="text-align: right;">40.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">hanno cercato capitale di rischio</td>
+<td style="text-align: right;">3.7</td>
+<td style="text-align: left;">18.4</td>
+<td style="text-align: right;">17.8</td>
+<td style="text-align: left;">n.d.</td>
+<td style="text-align: right;">3.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">hanno avuto fondi pubblici per R&amp;S o innovazione</td>
+<td style="text-align: right;">20.0</td>
+<td style="text-align: left;">18.4</td>
+<td style="text-align: right;">15.7</td>
+<td style="text-align: left;">23.5</td>
+<td style="text-align: right;">26.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>«n.d.»: dato non pubblicato da Eurostat.</p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> fra le imprese che innovano, in Italia 22,7 su 100 hanno usato un prestito per innovare, contro 12,5 nella media europea; solo 3,7 su 100 hanno cercato capitale di rischio, contro 18,4. L’innovazione italiana si finanzia con il debito più che con il capitale di soci e investitori.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> La tabella guarda le sole imprese innovative con almeno 10 addetti nel triennio 2020-2022. In Italia il 43,9% ha cercato un prestito, più che in Spagna (37,7%) e in Germania (30,2%), e quasi tutte lo hanno ottenuto (96,8%). Il 22,7% lo ha usato per ricerca e innovazione, contro il 12,5% della media UE e il 6,8% della Germania; solo la Francia è vicina (24,0%). Fra le imprese innovative che hanno ottenuto un prestito, più della metà in Italia lo ha destinato all’innovazione (53,4%, contro 38,0% nella UE).</p>
+<p>Il capitale di rischio è l’altro lato: lo ha cercato il 3,7% delle innovative italiane, contro il 18,4% della media UE e il 17,8% della Germania; la Spagna è sul livello italiano (3,8%). I fondi pubblici per ricerca e innovazione sono nella media (20,0% contro 18,4%).</p>
+<p>Il triennio è quello dei prestiti garantiti per la pandemia, quando il credito bancario era abbondante e a basso costo: la quota italiana può riflettere quel periodo più che un tratto stabile.</p>
+<div id="e417ef21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="30">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-31-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> la barra blu è l’Italia. È fra le più lunghe per il prestito usato per innovare e fra le più corte per il capitale di rischio; per i fondi pubblici è in linea con gli altri paesi.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> Il grafico isola tre righe della tabella. L’Italia sta sopra la media UE per il debito usato per innovare, molto sotto per il capitale di rischio, in media per i fondi pubblici. In Germania il rapporto fra le prime due barre è rovesciato: poco debito per innovare, molto capitale di rischio cercato.</p>
+<div id="7d758e1f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="31">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 71%">
+<col style="width: 12%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">PMI che hanno usato finanza esterna per…, % (2026-S1)</th>
+<th style="text-align: right;">Italia</th>
+<th style="text-align: right;">Area euro</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">investimenti fissi</td>
+<td style="text-align: right;">34.4</td>
+<td style="text-align: right;">36.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">scorte e capitale circolante</td>
+<td style="text-align: right;">28.8</td>
+<td style="text-align: right;">33.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">assunzioni e formazione</td>
+<td style="text-align: right;">18.3</td>
+<td style="text-align: right;">20.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nuovi prodotti o servizi</td>
+<td style="text-align: right;">10.7</td>
+<td style="text-align: right;">18.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">rifinanziamento di debiti</td>
+<td style="text-align: right;">2.6</td>
+<td style="text-align: right;">12.3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> le piccole e medie imprese italiane usano la finanza esterna per gli stessi scopi di quelle dell’area euro, con due eccezioni: la usano poco per rinnovare debiti esistenti e, nell’ultimo semestre, poco per sviluppare nuovi prodotti (10,7% contro 18,1%).</p>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-32-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> fino al 2024-S2 la linea italiana resta vicina a quella dell’area euro, poi scende in tre semestri a 10,7%. Il calo è recente e va confermato dalle prossime edizioni.</p>
+</div>
+</div>
+<p><strong>Commento.</strong> La tabella e il grafico riguardano le PMI, micro comprese, e il semestre più recente dell’indagine BCE. Per quasi tutti gli scopi le PMI italiane usano la finanza esterna poco meno di quelle dell’area euro; le differenze grandi sono due. Il rifinanziamento di debiti esistenti è raro in Italia (2,6% contro 12,3%) in tutti i semestri dal 2023. Lo sviluppo di nuovi prodotti o servizi scende al 10,7% contro il 18,1% dell’area euro.</p>
+<p>Il calo è recente: fino al secondo semestre 2024 la quota italiana era vicina a quella dell’area euro (19,6% contro 19,5%), poi scende in tre semestri fino al 10,7%. Un solo semestre basso può dipendere dal campione: il dato va riletto con le prossime edizioni dell’indagine.</p>
+<div id="5285047f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="32">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 74%">
+<col style="width: 11%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">PMI che hanno chiesto un prestito bancario, esito, % (2026-S1)</th>
+<th style="text-align: right;">Italia</th>
+<th style="text-align: right;">Area euro</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ottenuto per intero</td>
+<td style="text-align: right;">84.4</td>
+<td style="text-align: right;">68.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ottenuto in gran parte</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">5.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ottenuto in parte limitata</td>
+<td style="text-align: right;">5.3</td>
+<td style="text-align: right;">4.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">rifiutato dall’impresa per il costo</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">respinto</td>
+<td style="text-align: right;">0.9</td>
+<td style="text-align: right;">7.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">in attesa</td>
+<td style="text-align: right;">5.7</td>
+<td style="text-align: right;">10.6</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><em>In parole semplici:</em> in Italia chi chiede un prestito in banca lo ottiene per intero più spesso che nel resto dell’area euro (84,4% contro 68,1%) e se lo vede respingere quasi mai (0,9%).</p>
+</div>
+</div>
+<p><strong>Commento.</strong> Fra le PMI che hanno chiesto un prestito bancario, in Italia l’84,4% lo ha ottenuto per intero e lo 0,9% se l’è visto respingere; nell’area euro il 68,1% e il 7,6%. Il quadro è coerente con la Rilevazione Istat 2025 (sezione 5: 85,6% ottenuto per intero, 2,4% negato), che però conta le imprese con almeno 3 addetti di ogni dimensione.</p>
+<p>Anche qui il vantaggio italiano è recente. Dal 2023 alla prima metà del 2025 la quota di prestiti ottenuti per intero era fra il 64,5% e il 71,0%, vicina all’area euro; sale all’80,2% e all’84,4% negli ultimi due semestri.</p>
+<p>Messa accanto alla tabella precedente, l’indagine BCE dice che oggi le PMI italiane ottengono il credito che chiedono più facilmente delle altre, ma lo usano meno per nuovi prodotti. Il credito non sembra il vincolo all’innovazione; non dice quale sia.</p>
+<div id="4df4bb8f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="33">
+<div class="cell-output cell-output-display cell-output-markdown">
+<blockquote class="blockquote">
+<p>Eurostat, Community Innovation Survey 2022 (inn_cis13_*), imprese con almeno 10 addetti; dataset inn_cis13_fin_ip, inn_cis13_finrd_ip, inn_cis13_pub_ip, inn_cis13_bas_ip. — BCE, Survey on the Access to Finance of Enterprises (SAFE), PMI, domande Q6A e Q7B, quote ponderate, Italia e area euro.</p>
+</blockquote>
+</div>
+</div>
+</section>
+<section id="limiti" class="level2">
+<h2 class="anchored" data-anchor-id="limiti">11. Limiti</h2>
+<ul>
+<li><p>Le quote della Rilevazione sono stime campionarie riportate all’universo; Istat non pubblica in appendice gli errori campionari per cella.</p></li>
+<li><p>La domanda sulle fonti di finanziamento chiede le fonti «principali», non tutte quelle in essere: una fonte usata poco può non essere dichiarata.</p></li>
+<li><p>Il confronto per divisione accosta 2025 (Rilevazione) e 2024 (BACH), e popolazioni diverse (tutte le imprese con almeno 3 addetti contro le società di capitali).</p></li>
+<li><p>La domanda sulla garanzia pubblica dei prestiti, presente nel 2022, manca nel 2025: non si può dire dalla Rilevazione se le garanzie siano cresciute o calate.</p></li>
+<li><p>L’incrocio fra credito e innovazione (sezione 9) è fra divisioni, non fra imprese: una correlazione fra settori non dice che le stesse imprese che ottengono credito innovino, né che il credito causi l’innovazione. Per questo servono i microdati della Rilevazione collegati ai bilanci e una fonte di variazione nell’accesso al credito indipendente dall’impresa.</p></li>
+<li><p>Il confronto europeo (sezione 10) accosta fonti con universi diversi (CIS: imprese con almeno 10 addetti; SAFE: PMI, micro comprese; Rilevazione Istat: imprese con almeno 3 addetti) e periodi diversi (2020-2022, 2023-2026, 2025): i livelli non si sommano né si confrontano punto per punto, si leggono le posizioni relative dell’Italia.</p></li>
+</ul>
+<hr>
+<p><strong>Nota metodologica</strong></p>
+<p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
+<p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale; l’analisi è pertanto integralmente auditabile e replicabile da terzi a partire da esse. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script>
+// Salto interno ai riferimenti [n] e ai rimandi #… indipendente dall'URL della pagina:
+// funziona anche quando l'HTML è aperto in un iframe, in un'anteprima o con un <base> diverso.
+document.addEventListener("click", function (e) {
+  var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+  if (!a) return;
+  var id = decodeURIComponent(a.getAttribute("href").slice(1));
+  var el = id && document.getElementById(id);
+  if (!el) return;
+  e.preventDefault();
+  el.scrollIntoView({ block: "start" });
+  try { history.replaceState(null, "", "#" + id); } catch (err) {}
+}, true);
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/paolovolterra/paolovolterra.github.io/blob/main/posts/2610_CensimentoImpreseFinanza/index.ipynb" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,2333 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="spread BTP-Bund, rendimenti sovrani, BTP, Bund, OAT, BCE, inflazione, energia, fuga verso la qualità, contagio">
+<meta name="description" content="Dal minimo di 59,8 punti base del 25 febbraio a 122 il 2 ottobre 2026: quale dei due rendimenti si è mosso, perché lo shock energetico pesa adesso e che cosa dice un panel di nove Paesi dell’area dell’euro.">
+
+<title>Lo spread BTP–Bund dal minimo del 2026 a oggi – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Lo spread BTP–Bund dal minimo del 2026 a oggi – Paolo Volterra">
+<meta property="og:description" content="Dal minimo di 59,8 punti base del 25 febbraio a 122 il 2 ottobre 2026: quale dei due rendimenti si è mosso, perché lo shock energetico pesa adesso e che cosa dice un panel di nove Paesi dell’area dell’euro.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2610_SpreadBtpBund/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Lo spread BTP–Bund dal minimo del 2026 a oggi – Paolo Volterra">
+<meta name="twitter:description" content="Dal minimo di 59,8 punti base del 25 febbraio a 122 il 2 ottobre 2026: quale dei due rendimenti si è mosso, perché lo shock energetico pesa adesso e che cosa dice un panel di nove Paesi dell’area dell’euro.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2610_SpreadBtpBund/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#la-domanda" id="toc-la-domanda" class="nav-link active" data-scroll-target="#la-domanda"><span class="header-section-number">1</span> La domanda</a></li>
+  <li><a href="#che-cosa-determina-lo-spread" id="toc-che-cosa-determina-lo-spread" class="nav-link" data-scroll-target="#che-cosa-determina-lo-spread"><span class="header-section-number">2</span> Che cosa determina lo spread</a>
+  <ul class="collapse">
+  <li><a href="#la-teoria-in-breve" id="toc-la-teoria-in-breve" class="nav-link" data-scroll-target="#la-teoria-in-breve"><span class="header-section-number">2.1</span> La teoria in breve</a></li>
+  <li><a href="#lo-spread-è-una-differenza-la-matrice-dei-quattro-casi" id="toc-lo-spread-è-una-differenza-la-matrice-dei-quattro-casi" class="nav-link" data-scroll-target="#lo-spread-è-una-differenza-la-matrice-dei-quattro-casi"><span class="header-section-number">2.2</span> Lo spread è una differenza: la matrice dei quattro casi</a></li>
+  <li><a href="#la-catena-causa-effetto" id="toc-la-catena-causa-effetto" class="nav-link" data-scroll-target="#la-catena-causa-effetto"><span class="header-section-number">2.3</span> La catena causa-effetto</a></li>
+  </ul></li>
+  <li><a href="#dal-minimo-a-oggi" id="toc-dal-minimo-a-oggi" class="nav-link" data-scroll-target="#dal-minimo-a-oggi"><span class="header-section-number">3</span> Dal minimo a oggi</a>
+  <ul class="collapse">
+  <li><a href="#il-confronto-fra-i-due-momenti" id="toc-il-confronto-fra-i-due-momenti" class="nav-link" data-scroll-target="#il-confronto-fra-i-due-momenti"><span class="header-section-number">3.1</span> Il confronto fra i due momenti</a></li>
+  <li><a href="#quale-rendimento-si-è-mosso" id="toc-quale-rendimento-si-è-mosso" class="nav-link" data-scroll-target="#quale-rendimento-si-è-mosso"><span class="header-section-number">3.2</span> Quale rendimento si è mosso</a></li>
+  </ul></li>
+  <li><a href="#perché-ora-se-lo-shock-energetico-cè-da-marzo" id="toc-perché-ora-se-lo-shock-energetico-cè-da-marzo" class="nav-link" data-scroll-target="#perché-ora-se-lo-shock-energetico-cè-da-marzo"><span class="header-section-number">4</span> Perché ora, se lo shock energetico c’è da marzo</a>
+  <ul class="collapse">
+  <li><a href="#linflazione-nei-singoli-paesi" id="toc-linflazione-nei-singoli-paesi" class="nav-link" data-scroll-target="#linflazione-nei-singoli-paesi"><span class="header-section-number">4.1</span> L’inflazione nei singoli Paesi</a></li>
+  </ul></li>
+  <li><a href="#il-confronto-internazionale" id="toc-il-confronto-internazionale" class="nav-link" data-scroll-target="#il-confronto-internazionale"><span class="header-section-number">5</span> Il confronto internazionale</a>
+  <ul class="collapse">
+  <li><a href="#titoli-in-euro-e-titoli-in-altra-valuta" id="toc-titoli-in-euro-e-titoli-in-altra-valuta" class="nav-link" data-scroll-target="#titoli-in-euro-e-titoli-in-altra-valuta"><span class="header-section-number">5.1</span> Titoli in euro e titoli in altra valuta</a></li>
+  <li><a href="#cinque-momenti-a-confronto" id="toc-cinque-momenti-a-confronto" class="nav-link" data-scroll-target="#cinque-momenti-a-confronto"><span class="header-section-number">5.2</span> Cinque momenti a confronto</a></li>
+  </ul></li>
+  <li><a href="#il-caso-francia" id="toc-il-caso-francia" class="nav-link" data-scroll-target="#il-caso-francia"><span class="header-section-number">6</span> Il caso Francia</a>
+  <ul class="collapse">
+  <li><a href="#un-sorpasso-senza-precedenti" id="toc-un-sorpasso-senza-precedenti" class="nav-link" data-scroll-target="#un-sorpasso-senza-precedenti"><span class="header-section-number">6.1</span> Un sorpasso senza precedenti</a></li>
+  <li><a href="#lo-stock-e-il-flusso" id="toc-lo-stock-e-il-flusso" class="nav-link" data-scroll-target="#lo-stock-e-il-flusso"><span class="header-section-number">6.2</span> Lo stock e il flusso</a></li>
+  <li><a href="#le-letture-degli-analisti" id="toc-le-letture-degli-analisti" class="nav-link" data-scroll-target="#le-letture-degli-analisti"><span class="header-section-number">6.3</span> Le letture degli analisti</a></li>
+  </ul></li>
+  <li><a href="#che-cosa-non-è-cambiato" id="toc-che-cosa-non-è-cambiato" class="nav-link" data-scroll-target="#che-cosa-non-è-cambiato"><span class="header-section-number">7</span> Che cosa non è cambiato</a></li>
+  <li><a href="#una-stima-lo-spread-e-i-fondamentali" id="toc-una-stima-lo-spread-e-i-fondamentali" class="nav-link" data-scroll-target="#una-stima-lo-spread-e-i-fondamentali"><span class="header-section-number">8</span> Una stima: lo spread e i fondamentali</a>
+  <ul class="collapse">
+  <li><a href="#il-modello" id="toc-il-modello" class="nav-link" data-scroll-target="#il-modello"><span class="header-section-number">8.1</span> Il modello</a></li>
+  <li><a href="#lo-spread-italiano-rispetto-ai-fondamentali" id="toc-lo-spread-italiano-rispetto-ai-fondamentali" class="nav-link" data-scroll-target="#lo-spread-italiano-rispetto-ai-fondamentali"><span class="header-section-number">8.2</span> Lo spread italiano rispetto ai fondamentali</a></li>
+  <li><a href="#i-fattori-di-mercato-giorno-per-giorno" id="toc-i-fattori-di-mercato-giorno-per-giorno" class="nav-link" data-scroll-target="#i-fattori-di-mercato-giorno-per-giorno"><span class="header-section-number">8.3</span> I fattori di mercato giorno per giorno</a></li>
+  <li><a href="#le-fonti-dei-rendimenti" id="toc-le-fonti-dei-rendimenti" class="nav-link" data-scroll-target="#le-fonti-dei-rendimenti"><span class="header-section-number">8.4</span> Le fonti dei rendimenti</a></li>
+  </ul></li>
+  <li><a href="#che-cosa-scrivono-agenzie-e-analisti" id="toc-che-cosa-scrivono-agenzie-e-analisti" class="nav-link" data-scroll-target="#che-cosa-scrivono-agenzie-e-analisti"><span class="header-section-number">9</span> Che cosa scrivono agenzie e analisti</a>
+  <ul class="collapse">
+  <li><a href="#spunti-dalla-stampa-e-loro-verifica" id="toc-spunti-dalla-stampa-e-loro-verifica" class="nav-link" data-scroll-target="#spunti-dalla-stampa-e-loro-verifica"><span class="header-section-number">9.1</span> Spunti dalla stampa e loro verifica</a></li>
+  <li><a href="#la-lettura-di-un-ufficio-studi-bancario" id="toc-la-lettura-di-un-ufficio-studi-bancario" class="nav-link" data-scroll-target="#la-lettura-di-un-ufficio-studi-bancario"><span class="header-section-number">9.2</span> La lettura di un ufficio studi bancario</a></li>
+  </ul></li>
+  <li><a href="#sintesi" id="toc-sintesi" class="nav-link" data-scroll-target="#sintesi"><span class="header-section-number">10</span> Sintesi</a></li>
+  <li><a href="#riferimenti" id="toc-riferimenti" class="nav-link" data-scroll-target="#riferimenti">Riferimenti</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2610_SpreadBtpBund/index.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lo spread BTP–Bund dal minimo del 2026 a oggi</h1>
+<p class="subtitle lead">Da 60 a 120 punti base: che cosa determina il differenziale, quale dei due rendimenti si è mosso e perché lo shock energetico pesa adesso e non a marzo</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Spread</div>
+    <div class="quarto-category">Titoli di Stato</div>
+    <div class="quarto-category">BCE</div>
+    <div class="quarto-category">Finanza pubblica</div>
+    <div class="quarto-category">Zenodo</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Dal minimo di 59,8 punti base del 25 febbraio a 122 il 2 ottobre 2026: quale dei due rendimenti si è mosso, perché lo shock energetico pesa adesso e che cosa dice un panel di nove Paesi dell’area dell’euro.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2 ottobre 2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Data di modifica</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">2 ottobre 2026</p>
+    </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.23106457">10.5281/zenodo.23106457</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p><strong>Italiano.</strong> Lo spread fra i rendimenti decennali italiani e tedeschi ha toccato il minimo del 2026 il 25 febbraio, a 59,8 punti base, ed è risalito a 122 punti base il 2 ottobre. Poiché lo spread è la differenza fra due rendimenti che si muovono entrambi, la nota scompone la variazione nel contributo del BTP e in quello del Bund e la colloca in una matrice a quattro casi. Dal minimo a oggi entrambi i rendimenti sono saliti, il BTP di 136 punti base e il Bund di 73: per sette mesi il movimento è stato in prevalenza comune, con un sovrappiù italiano contenuto. Nell’ultima settimana lo spread accelera: il BTP sale ancora e il rendimento del titolo tedesco di riferimento scende, ma le curve dei rendimenti a scadenza costante della BCE e della Bundesbank mostrano il rendimento tedesco a dieci anni sostanzialmente fermo; l’allargamento viene quindi soprattutto dal BTP, e la lettura come fuga verso la qualità resta un’ipotesi compatibile con i dati ma non confermata. Lo shock energetico è presente da marzo, ma allora aveva prodotto un episodio di avversione al rischio rientrato in poche settimane. A fine settembre agisce su un terreno diverso: inflazione salita per sei mesi, due rialzi dei tassi della Banca centrale europea, Treasury statunitensi ai massimi da oltre vent’anni e, come ipotesi coerente con i dati ma basata su eventi riportati dalle agenzie, il passaggio dello shock ai bilanci pubblici, con la manovra francese e le decisioni di bilancio italiane concentrate negli stessi giorni. Un approfondimento sulla Francia mostra che il rendimento francese, sempre inferiore a quello italiano dal 2007, lo supera per la prima volta nel settembre 2025: la Francia ha meno debito dell’Italia ma un disavanzo primario, l’Italia più debito ma un avanzo primario. Il confronto internazionale conferma che nell’ultima settimana tutti gli spread verso il Bund si allargano, ma Italia e Francia il doppio della Spagna; per i titoli in altra valuta, Gilt e Treasury, lo spread va letto al netto del costo di copertura dal cambio. Una stima su un panel di nove Paesi dell’area dell’euro dal 2003 al 2026 indica che lo spread si associa soprattutto al saldo di bilancio (circa 15 punti base per punto di prodotto) e alla crescita, e che il debito pesa molto solo nelle crisi. Con i fondamentali pubblicati a ottobre il valore previsto dal modello per lo spread italiano è di circa 105 punti base, vicino al livello osservato; con le informazioni disponibili a febbraio era di circa 120, il doppio dello spread di allora. L’incertezza della previsione del modello trimestrale è però ampia: il confronto è compatibile con un riavvicinamento ai valori previsti dal modello, ma non dimostra che il minimo di febbraio fosse un prezzo anomalo né che l’allargamento sia una correzione verso un valore di equilibrio. Dati aggiornati al 2 ottobre 2026; l’inflazione di settembre è una stima rapida, soggetta a revisione.</p>
+    <p><strong>English.</strong> The spread between Italian and German ten-year yields reached its 2026 low on 25 February, at 59.8 basis points, and rose back to 122 basis points on 2 October. Since the spread is the difference between two yields that both move, the note splits the change into the contribution of the BTP and that of the Bund and places it in a four-case matrix. From the low to today both yields rose, the BTP by 136 basis points and the Bund by 73: for seven months the move was mostly common, with a limited Italian excess. In the last week the spread accelerates: the BTP keeps rising and the German benchmark yield falls, but the constant-maturity yield curves of the ECB and the Bundesbank show the German ten-year yield broadly unchanged; the widening therefore comes mainly from the BTP, and a flight-to-quality reading remains a hypothesis consistent with the data but not confirmed. The energy shock has been present since March, but at that time it produced a risk-off episode that faded within weeks. At the end of September it acts on different ground: six months of rising inflation, two rate hikes by the European Central Bank, US Treasury yields at their highest in over twenty years and, as a hypothesis consistent with the data but based on events reported by news agencies, the transmission of the shock to public budgets, with the French budget and Italian fiscal decisions concentrated in the same days. A focus on France shows that the French yield, always below the Italian one since 2007, exceeds it for the first time in September 2025: France has less debt than Italy but a primary deficit, Italy more debt but a primary surplus. The international comparison confirms that in the last week all spreads against the Bund widen, but Italy and France twice as much as Spain; for bonds in another currency, Gilts and Treasuries, the spread must be read net of the cost of hedging the exchange rate. A panel estimate for nine euro area countries from 2003 to 2026 shows that spreads are associated mainly with the budget balance (about 15 basis points per point of GDP) and with growth, while debt matters strongly only in crises. With the fundamentals published by October the model-predicted Italian spread is about 105 basis points, close to the observed level; with the information available in February it was about 120, twice the spread at that time. The uncertainty of the quarterly model’s prediction is, however, large: the comparison is consistent with the spread moving back towards the model’s predicted values, but it does not show that the February low was a mispriced level, nor that the widening is a correction towards an equilibrium value. Data updated to 2 October 2026; September inflation is a flash estimate, subject to revision.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>spread BTP-Bund, rendimenti sovrani, BTP, Bund, OAT, BCE, inflazione, energia, fuga verso la qualità, contagio</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="la-domanda" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> La domanda</h1>
+<p>Il 25 febbraio 2026 lo spread fra il rendimento del BTP decennale e quello del Bund tedesco di pari durata ha toccato il minimo dell’anno, <strong>59,8 punti base</strong>. Il 2 ottobre ha chiuso a <strong>122 punti base</strong>: il doppio <span class="citation" data-cites="worldgovernmentbonds2026 radiocor2026"><a href="#ref-worldgovernmentbonds2026" role="doc-biblioref">[1]</a>, <a href="#ref-radiocor2026" role="doc-biblioref">[2]</a></span>. La nota risponde a tre domande. Che cosa determina, in teoria, il differenziale fra due emittenti sovrani che usano la stessa moneta. Quale dei due rendimenti si è mosso, e in quale direzione, fra il minimo e oggi. Perché uno shock energetico in corso da marzo produca l’accelerazione proprio a fine settembre.</p>
+<p>L’analisi è condotta sulle variabili macroeconomiche e di mercato. Le spiegazioni riportate dalla stampa e dalle agenzie sono raccolte a parte, nell’ultima sezione, e trattate come interpretazioni e non come dati.</p>
+</section>
+<section id="che-cosa-determina-lo-spread" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Che cosa determina lo spread</h1>
+<section id="la-teoria-in-breve" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="la-teoria-in-breve"><span class="header-section-number">2.1</span> La teoria in breve</h2>
+<p>La letteratura empirica sugli spread sovrani dell’area dell’euro converge su tre famiglie di determinanti. La prima è il <strong>rischio di credito</strong>, legato alla sostenibilità del debito: livello del debito in rapporto al prodotto, deficit, crescita, costo medio dell’indebitamento <span class="citation" data-cites="bernoth2012sovereign ghosh2013fiscal"><a href="#ref-bernoth2012sovereign" role="doc-biblioref">[3]</a>, <a href="#ref-ghosh2013fiscal" role="doc-biblioref">[4]</a></span>. La seconda è il <strong>premio di liquidità</strong>: il mercato del Bund è più profondo e, nelle fasi di tensione, la liquidità si ritira prima dai titoli meno scambiati <span class="citation" data-cites="codogno2003yield abbassi2025german"><a href="#ref-codogno2003yield" role="doc-biblioref">[5]</a>, <a href="#ref-abbassi2025german" role="doc-biblioref">[6]</a></span>. La terza è l’<strong>avversione al rischio internazionale</strong>, che sposta gli investitori verso i titoli rifugio indipendentemente dai fondamentali del singolo Paese <span class="citation" data-cites="codogno2003yield attinasi2009what"><a href="#ref-codogno2003yield" role="doc-biblioref">[5]</a>, <a href="#ref-attinasi2009what" role="doc-biblioref">[7]</a></span>.</p>
+<p>Tre risultati aggiungono profondità al quadro. Primo, il peso dei fondamentali non è costante: il mercato può ignorarli a lungo e poi prezzarli tutti insieme, quando un evento li rende di nuovo visibili. È il meccanismo del <em>wake-up call</em> documentato per la crisi del debito sovrano <span class="citation" data-cites="beirne2013pricing manganelli2007market"><a href="#ref-beirne2013pricing" role="doc-biblioref">[8]</a>, <a href="#ref-manganelli2007market" role="doc-biblioref">[9]</a></span>. Secondo, in un’unione monetaria un Paese emette in una moneta che non controlla e può essere esposto a crisi di liquidità che si autoalimentano: lo spread sale perché gli investitori temono che salga, oltre la misura giustificata dal debito <span class="citation" data-cites="degrauwe2013self lane2012european"><a href="#ref-degrauwe2013self" role="doc-biblioref">[10]</a>, <a href="#ref-lane2012european" role="doc-biblioref">[11]</a></span>. Terzo, la presenza e la credibilità della banca centrale come acquirente di ultima istanza riducono questa componente <span class="citation" data-cites="krishnamurthy2018ecb"><a href="#ref-krishnamurthy2018ecb" role="doc-biblioref">[12]</a></span>. Per l’area dell’euro nel suo insieme, il rapporto fra debito e prodotto spiega quasi il 40 per cento dell’andamento degli spread fra il 2000 e il 2023, ma nei picchi di crisi i fattori macroeconomici ne spiegano circa un quarto <span class="citation" data-cites="burriel2024estimating"><a href="#ref-burriel2024estimating" role="doc-biblioref">[13]</a></span>.</p>
+<p>Sul lato del Bund, la scarsità di titoli sicuri ne ha a lungo compresso il rendimento con un «premio di convenienza»; l’aumento dell’offerta di debito pubblico e la riduzione dei bilanci delle banche centrali lo stanno erodendo <span class="citation" data-cites="schnabel2025convenient"><a href="#ref-schnabel2025convenient" role="doc-biblioref">[14]</a></span>. Il Bund non è dunque un riferimento immobile: anch’esso si muove, e con ragioni proprie.</p>
+</section>
+<section id="lo-spread-è-una-differenza-la-matrice-dei-quattro-casi" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="lo-spread-è-una-differenza-la-matrice-dei-quattro-casi"><span class="header-section-number">2.2</span> Lo spread è una differenza: la matrice dei quattro casi</h2>
+<p>Lo spread è la differenza fra due rendimenti: <span class="math inline">\(\text{spread} = r_{BTP} - r_{Bund}\)</span>, e quindi <span class="math inline">\(\Delta\text{spread} = \Delta r_{BTP} - \Delta r_{Bund}\)</span>. Un allargamento può nascere dal BTP che sale, dal Bund che scende, o da entrambi che salgono in misura diversa. La figura seguente riassume i quattro casi.</p>
+<div id="fig-matrice" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-matrice-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="_figs/fig1_matrice.png" class="img-fluid figure-img" style="width:85.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-matrice-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Effetto sullo spread dei movimenti dei due rendimenti. Nei casi ① e ④ (grigio) il segno dipende dall’ampiezza relativa dei due movimenti; nei casi ② (rosso, lo spread sale) e ③ (verde, lo spread scende) il segno è certo.
+</figcaption>
+</figure>
+</div>
+<p><em>In parole semplici:</em> lo spread è come la distanza fra due ascensori. Se uno sale e l’altro scende la distanza cresce di sicuro (casella ②); se uno scende e l’altro sale si accorcia di sicuro (casella ③); se salgono o scendono insieme, conta quale va più veloce.</p>
+<p>Le due caselle con il segno certo hanno anche una lettura economica. La casella ② è compatibile con una <strong>fuga verso la qualità</strong>: gli investitori vendono i titoli considerati più rischiosi e comprano quelli considerati sicuri <span class="citation" data-cites="beber2009flight"><a href="#ref-beber2009flight" role="doc-biblioref">[15]</a></span>. La casella ③ è la convergenza: si riduce il premio richiesto al Paese più rischioso mentre il rifugio perde attrattiva. Le caselle ① e ④ descrivono invece un movimento comune dei tassi, guidato dalla politica monetaria o dai mercati globali, in cui lo spread cambia solo per la diversa sensibilità dei due titoli.</p>
+</section>
+<section id="la-catena-causa-effetto" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="la-catena-causa-effetto"><span class="header-section-number">2.3</span> La catena causa-effetto</h2>
+<div id="fig-catena" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-catena-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="_figs/fig0_catena.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-catena-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Catena causa-effetto dell’allargamento dello spread nel 2026. In alto la componente comune, che alza tutti i rendimenti; in basso la componente specifica, che pesa sui Paesi ad alto debito e che, in caso di fuga verso la qualità, può far scendere il Bund.
+</figcaption>
+</figure>
+</div>
+<p><em>In parole semplici:</em> l’energia cara spinge in alto i prezzi, la BCE alza i tassi e tutti i titoli di Stato rendono di più. Questo da solo non allarga molto lo spread. Secondo l’ipotesi della nota, lo allarga quando i governi devono spendere per difendersi dal caro-energia e i mercati si chiedono chi, fra i Paesi con più debito, potrà permetterselo.</p>
+</section>
+</section>
+<section id="dal-minimo-a-oggi" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Dal minimo a oggi</h1>
+<section id="il-confronto-fra-i-due-momenti" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="il-confronto-fra-i-due-momenti"><span class="header-section-number">3.1</span> Il confronto fra i due momenti</h2>
+<div id="tbl-confronto" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-confronto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;1: Indicatori al giorno del minimo dello spread (25 febbraio 2026) e al 2 ottobre 2026. Per i rendimenti la variazione è in punti base. Treasury: ultimo dato disponibile (30 settembre); MOVE e gas TTF: 1° ottobre; inflazione: febbraio e agosto, ultimo mese definitivo (la stima rapida di settembre è nella <a href="#tbl-inflazione" class="quarto-xref">Tabella&nbsp;6</a>). Elaborazioni su dati giornalieri e mensili <span class="citation" data-cites="worldgovernmentbonds2026 yahoofinance2026 fred2026 fredust2026"><a href="#ref-worldgovernmentbonds2026" role="doc-biblioref">[1]</a>, <a href="#ref-yahoofinance2026" role="doc-biblioref">[16]</a>, <a href="#ref-fred2026" role="doc-biblioref">[17]</a>, <a href="#ref-fredust2026" role="doc-biblioref">[18]</a></span>.
+</figcaption>
+<div aria-describedby="tbl-confronto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicatore</th>
+<th style="text-align: right;">Minimo (25/2/2026)</th>
+<th style="text-align: right;">Oggi (2/10/2026)</th>
+<th style="text-align: right;">Δ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Spread BTP–Bund (pb)</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">122</td>
+<td style="text-align: right;">+62</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Rendimento BTP 10 anni (%; Δ in pb)</td>
+<td style="text-align: right;">3,31</td>
+<td style="text-align: right;">4,66</td>
+<td style="text-align: right;">+136</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Rendimento Bund 10 anni (%; Δ in pb)</td>
+<td style="text-align: right;">2,71</td>
+<td style="text-align: right;">3,44</td>
+<td style="text-align: right;">+73</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Rendimento Bund 2 anni (%; Δ in pb)</td>
+<td style="text-align: right;">2,04</td>
+<td style="text-align: right;">2,99</td>
+<td style="text-align: right;">+95</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spread OAT–Bund (pb)</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">145</td>
+<td style="text-align: right;">+91</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Spread Bonos–Bund (pb)</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">+23</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Treasury USA 10 anni (%; Δ in pb)</td>
+<td style="text-align: right;">4,05</td>
+<td style="text-align: right;">5,29</td>
+<td style="text-align: right;">+124</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tasso BCE sui depositi (%)</td>
+<td style="text-align: right;">2,00</td>
+<td style="text-align: right;">2,50</td>
+<td style="text-align: right;">+0,50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Brent ($/barile)</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">+29</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gas TTF (€/MWh)</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: right;">+43</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MOVE (volatilità obbligazionaria)</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">108</td>
+<td style="text-align: right;">+46</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">VIX (volatilità azionaria)</td>
+<td style="text-align: right;">17,9</td>
+<td style="text-align: right;">16,0</td>
+<td style="text-align: right;">-2,0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">EUR/USD</td>
+<td style="text-align: right;">1,18</td>
+<td style="text-align: right;">1,13</td>
+<td style="text-align: right;">-0,05</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Inflazione IPCA area euro (feb → ago, %)</td>
+<td style="text-align: right;">1,9</td>
+<td style="text-align: right;">3,2</td>
+<td style="text-align: right;">+1,4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inflazione IPCA Italia (feb → ago, %)</td>
+<td style="text-align: right;">1,5</td>
+<td style="text-align: right;">3,2</td>
+<td style="text-align: right;">+1,7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Inflazione IPCA Germania (feb → ago, %)</td>
+<td style="text-align: right;">2,0</td>
+<td style="text-align: right;">2,9</td>
+<td style="text-align: right;">+0,9</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><em>In parole semplici:</em> da febbraio a oggi è salito quasi tutto: l’energia, l’inflazione, i tassi della BCE, i rendimenti americani e tedeschi. L’Italia paga ora 1,36 punti percentuali in più sul decennale, la Germania 0,73: la differenza fra i due aumenti è l’allargamento dello spread. La Francia ha fatto peggio dell’Italia, la Spagna molto meglio. L’unico indicatore che non è salito è la paura sulle borse (VIX).</p>
+</section>
+<section id="quale-rendimento-si-è-mosso" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="quale-rendimento-si-è-mosso"><span class="header-section-number">3.2</span> Quale rendimento si è mosso</h2>
+<div id="tbl-scomposizione" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-scomposizione-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;2: Scomposizione della variazione dello spread BTP–Bund in variazione del BTP e del Bund, per fasi. Il 25 settembre è l’ultimo giorno di borsa prima della settimana di accelerazione. La fase «minimo → media lug–ago» confronta un singolo giorno con una media di due mesi. Elaborazioni su dati giornalieri <span class="citation" data-cites="worldgovernmentbonds2026"><a href="#ref-worldgovernmentbonds2026" role="doc-biblioref">[1]</a></span>.
+</figcaption>
+<div aria-describedby="tbl-scomposizione-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 16%">
+<col style="width: 18%">
+<col style="width: 21%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Fase</th>
+<th style="text-align: right;">Δ BTP (pb)</th>
+<th style="text-align: right;">Δ Bund (pb)</th>
+<th style="text-align: right;">Δ spread (pb)</th>
+<th style="text-align: left;">Cella della matrice</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">minimo (25/2) → media lug–ago</td>
+<td style="text-align: right;">+64</td>
+<td style="text-align: right;">+44</td>
+<td style="text-align: right;">+20</td>
+<td style="text-align: left;">① entrambi salgono, BTP di più</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">media lug–ago → 25/9</td>
+<td style="text-align: right;">+55</td>
+<td style="text-align: right;">+48</td>
+<td style="text-align: right;">+7</td>
+<td style="text-align: left;">① entrambi salgono, BTP di più</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">25/9 → 2/10</td>
+<td style="text-align: right;">+17</td>
+<td style="text-align: right;">-18</td>
+<td style="text-align: right;">+34</td>
+<td style="text-align: left;">② BTP sale, Bund scende</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">minimo (25/2) → 2/10 (totale)</td>
+<td style="text-align: right;">+136</td>
+<td style="text-align: right;">+73</td>
+<td style="text-align: right;">+62</td>
+<td style="text-align: left;">① entrambi salgono, BTP di più</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><em>In parole semplici:</em> per sette mesi BTP e Bund sono saliti quasi insieme, con l’Italia un po’ più veloce: lo spread si è allargato di poco. Nell’ultima settimana, misurati sui titoli di riferimento, i due ascensori hanno preso direzioni opposte, il BTP su e il Bund giù, e in cinque giorni lo spread ha guadagnato più di quanto avesse fatto nei sette mesi precedenti. Le differenze di questa tavola sono calcolate sui rendimenti non arrotondati e possono non coincidere con la differenza dei valori arrotondati.</p>
+<div id="fig-scomposizione" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scomposizione-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="_figs/fig5_decomposizione.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scomposizione-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Variazione cumulata dei rendimenti decennali di BTP e Bund dal giorno del minimo dello spread (25 febbraio 2026), in punti base. L’area fra le due linee è la variazione dello spread.
+</figcaption>
+</figure>
+</div>
+<p><em>In parole semplici:</em> le due linee salgono quasi parallele da marzo a settembre; a fine settembre la linea del Bund piega verso il basso mentre quella del BTP continua a salire, e l’area grigia fra le due si allarga di colpo.</p>
+<p>La scomposizione distingue due episodi diversi. Il primo, da marzo a settembre, cade nella casella ①: un rialzo generalizzato dei tassi, con un sovrappiù italiano modesto (20 punti base fino all’estate, altri 7 fino al 25 settembre). Il secondo, nella settimana dal 28 settembre al 2 ottobre, cade sui titoli di riferimento nella casella ②: il BTP sale di 17 punti base mentre il Bund ne perde 18, e la settimana spiega più della metà dell’intero allargamento dal minimo. La configurazione è compatibile con una fuga verso la qualità, ma la scomposizione contabile da sola non la identifica, e la parte relativa al Bund non è confermata dalle misure a scadenza costante (paragrafo seguente). Lo stesso schema, con intensità maggiore, colpisce la Francia: lo spread OAT–Bund passa da 55 a 145 punti base, mentre quello spagnolo si ferma a 64 (<a href="#tbl-confronto" class="quarto-xref">Tabella&nbsp;1</a>).</p>
+<p>Un’avvertenza riguarda la misura del Bund nell’ultima settimana. Il titolo decennale di riferimento è un singolo titolo; le curve dei rendimenti stimate dalla BCE sui titoli di Stato con rating AAA dell’area dell’euro e dalla Bundesbank sui titoli tedeschi misurano invece il rendimento a una scadenza costante di dieci anni. Fra il 25 settembre e il 1° ottobre, ultimo giorno disponibile per tutte le fonti, il rendimento del titolo di riferimento scende di 10 punti base, quello della curva della BCE di 2 e quella della Bundesbank sale di 3 <span class="citation" data-cites="ecbyc2026 bundesbank2026"><a href="#ref-ecbyc2026" role="doc-biblioref">[19]</a>, <a href="#ref-bundesbank2026" role="doc-biblioref">[20]</a></span>. Misurato sulle curve, lo spread italiano si allarga comunque, di 17–22 punti base contro i 30 del titolo di riferimento, ma quasi solo per il rialzo del BTP. Sul periodo precedente, dal minimo al 25 settembre, le tre misure danno risultati vicini. I livelli riportati dalle agenzie confermano il calo del titolo di riferimento fino al 2 ottobre <span class="citation" data-cites="radiocor2026"><a href="#ref-radiocor2026" role="doc-biblioref">[2]</a></span>, ma non dicono se si tratti di un movimento del rendimento tedesco in generale o di quel titolo in particolare. La verifica riguarda il solo riferimento tedesco: il BTP resta misurato sul titolo di riferimento, perché non è disponibile una curva ufficiale giornaliera dei rendimenti italiani a scadenza costante. Non è quindi una scomposizione completa su scadenze costanti per entrambi gli emittenti.</p>
+<div id="tbl-curve" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-curve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;3: Scomposizione con riferimenti tedeschi omogenei: variazione del rendimento di riferimento (Δ rif.) e dello spread del BTP decennale verso di esso (Δ spread), in punti base. Bund benchmark: titolo decennale di riferimento; curva AAA: rendimento a dieci anni della curva della BCE dei titoli di Stato dell’area dell’euro con rating AAA; curva Bundesbank: rendimento a dieci anni della curva stimata sui titoli federali. L’ultima riga riporta la variazione del BTP decennale. Il 1° ottobre è l’ultimo giorno disponibile per tutte le fonti <span class="citation" data-cites="worldgovernmentbonds2026 ecbyc2026 bundesbank2026"><a href="#ref-worldgovernmentbonds2026" role="doc-biblioref">[1]</a>, <a href="#ref-ecbyc2026" role="doc-biblioref">[19]</a>, <a href="#ref-bundesbank2026" role="doc-biblioref">[20]</a></span>.
+</figcaption>
+<div aria-describedby="tbl-curve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Riferimento</th>
+<th style="text-align: right;">Δ rif. 25/2 → 25/9</th>
+<th style="text-align: right;">Δ spread 25/2 → 25/9</th>
+<th style="text-align: right;">Δ rif. 25/9 → 1/10</th>
+<th style="text-align: right;">Δ spread 25/9 → 1/10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Bund benchmark</td>
+<td style="text-align: right;">91</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">-10</td>
+<td style="text-align: right;">30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Curva AAA area euro (BCE)</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">-2</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Curva Bundesbank</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">17</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BTP benchmark</td>
+<td style="text-align: right;">119</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><em>In parole semplici:</em> se si misura il rendimento tedesco con le curve ufficiali invece che con un solo titolo, nell’ultima settimana la Germania resta quasi ferma. Lo spread italiano si allarga lo stesso, ma soprattutto perché sale il BTP, non perché scende il Bund.</p>
+<div id="tbl-bund" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bund-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;4: Rendimento del Bund a dieci anni secondo due misure: titolo di riferimento (World Government Bonds) e curva stimata a scadenza costante (Bundesbank, metodo Svensson). Il dato Bundesbank del 2 ottobre non è ancora pubblicato.
+</figcaption>
+<div aria-describedby="tbl-bund-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 24%">
+<col style="width: 37%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Giorno</th>
+<th style="text-align: right;">Bund 10a riferimento (%)</th>
+<th style="text-align: right;">Bund 10a Bundesbank (%)</th>
+<th style="text-align: right;">Differenza (pb)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">25/2/2026</td>
+<td style="text-align: right;">2,71</td>
+<td style="text-align: right;">2,79</td>
+<td style="text-align: right;">-8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">25/9/2026</td>
+<td style="text-align: right;">3,62</td>
+<td style="text-align: right;">3,63</td>
+<td style="text-align: right;">-1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">28/9/2026</td>
+<td style="text-align: right;">3,64</td>
+<td style="text-align: right;">3,69</td>
+<td style="text-align: right;">-5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">29/9/2026</td>
+<td style="text-align: right;">3,61</td>
+<td style="text-align: right;">3,68</td>
+<td style="text-align: right;">-7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">30/9/2026</td>
+<td style="text-align: right;">3,58</td>
+<td style="text-align: right;">3,64</td>
+<td style="text-align: right;">-6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1/10/2026</td>
+<td style="text-align: right;">3,52</td>
+<td style="text-align: right;">3,66</td>
+<td style="text-align: right;">-14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2/10/2026</td>
+<td style="text-align: right;">3,44</td>
+<td style="text-align: right;">n.d.</td>
+<td style="text-align: right;">n.d.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><em>In parole semplici:</em> due termometri diversi misurano la temperatura del Bund. Di solito differiscono di pochi punti, il 1° ottobre di 14: il calo degli ultimi giorni compare sul titolo di riferimento ma non sulla curva a scadenza costante, quindi non è certo che il rendimento tedesco in generale sia sceso.</p>
+</section>
+</section>
+<section id="perché-ora-se-lo-shock-energetico-cè-da-marzo" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Perché ora, se lo shock energetico c’è da marzo</h1>
+<p>Il prezzo del petrolio è salito sopra i 100 dollari al barile già a marzo, con il primo episodio di tensione nello Stretto di Hormuz, e vi è rimasto ad aprile e maggio. Lo spread era salito fino a 98 punti base a fine marzo, ma era rientrato intorno a 77 punti base nella media di aprile e maggio, con il Brent ancora sopra i 100 dollari. Lo stesso prezzo del petrolio, a sei mesi di distanza, produce dunque effetti diversi. Il confronto fra i due episodi mostra che cosa è cambiato.</p>
+<div id="tbl-perche-ora" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-perche-ora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;5: Confronto fra il primo shock energetico (marzo 2026, medie mensili) e la settimana 28 settembre–2 ottobre 2026 (medie). Inflazione: marzo e agosto. Per gli spread: massimo di marzo e ultimo valore. Elaborazioni su dati giornalieri e mensili <span class="citation" data-cites="worldgovernmentbonds2026 yahoofinance2026 fred2026 fredust2026"><a href="#ref-worldgovernmentbonds2026" role="doc-biblioref">[1]</a>, <a href="#ref-yahoofinance2026" role="doc-biblioref">[16]</a>, <a href="#ref-fred2026" role="doc-biblioref">[17]</a>, <a href="#ref-fredust2026" role="doc-biblioref">[18]</a></span>.
+</figcaption>
+<div aria-describedby="tbl-perche-ora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicatore</th>
+<th style="text-align: right;">Marzo 2026 (primo shock)</th>
+<th style="text-align: right;">28/9–2/10/2026</th>
+<th style="text-align: right;">Δ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Brent ($/barile, media)</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">103</td>
+<td style="text-align: right;">+3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gas TTF (€/MWh, media)</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">72</td>
+<td style="text-align: right;">+20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inflazione IPCA area euro (%, mar vs ago)</td>
+<td style="text-align: right;">2,5</td>
+<td style="text-align: right;">3,2</td>
+<td style="text-align: right;">+0,7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tasso BCE sui depositi (%)</td>
+<td style="text-align: right;">2,00</td>
+<td style="text-align: right;">2,50</td>
+<td style="text-align: right;">+0,50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Treasury USA 10 anni (%, media)</td>
+<td style="text-align: right;">4,25</td>
+<td style="text-align: right;">5,26</td>
+<td style="text-align: right;">+1,02</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">VIX — volatilità azionaria (media)</td>
+<td style="text-align: right;">25,6</td>
+<td style="text-align: right;">16,2</td>
+<td style="text-align: right;">-9,4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MOVE — volatilità obbligazionaria (media)</td>
+<td style="text-align: right;">89</td>
+<td style="text-align: right;">107</td>
+<td style="text-align: right;">+17</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Spread OAT–Bund (pb, massimo / ultimo)</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">145</td>
+<td style="text-align: right;">+71</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spread BTP–Bund (pb, massimo / ultimo)</td>
+<td style="text-align: right;">98</td>
+<td style="text-align: right;">122</td>
+<td style="text-align: right;">+24</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><em>In parole semplici:</em> il petrolio costa quanto a marzo. A marzo però c’era paura sulle borse (VIX a 26) e la paura passa in fretta. Oggi le borse sono calme ma sono cambiati i tassi: inflazione più alta, BCE che ha già alzato due volte, rendimenti americani di un punto più alti. Lo shock non è più un momento di panico: è diventato un costo del debito più alto e duraturo.</p>
+<div id="fig-perche-ora" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-perche-ora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="_figs/fig6_perche_ora.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-perche-ora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Il primo shock energetico (marzo, banda grigia) e la settimana di accelerazione (28 settembre–2 ottobre, banda gialla). Pannello 1: Brent e gas TTF. Pannello 2: inflazione dell’area dell’euro e tasso BCE sui depositi. Pannello 3: spread BTP–Bund e OAT–Bund.
+</figcaption>
+</figure>
+</div>
+<p><em>In parole semplici:</em> il primo pannello dice che l’energia è cara da marzo; il secondo che nel frattempo l’inflazione è salita e la BCE ha cominciato ad alzare i tassi; il terzo che lo spread, rientrato dopo marzo, riparte solo quando i primi due fattori si sono accumulati.</p>
+<p>Dai dati emergono cinque differenze fra marzo e oggi.</p>
+<ol type="1">
+<li><p><strong>La natura dello shock.</strong> A marzo l’episodio era di avversione al rischio generalizzata: VIX medio a 25,6, MOVE a 89. Lo spread si era allargato per la rotazione verso i titoli rifugio ed era rientrato quando la paura si era attenuata. Oggi il VIX è a 16 e il MOVE a 107: il confronto fra i due momenti è compatibile con una tensione concentrata soprattutto sul reddito fisso e con un riprezzamento del costo del debito più che con un episodio di panico, senza escludere tensioni intermedie che le due date non colgono.</p></li>
+<li><p><strong>L’accumulo sull’inflazione.</strong> A marzo l’inflazione dell’area partiva dall’1,9 per cento di febbraio; sei mesi di energia cara l’hanno portata al 3,2 per cento in agosto, e la stima rapida di settembre la colloca al 3,8 per cento <span class="citation" data-cites="eurostatflash2026"><a href="#ref-eurostatflash2026" role="doc-biblioref">[21]</a></span>. Per l’Italia la stima rapida porta l’indice armonizzato dal 3,2 al 4,1 per cento <span class="citation" data-cites="eurostatflash2026"><a href="#ref-eurostatflash2026" role="doc-biblioref">[21]</a></span>; un ufficio studi bancario la confronta con attese di consenso del 3,7–3,8 per cento e riporta la componente energetica del NIC dal 17,1 al 22,3 per cento; il dato è diffuso il 30 settembre, a metà della settimana di accelerazione <span class="citation" data-cites="mameli2026inflazione"><a href="#ref-mameli2026inflazione" role="doc-biblioref">[22]</a></span>. Il gas, più legato dell’olio all’economia europea, costa oggi circa 20 euro per megawattora in più che a marzo; i rincari del gas hanno effetti più diffusi e persistenti di quelli del petrolio <span class="citation" data-cites="mameli2026inflazione"><a href="#ref-mameli2026inflazione" role="doc-biblioref">[22]</a></span>.</p></li>
+<li><p><strong>La reazione della politica monetaria.</strong> A marzo la Banca centrale europea non aveva toccato i tassi. Li ha alzati il 17 giugno e il 16 settembre, portando il tasso sui depositi dal 2,00 al 2,50 per cento <span class="citation" data-cites="fred2026"><a href="#ref-fred2026" role="doc-biblioref">[17]</a></span>. Un costo del denaro più alto aumenta l’onere di un debito elevato e rende più sensibile il premio di credito: è il canale dei fondamentali di <span class="citation" data-cites="bernoth2012sovereign"><a href="#ref-bernoth2012sovereign" role="doc-biblioref">[3]</a></span> e <span class="citation" data-cites="ghosh2013fiscal"><a href="#ref-ghosh2013fiscal" role="doc-biblioref">[4]</a></span>.</p></li>
+<li><p><strong>Il contesto globale.</strong> Il rendimento del Treasury decennale è passato da una media del 4,25 per cento a marzo al 5,26 per cento della settimana di accelerazione, un livello che non toccava dal maggio 2002 <span class="citation" data-cites="fredust2026"><a href="#ref-fredust2026" role="doc-biblioref">[18]</a></span>. Il rialzo dei tassi globali alza la componente comune di tutti i rendimenti europei.</p></li>
+<li><p><strong>Il passaggio ai bilanci pubblici.</strong> È il candidato più plausibile a spiegare la data; i fatti sono in gran parte verificati, il nesso causale resta un’ipotesi. Il 29 settembre il Tesoro colloca BTP a 10 anni al 4,58 per cento e a 5 anni al 4,08 per cento, con rapporti di copertura di 1,56 e 1,54 <span class="citation" data-cites="mef2026aste"><a href="#ref-mef2026aste" role="doc-biblioref">[23]</a></span>; sul mercato secondario il decennale italiano non toccava quei livelli dal novembre 2023 <span class="citation" data-cites="worldgovernmentbonds2026"><a href="#ref-worldgovernmentbonds2026" role="doc-biblioref">[1]</a></span>. Il 1° ottobre il governo francese presenta il progetto di legge di bilancio 2027, con un obiettivo di deficit del 5 per cento del prodotto e, secondo i resoconti concordi della stampa, 43 miliardi di misure nuove, che con il trascinamento delle misure del 2026 portano lo sforzo complessivo a circa 54 miliardi <span class="citation" data-cites="bercy2026plf euronews2026budget"><a href="#ref-bercy2026plf" role="doc-biblioref">[24]</a>, <a href="#ref-euronews2026budget" role="doc-biblioref">[25]</a></span>. In Italia, il 2 ottobre, un ministro annuncia che il Consiglio dei ministri deciderà uno scostamento di bilancio di circa 7 miliardi: la delibera non è ancora pubblicata <span class="citation" data-cites="radiocor2026"><a href="#ref-radiocor2026" role="doc-biblioref">[2]</a></span>. Se il nesso regge, lo shock energetico smette di essere solo un problema di prezzi e diventa un problema di conti pubblici, cioè la variabile che distingue l’Italia dalla Germania. Il dato che lo rende plausibile è verificato: nella stessa settimana lo spread si allarga di 34 punti base per l’Italia e di 38 per la Francia, contro 18 per la Spagna (<a href="#tbl-internazionale" class="quarto-xref">Tabella&nbsp;7</a>).</p></li>
+</ol>
+<p>Se il nesso del punto 5 regge, la teoria offre una chiave per tenere insieme i cinque elementi. Le condizioni di fondo — debito elevato, energia cara, tassi in salita — erano note da mesi; ciò che cambia a fine settembre è la loro visibilità simultanea, quando la manovra francese e le decisioni di bilancio italiane le trasformano in numeri. È il meccanismo del <em>wake-up call</em> <span class="citation" data-cites="beirne2013pricing"><a href="#ref-beirne2013pricing" role="doc-biblioref">[8]</a></span>: il mercato riprezza in pochi giorni fondamentali che conosceva già. Una volta avviato, il movimento può autoalimentarsi, come documentato per le crisi di liquidità dei debiti sovrani nell’unione monetaria <span class="citation" data-cites="degrauwe2013self arghyrou2011greek"><a href="#ref-degrauwe2013self" role="doc-biblioref">[10]</a>, <a href="#ref-arghyrou2011greek" role="doc-biblioref">[26]</a></span>.</p>
+<section id="linflazione-nei-singoli-paesi" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="linflazione-nei-singoli-paesi"><span class="header-section-number">4.1</span> L’inflazione nei singoli Paesi</h2>
+<div id="tbl-inflazione" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-inflazione-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;6: Inflazione sui dodici mesi per Paese, in per cento. Area euro e Paesi dell’euro: indice armonizzato dei prezzi al consumo; Stati Uniti: indice nazionale dei prezzi al consumo, non armonizzato. Settembre 2026: stima rapida (flash) di Eurostat, provvisoria; per gli Stati Uniti l’ultimo mese disponibile è agosto. Elaborazioni su indici ridistribuiti da FRED e stima rapida Eurostat <span class="citation" data-cites="fred2026 fredprices2026 eurostatflash2026"><a href="#ref-fred2026" role="doc-biblioref">[17]</a>, <a href="#ref-eurostatflash2026" role="doc-biblioref">[21]</a>, <a href="#ref-fredprices2026" role="doc-biblioref">[27]</a></span>.
+</figcaption>
+<div aria-describedby="tbl-inflazione-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Paese</th>
+<th style="text-align: right;">2/2026</th>
+<th style="text-align: right;">5/2026</th>
+<th style="text-align: right;">7/2026</th>
+<th style="text-align: right;">8/2026</th>
+<th style="text-align: right;">9/2026 (flash)</th>
+<th style="text-align: right;">Δ feb → ago</th>
+<th style="text-align: right;">Δ feb → set</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Italia</td>
+<td style="text-align: right;">1,5</td>
+<td style="text-align: right;">3,2</td>
+<td style="text-align: right;">2,9</td>
+<td style="text-align: right;">3,2</td>
+<td style="text-align: right;">4,1</td>
+<td style="text-align: right;">+1,7</td>
+<td style="text-align: right;">+2,6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Francia</td>
+<td style="text-align: right;">1,1</td>
+<td style="text-align: right;">2,8</td>
+<td style="text-align: right;">2,4</td>
+<td style="text-align: right;">2,6</td>
+<td style="text-align: right;">3,4</td>
+<td style="text-align: right;">+1,6</td>
+<td style="text-align: right;">+2,3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spagna</td>
+<td style="text-align: right;">2,5</td>
+<td style="text-align: right;">3,6</td>
+<td style="text-align: right;">3,9</td>
+<td style="text-align: right;">4,6</td>
+<td style="text-align: right;">5,0</td>
+<td style="text-align: right;">+2,1</td>
+<td style="text-align: right;">+2,5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Germania</td>
+<td style="text-align: right;">2,0</td>
+<td style="text-align: right;">2,7</td>
+<td style="text-align: right;">2,8</td>
+<td style="text-align: right;">2,9</td>
+<td style="text-align: right;">3,3</td>
+<td style="text-align: right;">+0,9</td>
+<td style="text-align: right;">+1,3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Area euro</td>
+<td style="text-align: right;">1,9</td>
+<td style="text-align: right;">3,1</td>
+<td style="text-align: right;">2,9</td>
+<td style="text-align: right;">3,2</td>
+<td style="text-align: right;">3,8</td>
+<td style="text-align: right;">+1,4</td>
+<td style="text-align: right;">+1,9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Stati Uniti (CPI)</td>
+<td style="text-align: right;">2,7</td>
+<td style="text-align: right;">4,3</td>
+<td style="text-align: right;">3,5</td>
+<td style="text-align: right;">3,7</td>
+<td style="text-align: right;">n.d.</td>
+<td style="text-align: right;">+1,0</td>
+<td style="text-align: right;">n.d.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="fig-inflazione" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-inflazione-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="_figs/fig10_inflazione.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-inflazione-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Inflazione sui dodici mesi per Paese, gennaio 2025 – settembre 2026, in per cento. La linea tratteggiata orizzontale è l’obiettivo della BCE; la banda grigia verticale è il primo shock energetico (marzo 2026). Il tratto punteggiato e il punto vuoto indicano la stima rapida di settembre, provvisoria; per gli Stati Uniti l’ultimo mese è agosto <span class="citation" data-cites="fred2026 fredprices2026 eurostatflash2026"><a href="#ref-fred2026" role="doc-biblioref">[17]</a>, <a href="#ref-eurostatflash2026" role="doc-biblioref">[21]</a>, <a href="#ref-fredprices2026" role="doc-biblioref">[27]</a></span>.
+</figcaption>
+</figure>
+</div>
+<p><em>In parole semplici:</em> da marzo i prezzi salgono ovunque, ma non allo stesso modo. Il Paese con l’inflazione più alta è la Spagna, che però è anche quello con lo spread più basso; la Francia ha, con la Germania, l’inflazione più bassa, ma lo spread più alto. A settembre l’Italia fa il salto più ampio in un solo mese, da 3,2 a 4,1 per cento. Non è quindi l’inflazione del singolo Paese a decidere lo spread.</p>
+<p>Il confronto toglie forza a una lettura diretta «più inflazione, più spread». Fra febbraio e settembre, secondo la stima rapida, l’inflazione sale di 2,6 punti in Italia, 2,5 in Spagna, 2,3 in Francia e 1,3 in Germania <span class="citation" data-cites="eurostatflash2026"><a href="#ref-eurostatflash2026" role="doc-biblioref">[21]</a></span>; l’ordinamento degli spread è un altro: la Spagna, con un aumento simile a quello italiano, ha lo spread più basso, la Francia, con un aumento minore, il più alto. L’inflazione agisce soprattutto attraverso il canale comune — la politica monetaria e il livello dei tassi — e, per i Paesi ad alto debito, attraverso il costo del servizio del debito. Un’inflazione più alta aiuta anzi i conti pubblici quando fa crescere il prodotto nominale più del costo medio del debito, come avviene in Spagna <span class="citation" data-cites="manenti2026spread"><a href="#ref-manenti2026spread" role="doc-biblioref">[28]</a></span>.</p>
+</section>
+</section>
+<section id="il-confronto-internazionale" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Il confronto internazionale</h1>
+<section id="titoli-in-euro-e-titoli-in-altra-valuta" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="titoli-in-euro-e-titoli-in-altra-valuta"><span class="header-section-number">5.1</span> Titoli in euro e titoli in altra valuta</h2>
+<p>Lo spread verso il Bund ha un significato diverso a seconda della valuta del titolo. Per i titoli di Spagna, Italia e Francia, emessi in euro come il Bund, la differenza di rendimento misura in prevalenza il rischio dell’emittente e la liquidità del suo mercato: chi compra un BTP invece di un Bund non cambia moneta. Per il Gilt britannico e il Treasury statunitense non è così. Il loro rendimento è espresso in sterline e in dollari e incorpora le attese sui tassi della Bank of England e della Federal Reserve, l’inflazione attesa in quei Paesi e il rischio di cambio; il rischio di insolvenza vi pesa poco. Uno spread Treasury–Bund di 179 punti base non dice che gli Stati Uniti siano più rischiosi dell’Italia: dice che negli Stati Uniti i tassi sono più alti.</p>
+<p>Per rendere confrontabili i rendimenti in valuta diversa si può guardare a quanto renderebbero a un investitore in euro che si copre dal rischio di cambio. Il costo della copertura, per una copertura rinnovata a breve scadenza, è approssimativamente pari alla differenza fra i tassi a breve delle due valute; in condizioni di tensione se ne discosta per la cosiddetta base, la deviazione dalla parità coperta dei tassi d’interesse <span class="citation" data-cites="du2018deviations"><a href="#ref-du2018deviations" role="doc-biblioref">[29]</a></span>. In questa nota il costo è approssimato con la differenza fra i tassi overnight SOFR (dollaro), SONIA (sterlina) ed €STR (euro) <span class="citation" data-cites="fredon2026"><a href="#ref-fredon2026" role="doc-biblioref">[30]</a></span>; lo spread «coperto dal cambio» è lo spread verso il Bund al netto di questo costo. È una misura indicativa, che trascura la base e la differenza fra tassi overnight e tassi a termine.</p>
+</section>
+<section id="cinque-momenti-a-confronto" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="cinque-momenti-a-confronto"><span class="header-section-number">5.2</span> Cinque momenti a confronto</h2>
+<div id="tbl-internazionale" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-internazionale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;7: Spread a dieci anni verso il Bund in cinque momenti del 2026, in punti base. Per Gilt e Treasury: costo approssimato della copertura dal cambio (differenza fra tassi overnight) e spread coperto (spread meno costo della copertura). Minimo: giorno del minimo 2026 dello spread BTP–Bund; picco: giorno del suo massimo di marzo; 25/9: vigilia della settimana di accelerazione. Elaborazioni su dati giornalieri <span class="citation" data-cites="worldgovernmentbonds2026 fredon2026"><a href="#ref-worldgovernmentbonds2026" role="doc-biblioref">[1]</a>, <a href="#ref-fredon2026" role="doc-biblioref">[30]</a></span>.
+</figcaption>
+<div aria-describedby="tbl-internazionale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Spread verso il Bund (pb)</th>
+<th style="text-align: right;">Minimo 25/2</th>
+<th style="text-align: right;">Picco 24/3</th>
+<th style="text-align: right;">Media lug–ago</th>
+<th style="text-align: right;">25/9</th>
+<th style="text-align: right;">2/10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Bonos–Bund</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">64</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BTP–Bund</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">98</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">122</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">OAT–Bund</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">107</td>
+<td style="text-align: right;">145</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gilt–Bund</td>
+<td style="text-align: right;">161</td>
+<td style="text-align: right;">197</td>
+<td style="text-align: right;">183</td>
+<td style="text-align: right;">174</td>
+<td style="text-align: right;">189</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Treasury–Bund</td>
+<td style="text-align: right;">134</td>
+<td style="text-align: right;">135</td>
+<td style="text-align: right;">149</td>
+<td style="text-align: right;">154</td>
+<td style="text-align: right;">179</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Costo copertura sterlina (SONIA − €STR)</td>
+<td style="text-align: right;">179</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">155</td>
+<td style="text-align: right;">129</td>
+<td style="text-align: right;">129</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Costo copertura dollaro (SOFR − €STR)</td>
+<td style="text-align: right;">174</td>
+<td style="text-align: right;">170</td>
+<td style="text-align: right;">145</td>
+<td style="text-align: right;">146</td>
+<td style="text-align: right;">146</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gilt–Bund coperto dal cambio</td>
+<td style="text-align: right;">-18</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">60</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Treasury–Bund coperto dal cambio</td>
+<td style="text-align: right;">-40</td>
+<td style="text-align: right;">-34</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">33</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><em>In parole semplici:</em> in euro, la Spagna paga poco più della Germania, l’Italia di più e la Francia, che a febbraio pagava meno dell’Italia, oggi paga più di tutti. Inglesi e americani pagano molto di più della Germania, ma per una ragione diversa: i loro tassi ufficiali sono più alti. Se si toglie il costo di proteggersi dal cambio, a febbraio un Treasury rendeva a un investitore europeo meno di un Bund; oggi rende di più.</p>
+<div id="fig-dotplot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dotplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="_figs/fig7_dotplot_spread.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dotplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Spread a dieci anni verso il Bund di Spagna, Italia, Francia, Regno Unito e Stati Uniti in cinque momenti del 2026. Il colore, dal più chiaro al più scuro, e la forma del punto indicano il momento; il valore a destra è quello del 2 ottobre. Il pannello inferiore riguarda titoli in valuta diversa dall’euro e non è confrontabile come misura di rischio di credito.
+</figcaption>
+</figure>
+</div>
+<p><em>In parole semplici:</em> ogni riga è un Paese, ogni punto un momento dell’anno; più la riga è lunga, più lo spread si è mosso. La riga più lunga è quella francese, poi quella italiana; la Spagna si muove poco. In tutte le righe il punto più scuro (oggi) è a destra o quasi: nell’ultima settimana tutti gli spread verso il Bund si sono allargati.</p>
+<div id="fig-heatmap" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-heatmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="_figs/fig8_heatmap_spread.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-heatmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Variazione degli spread verso il Bund per fase, in punti base. Rosso: lo spread si allarga; blu: si stringe. Le ultime due righe riportano Gilt e Treasury al netto del costo approssimato di copertura dal cambio.
+</figcaption>
+</figure>
+</div>
+<p><em>In parole semplici:</em> la colonna «25/9 → 2/10» è rossa in tutte le righe: nell’ultima settimana il Bund ha reso meno di tutti gli altri titoli. Ma l’intensità cambia: la Spagna si allarga di 18 punti, quanto basta a riflettere il calo del Bund; Italia e Francia di 34 e 38, il doppio.</p>
+<div id="fig-serie-internazionale" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-serie-internazionale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="_figs/fig9_serie_spread.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-serie-internazionale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: Spread giornalieri a dieci anni verso il Bund nel 2026, in punti base. Sopra: titoli in euro. Sotto: Gilt e Treasury, spread grezzo (linea continua) e al netto del costo approssimato di copertura dal cambio (linea tratteggiata). La linea punteggiata verticale indica il minimo dello spread BTP–Bund (25 febbraio), la banda gialla la settimana 28 settembre–2 ottobre. I salti delle linee tratteggiate coincidono con le decisioni sui tassi ufficiali: rialzi BCE del 17 giugno e del 16 settembre, rialzo della Federal Reserve recepito dal SOFR il 17 settembre <span class="citation" data-cites="worldgovernmentbonds2026 fredon2026"><a href="#ref-worldgovernmentbonds2026" role="doc-biblioref">[1]</a>, <a href="#ref-fredon2026" role="doc-biblioref">[30]</a></span>.
+</figcaption>
+</figure>
+</div>
+<p><em>In parole semplici:</em> in alto, Italia e Francia si muovono quasi appaiate in luglio e agosto, poi la Francia si stacca e l’Italia la segue; la Spagna resta in basso e sale solo negli ultimi giorni. In basso, inglesi e americani pagano sempre molto più della Germania; ma se si toglie il costo di proteggersi dal cambio (linee tratteggiate), a inizio anno rendevano meno del Bund e oggi rendono di più. I gradini delle linee tratteggiate arrivano nei giorni in cui la BCE ha alzato i tassi.</p>
+<p>Tre risultati emergono dal confronto.</p>
+<p>Il primo riguarda <strong>la settimana di accelerazione</strong>. Fra il 25 settembre e il 2 ottobre lo spread verso il Bund si allarga per tutti i titoli: di 15 punti base per il Gilt, 18 per il Bonos, 24 per il Treasury, 34 per il BTP, 38 per l’OAT. Poiché nello stesso periodo il rendimento del titolo tedesco di riferimento scende di 18 punti base (<a href="#tbl-scomposizione" class="quarto-xref">Tabella&nbsp;2</a>), una parte comune dell’allargamento è legata a quel titolo, compatibile con una domanda di Bund come rifugio ma non confermata dalle curve a scadenza costante (<a href="#tbl-curve" class="quarto-xref">Tabella&nbsp;3</a>). La Spagna si allarga quasi esattamente di quella misura; Italia e Francia di circa il doppio. Il sovrappiù, circa 16 punti per l’Italia e 20 per la Francia, è la parte non condivisa con la Spagna: riguarda i due grandi emittenti ad alto debito, ma da solo non ne identifica la causa.</p>
+<p>Il secondo riguarda <strong>la Francia</strong>. Al minimo di febbraio l’OAT pagava sul Bund meno del BTP (55 contro 60 punti base); in luglio–agosto i due spread erano allineati intorno a 80; dall’inizio di settembre la Francia paga stabilmente più dell’Italia, con una distanza che sale da zero a circa 20 punti base il 25 settembre e a 23 il 2 ottobre. Nella settimana di accelerazione la distanza fra i due resta quasi invariata: l’Italia segue la Francia di pari passo. Sull’intero periodo lo spread francese si allarga di 91 punti base, quello italiano di 62.</p>
+<p>Il terzo riguarda <strong>i titoli in altra valuta</strong>. Senza copertura, lo spread Treasury–Bund passa da 134 a 179 punti base e quello Gilt–Bund da 161 a 189: il rialzo globale dei tassi tocca Stati Uniti e Regno Unito più della Germania. Al netto della copertura dal cambio il movimento è più ampio: il Treasury coperto passa da 40 punti base sotto il Bund a 33 sopra, il Gilt coperto da 18 sotto a 60 sopra. La ragione è in parte meccanica: i due rialzi della Banca centrale europea hanno alzato l’€STR e ridotto il costo di copertura del dollaro e della sterlina per un investitore in euro, di 28 e 50 punti base rispettivamente. Per chi investe in euro, quindi, con i costi di copertura attuali Treasury e Gilt coperti sono un’alternativa al Bund più attraente che a febbraio, nello stesso momento in cui i titoli dei Paesi europei ad alto debito devono offrire un premio maggiore. Non si tratta di un rendimento garantito sull’intera durata del titolo: la copertura va rinnovata a ogni scadenza e il suo costo cambia con i tassi a breve dei due Paesi.</p>
+</section>
+</section>
+<section id="il-caso-francia" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Il caso Francia</h1>
+<section id="un-sorpasso-senza-precedenti" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="un-sorpasso-senza-precedenti"><span class="header-section-number">6.1</span> Un sorpasso senza precedenti</h2>
+<p>Nella serie giornaliera disponibile, che parte dall’aprile 2007, il rendimento decennale francese è rimasto sempre sotto quello italiano fino al settembre 2025. Nella crisi del debito sovrano del 2012 la distanza media era di quasi 300 punti base. Il primo giorno in cui l’OAT ha reso più del BTP è il 17 settembre 2025; nel resto del 2025 è accaduto nel 20 per cento dei giorni di borsa, nel 2026 nel 45 per cento, e il 2 ottobre la Francia paga 23 punti base più dell’Italia <span class="citation" data-cites="worldgovernmentbonds2026"><a href="#ref-worldgovernmentbonds2026" role="doc-biblioref">[1]</a></span>.</p>
+<div id="tbl-oat-btp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-oat-btp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;8: Spread a dieci anni di Francia e Italia verso il Bund e differenza fra OAT e BTP, medie annue su giorni lavorativi, in punti base; ultima colonna: quota di giorni in cui il rendimento francese supera quello italiano <span class="citation" data-cites="worldgovernmentbonds2026"><a href="#ref-worldgovernmentbonds2026" role="doc-biblioref">[1]</a></span>.
+</figcaption>
+<div aria-describedby="tbl-oat-btp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Anno</th>
+<th style="text-align: right;">OAT–Bund (pb, media)</th>
+<th style="text-align: right;">BTP–Bund (pb, media)</th>
+<th style="text-align: right;">OAT–BTP (pb, media)</th>
+<th style="text-align: right;">Giorni con OAT sopra BTP (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2008</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">-42</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2012</td>
+<td style="text-align: right;">97</td>
+<td style="text-align: right;">392</td>
+<td style="text-align: right;">-295</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2018</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">214</td>
+<td style="text-align: right;">-182</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2022</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: right;">-144</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2024</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">136</td>
+<td style="text-align: right;">-73</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2025</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: right;">94</td>
+<td style="text-align: right;">-21</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2026 (fino al 2/10)</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: right;">77</td>
+<td style="text-align: right;">-3</td>
+<td style="text-align: right;">45</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><em>In parole semplici:</em> per diciotto anni il mercato ha chiesto all’Italia più che alla Francia, a volte molto di più. Dall’autunno 2025 non è più così: oggi i due Paesi pagano più o meno lo stesso, e in molti giorni la Francia paga di più.</p>
+<div id="fig-oat-btp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-oat-btp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="_figs/fig12_oat_btp.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-oat-btp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9: In alto: spread a dieci anni di BTP e OAT verso il Bund, aprile 2007 – 2 ottobre 2026, in punti base. In basso: differenza fra i rendimenti di OAT e BTP; l’area grigia indica i giorni in cui la Francia paga meno dell’Italia, quella verde i giorni in cui paga di più <span class="citation" data-cites="worldgovernmentbonds2026"><a href="#ref-worldgovernmentbonds2026" role="doc-biblioref">[1]</a></span>.
+</figcaption>
+</figure>
+</div>
+<p><em>In parole semplici:</em> le due linee in alto si avvicinano da due direzioni: quella italiana scende dal 2022, quella francese sale. In basso l’area grigia si assottiglia fino a sparire: dal 2025 la linea passa sopra lo zero.</p>
+<p>La convergenza viene da entrambi i lati. Lo spread italiano verso il Bund scende da una media di 195 punti base nel 2022 a 77 nel 2026; quello francese sale da valori fra 30 e 40 punti negli anni 2015–2021 a 74. Il sorpasso non è dunque una crisi italiana evitata né soltanto una crisi francese: è la combinazione di un miglioramento relativo dell’Italia e di un peggioramento relativo della Francia.</p>
+</section>
+<section id="lo-stock-e-il-flusso" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="lo-stock-e-il-flusso"><span class="header-section-number">6.2</span> Lo stock e il flusso</h2>
+<div id="tbl-francia-conti" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-francia-conti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;9: Conti pubblici di Francia, Italia, Germania e Spagna, in per cento del prodotto. Saldo primario: indebitamento netto al netto della spesa per interessi. Dati annuali di notifica e debito trimestrale <span class="citation" data-cites="eurostat2026 eurostatdebito2026"><a href="#ref-eurostat2026" role="doc-biblioref">[31]</a>, <a href="#ref-eurostatdebito2026" role="doc-biblioref">[32]</a></span>.
+</figcaption>
+<div aria-describedby="tbl-francia-conti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicatore (% del PIL)</th>
+<th style="text-align: right;">Francia</th>
+<th style="text-align: right;">Italia</th>
+<th style="text-align: right;">Germania</th>
+<th style="text-align: right;">Spagna</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Debito pubblico 2019</td>
+<td style="text-align: right;">98,2</td>
+<td style="text-align: right;">133,9</td>
+<td style="text-align: right;">58,7</td>
+<td style="text-align: right;">97,7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Debito pubblico 2025</td>
+<td style="text-align: right;">115,6</td>
+<td style="text-align: right;">137,1</td>
+<td style="text-align: right;">63,5</td>
+<td style="text-align: right;">100,7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Debito pubblico 2026 T1</td>
+<td style="text-align: right;">117,6</td>
+<td style="text-align: right;">138,9</td>
+<td style="text-align: right;">64,4</td>
+<td style="text-align: right;">101,6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Indebitamento netto 2025</td>
+<td style="text-align: right;">-5,1</td>
+<td style="text-align: right;">-3,1</td>
+<td style="text-align: right;">-2,7</td>
+<td style="text-align: right;">-2,4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spesa per interessi 2025</td>
+<td style="text-align: right;">2,2</td>
+<td style="text-align: right;">3,9</td>
+<td style="text-align: right;">1,1</td>
+<td style="text-align: right;">2,4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Saldo primario 2025</td>
+<td style="text-align: right;">-2,9</td>
+<td style="text-align: right;">0,8</td>
+<td style="text-align: right;">-1,6</td>
+<td style="text-align: right;">0,0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Saldo primario, media 2023–2025</td>
+<td style="text-align: right;">-3,4</td>
+<td style="text-align: right;">-0,7</td>
+<td style="text-align: right;">-1,6</td>
+<td style="text-align: right;">-0,6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><em>In parole semplici:</em> l’Italia ha più debito della Francia, ma le entrate dello Stato italiano superano le spese prima degli interessi; quelle francesi no. Il debito italiano è più alto ed è cresciuto meno di quello francese, che resta più basso ma sale più in fretta.</p>
+<div id="fig-francia-conti" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-francia-conti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="_figs/fig11_francia_conti.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-francia-conti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;10: A sinistra: saldo primario 2015–2025, in per cento del prodotto. A destra: debito pubblico trimestrale 2019 – primo trimestre 2026, in per cento del prodotto <span class="citation" data-cites="eurostat2026 eurostatdebito2026"><a href="#ref-eurostat2026" role="doc-biblioref">[31]</a>, <a href="#ref-eurostatdebito2026" role="doc-biblioref">[32]</a></span>.
+</figcaption>
+</figure>
+</div>
+<p><em>In parole semplici:</em> dopo la pandemia l’Italia è tornata in avanzo primario nel 2024; la Francia è ancora sotto lo zero. Nello stesso periodo il debito francese ha superato i 115 punti di prodotto, mentre quello spagnolo è sceso verso 100.</p>
+<p>I dati spiegano il sorpasso meglio dello stock di debito. L’Italia resta il Paese con il debito più alto (137 per cento del prodotto nel 2025, 139 nel primo trimestre 2026) e con la spesa per interessi più elevata (3,9 per cento), ma dal 2024 registra un avanzo primario: +0,8 per cento nel 2025. La Francia ha un debito più basso (116 per cento) e una spesa per interessi minore (2,2 per cento), ma un disavanzo primario di 2,9 punti nel 2025 e di 3,4 in media nel triennio 2023–2025; il suo debito è salito di oltre 17 punti dal 2019, contro 3 dell’Italia. La Spagna, con un debito di poco inferiore a quello francese ma un saldo primario in pareggio e un rapporto debito/prodotto in calo, ha lo spread più basso dei tre. È la gerarchia attesa se il mercato prezza la traiettoria del debito più del suo livello, come indica la letteratura sullo spazio fiscale <span class="citation" data-cites="ghosh2013fiscal bernoth2012sovereign"><a href="#ref-bernoth2012sovereign" role="doc-biblioref">[3]</a>, <a href="#ref-ghosh2013fiscal" role="doc-biblioref">[4]</a></span>.</p>
+</section>
+<section id="le-letture-degli-analisti" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="le-letture-degli-analisti"><span class="header-section-number">6.3</span> Le letture degli analisti</h2>
+<p>Le valutazioni seguenti sono opinioni degli uffici studi, da leggere come tali; le cifre di previsione sono loro stime, non dati.</p>
+<ul>
+<li><p><strong>Il ciclo elettorale.</strong> Le elezioni presidenziali francesi si terranno nella primavera del 2027, con un quadro politico frammentato; secondo l’ufficio studi di Intesa Sanpaolo, a politiche invariate il deficit potrebbe avvicinarsi al 7 per cento del prodotto e il debito al 130 per cento entro il 2030, e il governo punterebbe per il 2027 a un deficit solo di poco inferiore al 5 per cento <span class="citation" data-cites="volpi2026francia"><a href="#ref-volpi2026francia" role="doc-biblioref">[33]</a></span>.</p></li>
+<li><p><strong>Il costo del rifinanziamento.</strong> Per la stessa fonte, a rendimenti invariati il solo rinnovo dei titoli in scadenza porterebbe il tasso effettivo sul debito francese dal 2,0 al 3,0 per cento entro il 2030, con circa un punto di prodotto in più di spesa per interessi; la Francia sarebbe «il banco di prova della fiducia nel debito dell’area euro» <span class="citation" data-cites="bellesia2026gravita"><a href="#ref-bellesia2026gravita" role="doc-biblioref">[34]</a></span>.</p></li>
+<li><p><strong>Chi detiene il debito.</strong> Gli investitori esteri detengono il 54 per cento del debito francese, la quota più alta fra i G6, contro il 34 per cento di quello italiano, dove le famiglie sono salite dall’8 al 14,5 per cento; il capitale estero è la fonte di finanziamento più sensibile ai prezzi e alle notizie <span class="citation" data-cites="bellesia2026gravita"><a href="#ref-bellesia2026gravita" role="doc-biblioref">[34]</a></span>.</p></li>
+<li><p><strong>Il margine fra costo del debito e crescita.</strong> Il differenziale <span class="math inline">\(r-g\)</span> francese resta negativo (−0,5) ma con un margine molto ridotto, e il debito diventa sempre più sensibile all’avanzo primario richiesto per stabilizzarlo <span class="citation" data-cites="manenti2026spread"><a href="#ref-manenti2026spread" role="doc-biblioref">[28]</a></span>.</p></li>
+</ul>
+<p><em>In parole semplici:</em> per gli analisti la Francia ha davanti un anno difficile: elezioni incerte, conti da sistemare, interessi in aumento, e un debito in mano per metà a investitori stranieri, che vendono più in fretta dei risparmiatori di casa.</p>
+<p>Gli spunti di stampa della settimana sulla Francia — la manovra da 43 miliardi di misure nuove (circa 54 di sforzo complessivo), il giudizio del Haut Conseil des finances publiques su uno «sforzo significativo», il richiamo della presidente della BCE a una situazione «seria», il «monito» di un’agenzia di rating — restano opinioni o eventi da verificare sui documenti originali <span class="citation" data-cites="radiocor2026"><a href="#ref-radiocor2026" role="doc-biblioref">[2]</a></span>.</p>
+</section>
+</section>
+<section id="che-cosa-non-è-cambiato" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Che cosa non è cambiato</h1>
+<p>Il fondo macroeconomico italiano non mostra, nei dati disponibili, un deterioramento fra febbraio e ottobre: la crescita del prodotto sul trimestre precedente è stata simile nella prima metà dell’anno (Italia 0,3 e 0,2 per cento, Germania 0,4 e 0,3) e il deficit pubblico del 2025 (3,1 per cento del prodotto per l’Italia, 2,7 per la Germania, 5,1 per la Francia) è un dato consuntivo, identico nei due momenti per costruzione <span class="citation" data-cites="eurostat2026"><a href="#ref-eurostat2026" role="doc-biblioref">[31]</a></span>. Gli indicatori pubblicati non segnalano quindi un deterioramento rilevante; non escludono però che il mercato abbia cambiato valutazione sui disavanzi futuri, sulla crescita attesa, sulla spesa per interessi o sul rischio politico, che questi dati non misurano. L’inflazione italiana è salita più di quella tedesca (dall’1,5 per cento di febbraio al 4,1 della stima rapida di settembre, contro dal 2,0 al 3,3), un differenziale che può riflettersi anche nei rendimenti nominali <span class="citation" data-cites="fred2026 eurostatflash2026"><a href="#ref-fred2026" role="doc-biblioref">[17]</a>, <a href="#ref-eurostatflash2026" role="doc-biblioref">[21]</a></span>. La Spagna, con un rapporto fra debito e prodotto più basso, resta ai margini del movimento: l’allargamento non riguarda la periferia in quanto tale ma soprattutto i grandi emittenti ad alto debito.</p>
+</section>
+<section id="una-stima-lo-spread-e-i-fondamentali" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Una stima: lo spread e i fondamentali</h1>
+<p>Le sezioni precedenti descrivono che cosa si è mosso. Questa misura quanto dello spread italiano sia spiegato dai fondamentali di finanza pubblica e dal clima dei mercati, e di quanto se ne discostino i 122 punti base di oggi e i 60 del minimo di febbraio.</p>
+<section id="il-modello" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="il-modello"><span class="header-section-number">8.1</span> Il modello</h2>
+<p>La stima usa un panel trimestrale di nove Paesi dell’area dell’euro (Italia, Spagna, Francia, Portogallo, Belgio, Austria, Paesi Bassi, Irlanda, Finlandia) dal 2003 al primo trimestre del 2026. La Grecia è esclusa per la ristrutturazione del debito del 2012. La variabile spiegata è lo spread a dieci anni verso la Germania, in punti base, calcolato sui rendimenti a lungo termine armonizzati di Eurostat <span class="citation" data-cites="eurostatpanel2026"><a href="#ref-eurostatpanel2026" role="doc-biblioref">[35]</a></span>. Le variabili esplicative seguono la letteratura citata all’inizio <span class="citation" data-cites="bernoth2012sovereign beirne2013pricing ghosh2013fiscal"><a href="#ref-bernoth2012sovereign" role="doc-biblioref">[3]</a>, <a href="#ref-ghosh2013fiscal" role="doc-biblioref">[4]</a>, <a href="#ref-beirne2013pricing" role="doc-biblioref">[8]</a></span>:</p>
+<ul>
+<li><p>il debito pubblico in rapporto al prodotto, il saldo di bilancio in rapporto al prodotto (media degli ultimi quattro trimestri) e la crescita del prodotto sull’anno precedente, tutti in differenza rispetto alla Germania e ritardati di un trimestre, perché vengono pubblicati con ritardo <span class="citation" data-cites="eurostatpanel2026"><a href="#ref-eurostatpanel2026" role="doc-biblioref">[35]</a></span>;</p></li>
+<li><p>l’indice VIX della volatilità attesa sulla borsa americana, come misura dell’avversione al rischio globale <span class="citation" data-cites="fredvix2026"><a href="#ref-fredvix2026" role="doc-biblioref">[36]</a></span>;</p></li>
+<li><p>tre interazioni del debito: con il VIX, con il periodo di crisi dal 2010 al giugno 2012 (il trimestre precedente al discorso del presidente della BCE del 26 luglio 2012 e all’annuncio delle operazioni OMT, definite il 6 settembre 2012 <span class="citation" data-cites="ecb2012omt"><a href="#ref-ecb2012omt" role="doc-biblioref">[37]</a></span>) e con il periodo di acquisti netti di titoli della BCE, dal 2015 al giugno 2022.</p></li>
+</ul>
+<p>Ogni Paese ha un proprio livello di partenza (effetti fissi), che assorbe le differenze stabili di liquidità e di rating. Gli errori standard sono robusti all’eteroschedasticità, all’autocorrelazione e alla correlazione fra Paesi nello stesso trimestre <span class="citation" data-cites="driscoll1998consistent"><a href="#ref-driscoll1998consistent" role="doc-biblioref">[38]</a></span>.</p>
+<div id="tbl-panel" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-panel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;10: Determinanti dello spread a dieci anni verso il Bund: panel di nove Paesi dell’area dell’euro, 2003–2026, dati trimestrali. Variabile dipendente in punti base. Debito, saldo e crescita in punti percentuali, in differenza con la Germania, al trimestre precedente. Modelli: (1) fondamentali e VIX; (2) aggiunge l’interazione fra debito e VIX; (3) aggiunge l’interazione fra debito e crisi 2010–2012; (4) aggiunge l’interazione fra debito e acquisti netti della BCE 2015–2022. Fra parentesi gli errori standard di Driscoll e Kraay; *** p&lt;0,01, ** p&lt;0,05, * p&lt;0,1. Elaborazioni su dati Eurostat e FRED <span class="citation" data-cites="eurostatpanel2026 fredvix2026 driscoll1998consistent"><a href="#ref-eurostatpanel2026" role="doc-biblioref">[35]</a>, <a href="#ref-fredvix2026" role="doc-biblioref">[36]</a>, <a href="#ref-driscoll1998consistent" role="doc-biblioref">[38]</a></span>.
+</figcaption>
+<div aria-describedby="tbl-panel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variabile</th>
+<th style="text-align: right;">(1)</th>
+<th style="text-align: right;">(2)</th>
+<th style="text-align: right;">(3)</th>
+<th style="text-align: right;">(4)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Debito/PIL</td>
+<td style="text-align: right;">0,4 (0,6)</td>
+<td style="text-align: right;">0,4 (0,6)</td>
+<td style="text-align: right;">0,3 (0,5)</td>
+<td style="text-align: right;">0,7 (0,4)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Saldo di bilancio/PIL</td>
+<td style="text-align: right;">-16,0*** (3,9)</td>
+<td style="text-align: right;">-16,0*** (4,0)</td>
+<td style="text-align: right;">-15,4*** (3,5)</td>
+<td style="text-align: right;">-15,2*** (3,4)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Crescita del PIL</td>
+<td style="text-align: right;">-7,0* (3,6)</td>
+<td style="text-align: right;">-7,0** (3,6)</td>
+<td style="text-align: right;">-6,1** (2,9)</td>
+<td style="text-align: right;">-6,4** (2,9)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">VIX (punti)</td>
+<td style="text-align: right;">1,0 (0,8)</td>
+<td style="text-align: right;">1,0 (0,7)</td>
+<td style="text-align: right;">1,0 (0,6)</td>
+<td style="text-align: right;">1,0* (0,6)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Debito × (VIX − 20)/10</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">-0,0 (0,3)</td>
+<td style="text-align: right;">-0,2 (0,2)</td>
+<td style="text-align: right;">-0,2 (0,2)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Debito × crisi 2010–12</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">4,8*** (1,8)</td>
+<td style="text-align: right;">4,5*** (1,7)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Debito × acquisti BCE 2015–22</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">-0,6 (0,4)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Effetti fissi Paese</td>
+<td style="text-align: right;">sì</td>
+<td style="text-align: right;">sì</td>
+<td style="text-align: right;">sì</td>
+<td style="text-align: right;">sì</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Osservazioni</td>
+<td style="text-align: right;">837</td>
+<td style="text-align: right;">837</td>
+<td style="text-align: right;">837</td>
+<td style="text-align: right;">837</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R²</td>
+<td style="text-align: right;">0,51</td>
+<td style="text-align: right;">0,51</td>
+<td style="text-align: right;">0,59</td>
+<td style="text-align: right;">0,60</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><em>In parole semplici:</em> nella storia dell’area dell’euro lo spread si è mosso soprattutto insieme al bilancio dell’anno. Un punto di prodotto di disavanzo in più rispetto alla Germania si associa a circa 15 punti base di spread, un punto di crescita in meno a circa 6. Lo stock di debito, da solo, pesa poco nei tempi normali; durante la crisi del 2010–2012 ogni punto di debito in più si associava invece a quasi 5 punti base.</p>
+<p>Il saldo di bilancio è la variabile più robusta: in tutte le specificazioni un punto di prodotto di disavanzo in più rispetto alla Germania si associa a 15–16 punti base di spread. La crescita conta con segno negativo, circa 6–7 punti base per punto. Il debito pesa poco nei tempi normali e molto nella crisi del 2010–2012, quando la sua sensibilità sale di 4,5 punti base per punto di prodotto: è il risveglio dei mercati sui fondamentali documentato per quegli anni <span class="citation" data-cites="beirne2013pricing"><a href="#ref-beirne2013pricing" role="doc-biblioref">[8]</a></span>. Il VIX ha un effetto positivo, circa un punto base per punto di indice, al limite della significatività.</p>
+</section>
+<section id="lo-spread-italiano-rispetto-ai-fondamentali" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="lo-spread-italiano-rispetto-ai-fondamentali"><span class="header-section-number">8.2</span> Lo spread italiano rispetto ai fondamentali</h2>
+<p>Il modello (4) fornisce, per ogni trimestre, il valore dello spread italiano previsto dai fondamentali inclusi nella stima. È un valore stimato su relazioni storiche, non un prezzo di equilibrio. Per le due date del 2026 la previsione usa i dati di finanza pubblica e di crescita già pubblicati a quella data e il VIX del giorno: per il 25 febbraio i conti pubblici del terzo trimestre 2025 e la crescita del quarto, perché i conti pubblici del quarto trimestre sono stati diffusi ad aprile; per il 2 ottobre i conti pubblici del primo trimestre 2026 e la crescita del secondo. I dati sono nella versione oggi disponibile, che può includere revisioni successive, e i coefficienti del modello sono stimati sull’intero campione fino al primo trimestre 2026: per il 25 febbraio si tratta quindi di una valutazione retrospettiva con le informazioni macroeconomiche disponibili allora, non di una previsione interamente effettuabile a quella data.</p>
+<div id="fig-panel-italia" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-panel-italia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="_figs/fig13_panel_italia.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-panel-italia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;11: Spread a dieci anni dell’Italia verso il Bund: media trimestrale effettiva e valore previsto dal modello (4), 2003–2026, in punti base. Il punto pieno è lo spread del 2 ottobre 2026, quello vuoto il valore previsto con i fondamentali pubblicati a quella data. La banda grigia è la crisi 2010–2012 <span class="citation" data-cites="eurostatpanel2026 fredvix2026 worldgovernmentbonds2026"><a href="#ref-worldgovernmentbonds2026" role="doc-biblioref">[1]</a>, <a href="#ref-eurostatpanel2026" role="doc-biblioref">[35]</a>, <a href="#ref-fredvix2026" role="doc-biblioref">[36]</a></span>.
+</figcaption>
+</figure>
+</div>
+<p><em>In parole semplici:</em> la linea tratteggiata è lo spread che il modello associa ai conti pubblici e alla crescita dell’Italia rispetto alla Germania. Prima del 2008 lo spread effettivo è rimasto per anni sotto quel valore, nel 2011–2012 e nel 2018–2019 molto sopra. Gli scostamenti sono ampi e durano a lungo: dalla metà del 2025 lo spread è di nuovo sotto il valore del modello, oggi vicino.</p>
+<div id="tbl-implicito" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-implicito-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;11: Spread italiano previsto dal modello (4) e spread effettivo, in punti base. Debito e saldo: differenza con la Germania in punti percentuali, all’ultimo trimestre pubblicato prima della data (terzo trimestre 2025 per il 25 febbraio, primo trimestre 2026 per il 2 ottobre); crescita: ultimo trimestre pubblicato (quarto 2025 e secondo 2026); VIX: valore del giorno. IC 90% media: intervallo di confidenza al 90 per cento del valore medio previsto. Intervallo di previsione 90%: intervallo del modello trimestrale per una singola osservazione, che include la variabilità residua; il confronto con la chiusura giornaliera è indicativo. Valutazione retrospettiva: i regressori sono quelli pubblicati alla data, i coefficienti sono stimati fino al primo trimestre 2026. Spread effettivo: chiusura giornaliera <span class="citation" data-cites="eurostatpanel2026 fredvix2026 yahoofinance2026 worldgovernmentbonds2026"><a href="#ref-worldgovernmentbonds2026" role="doc-biblioref">[1]</a>, <a href="#ref-yahoofinance2026" role="doc-biblioref">[16]</a>, <a href="#ref-eurostatpanel2026" role="doc-biblioref">[35]</a>, <a href="#ref-fredvix2026" role="doc-biblioref">[36]</a></span>.
+</figcaption>
+<div aria-describedby="tbl-implicito-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Momento</th>
+<th style="text-align: right;">Debito</th>
+<th style="text-align: right;">Saldo</th>
+<th style="text-align: right;">Crescita</th>
+<th style="text-align: right;">VIX</th>
+<th style="text-align: right;">Previsto</th>
+<th style="text-align: right;">IC 90% media</th>
+<th style="text-align: right;">Int. previsione 90%</th>
+<th style="text-align: right;">Effettivo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Minimo, 25/2/2026</td>
+<td style="text-align: right;">74,5</td>
+<td style="text-align: right;">-1,2</td>
+<td style="text-align: right;">0,6</td>
+<td style="text-align: right;">17,9</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;">85–155</td>
+<td style="text-align: right;">-16–255</td>
+<td style="text-align: right;">60</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2/10/2026</td>
+<td style="text-align: right;">74,5</td>
+<td style="text-align: right;">0,0</td>
+<td style="text-align: right;">0,0</td>
+<td style="text-align: right;">16,0</td>
+<td style="text-align: right;">106</td>
+<td style="text-align: right;">67–146</td>
+<td style="text-align: right;">-31–243</td>
+<td style="text-align: right;">122</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><em>In parole semplici:</em> con i dati pubblicati a ottobre il modello prevede per l’Italia uno spread intorno ai 105 punti base, con quelli disponibili a febbraio intorno ai 120. A febbraio lo spread effettivo era di 60, oggi è di 122. Il margine di errore del modello, che lavora su medie trimestrali, è però molto ampio, da poco sotto zero a circa 250 punti base: entrambi i valori vi rientrano. Il confronto con la chiusura di un singolo giorno è solo indicativo.</p>
+<p>Il confronto va letto con cautela. A febbraio lo spread era di circa 60 punti base sotto il valore medio previsto, fuori dall’intervallo di confidenza della media ma dentro l’intervallo di previsione del modello trimestrale per una singola osservazione; il 2 ottobre è di circa 15 punti sopra, dentro entrambi. L’ampiezza dell’intervallo di previsione riflette scostamenti dal modello grandi e persistenti: per l’Italia lo scarto ha una deviazione standard di circa 80 punti base e un’autocorrelazione di 0,85 da un trimestre al successivo, e fra il 2004 e il 2008 lo spread è rimasto per quattro anni oltre 60 punti sotto il valore previsto. Uno scarto come quello di febbraio non è quindi eccezionale nella storia italiana, né dice quando e se si chiuderà.</p>
+<p>Fra i due momenti gli indicatori inclusi nel modello non mostrano un deterioramento relativo dell’Italia: il disavanzo degli ultimi quattro trimestri è pari a quello tedesco (3,1 per cento del prodotto per entrambi, perché il disavanzo della Germania si è allargato), il divario di debito è stabile intorno ai 74 punti di prodotto e il divario di crescita si è ridotto da 0,6 a zero <span class="citation" data-cites="eurostatpanel2026"><a href="#ref-eurostatpanel2026" role="doc-biblioref">[35]</a></span>. La lettura dell’allargamento come riavvicinamento al valore previsto dal modello è compatibile con la stima, ma la stima non identifica la causa dell’allargamento e non misura le attese del mercato su disavanzi, crescita e rischi futuri.</p>
+<p>Il valore previsto dipende dalla specificazione. Con modelli diversi lo spread previsto per il 2 ottobre varia fra 85 e 147 punti base: è la dispersione delle stime puntuali fra modelli, da non confondere con un intervallo di confidenza. La forchetta delle stime è sopra il minimo di febbraio e comprende il livello di ottobre. Quando gli effetti fissi di trimestre assorbono tutti i fattori comuni, compresa la politica monetaria, anche lo stock di debito diventa significativo: circa un punto base di spread per punto di prodotto.</p>
+<div id="tbl-robustezza" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-robustezza-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;12: Robustezza: coefficienti del debito e del saldo e spread italiano previsto al 2 ottobre 2026 (punti base) in specificazioni diverse, con i fondamentali pubblicati a quella data. Il modello (6) usa effetti fissi di trimestre e non consente una stima fuori campione. *** p&lt;0,01, ** p&lt;0,05, * p&lt;0,1 <span class="citation" data-cites="eurostatpanel2026 fredvix2026 driscoll1998consistent"><a href="#ref-eurostatpanel2026" role="doc-biblioref">[35]</a>, <a href="#ref-fredvix2026" role="doc-biblioref">[36]</a>, <a href="#ref-driscoll1998consistent" role="doc-biblioref">[38]</a></span>.
+</figcaption>
+<div aria-describedby="tbl-robustezza-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Modello</th>
+<th style="text-align: left;">Campione</th>
+<th style="text-align: right;">Debito</th>
+<th style="text-align: right;">Saldo</th>
+<th style="text-align: right;">Previsto oggi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(1) Fondamentali</td>
+<td style="text-align: left;">2003–2026</td>
+<td style="text-align: right;">0,37</td>
+<td style="text-align: right;">-16,0***</td>
+<td style="text-align: right;">99</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">(2) + debito × VIX</td>
+<td style="text-align: left;">2003–2026</td>
+<td style="text-align: right;">0,37</td>
+<td style="text-align: right;">-16,0***</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">(3) + debito × crisi</td>
+<td style="text-align: left;">2003–2026</td>
+<td style="text-align: right;">0,34</td>
+<td style="text-align: right;">-15,4***</td>
+<td style="text-align: right;">85</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">(4) + debito × acquisti BCE</td>
+<td style="text-align: left;">2003–2026</td>
+<td style="text-align: right;">0,67</td>
+<td style="text-align: right;">-15,2***</td>
+<td style="text-align: right;">106</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">(5) = (4) dopo la crisi</td>
+<td style="text-align: left;">2013–2026</td>
+<td style="text-align: right;">0,16</td>
+<td style="text-align: right;">-13,2***</td>
+<td style="text-align: right;">147</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">(6) = (4) + effetti fissi trimestre</td>
+<td style="text-align: left;">2003–2026</td>
+<td style="text-align: right;">0,99**</td>
+<td style="text-align: right;">-12,5***</td>
+<td style="text-align: right;">n.d.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><em>In parole semplici:</em> cambiando le ipotesi del modello, lo spread previsto per oggi va da 85 a 147 punti base. Il valore di oggi cade in quella forchetta, il minimo di febbraio sotto; ma ogni singola stima ha a sua volta un margine di errore ampio.</p>
+</section>
+<section id="i-fattori-di-mercato-giorno-per-giorno" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="i-fattori-di-mercato-giorno-per-giorno"><span class="header-section-number">8.3</span> I fattori di mercato giorno per giorno</h2>
+<p>Il modello trimestrale spiega il livello dello spread, non i suoi movimenti di breve periodo. Per questi si stima una seconda regressione sulle variazioni giornaliere del 2026, con i fattori di mercato come variabili esplicative ed errori standard robusti all’autocorrelazione <span class="citation" data-cites="newey1987simple"><a href="#ref-newey1987simple" role="doc-biblioref">[39]</a></span>.</p>
+<div id="tbl-giornaliera" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-giornaliera-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;13: Variazioni giornaliere dello spread BTP–Bund (punti base) sulle variazioni dei fattori di mercato, 2 gennaio – 2 ottobre 2026. Brent e gas TTF: variazioni percentuali; altri fattori: variazioni in punti base o in punti. Modello (a): fattori di mercato; (b): aggiunge lo spread OAT–Bund. Fra parentesi errori standard di Newey e West; *** p&lt;0,01, ** p&lt;0,05, * p&lt;0,1. Treasury: ultimo dato disponibile 30 settembre, riportato nei giorni successivi <span class="citation" data-cites="worldgovernmentbonds2026 yahoofinance2026 fredust2026 newey1987simple"><a href="#ref-worldgovernmentbonds2026" role="doc-biblioref">[1]</a>, <a href="#ref-yahoofinance2026" role="doc-biblioref">[16]</a>, <a href="#ref-fredust2026" role="doc-biblioref">[18]</a>, <a href="#ref-newey1987simple" role="doc-biblioref">[39]</a></span>.
+</figcaption>
+<div aria-describedby="tbl-giornaliera-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variazione giornaliera</th>
+<th style="text-align: right;">(a)</th>
+<th style="text-align: right;">(b)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Bund 10 anni (pb)</td>
+<td style="text-align: right;">0,08 (0,12)</td>
+<td style="text-align: right;">0,09 (0,06)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Treasury USA 10 anni (pb)</td>
+<td style="text-align: right;">0,12 (0,09)</td>
+<td style="text-align: right;">0,03 (0,05)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">VIX (punti)</td>
+<td style="text-align: right;">0,61*** (0,15)</td>
+<td style="text-align: right;">0,48*** (0,13)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Brent (%)</td>
+<td style="text-align: right;">0,24*** (0,06)</td>
+<td style="text-align: right;">0,16*** (0,06)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gas TTF (%)</td>
+<td style="text-align: right;">0,04 (0,05)</td>
+<td style="text-align: right;">0,04 (0,04)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Spread OAT–Bund (pb)</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">0,58*** (0,16)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Osservazioni</td>
+<td style="text-align: right;">197</td>
+<td style="text-align: right;">197</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R²</td>
+<td style="text-align: right;">0,38</td>
+<td style="text-align: right;">0,56</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><em>In parole semplici:</em> nei giorni in cui sale la paura sulle borse o il petrolio rincara, lo spread italiano sale. Si muove anche insieme a quello francese: quando la Francia allarga di 10 punti base, l’Italia allarga in media di 6. Per le variazioni dei tassi tedeschi e americani non emerge invece un’associazione statisticamente significativa in questa specificazione.</p>
+<p>Nel 2026 lo spread italiano reagisce all’avversione al rischio (mezzo punto base per punto di VIX) e al petrolio (0,2 punti base per ogni punto percentuale di rialzo del Brent); per le variazioni del Bund e del Treasury non emerge un’associazione statisticamente significativa, il che non equivale a dimostrare l’assenza di un effetto. Il gas, dato il petrolio, non aggiunge informazione su base giornaliera. Lo spread francese verso il Bund spiega una parte ampia delle variazioni residue: il coefficiente è di 0,6 e l’adattamento della regressione sale dal 38 al 56 per cento. È un co-movimento, non una prova di contagio: lo stesso risultato si avrebbe se un fattore comune, come la percezione del rischio sui bilanci pubblici dei grandi Paesi ad alto debito, muovesse entrambi gli spread.</p>
+</section>
+<section id="le-fonti-dei-rendimenti" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="le-fonti-dei-rendimenti"><span class="header-section-number">8.4</span> Le fonti dei rendimenti</h2>
+<p>I rendimenti giornalieri per Paese provengono da un aggregatore di dati di mercato, perché Eurostat e la BCE non diffondono una serie giornaliera dei rendimenti a dieci anni per singolo Paese (la serie giornaliera di Eurostat è stata dismessa) e non esiste una fonte ufficiale giornaliera comune ai quattro Paesi considerati. Il panel usa invece la serie ufficiale mensile di Eurostat. Sulle medie mensili da gennaio 2025 ad agosto 2026 le due fonti coincidono a meno di pochi punti base; per il Bund il confronto giornaliero con la curva stimata dalla Bundesbank dà uno scarto medio di circa 7 punti base, stabile nel tempo <span class="citation" data-cites="worldgovernmentbonds2026 eurostatpanel2026 bundesbank2026"><a href="#ref-worldgovernmentbonds2026" role="doc-biblioref">[1]</a>, <a href="#ref-bundesbank2026" role="doc-biblioref">[20]</a>, <a href="#ref-eurostatpanel2026" role="doc-biblioref">[35]</a></span>.</p>
+<div id="tbl-fonti" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-fonti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;14: Differenza fra le medie mensili dei rendimenti giornalieri dell’aggregatore e la serie ufficiale Eurostat dei rendimenti a lungo termine, gennaio 2025 – agosto 2026, in punti base. Differenza media positiva: l’aggregatore è più alto <span class="citation" data-cites="worldgovernmentbonds2026 eurostatpanel2026"><a href="#ref-worldgovernmentbonds2026" role="doc-biblioref">[1]</a>, <a href="#ref-eurostatpanel2026" role="doc-biblioref">[35]</a></span>.
+</figcaption>
+<div aria-describedby="tbl-fonti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Grandezza</th>
+<th style="text-align: right;">Differenza media (pb)</th>
+<th style="text-align: right;">Differenza assoluta media (pb)</th>
+<th style="text-align: right;">Massima (pb)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Rendimento BTP</td>
+<td style="text-align: right;">-0,8</td>
+<td style="text-align: right;">1,4</td>
+<td style="text-align: right;">3,9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Rendimento Bund</td>
+<td style="text-align: right;">2,3</td>
+<td style="text-align: right;">2,3</td>
+<td style="text-align: right;">3,9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Rendimento OAT</td>
+<td style="text-align: right;">-0,3</td>
+<td style="text-align: right;">1,9</td>
+<td style="text-align: right;">5,1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Rendimento Bonos</td>
+<td style="text-align: right;">2,1</td>
+<td style="text-align: right;">2,4</td>
+<td style="text-align: right;">7,0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spread BTP–Bund</td>
+<td style="text-align: right;">-3,1</td>
+<td style="text-align: right;">3,1</td>
+<td style="text-align: right;">6,4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Spread OAT–Bund</td>
+<td style="text-align: right;">-2,6</td>
+<td style="text-align: right;">3,0</td>
+<td style="text-align: right;">7,9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spread Bonos–Bund</td>
+<td style="text-align: right;">-0,2</td>
+<td style="text-align: right;">1,5</td>
+<td style="text-align: right;">5,5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><em>In parole semplici:</em> i dati giornalieri usati nella nota e quelli ufficiali mensili dicono la stessa cosa: la differenza è di uno o due punti base sui rendimenti e di circa tre sullo spread, troppo poco per cambiare le conclusioni.</p>
+</section>
+</section>
+<section id="che-cosa-scrivono-agenzie-e-analisti" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Che cosa scrivono agenzie e analisti</h1>
+<section id="spunti-dalla-stampa-e-loro-verifica" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="spunti-dalla-stampa-e-loro-verifica"><span class="header-section-number">9.1</span> Spunti dalla stampa e loro verifica</h2>
+<p>Le affermazioni di quotidiani e agenzie non sono trattate come risultati. Sono opinioni di giornalisti, operatori e responsabili politici, oppure eventi e dati riportati di seconda mano; servono come spunti da verificare sulle variabili. La tavola seguente raccoglie quelle della settimana e indica, per ciascuna, la verifica possibile con i dati di questa nota <span class="citation" data-cites="radiocor2026 mameli2026inflazione"><a href="#ref-radiocor2026" role="doc-biblioref">[2]</a>, <a href="#ref-mameli2026inflazione" role="doc-biblioref">[22]</a></span>.</p>
+<div id="tbl-spunti" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-spunti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;15: Affermazioni di stampa e di agenzia della settimana 28 settembre–2 ottobre 2026 e verifica sui dati. Tipo: «opinione» (giudizio attribuito a una persona), «interpretazione» (spiegazione causale proposta da un titolo), «evento» o «dato riportato» (fatto o numero di seconda mano). Correlazioni calcolate sulle variazioni giornaliere, giorni lavorativi <span class="citation" data-cites="worldgovernmentbonds2026 bundesbank2026 fredust2026"><a href="#ref-worldgovernmentbonds2026" role="doc-biblioref">[1]</a>, <a href="#ref-fredust2026" role="doc-biblioref">[18]</a>, <a href="#ref-bundesbank2026" role="doc-biblioref">[20]</a></span>.
+</figcaption>
+<div aria-describedby="tbl-spunti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Affermazione (fonte, data)</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Verifica sui dati</th>
+<th style="text-align: left;">Esito</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">«Spread sale in scia Treasury Usa» (agenzia, 30/9)</td>
+<td style="text-align: left;">Interpretazione</td>
+<td style="text-align: left;">Correlazione fra variazioni giornaliere dello spread BTP–Bund e del rendimento Treasury: 0,39 (gen–ago), 0,18 (set–2/10)</td>
+<td style="text-align: left;">Non confermata: il legame si indebolisce proprio a settembre</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">«Crisi petrolio fa impennare attese su tassi» (agenzia, 1/10)</td>
+<td style="text-align: left;">Interpretazione</td>
+<td style="text-align: left;">Bund a 2 anni (Bundesbank): 3,32 % il 28/9, 3,21 % il 1/10</td>
+<td style="text-align: left;">Non confermata dal Bund a 2 anni, che scende; il Bund a 2 anni non misura da solo il percorso atteso dei tassi BCE: resta da verificare sui contratti a termine</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">«Contagio da Francia» (agenzia, 1/10)</td>
+<td style="text-align: left;">Interpretazione</td>
+<td style="text-align: left;">Correlazione variazioni giornaliere BTP–Bund e OAT–Bund: 0,56 → 0,84; BTP–Bund e Bonos–Bund: 0,69 → 0,80</td>
+<td style="text-align: left;">Non dimostrato: il co-movimento cresce anche con la Spagna, quindi è in parte comune</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">«Fortuna siamo stati attenti al debito» (ministro dell’Economia, 29/9)</td>
+<td style="text-align: left;">Opinione</td>
+<td style="text-align: left;">Δ spread dal minimo: Italia +62, Francia +91, Spagna +23 pb</td>
+<td style="text-align: left;">Compatibile solo in parte: meglio della Francia, peggio della Spagna</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Treasury a 10 anni «ai massimi dal 2002» (agenzia, 1/10)</td>
+<td style="text-align: left;">Dato riportato</td>
+<td style="text-align: left;">FRED DGS10: 5,29 % il 30/9; ultimo valore pari o superiore: 5/2002</td>
+<td style="text-align: left;">Confermato sulla fonte primaria</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Inflazione area euro, stima rapida di settembre 3,8 % (agenzia, 2/10); Italia 4,1 % (ufficio studi, 30/9)</td>
+<td style="text-align: left;">Dato riportato</td>
+<td style="text-align: left;">Eurostat teicp000, stima flash di settembre: area euro 3,8 %, Italia 4,1 %</td>
+<td style="text-align: left;">Confermato sulla fonte primaria (stima flash, provvisoria)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Asta BTP 5 e 10 anni con rendimenti ai massimi dal 2023 (agenzia, 29/9)</td>
+<td style="text-align: left;">Evento riportato</td>
+<td style="text-align: left;">Risultati d’asta MEF: BTP 10 anni 4,58 % (copertura 1,56), BTP 5 anni 4,08 % (copertura 1,54); BTP 10 anni sul secondario 4,61 %, livello non toccato da 11/2023</td>
+<td style="text-align: left;">Confermato sulla fonte primaria (MEF); domanda non debole</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Manovra francese da 43 miliardi, deficit 2027 al 5 % (agenzia, 1/10)</td>
+<td style="text-align: left;">Evento riportato</td>
+<td style="text-align: left;">PLF e PLFSS 2027 presentati a Bercy il 1/10 (invito stampa ufficiale); 43 miliardi di misure nuove (circa 54 di sforzo complessivo con il trascinamento del 2026) e obiettivo 5 % riportati in modo concorde da più fonti; resoconto ufficiale del Consiglio dei ministri non accessibile</td>
+<td style="text-align: left;">Confermato nella sostanza; cifre da leggere sul testo ufficiale</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Scostamento di bilancio italiano di circa 7 miliardi (agenzia, 2/10)</td>
+<td style="text-align: left;">Evento riportato</td>
+<td style="text-align: left;">Solo dichiarazione di un ministro prima del Consiglio dei ministri; delibera non ancora pubblicata</td>
+<td style="text-align: left;">Da verificare (comunicato del Consiglio dei ministri, relazione al Parlamento)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><em>In parole semplici:</em> i fatti riportati dalla stampa reggono quasi tutti: il Treasury ai massimi dal 2002, l’asta dei BTP ai rendimenti più alti dal 2023, la manovra francese. Due spiegazioni molto citate, «colpa del Treasury» e «colpa delle attese sui tassi», non trovano conferma negli indicatori usati qui, che però non bastano a escluderle; il «contagio dalla Francia» è possibile ma i dati non lo distinguono da un movimento comune. Le stime rapide dell’inflazione di settembre sono confermate da Eurostat; resta da verificare lo scostamento di bilancio italiano.</p>
+<p>Le opinioni dei responsabili politici restano tali. Il 29 settembre il ministro dell’Economia commenta lo spread a 100 punti sostenendo che l’attenzione al debito ha protetto il Paese; il 30 settembre la presidente della BCE afferma che la banca centrale «non può riaprire Hormuz» e definisce «seria» la situazione del debito francese <span class="citation" data-cites="radiocor2026"><a href="#ref-radiocor2026" role="doc-biblioref">[2]</a></span>.</p>
+</section>
+<section id="la-lettura-di-un-ufficio-studi-bancario" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="la-lettura-di-un-ufficio-studi-bancario"><span class="header-section-number">9.2</span> La lettura di un ufficio studi bancario</h2>
+<p>Il 1° ottobre l’ufficio studi di Intesa Sanpaolo dedica agli spread dell’area dell’euro una nota di strategia sui tassi dal titolo «Spread euro: mercato lasciato solo» <span class="citation" data-cites="manenti2026spread"><a href="#ref-manenti2026spread" role="doc-biblioref">[28]</a></span>. È un’opinione di analisti, da leggere come tale; poggia però su grandezze ricostruibili (previsioni del Fondo monetario, bilancio della BCE) e propone tre spunti.</p>
+<ul>
+<li><p><strong>Il differenziale fra costo del debito e crescita.</strong> Sulla base delle previsioni del Fondo monetario internazionale, la differenza fra costo medio del debito e crescita nominale (<span class="math inline">\(r-g\)</span>, media dei cinque anni successivi) resta negativa per quasi tutti i Paesi dell’area, ma non per l’Italia, dove passa a +0,2 per cento nel 2027. Per la Germania è −1,2, per la Spagna −1,7, per la Francia −0,5. Secondo la nota, l’Italia sarà il primo grande emittente a uscire dal regime favorevole degli anni post-pandemia, e la disciplina di bilancio tornerà a essere il fattore dominante della performance relativa di BTP, OAT, Bonos e Bund. La lettura è coerente con il ruolo dello spazio fiscale nella formazione dei premi al rischio documentato in letteratura <span class="citation" data-cites="ghosh2013fiscal"><a href="#ref-ghosh2013fiscal" role="doc-biblioref">[4]</a></span>.</p></li>
+<li><p><strong>Nessuna frammentazione sistemica, per ora.</strong> Un indicatore di frammentazione costruito sulla quota di varianza dei rendimenti decennali spiegata dalla seconda componente principale mostra solo un moderato aumento: i rendimenti riflettono ancora soprattutto fattori comuni e il riprezzamento del rischio di tasso. Non emergono, secondo la nota, condizioni tali da rendere probabile un intervento della Banca centrale europea con gli strumenti anti-frammentazione.</p></li>
+<li><p><strong>Meno sostegno, più offerta, meno Europa.</strong> La riduzione del bilancio della BCE lascia al mercato titoli in scadenza per circa 50 miliardi entro fine 2026 e 310 miliardi nel 2027; nello stesso tempo il negoziato sul bilancio europeo 2028–2034 e la resistenza dei Paesi «frugali» al debito comune spostano sui bilanci nazionali una quota maggiore delle spese future. Ne deriva che il rischio politico per gli spread diventa europeo oltre che nazionale.</p></li>
+</ul>
+<p><em>In parole semplici:</em> per gli analisti della banca l’Italia ha un problema di aritmetica del debito: il costo degli interessi sta per superare la crescita dell’economia, e quindi per non far salire il debito servono avanzi di bilancio più ampi. Il mercato non è in crisi, ma è «solo»: la BCE rincorre l’inflazione e compra sempre meno titoli, l’Europa è divisa sul debito comune.</p>
+</section>
+</section>
+<section id="sintesi" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Sintesi</h1>
+<p>Dal minimo del 25 febbraio al 2 ottobre 2026 lo spread BTP–Bund è passato da 60 a 122 punti base. Per sette mesi l’allargamento è stato lento e guidato da un rialzo comune dei rendimenti, con un sovrappiù italiano di circa 27 punti base. Nell’ultima settimana l’allargamento accelera e spiega oltre la metà del totale. Sui titoli di riferimento il BTP sale e il Bund scende, una combinazione compatibile con la fuga verso la qualità; sulle curve a scadenza costante della BCE e della Bundesbank il rendimento tedesco resta però quasi fermo, e l’accelerazione viene soprattutto dal rialzo del BTP.</p>
+<p>Lo shock energetico è la causa remota e non quella prossima. A marzo aveva prodotto un episodio di paura rientrato in poche settimane. Sei mesi dopo ha agito attraverso l’inflazione accumulata, due rialzi della Banca centrale europea e tassi globali più alti, e infine, secondo l’ipotesi più coerente con i dati, attraverso i bilanci pubblici, con la manovra francese e le scelte di finanza pubblica italiane concentrate negli stessi giorni; gli eventi di bilancio, riportati dalle agenzie, restano da verificare sui documenti ufficiali. Se l’ipotesi regge, il differenziale si è allargato quando il costo dell’energia è diventato una questione di debito pubblico, cioè della variabile su cui Italia e Germania differiscono di più.</p>
+<p>Il confronto internazionale colloca l’Italia in un movimento più ampio. Nell’ultima settimana tutti gli spread verso il titolo tedesco di riferimento si allargano; Italia e Francia si allargano però il doppio della Spagna, e la Francia, che a febbraio pagava meno dell’Italia, oggi paga di più. Treasury e Gilt, letti al netto del costo attuale di copertura dal cambio, sono diventati per l’investitore in euro un’alternativa al Bund più attraente che a inizio anno, senza che questo equivalga a un rendimento garantito.</p>
+<p>La stima econometrica colloca il livello di ottobre vicino al valore previsto da modelli storici dello spread sui fondamentali: circa 105 punti base nel modello principale, fra 85 e 147 a seconda della specificazione. Il minimo di febbraio era sotto tutte le stime puntuali, ma dentro l’intervallo di previsione del modello trimestrale, che è ampio. Gli indicatori di finanza pubblica e di crescita inclusi nel modello non mostrano un deterioramento relativo dell’Italia fra i due momenti. Il quadro è compatibile con un riavvicinamento dello spread ai valori previsti dal modello; l’analisi non dimostra però che il livello di febbraio fosse un prezzo sbagliato, né che l’aumento sia principalmente una correzione verso un valore fondamentale.</p>
+</section>
+<section id="riferimenti" class="level1 unnumbered">
+<h1 class="unnumbered">Riferimenti</h1>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-worldgovernmentbonds2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">World Government Bonds, <span>«Rendimenti dei titoli di Stato a 10 anni, serie giornaliera per paese (Italia, Germania, Francia, Spagna, Regno Unito, Stati Uniti)»</span>. 2026. Disponibile su: <a href="https://www.worldgovernmentbonds.com">https://www.worldgovernmentbonds.com</a></div>
+</div>
+<div id="ref-radiocor2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">Radiocor — Borsa Italiana, <span>«Cronologia dei titoli di agenzia su BTP, spread, BCE ed energia, 28 settembre–2 ottobre 2026»</span>. 2026.</div>
+</div>
+<div id="ref-bernoth2012sovereign" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">K. Bernoth, J. von Hagen, e L. Schuknecht, <span>«Sovereign risk premiums in the <span>European</span> government bond market»</span>, <em>Journal of International Money and Finance</em>, vol. 31, fasc. 5, pp. 975–995, 2012, doi: <a href="https://doi.org/10.1016/j.jimonfin.2011.12.006">10.1016/j.jimonfin.2011.12.006</a>.</div>
+</div>
+<div id="ref-ghosh2013fiscal" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">A. R. Ghosh, J. D. Ostry, e M. S. Qureshi, <span>«Fiscal space and sovereign risk pricing in a currency union»</span>, <em>Journal of International Money and Finance</em>, vol. 34, pp. 131–163, 2013, doi: <a href="https://doi.org/10.1016/j.jimonfin.2012.11.008">10.1016/j.jimonfin.2012.11.008</a>.</div>
+</div>
+<div id="ref-codogno2003yield" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">L. Codogno, C. A. Favero, e A. Missale, <span>«Yield spreads on <span>EMU</span> government bonds»</span>, <em>Economic Policy</em>, vol. 18, fasc. 37, pp. 503–532, 2003, doi: <a href="https://doi.org/10.1111/1468-0327.00114_1">10.1111/1468-0327.00114_1</a>.</div>
+</div>
+<div id="ref-abbassi2025german" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">P. Abbassi <em>et al.</em>, <span>«The <span>German</span> and <span>Italian</span> government bond markets: The role of banks versus non-banks»</span>, SUERF, SUERF Policy Brief 1146, 2025. Disponibile su: <a href="https://www.suerf.org/publications/">https://www.suerf.org/publications/</a></div>
+</div>
+<div id="ref-attinasi2009what" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">M. G. Attinasi, C. D. Checherita-Westphal, e C. Nickel, <span>«What Explains the Surge in Euro Area Sovereign Spreads During the Financial Crisis of 2007-09?»</span>, European Central Bank, Working Paper, 2009. doi: <a href="https://doi.org/10.2139/ssrn.1520351">10.2139/ssrn.1520351</a>.</div>
+</div>
+<div id="ref-beirne2013pricing" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">J. Beirne e M. Fratzscher, <span>«The pricing of sovereign risk and contagion during the <span>European</span> sovereign debt crisis»</span>, <em>Journal of International Money and Finance</em>, vol. 34, pp. 60–82, 2013, doi: <a href="https://doi.org/10.1016/j.jimonfin.2012.11.004">10.1016/j.jimonfin.2012.11.004</a>.</div>
+</div>
+<div id="ref-manganelli2007market" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">S. Manganelli e G. Wolswijk, <span>«Market Discipline, Financial Integration and Fiscal Rules: What Drives Spreads in the Euro Area Government Bond Market?»</span>, European Central Bank, Working Paper, 2007. doi: <a href="https://doi.org/10.2139/ssrn.978373">10.2139/ssrn.978373</a>.</div>
+</div>
+<div id="ref-degrauwe2013self" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">P. De Grauwe e Y. Ji, <span>«Self-fulfilling crises in the <span>Eurozone</span>: An empirical test»</span>, <em>Journal of International Money and Finance</em>, vol. 34, pp. 15–36, 2013, doi: <a href="https://doi.org/10.1016/j.jimonfin.2012.11.003">10.1016/j.jimonfin.2012.11.003</a>.</div>
+</div>
+<div id="ref-lane2012european" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">P. R. Lane, <span>«The <span>European</span> Sovereign Debt Crisis»</span>, <em>Journal of Economic Perspectives</em>, vol. 26, fasc. 3, pp. 49–68, 2012, doi: <a href="https://doi.org/10.1257/jep.26.3.49">10.1257/jep.26.3.49</a>.</div>
+</div>
+<div id="ref-krishnamurthy2018ecb" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">A. Krishnamurthy, S. Nagel, e A. Vissing-Jørgensen, <span>«<span>ECB</span> Policies Involving Government Bond Purchases: Impact and Channels»</span>, <em>Review of Finance</em>, vol. 22, fasc. 1, pp. 1–44, 2018, doi: <a href="https://doi.org/10.1093/rof/rfx053">10.1093/rof/rfx053</a>.</div>
+</div>
+<div id="ref-burriel2024estimating" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">P. Burriel, M. Delgado-Téllez, C. Figueroa, I. Kataryniuk, e J. J. Pérez, <span>«Estimating the contribution of macroeconomic factors to sovereign bond spreads in the euro area»</span>, SUERF, SUERF Policy Brief 964, 2024. Disponibile su: <a href="https://www.suerf.org/publications/">https://www.suerf.org/publications/</a></div>
+</div>
+<div id="ref-schnabel2025convenient" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">I. Schnabel, <span>«No longer convenient? Safe asset abundance and r*»</span>, SUERF, SUERF Policy Note 367, 2025. Disponibile su: <a href="https://www.suerf.org/publications/">https://www.suerf.org/publications/</a></div>
+</div>
+<div id="ref-beber2009flight" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">A. Beber, M. W. Brandt, e K. A. Kavajecz, <span>«Flight-to-Quality or Flight-to-Liquidity? Evidence from the Euro-Area Bond Market»</span>, <em>Review of Financial Studies</em>, vol. 22, fasc. 3, pp. 925–957, 2009, doi: <a href="https://doi.org/10.1093/rfs/hhm088">10.1093/rfs/hhm088</a>.</div>
+</div>
+<div id="ref-yahoofinance2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">Yahoo Finance, <span>«Serie di mercato: VIX, MOVE, Brent, TTF gas, EUR/USD»</span>. 2026. Disponibile su: <a href="https://finance.yahoo.com">https://finance.yahoo.com</a></div>
+</div>
+<div id="ref-fred2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">Federal Reserve Bank of St. Louis, <span>«FRED — serie: ECBDFR (tasso sui depositi BCE), CP0000EZ19M086NEST / CP0000ITM086NEST / CP0000DEM086NEST (indice HICP area euro, Italia, Germania)»</span>. 2026. Disponibile su: <a href="https://fred.stlouisfed.org">https://fred.stlouisfed.org</a></div>
+</div>
+<div id="ref-fredust2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">Federal Reserve Bank of St. Louis, <span>«FRED — DGS10, rendimento dei titoli del Tesoro USA a 10 anni (scadenza costante)»</span>. 2026. Disponibile su: <a href="https://fred.stlouisfed.org/series/DGS10">https://fred.stlouisfed.org/series/DGS10</a></div>
+</div>
+<div id="ref-ecbyc2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">European Central Bank, <span>«Euro area yield curves: rendimento a 10 anni, curva dei titoli di Stato con rating AAA (YC.B.U2.EUR.4F.G_N_A.SV_C_YM.SR_10Y)»</span>. 2026. Disponibile su: <a href="https://data.ecb.europa.eu/data/datasets/YC">https://data.ecb.europa.eu/data/datasets/YC</a></div>
+</div>
+<div id="ref-bundesbank2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">Deutsche Bundesbank, <span>«Struttura per scadenza dei tassi sui titoli federali quotati (metodo Svensson), vita residua 10 e 2 anni, dati giornalieri (BBSIS.D.I.ZST.ZI.EUR.S1311.B.A604.R10XX / R02XX)»</span>. 2026. Disponibile su: <a href="https://api.statistiken.bundesbank.de">https://api.statistiken.bundesbank.de</a></div>
+</div>
+<div id="ref-eurostatflash2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">Eurostat, <span>«HICP - all items, tasso di variazione sui 12 mesi, stima rapida di settembre 2026 (teicp000)»</span>. 2026. doi: <a href="https://doi.org/10.2908/TEICP000">10.2908/TEICP000</a>.</div>
+</div>
+<div id="ref-mameli2026inflazione" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline">P. Mameli, <span>«Sorprende al rialzo l’inflazione italiana»</span>, Intesa Sanpaolo, Research Department, Macro Rapid Response, set. 2026.</div>
+</div>
+<div id="ref-mef2026aste" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">Ministero dell’Economia e delle Finanze, Dipartimento del Tesoro, <span>«Risultati asta BTP 10 anni (IT0005729931) e BTP 5 anni (IT0005733636), 29–30 settembre 2026»</span>. 2026. Disponibile su: <a href="https://www.dt.mef.gov.it/it/debito_pubblico/emissioni_titoli_di_stato_interni/risultati_aste/">https://www.dt.mef.gov.it/it/debito_pubblico/emissioni_titoli_di_stato_interni/risultati_aste/</a></div>
+</div>
+<div id="ref-bercy2026plf" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[24] </div><div class="csl-right-inline">Ministère de l’Économie, des Finances et de la Souveraineté industrielle, <span>«Conférence de presse : présentation du PLF et PLFSS 2027, jeudi 1er octobre 2026»</span>. 2026. Disponibile su: <a href="https://presse.economie.gouv.fr/?p=184537">https://presse.economie.gouv.fr/?p=184537</a></div>
+</div>
+<div id="ref-euronews2026budget" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[25] </div><div class="csl-right-inline">Euronews, <span>«Budget 2027 : le gouvernement propose un effort de 54 milliards d’euros pour ramener le déficit à 5 %»</span>. ottobre 2026. Disponibile su: <a href="https://fr.euronews.com/2026/10/01/budget-2027-le-gouvernement-propose-un-effort-de-54-milliards-deuros-pour-ramener-le-defic">https://fr.euronews.com/2026/10/01/budget-2027-le-gouvernement-propose-un-effort-de-54-milliards-deuros-pour-ramener-le-defic</a></div>
+</div>
+<div id="ref-arghyrou2011greek" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[26] </div><div class="csl-right-inline">M. G. Arghyrou e J. D. Tsoukalas, <span>«The <span>Greek</span> Debt Crisis: Likely Causes, Mechanics and Outcomes»</span>, <em>The World Economy</em>, vol. 34, fasc. 2, pp. 173–191, 2011, doi: <a href="https://doi.org/10.1111/j.1467-9701.2011.01328.x">10.1111/j.1467-9701.2011.01328.x</a>.</div>
+</div>
+<div id="ref-fredprices2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[27] </div><div class="csl-right-inline">Federal Reserve Bank of St. Louis, <span>«FRED — indici dei prezzi: CP0000FRM086NEST, CP0000ESM086NEST (HICP Francia, Spagna, ridistribuiti da Eurostat), CPIAUCSL (CPI USA, BLS)»</span>. 2026. Disponibile su: <a href="https://fred.stlouisfed.org">https://fred.stlouisfed.org</a></div>
+</div>
+<div id="ref-manenti2026spread" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[28] </div><div class="csl-right-inline">C. Manenti, <span>«Spread euro: mercato lasciato solo»</span>, Intesa Sanpaolo, Research Department, Interest Rate Strategy, ott. 2026.</div>
+</div>
+<div id="ref-du2018deviations" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[29] </div><div class="csl-right-inline">W. Du, A. Tepper, e A. Verdelhan, <span>«Deviations from Covered Interest Rate Parity»</span>, <em>The Journal of Finance</em>, vol. 73, fasc. 3, pp. 915–957, 2018, doi: <a href="https://doi.org/10.1111/jofi.12620">10.1111/jofi.12620</a>.</div>
+</div>
+<div id="ref-fredon2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[30] </div><div class="csl-right-inline">Federal Reserve Bank of St. Louis, <span>«FRED — tassi overnight: SOFR (Secured Overnight Financing Rate, USD), IUDSOIA (SONIA, Bank of England, GBP), ECBESTRVOLWGTTRMDMNRT (euro short-term rate, BCE)»</span>. 2026. Disponibile su: <a href="https://fred.stlouisfed.org">https://fred.stlouisfed.org</a></div>
+</div>
+<div id="ref-eurostat2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[31] </div><div class="csl-right-inline">Eurostat, <span>«PIL trimestrale (namq_10_gdp) e deficit e debito pubblici (gov_10dd_edpt1, procedura per disavanzi eccessivi)»</span>. 2026. Disponibile su: <a href="https://ec.europa.eu/eurostat">https://ec.europa.eu/eurostat</a></div>
+</div>
+<div id="ref-eurostatdebito2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[32] </div><div class="csl-right-inline">Eurostat, <span>«Debito pubblico trimestrale (gov_10q_ggdebt, GD, % PIL) e spesa per interessi (gov_10dd_edpt1, D41PAY)»</span>. 2026. Disponibile su: <a href="https://ec.europa.eu/eurostat">https://ec.europa.eu/eurostat</a></div>
+</div>
+<div id="ref-volpi2026francia" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[33] </div><div class="csl-right-inline">A. Volpi, <span>«Focus Francia. Verso le Presidenziali, tra rischi fiscali e politici»</span>, Intesa Sanpaolo, Research Department, Macro Focus, ago. 2026.</div>
+</div>
+<div id="ref-bellesia2026gravita" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[34] </div><div class="csl-right-inline">R. Bellesia e M. Corbetta-Rastelli, <span>«La «forza di gravità» è tornata sul debito dei G6 e la crescita è l’unica via d’uscita»</span>, Intesa Sanpaolo, Research Department, Focus Globale, set. 2026.</div>
+</div>
+<div id="ref-eurostatpanel2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[35] </div><div class="csl-right-inline">Eurostat, <span>«Rendimenti dei titoli di Stato a lungo termine, criterio di convergenza (irt_lt_mcby_m); debito pubblico trimestrale (gov_10q_ggdebt); indebitamento netto trimestrale (gov_10q_ggnfa, B9); PIL trimestrale in volume (namq_10_gdp, CLV_PCH_SM)»</span>. 2026. Disponibile su: <a href="https://ec.europa.eu/eurostat">https://ec.europa.eu/eurostat</a></div>
+</div>
+<div id="ref-fredvix2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[36] </div><div class="csl-right-inline">Federal Reserve Bank of St. Louis, <span>«FRED — VIXCLS: CBOE Volatility Index (VIX)»</span>. 2026. Disponibile su: <a href="https://fred.stlouisfed.org/series/VIXCLS">https://fred.stlouisfed.org/series/VIXCLS</a></div>
+</div>
+<div id="ref-ecb2012omt" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[37] </div><div class="csl-right-inline">European Central Bank, <span>«Technical features of Outright Monetary Transactions»</span>. settembre 2012. Disponibile su: <a href="https://www.ecb.europa.eu/press/pr/date/2012/html/pr120906_1.en.html">https://www.ecb.europa.eu/press/pr/date/2012/html/pr120906_1.en.html</a></div>
+</div>
+<div id="ref-driscoll1998consistent" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[38] </div><div class="csl-right-inline">J. C. Driscoll e A. C. Kraay, <span>«Consistent Covariance Matrix Estimation with Spatially Dependent Panel Data»</span>, <em>Review of Economics and Statistics</em>, vol. 80, fasc. 4, pp. 549–560, 1998, doi: <a href="https://doi.org/10.1162/003465398557825">10.1162/003465398557825</a>.</div>
+</div>
+<div id="ref-newey1987simple" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[39] </div><div class="csl-right-inline">W. K. Newey e K. D. West, <span>«A Simple, Positive Semi-Definite, Heteroskedasticity and Autocorrelation Consistent Covariance Matrix»</span>, <em>Econometrica</em>, vol. 55, fasc. 3, pp. 703–708, 1987, doi: <a href="https://doi.org/10.2307/1913610">10.2307/1913610</a>.</div>
+</div>
+</div>
+<hr>
+<p><strong>Nota metodologica</strong></p>
+<p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
+<p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale; l’analisi è pertanto integralmente auditabile e replicabile da terzi a partire da esse. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Riutilizzare</h2><div class="quarto-appendix-contents"><div>CC-BY-4.0</div></div></section></div></main> <!-- /main -->
+<script>
+// Salto interno ai riferimenti [n] e ai rimandi #… indipendente dall'URL della pagina:
+// funziona anche quando l'HTML è aperto in un iframe, in un'anteprima o con un <base> diverso.
+document.addEventListener("click", function (e) {
+  var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+  if (!a) return;
+  var id = decodeURIComponent(a.getAttribute("href").slice(1));
+  var el = id && document.getElementById(id);
+  if (!el) return;
+  e.preventDefault();
+  el.scrollIntoView({ block: "start" });
+  try { history.replaceState(null, "", "#" + id); } catch (err) {}
+}, true);
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2610_SpreadBtpBund/index.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

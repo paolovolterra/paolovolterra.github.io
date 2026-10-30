@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="GMM, econometria, modelli, Istat, Eurostat, fiducia, imprese, ESI, IESI, LookingForward, previsioni">
+<meta name="description" content="Gli indicatori Istat di fiducia delle imprese preparati per modelli GMM forward-looking: dataset disponibili e prime analisi.">
+
+<title>GMM Forward-Looking Analysis – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="GMM Forward-Looking Analysis – Paolo Volterra">
+<meta property="og:description" content="Gli indicatori Istat di fiducia delle imprese preparati per modelli GMM forward-looking: dataset disponibili e prime analisi.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2602_FiduciaImpreseGMM/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="GMM Forward-Looking Analysis – Paolo Volterra">
+<meta name="twitter:description" content="Gli indicatori Istat di fiducia delle imprese preparati per modelli GMM forward-looking: dataset disponibili e prime analisi.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2602_FiduciaImpreseGMM/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#dataset-disponibili" id="toc-dataset-disponibili" class="nav-link active" data-scroll-target="#dataset-disponibili"><span class="header-section-number">1</span> Dataset Disponibili</a>
+  <ul class="collapse">
+  <li><a href="#files-generati" id="toc-files-generati" class="nav-link" data-scroll-target="#files-generati"><span class="header-section-number">1.1</span> Files generati</a></li>
+  <li><a href="#copertura-dati" id="toc-copertura-dati" class="nav-link" data-scroll-target="#copertura-dati"><span class="header-section-number">1.2</span> Copertura dati</a></li>
+  <li><a href="#trasformazioni-gmm-incluse" id="toc-trasformazioni-gmm-incluse" class="nav-link" data-scroll-target="#trasformazioni-gmm-incluse"><span class="header-section-number">1.3</span> Trasformazioni GMM incluse</a></li>
+  </ul></li>
+  <li><a href="#risultati-analisi-preliminare" id="toc-risultati-analisi-preliminare" class="nav-link" data-scroll-target="#risultati-analisi-preliminare"><span class="header-section-number">2</span> Risultati Analisi Preliminare</a>
+  <ul class="collapse">
+  <li><a href="#test-di-stazionarietà-adf" id="toc-test-di-stazionarietà-adf" class="nav-link" data-scroll-target="#test-di-stazionarietà-adf"><span class="header-section-number">2.1</span> Test di Stazionarietà (ADF)</a></li>
+  <li><a href="#test-di-granger-causality" id="toc-test-di-granger-causality" class="nav-link" data-scroll-target="#test-di-granger-causality"><span class="header-section-number">2.2</span> Test di Granger Causality</a></li>
+  <li><a href="#cointegrazione-johansen-test" id="toc-cointegrazione-johansen-test" class="nav-link" data-scroll-target="#cointegrazione-johansen-test"><span class="header-section-number">2.3</span> Cointegrazione (Johansen Test)</a></li>
+  </ul></li>
+  <li><a href="#specificazione-gmm-raccomandata" id="toc-specificazione-gmm-raccomandata" class="nav-link" data-scroll-target="#specificazione-gmm-raccomandata"><span class="header-section-number">3</span> Specificazione GMM Raccomandata</a>
+  <ul class="collapse">
+  <li><a href="#modello-base-single-equation-gmm" id="toc-modello-base-single-equation-gmm" class="nav-link" data-scroll-target="#modello-base-single-equation-gmm"><span class="header-section-number">3.1</span> Modello Base: Single-Equation GMM</a></li>
+  <li><a href="#modello-system-gmm-panel" id="toc-modello-system-gmm-panel" class="nav-link" data-scroll-target="#modello-system-gmm-panel"><span class="header-section-number">3.2</span> Modello System GMM (Panel)</a></li>
+  <li><a href="#dynamic-panel-gmm-arellano-bond" id="toc-dynamic-panel-gmm-arellano-bond" class="nav-link" data-scroll-target="#dynamic-panel-gmm-arellano-bond"><span class="header-section-number">3.3</span> Dynamic Panel GMM (Arellano-Bond)</a></li>
+  </ul></li>
+  <li><a href="#utilizzo-pratico-esempio-gmm" id="toc-utilizzo-pratico-esempio-gmm" class="nav-link" data-scroll-target="#utilizzo-pratico-esempio-gmm"><span class="header-section-number">4</span> Utilizzo Pratico: Esempio GMM</a>
+  <ul class="collapse">
+  <li><a href="#step-1-preparazione-dati-per-gmm" id="toc-step-1-preparazione-dati-per-gmm" class="nav-link" data-scroll-target="#step-1-preparazione-dati-per-gmm"><span class="header-section-number">4.1</span> Step 1: Preparazione dati per GMM</a></li>
+  <li><a href="#step-2-stima-gmm-con-statsmodels" id="toc-step-2-stima-gmm-con-statsmodels" class="nav-link" data-scroll-target="#step-2-stima-gmm-con-statsmodels"><span class="header-section-number">4.2</span> Step 2: Stima GMM con statsmodels</a></li>
+  <li><a href="#step-3-test-validità-strumenti-sargan-test" id="toc-step-3-test-validità-strumenti-sargan-test" class="nav-link" data-scroll-target="#step-3-test-validità-strumenti-sargan-test"><span class="header-section-number">4.3</span> Step 3: Test validità strumenti (Sargan test)</a></li>
+  </ul></li>
+  <li><a href="#prossimi-passi" id="toc-prossimi-passi" class="nav-link" data-scroll-target="#prossimi-passi"><span class="header-section-number">5</span> Prossimi Passi</a>
+  <ul class="collapse">
+  <li><a href="#per-analisi-gmm-avanzata" id="toc-per-analisi-gmm-avanzata" class="nav-link" data-scroll-target="#per-analisi-gmm-avanzata"><span class="header-section-number">5.1</span> Per analisi GMM avanzata:</a></li>
+  </ul></li>
+  <li><a href="#referenze-e-risorse" id="toc-referenze-e-risorse" class="nav-link" data-scroll-target="#referenze-e-risorse"><span class="header-section-number">6</span> Referenze e Risorse</a>
+  <ul class="collapse">
+  <li><a href="#dataset-originali" id="toc-dataset-originali" class="nav-link" data-scroll-target="#dataset-originali"><span class="header-section-number">6.1</span> Dataset originali</a></li>
+  <li><a href="#librerie-python-per-gmm" id="toc-librerie-python-per-gmm" class="nav-link" data-scroll-target="#librerie-python-per-gmm"><span class="header-section-number">6.2</span> Librerie Python per GMM</a></li>
+  <li><a href="#riferimenti-bibliografici" id="toc-riferimenti-bibliografici" class="nav-link" data-scroll-target="#riferimenti-bibliografici"><span class="header-section-number">6.3</span> Riferimenti bibliografici</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2602_FiduciaImpreseGMM/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">GMM Forward-Looking Analysis</h1>
+<p class="subtitle lead">Indicatori di Fiducia delle Imprese per Modelli GMM</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Istat</div>
+    <div class="quarto-category">Fiducia delle imprese</div>
+    <div class="quarto-category">Econometria</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Gli indicatori Istat di fiducia delle imprese preparati per modelli GMM forward-looking: dataset disponibili e prime analisi.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">5 febbraio 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>Questo notebook presenta il dataset consolidato per analisi <strong>GMM (Generalized Method of Moments)</strong> forward-looking utilizzando indicatori di fiducia delle imprese e consumatori. Fonte dati: Eurostat (DG ECFIN) + Istat (DCSC_IESI)</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>GMM, econometria, modelli, Istat, Eurostat, fiducia, imprese, ESI, IESI, LookingForward, previsioni</p>
+  </div>
+</div>
+
+</header>
+
+
+<p>Gli indicatori di fiducia sono <strong>leading indicators</strong> ideali per modelli forward-looking perché:</p>
+<ul>
+<li><p>Catturano aspettative degli agenti economici</p></li>
+<li><p>Anticipano variabili macroeconomiche reali (PIL, produzione, occupazione)</p></li>
+<li><p>Disponibili mensilmente con bassa latenza</p></li>
+<li><p>Forniscono strumenti validi per GMM</p></li>
+</ul>
+<section id="dataset-disponibili" class="level2 anchored" data-number="1" data-anchor-id="dataset-disponibili">
+<h2 class="anchored" data-number="1" data-anchor-id="dataset-disponibili"><span class="header-section-number">1</span> Dataset Disponibili</h2>
+<section id="files-generati" class="level3 anchored" data-anchor-id="files-generati" data-number="1.1">
+<h3 class="anchored" data-anchor-id="files-generati" data-number="1.1"><span class="header-section-number">1.1</span> Files generati</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 43%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">File</th>
+<th style="text-align: left;">Descrizione</th>
+<th style="text-align: left;">Dimensioni</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>data_panel_long.parquet</code></td>
+<td style="text-align: left;">Panel base formato long</td>
+<td style="text-align: left;">49,757 obs × 10 var</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>data_panel_wide.parquet</code></td>
+<td style="text-align: left;">Panel base formato wide</td>
+<td style="text-align: left;">963 obs × 9 var</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>data_panel_integrated.parquet</code></td>
+<td style="text-align: left;">Panel con dati Istat integrati</td>
+<td style="text-align: left;">5,939 obs</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><code>data_panel_gmm_ready.parquet</code></strong></td>
+<td style="text-align: left;"><strong>Panel GMM-ready con tutte le trasformazioni</strong></td>
+<td style="text-align: left;"><strong>49,757 obs × 27 var</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="copertura-dati" class="level3 anchored" data-anchor-id="copertura-dati" data-number="1.2">
+<h3 class="anchored" data-anchor-id="copertura-dati" data-number="1.2"><span class="header-section-number">1.2</span> Copertura dati</h3>
+<ul>
+<li><strong>Paesi</strong>: Italia, Germania, Francia, Spagna, Area Euro (EA20)</li>
+<li><strong>Periodo</strong>: 2010-01 → 2026-01 (16 anni, frequenza mensile)</li>
+<li><strong>Indicatori</strong>: 6 serie per paese
+<ul>
+<li>Economic Sentiment Indicator (ESI) - composito</li>
+<li>Industry confidence</li>
+<li>Services confidence</li>
+<li>Construction confidence</li>
+<li>Retail trade confidence</li>
+<li>Consumer confidence</li>
+</ul></li>
+</ul>
+</section>
+<section id="trasformazioni-gmm-incluse" class="level3 anchored" data-anchor-id="trasformazioni-gmm-incluse" data-number="1.3">
+<h3 class="anchored" data-anchor-id="trasformazioni-gmm-incluse" data-number="1.3"><span class="header-section-number">1.3</span> Trasformazioni GMM incluse</h3>
+<p>Il dataset <code>data_panel_gmm_ready.parquet</code> include:</p>
+<ol type="1">
+<li><strong>Lag variabili</strong> (t-1, t-3, t-6, t-12)</li>
+<li><strong>Differenze</strong> (prima e seconda)</li>
+<li><strong>Tassi di variazione</strong> (mensili e annuali)</li>
+<li><strong>Medie mobili</strong> (3, 6, 12 mesi)</li>
+<li><strong>Gap vs benchmark</strong> (differenza da EA20)</li>
+<li><strong>Variabili strutturali</strong> (entity_id, time_id, year, month, quarter)</li>
+</ol>
+<div id="b4ce8605" class="cell" data-execution_count="1">
+<p>Codice</p>
+<div class="code-copy-outer-scaffold">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Carica panel GMM-ready</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>panel <span class="op">=</span> pd.read_parquet(<span class="st">'data_panel_gmm_ready.parquet'</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"📊 Panel GMM-Ready"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Dimensioni: </span><span class="sc">{</span>panel<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Paesi: </span><span class="sc">{</span>panel[<span class="st">'country_code'</span>]<span class="sc">.</span>unique()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Indicatori: </span><span class="sc">{</span>panel[<span class="st">'indicator'</span>]<span class="sc">.</span>unique()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Periodo: </span><span class="sc">{</span>panel[<span class="st">'time'</span>]<span class="sc">.</span><span class="bu">min</span>()<span class="sc">.</span>date()<span class="sc">}</span><span class="ss"> → </span><span class="sc">{</span>panel[<span class="st">'time'</span>]<span class="sc">.</span><span class="bu">max</span>()<span class="sc">.</span>date()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>panel.sample(<span class="dv">5</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>📊 Panel GMM-Ready
+   Dimensioni: (49757, 27)
+   Paesi: &lt;ArrowStringArray&gt;
+['DE', 'EA20', 'ES', 'FR', 'IT']
+Length: 5, dtype: str
+   Indicatori: &lt;ArrowStringArray&gt;
+['construction', 'consumer', 'industry', 'retail', 'sentiment', 'services']
+Length: 6, dtype: str
+   Periodo: 2010-01-05 → 2026-01-05</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">time</th>
+<th style="text-align: left;">country_code</th>
+<th style="text-align: left;">country_name</th>
+<th style="text-align: left;">value</th>
+<th style="text-align: left;">indicator</th>
+<th style="text-align: left;">dataset_code</th>
+<th style="text-align: left;">indic_code</th>
+<th style="text-align: left;">indicator_label</th>
+<th style="text-align: left;">unit_code</th>
+<th style="text-align: left;">unit_label</th>
+<th style="text-align: left;">...</th>
+<th style="text-align: left;">value_growth12</th>
+<th style="text-align: left;">value_ma3</th>
+<th style="text-align: left;">value_ma6</th>
+<th style="text-align: left;">value_ma12</th>
+<th style="text-align: left;">gap_value</th>
+<th style="text-align: left;">entity_id</th>
+<th style="text-align: left;">time_id</th>
+<th style="text-align: left;">year</th>
+<th style="text-align: left;">month</th>
+<th style="text-align: left;">quarter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>9733</td>
+<td style="text-align: left;">2022-02-05</td>
+<td style="text-align: left;">DE</td>
+<td style="text-align: left;">Germany</td>
+<td style="text-align: left;">15.3</td>
+<td style="text-align: left;">services</td>
+<td style="text-align: left;">ei_bsse_m_r2</td>
+<td style="text-align: left;">BS-SARM</td>
+<td style="text-align: left;">Evolution of demand over the past 3 months</td>
+<td style="text-align: left;">BAL</td>
+<td style="text-align: left;">Balance</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">17.692308</td>
+<td style="text-align: left;">18.933333</td>
+<td style="text-align: left;">15.700000</td>
+<td style="text-align: left;">14.266667</td>
+<td style="text-align: left;">4.333333</td>
+<td style="text-align: left;">DE_services</td>
+<td style="text-align: left;">147</td>
+<td style="text-align: left;">2022</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td>14045</td>
+<td style="text-align: left;">2021-12-05</td>
+<td style="text-align: left;">EA20</td>
+<td style="text-align: left;">Euro area – 20 countries (2023-2025)</td>
+<td style="text-align: left;">36.0</td>
+<td style="text-align: left;">consumer</td>
+<td style="text-align: left;">ei_bsco_m</td>
+<td style="text-align: left;">BS-PT-NY</td>
+<td style="text-align: left;">Price trends over the next 12 months</td>
+<td style="text-align: left;">BAL</td>
+<td style="text-align: left;">Balance</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">-11.330049</td>
+<td style="text-align: left;">27.266667</td>
+<td style="text-align: left;">7.183333</td>
+<td style="text-align: left;">3.533333</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">EA20_consumer</td>
+<td style="text-align: left;">145</td>
+<td style="text-align: left;">2021</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="odd">
+<td>12139</td>
+<td style="text-align: left;">2024-09-05</td>
+<td style="text-align: left;">EA20</td>
+<td style="text-align: left;">Euro area – 20 countries (2023-2025)</td>
+<td style="text-align: left;">14.1</td>
+<td style="text-align: left;">construction</td>
+<td style="text-align: left;">ei_bsbu_m_r2</td>
+<td style="text-align: left;">BS-FLBA3-PC</td>
+<td style="text-align: left;">Factors limiting building activity - weather c...</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">12.800000</td>
+<td style="text-align: left;">28.600000</td>
+<td style="text-align: left;">11.833333</td>
+<td style="text-align: left;">9.566667</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">EA20_construction</td>
+<td style="text-align: left;">178</td>
+<td style="text-align: left;">2024</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td>10513</td>
+<td style="text-align: left;">2013-06-05</td>
+<td style="text-align: left;">EA20</td>
+<td style="text-align: left;">Euro area – 20 countries (2023-2025)</td>
+<td style="text-align: left;">-18.9</td>
+<td style="text-align: left;">construction</td>
+<td style="text-align: left;">ei_bsbu_m_r2</td>
+<td style="text-align: left;">BS-CTA-BAL</td>
+<td style="text-align: left;">Building activity development over the past 3 ...</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">-1.562500</td>
+<td style="text-align: left;">-8.666667</td>
+<td style="text-align: left;">-1.533333</td>
+<td style="text-align: left;">0.541667</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">EA20_construction</td>
+<td style="text-align: left;">41</td>
+<td style="text-align: left;">2013</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td>6473</td>
+<td style="text-align: left;">2011-06-05</td>
+<td style="text-align: left;">DE</td>
+<td style="text-align: left;">Germany</td>
+<td style="text-align: left;">16.3</td>
+<td style="text-align: left;">retail</td>
+<td style="text-align: left;">ei_bsrt_m_r2</td>
+<td style="text-align: left;">BS-RAS</td>
+<td style="text-align: left;">Volume of stocks currently hold</td>
+<td style="text-align: left;">BAL</td>
+<td style="text-align: left;">Balance</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">71.578947</td>
+<td style="text-align: left;">13.200000</td>
+<td style="text-align: left;">13.266667</td>
+<td style="text-align: left;">12.791667</td>
+<td style="text-align: left;">8.300000</td>
+<td style="text-align: left;">DE_retail</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">2011</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">2</td>
+</tr>
+</tbody>
+</table>
+<p>5 rows × 27 columns</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="risultati-analisi-preliminare" class="level2 anchored" data-number="2" data-anchor-id="risultati-analisi-preliminare">
+<h2 class="anchored" data-number="2" data-anchor-id="risultati-analisi-preliminare"><span class="header-section-number">2</span> Risultati Analisi Preliminare</h2>
+<section id="test-di-stazionarietà-adf" class="level3 anchored" data-anchor-id="test-di-stazionarietà-adf" data-number="2.1">
+<h3 class="anchored" data-anchor-id="test-di-stazionarietà-adf" data-number="2.1"><span class="header-section-number">2.1</span> Test di Stazionarietà (ADF)</h3>
+<p><strong>Risultati chiave</strong>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variabile</th>
+<th style="text-align: left;">Serie stazionarie</th>
+<th style="text-align: left;">% Stazionarie</th>
+<th style="text-align: left;">Raccomandazione GMM</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>value</code> (livelli)</td>
+<td style="text-align: left;">5/10</td>
+<td style="text-align: left;">50%</td>
+<td style="text-align: left;">⚠️ Non stazionarie</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>value_diff1</code> (differenze)</td>
+<td style="text-align: left;">10/10</td>
+<td style="text-align: left;">100%</td>
+<td style="text-align: left;">✅ <strong>Usare per GMM</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>value_growth1</code> (tassi)</td>
+<td style="text-align: left;">1/1</td>
+<td style="text-align: left;">100%</td>
+<td style="text-align: left;">✅ <strong>Usare per GMM</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Implicazione</strong>: Le serie sono integrate I(1). Per GMM, utilizzare:</p>
+<ul>
+<li><p>Differenze prime (<code>value_diff1</code>)</p></li>
+<li><p>Tassi di variazione (<code>value_growth1</code>, <code>value_growth12</code>)</p></li>
+<li><p>Oppure specificare modello con Error Correction Mechanism (ECM)</p></li>
+</ul>
+<div id="c670a1ed" class="cell" data-execution_count="2">
+<p>Codice</p>
+<div class="code-copy-outer-scaffold">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Confronto livelli vs differenze - Italia ESI (pulito e coerente)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>it_sentiment <span class="op">=</span> panel[</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    (panel[<span class="st">'country_code'</span>] <span class="op">==</span> <span class="st">'IT'</span>) <span class="op">&amp;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    (panel[<span class="st">'indicator'</span>] <span class="op">==</span> <span class="st">'sentiment'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>].copy()</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Una sola osservazione per mese (media delle 6 osservazioni)</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>it_sentiment <span class="op">=</span> (</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    it_sentiment</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'time'</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">'value'</span>]</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    .mean()</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    .sort_values(<span class="st">'time'</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Calcola differenze prime DOPO la pulizia (evita artefatti da duplicati)</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>it_sentiment[<span class="st">'value_diff1'</span>] <span class="op">=</span> it_sentiment[<span class="st">'value'</span>].diff()</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># (opzionale) controllo rapido: deve essere 1 riga per mese</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># print(it_sentiment.groupby('time').size().value_counts())</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">8</span>), sharex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Livelli (qui: scostamento dall'ESI=100, quindi baseline a 0)</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].plot(it_sentiment[<span class="st">'time'</span>], it_sentiment[<span class="st">'value'</span>], linewidth<span class="op">=</span><span class="dv">2</span>, color<span class="op">=</span><span class="st">'#007A53'</span>)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">'Italia - ESI (Livelli, scostamento da 100)'</span>, fontsize<span class="op">=</span><span class="dv">12</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_ylabel(<span class="st">'Indice (ESI - 100)'</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Differenze prime (stazionaria)</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].plot(it_sentiment[<span class="st">'time'</span>], it_sentiment[<span class="st">'value_diff1'</span>], linewidth<span class="op">=</span><span class="dv">2</span>, color<span class="op">=</span><span class="st">'#FF6B35'</span>)</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">'Italia - ESI (Differenze prime)'</span>, fontsize<span class="op">=</span><span class="dv">12</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_ylabel(<span class="st">'Δ (ESI - 100)'</span>)</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_xlabel(<span class="st">'Tempo'</span>)</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div class="figure">
+<p><img src="figure/fig01.png" class="figure-img" role="img" width="1333" height="756"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="test-di-granger-causality" class="level3 anchored" data-anchor-id="test-di-granger-causality" data-number="2.2">
+<h3 class="anchored" data-anchor-id="test-di-granger-causality" data-number="2.2"><span class="header-section-number">2.2</span> Test di Granger Causality</h3>
+<p><strong>Leading Indicators identificati</strong> (Italia, target = ESI composito):</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicatore</th>
+<th style="text-align: left;">Lag ottimale</th>
+<th style="text-align: left;">F-statistic</th>
+<th style="text-align: left;">P-value</th>
+<th style="text-align: left;">Significatività</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Construction</strong></td>
+<td style="text-align: left;">2 mesi</td>
+<td style="text-align: left;">7.69</td>
+<td style="text-align: left;">0.0006</td>
+<td style="text-align: left;">***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Construction</strong></td>
+<td style="text-align: left;">4 mesi</td>
+<td style="text-align: left;">4.47</td>
+<td style="text-align: left;">0.0018</td>
+<td style="text-align: left;">***</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Services</strong></td>
+<td style="text-align: left;">2 mesi</td>
+<td style="text-align: left;">4.33</td>
+<td style="text-align: left;">0.0145</td>
+<td style="text-align: left;">**</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Consumer</strong></td>
+<td style="text-align: left;">2 mesi</td>
+<td style="text-align: left;">4.11</td>
+<td style="text-align: left;">0.0180</td>
+<td style="text-align: left;">**</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Implicazione per GMM</strong>: - L’indicatore <strong>costruzioni</strong> è il miglior leading indicator (anticipa ESI di 2-4 mesi) - Usare come <strong>strumento valido</strong> nelle equazioni GMM - Specificare lag ottimali (2-4 periodi)</p>
+<div id="e8dbcf3b" class="cell" data-execution_count="3">
+<p>Codice</p>
+<div class="code-copy-outer-scaffold">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizza relazione leading: Costruzioni → Sentiment</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>it_data <span class="op">=</span> panel[panel[<span class="st">'country_code'</span>] <span class="op">==</span> <span class="st">'IT'</span>].copy()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivot per avere indicatori come colonne</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>pivot <span class="op">=</span> it_data.pivot_table(index<span class="op">=</span><span class="st">'time'</span>, columns<span class="op">=</span><span class="st">'indicator'</span>, values<span class="op">=</span><span class="st">'value'</span>).sort_index()</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot construction (leading) vs sentiment</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>fig, ax1 <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">6</span>))</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Sentiment (target)</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>ax1.plot(pivot.index, pivot[<span class="st">'sentiment'</span>], linewidth<span class="op">=</span><span class="fl">2.5</span>, color<span class="op">=</span><span class="st">'#007A53'</span>, label<span class="op">=</span><span class="st">'Sentiment (target)'</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">'Tempo'</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">'Economic Sentiment'</span>, color<span class="op">=</span><span class="st">'#007A53'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>ax1.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelcolor<span class="op">=</span><span class="st">'#007A53'</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>ax1.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Construction (leading indicator)</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax1.twinx()</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>ax2.plot(pivot.index, pivot[<span class="st">'construction'</span>], linewidth<span class="op">=</span><span class="dv">2</span>, color<span class="op">=</span><span class="st">'#FF6B35'</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, label<span class="op">=</span><span class="st">'Construction (leading, t-2)'</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">'Construction Confidence'</span>, color<span class="op">=</span><span class="st">'#FF6B35'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelcolor<span class="op">=</span><span class="st">'#FF6B35'</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Titolo e legenda</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'Italia - Leading Relationship: Construction → Sentiment (Granger: p=0.0006)'</span>, fontsize<span class="op">=</span><span class="dv">13</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>lines1, labels1 <span class="op">=</span> ax1.get_legend_handles_labels()</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>lines2, labels2 <span class="op">=</span> ax2.get_legend_handles_labels()</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>ax1.legend(lines1 <span class="op">+</span> lines2, labels1 <span class="op">+</span> labels2, loc<span class="op">=</span><span class="st">'upper left'</span>)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div class="figure">
+<p><img src="figure/fig02.png" class="figure-img" role="img" width="1333" height="564"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="cointegrazione-johansen-test" class="level3 anchored" data-anchor-id="cointegrazione-johansen-test" data-number="2.3">
+<h3 class="anchored" data-anchor-id="cointegrazione-johansen-test" data-number="2.3"><span class="header-section-number">2.3</span> Cointegrazione (Johansen Test)</h3>
+<p><strong>Risultato</strong>: 4 relazioni di cointegrazione identificate tra i 6 indicatori (Italia)</p>
+<p><strong>Implicazione per GMM</strong>: - Gli indicatori hanno <strong>relazioni di lungo periodo</strong> - Specificare modello GMM con <strong>Error Correction Mechanism (ECM)</strong> - Oppure usare <strong>Vector Error Correction Model (VECM)</strong> per GMM system</p>
+<p><strong>Trace Statistics</strong>:</p>
+<pre><code>[131.42, 91.97, 54.57, 30.01, 11.52, 1.84]
+Critical value (95%): [95.75, 69.82, 47.85, 29.80, 15.49, 3.84]
+→ 4 relazioni cointegrazione confermate</code></pre>
+</section>
+</section>
+<section id="specificazione-gmm-raccomandata" class="level2 anchored" data-number="3" data-anchor-id="specificazione-gmm-raccomandata">
+<h2 class="anchored" data-number="3" data-anchor-id="specificazione-gmm-raccomandata"><span class="header-section-number">3</span> Specificazione GMM Raccomandata</h2>
+<section id="modello-base-single-equation-gmm" class="level3 anchored" data-anchor-id="modello-base-single-equation-gmm" data-number="3.1">
+<h3 class="anchored" data-anchor-id="modello-base-single-equation-gmm" data-number="3.1"><span class="header-section-number">3.1</span> Modello Base: Single-Equation GMM</h3>
+<p>Per analisi forward-looking del PIL:</p>
+<p><span class="math display">\Delta y(t) = \alpha \;+\; \beta_1 \Delta y(t-1) \;+\; \beta_2 ESI(t-1) \;+\; \beta_3 Construction(t-2) \;+\; \varepsilon(t)</span></p>
+<p>Strumenti GMM:</p>
+<p><span class="math display">ESI(t-2),\; ESI(t-3),\; Construction(t-2),\; Construction(t-3),\; Services(t-2)</span></p>
+<p>Condizioni di momento:</p>
+<p><span class="math display">E[Z(t-j)\varepsilon(t)] = 0, \quad j \geq 2</span></p>
+</section>
+<section id="modello-system-gmm-panel" class="level3 anchored" data-anchor-id="modello-system-gmm-panel" data-number="3.2">
+<h3 class="anchored" data-anchor-id="modello-system-gmm-panel" data-number="3.2"><span class="header-section-number">3.2</span> Modello System GMM (Panel)</h3>
+<p>Per sfruttare cross-section (5 paesi):</p>
+<div class="code-copy-outer-scaffold">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> linearmodels <span class="im">import</span> PanelOLS</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> linearmodels.panel <span class="im">import</span> RandomEffects</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepara dati panel</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>panel_indexed <span class="op">=</span> panel.set_index([<span class="st">'entity_id'</span>, <span class="st">'time'</span>])</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Specificazione</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> PanelOLS.from_formula(</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'value_diff1 ~ 1 + value_lag1 + construction_lag2 + EntityEffects'</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>panel_indexed</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> model.fit()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="dynamic-panel-gmm-arellano-bond" class="level3 anchored" data-anchor-id="dynamic-panel-gmm-arellano-bond" data-number="3.3">
+<h3 class="anchored" data-anchor-id="dynamic-panel-gmm-arellano-bond" data-number="3.3"><span class="header-section-number">3.3</span> Dynamic Panel GMM (Arellano-Bond)</h3>
+<p>Per catturare persistenza e dinamiche:</p>
+<div class="code-copy-outer-scaffold">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Richiede installazione: pip install pydynpd</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydynpd <span class="im">import</span> regression</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>df_gmm <span class="op">=</span> regression.abond(</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'value n L(1:2).value construction_lag2 | gmm(value, 2:4) iv(construction_lag2)'</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    panel_indexed,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'entity_id'</span>, <span class="st">'time'</span>]</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="utilizzo-pratico-esempio-gmm" class="level2 anchored" data-number="4" data-anchor-id="utilizzo-pratico-esempio-gmm">
+<h2 class="anchored" data-number="4" data-anchor-id="utilizzo-pratico-esempio-gmm"><span class="header-section-number">4</span> Utilizzo Pratico: Esempio GMM</h2>
+<section id="step-1-preparazione-dati-per-gmm" class="level3 anchored" data-anchor-id="step-1-preparazione-dati-per-gmm" data-number="4.1">
+<h3 class="anchored" data-anchor-id="step-1-preparazione-dati-per-gmm" data-number="4.1"><span class="header-section-number">4.1</span> Step 1: Preparazione dati per GMM</h3>
+<div id="c69cd82c" class="cell" data-execution_count="4">
+<p>Codice</p>
+<div class="code-copy-outer-scaffold">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtra Italia, periodo post-crisi</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>gmm_data <span class="op">=</span> panel[</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    (panel[<span class="st">'country_code'</span>] <span class="op">==</span> <span class="st">'IT'</span>) <span class="op">&amp;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    (panel[<span class="st">'year'</span>] <span class="op">&gt;=</span> <span class="dv">2015</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>].copy()</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea variabili specifiche per GMM</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivot per avere tutti gli indicatori accessibili</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Nota: usiamo value_lag3 (disponibile nel dataset) invece di value_lag2</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>gmm_pivot <span class="op">=</span> gmm_data.pivot_table(</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span><span class="st">'time'</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span><span class="st">'indicator'</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    values<span class="op">=</span>[<span class="st">'value'</span>, <span class="st">'value_diff1'</span>, <span class="st">'value_lag1'</span>, <span class="st">'value_lag3'</span>]</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>).sort_index()</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Flatten column names</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>gmm_pivot.columns <span class="op">=</span> [<span class="st">'_'</span>.join(col).strip() <span class="cf">for</span> col <span class="kw">in</span> gmm_pivot.columns.values]</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Rimuovi NA</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>gmm_pivot_clean <span class="op">=</span> gmm_pivot.dropna()</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Dataset GMM preparato: </span><span class="sc">{</span>gmm_pivot_clean<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Periodo: </span><span class="sc">{</span>gmm_pivot_clean<span class="sc">.</span>index<span class="sc">.</span><span class="bu">min</span>()<span class="sc">.</span>date()<span class="sc">}</span><span class="ss"> → </span><span class="sc">{</span>gmm_pivot_clean<span class="sc">.</span>index<span class="sc">.</span><span class="bu">max</span>()<span class="sc">.</span>date()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Variabili disponibili (</span><span class="sc">{</span><span class="bu">len</span>(gmm_pivot_clean.columns)<span class="sc">}</span><span class="ss">):"</span>)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"  - value_*: livelli"</span>)</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"  - value_diff1_*: differenze prime (stazionarie)"</span>)</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"  - value_lag1_*: lag 1 mese"</span>)</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"  - value_lag3_*: lag 3 mesi (leading indicators)"</span>)</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Indicatori: </span><span class="sc">{</span>[c.split(<span class="st">'_'</span>)[<span class="op">-</span><span class="dv">1</span>] <span class="cf">for</span> c <span class="kw">in</span> gmm_pivot_clean.columns <span class="cf">if</span> c.startswith(<span class="st">'value_sentiment'</span>)]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>gmm_pivot_clean.head()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Dataset GMM preparato: (132, 24)
+Periodo: 2015-01-05 → 2026-01-05
+
+Variabili disponibili (24):
+  - value_*: livelli
+  - value_diff1_*: differenze prime (stazionarie)
+  - value_lag1_*: lag 1 mese
+  - value_lag3_*: lag 3 mesi (leading indicators)
+
+Indicatori: ['sentiment']</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">value_construction</th>
+<th style="text-align: left;">value_consumer</th>
+<th style="text-align: left;">value_industry</th>
+<th style="text-align: left;">value_retail</th>
+<th style="text-align: left;">value_sentiment</th>
+<th style="text-align: left;">value_services</th>
+<th style="text-align: left;">value_diff1_construction</th>
+<th style="text-align: left;">value_diff1_consumer</th>
+<th style="text-align: left;">value_diff1_industry</th>
+<th style="text-align: left;">value_diff1_retail</th>
+<th style="text-align: left;">...</th>
+<th style="text-align: left;">value_lag1_industry</th>
+<th style="text-align: left;">value_lag1_retail</th>
+<th style="text-align: left;">value_lag1_sentiment</th>
+<th style="text-align: left;">value_lag1_services</th>
+<th style="text-align: left;">value_lag3_construction</th>
+<th style="text-align: left;">value_lag3_consumer</th>
+<th style="text-align: left;">value_lag3_industry</th>
+<th style="text-align: left;">value_lag3_retail</th>
+<th style="text-align: left;">value_lag3_sentiment</th>
+<th style="text-align: left;">value_lag3_services</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>time</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td>2015-01-05</td>
+<td style="text-align: left;">0.183333</td>
+<td style="text-align: left;">-18.500000</td>
+<td style="text-align: left;">-6.588889</td>
+<td style="text-align: left;">4.057143</td>
+<td style="text-align: left;">6.416667</td>
+<td style="text-align: left;">-3.016667</td>
+<td style="text-align: left;">-0.033333</td>
+<td style="text-align: left;">0.100000</td>
+<td style="text-align: left;">0.077778</td>
+<td style="text-align: left;">-0.114286</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">-6.666667</td>
+<td style="text-align: left;">4.171429</td>
+<td style="text-align: left;">5.900000</td>
+<td style="text-align: left;">-1.550000</td>
+<td style="text-align: left;">0.241667</td>
+<td style="text-align: left;">-18.950000</td>
+<td style="text-align: left;">-6.622222</td>
+<td style="text-align: left;">5.628571</td>
+<td style="text-align: left;">5.833333</td>
+<td style="text-align: left;">-3.233333</td>
+</tr>
+<tr class="odd">
+<td>2015-02-05</td>
+<td style="text-align: left;">0.591667</td>
+<td style="text-align: left;">-15.566667</td>
+<td style="text-align: left;">-5.777778</td>
+<td style="text-align: left;">5.914286</td>
+<td style="text-align: left;">9.166667</td>
+<td style="text-align: left;">0.450000</td>
+<td style="text-align: left;">-0.358333</td>
+<td style="text-align: left;">0.600000</td>
+<td style="text-align: left;">0.066667</td>
+<td style="text-align: left;">0.285714</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">-5.844444</td>
+<td style="text-align: left;">5.628571</td>
+<td style="text-align: left;">8.633333</td>
+<td style="text-align: left;">0.116667</td>
+<td style="text-align: left;">0.916667</td>
+<td style="text-align: left;">-16.458333</td>
+<td style="text-align: left;">-6.233333</td>
+<td style="text-align: left;">4.528571</td>
+<td style="text-align: left;">7.100000</td>
+<td style="text-align: left;">-1.400000</td>
+</tr>
+<tr class="even">
+<td>2015-03-05</td>
+<td style="text-align: left;">2.391667</td>
+<td style="text-align: left;">-14.300000</td>
+<td style="text-align: left;">-3.233333</td>
+<td style="text-align: left;">8.471429</td>
+<td style="text-align: left;">12.466667</td>
+<td style="text-align: left;">4.183333</td>
+<td style="text-align: left;">-0.008333</td>
+<td style="text-align: left;">0.125000</td>
+<td style="text-align: left;">0.333333</td>
+<td style="text-align: left;">0.357143</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">-3.566667</td>
+<td style="text-align: left;">8.114286</td>
+<td style="text-align: left;">11.950000</td>
+<td style="text-align: left;">3.416667</td>
+<td style="text-align: left;">2.666667</td>
+<td style="text-align: left;">-14.241667</td>
+<td style="text-align: left;">-4.133333</td>
+<td style="text-align: left;">7.100000</td>
+<td style="text-align: left;">11.283333</td>
+<td style="text-align: left;">1.983333</td>
+</tr>
+<tr class="odd">
+<td>2015-04-05</td>
+<td style="text-align: left;">1.700000</td>
+<td style="text-align: left;">-12.775000</td>
+<td style="text-align: left;">-2.522222</td>
+<td style="text-align: left;">8.371429</td>
+<td style="text-align: left;">12.216667</td>
+<td style="text-align: left;">2.450000</td>
+<td style="text-align: left;">0.158333</td>
+<td style="text-align: left;">-0.100000</td>
+<td style="text-align: left;">0.011111</td>
+<td style="text-align: left;">0.642857</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">-2.533333</td>
+<td style="text-align: left;">7.728571</td>
+<td style="text-align: left;">12.500000</td>
+<td style="text-align: left;">2.650000</td>
+<td style="text-align: left;">1.408333</td>
+<td style="text-align: left;">-12.983333</td>
+<td style="text-align: left;">-2.622222</td>
+<td style="text-align: left;">7.814286</td>
+<td style="text-align: left;">11.950000</td>
+<td style="text-align: left;">3.350000</td>
+</tr>
+<tr class="even">
+<td>2015-05-05</td>
+<td style="text-align: left;">1.433333</td>
+<td style="text-align: left;">-13.641667</td>
+<td style="text-align: left;">-1.955556</td>
+<td style="text-align: left;">8.714286</td>
+<td style="text-align: left;">11.933333</td>
+<td style="text-align: left;">2.000000</td>
+<td style="text-align: left;">-0.133333</td>
+<td style="text-align: left;">-0.091667</td>
+<td style="text-align: left;">0.011111</td>
+<td style="text-align: left;">-0.200000</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">-1.966667</td>
+<td style="text-align: left;">8.914286</td>
+<td style="text-align: left;">11.816667</td>
+<td style="text-align: left;">2.000000</td>
+<td style="text-align: left;">1.650000</td>
+<td style="text-align: left;">-13.400000</td>
+<td style="text-align: left;">-2.333333</td>
+<td style="text-align: left;">8.871429</td>
+<td style="text-align: left;">12.233333</td>
+<td style="text-align: left;">2.766667</td>
+</tr>
+</tbody>
+</table>
+<p>5 rows × 24 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-stima-gmm-con-statsmodels" class="level3 anchored" data-anchor-id="step-2-stima-gmm-con-statsmodels" data-number="4.2">
+<h3 class="anchored" data-anchor-id="step-2-stima-gmm-con-statsmodels" data-number="4.2"><span class="header-section-number">4.2</span> Step 2: Stima GMM con statsmodels</h3>
+<div id="28b2da9d" class="cell" data-execution_count="5">
+<p>Codice</p>
+<div class="code-copy-outer-scaffold">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.sandbox.regression.gmm <span class="im">import</span> IV2SLS</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Definisci variabili</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> gmm_pivot_clean[<span class="st">'value_diff1_sentiment'</span>]  <span class="co"># Target: Δ Sentiment</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Variabili esplicative (RHS): endogene + esogene</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># value_lag1_sentiment è endogena (correlata con errori)</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># value_lag3_* sono esogene (leading indicators)</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> pd.concat([</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    gmm_pivot_clean[[<span class="st">'value_lag1_sentiment'</span>]],</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    gmm_pivot_clean[[<span class="st">'value_lag3_construction'</span>, <span class="st">'value_lag3_services'</span>]]</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Strumenti: sostituiscono value_lag1_sentiment con lag più profondi</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Mantengono le esogene invariate</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> pd.concat([</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    gmm_pivot_clean[[<span class="st">'value_lag3_sentiment'</span>]],  <span class="co"># strumento per value_lag1_sentiment</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    gmm_pivot_clean[[<span class="st">'value_lag3_construction'</span>, <span class="st">'value_lag3_services'</span>]]  <span class="co"># stesse esogene</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Stima 2SLS/IV</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>model_2sls <span class="op">=</span> IV2SLS(y, X, instrument<span class="op">=</span>Z).fit()</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model_2sls.summary())</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="st">"="</span><span class="op">*</span><span class="dv">70</span>)</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Interpretazione:"</span>)</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"- Coefficienti stimati con IV per correggere endogeneità"</span>)</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"- value_lag1_sentiment: persistenza sentiment (coefficiente autoregressivo)"</span>)</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"- value_lag3_construction: effetto leading costruzioni"</span>)</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"- value_lag3_services: effetto leading servizi"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            IV2SLS Regression Results                            
+=================================================================================
+Dep. Variable:     value_diff1_sentiment   R-squared:                       0.006
+Model:                            IV2SLS   Adj. R-squared:                 -0.017
+Method:                        Two Stage   F-statistic:                       nan
+                           Least Squares   Prob (F-statistic):                nan
+Date:                   Thu, 05 Feb 2026                                         
+Time:                           20:37:48                                         
+No. Observations:                    132                                         
+Df Residuals:                        129                                         
+Df Model:                              3                                         
+===========================================================================================
+                              coef    std err          t      P&gt;|t|      [0.025      0.975]
+-------------------------------------------------------------------------------------------
+value_lag1_sentiment       -0.0266      0.014     -1.950      0.053      -0.053       0.000
+value_lag3_construction     0.0375      0.020      1.862      0.065      -0.002       0.077
+value_lag3_services         0.0227      0.013      1.739      0.084      -0.003       0.048
+==============================================================================
+Omnibus:                       89.102   Durbin-Watson:                   1.561
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             1261.091
+Skew:                          -1.987   Prob(JB):                    1.44e-274
+Kurtosis:                      17.611   Cond. No.                         6.01
+==============================================================================
+
+======================================================================
+Interpretazione:
+- Coefficienti stimati con IV per correggere endogeneità
+- value_lag1_sentiment: persistenza sentiment (coefficiente autoregressivo)
+- value_lag3_construction: effetto leading costruzioni
+- value_lag3_services: effetto leading servizi</code></pre>
+</div>
+</div>
+</section>
+<section id="step-3-test-validità-strumenti-sargan-test" class="level3 anchored" data-anchor-id="step-3-test-validità-strumenti-sargan-test" data-number="4.3">
+<h3 class="anchored" data-anchor-id="step-3-test-validità-strumenti-sargan-test" data-number="4.3"><span class="header-section-number">4.3</span> Step 3: Test validità strumenti (Sargan test)</h3>
+<div id="849718b4" class="cell" data-execution_count="6">
+<p>Codice</p>
+<div class="code-copy-outer-scaffold">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sargan test di sovra-identificazione</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># H0: strumenti sono validi (non correlati con errori)</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.api <span class="im">import</span> OLS, add_constant</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> chi2</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Residui del modello IV</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>residuals <span class="op">=</span> model_2sls.resid</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Regressione ausiliaria: residui su tutti gli strumenti</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>Z_const <span class="op">=</span> add_constant(Z)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>aux_reg <span class="op">=</span> OLS(residuals, Z_const).fit()</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Sargan statistic: n * R²</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="bu">len</span>(residuals)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>sargan_stat <span class="op">=</span> n <span class="op">*</span> aux_reg.rsquared</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Gradi di libertà: (# strumenti) - (# variabili endogene)</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Abbiamo 3 strumenti e 3 variabili esplicative, ma solo 1 è endogena</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Quindi df = 3 - 1 = 2 (sovra-identificazione di ordine 2)</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>n_instruments <span class="op">=</span> Z.shape[<span class="dv">1</span>]</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>n_endogenous <span class="op">=</span> <span class="dv">1</span>  <span class="co"># solo value_lag1_sentiment è endogena</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> n_instruments <span class="op">-</span> n_endogenous</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>p_value <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> chi2.cdf(sargan_stat, df)</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span><span class="op">*</span><span class="dv">70</span>)</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"📊 SARGAN TEST DI VALIDITÀ STRUMENTI"</span>)</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span><span class="op">*</span><span class="dv">70</span>)</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">H0: Gli strumenti sono validi (non correlati con errori)"</span>)</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Statistic: </span><span class="sc">{</span>sargan_stat<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Degrees of freedom: </span><span class="sc">{</span>df<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"P-value: </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Conclusione: "</span>, end<span class="op">=</span><span class="st">""</span>)</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&gt;</span> <span class="fl">0.05</span>:</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"✅ Non rifiutiamo H0 - Strumenti validi (p &gt; 0.05)"</span>)</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"⚠️ Rifiutiamo H0 - Strumenti potrebbero non essere validi (p &lt; 0.05)"</span>)</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Interpretazione:"</span>)</span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"- Un p-value alto (&gt;0.05) indica che gli strumenti sono ortogonali agli errori"</span>)</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"- Lag profondi (t-3) sono buoni strumenti perché non correlati con shock correnti"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>======================================================================
+📊 SARGAN TEST DI VALIDITÀ STRUMENTI
+======================================================================
+
+H0: Gli strumenti sono validi (non correlati con errori)
+
+Statistic: 9.304
+Degrees of freedom: 2
+P-value: 0.0095
+
+Conclusione: ⚠️ Rifiutiamo H0 - Strumenti potrebbero non essere validi (p &lt; 0.05)
+
+Interpretazione:
+- Un p-value alto (&gt;0.05) indica che gli strumenti sono ortogonali agli errori
+- Lag profondi (t-3) sono buoni strumenti perché non correlati con shock correnti</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="prossimi-passi" class="level2 anchored" data-number="5" data-anchor-id="prossimi-passi">
+<h2 class="anchored" data-number="5" data-anchor-id="prossimi-passi"><span class="header-section-number">5</span> Prossimi Passi</h2>
+<section id="per-analisi-gmm-avanzata" class="level3 anchored" data-anchor-id="per-analisi-gmm-avanzata" data-number="5.1">
+<h3 class="anchored" data-anchor-id="per-analisi-gmm-avanzata" data-number="5.1"><span class="header-section-number">5.1</span> Per analisi GMM avanzata:</h3>
+<ol type="1">
+<li><strong>Integrare variabili macro</strong> (PIL, produzione industriale, disoccupazione)
+<ul>
+<li>Da combinare con survey indicators come strumenti</li>
+</ul></li>
+<li><strong>System GMM multi-paese</strong>
+<ul>
+<li>Sfruttare dimensione cross-section (IT, DE, FR, ES, EA20)</li>
+<li>Stimare effetti fissi/random + GMM</li>
+</ul></li>
+<li><strong>VECM per relazioni lungo periodo</strong>
+<ul>
+<li>Data la cointegrazione identificata</li>
+<li>Modello Error Correction con GMM</li>
+</ul></li>
+<li><strong>Forward-looking forecasting</strong>
+<ul>
+<li>Usare indicatori leading per previsioni PIL/produzione</li>
+<li>Nowcasting mensile basato su sentiment</li>
+</ul></li>
+<li><strong>Robustezza</strong>
+<ul>
+<li>Test Hansen J-statistic</li>
+<li>Weak instruments tests</li>
+<li>Rolling window estimation</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="referenze-e-risorse" class="level2 anchored" data-number="6" data-anchor-id="referenze-e-risorse">
+<h2 class="anchored" data-number="6" data-anchor-id="referenze-e-risorse"><span class="header-section-number">6</span> Referenze e Risorse</h2>
+<section id="dataset-originali" class="level3 anchored" data-anchor-id="dataset-originali" data-number="6.1">
+<h3 class="anchored" data-anchor-id="dataset-originali" data-number="6.1"><span class="header-section-number">6.1</span> Dataset originali</h3>
+<ul>
+<li>Eurostat DG ECFIN: <a href="https://ec.europa.eu/eurostat/databrowser/view/ei_bssi_m_r2/default/table">Economic Sentiment Indicators</a></li>
+<li>Istat SDMX: Dataset DCSC_IESI (6_64_DF_DCSC_IESI_2)</li>
+</ul>
+</section>
+<section id="librerie-python-per-gmm" class="level3 anchored" data-anchor-id="librerie-python-per-gmm" data-number="6.2">
+<h3 class="anchored" data-anchor-id="librerie-python-per-gmm" data-number="6.2"><span class="header-section-number">6.2</span> Librerie Python per GMM</h3>
+<ul>
+<li><code>linearmodels</code>: Panel data econometrics</li>
+<li><code>pydynpd</code>: Dynamic panel GMM (Arellano-Bond)</li>
+<li><code>statsmodels</code>: GMM estimation framework</li>
+</ul>
+</section>
+<section id="riferimenti-bibliografici" class="level3 anchored" data-anchor-id="riferimenti-bibliografici" data-number="6.3">
+<h3 class="anchored" data-anchor-id="riferimenti-bibliografici" data-number="6.3"><span class="header-section-number">6.3</span> Riferimenti bibliografici</h3>
+<section id="metodi-gmm-e-panel-dinamici" class="level4 anchored" data-anchor-id="metodi-gmm-e-panel-dinamici" data-number="6.3.1">
+<h4 class="anchored" data-anchor-id="metodi-gmm-e-panel-dinamici" data-number="6.3.1"><span class="header-section-number">6.3.1</span> Metodi GMM e panel dinamici</h4>
+<p>Arellano, M., &amp; Bond, S. (1991). Some Tests of Specification for Panel Data: Monte Carlo Evidence and an Application to Employment Equations. Review of Economic Studies, 58(2), 277–297.</p>
+<p>Blundell, R., &amp; Bond, S. (1998). Initial Conditions and Moment Restrictions in Dynamic Panel Data Models. Journal of Econometrics, 87(1), 115–143.</p>
+<p>Hansen, L. P. (1982). Large Sample Properties of Generalized Method of Moments Estimators. Econometrica, 50(4), 1029–1054.</p>
+</section>
+<section id="modelli-macro-e-credito-italia" class="level4 anchored" data-anchor-id="modelli-macro-e-credito-italia" data-number="6.3.2">
+<h4 class="anchored" data-anchor-id="modelli-macro-e-credito-italia" data-number="6.3.2"><span class="header-section-number">6.3.2</span> Modelli macro e credito (Italia)</h4>
+<p>Bacchini, F., Brandimarte, C., Crivelli, P., De Santis, R., Fioramanti, M., Girardi, A., Golinelli, R., Jona-Lasinio, C., Mancini, M., Pappalardo, C., Rossi, D., Ventura, M., &amp; Vicarelli, C. (s.d.). Building the core of the Istat system of models for forecasting the Italian economy: MeMo-It. ISTAT Working Paper.</p>
+<p>Basile, R., Giallonardo, L., Girardi, A., &amp; Mantegazzi, D. (2024). Access to credit and economic complexity: Evidence from Italian provinces. Journal of Regional Science, 64(4), 1183–1204.</p>
+<p>Girardi, A., Margani, P., &amp; Ventura, M. (s.d.). An Indicator of Credit Crunch using Italian Business Surveys. ISTAT Working Paper.</p>
+<p>Girardi, A., &amp; Ventura, M. (2021). Measuring credit crunch in Italy: Evidence from a survey-based indicator. Annals of Operations Research, 299(1–2), 567–592.</p>
+<hr>
+<p><strong>Autore</strong>: Paolo Volterra<br>
+<strong>Repository</strong>: <a href=".">Claude Code - Istat Fiducia Imprese</a><br>
+<strong>Data ultimo aggiornamento</strong>: 2026-02-05</p>
+</section>
+</section>
+</section>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2602_FiduciaImpreseGMM/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

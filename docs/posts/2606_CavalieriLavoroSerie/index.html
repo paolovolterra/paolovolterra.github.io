@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="Cavalieri del Lavoro, Made in Italy, élite imprenditoriali, serie storica, capitalismo familiare, geografia dello sviluppo">
+<meta name="description" content="Analisi dell’archivio storico completo dei Cavalieri del Lavoro (1902–2025), estratto dall’API pubblica della Federazione Nazionale (pannello.cavalieridellavoro.it): 3.006 profili con biografie complete, regione di nomina, settore e attività.">
+
+<title>Cavalieri del Lavoro 1902–2025 – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Cavalieri del Lavoro 1902–2025 – Paolo Volterra">
+<meta property="og:description" content="Analisi dell’archivio storico completo dei Cavalieri del Lavoro (1902–2025), estratto dall’API pubblica della Federazione Nazionale (pannello.cavalieridellavoro.it): 3.006 profili con biografie complete, regione di nomina, settore e attività.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2606_CavalieriLavoroSerie/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Cavalieri del Lavoro 1902–2025 – Paolo Volterra">
+<meta name="twitter:description" content="Analisi dell’archivio storico completo dei Cavalieri del Lavoro (1902–2025), estratto dall’API pubblica della Federazione Nazionale (pannello.cavalieridellavoro.it): 3.006 profili con biografie complete, regione di nomina, settore e attività.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2606_CavalieriLavoroSerie/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#il-dataset-un-secolo-di-onorificenze" id="toc-il-dataset-un-secolo-di-onorificenze" class="nav-link active" data-scroll-target="#il-dataset-un-secolo-di-onorificenze"><span class="header-section-number">1</span> Il dataset: un secolo di onorificenze</a></li>
+  <li><a href="#serie-storica-per-decennio" id="toc-serie-storica-per-decennio" class="nav-link" data-scroll-target="#serie-storica-per-decennio"><span class="header-section-number">2</span> Serie storica per decennio</a></li>
+  <li><a href="#distribuzione-geografica" id="toc-distribuzione-geografica" class="nav-link" data-scroll-target="#distribuzione-geografica"><span class="header-section-number">3</span> Distribuzione geografica</a></li>
+  <li><a href="#genere-un-secolo-di-trasformazione" id="toc-genere-un-secolo-di-trasformazione" class="nav-link" data-scroll-target="#genere-un-secolo-di-trasformazione"><span class="header-section-number">4</span> Genere: un secolo di trasformazione</a></li>
+  <li><a href="#età-alla-nomina" id="toc-età-alla-nomina" class="nav-link" data-scroll-target="#età-alla-nomina"><span class="header-section-number">5</span> Età alla nomina</a></li>
+  <li><a href="#made-in-italy-proxy-le-filiere-classiche" id="toc-made-in-italy-proxy-le-filiere-classiche" class="nav-link" data-scroll-target="#made-in-italy-proxy-le-filiere-classiche"><span class="header-section-number">6</span> Made in Italy proxy: le filiere classiche</a></li>
+  <li><a href="#cavalieri-viventi-il-made-in-italy-attivo" id="toc-cavalieri-viventi-il-made-in-italy-attivo" class="nav-link" data-scroll-target="#cavalieri-viventi-il-made-in-italy-attivo"><span class="header-section-number">7</span> Cavalieri viventi: il Made in Italy attivo</a></li>
+  <li><a href="#note-metodologiche" id="toc-note-metodologiche" class="nav-link" data-scroll-target="#note-metodologiche"><span class="header-section-number">8</span> Note metodologiche</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_CavalieriLavoroSerie/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Cavalieri del Lavoro 1902–2025</h1>
+<p class="subtitle lead">Serie storica dell’eccellenza produttiva italiana riconosciuta dallo Stato</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Imprese</div>
+    <div class="quarto-category">Storia economica</div>
+    <div class="quarto-category">Cavalieri del Lavoro</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Analisi dell’archivio storico completo dei Cavalieri del Lavoro (1902–2025), estratto dall’API pubblica della Federazione Nazionale (pannello.cavalieridellavoro.it): 3.006 profili con biografie complete, regione di nomina, settore e attività.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">3 giugno 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>Analisi dell’archivio storico completo dei Cavalieri del Lavoro (1902–2025), estratto dall’API pubblica della Federazione Nazionale (pannello.cavalieridellavoro.it): 3.006 profili con biografie complete, regione di nomina, settore e attività. La serie documenta oltre un secolo di riconoscimento istituzionale dell’eccellenza produttiva italiana — da un sistema dominato da industria e agricoltura agli inizi del Novecento a una struttura plurisettoriale con crescente presenza femminile e di servizi avanzati. Emerge un’Italia imprenditoriale concentrata in Lombardia, Piemonte ed Emilia-Romagna (44% delle nomine), con una quota meridionale strutturalmente sottorappresentata. La composizione settoriale riflette i cicli dell’economia italiana: industrializzazione precoce del Nord, rimonta dell’agroalimentare dal secondo dopoguerra, emersione dei servizi finanziari dagli anni ’80, timida comparsa del digitale nel decennio 2010. Il genere femminile passa dall’1% nelle prime decadi al 25% nelle nomine più recenti.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>Cavalieri del Lavoro, Made in Italy, élite imprenditoriali, serie storica, capitalismo familiare, geografia dello sviluppo</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="il-dataset-un-secolo-di-onorificenze" class="level2 anchored" data-number="1" data-anchor-id="il-dataset-un-secolo-di-onorificenze">
+<h2 class="anchored" data-number="1" data-anchor-id="il-dataset-un-secolo-di-onorificenze"><span class="header-section-number">1</span> Il dataset: un secolo di onorificenze</h2>
+<p>L’archivio della Federazione Nazionale dei Cavalieri del Lavoro raccoglie <strong>3.006 profili completi</strong> di cavalieri nominati dal <strong>1902 al 2025</strong>. Ogni scheda include la biografia estesa, la regione di nomina, la data di nascita, il settore e la specifica attività — una fonte straordinaria per lo studio longitudinale dell’eccellenza produttiva italiana riconosciuta dallo Stato.</p>
+<div class="cell" data-execution_count="2">
+<div id="tab-overview" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="2">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-overview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="2">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicatore</th>
+<th style="text-align: left;">Valore</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Record totali</td>
+<td style="text-align: left;">3,006</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Anni coperti</td>
+<td style="text-align: left;">1902–2025</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Viventi</td>
+<td style="text-align: left;">572</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Con biografia completa</td>
+<td style="text-align: left;">3,006</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Con regione di nomina</td>
+<td style="text-align: left;">3,006</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Con data di nascita</td>
+<td style="text-align: left;">3,001</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Donne (stima)</td>
+<td style="text-align: left;">173 (6%)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;1</p>
+</div>
+</div>
+</div>
+</div>
+<div id="cell-fig-serie-storica" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div id="figura-serie-storica" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-serie-storica-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig01.png" class="figure-img" role="img" width="1415" height="477"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;1: Nomine annuali 1902–2025. Le variazioni riflettono scelte discrezionali del Consiglio dell’Ordine e interruzioni belliche (1914–18, 1940–45).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>La serie mostra l’impronta degli eventi macroeconomici (<a href="#figura-serie-storica" class="quarto-xref">Figura&nbsp;1</a>). Le due guerre mondiali azzerano le nomine; la ripresa è rapida ma i numeri annui rimangono contenuti fino agli anni ’50. Dal dopoguerra le nomine si stabilizzano attorno a <strong>25 per anno</strong>, il numero codificato dal regolamento vigente. La prima metà del Novecento ha una densità di nomine molto più alta perché l’istituzione era più giovane e i criteri di anzianità si stavano consolidando.</p>
+</section>
+<section id="serie-storica-per-decennio" class="level2 anchored" data-number="2" data-anchor-id="serie-storica-per-decennio">
+<h2 class="anchored" data-number="2" data-anchor-id="serie-storica-per-decennio"><span class="header-section-number">2</span> Serie storica per decennio</h2>
+<div id="cell-fig-decennio-settori" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div id="figura-decennio-settori" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-decennio-settori-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig02.png" class="figure-img" role="img" width="1415" height="569"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;2: Composizione delle nomine per settore e decennio. La scala assoluta riflette il numero diverso di nomine per periodo (ciclo bellico, regolamenti, anni coperti per decennio incompleto).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="cell-fig-decennio-quote" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div id="figura-decennio-quote" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-decennio-quote-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig03.png" class="figure-img" role="img" width="1415" height="569"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;3: Quote percentuali per settore e decennio. Evidenzia i cambiamenti strutturali nella composizione del riconoscimento istituzionale.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>La composizione settoriale rivela tre grandi transizioni storiche (<a href="#figura-decennio-quote" class="quarto-xref">Figura&nbsp;3</a>):</p>
+<p><strong>Prima fase (1900–1940)</strong>: l’Agricoltura pesa tra il 15% e il 20% delle nomine — un dato coerente con la struttura di un’economia ancora fortemente rurale. L’Industria domina in assoluto ma è concentrata in pochi settori (tessile, metalmeccanico, cantieristica). Il Credito è quasi assente.</p>
+<p><strong>Seconda fase (1950–1980)</strong>: il boom industriale è evidente. La quota di Industria rimane alta ma si diversifica — compaiono elettronica, chimica, componentistica. Il Credito emerge come categoria autonoma dal 15% al 25% delle nomine, segnalando il ruolo crescente del sistema bancario nel capitalismo italiano del dopoguerra.</p>
+<p><strong>Terza fase (1990–2025)</strong>: i Servizi (Commercio, turismo e servizi) crescono dal 5–8% al 17–18%. L’Artigianato torna visibile nelle nomine più recenti — ma ora ha un significato diverso: non artigianato di subsistenza ma eccellenza manifatturiera di nicchia (pelletteria, gioielleria, penne stilografiche). L’Agricoltura scende sotto il 5% nel 2010s, prima di risalire col vino e l’agrifood premium nel 2020s.</p>
+</section>
+<section id="distribuzione-geografica" class="level2 anchored" data-number="3" data-anchor-id="distribuzione-geografica">
+<h2 class="anchored" data-number="3" data-anchor-id="distribuzione-geografica"><span class="header-section-number">3</span> Distribuzione geografica</h2>
+<div id="cell-fig-mappa" class="cell" data-execution_count="6">
+<div id="figura-mappa" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-mappa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<div id="3911d62d-fbb1-45eb-8362-dbcdc9c9752c" class="plotly-graph-div" style="height:500px; width:100%;">
+
+</div>
+</div>
+</div>
+<div class="caption">
+<p>Figura&nbsp;4: Cavalieri del Lavoro 1902–2025 per regione di nomina (esclusi 71 ‘Estero’). Colore proporzionale al numero totale di nomine.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="cell-fig-regioni-bar" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<div id="figura-regioni-bar" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-regioni-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig06.png" class="figure-img" role="img" width="1156" height="633"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;5: Prime 15 regioni per numero totale di nomine 1902–2025. In verde le regioni del Nord, arancio il Centro, rosso il Sud e Isole.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>La concentrazione geografica è un tratto strutturale di lungo periodo (<a href="#figura-mappa" class="quarto-xref">Figura&nbsp;4</a>, <a href="#figura-regioni-bar" class="quarto-xref">Figura&nbsp;5</a>). <strong>Lombardia</strong> (692), <strong>Piemonte</strong> (374) ed <strong>Emilia-Romagna</strong> (277) da soli coprono il <strong>44% dell’intero archivio storico</strong>. Veneto (213) e Toscana (219) completano il quintetto del Made in Italy manifatturiero.</p>
+<p>Il Lazio (250) è la grande eccezione meridionale — ma il peso romano riflette la concentrazione di sedi legali, holding e imprese di servizi nella capitale, più che una vocazione produttiva paragonabile alla pianura padana.</p>
+<p>Il Mezzogiorno è strutturalmente sottorappresentato: Campania, Puglia, Sicilia e Calabria insieme raggiungono il 18% delle nomine, a fronte di un peso demografico del 34%. Il dato è coerente con la letteratura sul dualismo economico italiano — ma richiede una lettura sfumata: le nomine meridionali tendono a concentrarsi in settori specifici (agroalimentare, commercio, costruzioni) che riflettono le specializzazioni del territorio.</p>
+<div id="cell-fig-regioni-decennio" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<div id="figura-regioni-decennio" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-regioni-decennio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig07.png" class="figure-img" role="img" width="1415" height="504"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;6: Evoluzione delle nomine per macro-area geografica (Nord, Centro, Sud e Isole, Estero), per decennio.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>La quota del Nord è rimasta sostanzialmente stabile al 55–65% per tutto il periodo (<a href="#figura-regioni-decennio" class="quarto-xref">Figura&nbsp;6</a>), con una lieve erosione negli anni 2000 a favore dei servizi del Centro-Sud. La quota “Estero” (imprenditori italiani residenti o operanti fuori dai confini) oscilla tra il 2% e il 5%, con punte nei decenni di forte emigrazione.</p>
+</section>
+<section id="genere-un-secolo-di-trasformazione" class="level2 anchored" data-number="4" data-anchor-id="genere-un-secolo-di-trasformazione">
+<h2 class="anchored" data-number="4" data-anchor-id="genere-un-secolo-di-trasformazione"><span class="header-section-number">4</span> Genere: un secolo di trasformazione</h2>
+<div id="cell-fig-genere-storico" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div id="figura-genere-storico" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-genere-storico-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig08.png" class="figure-img" role="img" width="1288" height="504"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;7: Quota femminile stimata nelle nomine per decennio, 1900–2020. La stima è basata su pattern del nome.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<div id="tab-genere-decennio" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="10">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="tab-genere-decennio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="10">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Decennio</th>
+<th style="text-align: left;">Totale nomine</th>
+<th style="text-align: left;">Donne (n)</th>
+<th style="text-align: left;">% donne</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1900s</td>
+<td style="text-align: left;">420</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">2.4%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1910s</td>
+<td style="text-align: left;">338</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">2.1%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1920s</td>
+<td style="text-align: left;">147</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">3.5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1930s</td>
+<td style="text-align: left;">211</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">2.9%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1940s</td>
+<td style="text-align: left;">91</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2.2%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1950s</td>
+<td style="text-align: left;">249</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">0.8%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1960s</td>
+<td style="text-align: left;">253</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">2.4%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1970s</td>
+<td style="text-align: left;">251</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">2.4%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1980s</td>
+<td style="text-align: left;">204</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">4.5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1990s</td>
+<td style="text-align: left;">241</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">4.2%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2000s</td>
+<td style="text-align: left;">246</td>
+<td style="text-align: left;">25</td>
+<td style="text-align: left;">10.6%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2010s</td>
+<td style="text-align: left;">257</td>
+<td style="text-align: left;">45</td>
+<td style="text-align: left;">18.8%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2020s</td>
+<td style="text-align: left;">175</td>
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">26.8%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;2</p>
+</div>
+</div>
+</div>
+</div>
+<p>La traiettoria della presenza femminile è una delle più significative trasformazioni di lungo periodo documentate nell’archivio (<a href="#figura-genere-storico" class="quarto-xref">Figura&nbsp;7</a>). Dall’1–2% dei primi decenni del Novecento, la quota femminile sale a oltre il 17% nel 2010s e al 25% nel 2020s.</p>
+<p>Due meccanismi possono spiegare questa progressione. Il primo è strutturale: il capitalismo familiare italiano ha storicamente trasmesso la guida dell’impresa ai figli maschi; con il cambiamento nelle norme di successione e nei modelli educativi, le figlie sono diventate titolari di impresa con frequenza crescente. Il secondo è istituzionale: le segnalazioni prefettizie e ministeriali riflettono i mutamenti nella visibilità delle donne imprenditrici nelle associazioni di categoria.</p>
+</section>
+<section id="età-alla-nomina" class="level2 anchored" data-number="5" data-anchor-id="età-alla-nomina">
+<h2 class="anchored" data-number="5" data-anchor-id="età-alla-nomina"><span class="header-section-number">5</span> Età alla nomina</h2>
+<div id="cell-fig-eta" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<div id="figura-eta" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-eta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig09.png" class="figure-img" role="img" width="1415" height="503"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;8: Distribuzione dell’età alla nomina (archivio completo, n=2.943 con dati disponibili). La mediana è 60 anni.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>La mediana dell’età alla nomina è <strong>60 anni</strong> (<a href="#figura-eta" class="quarto-xref">Figura&nbsp;8</a>), con una distribuzione quasi simmetrica tra 50 e 70. Il requisito dei vent’anni di attività continuativa con responsabilità autonoma produce strutturalmente una selezione verso la maturità: chi viene nominato a 50 anni ha iniziato a costruire la propria reputazione a 30, mentre chi viene nominato a 70 è spesso un leader storico del settore, riconosciuto “con ritardo” dall’istituzione.</p>
+<p>L’età mediana è rimasta notevolmente stabile nel tempo, oscillando tra 55 e 65 anni per tutto il periodo — segno che il meccanismo di selezione non è cambiato nelle sue logiche di fondo, anche quando è cambiata la composizione settoriale e di genere del pool di nominati.</p>
+</section>
+<section id="made-in-italy-proxy-le-filiere-classiche" class="level2 anchored" data-number="6" data-anchor-id="made-in-italy-proxy-le-filiere-classiche">
+<h2 class="anchored" data-number="6" data-anchor-id="made-in-italy-proxy-le-filiere-classiche"><span class="header-section-number">6</span> Made in Italy proxy: le filiere classiche</h2>
+<div id="cell-fig-mit" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display">
+<div id="figura-mit" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-mit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig10.png" class="figure-img" role="img" width="1288" height="504"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;9: Quota % di nomine attribuibili a filiere ‘Made in Italy core’ per decennio. Proxy costruita su parole chiave in attivita_it e settore.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="cell-fig-attivita-top" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display">
+<div id="figura-attivita-top" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-attivita-top-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig11.png" class="figure-img" role="img" width="1286" height="763"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;10: Top 25 categorie di attività (attivita_it normalizzata) — archivio completo 1902–2025.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Il proxy Made in Italy oscilla tra il 30% e il 50% delle nomine per decennio (<a href="#figura-mit" class="quarto-xref">Figura&nbsp;9</a>), senza una tendenza monotona chiara. I picchi coincidono con decenni di forte espansione della manifattura tradizionale (1910s, 1980s, 2010s); i minimi riflettono la penetrazione di settori non-manifatturieri (credito, servizi, edilizia pubblica).</p>
+<p>La top-25 delle attività (<a href="#figura-attivita-top" class="quarto-xref">Figura&nbsp;10</a>) conferma il cuore del sistema produttivo premiato: industria metalmeccanica, industria tessile, industria alimentare, agricoltura ed edilizia rappresentano da soli oltre il 35% dell’archivio. Colpisce la presenza dell’<strong>industria armatoriale</strong> tra le prime posizioni — un settore che riflette l’importanza storica della marineria mercantile italiana (Genova, Napoli, Venezia) nel capitalismo dell’Ottocento e del primo Novecento.</p>
+</section>
+<section id="cavalieri-viventi-il-made-in-italy-attivo" class="level2 anchored" data-number="7" data-anchor-id="cavalieri-viventi-il-made-in-italy-attivo">
+<h2 class="anchored" data-number="7" data-anchor-id="cavalieri-viventi-il-made-in-italy-attivo"><span class="header-section-number">7</span> Cavalieri viventi: il Made in Italy attivo</h2>
+<div id="cell-fig-viventi" class="cell" data-execution_count="14">
+<div class="cell-output cell-output-display">
+<div id="figura-viventi" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="figure quarto-float quarto-float-fig">
+<div aria-describedby="figura-viventi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><img src="figure/fig12.png" class="figure-img" role="img" width="1418" height="577"></p>
+</div>
+<div class="caption">
+<p>Figura&nbsp;11: Composizione dei 607 Cavalieri del Lavoro viventi per settore e regione.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>I <strong>572</strong> cavalieri viventi rappresentano il Made in Italy istituzionalmente riconosciuto e ancora attivo. La composizione riflette il peso dei settori premiati negli ultimi trent’anni: l’Industria domina con oltre l’80%, mentre i Servizi hanno guadagnato quota relativa rispetto all’archivio storico. La concentrazione regionale è simile al totale storico, con Lombardia, Piemonte ed Emilia-Romagna in testa.</p>
+</section>
+<section id="note-metodologiche" class="level2 anchored" data-number="8" data-anchor-id="note-metodologiche">
+<h2 class="anchored" data-number="8" data-anchor-id="note-metodologiche"><span class="header-section-number">8</span> Note metodologiche</h2>
+<p><strong>Fonte</strong>: API pubblica <code>pannello.cavalieridellavoro.it/api/public/knights/{brevetto}</code> — endpoint di dettaglio per singolo cavaliere. Dati estratti il 2026-06-03.</p>
+<p><strong>Copertura</strong>: 3.006 record su 3.043 presenti nella lista generale (37 brevetti restituiscono 404 sul dettaglio, presumibilmente record incompleti lato server). L’anno 2026 non è ancora nell’API al momento dell’estrazione.</p>
+<p><strong>Genere</strong>: stimato da pattern del nome (lista di nomi femminili italiani + regole morfologiche). La stima è accurata per i nomi comuni ma può sbagliare su nomi stranieri, rari o ambigui. Si stima un errore del 2–4%.</p>
+<p><strong>Made in Italy proxy</strong>: classificazione binaria basata su parole chiave nel campo <code>attivita_it</code> e <code>settore</code>. Non cattura le sfumature dei quattro assi analitici (etichetta d’origine, brand, produzione, controllo) proposti nel framework teorico.</p>
+<p><strong>Età anomale</strong>: un record (brevetto n.&nbsp;45, Sarica Giuseppe) mostra età negativa alla nomina — presumibile errore nell’anno di nascita nel database della Federazione. Escluso dall’analisi delle età.</p>
+<hr>
+<p><strong>Trasparenza sull’uso dell’intelligenza artificiale</strong></p>
+<p>L’uso di strumenti di intelligenza artificiale generativa è dichiarato esplicitamente in quanto parte del processo di lavoro seguito nella redazione del presente documento. Tali strumenti sono stati impiegati a supporto della lettura, della sintesi, della riorganizzazione argomentativa e della revisione testuale, sempre nell’ambito di un processo pienamente controllato dall’autore.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le verifiche effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore.</p>
+<p>L’intelligenza artificiale è stata utilizzata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+</section>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2606_CavalieriLavoroSerie/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

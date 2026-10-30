@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="IRPEF, Mezzogiorno, redditi, componenti, MEF, Sud, 2019-2024">
+<meta name="description" content="Analisi delle dichiarazioni dei redditi (MEF) per le 8 regioni del Mezzogiorno nel periodo 2019–2024.">
+
+<title>IRPEF nel Mezzogiorno – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="IRPEF nel Mezzogiorno – Paolo Volterra">
+<meta property="og:description" content="Analisi delle dichiarazioni dei redditi (MEF) per le 8 regioni del Mezzogiorno nel periodo 2019–2024.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2605_IrpefMezzogiorno/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="IRPEF nel Mezzogiorno – Paolo Volterra">
+<meta name="twitter:description" content="Analisi delle dichiarazioni dei redditi (MEF) per le 8 regioni del Mezzogiorno nel periodo 2019–2024.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2605_IrpefMezzogiorno/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#panoramica-reddito-complessivo-e-contribuenti" id="toc-panoramica-reddito-complessivo-e-contribuenti" class="nav-link active" data-scroll-target="#panoramica-reddito-complessivo-e-contribuenti"><span class="header-section-number">1</span> Panoramica: reddito complessivo e contribuenti</a></li>
+  <li><a href="#composizione-del-reddito-per-regione" id="toc-composizione-del-reddito-per-regione" class="nav-link" data-scroll-target="#composizione-del-reddito-per-regione"><span class="header-section-number">2</span> Composizione del reddito per regione</a></li>
+  <li><a href="#crescita-indicizzata-2019-100" id="toc-crescita-indicizzata-2019-100" class="nav-link" data-scroll-target="#crescita-indicizzata-2019-100"><span class="header-section-number">3</span> Crescita indicizzata 2019 = 100</a></li>
+  <li><a href="#reddito-medio-per-dichiarante" id="toc-reddito-medio-per-dichiarante" class="nav-link" data-scroll-target="#reddito-medio-per-dichiarante"><span class="header-section-number">4</span> Reddito medio per dichiarante</a></li>
+  <li><a href="#variazione-20192024-per-regione-e-componente" id="toc-variazione-20192024-per-regione-e-componente" class="nav-link" data-scroll-target="#variazione-20192024-per-regione-e-componente"><span class="header-section-number">5</span> Variazione 2019–2024 per regione e componente</a></li>
+  <li><a href="#andamento-aggregato-mezzogiorno-vs-italia" id="toc-andamento-aggregato-mezzogiorno-vs-italia" class="nav-link" data-scroll-target="#andamento-aggregato-mezzogiorno-vs-italia"><span class="header-section-number">6</span> Andamento aggregato Mezzogiorno vs Italia</a></li>
+  <li><a href="#mezzogiorno-vs-resto-ditalia-divergenza-per-componente" id="toc-mezzogiorno-vs-resto-ditalia-divergenza-per-componente" class="nav-link" data-scroll-target="#mezzogiorno-vs-resto-ditalia-divergenza-per-componente"><span class="header-section-number">7</span> Mezzogiorno vs Resto d’Italia: divergenza per componente</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2605_IrpefMezzogiorno/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">IRPEF nel Mezzogiorno</h1>
+<p class="subtitle lead">Andamento delle componenti reddituali nelle 8 regioni meridionali, 2019–2024</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Redditi</div>
+    <div class="quarto-category">IRPEF</div>
+    <div class="quarto-category">Mezzogiorno</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Analisi delle dichiarazioni dei redditi (MEF) per le 8 regioni del Mezzogiorno nel periodo 2019–2024.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">4 maggio 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>Analisi delle dichiarazioni dei redditi (MEF) per le 8 regioni del Mezzogiorno nel periodo 2019–2024. Vengono esaminate le principali componenti reddituali — lavoro dipendente, pensioni, lavoro autonomo, impresa ordinaria, impresa semplificata, partecipazioni e fabbricati — attraverso l’andamento in termini assoluti, la composizione relativa e la crescita indicizzata rispetto al 2019. L’obiettivo è mettere in luce le dinamiche post-COVID e le specificità strutturali del mercato del lavoro meridionale.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>IRPEF, Mezzogiorno, redditi, componenti, MEF, Sud, 2019-2024</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="sec-panoramica" class="level2" data-number="1">
+<section id="panoramica-reddito-complessivo-e-contribuenti" class="level2 anchored" data-number="1" data-anchor-id="sec-panoramica">
+<h2 class="anchored" data-number="1" data-anchor-id="panoramica-reddito-complessivo-e-contribuenti"><span class="header-section-number">1</span> Panoramica: reddito complessivo e contribuenti</h2>
+<div id="0063f556" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div>
+<div class="figure">
+<p><img src="figure/fig01.png" class="figure-img" role="img" width="1785" height="767"></p>
+</div>
+</div>
+</div>
+</div>
+<p>Nel quinquennio 2019–2024 tutte e otto le regioni meridionali registrano una crescita robusta del reddito imponibile aggregato, con variazioni comprese tra il +21,4% della Basilicata e il +25,3% dell’Abruzzo. Campania (+24,7%) e Puglia (+24,5%) spiccano per la massa assoluta di reddito aggiunto: la Campania passa da 52,8 a 65,9 miliardi di euro, la Puglia da 40,6 a 50,5 miliardi. Il dato più rilevante emerge però dal confronto tra le due serie: a fronte di una crescita del reddito nell’ordine del 22-25%, il numero di contribuenti rimane pressoché stabile — in molte regioni la variazione non supera il 2-3%. Questo disaccoppiamento indica che la crescita è quasi integralmente di natura intensiva (redditi medi più alti per gli stessi contribuenti) e non estensiva (aumento della platea dei dichiaranti). Il calo del 2020 è visibile in tutte le regioni e riflette l’impatto del COVID-19 sui redditi da lavoro e da impresa; il rimbalzo del 2021 è altrettanto generalizzato, seguito da una fase di accelerazione nel 2022-2023 trainata dalla rivalutazione delle pensioni e dalla crescita salariale post-contrattuale.</p>
+<div id="a4a56d23" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div id="T_ac3a0" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
+<div class="figure quarto-float quarto-float-tbl">
+<div aria-describedby="T_ac3a0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">&nbsp;</th>
+<th style="text-align: left;">2019</th>
+<th style="text-align: left;">2020</th>
+<th style="text-align: left;">2021</th>
+<th style="text-align: left;">2022</th>
+<th style="text-align: left;">2023</th>
+<th style="text-align: left;">2024</th>
+<th style="text-align: left;">Δ 2019-24 (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">regione</td>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;">&nbsp;</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Abruzzo</td>
+<td style="text-align: left;">15.7</td>
+<td style="text-align: left;">15.6</td>
+<td style="text-align: left;">16.4</td>
+<td style="text-align: left;">17.4</td>
+<td style="text-align: left;">18.7</td>
+<td style="text-align: left;">19.7</td>
+<td style="text-align: left;">25.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Basilicata</td>
+<td style="text-align: left;">5.9</td>
+<td style="text-align: left;">5.9</td>
+<td style="text-align: left;">6.1</td>
+<td style="text-align: left;">6.5</td>
+<td style="text-align: left;">6.9</td>
+<td style="text-align: left;">7.2</td>
+<td style="text-align: left;">22.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Calabria</td>
+<td style="text-align: left;">17.3</td>
+<td style="text-align: left;">17.0</td>
+<td style="text-align: left;">17.8</td>
+<td style="text-align: left;">18.8</td>
+<td style="text-align: left;">20.2</td>
+<td style="text-align: left;">21.1</td>
+<td style="text-align: left;">22.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Campania</td>
+<td style="text-align: left;">52.8</td>
+<td style="text-align: left;">52.0</td>
+<td style="text-align: left;">54.7</td>
+<td style="text-align: left;">58.4</td>
+<td style="text-align: left;">62.6</td>
+<td style="text-align: left;">65.9</td>
+<td style="text-align: left;">24.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Molise</td>
+<td style="text-align: left;">3.3</td>
+<td style="text-align: left;">3.2</td>
+<td style="text-align: left;">3.4</td>
+<td style="text-align: left;">3.6</td>
+<td style="text-align: left;">3.8</td>
+<td style="text-align: left;">4.0</td>
+<td style="text-align: left;">21.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Puglia</td>
+<td style="text-align: left;">40.6</td>
+<td style="text-align: left;">40.2</td>
+<td style="text-align: left;">42.4</td>
+<td style="text-align: left;">45.0</td>
+<td style="text-align: left;">48.1</td>
+<td style="text-align: left;">50.5</td>
+<td style="text-align: left;">24.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sardegna</td>
+<td style="text-align: left;">18.3</td>
+<td style="text-align: left;">18.0</td>
+<td style="text-align: left;">18.9</td>
+<td style="text-align: left;">20.1</td>
+<td style="text-align: left;">21.5</td>
+<td style="text-align: left;">22.6</td>
+<td style="text-align: left;">23.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">45.4</td>
+<td style="text-align: left;">45.0</td>
+<td style="text-align: left;">47.2</td>
+<td style="text-align: left;">50.2</td>
+<td style="text-align: left;">53.5</td>
+<td style="text-align: left;">56.2</td>
+<td style="text-align: left;">23.8</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="caption">
+<p>Tabella&nbsp;1: Reddito imponibile (Mld €)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>La tabella conferma la traiettoria ascendente con coerenza notevole: nessuna regione scende al di sotto del +21% nel periodo considerato, un risultato apprezzabile anche al netto dell’inflazione cumulata 2019-2024 (circa +18-19% secondo l’IPCA). In termini reali, la crescita residua è quindi modesta ma positiva per quasi tutte le realtà meridionali. La Basilicata (+21,4%) e la Campania (+24,7%) definiscono i due estremi; la dispersione contenuta suggerisce che la dinamica di base — rinnovi contrattuali, rivalutazione pensionistica, ripresa post-pandemica — ha operato in modo abbastanza uniforme su tutto il Mezzogiorno.</p>
+</section>
+</section>
+<section id="sec-composizione" class="level2" data-number="2">
+<section id="composizione-del-reddito-per-regione" class="level2 anchored" data-number="2" data-anchor-id="sec-composizione">
+<h2 class="anchored" data-number="2" data-anchor-id="composizione-del-reddito-per-regione"><span class="header-section-number">2</span> Composizione del reddito per regione</h2>
+<div id="0f02a703" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div>
+<div class="figure">
+<p><img src="figure/fig02.png" class="figure-img" role="img" width="2086" height="1257"></p>
+</div>
+</div>
+</div>
+</div>
+<p>In valori assoluti, il lavoro dipendente (blu) è la voce dominante in tutte e otto le regioni e assorbe tra il 51% (Calabria, Molise) e il 58% (Campania 2024) del reddito totale. Le pensioni (arancione) costituiscono la seconda componente, con un peso particolarmente elevato in Calabria e Molise dove sfiorano il 38%: un segnale della struttura demografica più anziana e del mercato del lavoro più fragile di queste regioni rispetto ad Abruzzo e Campania. Visivamente, il blocco dipendente+pensioni occupa oltre l’85% di ciascuna barra, lasciando poco spazio alle restanti cinque componenti. Le barre crescono in modo abbastanza omogeneo anno per anno, senza discontinuità improvvise eccetto il lieve assestamento del 2020. Il lavoro autonomo (verde) appare come una striscia sottile ma percettibilmente più alta nel 2024 rispetto al 2019, anticipo di quanto si vedrà nel grafico indicizzato.</p>
+<div id="6297b4e9" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<div>
+<div class="figure">
+<p><img src="figure/fig03.png" class="figure-img" role="img" width="2086" height="1257"></p>
+</div>
+</div>
+</div>
+</div>
+<p>Il grafico in quote percentuali rivela quanto la struttura del reddito meridionale sia rimasta sostanzialmente stabile nel quinquennio. Le variazioni di composizione sono dell’ordine di 1-2 punti percentuali: il lavoro dipendente guadagna qualche decimale in quasi tutte le regioni (Campania da 56,0% a 58,0%, la variazione maggiore), mentre le pensioni cedono marginalmente terreno ovunque tranne in Basilicata (+0,6 pp) e Sardegna (+0,3 pp). Il lavoro autonomo cresce in quota di 0,4-0,7 pp in tutte le regioni, pur rimanendo sotto il 3,5%: un segnale di recupero reale ma ancora limitato. I fabbricati (rosa) mantengono una quota pressoché invariata intorno al 3-4%, coerentemente con la stasi dei valori catastali. L’assenza di variazioni brusche suggerisce che le politiche di sostegno al reddito durante la pandemia (cassa integrazione, sussidi) hanno preservato la struttura preesistente piuttosto che alterarla.</p>
+</section>
+</section>
+<section id="sec-indice" class="level2" data-number="3">
+<section id="crescita-indicizzata-2019-100" class="level2 anchored" data-number="3" data-anchor-id="sec-indice">
+<h2 class="anchored" data-number="3" data-anchor-id="crescita-indicizzata-2019-100"><span class="header-section-number">3</span> Crescita indicizzata 2019 = 100</h2>
+<div id="269a2daf" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<div>
+<div class="figure">
+<p><img src="figure/fig04.png" class="figure-img" role="img" width="2100" height="1218"></p>
+</div>
+</div>
+</div>
+</div>
+<p>Questo è il grafico più informativo dell’analisi perché libera le traiettorie dai diversi punti di partenza assoluti. Emergono quattro velocità nettamente distinte. <strong>Lavoro autonomo</strong>: la componente più dinamica, con crescite 2019-2024 comprese tra +37% (Campania) e +56% (Molise); la traiettoria è quasi verticale dal 2021, probabilmente amplificata dall’effetto combinato della ripresa post-COVID e dell’espansione del regime forfettario. <strong>Pensioni</strong>: linee molto compatte e parallele (+22-24%), con un’accelerazione visibile nel 2022-2023 riconducibile alla rivalutazione piena dell’assegno pensionistico sull’inflazione elevata di quel biennio. <strong>Lavoro dipendente</strong>: crescita intermedia (+21-30%) con maggiore dispersione; Campania (+29,8%) e Puglia (+28,1%) crescono più delle regioni più piccole come Basilicata (+20,7%), dove la base occupazionale è meno esposta ai settori con forti rinnovi contrattuali. <strong>Fabbricati</strong>: linee piatte immediatamente sopra quota 100, con variazioni contenute tra +1% e +3% sull’intero periodo — i redditi catastali non sono stati rivalutati e rimangono di fatto “congelati” in termini nominali. <strong>Partecipazioni</strong>: andamento volatile, con un rimbalzo nel 2021 e una stabilizzazione successiva; Campania (+4%) cresce meno di tutte, probabilmente per la diversa composizione settoriale delle società di persone.</p>
+</section>
+</section>
+<section id="sec-medio" class="level2" data-number="4">
+<section id="reddito-medio-per-dichiarante" class="level2 anchored" data-number="4" data-anchor-id="sec-medio">
+<h2 class="anchored" data-number="4" data-anchor-id="reddito-medio-per-dichiarante"><span class="header-section-number">4</span> Reddito medio per dichiarante</h2>
+<div id="e6e7e985" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<div>
+<div class="figure">
+<p><img src="figure/fig05.png" class="figure-img" role="img" width="1635" height="737"></p>
+</div>
+</div>
+</div>
+</div>
+<p>Il reddito medio per dichiarante cresce in modo uniforme in tutte le regioni, ma il livello assoluto rivela gerarchie ben consolidate. Nel 2024 l’Abruzzo guida con 22.118 € (+22,2% rispetto al 2019), seguito da Campania (20.729 €) e Sardegna (21.422 €); all’estremo opposto si collocano Calabria (18.692 €) e Puglia (20.059 €). Le crescite percentuali sono abbastanza omogenee (19,7-22,8%), con la Campania e la Sardegna leggermente sotto la media meridionale per effetto dell’allargamento della platea dei contribuenti (più dichiaranti di redditi bassi abbassano la media). Le curve mostrano una netta accelerazione a partire dal 2021, con il 2022 e il 2023 che segnano i salti più ampi: in quegli anni convergono i rinnovi contrattuali delle categorie più numerose (pubblico impiego, metalmeccanici, commercio) e la rivalutazione pensionistica legata all’inflazione. Vale la pena osservare che tutte e otto le regioni nel 2024 rimangono ancora al di sotto dei 23.000 €, soglia che nel Nord Italia rappresenta una media comune già nel 2019.</p>
+<div id="69e5bb34" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div>
+<div class="figure">
+<p><img src="figure/fig06.png" class="figure-img" role="img" width="2088" height="772"></p>
+</div>
+</div>
+</div>
+</div>
+<p>Il confronto tra le tre componenti principali illumina dinamiche molto diverse. Per il <strong>lavoro dipendente</strong> la crescita media è del 16-19%: Abruzzo (+17,4%) e Basilicata (+18,6%) crescono di più, probabilmente grazie a una maggiore incidenza di settori industriali con rinnovi contrattuali vigenti; Molise e Sardegna sono gli ultimi (+15,7-15,8%), riflettendo la prevalenza del pubblico impiego dove i rinnovi sono stati più graduali. I livelli assoluti (17.800-21.900 €) confermano che il lavoro dipendente meridionale rimane strutturalmente sotto la media nazionale (circa 23.000 €). Le <strong>pensioni</strong> crescono di più (+21-27%) e con maggiore dispersione: Molise spicca con +27,3%, il risultato più alto tra tutte le regioni e componenti —un effetto di composizione legato all’età media più elevata dei pensionati (assegni medi più alti rivalutati su una base nominale già elevata). Il <strong>lavoro autonomo</strong> è la componente con i livelli medi più alti (Abruzzo 56.912 €, Sardegna 59.043 €) e con la crescita più forte (+19-33%): i valori di Abruzzo (+32,9%) e Basilicata (+30,6%) suggeriscono un effetto di ricomposizione verso professioni con redditi più elevati, mentre Sicilia (+18%) e Campania (+20,5%) mostrano una crescita più contenuta coerente con un’offerta autonoma più frammentata.</p>
+</section>
+</section>
+<section id="sec-heatmap" class="level2" data-number="5">
+<section id="variazione-20192024-per-regione-e-componente" class="level2 anchored" data-number="5" data-anchor-id="sec-heatmap">
+<h2 class="anchored" data-number="5" data-anchor-id="variazione-20192024-per-regione-e-componente"><span class="header-section-number">5</span> Variazione 2019–2024 per regione e componente</h2>
+<div id="90203c50" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display">
+<div>
+<div class="figure">
+<p><img src="figure/fig07.png" class="figure-img" role="img" width="1481" height="733"></p>
+</div>
+</div>
+</div>
+</div>
+<p>La heatmap sintetizza le asimmetrie regionali in una lettura d’insieme. La colonna del <strong>lavoro autonomo</strong> è la più verde di tutta la matrice: nessuna regione cresce meno del +37% (Campania) e Molise raggiunge il +56%, con una varianza interna spiegata dalla composizione settoriale locale — piccola imprenditoria e libera professione reagiscono diversamente a seconda dei territori. La colonna delle <strong>pensioni</strong> è la più omogenea: le celle oscillano tra +21,5% (Sicilia) e +24,1% (Basilicata, Sardegna), un intervallo ristretto che riflette la natura centralizzata del meccanismo di rivalutazione. La colonna dei <strong>fabbricati</strong> è la più rossa: nessuna regione supera +3%, Molise è l’unica con segno negativo (-0,2%) — la mancata rivalutazione delle rendite catastali è un elemento sistemico che penalizza proporzionalmente di più il Mezzogiorno, dove il peso relativo degli immobili è maggiore che al Nord. Le <strong>partecipazioni</strong> mostrano la maggiore dispersione orizzontale: Basilicata (+19,3%) contro Campania (+4,1%), un’anomalia che suggerisce composizioni molto diverse nel tessuto societario delle due regioni. L’impresa ordinaria vede Campania (+27,3%) e Abruzzo (+21,8%) come capofila, mentre Basilicata (+11,4%) e Calabria (+15,7%) restano indietro, indicando una maggiore fragilità delle strutture imprenditoriali di maggiore dimensione in queste aree.</p>
+</section>
+</section>
+<section id="sec-confronto" class="level2" data-number="6">
+<section id="andamento-aggregato-mezzogiorno-vs-italia" class="level2 anchored" data-number="6" data-anchor-id="sec-confronto">
+<h2 class="anchored" data-number="6" data-anchor-id="andamento-aggregato-mezzogiorno-vs-italia"><span class="header-section-number">6</span> Andamento aggregato Mezzogiorno vs Italia</h2>
+<div id="edefdef9" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<div>
+<div class="figure">
+<p><img src="figure/fig08.png" class="figure-img" role="img" width="1786" height="794"></p>
+</div>
+</div>
+</div>
+</div>
+<p>Il confronto di composizione mette in luce due divergenze strutturali che persistono lungo tutto il periodo. La prima è il <strong>peso delle pensioni</strong>: il Mezzogiorno dedica circa il 34% del reddito imponibile alle pensioni contro il 31% dell’Italia, una distanza di 3 punti percentuali che rimane costante dal 2019 al 2024. Questo eccesso riflette una combinazione di invecchiamento demografico più accentuato, storica dipendenza dai trasferimenti previdenziali e minore capacità di assorbimento del mercato del lavoro privato. La seconda divergenza è il peso del <strong>lavoro autonomo</strong>: il Mezzogiorno è sistematicamente al di sotto della media italiana (3,0% vs 3,3% nel 2024), a conferma di un tessuto imprenditoriale individuale meno sviluppato. Il <strong>lavoro dipendente</strong> ha quasi la stessa quota nelle due aggregazioni (55,5% vs 56,3%), segno che la struttura occupazionale del settore dipendente — quando esiste — non è strutturalmente diversa. Le barre del 2020 mostrano la stessa contrazione nelle due aree, mentre dal 2021 in poi le composizioni evolvono quasi in parallelo senza avvicinarsi né allontanarsi, indicando l’assenza di processi di riequilibrio strutturale nel periodo.</p>
+<div id="bee4df6d" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display">
+<div>
+<div class="figure">
+<p><img src="figure/fig09.png" class="figure-img" role="img" width="1336" height="737"></p>
+</div>
+</div>
+</div>
+</div>
+<p>Le due curve indicizzate crescono in modo notevolmente parallelo, il che è di per sé un dato significativo. Il Mezzogiorno nel 2024 segna un indice di circa 120,7 e l’Italia 118,5: il Sud cresce quindi leggermente di più in termini percentuali, ma questa convergenza non si traduce in un recupero del divario in valori assoluti. Il reddito medio del Mezzogiorno nel 2019 era 16.886 € contro 20.991 € dell’Italia, con un gap di 4.105 €; nel 2024 il reddito meridionale sale a 20.390 € e quello italiano a 24.893 €, con un gap che si allarga a 4.503 €. In percentuale il divario si riduce marginalmente dal -19,6% al -18,1%, ma in termini assoluti cresce di quasi 400 euro. Questo paradosso — convergenza relativa, divergenza assoluta — è tipico delle economie con partenza su livelli molto diversi: crescite percentuali simili amplificano sempre il differenziale in euro. Il dato suggerisce che le politiche attuali non stanno producendo un effetto di catch-up significativo: servirebbero tassi di crescita meridionali sistematicamente superiori alla media nazionale per almeno un decennio per colmare il divario strutturale di reddito pro-capite tra Sud e resto d’Italia.</p>
+</section>
+</section>
+<section id="sec-divergenza" class="level2" data-number="7">
+<section id="mezzogiorno-vs-resto-ditalia-divergenza-per-componente" class="level2 anchored" data-number="7" data-anchor-id="sec-divergenza">
+<h2 class="anchored" data-number="7" data-anchor-id="mezzogiorno-vs-resto-ditalia-divergenza-per-componente"><span class="header-section-number">7</span> Mezzogiorno vs Resto d’Italia: divergenza per componente</h2>
+<div id="b991ea9f" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display">
+<div>
+<div class="figure">
+<p><img src="figure/fig10.png" class="figure-img" role="img" width="2083" height="1218"></p>
+</div>
+</div>
+</div>
+</div>
+<p>Il grafico è il banco di prova più diretto per la tesi sull’emersione del sommerso. Se la crescita meridionale fosse omogenea su tutti i fronti, non direbbe nulla di specifico; se invece alcune componenti divergono sistematicamente verso l’alto rispetto al Resto d’Italia, il segnale merita attenzione.</p>
+<p><strong>Pensioni e fabbricati: convergenza quasi perfetta.</strong> Le linee si sovrappongono per tutto il periodo. Le pensioni crescono allo stesso ritmo perché il meccanismo di rivalutazione INPS è nazionale e uniforme; i fabbricati perché i valori catastali non vengono rivalutati né al Sud né al Nord. Queste due componenti non portano alcuna informazione sul differenziale di enforcement.</p>
+<p><strong>Lavoro dipendente: Mezzogiorno leggermente avanti (+127 vs +123).</strong> La divergenza è contenuta ma stabile e si amplia anno dopo anno. È coerente sia con i rinnovi contrattuali di settori più presenti al Sud (pubblico impiego, sanità, servizi), sia — in misura minore — con l’effetto delle misure di decontribuzione Sud che hanno incentivato l’assunzione regolare. Non è sufficiente per parlare di emersione sistematica, ma il segnale esiste.</p>
+<p><strong>Lavoro autonomo: il dato più parlante.</strong> Il Mezzogiorno tocca quota 140 nel 2024 contro 127 del Resto d’Italia, con uno scarto che si apre soprattutto dal 2022 in poi. Questa è la componente con la più alta incidenza storica di evasione e quella più esposta alle misure di contrasto — fatturazione elettronica, scontrino telematico, incrocio con l’ISEE. Che proprio qui il Sud sovraperformi in modo crescente è il segnale più compatibile con l’emersione del sommerso. Non è prova, ma è indicazione.</p>
+<p><strong>Impresa ordinaria: picco 2023 poi parziale rientro.</strong> Entrambe le aree mostrano un rimbalzo forte nel 2022-2023 e un lieve calo nel 2024; il Mezzogiorno cresce di più (+21 vs +14 punti netti). Il pattern è in parte ciclico (ripresa post-COVID amplificata dai settori costruzioni e turismo, più presenti al Sud), in parte coerente con l’emersione.</p>
+<p><strong>Partecipazioni e impresa semplificata: quasi indistinguibili.</strong> Nessuna divergenza sistematica, il che suggerisce che questi canali non sono stati toccati in modo asimmetrico.</p>
+</section>
+</section>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2605_IrpefMezzogiorno/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="description" content="Dal working paper ECB al pannello mensile, al BVARX con prior Input-Output">
+
+<title>Shock settoriali e rete produttiva: percorso end-to-end della replica italiana – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Shock settoriali e rete produttiva: percorso end-to-end della replica italiana – Paolo Volterra">
+<meta property="og:description" content="Dal working paper ECB al pannello mensile, al BVARX con prior Input-Output">
+<meta property="og:image" content="https://paolovolterra.com/posts/2608_ShockSettorialiIO/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Shock settoriali e rete produttiva: percorso end-to-end della replica italiana – Paolo Volterra">
+<meta name="twitter:description" content="Dal working paper ECB al pannello mensile, al BVARX con prior Input-Output">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2608_ShockSettorialiIO/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#tappa-1.-la-domanda-iniziale" id="toc-tappa-1.-la-domanda-iniziale" class="nav-link active" data-scroll-target="#tappa-1.-la-domanda-iniziale"><span class="header-section-number">1</span> Tappa 1. La domanda iniziale</a></li>
+  <li><a href="#tappa-2.-lo-scoping-e-la-scoperta-della-base-input-output-già-disponibile" id="toc-tappa-2.-lo-scoping-e-la-scoperta-della-base-input-output-già-disponibile" class="nav-link" data-scroll-target="#tappa-2.-lo-scoping-e-la-scoperta-della-base-input-output-già-disponibile"><span class="header-section-number">2</span> Tappa 2. Lo scoping e la scoperta della base Input-Output già disponibile</a></li>
+  <li><a href="#tappa-3.-il-raccordo-tra-branche-io-e-prezzi-industriali" id="toc-tappa-3.-il-raccordo-tra-branche-io-e-prezzi-industriali" class="nav-link" data-scroll-target="#tappa-3.-il-raccordo-tra-branche-io-e-prezzi-industriali"><span class="header-section-number">3</span> Tappa 3. Il raccordo tra branche IO e prezzi industriali</a></li>
+  <li><a href="#tappa-4.-agricoltura-e-cereali-come-prezzi-osservati" id="toc-tappa-4.-agricoltura-e-cereali-come-prezzi-osservati" class="nav-link" data-scroll-target="#tappa-4.-agricoltura-e-cereali-come-prezzi-osservati"><span class="header-section-number">4</span> Tappa 4. Agricoltura e cereali come prezzi osservati</a></li>
+  <li><a href="#tappa-5.-lo-shock-di-politica-monetaria-per-larea-delleuro" id="toc-tappa-5.-lo-shock-di-politica-monetaria-per-larea-delleuro" class="nav-link" data-scroll-target="#tappa-5.-lo-shock-di-politica-monetaria-per-larea-delleuro"><span class="header-section-number">5</span> Tappa 5. Lo shock di politica monetaria per l’area dell’euro</a></li>
+  <li><a href="#tappa-6.-dal-mosaico-delle-fonti-al-pannello-mensile" id="toc-tappa-6.-dal-mosaico-delle-fonti-al-pannello-mensile" class="nav-link" data-scroll-target="#tappa-6.-dal-mosaico-delle-fonti-al-pannello-mensile"><span class="header-section-number">6</span> Tappa 6. Dal mosaico delle fonti al pannello mensile</a></li>
+  <li><a href="#tappa-7.-la-baseline-bvarx" id="toc-tappa-7.-la-baseline-bvarx" class="nav-link" data-scroll-target="#tappa-7.-la-baseline-bvarx"><span class="header-section-number">7</span> Tappa 7. La baseline BVARX</a></li>
+  <li><a href="#tappa-8.-il-prior-guidato-dalla-rete-produttiva" id="toc-tappa-8.-il-prior-guidato-dalla-rete-produttiva" class="nav-link" data-scroll-target="#tappa-8.-il-prior-guidato-dalla-rete-produttiva"><span class="header-section-number">8</span> Tappa 8. Il prior guidato dalla rete produttiva</a></li>
+  <li><a href="#tappa-9.-le-verifiche-di-robustezza" id="toc-tappa-9.-le-verifiche-di-robustezza" class="nav-link" data-scroll-target="#tappa-9.-le-verifiche-di-robustezza"><span class="header-section-number">9</span> Tappa 9. Le verifiche di robustezza</a></li>
+  <li><a href="#tappa-10.-il-tentativo-di-plr-sperimentale" id="toc-tappa-10.-il-tentativo-di-plr-sperimentale" class="nav-link" data-scroll-target="#tappa-10.-il-tentativo-di-plr-sperimentale"><span class="header-section-number">10</span> Tappa 10. Il tentativo di PLR sperimentale</a></li>
+  <li><a href="#tappa-11.-il-problema-dei-servizi" id="toc-tappa-11.-il-problema-dei-servizi" class="nav-link" data-scroll-target="#tappa-11.-il-problema-dei-servizi"><span class="header-section-number">11</span> Tappa 11. Il problema dei servizi</a></li>
+  <li><a href="#tappa-12.-dove-siamo-arrivati" id="toc-tappa-12.-dove-siamo-arrivati" class="nav-link" data-scroll-target="#tappa-12.-dove-siamo-arrivati"><span class="header-section-number">12</span> Tappa 12. Dove siamo arrivati</a></li>
+  <li><a href="#riferimenti" id="toc-riferimenti" class="nav-link" data-scroll-target="#riferimenti"><span class="header-section-number">13</span> Riferimenti</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2608_ShockSettorialiIO/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Shock settoriali e rete produttiva: percorso end-to-end della replica italiana</h1>
+<p class="subtitle lead">Dal working paper ECB al pannello mensile, al BVARX con prior Input-Output</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Shock</div>
+    <div class="quarto-category">Input-output</div>
+    <div class="quarto-category">BCE</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Dal working paper ECB al pannello mensile, al BVARX con prior Input-Output
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">5 agosto 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="tappa-1.-la-domanda-iniziale" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Tappa 1. La domanda iniziale</h1>
+<p>Il progetto è nato dalla lettura del working paper di Monti e Van Keirsbilck sulla trasmissione degli shock attraverso i settori e sulla dinamica dei prezzi settoriali <span class="citation" data-cites="montivankeirsbilck2026transmission">(<a href="#ref-montivankeirsbilck2026transmission" role="doc-biblioref">Monti e Van Keirsbilck 2026</a>)</span>. La domanda di partenza era se fosse possibile trasferire all’Italia e all’area dell’euro un impianto costruito per gli Stati Uniti: un grande modello autoregressivo bayesiano nel quale i collegamenti della rete produttiva, ricavati dalle tavole Input-Output, orientano le relazioni di lungo periodo tra i prezzi dei diversi settori. L’obiettivo non era soltanto prevedere meglio l’inflazione. Era soprattutto capire se uno shock che nasce in un punto circoscritto dell’economia, per esempio nel petrolio o nei cereali, possa diventare macroeconomicamente rilevante perché si propaga lungo le filiere.</p>
+<p>Il paper di riferimento combina trentacinque prezzi alla produzione statunitensi, variabili macroeconomiche aggregate e shock esterni. La parte metodologica più ambiziosa è il Prior for the Long Run, o PLR, di Giannone, Lenza e Primiceri <span class="citation" data-cites="giannonelenzaprimiceri2019priors">(<a href="#ref-giannonelenzaprimiceri2019priors" role="doc-biblioref">Giannone et al.&nbsp;2019</a>)</span>. La matrice Input-Output non viene imposta come una legge contabile rigida: entra nel prior e lascia ai dati la possibilità di confermare, attenuare o rifiutare le relazioni suggerite dalla rete. La replica italiana richiedeva quindi tre costruzioni distinte ma coerenti: un pannello di prezzi settoriali, una matrice tecnica italiana allineata agli stessi settori e shock identificati adatti all’area dell’euro.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Elemento</th>
+<th style="text-align: left;">Paper di partenza</th>
+<th style="text-align: left;">Adattamento italiano</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Prezzi</td>
+<td style="text-align: left;">35 PPI statunitensi</td>
+<td style="text-align: left;">prezzi settoriali italiani mensili</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Rete</td>
+<td style="text-align: left;">tavole IO statunitensi</td>
+<td style="text-align: left;">tavola simmetrica ISTAT</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Shock</td>
+<td style="text-align: left;">petrolio, cereali, Fed</td>
+<td style="text-align: left;">petrolio, cereali, ECB</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modello</td>
+<td style="text-align: left;">PLR-BVAR gerarchico</td>
+<td style="text-align: left;">BVARX e prior IO verificabili</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-fig-width="5.5" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<div class="figure">
+<div>
+<pre class="mermaid mermaid-js"><code>flowchart TD
+  A[Shock esterno] --&gt; B[Prezzi settoriali]
+  B --&gt; C[Rete produttiva]
+  C --&gt; D[Inflazione aggregata]
+  C -. informazione a priori .-&gt; E[BVAR]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="tappa-2.-lo-scoping-e-la-scoperta-della-base-input-output-già-disponibile" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Tappa 2. Lo scoping e la scoperta della base Input-Output già disponibile</h1>
+<p>La prima ricognizione ha mostrato che il principale rischio non era l’econometria, ma la compatibilità dei dati. I prezzi industriali italiani sono disponibili in Eurostat, mentre la classificazione e la profondità delle tavole Input-Output potevano non coincidere. La ricerca nel workspace ha però fatto emergere il progetto precedente <code>20260505_InOut</code>, nel quale erano già state elaborate le tavole simmetriche ISTAT per il 2020, 2021 e 2022, insieme alla matrice dei coefficienti tecnici, all’inversa di Leontief e agli indicatori di collegamento a monte e a valle. Questa scoperta ha cambiato il percorso: non era necessario ricostruire la matrice da FIGARO o da un nuovo flusso Eurostat, ma occorreva verificare e documentare il raccordo settoriale.</p>
+<p>La matrice tecnica scelta è quella del 2022, l’anno più recente disponibile nel progetto di origine. Essa descrive quanta produzione del settore (i) viene utilizzata direttamente per produrre un’unità del settore (j). Per non perdere la trasmissione che attraversa comparti esclusi dal pannello dei prezzi, la riduzione al nucleo osservabile non è stata fatta semplicemente cancellando righe e colonne. Sono stati conservati anche i percorsi indiretti a due passi. In questo modo un legame tra due industrie può restare visibile anche quando passa, per esempio, attraverso trasporto, commercio o altri servizi che non dispongono di un prezzo mensile utilizzabile nel modello.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 32%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Risorsa</th>
+<th style="text-align: left;">Stato trovato</th>
+<th style="text-align: left;">Decisione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Tavole ISTAT 2020–2022</td>
+<td style="text-align: left;">già elaborate</td>
+<td style="text-align: left;">riuso controllato</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Matrice tecnica (A)</td>
+<td style="text-align: left;">disponibile</td>
+<td style="text-align: left;">selezione del 2022</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inversa di Leontief</td>
+<td style="text-align: left;">disponibile</td>
+<td style="text-align: left;">riferimento strutturale</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Percorsi via servizi</td>
+<td style="text-align: left;">a rischio nella riduzione</td>
+<td style="text-align: left;">conservati fino a due passi</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-fig-width="5.5" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<div class="figure">
+<div>
+<pre class="mermaid mermaid-js"><code>flowchart TD
+  T[Tavola simmetrica ISTAT] --&gt; A[Matrice tecnica A]
+  A --&gt; P1[Legami diretti]
+  A --&gt; A2[Legami a due passi A²]
+  P1 --&gt; R[Rete ridotta]
+  A2 --&gt; R</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="tappa-3.-il-raccordo-tra-branche-io-e-prezzi-industriali" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Tappa 3. Il raccordo tra branche IO e prezzi industriali</h1>
+<p>Il primo tentativo automatico di raccordo restituiva soltanto due corrispondenze su sessantatré branche. Era un falso risultato causato dalla codifica: eliminare il prefisso <code>V</code> dai codici della tavola IO produceva numeri privi della lettera della sezione NACE. La correzione ha associato ogni divisione alla sezione appropriata, per esempio <code>V10_12</code> a <code>C10-C12</code>. Il raccordo verificato ha così trovato ventidue corrispondenze dirette nel nucleo industriale, dalle industrie estrattive alla manifattura, all’energia e all’acqua. La classificazione della tavola italiana e quella del PPI Eurostat erano dunque sostanzialmente compatibili.</p>
+<p>La fonte principale dei prezzi è il dataset mensile Eurostat <code>sts_inppd_m</code>, mercato domestico e unità <code>I21</code>, cioè indice in base 2021 <span class="citation" data-cites="eurostat2026industrialppi">(<a href="#ref-eurostat2026industrialppi" role="doc-biblioref">Eurostat 2026c</a>)</span>. La scelta della base è importante: la vecchia unità <code>I15</code> si interrompe alla fine del 2023 e avrebbe accorciato artificialmente il campione. Per le costruzioni è stato individuato il codice corretto <code>sts_copi_m</code> <span class="citation" data-cites="eurostat2026constructionprices">(<a href="#ref-eurostat2026constructionprices" role="doc-biblioref">Eurostat 2026a</a>)</span>. Esso misura i prezzi o costi delle nuove costruzioni residenziali e costituisce una proxy della branca F, non un prezzo esaustivo di tutte le costruzioni. È stato anche corretto un equivoco iniziale con <code>sts_copr_m</code>, che misura la produzione in volume e non i prezzi.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Esito del raccordo</th>
+<th style="text-align: right;">Branche</th>
+<th style="text-align: right;">Quota su 63</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Match PPI industriale diretto</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">34,9%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Branche non coperte dal PPI</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">65,1%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Match del primo tentativo errato</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3,2%</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-fig-width="5.5" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<div class="figure">
+<div>
+<pre class="mermaid mermaid-js"><code>xychart-beta
+  title "Branche IO e raccordo al PPI"
+  x-axis ["Naive", "Match corretti", "Non coperte"]
+  y-axis "Branche" 0 --&gt; 45
+  bar [2, 22, 41]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="tappa-4.-agricoltura-e-cereali-come-prezzi-osservati" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Tappa 4. Agricoltura e cereali come prezzi osservati</h1>
+<p>Per l’agricoltura è stato costruito un downloader ISTAT dedicato. Sono state concatenate le basi 2010, 2015 e 2020 degli indici dei prezzi dei prodotti agricoli, seguendo la documentazione metodologica ufficiale <span class="citation" data-cites="istat2025prezziagricoli">(<a href="#ref-istat2025prezziagricoli" role="doc-biblioref">Istat 2025</a>)</span>. Il risultato copre il periodo da gennaio 2010 a marzo 2026 e comprende sia l’indice generale dei beni e servizi prodotti in agricoltura, usato come prezzo della branca A, sia l’indice dei cereali. Quest’ultimo è utile come variabile di risposta o controllo, ma non deve essere confuso con uno shock esogeno ai cereali.</p>
+<p>Questa distinzione è centrale. Un aumento osservato del prezzo dei cereali può riflettere cattivi raccolti, domanda mondiale, energia, cambio, guerra o aspettative. Nel lavoro statunitense lo shock agricolo viene invece identificato dalla reazione dei futures a informazioni riservate fino alla pubblicazione dei rapporti USDA. La versione corrente di questo lavoro è Adjemian e Jo <span class="citation" data-cites="adjemianjo2025agricultural">(<a href="#ref-adjemianjo2025agricultural" role="doc-biblioref">Adjemian e Jo 2025</a>)</span>. Non è stato trovato un dataset europeo pronto che replichi tale identificazione. Per costruirlo servirebbero orari di pubblicazione affidabili dei rapporti europei o USDA e quotazioni intraday dei futures Euronext MATIF, dati che sono normalmente commerciali. La decisione finale è quindi conservativa: il prezzo dei cereali entra tra le informazioni osservabili, ma uno shock cerealicolo causale non entra nella baseline italiana.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 32%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Serie o misura</th>
+<th style="text-align: left;">Frequenza e periodo</th>
+<th style="text-align: left;">Ruolo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Totale agricolo ISTAT</td>
+<td style="text-align: left;">mensile, 2010-01–2026-03</td>
+<td style="text-align: left;">prezzo della branca A</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cereali ISTAT</td>
+<td style="text-align: left;">mensile, 2010-01–2026-03</td>
+<td style="text-align: left;">risposta o controllo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sorpresa agricola UE</td>
+<td style="text-align: left;">non disponibile</td>
+<td style="text-align: left;">esclusa dalla baseline causale</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-fig-width="5.5" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<div class="figure">
+<div>
+<pre class="mermaid mermaid-js"><code>flowchart TD
+  R[Rapporto sui raccolti] --&gt;|notizia inattesa| F[Futures intraday]
+  F --&gt; S[Shock identificato]
+  P[Indice mensile cereali] --&gt; O[Prezzo osservato]
+  O -. non equivale a .-&gt; S</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="tappa-5.-lo-shock-di-politica-monetaria-per-larea-delleuro" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Tappa 5. Lo shock di politica monetaria per l’area dell’euro</h1>
+<p>Lo shock monetario statunitense del paper originale non è trasferibile direttamente all’Italia. È stato sostituito con l’Euro Area Monetary Policy Event-Study Database, EA-MPD, costruito da Altavilla e coautori <span class="citation" data-cites="altavillaetal2019measuring ecb2025eampd">(<a href="#ref-altavillaetal2019measuring" role="doc-biblioref">Altavilla et al.&nbsp;2019</a>; <a href="#ref-ecb2025eampd" role="doc-biblioref">European Central Bank 2025</a>)</span>. Il file ufficiale ECB contiene 315 riunioni del Consiglio direttivo tra il 1999 e il 2025 e separa tre finestre: comunicato, conferenza stampa ed evento monetario complessivo. Per ciascuna finestra riporta variazioni ad alta frequenza dei tassi OIS a numerose scadenze e di altre attività finanziarie.</p>
+<p>Dal database è stata estratta una baseline riproducibile a due fattori. Il fattore <code>target</code> è la variazione dell’OIS a un mese nella finestra del comunicato. Il fattore <code>path</code> è la prima componente principale delle variazioni OIS da tre mesi a due anni nella conferenza stampa, depurata dalla componente contemporaneamente associata all’OIS a un mese e normalizzata sul segno della scadenza biennale. La costruzione cattura la distinzione tra sorpresa sulla decisione corrente e revisione del sentiero atteso dei tassi. Non pretende però di replicare integralmente la rotazione in target, timing, forward guidance e quantitative easing di Altavilla e coautori, né la separazione tra shock monetario puro e informazione della banca centrale proposta da Jarociński e Karadi <span class="citation" data-cites="jarocinskikaradi2020deconstructing">(<a href="#ref-jarocinskikaradi2020deconstructing" role="doc-biblioref">Jarociński e Karadi 2020</a>)</span>. La letteratura di Bauer e Swanson resta inoltre un riferimento per i problemi di prevedibilità e rilevanza degli strumenti ad alta frequenza <span class="citation" data-cites="bauerswanson2023reassessment">(<a href="#ref-bauerswanson2023reassessment" role="doc-biblioref">Bauer e Swanson 2023</a>)</span>.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Componente</th>
+<th style="text-align: left;">Finestra EA-MPD</th>
+<th style="text-align: left;">Costruzione baseline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Target</td>
+<td style="text-align: left;">comunicato</td>
+<td style="text-align: left;">variazione OIS a 1 mese</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Path</td>
+<td style="text-align: left;">conferenza stampa</td>
+<td style="text-align: left;">prima componente OIS 3 mesi–2 anni</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QE</td>
+<td style="text-align: left;">soprattutto conferenza</td>
+<td style="text-align: left;">non separato nella baseline</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Information shock</td>
+<td style="text-align: left;">entrambe</td>
+<td style="text-align: left;">non ancora identificato pienamente</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-fig-width="5.5" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<div class="figure">
+<div>
+<pre class="mermaid mermaid-js"><code>sequenceDiagram
+  participant C as Comunicato ECB
+  participant M as Mercato
+  participant P as Conferenza stampa
+  C-&gt;&gt;M: decisione sui tassi
+  Note over C,M: fattore target
+  P-&gt;&gt;M: sentiero e comunicazione
+  Note over P,M: fattore path</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="tappa-6.-dal-mosaico-delle-fonti-al-pannello-mensile" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Tappa 6. Dal mosaico delle fonti al pannello mensile</h1>
+<p>Le fonti sono state trasformate in un pannello mensile comune. La finestra finale va da gennaio 2012 a marzo 2026, per un totale di 171 mesi. Il pannello contiene ventiquattro prezzi settoriali: ventidue PPI industriali Eurostat, la serie agricola ISTAT e la proxy Eurostat delle costruzioni. Le serie sono state ricondotte a una frequenza comune, ordinate secondo i codici della matrice IO, controllate per duplicati e buchi e trasformate in logaritmi. Gli aggregati Eurostat con copertura discontinua sono stati esclusi quando avrebbero introdotto valori ricostruiti non osservati.</p>
+<p>L’integrazione ha reso possibile stimare un modello coerente, ma ha anche fissato con chiarezza il suo perimetro. Non è un modello completo delle sessantatré branche italiane. È un modello mensile del nucleo produttivo per il quale esistono prezzi sufficientemente lunghi e comparabili. I servizi esclusi continuano comunque a influire sulla rete attraverso i percorsi indiretti ricavati dalla matrice tecnica completa.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Blocco del pannello</th>
+<th style="text-align: right;">Serie</th>
+<th style="text-align: left;">Frequenza</th>
+<th style="text-align: left;">Campione comune</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PPI industriali Eurostat</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">mensile</td>
+<td style="text-align: left;">2012-01–2026-03</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Agricoltura ISTAT</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">mensile</td>
+<td style="text-align: left;">2012-01–2026-03</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Costruzioni Eurostat</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">mensile</td>
+<td style="text-align: left;">2012-01–2026-03</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Totale</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: left;">mensile</td>
+<td style="text-align: left;">171 mesi</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-fig-width="5.5" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<div class="figure">
+<div>
+<pre class="mermaid mermaid-js"><code>xychart-beta
+  title "Composizione del pannello mensile"
+  x-axis ["Industria", "Agricoltura", "Costruzioni"]
+  y-axis "Serie" 0 --&gt; 24
+  bar [22, 1, 1]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="tappa-7.-la-baseline-bvarx" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Tappa 7. La baseline BVARX</h1>
+<p>La prima specificazione stimata è un BVARX sui tassi di variazione mensili dei ventiquattro prezzi. La lettera X segnala la presenza di variabili esogene, tra cui la baseline monetaria ricavata da EA-MPD. La dinamica autoregressiva viene regolarizzata con un prior di tipo Minnesota: i coefficienti dei ritardi propri e incrociati sono contratti verso zero con intensità crescente per i ritardi lontani. Questa regolarizzazione è necessaria perché il numero di parametri cresce rapidamente rispetto ai 171 mesi disponibili.</p>
+<p>La baseline serve come punto di confronto trasparente. Consente di verificare l’intera pipeline, dalla lettura dei dati alla costruzione della matrice dei regressori, alla previsione fuori campione e alle risposte dinamiche. Le risposte allo shock monetario sono state calcolate sia per i singoli settori sia come media del pannello. In questa fase l’obiettivo principale non era rivendicare un’identificazione strutturale definitiva, ma stabilire un benchmark stabile contro il quale misurare il contributo dell’informazione Input-Output.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Componente BVARX</th>
+<th style="text-align: left;">Funzione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">24 prezzi endogeni</td>
+<td style="text-align: left;">dinamica settoriale congiunta</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ritardi autoregressivi</td>
+<td style="text-align: left;">persistenza e trasmissione</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Variabili X</td>
+<td style="text-align: left;">sorprese monetarie esterne</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Prior Minnesota</td>
+<td style="text-align: left;">regolarizzazione</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pseudo fuori campione</td>
+<td style="text-align: left;">valutazione comparabile</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-fig-width="5.5" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<div class="figure">
+<div>
+<pre class="mermaid mermaid-js"><code>flowchart TD
+  Y[Prezzi ritardati] --&gt; B[BVARX Minnesota]
+  X[Shock monetari] --&gt; B
+  B --&gt; F[Previsioni]
+  B --&gt; I[Risposte dinamiche]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="tappa-8.-il-prior-guidato-dalla-rete-produttiva" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Tappa 8. Il prior guidato dalla rete produttiva</h1>
+<p>Il passo successivo ha introdotto la matrice IO nella varianza a priori dei coefficienti incrociati. Un legame settoriale riceve una penalizzazione minore quando la matrice tecnica segnala che i due comparti sono collegati direttamente o tramite un percorso breve. I collegamenti non suggeriti dalla rete restano possibili, ma vengono contratti più fortemente. Questa formulazione è un prior network-aware: utilizza la stessa intuizione economica del paper ECB, ma non equivale ancora alla sua implementazione gerarchica completa del PLR.</p>
+<p>Il confronto è stato eseguito su finestre pseudo-fuori-campione, usando esattamente gli stessi dati e le stesse date per il modello Minnesota e per quello IO. In tutte le 81 specificazioni della griglia di robustezza il prior IO ha ridotto l’errore quadratico medio di previsione. Il miglioramento mediano dell’RMSE è stato dello 0,93 per cento e quello medio dell’1,22 per cento. L’ordine di grandezza è contenuto, ma la stabilità del segno attraverso tutte le combinazioni è informativa: la rete produttiva aggiunge segnale previsivo senza imporre coefficienti meccanici.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Confronto</th>
+<th style="text-align: right;">Risultato</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Specificazioni valutate</td>
+<td style="text-align: right;">81</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Specificazioni con RMSE IO migliore</td>
+<td style="text-align: right;">81</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Miglioramento mediano RMSE</td>
+<td style="text-align: right;">0,93%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Miglioramento medio RMSE</td>
+<td style="text-align: right;">1,22%</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<div class="figure">
+<div class="quarto-figure quarto-figure-center" style="width:90.0%">
+<figure class="figure">
+<p><img src="figure/fig01.png" class="img-fluid figure-img" role="img" aria-label="Confronto dell'accuratezza previsiva tra BVARX Minnesota e BVARX con prior Input-Output"></p>
+<figcaption>Confronto dell'accuratezza previsiva tra BVARX Minnesota e BVARX con prior Input-Output</figcaption>
+</figure>
+</div>
+<div class="caption">
+<p>Confronto tra baseline Minnesota e prior IO</p>
+</div>
+</div>
+</div>
+</section>
+<section id="tappa-9.-le-verifiche-di-robustezza" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Tappa 9. Le verifiche di robustezza</h1>
+<p>La robustezza è stata valutata modificando la forza complessiva del prior, la penalizzazione dei legami esterni alla rete, il numero di ritardi, la soglia o trasformazione della matrice e le finestre di previsione. Non è stata selezionata una sola configurazione favorevole dopo aver osservato i risultati. È stata conservata l’intera griglia di 81 confronti e sono state riassunte distribuzione, mediana e media dei guadagni. Il fatto che il modello IO risulti migliore in 81 casi su 81 è più rilevante del singolo massimo.</p>
+<p>Questa evidenza va comunque interpretata nel suo ambito. Dimostra che l’informazione della rete migliora la previsione dei prezzi settoriali nel pannello italiano considerato. Non dimostra da sola che il meccanismo strutturale di lungo periodo del paper originale sia stato replicato, né che ogni risposta a uno shock abbia già un’interpretazione causale. La distinzione tra successo previsivo e identificazione economica è stata mantenuta in tutte le note del progetto.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Dimensione variata</th>
+<th style="text-align: left;">Scopo del controllo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Forza del prior</td>
+<td style="text-align: left;">evitare una sola penalizzazione favorevole</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Penalità fuori rete</td>
+<td style="text-align: left;">misurare la selettività IO</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Numero di ritardi</td>
+<td style="text-align: left;">verificare la sensibilità dinamica</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Trasformazione della rete</td>
+<td style="text-align: left;">verificare soglie e pesi</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Finestra di previsione</td>
+<td style="text-align: left;">evitare dipendenza da un solo periodo</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<div class="figure">
+<div class="quarto-figure quarto-figure-center" style="width:90.0%">
+<figure class="figure">
+<p><img src="figure/fig02.png" class="img-fluid figure-img" role="img" aria-label="Robustezza del guadagno previsivo del prior Input-Output in 81 specificazioni"></p>
+<figcaption>Robustezza del guadagno previsivo del prior Input-Output in 81 specificazioni</figcaption>
+</figure>
+</div>
+<div class="caption">
+<p>Distribuzione dei risultati nelle 81 specificazioni</p>
+</div>
+</div>
+</div>
+</section>
+<section id="tappa-10.-il-tentativo-di-plr-sperimentale" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Tappa 10. Il tentativo di PLR sperimentale</h1>
+<p>Per avvicinarsi al meccanismo originale è stata costruita una versione sperimentale del Prior for the Long Run. Il target di lungo periodo è stato definito a partire da una normalizzazione di (I+A+A^2), così da rappresentare l’effetto cumulato dei collegamenti contemporanei, diretti e a due passi. La forza di questo target è stata trattata come un iperparametro da selezionare sui dati, insieme a una componente generica di somma dei coefficienti verso zero.</p>
+<p>Il risultato è stato istruttivo proprio perché non ha confermato l’ipotesi più forte. La selezione ha posto a zero il peso del target economico (I+A+A^2). Una combinazione del prior di rete sui coefficienti con un generico prior sulla somma dei ritardi ha ottenuto il miglior RMSE, ma i dati non hanno sostenuto la specifica restrizione di lungo periodo costruita dalla matrice. Questa parte deve quindi essere chiamata PLR sperimentale, non replica completa del modello di Monti e Van Keirsbilck. Il risultato positivo riguarda il prior di rete; il target PLR economico proposto è stato rifiutato dalla procedura di selezione.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Elemento sperimentale</th>
+<th style="text-align: left;">Esito</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Target di lungo periodo</td>
+<td style="text-align: left;">normalizzazione di (I+A+A^2)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Peso selezionato del target</td>
+<td style="text-align: left;">zero</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Prior sulla somma dei ritardi</td>
+<td style="text-align: left;">utile in combinazione</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Interpretazione</td>
+<td style="text-align: left;">PLR sperimentale, non replica completa</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<div class="figure">
+<div class="quarto-figure quarto-figure-center" style="width:90.0%">
+<figure class="figure">
+<p><img src="figure/fig03.png" class="img-fluid figure-img" role="img" aria-label="Confronto previsivo tra baseline, prior di rete e specificazioni PLR sperimentali"></p>
+<figcaption>Confronto previsivo tra baseline, prior di rete e specificazioni PLR sperimentali</figcaption>
+</figure>
+</div>
+<div class="caption">
+<p>Confronto tra le specificazioni PLR sperimentali</p>
+</div>
+</div>
+</div>
+</section>
+<section id="tappa-11.-il-problema-dei-servizi" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Tappa 11. Il problema dei servizi</h1>
+<p>L’ultima verifica ha riguardato le quarantuno branche non coperte dal PPI industriale, in particolare i servizi. Eurostat pubblica effettivamente un indice dei prezzi alla produzione dei servizi, <code>sts_sepp_q</code> <span class="citation" data-cites="eurostat2026serviceppi">(<a href="#ref-eurostat2026serviceppi" role="doc-biblioref">Eurostat 2026d</a>)</span>, ma la frequenza è trimestrale. La copertura italiana riguarda soprattutto trasporti, informazione e comunicazione, attività immobiliari, professionali e amministrative. Per diversi aggregati la serie parte soltanto dal 2021; alcune divisioni hanno serie più lunghe dal 2006 o dal 2010; commercio, finanza, pubblica amministrazione, istruzione, sanità e numerosi servizi personali restano fuori dal campo dell’indagine.</p>
+<p>Sono stati verificati anche i conti nazionali dettagliati <code>nama_10_a64</code> <span class="citation" data-cites="eurostat2026nationalaccounts">(<a href="#ref-eurostat2026nationalaccounts" role="doc-biblioref">Eurostat 2026b</a>)</span>. Essi permettono di ricavare deflatori impliciti annuali per molte branche, ma la frequenza annuale è incompatibile con il BVAR mensile. Trasformare indici trimestrali o annuali in serie mensili mediante interpolazione produrrebbe una precisione artificiale e altererebbe la dinamica che il modello dovrebbe stimare. La conclusione è quindi che i servizi non devono essere aggiunti meccanicamente al pannello corrente. Possono sostenere una futura estensione trimestrale, con un campione e un perimetro diversi, oppure essere usati come validazione strutturale annuale.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Fonte per i servizi</th>
+<th style="text-align: left;">Frequenza</th>
+<th style="text-align: left;">Uso nel BVAR mensile</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>sts_sepp_q</code></td>
+<td style="text-align: left;">trimestrale</td>
+<td style="text-align: left;">non diretto</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>nama_10_a64</code></td>
+<td style="text-align: left;">annuale</td>
+<td style="text-align: left;">validazione strutturale</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PPI industriale</td>
+<td style="text-align: left;">mensile</td>
+<td style="text-align: left;">non copre i servizi</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Estensione proposta</td>
+<td style="text-align: left;">trimestrale</td>
+<td style="text-align: left;">modello separato</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-fig-width="5.5" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<div class="figure">
+<div>
+<pre class="mermaid mermaid-js"><code>flowchart TD
+  S[Prezzi dei servizi] --&gt; Q[SPPI trimestrali]
+  S --&gt; A[Deflatori annuali]
+  Q --&gt; M{BVAR mensile?}
+  A --&gt; M
+  M --&gt;|Interpolazione| N[Precisione artificiale]
+  M --&gt;|Modello separato| E[Estensione trimestrale]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="tappa-12.-dove-siamo-arrivati" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Tappa 12. Dove siamo arrivati</h1>
+<p>Il progetto è arrivato a una pipeline riproducibile che collega fonti ufficiali, classificazioni settoriali, rete produttiva e stima bayesiana. Sono disponibili il pannello mensile integrato, gli script di download e assemblaggio, la matrice IO ridotta senza perdere i principali percorsi indiretti, una baseline BVARX, un prior network-aware, 81 verifiche di robustezza e un esperimento PLR esplicitamente distinto dalla replica completa. Il risultato empirico più solido è che la rete Input-Output migliora sistematicamente la previsione dei prezzi settoriali italiani nel campione 2012–2026. Il risultato metodologico più importante è altrettanto chiaro: il vantaggio nasce dal modo flessibile in cui la rete orienta la contrazione dei coefficienti, mentre la specifica restrizione di lungo periodo sperimentata non è sostenuta dai dati.</p>
+<p>Restano tre frontiere. La prima è completare l’identificazione strutturale con una rotazione monetaria pienamente coerente con EA-MPD e con il trattamento degli information shocks. La seconda è integrare la serie pubblica degli oil supply news shocks di Känzig <span class="citation" data-cites="kanzig2021macroeconomic">(<a href="#ref-kanzig2021macroeconomic" role="doc-biblioref">Känzig 2021</a>)</span> e produrre risposte strutturali confrontabili con il paper ECB. La terza, più onerosa, è costruire uno shock europeo ai cereali con vere finestre di evento e dati futures intraday. L’estensione ai servizi richiede invece un modello trimestrale separato. Questi limiti non cancellano il risultato raggiunto: definiscono con precisione la distanza tra una prima applicazione italiana credibile e una replica strutturale integrale.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Prodotto finale</th>
+<th style="text-align: left;">Stato</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Pannello mensile a 24 settori</td>
+<td style="text-align: left;">completato</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BVARX Minnesota</td>
+<td style="text-align: left;">completato</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Prior network-aware</td>
+<td style="text-align: left;">completato e robusto</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PLR economico completo</td>
+<td style="text-align: left;">non confermato</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Shock cereali europeo</td>
+<td style="text-align: left;">da costruire</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modello trimestrale dei servizi</td>
+<td style="text-align: left;">estensione separata</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-fig-width="5.5" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<div class="figure">
+<div>
+<pre class="mermaid mermaid-js"><code>flowchart LR
+  A[Dati e crosswalk] --&gt; B[Pannello e BVARX]
+  B --&gt; C[Prior IO e robustezza]
+  C --&gt; D[PLR e agenda futura]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="riferimenti" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Riferimenti</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-adjemianjo2025agricultural" class="csl-entry" role="listitem">
+Adjemian, Michael, e Jungkeon Jo. 2025. «The Macroeconomic Effects of Agricultural Supply News». <em>SSRN Electronic Journal</em>, pubblicazione online ad accesso anticipato, agosto 25. <a href="https://doi.org/10.2139/ssrn.5405106" class="uri">https://doi.org/10.2139/ssrn.5405106</a>.
+</div>
+<div id="ref-altavillaetal2019measuring" class="csl-entry" role="listitem">
+Altavilla, Carlo, Luca Brugnolini, Refet S. Gürkaynak, Roberto Motto, e Giuseppe Ragusa. 2019. «Measuring Euro Area Monetary Policy». <em>Journal of Monetary Economics</em> 108: 162–79. <a href="https://doi.org/10.1016/j.jmoneco.2019.08.016" class="uri">https://doi.org/10.1016/j.jmoneco.2019.08.016</a>.
+</div>
+<div id="ref-bauerswanson2023reassessment" class="csl-entry" role="listitem">
+Bauer, Michael D., e Eric T. Swanson. 2023. «A Reassessment of Monetary Policy Surprises and High-Frequency Identification». <em>NBER Macroeconomics Annual</em> 37: 87–155. <a href="https://doi.org/10.1086/723369" class="uri">https://doi.org/10.1086/723369</a>.
+</div>
+<div id="ref-ecb2025eampd" class="csl-entry" role="listitem">
+European Central Bank. 2025. «Euro Area Monetary Policy Event-Study Database (EA-MPD)». novembre 4. <a href="https://www.ecb.europa.eu/pub/pdf/annex/Dataset_EA-MPD.xlsx" class="uri">https://www.ecb.europa.eu/pub/pdf/annex/Dataset_EA-MPD.xlsx</a>.
+</div>
+<div id="ref-eurostat2026constructionprices" class="csl-entry" role="listitem">
+Eurostat. 2026a. «Construction Producer Prices or Costs, New Residential Buildings—Monthly Data». <a href="https://ec.europa.eu/eurostat/databrowser/view/sts_copi_m/default/table" class="uri">https://ec.europa.eu/eurostat/databrowser/view/sts_copi_m/default/table</a>.
+</div>
+<div id="ref-eurostat2026nationalaccounts" class="csl-entry" role="listitem">
+Eurostat. 2026b. «Gross Value Added and Income by Detailed Industry (NACE Rev.&nbsp;2)». <a href="https://ec.europa.eu/eurostat/databrowser/view/nama_10_a64/default/table" class="uri">https://ec.europa.eu/eurostat/databrowser/view/nama_10_a64/default/table</a>.
+</div>
+<div id="ref-eurostat2026industrialppi" class="csl-entry" role="listitem">
+Eurostat. 2026c. «Producer Prices in Industry, Domestic Market—Monthly Data». <a href="https://ec.europa.eu/eurostat/databrowser/view/sts_inppd_m/default/table" class="uri">https://ec.europa.eu/eurostat/databrowser/view/sts_inppd_m/default/table</a>.
+</div>
+<div id="ref-eurostat2026serviceppi" class="csl-entry" role="listitem">
+Eurostat. 2026d. «Service Producer Prices—Quarterly Data». <a href="https://ec.europa.eu/eurostat/databrowser/view/sts_sepp_q/default/table" class="uri">https://ec.europa.eu/eurostat/databrowser/view/sts_sepp_q/default/table</a>.
+</div>
+<div id="ref-giannonelenzaprimiceri2019priors" class="csl-entry" role="listitem">
+Giannone, Domenico, Michele Lenza, e Giorgio E. Primiceri. 2019. «Priors for the Long Run». <em>Journal of the American Statistical Association</em> 114 (526): 565–80. <a href="https://doi.org/10.1080/01621459.2018.1483826" class="uri">https://doi.org/10.1080/01621459.2018.1483826</a>.
+</div>
+<div id="ref-istat2025prezziagricoli" class="csl-entry" role="listitem">
+Istat. 2025. «Indici dei prezzi dei prodotti agricoli: la nuova base 2020». giugno 17. <a href="https://www.istat.it/comunicato-stampa/indici-dei-prezzi-dei-prodotti-agricoli-la-nuova-base-2020/" class="uri">https://www.istat.it/comunicato-stampa/indici-dei-prezzi-dei-prodotti-agricoli-la-nuova-base-2020/</a>.
+</div>
+<div id="ref-jarocinskikaradi2020deconstructing" class="csl-entry" role="listitem">
+Jarociński, Marek, e Peter Karadi. 2020. «Deconstructing Monetary Policy Surprises—The Role of Information Shocks». <em>American Economic Journal: Macroeconomics</em> 12 (2): 1–43. <a href="https://doi.org/10.1257/mac.20180090" class="uri">https://doi.org/10.1257/mac.20180090</a>.
+</div>
+<div id="ref-kanzig2021macroeconomic" class="csl-entry" role="listitem">
+Känzig, Diego R. 2021. «The Macroeconomic Effects of Oil Supply News: Evidence from OPEC Announcements». <em>American Economic Review</em> 111 (4): 1092–125. <a href="https://doi.org/10.1257/aer.20190964" class="uri">https://doi.org/10.1257/aer.20190964</a>.
+</div>
+<div id="ref-montivankeirsbilck2026transmission" class="csl-entry" role="listitem">
+Monti, Francesca, e Leïla Van Keirsbilck. 2026. <em>The Transmission of Shocks Across Sectors and the Dynamics of Sectoral Prices</em>. Working Paper Series No.&nbsp;3266. European Central Bank. <a href="https://doi.org/10.2866/3104628" class="uri">https://doi.org/10.2866/3104628</a>.
+</div>
+</div>
+</section>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/edit/main/posts/2608_ShockSettorialiIO/index.md" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

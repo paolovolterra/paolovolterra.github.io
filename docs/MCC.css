@@ -1,0 +1,66 @@
+/* ---- Colore primario istituzionale ---- */
+:root {
+  --bs-primary: #007a53 !important;
+  --bs-link-color: #007a53 !important;
+  --bs-link-hover-color: #005f40 !important;
+}
+
+/* ---- Titoli nel contenuto principale (NON nel banner) ---- */
+main h1, main h2, main h3, main h4, main h5, main h6 {
+  color: #007a53;  /* niente !important */
+  font-weight: 600;
+}
+
+/* ---- Titolo e sottotitolo dentro il title banner (compat Quarto) ---- */
+.quarto-title-block .quarto-title-banner h1.title,
+.quarto-title-block .quarto-title-banner .title,
+.quarto-title-block .quarto-title-banner .subtitle {
+  color: #ffffff !important;  /* testo bianco sul banner verde */
+}
+
+/* ---- Banner (se lo usi) ---- */
+.quarto-title-block .quarto-title-banner {
+  background-color: #007a53 !important;
+}
+
+/* --- Immagini e figure nel contenuto --- */
+.quarto-figure,
+main figure,
+.quarto-figure img,
+main img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1em auto;
+  overflow: hidden;
+}
+
+/* --- Disabilita scroll su eventuali contenitori di figure --- */
+.quarto-figure > div,
+main .figure,
+.quarto-figure img,
+main img {
+  overflow: hidden !important;
+}
+
+/* --- Layout immagini affiancate: vai a capo invece di scroll --- */
+.quarto-layout-panel {
+  flex-wrap: wrap;
+}
+
+/* --- (Consigliato) Toc a destra più snello --- */
+.sidebar, .toc, .toc-sidebar {
+  max-width: 260px;
+}
+
+/* --- (Consigliato) Blocchi output: niente scroll orizzontale --- */
+div.cell-output-display {
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+/* --- (Consigliato) Tabelle responsive senza scroll orizzontale --- */
+.quarto-table-container, .table-responsive {
+  overflow-x: clip;
+  max-width: 100%;
+}
