@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="sistema dei pagamenti, carte di pagamento, contactless, bonifici, prelievi, ATM, sportelli bancari, open banking, desertificazione finanziaria">
+<meta name="description" content="Al 30 giugno 2026 i pagamenti senza contante in Italia sono 4,5 miliardi a trimestre, quasi il doppio del 2022; il 93% dei pagamenti con carta nei negozi è contactless e allo sportello si fa meno di un prelievo su undici.">
+
+<title>Servono ancora gli sportelli fisici? Aggiornamento sui pagamenti – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Servono ancora gli sportelli fisici? Aggiornamento sui pagamenti – Paolo Volterra">
+<meta property="og:description" content="Al 30 giugno 2026 i pagamenti senza contante in Italia sono 4,5 miliardi a trimestre, quasi il doppio del 2022; il 93% dei pagamenti con carta nei negozi è contactless e allo sportello si fa meno di un prelievo su undici.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2610_PagamentiDigitali/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Servono ancora gli sportelli fisici? Aggiornamento sui pagamenti – Paolo Volterra">
+<meta name="twitter:description" content="Al 30 giugno 2026 i pagamenti senza contante in Italia sono 4,5 miliardi a trimestre, quasi il doppio del 2022; il 93% dei pagamenti con carta nei negozi è contactless e allo sportello si fa meno di un prelievo su undici.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2610_PagamentiDigitali/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#perché-un-aggiornamento" id="toc-perché-un-aggiornamento" class="nav-link active" data-scroll-target="#perché-un-aggiornamento"><span class="header-section-number">1</span> Perché un aggiornamento</a></li>
+  <li><a href="#pagamenti-diversi-dal-contante-quasi-raddoppiati-dal-2022" id="toc-pagamenti-diversi-dal-contante-quasi-raddoppiati-dal-2022" class="nav-link" data-scroll-target="#pagamenti-diversi-dal-contante-quasi-raddoppiati-dal-2022"><span class="header-section-number">2</span> Pagamenti diversi dal contante: quasi raddoppiati dal 2022</a></li>
+  <li><a href="#carte-al-punto-vendita-contactless-e-smartphone" id="toc-carte-al-punto-vendita-contactless-e-smartphone" class="nav-link" data-scroll-target="#carte-al-punto-vendita-contactless-e-smartphone"><span class="header-section-number">3</span> Carte al punto vendita: contactless e smartphone</a></li>
+  <li><a href="#bonifici-internet-prevale-lo-sportello-resta-minoritario" id="toc-bonifici-internet-prevale-lo-sportello-resta-minoritario" class="nav-link" data-scroll-target="#bonifici-internet-prevale-lo-sportello-resta-minoritario"><span class="header-section-number">4</span> Bonifici: internet prevale, lo sportello resta minoritario</a></li>
+  <li><a href="#prelievi-di-contante-meno-operazioni-quasi-tutte-agli-atm" id="toc-prelievi-di-contante-meno-operazioni-quasi-tutte-agli-atm" class="nav-link" data-scroll-target="#prelievi-di-contante-meno-operazioni-quasi-tutte-agli-atm"><span class="header-section-number">5</span> Prelievi di contante: meno operazioni, quasi tutte agli ATM</a></li>
+  <li><a href="#open-banking" id="toc-open-banking" class="nav-link" data-scroll-target="#open-banking"><span class="header-section-number">6</span> Open banking</a></li>
+  <li><a href="#confronto-con-quanto-riportato-dalla-stampa" id="toc-confronto-con-quanto-riportato-dalla-stampa" class="nav-link" data-scroll-target="#confronto-con-quanto-riportato-dalla-stampa"><span class="header-section-number">7</span> Confronto con quanto riportato dalla stampa</a></li>
+  <li><a href="#che-cosa-cambia-per-la-domanda-iniziale" id="toc-che-cosa-cambia-per-la-domanda-iniziale" class="nav-link" data-scroll-target="#che-cosa-cambia-per-la-domanda-iniziale"><span class="header-section-number">8</span> Che cosa cambia per la domanda iniziale</a></li>
+  <li><a href="#riferimenti" id="toc-riferimenti" class="nav-link" data-scroll-target="#riferimenti">Riferimenti</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Servono ancora gli sportelli fisici? Aggiornamento sui pagamenti</h1>
+<p class="subtitle lead">Carte, bonifici, prelievi e open banking in Italia, 2015–giugno 2026</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Pagamenti</div>
+    <div class="quarto-category">Banche</div>
+    <div class="quarto-category">Sportelli bancari</div>
+    <div class="quarto-category">Open banking</div>
+    <div class="quarto-category">Banca d'Italia</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Al 30 giugno 2026 i pagamenti senza contante in Italia sono 4,5 miliardi a trimestre, quasi il doppio del 2022; il 93% dei pagamenti con carta nei negozi è contactless e allo sportello si fa meno di un prelievo su undici.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">31 ottobre 2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Data di modifica</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">31 ottobre 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p><strong>Italiano.</strong> Le statistiche della Banca d’Italia sul sistema dei pagamenti, aggiornate al 30 giugno 2026, mostrano che il numero di pagamenti diversi dal contante è passato da 2,6 miliardi nel primo trimestre 2022 a 4,5 miliardi nel secondo trimestre 2026. Le carte spiegano gran parte della crescita: nel secondo trimestre 2026 il 92,6% delle transazioni al punto vendita è contactless e il 30,3% passa da uno smartphone o da un altro dispositivo mobile. Sei bonifici su dieci sono disposti via internet, uno su otto allo sportello. I prelievi di contante sono scesi da 1,39 miliardi nel 2019 a 1,06 miliardi nel 2025; allo sportello tradizionale si fa ormai meno di un prelievo su undici. Il confronto con quanto riportato dalla stampa conferma i numeri principali e corregge tre attribuzioni. I dati descrivono la sostituzione del canale fisico sul lato dei pagamenti; non dicono nulla, da soli, su chi resta escluso.</p>
+    <p><strong>English.</strong> Bank of Italy payment-system statistics, updated to 30 June 2026, show that the number of non-cash payments rose from 2.6 billion in the first quarter of 2022 to 4.5 billion in the second quarter of 2026. Cards account for most of the growth: in the second quarter of 2026, 92.6% of point-of-sale transactions were contactless and 30.3% go through a smartphone or other mobile device. Six credit transfers out of ten are initiated online, one in eight at the branch counter. Cash withdrawals fell from 1.39 billion in 2019 to 1.06 billion in 2025; fewer than one withdrawal in eleven now takes place at a traditional branch counter. A comparison with press coverage confirms the main figures and corrects three attributions. The data describe the substitution of the physical channel on the payments side; on their own they say nothing about who is left out.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>sistema dei pagamenti, carte di pagamento, contactless, bonifici, prelievi, ATM, sportelli bancari, open banking, desertificazione finanziaria</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="perché-un-aggiornamento" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="perché-un-aggiornamento"><span class="header-section-number">1</span> Perché un aggiornamento</h2>
+<p>Uno studio precedente, <a href="../2603_SportelliFisici/">«Servono ancora gli sportelli fisici?»</a> (marzo 2026), rispondeva alla domanda del titolo con «dipende da chi»: per la clientela abituata ai canali digitali lo sportello è quasi superfluo, per anziani, residenti nelle aree interne e piccole imprese in difficoltà resta difficile da sostituire. Quella analisi si fermava al 2024 e guardava soprattutto alla rete degli sportelli e alla diffusione dell’home banking.</p>
+<p>A ottobre 2026 la Banca d’Italia ha aggiornato al 30 giugno 2026 le statistiche sul sistema dei pagamenti, con dati trimestrali e semestrali per strumento, canale e tecnologia <span class="citation" data-cites="bancaditalia2026Pagamenti"><a href="#ref-bancaditalia2026Pagamenti" role="doc-biblioref">[1]</a></span>. La stampa le ha riprese sottolineando il raddoppio delle operazioni digitali e il calo dei prelievi <span class="citation" data-cites="startupitalia2026Banca"><a href="#ref-startupitalia2026Banca" role="doc-biblioref">[2]</a></span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Questo aggiornamento riprende quei dati dalla fonte, li confronta con quanto pubblicato e li collega alla domanda iniziale.</p>
+</section>
+<section id="pagamenti-diversi-dal-contante-quasi-raddoppiati-dal-2022" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="pagamenti-diversi-dal-contante-quasi-raddoppiati-dal-2022"><span class="header-section-number">2</span> Pagamenti diversi dal contante: quasi raddoppiati dal 2022</h2>
+<p>Nel primo trimestre 2022 in Italia si sono fatti 2,58 miliardi di pagamenti con strumenti diversi dal contante; nel secondo trimestre 2026 sono stati 4,54 miliardi, il 76% in più. La serie comprende carte, bonifici, addebiti diretti, bollettini, assegni e rimesse. Le carte di debito, prepagate e di credito valgono da sole 3,44 miliardi di operazioni nel trimestre più recente, cioè circa tre pagamenti su quattro. Le carte di credito entrano nella serie dal 2022, per questo il confronto parte da quell’anno.</p>
+<div id="cell-fig-strumenti" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div id="fig-strumenti" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-strumenti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-strumenti-output-1.png" width="757" height="422" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-strumenti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Pagamenti con strumenti diversi dal contante per trimestre, miliardi di transazioni, 2022–2026. Fonte: elaborazione su dati Banca d’Italia <span class="citation" data-cites="bancaditalia2026Pagamenti"><a href="#ref-bancaditalia2026Pagamenti" role="doc-biblioref">[1]</a></span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><em>In parole semplici:</em> ogni barra è un trimestre; in quattro anni e mezzo i pagamenti senza contanti sono passati da circa 2,6 a circa 4,5 miliardi, e la parte blu, cioè le carte, è quella che cresce di più.</p>
+</section>
+<section id="carte-al-punto-vendita-contactless-e-smartphone" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="carte-al-punto-vendita-contactless-e-smartphone"><span class="header-section-number">3</span> Carte al punto vendita: contactless e smartphone</h2>
+<p>Nel secondo trimestre 2026 le carte di debito coprono il 71,8% delle transazioni con carta al POS, le prepagate il 17,1% e le carte di credito l’11,0%. Nel primo semestre 2026 il 92,5% dei pagamenti al POS è avvenuto senza inserire la carta nel terminale e il 29,6% tramite smartphone o altri dispositivi mobili. La quota dei pagamenti con dispositivi mobili, rilevata dal primo trimestre 2025, è salita di oltre otto punti in cinque trimestri.</p>
+<div id="cell-fig-pos" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div id="fig-pos" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-pos-output-1.png" width="746" height="393" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Pagamenti con carta al POS: quota contactless e quota tramite dispositivi mobili, per trimestre, percentuale del totale. Fonte: elaborazione su dati Banca d’Italia <span class="citation" data-cites="bancaditalia2026Pagamenti"><a href="#ref-bancaditalia2026Pagamenti" role="doc-biblioref">[1]</a></span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><em>In parole semplici:</em> quasi tutti i pagamenti con carta nei negozi si fanno ormai avvicinando la carta al terminale, senza inserirla; quasi un pagamento su tre si fa con il telefono, e questa quota cresce ogni trimestre.</p>
+</section>
+<section id="bonifici-internet-prevale-lo-sportello-resta-minoritario" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="bonifici-internet-prevale-lo-sportello-resta-minoritario"><span class="header-section-number">4</span> Bonifici: internet prevale, lo sportello resta minoritario</h2>
+<p>Nel secondo trimestre 2026 sono stati disposti 501 milioni di bonifici: il 60% via internet, il 26% tramite canali telematici, il 13% allo sportello e meno dell’1% agli ATM. Il numero di bonifici disposti allo sportello oscilla tra 47 e 84 milioni a trimestre secondo la stagione, senza una tendenza netta; cresce invece il canale internet, che è passato da 184 milioni nel secondo trimestre 2022 a 303 milioni nel secondo trimestre 2026.</p>
+<div id="cell-fig-bonifici" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div id="fig-bonifici" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bonifici-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-bonifici-output-1.png" width="748" height="394" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bonifici-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Bonifici per canale di utilizzo, per trimestre, milioni di transazioni, 2022–2026. Fonte: elaborazione su dati Banca d’Italia <span class="citation" data-cites="bancaditalia2026Pagamenti"><a href="#ref-bancaditalia2026Pagamenti" role="doc-biblioref">[1]</a></span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><em>In parole semplici:</em> i bonifici fatti da internet crescono quasi ogni trimestre, mentre quelli fatti allo sportello restano più o meno allo stesso livello e sono circa un quinto di quelli online.</p>
+</section>
+<section id="prelievi-di-contante-meno-operazioni-quasi-tutte-agli-atm" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="prelievi-di-contante-meno-operazioni-quasi-tutte-agli-atm"><span class="header-section-number">5</span> Prelievi di contante: meno operazioni, quasi tutte agli ATM</h2>
+<p>Prima della pandemia i prelievi di contante erano stabili, intorno a 1,4 miliardi l’anno: 1,39 miliardi nel 2019. Nel 2020 sono scesi a 1,10 miliardi e da allora non sono tornati ai livelli precedenti; nel 2025 sono stati 1,06 miliardi. Questi totali comprendono tutti i canali; i soli prelievi agli ATM sono stati 1,20 miliardi nel 2019 e 0,98 nel 2020. L’ATM è il canale principale: nel 2025 ha gestito il 90,8% dei prelievi, contro l’84,3% del 2015. I prelievi allo sportello tradizionale sono passati da 211 milioni nel 2015 a 95 milioni nel 2025; quelli presso i punti vendita, come supermercati e tabaccherie, sono lo 0,3% del totale.</p>
+<div id="cell-fig-prelievi" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div id="fig-prelievi" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-prelievi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-prelievi-output-1.png" width="757" height="423" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prelievi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Prelievi di contante per canale, milioni di operazioni per anno, 2015–2025. Fonte: elaborazione su dati Banca d’Italia <span class="citation" data-cites="bancaditalia2026Pagamenti"><a href="#ref-bancaditalia2026Pagamenti" role="doc-biblioref">[1]</a></span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><em>In parole semplici:</em> dal 2020 si preleva meno contante; quasi tutto passa dai bancomat, mentre la parte fatta allo sportello, in verde, si è più che dimezzata in dieci anni.</p>
+</section>
+<section id="open-banking" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="open-banking"><span class="header-section-number">6</span> Open banking</h2>
+<p>L’open banking consente a soggetti terzi autorizzati di accedere, con il consenso del cliente, ai dati del conto o di disporre pagamenti a valere su di esso. Le operazioni di pagamento disposte tramite questi prestatori (in sigla PISP) sono rilevate per semestre: 1.011 mila nel secondo semestre 2025 e 1.328 mila nel primo semestre 2026. Gli accessi informativi ai conti sono molto più numerosi: 283 milioni nel primo semestre 2026.</p>
+<div class="cell" data-execution_count="6">
+<div id="tbl-openbanking" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="6">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-openbanking-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;1: Servizi di open banking per semestre, 2023–2026. Fonte: elaborazione su dati Banca d’Italia <span class="citation" data-cites="bancaditalia2026Pagamenti"><a href="#ref-bancaditalia2026Pagamenti" role="doc-biblioref">[1]</a></span>.
+</figcaption>
+<div aria-describedby="tbl-openbanking-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="6">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 33%">
+<col style="width: 30%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Semestre</th>
+<th style="text-align: right;">Pagamenti disposti tramite PISP (migliaia)</th>
+<th style="text-align: right;">Accessi informativi ai conti (milioni)</th>
+<th style="text-align: right;">Prestatori terzi attivi (numero)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1° sem. 2023</td>
+<td style="text-align: right;">584</td>
+<td style="text-align: right;">98</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2° sem. 2023</td>
+<td style="text-align: right;">615</td>
+<td style="text-align: right;">128</td>
+<td style="text-align: right;">104</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1° sem. 2024</td>
+<td style="text-align: right;">598</td>
+<td style="text-align: right;">168</td>
+<td style="text-align: right;">106</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2° sem. 2024</td>
+<td style="text-align: right;">736</td>
+<td style="text-align: right;">224</td>
+<td style="text-align: right;">102</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1° sem. 2025</td>
+<td style="text-align: right;">798</td>
+<td style="text-align: right;">238</td>
+<td style="text-align: right;">99</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2° sem. 2025</td>
+<td style="text-align: right;">1.011</td>
+<td style="text-align: right;">251</td>
+<td style="text-align: right;">104</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1° sem. 2026</td>
+<td style="text-align: right;">1.328</td>
+<td style="text-align: right;">283</td>
+<td style="text-align: right;">102</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p><em>In parole semplici:</em> i pagamenti fatti attraverso app di terzi collegate al conto sono ancora pochi, poco più di un milione in sei mesi, ma crescono; molto più frequente è l’uso di queste app per leggere saldo e movimenti.</p>
+</section>
+<section id="confronto-con-quanto-riportato-dalla-stampa" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="confronto-con-quanto-riportato-dalla-stampa"><span class="header-section-number">7</span> Confronto con quanto riportato dalla stampa</h2>
+<p>L’articolo che ha rilanciato i dati riporta correttamente l’ordine di grandezza dei fenomeni. Tre punti vanno precisati. Il primo riguarda i prelievi: i valori di circa 1,4 e 1,1 miliardi sono riferiti agli ATM <span class="citation" data-cites="startupitalia2026Banca"><a href="#ref-startupitalia2026Banca" role="doc-biblioref">[2]</a></span>,<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> ma corrispondono al totale dei prelievi su tutti i canali. Il secondo riguarda l’open banking: le operazioni disposte tramite PISP sono descritte come vicine al milione a trimestre <span class="citation" data-cites="startupitalia2026Banca"><a href="#ref-startupitalia2026Banca" role="doc-biblioref">[2]</a></span>,<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> mentre la serie ufficiale è semestrale e il milione è stato superato in un semestre. Il terzo è minore: la quota delle carte di debito al POS nel secondo trimestre 2026 è il 71,8%; il 71,9% indicato è il valore del primo trimestre. Il totale di 2,5–4,5 miliardi è corretto, ma comprende tutti gli strumenti diversi dal contante, anche assegni e bonifici disposti allo sportello: chiamarli «operazioni bancarie digitali» è una semplificazione.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<div class="cell" data-execution_count="7">
+<div id="tbl-confronto" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="7">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-confronto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;2: Numeri riportati dalla stampa e dati ufficiali. Fonte: <span class="citation" data-cites="startupitalia2026Banca"><a href="#ref-startupitalia2026Banca" role="doc-biblioref">[2]</a></span>; elaborazione su dati Banca d’Italia <span class="citation" data-cites="bancaditalia2026Pagamenti"><a href="#ref-bancaditalia2026Pagamenti" role="doc-biblioref">[1]</a></span>.
+</figcaption>
+<div aria-describedby="tbl-confronto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="7">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 21%">
+<col style="width: 25%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicatore</th>
+<th style="text-align: left;">Stampa</th>
+<th style="text-align: left;">Dato ufficiale</th>
+<th style="text-align: left;">Esito</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Pagamenti diversi dal contante, 2022 → 2° trim. 2026</td>
+<td style="text-align: left;">da circa 2,5 a circa 4,5 mld a trimestre</td>
+<td style="text-align: left;">2,58 → 4,54 mld</td>
+<td style="text-align: left;">Confermato</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Quota carte al POS, 2° trim. 2026 (debito / prepagate / credito)</td>
+<td style="text-align: left;">71,9% / 17,1% / 11%</td>
+<td style="text-align: left;">71,8% / 17,1% / 11,0%</td>
+<td style="text-align: left;">Confermato; debito 71,8%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Contactless e dispositivi mobili al POS, 1° sem. 2026</td>
+<td style="text-align: left;">93% e 30%</td>
+<td style="text-align: left;">92,5% e 29,6%</td>
+<td style="text-align: left;">Confermato</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Prelievi 2019 e 2020</td>
+<td style="text-align: left;">circa 1,4 e 1,1 mld (agli ATM)</td>
+<td style="text-align: left;">1,39 e 1,10 mld (tutti i canali); ATM 1,20 e 0,98</td>
+<td style="text-align: left;">Valori riferiti al totale, non agli ATM</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Quota ATM sui prelievi, 1° sem. 2026</td>
+<td style="text-align: left;">oltre l’88%</td>
+<td style="text-align: left;">90,8%</td>
+<td style="text-align: left;">Confermato</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Prelievi al punto vendita, 2025</td>
+<td style="text-align: left;">0,3%</td>
+<td style="text-align: left;">0,28%</td>
+<td style="text-align: left;">Confermato</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pagamenti disposti tramite PISP</td>
+<td style="text-align: left;">vicini al milione a trimestre</td>
+<td style="text-align: left;">1,33 mln nel 1° sem. 2026</td>
+<td style="text-align: left;">Il milione è a semestre</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p><em>In parole semplici:</em> la tabella mette a fianco i numeri dell’articolo e quelli della Banca d’Italia; quasi tutti coincidono, due sono riferiti a una grandezza o a un periodo diversi da quelli indicati.</p>
+</section>
+<section id="che-cosa-cambia-per-la-domanda-iniziale" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="che-cosa-cambia-per-la-domanda-iniziale"><span class="header-section-number">8</span> Che cosa cambia per la domanda iniziale</h2>
+<p>I dati sui pagamenti confermano che per la maggior parte delle operazioni quotidiane il canale fisico è stato sostituito: si paga con la carta o il telefono, si dispongono i bonifici online, si preleva al bancomat. Allo sportello restano meno di un prelievo su undici e circa un bonifico su otto. Queste statistiche sono però nazionali e non distinguono per età, territorio o tipo di cliente. Non dicono quindi se la quota residua di operazioni allo sportello sia concentrata tra le persone e nei comuni che quello studio indicava come più esposti, cioè anziani, aree interne e comuni senza banca. La risposta «dipende da chi» resta valida: i dati sui pagamenti mostrano quanto sia grande la parte già passata ai canali digitali, non quanto pesi per chi non ci è passato.</p>
+</section>
+<section id="riferimenti" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="riferimenti">Riferimenti</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-bancaditalia2026Pagamenti" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">Banca d’Italia, <span>«Statistiche sul sistema dei pagamenti: strumenti di pagamento alternativi al contante, bonifici e carte per canale di utilizzo, prelievi per canale, servizi di open banking»</span>. Base Dati Statistica, dati al 30 giugno 2026, 2026. Consultato: 31 ottobre 2026. [Online]. Disponibile su: <a href="https://a2a.bancaditalia.it/infostat/dataservices/export/IT/CSV/DATA/CUBE/BANKITALIA/DIFF/TSDPN020">https://a2a.bancaditalia.it/infostat/dataservices/export/IT/CSV/DATA/CUBE/BANKITALIA/DIFF/TSDPN020</a></div>
+</div>
+<div id="ref-startupitalia2026Banca" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">Redazione StartupItalia, <span>«La banca? Per gli italiani ormai è digitale: sempre più operazioni online sempre meno sportello»</span>. Consultato: 31 ottobre 2026. [Online]. Disponibile su: <a href="https://startupitalia.eu/economy/la-banca-per-gli-italiani-e-sempre-piu-digitale-sempre-piu-operazioni-online-sempre-meno-sportello/">https://startupitalia.eu/economy/la-banca-per-gli-italiani-e-sempre-piu-digitale-sempre-piu-operazioni-online-sempre-meno-sportello/</a></div>
+</div>
+</div>
+<hr>
+<p><strong>Nota metodologica</strong></p>
+<p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
+<p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale; l’analisi è pertanto integralmente auditabile e replicabile da terzi a partire da esse. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+
+
+</section>
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Note</h2>
+
+<ol>
+<li id="fn1"><p>«In Italia tra il 2022 e il secondo trimestre del 2026 il numero complessivo di operazioni bancarie digitali è quasi raddoppiato, passando da circa 2,5 a circa 4,5 miliardi a trimestre.» <span class="citation" data-cites="startupitalia2026Banca"><a href="#ref-startupitalia2026Banca" role="doc-biblioref">[2]</a></span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>«Prima della pandemia i prelievi agli ATM si erano mantenuti sostanzialmente stabili, attorno a una media di circa 1,4 miliardi di operazioni l’anno.» <span class="citation" data-cites="startupitalia2026Banca"><a href="#ref-startupitalia2026Banca" role="doc-biblioref">[2]</a></span><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>«Sono cresciute anche le operazioni dispositive effettuate tramite PISP, avvicinandosi al milione a trimestre.» <span class="citation" data-cites="startupitalia2026Banca"><a href="#ref-startupitalia2026Banca" role="doc-biblioref">[2]</a></span><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>«nel primo semestre del 2026 il 93% dei pagamenti al POS è avvenuto in modalità contactless, mentre quelli tramite smartphone e altri dispositivi mobili hanno raggiunto il 30% delle transazioni al punto vendita.» <span class="citation" data-cites="startupitalia2026Banca"><a href="#ref-startupitalia2026Banca" role="doc-biblioref">[2]</a></span><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script>
+// Salto interno ai riferimenti [n] e ai rimandi #… indipendente dall'URL della pagina:
+// funziona anche quando l'HTML è aperto in un iframe, in un'anteprima o con un <base> diverso.
+document.addEventListener("click", function (e) {
+  var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+  if (!a) return;
+  var id = decodeURIComponent(a.getAttribute("href").slice(1));
+  var el = id && document.getElementById(id);
+  if (!el) return;
+  e.preventDefault();
+  el.scrollIntoView({ block: "start" });
+  try { history.replaceState(null, "", "#" + id); } catch (err) {}
+}, true);
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
