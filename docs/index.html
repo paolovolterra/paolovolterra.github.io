@@ -230,11 +230,12 @@ window.Quarto = {
 
 
 
+
 <!-- home-tag-filter:start -->
 
 <section id="esplora-argomenti" aria-labelledby="esplora-title">
 <h2 id="esplora-title">Esplora per argomento</h2>
-<p>Seleziona uno o più tag: saranno mostrati gli studi che li contengono tutti.</p>
+<p>Seleziona uno o più tag: saranno mostrati gli studi che li contengono tutti. I tag disponibili e i conteggi si aggiornano con la ricerca.</p>
 <label for="studi-search">Cerca tra titoli, descrizioni e tag</label>
 <input id="studi-search" type="search" class="form-control" placeholder="Cerca uno studio…" autocomplete="off">
 <div id="studi-tags" role="group" aria-label="Filtra per argomento"></div>
@@ -265,6 +266,9 @@ function render(){
  for(const [tag,b] of buttons)b.setAttribute('aria-pressed',String(selected.has(tag)));
  const words=normalize(search.value).trim().split(/\s+/).filter(Boolean);
  const found=studies.filter(s=>[...selected].every(t=>s.tags.includes(t))&&words.every(w=>normalize([s.title,s.description,...s.tags].join(' ')).includes(w)));
+ const counts=new Map();
+ for(const study of found)for(const tag of study.tags)counts.set(tag,(counts.get(tag)||0)+1);
+ for(const [tag,b] of buttons){const count=counts.get(tag)||0;b.textContent=`${tag} (${count})`;b.hidden=!selected.has(tag)&&count===0;}
  document.getElementById('studi-count').textContent=`${found.length} studi trovati su ${studies.length}`;
  results.replaceChildren();
  for(const s of found.slice(0,limit)){const article=document.createElement('article'),h=document.createElement('h3'),a=document.createElement('a'),p=document.createElement('p'),small=document.createElement('small');a.href=s.url;a.textContent=s.title;h.append(a);p.textContent=s.description;small.textContent=s.tags.join(' · ');article.append(h,p,small);results.append(article);}
