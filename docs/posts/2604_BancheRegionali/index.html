@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="banche regionali, sportelli bancari, HHI, concentrazione geografica, Banca d’Italia, relationship lending">
+<meta name="description" content="Concentrazione geografica della rete sportelli delle banche italiane: indice HHI, province contigue e quote di mercato.">
+
+<title>Banche regionali italiane – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Banche regionali italiane – Paolo Volterra">
+<meta property="og:description" content="Concentrazione geografica della rete sportelli delle banche italiane: indice HHI, province contigue e quote di mercato.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2604_BancheRegionali/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Banche regionali italiane – Paolo Volterra">
+<meta name="twitter:description" content="Concentrazione geografica della rete sportelli delle banche italiane: indice HHI, province contigue e quote di mercato.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2604_BancheRegionali/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#inquadramento-teorico-che-cosa-si-intende-per-banca-territoriale" id="toc-inquadramento-teorico-che-cosa-si-intende-per-banca-territoriale" class="nav-link active" data-scroll-target="#inquadramento-teorico-che-cosa-si-intende-per-banca-territoriale"><span class="header-section-number">1</span> Inquadramento teorico: che cosa si intende per “banca territoriale”</a>
+  <ul class="collapse">
+  <li><a href="#il-ruolo-dellhhi-geografico" id="toc-il-ruolo-dellhhi-geografico" class="nav-link" data-scroll-target="#il-ruolo-dellhhi-geografico"><span class="header-section-number">1.1</span> Il ruolo dell’HHI geografico</a></li>
+  <li><a href="#il-canale-digitale-scardina-la-territorialità" id="toc-il-canale-digitale-scardina-la-territorialità" class="nav-link" data-scroll-target="#il-canale-digitale-scardina-la-territorialità"><span class="header-section-number">1.2</span> Il canale digitale scardina la territorialità?</a></li>
+  </ul></li>
+  <li><a href="#metodologia-e-fonti" id="toc-metodologia-e-fonti" class="nav-link" data-scroll-target="#metodologia-e-fonti"><span class="header-section-number">2</span> Metodologia e fonti</a>
+  <ul class="collapse">
+  <li><a href="#limiti-metodologici-dellhhi-e-alternative" id="toc-limiti-metodologici-dellhhi-e-alternative" class="nav-link" data-scroll-target="#limiti-metodologici-dellhhi-e-alternative"><span class="header-section-number">2.1</span> Limiti metodologici dell’HHI e alternative</a></li>
+  </ul></li>
+  <li><a href="#classificazione-delle-banche-per-profilo-geografico" id="toc-classificazione-delle-banche-per-profilo-geografico" class="nav-link" data-scroll-target="#classificazione-delle-banche-per-profilo-geografico"><span class="header-section-number">3</span> Classificazione delle banche per profilo geografico</a></li>
+  <li><a href="#banche-regionali-profilo-t1t3" id="toc-banche-regionali-profilo-t1t3" class="nav-link" data-scroll-target="#banche-regionali-profilo-t1t3"><span class="header-section-number">4</span> Banche regionali: profilo T1–T3</a>
+  <ul class="collapse">
+  <li><a href="#graduatoria-per-hhi" id="toc-graduatoria-per-hhi" class="nav-link" data-scroll-target="#graduatoria-per-hhi"><span class="header-section-number">4.1</span> Graduatoria per HHI</a></li>
+  <li><a href="#distribuzione-regionale-disaggregata" id="toc-distribuzione-regionale-disaggregata" class="nav-link" data-scroll-target="#distribuzione-regionale-disaggregata"><span class="header-section-number">4.2</span> Distribuzione regionale disaggregata</a></li>
+  </ul></li>
+  <li><a href="#le-banche-territoriali-nel-mezzogiorno" id="toc-le-banche-territoriali-nel-mezzogiorno" class="nav-link" data-scroll-target="#le-banche-territoriali-nel-mezzogiorno"><span class="header-section-number">5</span> Le banche territoriali nel Mezzogiorno</a>
+  <ul class="collapse">
+  <li><a href="#banche-a-vocazione-meridionale-nel-campione-t1t3" id="toc-banche-a-vocazione-meridionale-nel-campione-t1t3" class="nav-link" data-scroll-target="#banche-a-vocazione-meridionale-nel-campione-t1t3"><span class="header-section-number">5.1</span> Banche a vocazione meridionale nel campione T1–T3</a></li>
+  </ul></li>
+  <li><a href="#concentrazione-sub-regionale-lhhi-provinciale" id="toc-concentrazione-sub-regionale-lhhi-provinciale" class="nav-link" data-scroll-target="#concentrazione-sub-regionale-lhhi-provinciale"><span class="header-section-number">6</span> Concentrazione sub-regionale: l’HHI provinciale</a></li>
+  <li><a href="#cluster-di-province-contigue" id="toc-cluster-di-province-contigue" class="nav-link" data-scroll-target="#cluster-di-province-contigue"><span class="header-section-number">7</span> Cluster di province contigue</a></li>
+  <li><a href="#mappe-della-rete-per-le-banche-più-concentrate" id="toc-mappe-della-rete-per-le-banche-più-concentrate" class="nav-link" data-scroll-target="#mappe-della-rete-per-le-banche-più-concentrate"><span class="header-section-number">8</span> Mappe della rete per le banche più concentrate</a>
+  <ul class="collapse">
+  <li><a href="#tier-1-mono-regionali" id="toc-tier-1-mono-regionali" class="nav-link" data-scroll-target="#tier-1-mono-regionali"><span class="header-section-number">8.1</span> Tier 1 — Mono-regionali</a></li>
+  <li><a href="#tier-2-fortemente-regionali" id="toc-tier-2-fortemente-regionali" class="nav-link" data-scroll-target="#tier-2-fortemente-regionali"><span class="header-section-number">8.2</span> Tier 2 — Fortemente regionali</a></li>
+  <li><a href="#tier-3-regionale-con-espansione" id="toc-tier-3-regionale-con-espansione" class="nav-link" data-scroll-target="#tier-3-regionale-con-espansione"><span class="header-section-number">8.3</span> Tier 3 — Regionale con espansione</a></li>
+  </ul></li>
+  <li><a href="#sintesi-e-prospettive" id="toc-sintesi-e-prospettive" class="nav-link" data-scroll-target="#sintesi-e-prospettive"><span class="header-section-number">9</span> Sintesi e prospettive</a>
+  <ul class="collapse">
+  <li><a href="#cosa-dice-la-concentrazione-geografica" id="toc-cosa-dice-la-concentrazione-geografica" class="nav-link" data-scroll-target="#cosa-dice-la-concentrazione-geografica"><span class="header-section-number">9.1</span> Cosa dice la concentrazione geografica</a></li>
+  <li><a href="#cosa-la-concentrazione-geografica-non-dice" id="toc-cosa-la-concentrazione-geografica-non-dice" class="nav-link" data-scroll-target="#cosa-la-concentrazione-geografica-non-dice"><span class="header-section-number">9.2</span> Cosa la concentrazione geografica non dice</a></li>
+  <li><a href="#nodi-concettuali-connessi" id="toc-nodi-concettuali-connessi" class="nav-link" data-scroll-target="#nodi-concettuali-connessi"><span class="header-section-number">9.3</span> Nodi concettuali connessi</a></li>
+  <li><a href="#evidenze-recenti-e-agenda-di-ricerca" id="toc-evidenze-recenti-e-agenda-di-ricerca" class="nav-link" data-scroll-target="#evidenze-recenti-e-agenda-di-ricerca"><span class="header-section-number">9.4</span> Evidenze recenti e agenda di ricerca</a></li>
+  </ul></li>
+  <li><a href="#quarto-bibliography" id="toc-quarto-bibliography" class="nav-link" data-scroll-target="#quarto-bibliography"><span class="header-section-number">10</span> Riferimenti</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Banche regionali italiane</h1>
+<p class="subtitle lead">Concentrazione geografica della rete sportelli: analisi HHI, province contigue e quote di mercato</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Banche</div>
+    <div class="quarto-category">Banche regionali</div>
+    <div class="quarto-category">Sportelli bancari</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Concentrazione geografica della rete sportelli delle banche italiane: indice HHI, province contigue e quote di mercato.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">9 aprile 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>Il documento classifica le banche italiane con almeno 50 sportelli attivi in base al grado di concentrazione geografica della rete, misurato tramite l’Indice di Herfindahl-Hirschman (HHI) calcolato sia a livello regionale sia provinciale. La concentrazione geografica è trattata come prima dimensione osservabile di un concetto più ampio — la “territorialità bancaria” — che la letteratura accademica descrive come vettore multidimensionale non riducibile a una singola variabile. Vengono identificati quattro profili distinti, dal mono-regionale al nazionale, e per ciascuna banca regionale si stima il nucleo di province contigue che assorbe la quota prevalente della rete.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>banche regionali, sportelli bancari, HHI, concentrazione geografica, Banca d’Italia, relationship lending</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="inquadramento-teorico-che-cosa-si-intende-per-banca-territoriale" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="inquadramento-teorico-che-cosa-si-intende-per-banca-territoriale"><span class="header-section-number">1</span> Inquadramento teorico: che cosa si intende per “banca territoriale”</h2>
+<p>La distinzione tra banca “regionale” o “territoriale” e banca “nazionale” non corrisponde ad alcuna categoria giuridica né a una classificazione di vigilanza codificata — non esiste, cioè, una definizione normativa analoga a quella di “banca significativa” (LSI/SI) nel framework della Vigilanza Unica. È una <strong>categoria economico-funzionale</strong>, costruita a partire da caratteristiche osservabili del modello di business.</p>
+<p>La letteratura accademica converge su una conclusione: <em>La territorialità non è una variabile. È un vettore.</em> Si tratta di un fenomeno multidimensionale che si manifesta lungo almeno quattro assi distinti e non sostituibili tra loro:</p>
+<p><strong>1. Concentrazione geografica</strong> — dove opera la banca fisicamente, misurata dalla distribuzione degli sportelli (HHI, indice di Gini geografico, quota top-regione). Misura il <em>dove</em>, non il <em>come</em>.</p>
+<p><strong>2. Radicamento fisico</strong> — densità delle filiali rispetto a popolazione, superficie e imprese locali; copertura dei comuni nel territorio di riferimento. È la misura della prossimità fisica alla clientela, che condiziona la capacità di raccogliere informazione soft <span class="citation" data-cites="berger2004 calcagnini2023">(<a href="#ref-berger2004" role="doc-biblioref">Berger e Udell 2004</a>; <a href="#ref-calcagnini2023" role="doc-biblioref">Calcagnini 2023</a>)</span>.</p>
+<p><strong>3. Allineamento raccolta–impieghi</strong> — il rapporto tra i prestiti concessi in un’area e la raccolta raccolta nella stessa area. Una banca pienamente territoriale trasforma risparmio locale in credito locale; un LDR locale elevato segnala un ruolo di intermediazione netta verso il territorio <span class="citation" data-cites="italybanking2021">(<a href="#ref-italybanking2021" role="doc-biblioref">TODO 2021</a>)</span>.</p>
+<p><strong>4. Distanza decisionale</strong> — la distanza tra il centro decisionale (sede direzionale o centro di delibera del credito) e il cliente o la filiale. Più è alta, meno è plausibile il <em>relationship lending</em> <span class="citation" data-cites="bonfim2023 petersen1994">(<a href="#ref-bonfim2023" role="doc-biblioref">Bonfim 2023</a>; <a href="#ref-petersen1994" role="doc-biblioref">Petersen e Rajan 1994</a>)</span>. Una banca può avere filiali concentrate in una sola regione ma decidere il credito da una sede distante: sarebbe geograficamente concentrata ma non “territoriale” in senso pieno. <span class="citation" data-cites="Alessandrini2009">Alessandrini et al.&nbsp;(<a href="#ref-Alessandrini2009" role="doc-biblioref">2009</a>)</span> formalizzano la distinzione tra <strong>distanza operativa</strong> (distanza geografica tra la filiale e il prenditore) e <strong>distanza funzionale</strong> (distanza tra il centro decisionale della banca e il mercato locale). L’evidenza italiana mostra che la distanza funzionale — cresciuta con il consolidamento bancario degli anni Novanta-Duemila — ha penalizzato in misura sistematica l’accesso al credito delle imprese nelle regioni periferiche, indipendentemente dalla presenza fisica di sportelli.</p>
+<p>A queste dimensioni strutturali si aggiunge una componente comportamentale — il ricorso al <strong>relationship lending</strong> (credito basato su informazione soft, su relazioni durature con la clientela, su conoscenza diretta dell’imprenditore) — che è al tempo stesso effetto e causa del radicamento territoriale <span class="citation" data-cites="berger2004 spatial2023">(<a href="#ref-berger2004" role="doc-biblioref">Berger e Udell 2004</a>; <a href="#ref-spatial2023" role="doc-biblioref">TODO 2023</a>)</span>. Per l’Italia, <span class="citation" data-cites="Banerjee2017">Banerjee et al.&nbsp;(<a href="#ref-Banerjee2017" role="doc-biblioref">2017</a>)</span> documentano che le imprese con relazioni bancarie più intense hanno mantenuto livelli di investimento e occupazione significativamente più alti dopo lo shock Lehman, fornendo un test empirico diretto della causalità dal relationship lending alla stabilità reale del credito locale.</p>
+<section id="il-ruolo-dellhhi-geografico" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="il-ruolo-dellhhi-geografico"><span class="header-section-number">1.1</span> Il ruolo dell’HHI geografico</h3>
+<p>Questo documento si concentra sulla prima dimensione — la concentrazione geografica — misurata tramite l’HHI calcolato sulla distribuzione degli sportelli. La scelta è motivata dalla disponibilità di dati granulari e aggiornati (anagrafe GIAVA, snapshot marzo 2026), ma va letta con consapevolezza dei suoi limiti.</p>
+<p>L’HHI misura <em>dove opera</em> la banca, non <em>come</em> opera. Una banca con HHI alto può non essere “territoriale” nel senso pieno del termine se le sue decisioni di credito sono centralizzate o se non intrattiene relazioni durature con la clientela locale. Viceversa, una banca con HHI moderato può avere un fortissimo radicamento relazionale nell’area di origine storica. Ai fini di questo documento, l’HHI geografico è trattato come <strong>proxy della prima dimensione</strong> e come punto di ingresso per analisi più articolate.</p>
+</section>
+<section id="il-canale-digitale-scardina-la-territorialità" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="il-canale-digitale-scardina-la-territorialità"><span class="header-section-number">1.2</span> Il canale digitale scardina la territorialità?</h3>
+<p>La diffusione dell’home banking e dei canali digitali pone una domanda diretta: se il cliente può operare da remoto, la prossimità fisica della filiale — e con essa l’intera categoria di “banca territoriale” — perde rilevanza?</p>
+<p>La risposta dipende da <em>quale dimensione</em> della territorialità si considera.</p>
+<p><strong>Sul fronte della raccolta e dei servizi di pagamento</strong>, la sostituzione è documentata e rilevante. <span class="citation" data-cites="Mariani2025">Mariani e Others (<a href="#ref-Mariani2025" role="doc-biblioref">2025</a>)</span> mostrano che tra il 2008 e il 2022 gli sportelli bancari italiani si sono ridotti del 40%, ma la quota di famiglie con almeno un deposito presso un intermediario ha <em>aumentato</em>, superando il 97%: prima grazie all’espansione dei servizi postali, poi — dal 2016 — grazie al digitale. La riduzione degli sportelli non si è dunque tradotta in un peggioramento dell’accesso ai servizi elementari. <span class="citation" data-cites="Arnaudo2025">Arnaudo e Others (<a href="#ref-Arnaudo2025" role="doc-biblioref">2025</a>)</span> confermano che una minore presenza fisica degli intermediari sul territorio spinge autonomamente i clienti verso l’interazione a distanza, ma mostrano anche che tale transizione è selettiva: l’adozione del digital banking è correlata positivamente al reddito e alla complessità delle relazioni finanziarie, e negativamente all’età — lasciando alcune fasce della popolazione structuralmente dipendenti dallo sportello fisico.</p>
+<p><strong>Sul fronte del credito alle imprese</strong>, la sostituzione è invece <em>parziale e asimmetrica</em>. Il nodo è epistemologico prima che tecnico: la filiale locale produce <strong>informazione soft</strong> — conoscenza diretta dell’imprenditore, del suo settore, del tessuto economico locale — che è per definizione non codificabile e non trasmissibile a distanza tramite algoritmi di scoring su dati transazionali <span class="citation" data-cites="petersen1994">(<a href="#ref-petersen1994" role="doc-biblioref">Petersen e Rajan 1994</a>)</span>. <span class="citation" data-cites="Casado2025">Casado e Martínez-Miera (<a href="#ref-Casado2025" role="doc-biblioref">2025</a>)</span> documentano che la specializzazione locale delle banche riduce le probabilità di default per micro e piccole imprese attraverso una migliore qualità dell’informazione privata accumulata nel tempo: un effetto che scompare quando quella prossimità viene meno. Il digitale elabora <em>informazione hard</em> (storico dei pagamenti, bilanci, rating), ma non cattura la dimensione relazionale che distingue il relationship lending dalla concessione standardizzata del credito.</p>
+<p><span class="citation" data-cites="Narayanan2025">Narayanan et al.&nbsp;(<a href="#ref-Narayanan2025" role="doc-biblioref">2025</a>)</span> offrono una conferma indiretta di questa asimmetria su dati USA 2001–2023: le chiusure di filiali sono guidate dalla <em>sensibilità ai tassi dei depositanti</em> (proxy di sofisticazione finanziaria e adozione del digitale), mentre la domanda locale di prestiti — inclusi i mutui e i piccoli prestiti alle imprese — non spiega statisticamente le decisioni di chiusura. Il digitale libera le banche dall’ancoraggio fisico sul lato della raccolta, ma non sul lato del credito alle PMI.</p>
+<p>Ne emerge una conclusione strutturata: <strong>il digitale erode la componente distributiva della territorialità</strong> (sportelli come punto di accesso ai servizi transazionali), <strong>ma non la componente informativa</strong> (sportelli come antenne per la raccolta di informazione soft). Le banche con alto HHI geografico che servono PMI e famiglie in aree a bassa literacy digitale — il profilo tipico delle banche T1–T2 meridionali — conservano un vantaggio relazionale che le piattaforme digitali non replicano. Il rischio è che la narrativa del digitale come sostituto universale dello sportello giustifichi chiusure che impoveriscono il territorio non di un punto di accesso ai pagamenti, ma di un presidio di informazione e credito relazionale.</p>
+<hr>
+</section>
+</section>
+<section id="metodologia-e-fonti" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="metodologia-e-fonti"><span class="header-section-number">2</span> Metodologia e fonti</h2>
+<p>La fonte primaria è la tabella <code>SPORTELLI</code> dell’anagrafe GIAVA di Banca d’Italia, che contiene l’elenco di tutti gli sportelli bancari attivi, con indirizzo, CAB e data di apertura/chiusura. Il campione è limitato agli sportelli attivi a marzo 2026 e alle banche con almeno <strong>50 sportelli attivi</strong>. La soglia mira a escludere le BCC di dimensione micro il cui radicamento locale è per costruzione assoluto e non informativo ai fini della classificazione, ma introduce un secondo problema: include banche a modello non-territoriale (private banking, consumer finance) che operano su 14–16 regioni con HHI inferiore a 1.500 pur avendo meno di 100 sportelli. Nella pratica, la classificazione per tier (HHI ≥ 1.800 per T3) filtra queste banche automaticamente; restano tuttavia nel campione base utilizzato per i grafici aggregati. Si veda il punto 7 della sezione “Limiti metodologici”.</p>
+<p>La georeferenziazione a livello provinciale avviene tramite la tabella <code>CabIstat</code> (codice CAB → codice ISTAT comune) e la classificazione NUTS 2021 di Eurostat (<code>nuts_it_2024</code>), che associa ogni comune a provincia (NUTS3) e regione (NUTS2). Il totale del sistema per la quota di mercato nazionale è tratto dalla serie <code>TDB20207</code> (ENTE_SEGN=1100010, FENEC=30990009, <code>LOC_SPORT='IT'</code>, riferimento dicembre 2025).</p>
+<p>L’HHI è calcolato sia a livello regionale (21 unità NUTS2, incluse le province autonome) sia a livello provinciale (107 unità NUTS3):</p>
+<p><span class="math display">\[HHI = \sum_{i=1}^{N} \left(\frac{s_i}{S} \cdot 100\right)^2\]</span></p>
+<p>dove <span class="math inline">\(s_i\)</span> è il numero di sportelli nell’unità <span class="math inline">\(i\)</span> e <span class="math inline">\(S\)</span> il totale degli sportelli della banca. Il valore varia tra 0 e 10.000 (massimo = monopolio geografico assoluto).</p>
+<section id="limiti-metodologici-dellhhi-e-alternative" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="limiti-metodologici-dellhhi-e-alternative"><span class="header-section-number">2.1</span> Limiti metodologici dell’HHI e alternative</h3>
+<p>L’uso dell’HHI basato sul conteggio degli sportelli è una scelta pragmatica, non la più accurata. La letteratura su concorrenza bancaria e geografia del credito offre diversi argomenti per una valutazione critica della metodologia.</p>
+<p><strong>1. Gli sportelli sono trattati come unità equivalenti.</strong> Un singolo sportello in una grande città e uno in un comune rurale pesano identicamente nel calcolo. In realtà, il loro volume di depositi e impieghi può differire di un ordine di grandezza. L’approccio standard nella letteratura empirica — adottato, ad esempio, dalle autorità antitrust USA nel calcolo dell’HHI bancario ai fini delle autorizzazioni M&amp;A — utilizza i <strong>depositi locali</strong> (da FDIC Summary of Deposits per gli USA; dall’Archivio Sportelli di Banca d’Italia per l’Italia) come misura di peso alternativa. Un HHI ponderato per i depositi cattura meglio l’effettivo posizionamento competitivo della banca nel territorio. In questo documento la ponderazione per depositi non è disponibile a livello di singolo sportello; il conteggio degli sportelli costituisce dunque una misura di <em>presenza fisica</em>, non di <em>penetrazione di mercato</em>.</p>
+<p><strong>2. I confini NUTS sono amministrativi, non economici.</strong> Le unità di analisi usate — regioni NUTS2 e province NUTS3 — sono delimitazioni amministrative che non corrispondono necessariamente ai mercati locali del credito. Il mercato rilevante per una PMI non è la provincia dove è registrata la sede legale, ma l’area raggiungibile in tempi compatibili con una visita del gestore relazione: tipicamente un raggio di 20–50 km, che attraversa i confini provinciali. <span class="citation" data-cites="Duquerroy2022">Duquerroy et al.&nbsp;(<a href="#ref-Duquerroy2022" role="doc-biblioref">2022</a>)</span> definiscono il mercato locale a livello di <em>arrondissement</em> francese (equivalente a sub-provinciale) e mostrano che la specializzazione bancaria misurata a quella granularità è molto più netta che a livello dipartimentale. <span class="citation" data-cites="Narayanan2025">Narayanan et al.&nbsp;(<a href="#ref-Narayanan2025" role="doc-biblioref">2025</a>)</span> usano il <em>county</em> americano (analogo alla provincia) ma riconoscono esplicitamente che i mercati dei depositi si sovrappongono geograficamente. Nei contesti italiani il confine provinciale è convenzionalmente accettato come proxy (cfr. <span class="citation" data-cites="BanditAnnuariStruttura">Banca d’Italia (<a href="#ref-BanditAnnuariStruttura" role="doc-biblioref">2024</a>)</span>), ma alcune province sono eterogenee al loro interno (ad es. provincia di Roma, Torino, Milano).</p>
+<p><strong>3. Il minimo teorico dell’HHI non è zero.</strong> Con <span class="math inline">\(N = 21\)</span> regioni NUTS2, un’ipotetica banca con distribuzione perfettamente uniforme avrebbe <span class="math inline">\(HHI = N \cdot (100/N)^2 = 10.000/N \approx 476\)</span>. Con <span class="math inline">\(N = 107\)</span> province il minimo teorico scende a <span class="math inline">\(\approx 93\)</span>. Questo implica che le soglie di tier, pur definite empiricamente sulla distribuzione osservata, devono essere lette tenendo conto del <em>minimo strutturale</em> determinato dal numero di unità geografiche: una banca con HHI = 700 non è prossima allo zero assoluto, ma solo 1,5 volte il minimo teorico. Per reti di dimensioni diverse il confronto diretto dell’HHI grezzo può essere fuorviante.</p>
+<p><strong>4. Effetto dimensione e banca piccola.</strong> Le banche più piccole ottengono meccanicamente HHI più alti: una banca con 50 sportelli concentrati in un’area è quasi costretta ad avere HHI elevato, anche senza una scelta strategica di specializzazione. Viceversa, una banca con 500 sportelli che volesse mantenere un HHI T1 dovrebbe concentrare 415+ sportelli in una sola regione — impresa commercialmente difficile. Parte della correlazione negativa tra dimensione e HHI nel <a href="#figura-scatter" class="quarto-xref">Figura&nbsp;1</a> riflette questo meccanismo strutturale più che una scelta consapevole di diversificazione.</p>
+<p><strong>5. Livello entità vs.&nbsp;livello gruppo.</strong> Il calcolo è effettuato per ABI, non per gruppo bancario. Alcune banche classificate T1–T2 sono controllate da gruppi nazionali o esteri che consolidano reti complementari su tutto il territorio; in quel caso l’HHI dell’entità legale sovrastima la concentrazione <em>del gruppo</em>, che può avere presidio capillare tramite altre controllate. Viceversa, due banche T4 dello stesso gruppo che operano in aree diverse appaiono come entità separate nella classificazione ma possono condividere piattaforma creditizia e centri di delibera.</p>
+<p><strong>7. La soglia di inclusione a 50 sportelli mescola categorie eterogenee.</strong> Un’analisi di sensibilità sulla distribuzione delle 407 banche attive a marzo 2026 mostra che la soglia di 50 sportelli non corrisponde a un break naturale nella distribuzione per dimensione. Nel range 50–99 sportelli coesistono due popolazioni con logiche opposte: BCC mono- o bi-provinciali con HHI tra 7.000 e 10.000 (incluse per costruzione) e banche specializzate a distribuzione nazionale — private banking (Banca Generali 55 sportelli, HHI 962; Banca Aletti 55, HHI 1.894), consumer finance (Findomestic 82, HHI 1.038), banche captive (IBL 52, HHI 1.087) — con HHI sistematicamente inferiore a 1.500 nonostante reti di scala ridotta. Queste ultime non sono “banche regionali” in nessun senso funzionale e abbassano artificialmente l’HHI medio del campione nei grafici aggregati. Il problema è speculare per le soglie basse: nel range 30–49 sportelli restano escluse banche con profilo genuinamente regionale come la Cassa di Risparmio di Orvieto (ABI 6220, 41 sportelli, 3 regioni, HHI 4.456) e la Banca del Fucino (40 sportelli, 7 regioni, HHI 4.100). Una soglia più robusta sarebbe <strong>75 sportelli</strong>, eventualmente combinata con l’esclusione esplicita delle banche a modello non-territoriale tramite classificazione ATECO/FENEC, oppure il mantenimento della soglia a 50 con il filtro implicito già operante — HHI ≥ 1.800 per il Tier 3 — che esclude automaticamente le banche nazionali specializzate dall’analisi qualitativa.</p>
+<p><strong>6. Snapshot vs.&nbsp;traiettoria.</strong> L’HHI è calcolato su uno snapshot (marzo 2026). Non cattura la <em>velocità</em> con cui una banca si sta de-regionalizzando (es. espansione rapida di una ex-cassa di risparmio) né la stabilità del presidio territoriale nel tempo. Una misura complementare sarebbe la deviazione standard dell’HHI su una serie storica o, più direttamente, il tasso di variazione della quota nella regione di origine degli ultimi cinque anni.</p>
+<p><strong>Alternative metodologiche.</strong> La letteratura propone misure complementari: l’<strong>indice di Gini geografico</strong> (misura la disuguaglianza della distribuzione degli sportelli tra province), l’<strong>indice di Ellison-Glaeser</strong> (confronta la distribuzione della banca con quella del sistema), l’<strong>entropia di Theil</strong> (misura quanto la distribuzione si avvicina all’uniforme), e la <strong>distanza media ponderata</strong> tra sportelli e sede (proxy della distanza operativa, cfr. <span class="citation" data-cites="Alessandrini2009">Alessandrini et al.&nbsp;(<a href="#ref-Alessandrini2009" role="doc-biblioref">2009</a>)</span>). Queste misure colgono sfaccettature diverse della “territorialità geografica” e possono essere più informative dell’HHI in casi limite — ad esempio, distinguono tra una banca con un’unica regione fortissima ma presenza uniforme altrove (HHI basso, Gini basso) e una con due poli dominanti separati geograficamente (HHI basso, Gini alto).</p>
+<p>Ai fini di questo documento, l’HHI rimane la misura principale per confrontabilità con la letteratura e per semplicità interpretativa; i limiti sopra esposti motivano la complementarietà con la quota nella regione di origine, il numero di province contigue e la mappa geografica illustrativa.</p>
+<hr>
+</section>
+</section>
+<section id="classificazione-delle-banche-per-profilo-geografico" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="classificazione-delle-banche-per-profilo-geografico"><span class="header-section-number">3</span> Classificazione delle banche per profilo geografico</h2>
+<p>Sulla base dell’HHI regionale emergono quattro profili distinti, separati da soglie naturali nella distribuzione:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 16%">
+<col style="width: 21%">
+<col style="width: 53%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Tier</th>
+<th style="text-align: center;">HHI regionale</th>
+<th style="text-align: left;">Profilo</th>
+<th style="text-align: left;">Criterio empirico</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>T1</strong></td>
+<td style="text-align: center;">≥ 7.000</td>
+<td style="text-align: left;">Mono-regionale</td>
+<td style="text-align: left;">&gt; 83% degli sportelli in una sola regione</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>T2</strong></td>
+<td style="text-align: center;">3.500 – 7.000</td>
+<td style="text-align: left;">Fortemente regionale</td>
+<td style="text-align: left;">&gt; 55% in una regione, espansione limitata al territorio contiguo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>T3</strong></td>
+<td style="text-align: center;">1.800 – 3.500</td>
+<td style="text-align: left;">Regionale con espansione</td>
+<td style="text-align: left;">Radice regionale riconoscibile, presenza a regioni limitrofe</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>T4</strong></td>
+<td style="text-align: center;">900 – 1.800</td>
+<td style="text-align: left;">Ex-regionale / radicata</td>
+<td style="text-align: left;">Origine regionale storica, rete ormai pluriregionale</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>T5</strong></td>
+<td style="text-align: center;">&lt; 900</td>
+<td style="text-align: left;">Nazionale</td>
+<td style="text-align: left;">Distribuzione omogenea sull’intero territorio</td>
+</tr>
+</tbody>
+</table>
+<p>Il grafico seguente mostra la posizione di ogni banca nello spazio dimensione/concentrazione. Le banche più grandi tendono ad avere HHI più basso per effetto della diversificazione territoriale, ma esistono eccezioni rilevanti: la Banca Popolare di Sondrio, con 493 sportelli, mantiene un HHI di oltre 6.000, segno di una strategia di sviluppo deliberatamente ancorata alla Lombardia.</p>
+<p><img src="figure/fig01.png" class="img-fluid figure-img" role="img"></p>
+<p>Figura&nbsp;1: Concentrazione geografica della rete sportelli (HHI regionale vs numero di sportelli in scala logaritmica). Ogni punto è una banca con ≥ 50 sportelli attivi; la posizione verticale misura il grado di concentrazione, quella orizzontale la dimensione della rete. Le linee tratteggiate separano i tier.</p>
+<hr>
+</section>
+<section id="banche-regionali-profilo-t1t3" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="banche-regionali-profilo-t1t3"><span class="header-section-number">4</span> Banche regionali: profilo T1–T3</h2>
+<section id="graduatoria-per-hhi" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="graduatoria-per-hhi"><span class="header-section-number">4.1</span> Graduatoria per HHI</h3>
+<p>Le banche classificate T1–T3 (HHI ≥ 1.800) sono quelle per cui la dimensione geografica è un tratto identitario della strategia distributiva, non un semplice residuo storico. La <a href="#figura-hhi" class="quarto-xref">Figura&nbsp;2</a> le ordina per grado di concentrazione decrescente; all’interno di ciascuna barra è riportata la regione dominante.</p>
+<p><img src="figure/fig02.png" class="img-fluid figure-img" role="img"></p>
+<p>Figura&nbsp;2: Banche regionali italiane ordinate per HHI regionale. Rosso = T1 mono-regionale, arancione = T2 fortemente regionale, giallo = T3 regionale con espansione. Il valore HHI e la regione di concentrazione principale sono riportati su ogni barra.</p>
+<p>Quattro banche spiccano nel <strong>Tier 1</strong> con concentrazioni quasi assolute:</p>
+<ul>
+<li><p><strong>Banco di Sardegna</strong> (ABI 1015): 270 sportelli, il 97% in Sardegna. La presenza peninsulare si riduce a poche filiali di rappresentanza. È il caso più nitido di banca regionale per vocazione storica e missione istituzionale; l’insularità è una determinante strutturale della concentrazione geografica, non una scelta strategica liberamente reversibile.</p></li>
+<li><p><strong>Banca Agricola Popolare di Sicilia</strong> (ABI 5036): 105 sportelli, il 97% in Sicilia. Nata come istituto agricolo di servizio al territorio, ha mantenuto un perimetro operativo pressoché insulare anche nel ciclo di consolidamento degli anni 2000-2020.</p></li>
+<li><p><strong>Banca Popolare Pugliese</strong> (ABI 5262): 94 sportelli, l’88% in Puglia (HHI ~7.800). Con un cluster contiguo che copre il 100% della rete in 10 province e una quota di mercato nazionale dello 0,49%, è l’unica banca popolare continentale classificabile come mono-regionale. La concentrazione riflette una vocazione storica di servizio alle PMI e alle famiglie del Salento e del barese, mantenuta nonostante le pressioni aggregative.</p></li>
+<li><p><strong>Cassa di Risparmio di Asti</strong> (ABI 6085): 210 sportelli, il 83% in Piemonte con una propaggine in Lombardia. Caso tipico di cassa di risparmio che ha resistito alle pressioni aggregative conservando il presidio del territorio storico piemontese.</p></li>
+</ul>
+<p>Nel <strong>Tier 2</strong> si collocano banche con una regione dominante e un’espansione limitata verso province contigue, spesso motivata da logiche di bacino economico piuttosto che da ambizioni di scala nazionale:</p>
+<ul>
+<li><p><strong>Banca Popolare di Sondrio</strong> (ABI 5696): 493 sportelli, massima dimensione tra le banche regionali analizzate, con il 77% in Lombardia. La presenza a Roma (10%) riflette il posizionamento nel segmento private e il presidio della clientela istituzionale, non una strategia di diversificazione territoriale.</p></li>
+<li><p><strong>BCC Roma</strong> (ABI 8327): 196 sportelli tra Lazio (72%) e Veneto (18%), quest’ultima quota derivante da operazioni straordinarie che hanno portato all’incorporazione di realtà cooperative venete.</p></li>
+<li><p><strong>Volksbank – Banca Popolare dell’Alto Adige</strong> (ABI 5856) e <strong>Cassa di Risparmio di Bolzano / Südtiroler Sparkasse</strong> (ABI 6045): entrambe operano nel bacino bilingue Trentino-Alto Adige/Veneto; la loro distribuzione riflette la continuità economica tra Bolzano, Trento e le province venete di confine più che un’espansione strategica.</p></li>
+<li><p><strong>Banca Popolare di Puglia e Basilicata</strong> (ABI 5385): 101 sportelli tra Puglia (55%) e Abruzzo (21%), con una copertura che segue la dorsale adriatica meridionale e attraversa il confine regionale seguendo logiche di bacino.</p></li>
+</ul>
+<p>Nel <strong>Tier 3</strong> si colloca una banca che, pur con un HHI inferiore alla soglia T2, mantiene una vocazione geografica nettamente definita:</p>
+<ul>
+<li><strong>BdM Banca</strong> (ABI 5424): 212 sportelli distribuiti su 9 regioni e 27 province (HHI 2.244). La rete presenta una caratteristica rara nel campione: la perfetta bipartizione tra Abruzzo e Puglia, ciascuna con il 29,7% degli sportelli. Le province guida sono Bari (BA, 17,9%) e Teramo (TE), poli di un asse adriatico-meridionale che si estende verso Campania (16,5%) e Basilicata (13,2%). Nel complesso il <strong>93,4% degli sportelli si trova nel Mezzogiorno</strong> (198 su 212), la quota più elevata in valore assoluto tra le banche del campione con più di 50 sportelli. Il cluster di province contigue copre 26 province e cattura il 99,5% della rete: nonostante l’HHI relativamente basso (che riflette la distribuzione bifocale), la rete è geograficamente coerente e quasi interamente concentrata nell’arco adriatico-meridionale. L’espansione verso Marche (3,8%), Lazio (2,4%) e con una sola filiale in Lombardia segnala un presidio di servizio, non una logica di diversificazione territoriale.</li>
+</ul>
+</section>
+<section id="distribuzione-regionale-disaggregata" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="distribuzione-regionale-disaggregata"><span class="header-section-number">4.2</span> Distribuzione regionale disaggregata</h3>
+<p>La <a href="#figura-stacked" class="quarto-xref">Figura&nbsp;3</a> mostra per ogni banca regionale la composizione della rete per regione, ordinate per HHI decrescente. È immediato distinguere le mono-regionali (barra quasi monocolore) dalle banche T3 con una distribuzione più articolata su più regioni.</p>
+<p><img src="figure/fig03.png" class="img-fluid figure-img" role="img"></p>
+<p>Figura&nbsp;3: Distribuzione regionale degli sportelli per ciascuna banca T1–T3. Le regioni con quota &lt; 5% non sono etichettate. L’ordinamento verticale riflette l’HHI decrescente.</p>
+<hr>
+</section>
+</section>
+<section id="le-banche-territoriali-nel-mezzogiorno" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="le-banche-territoriali-nel-mezzogiorno"><span class="header-section-number">5</span> Le banche territoriali nel Mezzogiorno</h2>
+<p>Il Mezzogiorno (Abruzzo, Molise, Campania, Puglia, Basilicata, Calabria, Sicilia e Sardegna) concentra <strong>4.233 sportelli bancari</strong> a dicembre 2025, pari al <strong>22,9% del totale nazionale</strong> a fronte di circa il 34% della popolazione italiana. La quota è rimasta stabile nell’arco 2015–2025: il calo decennale degli sportelli è stato del -34% nel Sud (da 6.424 a 4.233) e del -38% nel Centro-Nord (da 22.944 a 14.245), ma il divario fisico per abitante rimane strutturale.</p>
+<p>Il problema non è solo quantitativo. <span class="citation" data-cites="DelPrete2022">Del Prete et al.&nbsp;(<a href="#ref-DelPrete2022" role="doc-biblioref">2022</a>)</span> documentano che nel 2019 il rapporto tra prestiti bancari alle imprese non finanziarie e il valore aggiunto era pari al <strong>28% nel Mezzogiorno</strong> e al <strong>49% nel Centro-Nord</strong>. Il credito bancario rappresenta quasi la sola fonte di finanziamento esterno per le imprese meridionali — che hanno minore accesso ai mercati dei capitali e minore diversificazione delle fonti — rendendo il presidio bancario territoriale una variabile critica e non soltanto descrittiva della struttura finanziaria del Sud. <span class="citation" data-cites="Alessandrini2009">Alessandrini et al.&nbsp;(<a href="#ref-Alessandrini2009" role="doc-biblioref">2009</a>)</span> hanno già segnalato che l’aumento della distanza funzionale — la distanza tra i centri decisionali degli intermediari e le filiali periferiche — ha penalizzato strutturalmente l’accesso al credito nelle regioni meridionali nel ciclo di consolidamento degli anni Novanta-Duemila.</p>
+<section id="banche-a-vocazione-meridionale-nel-campione-t1t3" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="banche-a-vocazione-meridionale-nel-campione-t1t3"><span class="header-section-number">5.1</span> Banche a vocazione meridionale nel campione T1–T3</h3>
+<p>Delle banche analizzate, quattro hanno una presenza esclusiva o quasi esclusiva nel Mezzogiorno:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Banca</th>
+<th style="text-align: left;">ABI</th>
+<th style="text-align: center;">Sportelli totali</th>
+<th style="text-align: center;">di cui nel Mezzogiorno</th>
+<th style="text-align: center;">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Banco di Sardegna</td>
+<td style="text-align: left;">1015</td>
+<td style="text-align: center;">270</td>
+<td style="text-align: center;">264</td>
+<td style="text-align: center;">97,8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Banca Agricola Popolare di Sicilia</td>
+<td style="text-align: left;">5036</td>
+<td style="text-align: center;">105</td>
+<td style="text-align: center;">103</td>
+<td style="text-align: center;">98,1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Banca Popolare Pugliese</td>
+<td style="text-align: left;">5262</td>
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">100,0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Banca Popolare di Puglia e Basilicata</td>
+<td style="text-align: left;">5385</td>
+<td style="text-align: center;">101</td>
+<td style="text-align: center;">101</td>
+<td style="text-align: center;">100,0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BdM Banca</td>
+<td style="text-align: left;">5424</td>
+<td style="text-align: center;">212</td>
+<td style="text-align: center;">198</td>
+<td style="text-align: center;">93,4</td>
+</tr>
+</tbody>
+</table>
+<p>Le cinque banche presidiano complessivamente <strong>760 sportelli nel Mezzogiorno</strong>, pari al <strong>18,0% della rete meridionale</strong>. Il restante 82,0% fa capo a istituti con sede e governo nel Centro-Nord o a banche a scala nazionale, in misura crescente per effetto del processo di consolidamento.</p>
+<p><span class="citation" data-cites="DelPrete2022">Del Prete et al.&nbsp;(<a href="#ref-DelPrete2022" role="doc-biblioref">2022</a>)</span> mostrano che nell’arco 2009–2019 le M&amp;A bancarie hanno ridotto il numero di intermediari con sede nel Sud in misura sistematica e che l’effetto sui prestiti alle PMI meridionali è stato mediamente più intenso rispetto al Centro-Nord — soprattutto per imprese piccole (meno di 20 addetti) o finanziariamente fragili. Il risultato è interpretato non come effetto del trasferimento del centro decisionale, bensì come amplificazione di fragilità strutturali delle imprese meridionali che rendono più probabile la contrazione del credito in presenza di uno shock negativo sull’intermediario.</p>
+<p>In questo quadro, le banche T1–T2 con vocazione meridionale svolgono un ruolo che trascende la semplice presenza fisica: sono punti di erogazione del credito con governance locale, radicati in territori dove la densità di banche con centro decisionale prossimo è strutturalmente bassa. La loro concentrazione geografica — l’HHI elevato che le qualifica come “mono-regionali” o “fortemente regionali” — è quindi, in questo contesto, anche una misura della capacità del territorio di mantenere interlocutori bancari con informazione locale e distanza funzionale contenuta.</p>
+<hr>
+</section>
+</section>
+<section id="concentrazione-sub-regionale-lhhi-provinciale" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="concentrazione-sub-regionale-lhhi-provinciale"><span class="header-section-number">6</span> Concentrazione sub-regionale: l’HHI provinciale</h2>
+<p>L’HHI calcolato a livello regionale maschera la struttura interna alla regione dominante. Una banca con il 70% degli sportelli in Lombardia ma distribuiti uniformemente tra le province lombarde ha un profilo molto diverso da una che concentra quel 70% nella sola area metropolitana milanese. Per cogliere questa dimensione si ricalcola l’HHI a livello delle 107 province NUTS3.</p>
+<p>Il confronto tra le due misure (<a href="#figura-hhi2d" class="quarto-xref">Figura&nbsp;4</a>) individua due pattern distinti:</p>
+<ul>
+<li><p><strong>Banche sopra la diagonale</strong> (HHI provinciale &gt; HHI regionale): la concentrazione è ancora più acuta di quanto appaia guardando alle sole regioni. È il caso tipico delle banche con un fortissimo radicamento in una singola provincia di origine storica — Volksbank nella provincia di Bolzano, CR Asti nella provincia di Asti. Queste banche hanno una presenza regionale apparentemente “moderata” ma in realtà quasi mono-provinciale.</p></li>
+<li><p><strong>Banche sotto la diagonale</strong> (HHI provinciale &lt; HHI regionale): la rete è distribuita su più province all’interno della regione dominante. È il caso della Banca Popolare di Sondrio, presente capillarmente in tutta la Lombardia, o di BCC Roma, che copre province sia laziali sia venete.</p></li>
+</ul>
+<p><img src="figure/fig04.png" class="img-fluid figure-img" role="img"></p>
+<p>Figura&nbsp;4: HHI regionale (asse x) vs HHI provinciale (asse y). La linea tratteggiata è la bisettrice: i punti sopra la diagonale indicano banche con concentrazione sub-regionale più acuta di quanto suggerirebbe il solo HHI regionale.</p>
+<hr>
+</section>
+<section id="cluster-di-province-contigue" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="cluster-di-province-contigue"><span class="header-section-number">7</span> Cluster di province contigue</h2>
+<p>Un elemento qualitativo rilevante è verificare se la presenza territoriale di una banca regionale forma un <strong>blocco geograficamente contiguo</strong> — un insieme di province connesse che costituisce il nucleo del mercato servito — oppure è frammentata in aree non collegate.</p>
+<p>A tale scopo si costruisce un grafo di adiacenza tra le 107 province italiane (due province sono adiacenti se i poligoni NUTS3 corrispondenti condividono un confine, secondo il GeoJSON Eurostat NUTS 2021) e si ricerca, per ogni banca, il sottoinsieme connesso di province contigue che massimizza la quota di sportelli catturata, tramite un algoritmo greedy-BFS che espande il cluster dalla provincia seed (quella con più sportelli) verso le adiacenti più ricche.</p>
+<p>La <a href="#figura-cluster" class="quarto-xref">Figura&nbsp;5</a> mette a confronto la quota catturata dal cluster contiguo con quella delle sole top-2 regioni. I punti sopra la diagonale indicano banche la cui rete contigua attraversa confini regionali — il caso più evidente è BPPB, il cui presidio adriatico-meridionale forma un cluster coerente che include province pugliesi, abruzzesi e molisane, superando il perimetro della sola Puglia.</p>
+<p><img src="figure/fig05.png" class="img-fluid figure-img" role="img"></p>
+<p>Figura&nbsp;5: % sportelli nel cluster di province contigue (asse y) vs % nelle top-2 regioni (asse x). Punti sopra la bisettrice: il cluster contiguo cattura più sportelli di quanto non facciano le prime due regioni prese separatamente, segnalando una logica di presidio per bacini economici trans-regionali.</p>
+<p>Per le banche mono-regionali T1, il cluster contiguo coincide quasi per definizione con la regione stessa (le province sono tutte contigue entro l’isola). Per le banche T2–T3 il cluster rivela spesso una logica di presidio basata su bacini economici che non seguono i confini amministrativi regionali — il dato più utile per analisi di trasmissione del credito e di rischio territoriale concentrato.</p>
+<hr>
+</section>
+<section id="mappe-della-rete-per-le-banche-più-concentrate" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="mappe-della-rete-per-le-banche-più-concentrate"><span class="header-section-number">8</span> Mappe della rete per le banche più concentrate</h2>
+<p>Le mappe seguenti mostrano la distribuzione provinciale degli sportelli per le banche T1 e T2 (HHI ≥ 3.500). Il titolo di ogni mappa riporta: sportelli totali, quota di mercato nazionale, numero di regioni e province presidiate, dimensione del cluster contiguo e quota di rete che esso cattura.</p>
+<section id="tier-1-mono-regionali" class="level3" data-number="8.1">
+<h3 data-number="8.1" class="anchored" data-anchor-id="tier-1-mono-regionali"><span class="header-section-number">8.1</span> Tier 1 — Mono-regionali</h3>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-row quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><img src="figure/fig06.png" class="img-fluid figure-img" role="img"></p>
+<p>Figura&nbsp;6: <strong>Banco di Sardegna</strong> (ABI 1015) — presidio quasi esclusivo della Sardegna con oltre 270 sportelli.</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><img src="figure/fig07.png" class="img-fluid figure-img" role="img"></p>
+<p>Figura&nbsp;7: <strong>Banca Agricola Popolare di Sicilia</strong> (ABI 5036) — presenza concentrata in Sicilia, con pochissime eccezioni.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-row quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><img src="figure/fig08.png" class="img-fluid figure-img" role="img"></p>
+<p>Figura&nbsp;8: <strong>Banca Popolare Pugliese</strong> (ABI 5262) — 94 sportelli, 88% in Puglia (HHI ~7.800). Unica banca popolare continentale mono-regionale; cluster contiguo al 100% in 10 province pugliesi.</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><img src="figure/fig09.png" class="img-fluid figure-img" role="img"></p>
+<p>Figura&nbsp;9: <strong>Cassa di Risparmio di Asti</strong> (ABI 6085) — forte radicamento piemontese (83%) con una propaggine in Lombardia.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="tier-2-fortemente-regionali" class="level3" data-number="8.2">
+<h3 data-number="8.2" class="anchored" data-anchor-id="tier-2-fortemente-regionali"><span class="header-section-number">8.2</span> Tier 2 — Fortemente regionali</h3>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-row quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><img src="figure/fig10.png" class="img-fluid figure-img" role="img"></p>
+<p>Figura&nbsp;10: <strong>Banca Popolare di Sondrio</strong> (ABI 5696) — la più grande tra le banche regionali; rete capillare in Lombardia con presidio private a Roma.</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><img src="figure/fig11.png" class="img-fluid figure-img" role="img"></p>
+<p>Figura&nbsp;11: <strong>BCC Roma</strong> (ABI 8327) — prevalenza laziale con cluster veneto derivante da incorporazioni.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-row quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><img src="figure/fig12.png" class="img-fluid figure-img" role="img"></p>
+<p>Figura&nbsp;12: <strong>Volksbank – Banca Popolare dell’Alto Adige</strong> (ABI 5856) — bacino bilingue Bolzano/Veneto.</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><img src="figure/fig13.png" class="img-fluid figure-img" role="img"></p>
+<p>Figura&nbsp;13: <strong>Cassa di Risparmio di Bolzano / Südtiroler Sparkasse</strong> (ABI 6045) — presidio della provincia di Bolzano con espansione veneta.</p>
+</div>
+</div>
+</div>
+</div>
+<p><img src="figure/fig14.png" class="img-fluid figure-img" role="img"></p>
+<p>Figura&nbsp;14: <strong>Banca Popolare di Puglia e Basilicata</strong> (ABI 5385) — presidio adriatico-meridionale che attraversa i confini regionali.</p>
+</section>
+<section id="tier-3-regionale-con-espansione" class="level3" data-number="8.3">
+<h3 data-number="8.3" class="anchored" data-anchor-id="tier-3-regionale-con-espansione"><span class="header-section-number">8.3</span> Tier 3 — Regionale con espansione</h3>
+<p><img src="figure/fig15.png" class="img-fluid figure-img" role="img"></p>
+<p>Figura&nbsp;15: <strong>BdM Banca</strong> (ABI 5424) — 212 sportelli, 93,4% nel Mezzogiorno. Bipartizione Abruzzo/Puglia (29,7% ciascuna); cluster di 26 province contigue (99,5% della rete).</p>
+<hr>
+</section>
+</section>
+<section id="sintesi-e-prospettive" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="sintesi-e-prospettive"><span class="header-section-number">9</span> Sintesi e prospettive</h2>
+<section id="cosa-dice-la-concentrazione-geografica" class="level3" data-number="9.1">
+<h3 data-number="9.1" class="anchored" data-anchor-id="cosa-dice-la-concentrazione-geografica"><span class="header-section-number">9.1</span> Cosa dice la concentrazione geografica</h3>
+<p>La classificazione per HHI consente di identificare con rigore quali banche possono essere considerate “regionali” in senso geografico e quali hanno invece già compiuto la transizione verso un modello pluriregionale o nazionale. Tre osservazioni emergono dall’analisi:</p>
+<ol type="1">
+<li><p><strong>Le banche T1 sono casi strutturalmente vincolati</strong>: Banco di Sardegna e BAPS riflettono specificità geografiche (insularità) che le rendono casi particolari. La loro concentrazione non è il risultato di una scelta strategica liberamente reversibile.</p></li>
+<li><p><strong>Il Tier 2 è il nucleo delle banche “regionali per scelta”</strong>: Banca Popolare di Sondrio, Volksbank e CR Asti hanno mantenuto un’identità regionale nonostante vent’anni di pressione alle aggregazioni. Il loro HHI elevato non è un residuo storico ma un posizionamento deliberato nel segmento delle PMI e delle famiglie del territorio.</p></li>
+<li><p><strong>Il cluster contiguo è più informativo dell’HHI regionale per le banche T2–T3</strong>: BPPB e BdM Banca mostrano una logica di presidio per bacini economici trans-regionali che l’HHI regionale coglie solo parzialmente.</p></li>
+</ol>
+</section>
+<section id="cosa-la-concentrazione-geografica-non-dice" class="level3" data-number="9.2">
+<h3 data-number="9.2" class="anchored" data-anchor-id="cosa-la-concentrazione-geografica-non-dice"><span class="header-section-number">9.2</span> Cosa la concentrazione geografica non dice</h3>
+<p>Come anticipato nell’inquadramento teorico, l’HHI misura il <em>dove</em>, non il <em>come</em>. Per passare da una classificazione geografica a una valutazione compiuta della territorialità bancaria servirebbero almeno altri tre blocchi di informazione:</p>
+<ul>
+<li><p><strong>Allineamento raccolta–impieghi</strong> per area (LDR locale): quanto del risparmio raccolto in una provincia viene reinvestito nella stessa provincia. I dati Banca d’Italia (<code>TFR</code>, <code>TDB</code>) permettono di costruire questa misura a livello NUTS3.</p></li>
+<li><p><strong>Distanza decisionale</strong>: la distanza media tra sede direzionale e filiali (o clienti), che misura la plausibilità del relationship lending. Derivabile dall’anagrafe GIAVA incrociata con i dati di geocodifica.</p></li>
+<li><p><strong>Struttura della clientela</strong>: la quota di credito verso PMI e microimprese locali, che distingue il modello relazionale da quello standardizzato. Disponibile nei dati <code>BSIB</code> e <code>TRI</code> per i principali segmenti.</p></li>
+</ul>
+<p>Un indice composito di territorialità che integrasse queste dimensioni — concentrazione geografica, radicamento fisico, allineamento raccolta–impieghi, distanza decisionale — costituirebbe uno strumento analitico robusto per confrontare banche, misurare l’evoluzione nel tempo del sistema, e valutare l’impatto territoriale delle politiche di credito.</p>
+</section>
+<section id="nodi-concettuali-connessi" class="level3" data-number="9.3">
+<h3 data-number="9.3" class="anchored" data-anchor-id="nodi-concettuali-connessi"><span class="header-section-number">9.3</span> Nodi concettuali connessi</h3>
+<p>La concentrazione geografica degli sportelli — l’oggetto di questo documento — è un punto di ingresso in un sistema di concetti collegati che ne ampliano la portata interpretativa.</p>
+<p><strong>Desertificazione bancaria: il duale dell’HHI.</strong> L’HHI misura dove le banche <em>sono</em>; il suo complemento è dove non ci sono affatto. All’inizio del 2026 circa <strong>3.470 comuni italiani</strong> (il 43,9% del totale) non contano nemmeno uno sportello bancario attivo: il 39,9% nel Centro-Nord, il <strong>52,4% nel Mezzogiorno</strong>. I casi estremi sono il Molise (83,8%), la Calabria (74,3%) e la Valle d’Aosta (74,3%). Le banche T1–T2 con alto HHI presidiano alcune di queste aree critiche, ma la copertura complessiva rimane lacunosa. La “desertificazione bancaria” è già tracciata come progetto di approfondimento (cfr. task #26 di progetto) con mappatura a livello di singolo comune <span class="citation" data-cites="BSG2024">(<a href="#ref-BSG2024" role="doc-biblioref">EBA Banking Stakeholder Group 2024</a>)</span>.</p>
+<p><strong>Gerarchia organizzativa e perdita di informazione soft.</strong> Perché una grande banca con una filiale locale non può semplicemente replicare l’information advantage di un intermediario piccolo e radicato? <span class="citation" data-cites="Stein2002">Stein (<a href="#ref-Stein2002" role="doc-biblioref">2002</a>)</span> dimostra che l’informazione soft — non verificabile, non codificabile — non sopravvive ai passaggi gerarchici interni: un direttore di filiale che conosce il cliente non riesce a trasmettere credibilmente quella conoscenza a un credit officer di sede lontana. Ne consegue che la distanza funzionale non è solo un problema logistico, ma un vincolo strutturale alla qualità del processo deliberativo del credito. Questo fornisce il fondamento teorico per cui l’HHI geografico e la distanza funzionale di <span class="citation" data-cites="Alessandrini2009">Alessandrini et al.&nbsp;(<a href="#ref-Alessandrini2009" role="doc-biblioref">2009</a>)</span> vanno misurate <em>entrambe</em>, e non sono intercambiabili.</p>
+<p><strong>Sviluppo finanziario locale e crescita economica.</strong> <span class="citation" data-cites="Guiso2004">Guiso et al.&nbsp;(<a href="#ref-Guiso2004" role="doc-biblioref">2004</a>)</span> hanno dimostrato — su dati provinciali italiani degli anni Novanta — che un maggiore sviluppo finanziario locale nel periodo iniziale <em>causa</em> in misura significativa: tassi di crescita del PIL superiori, maggiore accesso al credito per le famiglie e le imprese, e livelli più bassi di corruzione. Il canale causale è la presenza di banche con radici locali capaci di ridurre le asimmetrie informative. Questo colloca l’analisi dell’HHI su un terreno di rilevanza per la politica economica: la concentrazione geografica degli sportelli non è solo un dato strutturale di un settore, ma una variabile con potenziali effetti sullo sviluppo dei territori.</p>
+<p><strong>Il paradosso della concentrazione: territorialità e rischio.</strong> Lo stesso indice HHI usato per classificare le banche come “territoriali” è anche una misura di <em>rischio di concentrazione geografica</em>. Una banca con HHI 9.000 — il 90% degli sportelli in un’unica regione — ha un’esposizione sistemica al ciclo economico di quella regione: un deterioramento del tessuto produttivo locale si trasmette direttamente alla qualità del portafoglio crediti. Il Banco di Sardegna e la BPP operano in regioni con dinamiche demografiche e produttive specifiche; la loro forza in termini di radicamento è al tempo stesso la loro principale fonte di rischio idiosincratico.</p>
+<p><strong>Il trade-off competizione–relationship lending.</strong> <span class="citation" data-cites="petersen1994">Petersen e Rajan (<a href="#ref-petersen1994" role="doc-biblioref">1994</a>)</span> mostrano che la relazione banca–impresa richiede un investimento iniziale in informazione che la banca può recuperare solo se mantiene un certo potere di mercato locale. Più il mercato è contendibile, meno le banche investono in relazioni di lungo periodo. L’HHI geografico elevato delle banche T1–T2 crea spesso, per effetto collaterale, una struttura di mercato locale a bassa concorrenza — che è condizione necessaria per il relationship lending, ma porta con sé il rischio di tassi più elevati e selezione meno efficiente. La distinzione tra “potere di mercato come precondizione del relationship banking” e “potere di mercato come rendita ingiustificata” è una delle frontiere aperte della letteratura e della policy.</p>
+<p><strong>Complessità economica locale e accesso al credito.</strong> <span class="citation" data-cites="Basile2024">Basile et al.&nbsp;(<a href="#ref-Basile2024" role="doc-biblioref">2024</a>)</span> mostrano — su dati provinciali italiani 2008–2019 — che la <em>complessità economica</em> del territorio (la varietà qualificata del tessuto produttivo locale) riduce le barriere all’accesso al credito, con effetti di spillover spaziale significativi. Il meccanismo è che in economie più complesse le banche possono selezionare i progetti con maggiore precisione, riducendo il razionamento. Questo suggerisce che il vantaggio informativo delle banche territoriali non è puramente endogeno alla banca, ma è <em>co-prodotto</em> con la struttura produttiva locale: una banca regionale inserita in un distretto industriale strutturato accumula informazione di qualità superiore rispetto a una banca con identico HHI in un territorio economicamente semplice.</p>
+</section>
+<section id="evidenze-recenti-e-agenda-di-ricerca" class="level3" data-number="9.4">
+<h3 data-number="9.4" class="anchored" data-anchor-id="evidenze-recenti-e-agenda-di-ricerca"><span class="header-section-number">9.4</span> Evidenze recenti e agenda di ricerca</h3>
+<p>Due filoni recenti arricchiscono l’interpretazione dei dati presentati. Sul versante della specializzazione locale, <span class="citation" data-cites="Casado2025">Casado e Martínez-Miera (<a href="#ref-Casado2025" role="doc-biblioref">2025</a>)</span> mostrano — su dati spagnoli — che la specializzazione geografica e settoriale delle banche riduce la probabilità di default per micro e piccole imprese attraverso una migliore qualità dell’informazione privata accumulata: un meccanismo coerente con il profilo ad alto HHI delle banche T1–T2. Sul versante del declino degli sportelli, <span class="citation" data-cites="Narayanan2025">Narayanan et al.&nbsp;(<a href="#ref-Narayanan2025" role="doc-biblioref">2025</a>)</span> (USA 2001–2023) documentano che la chiusura di filiali è guidata principalmente dal valore della <em>deposit franchise</em> — la capacità di raccogliere depositi sotto il tasso di mercato — e non dalla domanda locale di credito: un risultato che pone la concentrazione geografica delle reti bancarie nel quadro di una strategia di difesa del margine di raccolta piuttosto che di presidio del territorio. A livello europeo, il rapporto <span class="citation" data-cites="BSG2024">EBA Banking Stakeholder Group (<a href="#ref-BSG2024" role="doc-biblioref">2024</a>)</span> segnala che il deterioramento dell’accesso fisico ai servizi bancari è diventato un tema esplicito di policy, con implicazioni per l’inclusione finanziaria delle aree a bassa densità di sportelli.</p>
+</section>
+</section>
+<div id="quarto-appendix" class="default">
+<section id="quarto-bibliography" class="level2 quarto-appendix-heading" data-number="10">
+<h2 class="quarto-appendix-heading anchored" data-number="10" data-anchor-id="quarto-bibliography"><span class="header-section-number">10</span> Riferimenti</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Alessandrini2009" class="csl-entry" role="listitem">
+Alessandrini, Pietro, Andrea F. Presbitero, e Alberto Zazzaro. 2009. «Global Banking and Local Markets: A National Perspective». <em>Cambridge Journal of Regions, Economy and Society</em> 2 (2): 173–92. <a href="https://doi.org/10.1093/cjres/rsp006" class="uri">https://doi.org/10.1093/cjres/rsp006</a>.
+</div>
+<div id="ref-Arnaudo2025" class="csl-entry" role="listitem">
+Arnaudo, TODO, e TODO Others. 2025. «Digital banking adoption in Italy: income, age, and relationship complexity». <em>TODO</em>.
+</div>
+<div id="ref-BanditAnnuariStruttura" class="csl-entry" role="listitem">
+Banca d’Italia. 2024. <em>Annuario della struttura del sistema creditizio italiano</em>. Banca d’Italia.
+</div>
+<div id="ref-Banerjee2017" class="csl-entry" role="listitem">
+Banerjee, Ryan, Leonardo Gambacorta, e Enrico Sette. 2017. <em>The Real Effects of Relationship Lending</em>. Temi di Discussione (Working Papers) No.&nbsp;1133. Banca d’Italia.
+</div>
+<div id="ref-Basile2024" class="csl-entry" role="listitem">
+Basile, Roberto, Luisa Giallonardo, Alessandro Girardi, e Daniele Mantegazzi. 2024. «Access to Credit and Economic Complexity: Evidence from Italian Provinces». <em>Journal of Regional Science</em>, pubblicazione online ad accesso anticipato. <a href="https://doi.org/10.1111/jors.12698" class="uri">https://doi.org/10.1111/jors.12698</a>.
+</div>
+<div id="ref-berger2004" class="csl-entry" role="listitem">
+Berger, Allen N., e Gregory F. Udell. 2004. «The Institutional Memory Hypothesis and the Procyclicality of Bank Lending Behavior». <em>Journal of Financial Intermediation</em> 13 (4): 458–95.
+</div>
+<div id="ref-bonfim2023" class="csl-entry" role="listitem">
+Bonfim, Diana. 2023. «TODO — completare riferimento @bonfim2023». <em>TODO</em>.
+</div>
+<div id="ref-calcagnini2023" class="csl-entry" role="listitem">
+Calcagnini, Giorgio. 2023. <em>TODO — completare riferimento @calcagnini2023</em>. TODO.
+</div>
+<div id="ref-Casado2025" class="csl-entry" role="listitem">
+Casado, Alejandro, e David Martínez-Miera. 2025. <em>Banks’ Specialization and Private Information</em>. Documentos de Trabajo No.&nbsp;2539. Banco de España.
+</div>
+<div id="ref-DelPrete2022" class="csl-entry" role="listitem">
+Del Prete, Silvia, Cristina Demma, Iconio Garri, Marco Piazza, e Giovanni Soggia. 2022. <em>The Heterogeneous Effects of Bank Mergers and Acquisitions on Credit to Firms: Evidence from Italian Macro-Regions</em>. Temi di Discussione (Working Papers) No.&nbsp;1382. Banca d’Italia.
+</div>
+<div id="ref-Duquerroy2022" class="csl-entry" role="listitem">
+Duquerroy, Anne, Clément Mazet-Sonilhac, Jean-Stéphane Mesonnier, e Daniel Paravisini. 2022. <em>Bank Local Specialization</em>. Working Paper No.&nbsp;865. Banque de France.
+</div>
+<div id="ref-BSG2024" class="csl-entry" role="listitem">
+EBA Banking Stakeholder Group. 2024. <em>Access to Banking Services</em>. Own Initiative Paper. European Banking Authority.
+</div>
+<div id="ref-Guiso2004" class="csl-entry" role="listitem">
+Guiso, Luigi, Paola Sapienza, e Luigi Zingales. 2004. «Does Local Financial Development Matter?» <em>Quarterly Journal of Economics</em> 119 (3): 929–69. <a href="https://doi.org/10.1162/0033553041502162" class="uri">https://doi.org/10.1162/0033553041502162</a>.
+</div>
+<div id="ref-Mariani2025" class="csl-entry" role="listitem">
+Mariani, TODO, e TODO Others. 2025. «Sportelli bancari e accesso ai servizi finanziari in Italia, 2008–2022». <em>TODO</em>.
+</div>
+<div id="ref-Narayanan2025" class="csl-entry" role="listitem">
+Narayanan, Rajesh P., Dimuthu Ratnadiwakara, e Philip Strahan. 2025. <em>The Decline of Bank Branching</em>. Working Paper No.&nbsp;33773. National Bureau of Economic Research. <a href="https://www.nber.org/papers/w33773" class="uri">https://www.nber.org/papers/w33773</a>.
+</div>
+<div id="ref-petersen1994" class="csl-entry" role="listitem">
+Petersen, Mitchell A., e Raghuram G. Rajan. 1994. «The Benefits of Lending Relationships: Evidence from Small Business Data». <em>Journal of Finance</em> 49 (1): 3–37. <a href="https://doi.org/10.1111/j.1540-6261.1994.tb04418.x" class="uri">https://doi.org/10.1111/j.1540-6261.1994.tb04418.x</a>.
+</div>
+<div id="ref-Stein2002" class="csl-entry" role="listitem">
+Stein, Jeremy C. 2002. «Information Production and Capital Allocation: Decentralized versus Hierarchical Firms». <em>Journal of Finance</em> 57 (5): 1891–921. <a href="https://doi.org/10.1111/1540-6261.00485" class="uri">https://doi.org/10.1111/1540-6261.00485</a>.
+</div>
+<div id="ref-italybanking2021" class="csl-entry" role="listitem">
+TODO. 2021. <em>TODO — completare riferimento @italybanking2021</em>.
+</div>
+<div id="ref-spatial2023" class="csl-entry" role="listitem">
+TODO. 2023. <em>TODO — completare riferimento @spatial2023</em>. TODO.
+</div>
+</div>
+</section>
+</div>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="description" content="Come è stato costruito evidence_merged.json Nota metodologica sul processo di retrieval e costruzione dell’evidence pack per LLM">
+
+<title>La nascita dell’uso dell’intelligenza artificiale in banca: dietro le quinte – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="La nascita dell’uso dell’intelligenza artificiale in banca: dietro le quinte – Paolo Volterra">
+<meta property="og:description" content="Come è stato costruito evidence_merged.json Nota metodologica sul processo di retrieval e costruzione dell’evidence pack per LLM">
+<meta property="og:image" content="https://paolovolterra.com/posts/2603_IaInBancaDietroLeQuinte/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="La nascita dell’uso dell’intelligenza artificiale in banca: dietro le quinte – Paolo Volterra">
+<meta name="twitter:description" content="Come è stato costruito evidence_merged.json Nota metodologica sul processo di retrieval e costruzione dell’evidence pack per LLM">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2603_IaInBancaDietroLeQuinte/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link active" data-scroll-target="#executive-summary"><strong>Executive Summary</strong></a></li>
+  <li><a href="#il-contesto-un-corpus-da-navigare-senza-perdersi" id="toc-il-contesto-un-corpus-da-navigare-senza-perdersi" class="nav-link" data-scroll-target="#il-contesto-un-corpus-da-navigare-senza-perdersi"><strong>Il contesto: un corpus da navigare senza perdersi</strong></a></li>
+  <li><a href="#il-metodo-otto-query-otto-angolazioni" id="toc-il-metodo-otto-query-otto-angolazioni" class="nav-link" data-scroll-target="#il-metodo-otto-query-otto-angolazioni"><strong>Il metodo: otto query, otto angolazioni</strong></a></li>
+  <li><a href="#il-motore-di-recupero-fts-su-duckdb" id="toc-il-motore-di-recupero-fts-su-duckdb" class="nav-link" data-scroll-target="#il-motore-di-recupero-fts-su-duckdb"><strong>Il motore di recupero: FTS su DuckDB</strong></a></li>
+  <li><a href="#il-merging-e-la-deduplicazione" id="toc-il-merging-e-la-deduplicazione" class="nav-link" data-scroll-target="#il-merging-e-la-deduplicazione"><strong>Il merging e la deduplicazione</strong></a></li>
+  <li><a href="#la-struttura-del-file-per-lllm" id="toc-la-struttura-del-file-per-lllm" class="nav-link" data-scroll-target="#la-struttura-del-file-per-lllm"><strong>La struttura del file per l’LLM</strong></a></li>
+  <li><a href="#limiti-dellanalisi" id="toc-limiti-dellanalisi" class="nav-link" data-scroll-target="#limiti-dellanalisi"><strong>Limiti dell’analisi</strong></a></li>
+  <li><a href="#criticità-residue-e-vulnerabilità-aperte" id="toc-criticità-residue-e-vulnerabilità-aperte" class="nav-link" data-scroll-target="#criticità-residue-e-vulnerabilità-aperte"><strong>Criticità residue e vulnerabilità aperte</strong></a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">La nascita dell’uso dell’intelligenza artificiale in banca: dietro le quinte</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Intelligenza artificiale</div>
+    <div class="quarto-category">Banche</div>
+    <div class="quarto-category">Metodo</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Come è stato costruito evidence_merged.json Nota metodologica sul processo di retrieval e costruzione dell’evidence pack per LLM
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">14 marzo 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><img src="figure/fig01.jpg" class="img-fluid"></p>
+<section id="executive-summary" class="level2">
+<h2 class="anchored" data-anchor-id="executive-summary"><strong>Executive Summary</strong></h2>
+<ul>
+<li><p>Il file <code>evidence_merged.json</code> è un aggregato di 96 chunk testuali unici estratti da un corpus di ~11.700 documenti Zotero (~1,1 milioni di chunk totali).</p></li>
+<li><p>La costruzione ha seguito un approccio multi-query: otto domande tematiche distinte, ciascuna finalizzata a intercettare una diversa sfaccettatura del tema “intelligenza artificiale in banca”.</p></li>
+<li><p>Il motore di recupero è un Full-Text Search (FTS) basato su co-occorrenze di termini, non su embedding vettoriali. Questo introduce limiti ben precisi di copertura semantica.</p></li>
+<li><p>Il file è stato progettato per essere consumato da un LLM: struttura semplificata, metadati tecnici rimossi, query di provenienza conservata per orientare il modello.</p></li>
+<li><p>La copertura tematica è disomogenea: i temi più recenti (GenAI, compliance, ML nel credito) sono meglio rappresentati; la storia dei sistemi esperti degli anni Ottanta e l’evoluzione regolamentare (Basilea II, AI Act) risultano scarsamente coperti dal corpus.</p></li>
+</ul>
+<hr>
+</section>
+<section id="il-contesto-un-corpus-da-navigare-senza-perdersi" class="level2">
+<h2 class="anchored" data-anchor-id="il-contesto-un-corpus-da-navigare-senza-perdersi"><strong>Il contesto: un corpus da navigare senza perdersi</strong></h2>
+<p>Il progetto parte da una domanda semplice nella formulazione, ma impegnativa nella risposta: come è nata e si è sviluppata l’intelligenza artificiale nel settore bancario? Per rispondere in modo documentato, il punto di partenza non è stato Internet né un modello linguistico interrogato direttamente, ma un corpus bibliografico strutturato: circa 11.700 documenti caricati su Zotero, convertiti in testo, segmentati in poco più di un milione di chunk e indicizzati in un database DuckDB (<code>memoria_v2.duckdb</code>).</p>
+<p>Questo corpus è uno strumento di ricerca privato — l’ecosistema MEMORIA — che raccoglie articoli scientifici, report istituzionali, working paper e documentazione tecnica accumulata nel tempo. Non è un corpus costruito ad hoc per questo progetto: è un archivio generalista, con copertura disomogenea, che riflette gli interessi di ricerca stratificati nel tempo. Questo è un fatto da tenere a mente quando si leggono i risultati.</p>
+<p>La scelta di partire da qui, e non da una ricerca web o da una knowledge base preconfezionata, ha implicazioni metodologiche precise: le fonti sono verificabili (ogni chunk è tracciabile fino al PDF di origine), ma la copertura dipende da ciò che il corpus contiene, non da ciò che esiste in assoluto nella letteratura.</p>
+<p><img src="figure/fig02.png" class="img-fluid"></p>
+</section>
+<section id="il-metodo-otto-query-otto-angolazioni" class="level2">
+<h2 class="anchored" data-anchor-id="il-metodo-otto-query-otto-angolazioni"><strong>Il metodo: otto query, otto angolazioni</strong></h2>
+<p>Il tema generale — “AI in banca” — è troppo ampio per una singola query. Un’unica ricerca su “artificial intelligence banking” avrebbe recuperato chunk tematicamente vari ma probabilmente dominati dai contributi più frequenti nel corpus, oscurando argomenti più specifici ma ugualmente rilevanti.</p>
+<p>La soluzione adottata è stata scomporre il tema in otto sotto-domande distinte, ciascuna corrispondente a una dimensione del fenomeno:</p>
+<ol type="1">
+<li><p>Le origini storiche dell’AI in banca</p></li>
+<li><p>Il machine learning applicato al credit scoring e ai prestiti</p></li>
+<li><p>Le reti neurali per il rilevamento delle frodi</p></li>
+<li><p>I robo-advisor, il trading algoritmico e l’automazione</p></li>
+<li><p>Il natural language processing e i chatbot nel customer service</p></li>
+<li><p>I sistemi esperti degli anni Ottanta e la prima digitalizzazione</p></li>
+<li><p>I Large Language Model e l’adozione di AI generativa</p></li>
+<li><p>La regolamentazione e la supervisione dell’AI da parte delle autorità finanziarie</p></li>
+</ol>
+<p>Ogni query è stata formulata in inglese — la lingua dominante nel corpus scientifico — con termini chiave multipli, progettati per massimizzare le co-occorrenze nei testi pertinenti. Si tratta di una scelta pragmatica: il motore FTS non ragiona per concetti ma per parole, e formulare la query in modo ricco di termini specifici aumenta la probabilità di intercettare i chunk più rilevanti.</p>
+<p>Questa scelta introduce però una prima assunzione implicita: che i temi rilevanti siano rappresentati nel corpus con la terminologia anglofona standard. Documenti in italiano, in tedesco o scritti con terminologia non convenzionale potrebbero sfuggire, anche se tematicamente centrali.</p>
+<hr>
+</section>
+<section id="il-motore-di-recupero-fts-su-duckdb" class="level2">
+<h2 class="anchored" data-anchor-id="il-motore-di-recupero-fts-su-duckdb"><strong>Il motore di recupero: FTS su DuckDB</strong></h2>
+<p>Lo script utilizzato — <code>memoria_query_rank.py</code> — esegue una ricerca full-text su DuckDB. Il meccanismo sottostante è un ranking basato su occorrenze: la query viene scomposta in termini singoli, e ogni chunk nel corpus riceve un punteggio proporzionale a quante parole chiave contiene e con quale frequenza.</p>
+<p>Questo è un approccio lessicale, non semantico. Non capisce che “credit risk assessment” e “valutazione del merito creditizio” significano la stessa cosa. Non sa che “FICO score” è un tipo di credit scoring. Recupera ciò che somiglia formalmente alla query, non ciò che è concettualmente vicino.</p>
+<p>Per ogni query sono stati recuperati fino a 400 candidati iniziali, poi ridotti ai 60 migliori in base al punteggio FTS (parametro <code>final_k=60</code>). Il risultato intermedio di ciascuna query è stato salvato in un file JSON separato, con metadati completi: identificativo univoco del documento (<code>doc_id</code>), identificativo del chunk (<code>chunk_uid</code>), punteggio, flag di anomalia, e testo grezzo.</p>
+<p>È importante notare che i punteggi FTS non sono comparabili tra query diverse: un punteggio di 92 nella query sui LLM non equivale necessariamente a un punteggio di 50 nella query sul credit scoring. Il ranking è interno a ciascuna query, non assoluto.</p>
+<hr>
+</section>
+<section id="il-merging-e-la-deduplicazione" class="level2">
+<h2 class="anchored" data-anchor-id="il-merging-e-la-deduplicazione"><strong>Il merging e la deduplicazione</strong></h2>
+<p>Unendo otto file da 60 chunk ciascuno, il totale teorico sarebbe di 480 record. Nella pratica, molti chunk vengono recuperati da più query: un testo sull’automazione del credito può comparire sia nella query sul machine learning che in quella sui robo-advisor; un documento sulla governance dell’AI può intercettarsi sia nella query sui LLM che in quella sulla regolamentazione.</p>
+<p>La fase di merge ha eliminato i duplicati sulla base del <code>chunk_uid</code>, l’identificatore univoco che combina documento e posizione del chunk all’interno del documento. Il risultato è 96 chunk unici su 480 potenziali — circa il 20%.</p>
+<p>Questo dato merita una lettura attenta. Non significa che il 80% dei chunk fosse spazzatura: significa che il corpus ha una struttura di co-occorrenza relativamente concentrata. I documenti più rilevanti tendono ad essere intercettati da più query, il che è coerente con il fatto che i paper più importanti del campo trattano più dimensioni contemporaneamente. La deduplicazione mantiene solo la prima occorrenza del chunk, conservando la query che lo ha generato come metadato.</p>
+<p>Come interpretazione — e va dichiarata come tale — un tasso di unicità del 20% suggerisce che il corpus ha una copertura discreta del tema nei suoi aspetti contemporanei (dove più query convergono sugli stessi documenti rilevanti), ma potrebbe essere lacunoso sugli aspetti storici e normativi (dove la convergenza è bassa non perché i documenti siano irrilevanti, ma perché non ci sono abbastanza documenti da intercettare).</p>
+<hr>
+</section>
+<section id="la-struttura-del-file-per-lllm" class="level2">
+<h2 class="anchored" data-anchor-id="la-struttura-del-file-per-lllm"><strong>La struttura del file per l’LLM</strong></h2>
+<p>Il file <code>evidence_merged.json</code> ha una struttura deliberatamente più leggera rispetto ai file sorgente. Ogni record contiene quattro campi:</p>
+<ul>
+<li><p><code>id</code> — il rango del chunk all’interno della query originale (E1, E2, …)</p></li>
+<li><p><code>file</code> — la chiave Zotero del PDF di origine</p></li>
+<li><p><code>score</code> — il punteggio FTS assegnato dal motore di recupero</p></li>
+<li><p><code>query</code> — la query che ha prodotto quel chunk</p></li>
+<li><p><code>text</code> — il testo grezzo del chunk</p></li>
+</ul>
+<p>Sono stati rimossi <code>doc_id</code>, <code>chunk_uid</code> e i flag di anomalia. Questi metadati servono all’infrastruttura — permettono di risalire al documento originale, di aggregare chunk dello stesso testo, di filtrare chunk malformati — ma non aggiungono valore a un modello linguistico che deve leggere e ragionare sul contenuto. Mantenerli avrebbe appesantito il contesto senza beneficio.</p>
+<p>Il testo dei chunk è grezzo, così come estratto dalla pipeline di processing dei PDF (Docling) o da Zotero stesso: punteggiatura compressa, spazi multipli, caratteri residui dalla conversione ottica. Questo è un fatto, non una scelta intenzionale: la qualità del testo dipende dalla qualità originale del PDF e dalla pipeline di conversione, e non è stata post-processata.</p>
+<p>Una assunzione implicita nella costruzione del file è che il modello LLM destinatario sia sufficientemente robusto da leggere testo rumoroso senza perdere il filo del ragionamento. Questa assunzione è ragionevole per i modelli attuali di grandi dimensioni, ma potrebbe non valere per modelli più piccoli o specializzati.</p>
+<hr>
+</section>
+<section id="limiti-dellanalisi" class="level2">
+<h2 class="anchored" data-anchor-id="limiti-dellanalisi"><strong>Limiti dell’analisi</strong></h2>
+<p><strong>Limiti del motore di recupero.</strong> L’FTS lessicale non cattura sinonimi, parafrasi, o concetti espressi in lingue diverse dall’inglese. La scelta di usare <code>memoria_query_rank.py</code> invece della versione vettoriale (<code>memoria_query_rank_v3.py</code>, con FAISS e cross-encoder) dipende dalla maturità dell’infrastruttura: la tabella <code>faiss_map_v3</code> non è ancora disponibile. Il retrieval vettoriale probabilmente avrebbe prodotto una selezione semanticamente più precisa, con meno rumore nei chunk a basso punteggio.</p>
+<p><strong>Limiti di copertura del corpus.</strong> Il corpus non è stato costruito per rispondere a questa domanda specifica. Le sezioni tematiche più deboli — sistemi esperti degli anni Ottanta, storia della digitalizzazione bancaria in Europa, evoluzione di Basilea II rispetto all’AI — non sono lacune del retrieval, ma lacune del corpus. Questo significa che per quelle sezioni il documento finale (<code>ia_in_banca.md</code>) ha dovuto fare affidamento sulla conoscenza interna del modello, senza supporto documentale verificabile. È una fragilità dichiarata, non nascosta.</p>
+<p><strong>Limiti della deduplicazione.</strong> La deduplicazione per <code>chunk_uid</code> rimuove i duplicati esatti, ma non i near-duplicates: chunk che provengono da documenti diversi ma con contenuto quasi identico (es. due versioni di uno stesso working paper, o un paper e la sua preprint) restano entrambi nel file. Non è un problema grave per 96 chunk, ma lo diventerebbe su volumi maggiori.</p>
+<p><strong>Assenza di un ranking globale.</strong> I 96 chunk del file merged non sono ordinati per rilevanza complessiva. Il punteggio conservato è quello relativo alla query di provenienza, non un punteggio normalizzato sull’intera raccolta. Un LLM che legge il file in sequenza può ricevere chunk di qualità molto diversa in ordine casuale.</p>
+<hr>
+</section>
+<section id="criticità-residue-e-vulnerabilità-aperte" class="level2">
+<h2 class="anchored" data-anchor-id="criticità-residue-e-vulnerabilità-aperte"><strong>Criticità residue e vulnerabilità aperte</strong></h2>
+<p>La criticità più rilevante riguarda la tracciabilità delle fonti. Il file conserva il nome del PDF (<code>file</code>), ma non il titolo, l’autore o l’anno del documento. Per costruire citazioni verificabili è necessario risalire alla chiave Zotero e interrogare il database bibliografico separatamente. Questo passaggio non è automatizzato: richiede un’operazione manuale o uno script aggiuntivo. L’evidenza nel documento finale è pertanto citata in modo parziale, e la piena verificabilità resta un lavoro da completare.</p>
+<p>Una seconda vulnerabilità riguarda il rumore semantico. Alcuni chunk recuperati — soprattutto dalle query su automazione e NLP — provengono da documenti che trattano quei temi in contesti completamente diversi dal settore bancario: reti di comunicazione industriale, marketing digitale, politiche di sviluppo di AI in America Latina. Il motore FTS non distingue il contesto: intercetta le parole chiave indipendentemente dal dominio applicativo. La qualità del filtro dipende interamente dalla formulazione della query e dalla densità del corpus nei temi pertinenti.</p>
+<p>Non è possibile quantificare con certezza quanta parte dei 96 chunk sia genuinamente rilevante per il tema bancario senza una revisione manuale sistematica. Una stima ragionevole — basata su una lettura a campione — suggerisce che tra il 60% e il 75% dei chunk contribuisca in modo utile alla risposta. Il resto è rumore residuo tollerabile in un contesto di retrieval assistito, ma che un revisore esterno potrebbe legittimamente contestare.</p>
+<p><strong>Il filtro umano come mitigazione praticabile.</strong> Va detto, però, che il formato JSON del file merged è pensato anche per questo: è possibile aprirlo, leggere i chunk uno per uno e rimuovere manualmente quelli palesemente fuori tema prima di passare il file a un LLM. Non è un passaggio automatizzato, ma non è nemmeno oneroso su volumi di 96 record. Un filtraggio a occhio di venti minuti può ridurre sensibilmente il rumore semantico e migliorare la qualità della risposta finale del modello. Il formato strutturato facilita questa operazione: ogni chunk porta con sé la query di provenienza e il punteggio, il che orienta rapidamente la selezione.</p>
+<p><strong>LLM locale per dati sensibili.</strong> Un’ulteriore considerazione riguarda il perimetro di utilizzo del pipeline. Quando i documenti di partenza — o le query stesse — contengono informazioni soggette a vincoli di riservatezza (GDPR, segreto bancario, segreto industriale, dati personali di clienti o controparti), inviare il file a un servizio cloud esterno introduce un rischio di compliance non trascurabile. In questi casi, il pipeline è compatibile con un approccio alternativo: usare un modello linguistico eseguito localmente — ad esempio tramite Ollama o llama.cpp con modelli open weight come Mistral, LLaMA o Qwen — che non trasmette dati all’esterno. La qualità della risposta può essere inferiore rispetto ai modelli frontier, ma il dato rimane dentro il perimetro aziendale. Questa non è un’alternativa teorica: è già praticabile con hardware consumer di fascia media (GPU da 8–16 GB VRAM) e non richiede infrastruttura dedicata per un uso occasionale. La scelta tra cloud e locale dovrebbe essere consapevole e documentata, non lasciata all’abitudine.</p>
+<hr>
+<p><em>Nota: questo documento descrive un processo di costruzione dati reale, non un’analisi di investimento o un’analisi di rischio creditizio. Le “interpretazioni” e le “assunzioni” esplicitate si riferiscono alle scelte metodologiche del pipeline, non a giudizi su entità o fenomeni economici.</em></p>
+<hr>
+<p><em>Pubblicato in origine su <a href="https://ghibbli863993.substack.com/p/la-nascita-delluso-dellintelligenza-34e">Substack</a> il 14 marzo 2026.</em></p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

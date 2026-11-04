@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="description" content="Imprese attive, nate e cessate in Sicilia per provincia e settore, dai dati Opendata Marche di InfoCamere.">
+
+<title>Imprese in Sicilia – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Imprese in Sicilia – Paolo Volterra">
+<meta property="og:description" content="Imprese attive, nate e cessate in Sicilia per provincia e settore, dai dati Opendata Marche di InfoCamere.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2603_ImpreseSicilia/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Imprese in Sicilia – Paolo Volterra">
+<meta name="twitter:description" content="Imprese attive, nate e cessate in Sicilia per provincia e settore, dai dati Opendata Marche di InfoCamere.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2603_ImpreseSicilia/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#guida-alla-lettura-dei-grafici" id="toc-guida-alla-lettura-dei-grafici" class="nav-link active" data-scroll-target="#guida-alla-lettura-dei-grafici"><span class="header-section-number">1</span> Guida alla lettura dei grafici</a></li>
+  <li><a href="#quadro-generale" id="toc-quadro-generale" class="nav-link" data-scroll-target="#quadro-generale"><span class="header-section-number">2</span> Quadro generale</a></li>
+  <li><a href="#stock-imprese-attive" id="toc-stock-imprese-attive" class="nav-link" data-scroll-target="#stock-imprese-attive"><span class="header-section-number">3</span> Stock imprese attive</a>
+  <ul class="collapse">
+  <li><a href="#trend-mensile" id="toc-trend-mensile" class="nav-link" data-scroll-target="#trend-mensile"><span class="header-section-number">3.1</span> Trend mensile</a></li>
+  <li><a href="#variazione-tendenziale-aa" id="toc-variazione-tendenziale-aa" class="nav-link" data-scroll-target="#variazione-tendenziale-aa"><span class="header-section-number">3.2</span> Variazione tendenziale (a/a)</a></li>
+  </ul></li>
+  <li><a href="#flussi-iscrizioni-e-cancellazioni" id="toc-flussi-iscrizioni-e-cancellazioni" class="nav-link" data-scroll-target="#flussi-iscrizioni-e-cancellazioni"><span class="header-section-number">4</span> Flussi: iscrizioni e cancellazioni</a>
+  <ul class="collapse">
+  <li><a href="#saldo-netto" id="toc-saldo-netto" class="nav-link" data-scroll-target="#saldo-netto"><span class="header-section-number">4.1</span> Saldo netto</a></li>
+  </ul></li>
+  <li><a href="#struttura-per-natura-giuridica" id="toc-struttura-per-natura-giuridica" class="nav-link" data-scroll-target="#struttura-per-natura-giuridica"><span class="header-section-number">5</span> Struttura per natura giuridica</a>
+  <ul class="collapse">
+  <li><a href="#trend-per-forma-giuridica" id="toc-trend-per-forma-giuridica" class="nav-link" data-scroll-target="#trend-per-forma-giuridica"><span class="header-section-number">5.1</span> Trend per forma giuridica</a></li>
+  </ul></li>
+  <li><a href="#imprese-artigiane-e-femminili" id="toc-imprese-artigiane-e-femminili" class="nav-link" data-scroll-target="#imprese-artigiane-e-femminili"><span class="header-section-number">6</span> Imprese artigiane e femminili</a></li>
+  <li><a href="#analisi-provinciale" id="toc-analisi-provinciale" class="nav-link" data-scroll-target="#analisi-provinciale"><span class="header-section-number">7</span> Analisi provinciale</a>
+  <ul class="collapse">
+  <li><a href="#stock-imprese-attive-per-provincia" id="toc-stock-imprese-attive-per-provincia" class="nav-link" data-scroll-target="#stock-imprese-attive-per-provincia"><span class="header-section-number">7.1</span> Stock imprese attive per provincia</a></li>
+  <li><a href="#iscrizioni-per-provincia" id="toc-iscrizioni-per-provincia" class="nav-link" data-scroll-target="#iscrizioni-per-provincia"><span class="header-section-number">7.2</span> Iscrizioni per provincia</a></li>
+  <li><a href="#cancellazioni-per-provincia" id="toc-cancellazioni-per-provincia" class="nav-link" data-scroll-target="#cancellazioni-per-provincia"><span class="header-section-number">7.3</span> Cancellazioni per provincia</a></li>
+  <li><a href="#saldo-netto-per-provincia" id="toc-saldo-netto-per-provincia" class="nav-link" data-scroll-target="#saldo-netto-per-provincia"><span class="header-section-number">7.4</span> Saldo netto per provincia</a></li>
+  </ul></li>
+  <li><a href="#strumenti-di-crisi-e-insolvenza" id="toc-strumenti-di-crisi-e-insolvenza" class="nav-link" data-scroll-target="#strumenti-di-crisi-e-insolvenza"><span class="header-section-number">8</span> Strumenti di crisi e insolvenza</a></li>
+  <li><a href="#sintesi" id="toc-sintesi" class="nav-link" data-scroll-target="#sintesi"><span class="header-section-number">9</span> Sintesi</a></li>
+  <li><a href="#confronto-mezzogiorno-e-italia" id="toc-confronto-mezzogiorno-e-italia" class="nav-link" data-scroll-target="#confronto-mezzogiorno-e-italia"><span class="header-section-number">10</span> Confronto Mezzogiorno e Italia</a>
+  <ul class="collapse">
+  <li><a href="#quota-di-sicilia-su-mezzogiorno-e-italia" id="toc-quota-di-sicilia-su-mezzogiorno-e-italia" class="nav-link" data-scroll-target="#quota-di-sicilia-su-mezzogiorno-e-italia"><span class="header-section-number">10.1</span> Quota di Sicilia su Mezzogiorno e Italia</a></li>
+  <li><a href="#variazione-tendenziale-regioni-del-mezzogiorno" id="toc-variazione-tendenziale-regioni-del-mezzogiorno" class="nav-link" data-scroll-target="#variazione-tendenziale-regioni-del-mezzogiorno"><span class="header-section-number">10.2</span> Variazione tendenziale: regioni del Mezzogiorno</a></li>
+  <li><a href="#ranking-mezzogiorno-per-stock-ultimo-dato" id="toc-ranking-mezzogiorno-per-stock-ultimo-dato" class="nav-link" data-scroll-target="#ranking-mezzogiorno-per-stock-ultimo-dato"><span class="header-section-number">10.3</span> Ranking Mezzogiorno per stock (ultimo dato)</a></li>
+  <li><a href="#trend-stock-indicizzato-base-primo-periodo" id="toc-trend-stock-indicizzato-base-primo-periodo" class="nav-link" data-scroll-target="#trend-stock-indicizzato-base-primo-periodo"><span class="header-section-number">10.4</span> Trend stock indicizzato (base = primo periodo)</a></li>
+  </ul></li>
+  <li><a href="#esporta-dati" id="toc-esporta-dati" class="nav-link" data-scroll-target="#esporta-dati"><span class="header-section-number">11</span> Esporta dati</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Imprese in Sicilia</h1>
+<p class="subtitle lead">Analisi Opendata Marche — InfoCamere</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Imprese</div>
+    <div class="quarto-category">Sicilia</div>
+    <div class="quarto-category">InfoCamere</div>
+    <div class="quarto-category">Mezzogiorno</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Imprese attive, nate e cessate in Sicilia per provincia e settore, dai dati Opendata Marche di InfoCamere.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">4 marzo 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="guida-alla-lettura-dei-grafici" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="guida-alla-lettura-dei-grafici"><span class="header-section-number">1</span> Guida alla lettura dei grafici</h2>
+<p><a href="#figura-stock" class="quarto-xref">Figura&nbsp;1</a> Lo stock delle imprese mostra un andamento tendenzialmente decrescente, con oscillazioni riconducibili alla stagionalità amministrativa delle iscrizioni e cancellazioni.</p>
+<p><a href="#figura-flussi" class="quarto-xref">Figura&nbsp;3</a> I flussi di iscrizioni e cancellazioni evidenziano una marcata stagionalità, con picchi generalmente concentrati nei mesi primaverili.</p>
+<p><a href="#figura-saldo" class="quarto-xref">Figura&nbsp;4</a> Il saldo netto mensile tra iscrizioni e cancellazioni risulta prevalentemente negativo.</p>
+<p><a href="#figura-natura" class="quarto-xref">Figura&nbsp;5</a> La composizione per natura giuridica è dominata dalle ditte individuali, mentre le società di capitale crescono lentamente.</p>
+<p><a href="#figura-ng-trend" class="quarto-xref">Figura&nbsp;6</a> Si osserva un calo delle ditte individuali e una sostanziale stabilità delle società di capitale.</p>
+<p><a href="#figura-speciali" class="quarto-xref">Figura&nbsp;7</a> Le quote di imprese artigiane e femminili risultano entrambe in lieve riduzione nel lungo periodo.</p>
+<p><a href="#figura-province-stock" class="quarto-xref">Figura&nbsp;8</a> La distribuzione territoriale evidenzia la centralità di Catania e Palermo.</p>
+<p><a href="#figura-province-iscr" class="quarto-xref">Figura&nbsp;9</a> Le iscrizioni confermano il dinamismo imprenditoriale dei principali capoluoghi.</p>
+<p><a href="#figura-province-canc" class="quarto-xref">Figura&nbsp;10</a> Le cancellazioni risultano proporzionali alla base imprenditoriale provinciale.</p>
+<p><a href="#figura-province-saldo" class="quarto-xref">Figura&nbsp;11</a> Il saldo per provincia risulta negativo nella maggior parte dei territori.</p>
+<p><a href="#figura-crisi" class="quarto-xref">Figura&nbsp;12</a> Le crisi e insolvenze mostrano andamento irregolare, con possibili effetti del Codice della Crisi.</p>
+<p><a href="#figura-quota" class="quarto-xref">Figura&nbsp;13</a> La quota della Sicilia sul totale nazionale rimane stabile intorno al 5%.</p>
+<p><a href="#figura-var-mez" class="quarto-xref">Figura&nbsp;14</a> Nel Mezzogiorno si osserva un calo diffuso con intensità diversa tra regioni.</p>
+<p><a href="#figura-rank-mez" class="quarto-xref">Figura&nbsp;15</a> La Sicilia resta la prima regione del Mezzogiorno per stock di imprese.</p>
+<p><a href="#figura-index-mez" class="quarto-xref">Figura&nbsp;16</a> L’indice indicizzato evidenzia una contrazione più marcata rispetto alla media nazionale.</p>
+</section>
+<section id="quadro-generale" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="quadro-generale"><span class="header-section-number">2</span> Quadro generale</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicatore</th>
+<th style="text-align: left;">Valore</th>
+<th style="text-align: left;">Nota</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Imprese attive (stock)</td>
+<td style="text-align: left;">372.874</td>
+<td style="text-align: left;">7.5% delle italiane</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">di cui artigiane</td>
+<td style="text-align: left;">69.908</td>
+<td style="text-align: left;">18.7% dello stock regionale</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">di cui femminili</td>
+<td style="text-align: left;">92.842</td>
+<td style="text-align: left;">24.9% dello stock regionale</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Var. tendenziale (a/a %)</td>
+<td style="text-align: left;">-0.29%</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Iscrizioni (ultimo mese)</td>
+<td style="text-align: left;">1.888</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cancellazioni (ultimo mese)</td>
+<td style="text-align: left;">2.419</td>
+<td style="text-align: left;">—</td>
+</tr>
+</tbody>
+</table>
+<p>Tabella&nbsp;1: Indicatori principali — Sicilia (ultimo dato disponibile)</p>
+</section>
+<section id="stock-imprese-attive" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="stock-imprese-attive"><span class="header-section-number">3</span> Stock imprese attive</h2>
+<section id="trend-mensile" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="trend-mensile"><span class="header-section-number">3.1</span> Trend mensile</h3>
+<p><img src="figure/fig01.png" class="figure-img" role="img" width="757" height="468"></p>
+<p>Figura&nbsp;1: Stock imprese attive — Sicilia (serie mensile)</p>
+<p><em>Lo stock di imprese attive in Sicilia mostra un andamento tendenzialmente decrescente nel periodo osservato, con lievi fluttuazioni stagionali legate alle dinamiche di iscrizione e cancellazione.</em></p>
+</section>
+<section id="variazione-tendenziale-aa" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="variazione-tendenziale-aa"><span class="header-section-number">3.2</span> Variazione tendenziale (a/a)</h3>
+<p><img src="figure/fig02.png" class="figure-img" role="img" width="757" height="468"></p>
+<p>Figura&nbsp;2: Variazione tendenziale % — Sicilia vs Italia</p>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p>Nota</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La variazione tendenziale risulta costantemente <strong>negativa</strong> nel periodo osservato (da −1,8% ad aprile 2025 a −2,7% a novembre 2025), con un marcato miglioramento a fine anno (−0,3% a dicembre 2025 e gennaio 2026). Il dato Italia mostra un’analoga inversione ma in territorio positivo.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="flussi-iscrizioni-e-cancellazioni" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="flussi-iscrizioni-e-cancellazioni"><span class="header-section-number">4</span> Flussi: iscrizioni e cancellazioni</h2>
+<p><img src="figure/fig03.png" class="figure-img" role="img" width="757" height="468"></p>
+<p>Figura&nbsp;3: Iscrizioni e cancellazioni mensili — Sicilia</p>
+<p><em>Il grafico evidenzia la stagionalità dei flussi: le iscrizioni tendono a concentrarsi nei mesi primaverili, mentre le cancellazioni aumentano verso fine anno.</em></p>
+<section id="saldo-netto" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="saldo-netto"><span class="header-section-number">4.1</span> Saldo netto</h3>
+<p><img src="figure/fig04.png" class="figure-img" role="img" width="758" height="468"></p>
+<p>Figura&nbsp;4: Saldo netto (iscrizioni − cancellazioni) — Sicilia</p>
+<p><em>Il saldo netto risulta prevalentemente negativo, segnalando una contrazione del tessuto imprenditoriale siciliano nel periodo considerato.</em></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Periodo</th>
+<th style="text-align: left;">Iscrizioni</th>
+<th style="text-align: left;">Cancellazioni</th>
+<th style="text-align: left;">Saldo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2025-04</td>
+<td style="text-align: left;">2.219</td>
+<td style="text-align: left;">1.345</td>
+<td style="text-align: left;">+874</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2025-05</td>
+<td style="text-align: left;">2.009</td>
+<td style="text-align: left;">2.407</td>
+<td style="text-align: left;">-398</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2025-06</td>
+<td style="text-align: left;">1.845</td>
+<td style="text-align: left;">1.054</td>
+<td style="text-align: left;">+791</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2025-07</td>
+<td style="text-align: left;">1.956</td>
+<td style="text-align: left;">1.348</td>
+<td style="text-align: left;">+608</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2025-08</td>
+<td style="text-align: left;">1.130</td>
+<td style="text-align: left;">2.346</td>
+<td style="text-align: left;">-1.216</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2025-09</td>
+<td style="text-align: left;">2.124</td>
+<td style="text-align: left;">1.120</td>
+<td style="text-align: left;">+1.004</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2025-10</td>
+<td style="text-align: left;">2.562</td>
+<td style="text-align: left;">1.289</td>
+<td style="text-align: left;">+1.273</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2025-11</td>
+<td style="text-align: left;">1.939</td>
+<td style="text-align: left;">2.818</td>
+<td style="text-align: left;">-879</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2025-12</td>
+<td style="text-align: left;">1.362</td>
+<td style="text-align: left;">4.951</td>
+<td style="text-align: left;">-3.589</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2026-01</td>
+<td style="text-align: left;">1.888</td>
+<td style="text-align: left;">2.419</td>
+<td style="text-align: left;">-531</td>
+</tr>
+</tbody>
+</table>
+<p>Tabella&nbsp;2</p>
+</section>
+</section>
+<section id="struttura-per-natura-giuridica" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="struttura-per-natura-giuridica"><span class="header-section-number">5</span> Struttura per natura giuridica</h2>
+<p><img src="figure/fig05.png" class="figure-img" role="img" width="1052" height="468"></p>
+<p>Figura&nbsp;5: Composizione per natura giuridica — Sicilia (dic 2025)</p>
+<p><em>Le ditte individuali costituiscono la forma giuridica dominante, seguite dalle società di persone. Le società di capitale rappresentano una quota minoritaria ma in crescita progressiva.</em></p>
+<section id="trend-per-forma-giuridica" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="trend-per-forma-giuridica"><span class="header-section-number">5.1</span> Trend per forma giuridica</h3>
+<p><img src="figure/fig06.png" class="figure-img" role="img" width="757" height="469"></p>
+<p>Figura&nbsp;6: Trend trimestrale per natura giuridica — Sicilia</p>
+<p><em>Le ditte individuali mostrano il calo più marcato nel lungo periodo, mentre le società di capitale mantengono una relativa stabilità, a riprova di una progressiva formalizzazione del tessuto imprenditoriale.</em></p>
+</section>
+</section>
+<section id="imprese-artigiane-e-femminili" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="imprese-artigiane-e-femminili"><span class="header-section-number">6</span> Imprese artigiane e femminili</h2>
+<p><img src="figure/fig07.png" class="figure-img" role="img" width="755" height="469"></p>
+<p>Figura&nbsp;7: Imprese artigiane e femminili — Sicilia (quota % su stock totale)</p>
+<p><em>La quota di imprese artigiane è strutturalmente più alta di quella femminile; entrambe mostrano una lieve tendenza al ribasso nel lungo periodo, segnalando una pressione sul modello tradizionale di impresa siciliana.</em></p>
+</section>
+<section id="analisi-provinciale" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="analisi-provinciale"><span class="header-section-number">7</span> Analisi provinciale</h2>
+<section id="stock-imprese-attive-per-provincia" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="stock-imprese-attive-per-provincia"><span class="header-section-number">7.1</span> Stock imprese attive per provincia</h3>
+<p><img src="figure/fig08.png" class="figure-img" role="img" width="757" height="468"></p>
+<p>Figura&nbsp;8: Stock imprese attive per provincia — Sicilia (ultimo dato)</p>
+<p><em>Catania e Palermo concentrano la quota maggiore dello stock provinciale, riflettendo il peso demografico ed economico dei rispettivi capoluoghi. Le province minori (Enna, Caltanissetta) mostrano valori significativamente più contenuti.</em></p>
+</section>
+<section id="iscrizioni-per-provincia" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="iscrizioni-per-provincia"><span class="header-section-number">7.2</span> Iscrizioni per provincia</h3>
+<p><img src="figure/fig09.png" class="figure-img" role="img" width="759" height="468"></p>
+<p>Figura&nbsp;9: Nuove iscrizioni per provincia — Sicilia (ultimo mese)</p>
+<p><em>Catania e Palermo guidano anche per numero di nuove iscrizioni, a conferma della loro centralità nel dinamismo imprenditoriale regionale.</em></p>
+</section>
+<section id="cancellazioni-per-provincia" class="level3" data-number="7.3">
+<h3 data-number="7.3" class="anchored" data-anchor-id="cancellazioni-per-provincia"><span class="header-section-number">7.3</span> Cancellazioni per provincia</h3>
+<p><img src="figure/fig10.png" class="figure-img" role="img" width="759" height="468"></p>
+<p>Figura&nbsp;10: Cancellazioni per provincia — Sicilia (ultimo mese)</p>
+<p><em>Il volume di cancellazioni è proporzionale alla dimensione provinciale: Catania e Palermo registrano i valori assoluti più elevati, ma questo riflette la loro maggiore base imprenditoriale.</em></p>
+</section>
+<section id="saldo-netto-per-provincia" class="level3" data-number="7.4">
+<h3 data-number="7.4" class="anchored" data-anchor-id="saldo-netto-per-provincia"><span class="header-section-number">7.4</span> Saldo netto per provincia</h3>
+<p><img src="figure/fig11.png" class="figure-img" role="img" width="758" height="468"></p>
+<p>Figura&nbsp;11: Saldo netto (iscrizioni − cancellazioni) per provincia</p>
+<p><em>Il saldo è negativo per la maggior parte delle province siciliane. Le aree più piccole (Enna, Caltanissetta) mostrano valori assoluti meno rilevanti, mentre Palermo e Catania presentano i disavanzi più ampi.</em></p>
+</section>
+</section>
+<section id="strumenti-di-crisi-e-insolvenza" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="strumenti-di-crisi-e-insolvenza"><span class="header-section-number">8</span> Strumenti di crisi e insolvenza</h2>
+<p><img src="figure/fig12.png" class="figure-img" role="img" width="757" height="468"></p>
+<p>Figura&nbsp;12: Strumenti di regolazione della crisi — Sicilia</p>
+<p><em>Il ricorso agli strumenti di regolazione della crisi evidenzia un andamento irregolare, con picchi che possono riflettere effetti legislativi (entrata in vigore del Codice della Crisi) o congiunturali specifici.</em></p>
+</section>
+<section id="sintesi" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="sintesi"><span class="header-section-number">9</span> Sintesi</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicatore</th>
+<th style="text-align: left;">Valore</th>
+<th style="text-align: left;">Nota</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Stock imprese attive</td>
+<td style="text-align: left;">372.874</td>
+<td style="text-align: left;">-0.29% a/a</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Quota su Italia</td>
+<td style="text-align: left;">7.5%</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Imprese artigiane</td>
+<td style="text-align: left;">69.908</td>
+<td style="text-align: left;">18.7% dello stock</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Imprese femminili</td>
+<td style="text-align: left;">92.842</td>
+<td style="text-align: left;">24.9% dello stock</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Iscrizioni (ultimo mese)</td>
+<td style="text-align: left;">1.888</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cancellazioni (ultimo mese)</td>
+<td style="text-align: left;">2.419</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Provincia più grande (stock)</td>
+<td style="text-align: left;">Palermo</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p>Tabella&nbsp;3</p>
+</section>
+<section id="confronto-mezzogiorno-e-italia" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="confronto-mezzogiorno-e-italia"><span class="header-section-number">10</span> Confronto Mezzogiorno e Italia</h2>
+<section id="quota-di-sicilia-su-mezzogiorno-e-italia" class="level3" data-number="10.1">
+<h3 data-number="10.1" class="anchored" data-anchor-id="quota-di-sicilia-su-mezzogiorno-e-italia"><span class="header-section-number">10.1</span> Quota di Sicilia su Mezzogiorno e Italia</h3>
+<p><img src="figure/fig13.png" class="figure-img" role="img" width="757" height="468"></p>
+<p>Figura&nbsp;13: Quota % Sicilia su Mezzogiorno e su Italia — stock imprese attive</p>
+<p><em>La quota della Sicilia sul Mezzogiorno si mantiene stabile nel tempo, mentre la quota sull’Italia oscilla intorno al 5%, confermando la rilevanza della regione nel contesto meridionale.</em></p>
+</section>
+<section id="variazione-tendenziale-regioni-del-mezzogiorno" class="level3" data-number="10.2">
+<h3 data-number="10.2" class="anchored" data-anchor-id="variazione-tendenziale-regioni-del-mezzogiorno"><span class="header-section-number">10.2</span> Variazione tendenziale: regioni del Mezzogiorno</h3>
+<p><img src="figure/fig14.png" class="figure-img" role="img" width="949" height="468"></p>
+<p>Figura&nbsp;14: Variazione tendenziale % a/a — regioni del Mezzogiorno vs Italia</p>
+<p><em>La Sicilia mostra variazioni tendenziali più negative rispetto alla media nazionale. Il confronto con le altre regioni del Mezzogiorno (in grigio) evidenzia come la contrazione sia un fenomeno diffuso, ma con intensità variabile.</em></p>
+</section>
+<section id="ranking-mezzogiorno-per-stock-ultimo-dato" class="level3" data-number="10.3">
+<h3 data-number="10.3" class="anchored" data-anchor-id="ranking-mezzogiorno-per-stock-ultimo-dato"><span class="header-section-number">10.3</span> Ranking Mezzogiorno per stock (ultimo dato)</h3>
+<p><img src="figure/fig15.png" class="figure-img" role="img" width="756" height="468"></p>
+<p>Figura&nbsp;15: Stock imprese attive — regioni del Mezzogiorno (ultimo dato disponibile)</p>
+<p><em>La Sicilia si conferma la regione del Mezzogiorno con il maggior numero di imprese attive. Il distacco rispetto alle regioni minori (Molise, Basilicata) è molto marcato.</em></p>
+</section>
+<section id="trend-stock-indicizzato-base-primo-periodo" class="level3" data-number="10.4">
+<h3 data-number="10.4" class="anchored" data-anchor-id="trend-stock-indicizzato-base-primo-periodo"><span class="header-section-number">10.4</span> Trend stock indicizzato (base = primo periodo)</h3>
+<p><img src="figure/fig16.png" class="figure-img" role="img" width="757" height="468"></p>
+<p>Figura&nbsp;16: Stock imprese attive indicizzato (primo periodo = 100) — confronto</p>
+<p><em>L’indice mostra che la Sicilia ha registrato una contrazione del tessuto imprenditoriale più marcata rispetto all’aggregato Mezzogiorno e all’Italia nel periodo analizzato, segnalando una minore capacità di recupero post-crisi.</em></p>
+</section>
+</section>
+<section id="esporta-dati" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="esporta-dati"><span class="header-section-number">11</span> Esporta dati</h2>
+<hr>
+<p><em>Fonte: <a href="https://opendata.marche.camcom.it/schede-territoriali.htm">Opendata Marche — InfoCamere</a>. Dati aggiornati al 2 marzo 2026. Elaborazione: UO Studi e governo iniziative.</em></p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
