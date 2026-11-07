@@ -182,7 +182,6 @@
 </tr>
 </tbody>
 </table>
-<p>None</p>
 <p><em>In parole semplici:</em> con 100 di ricavi e 80 di costi restano 20 di margine; il prezzo è 100/80 = 1,25 volte i costi, cioè il 25% sopra.</p>
 <p><strong>La correzione per il lavoro autonomo.</strong> Nel MOL finisce anche il guadagno di chi lavora in proprio (artigiani, professionisti, soci), che non riceve uno stipendio e quindi non compare fra i costi del personale. Dove gli autonomi sono molti, il MOL sovrastima il vero margine. Il Rapporto corregge attribuendo a ogni autonomo lo stipendio medio di un dipendente dello stesso settore:</p>
 <p>MOL corretto = MOL − (occupati − dipendenti) × (costo del personale / dipendenti).</p>
@@ -207,7 +206,6 @@
 </tr>
 </tbody>
 </table>
-<p>None</p>
 <p><em>In parole semplici:</em> se sei dei dieci lavoratori sono titolari o soci senza stipendio, una parte del margine è in realtà il loro compenso; tolta quella, il margine «vero» è molto più basso.</p>
 <p>Nelle attività professionali gli autonomi sono il 61% degli occupati, contro il 19% delle altre branche <span class="citation" data-cites="agcm2026Concorrenza">[1, p.&nbsp;18]</span>: per questo la correzione conta soprattutto lì e nei confronti fra paesi.</p>
 <p><strong>La scomposizione within, between e cross.</strong> Il markup medio può salire per due motivi diversi: perché i singoli settori alzano i margini, oppure perché l’economia si sposta verso settori che già avevano margini alti. La scomposizione separa i due effetti:</p>
@@ -246,7 +244,6 @@
 </tbody>
 </table></li>
 </ul>
-<p>None</p>
 <p><em>In parole semplici:</em> qui i pesi non cambiano, quindi tutto l’aumento è «within»; e viene dal settore A, che partiva basso ed è salito, mentre B, che partiva alto, è sceso un poco. È lo schema che il Rapporto trova per l’Italia.</p>
 </section>
 <section id="capitolo-2-la-concentrazione" class="level2" data-number="2.4">
@@ -280,7 +277,6 @@
 </tr>
 </tbody>
 </table>
-<p>None</p>
 <p><em>In parole semplici:</em> con dieci imprese uguali le prime quattro fanno il 40% e l’HHI è 1.000; se una sola impresa ha il 40%, le prime quattro arrivano all’80% e l’HHI sale oltre 2.000, perché elevare al quadrato pesa molto le imprese grandi.</p>
 <p>Per i settori in cui si compete in zona (pane, calcestruzzo, ristoranti, bar, studi legali, distribuzione elettrica, acqua) il Rapporto calcola gli indici regione per regione e poi ne fa la media: misurarli su tutta l’Italia farebbe sembrare il mercato più frammentato di quanto è <span class="citation" data-cites="agcm2026Concorrenza">[1, pp.&nbsp;64–66]</span>. I settori locali sono stati individuati con il Censimento permanente delle imprese Istat del 2018, che chiedeva alle imprese dove si trovano i loro concorrenti principali.</p>
 <p>La scomposizione within, between e cross si applica anche al CR4, con la stessa logica vista per il markup.</p>
@@ -330,7 +326,6 @@
 </tbody>
 </table></li>
 </ul>
-<p>None</p>
 <p><em>In parole semplici:</em> Delta esce dalle prime quattro ed entra Epsilon, quindi tre imprese su quattro restano in testa (entrenchment 3); in più Alfa e Beta si scambiano il primo posto e le quote si muovono di alcuni punti. La variazione media delle quote qui è una versione semplificata della MSI, per mostrarne la logica.</p>
 </section>
 <section id="come-gli-indicatori-diventano-conclusioni" class="level2" data-number="2.6">
@@ -3659,6 +3654,351 @@ S. Calligaris, M. Chaves, C. Criscuolo, J. De Lyon, A. Greppi, e O. Pallanch, «
   <category>Imprese</category>
   <category>Dati e metodo</category>
   <guid>https://paolovolterra.com/posts/2611_GuidaConcorrenza/</guid>
+  <pubDate>Wed, 04 Nov 2026 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Convergenza dei margini fra settori: quanto dipende dagli anni scelti</title>
+  <dc:creator>Paolo Volterra</dc:creator>
+  <link>https://paolovolterra.com/posts/2611_ConvergenzaMargini/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><em>Versione PDF da scaricare: <a href="Convergenza_margini.pdf">Convergenza_margini.pdf</a>.</em></p>
+<section id="la-domanda" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> La domanda</h1>
+<p>Fra il 2010 e il 2023 il markup medio delle imprese italiane, cioè quante volte i ricavi coprono i costi operativi, sale di poco. Il Rapporto dell’Autorità garante della concorrenza e del mercato e della Banca d’Italia legge questa crescita come un avvicinamento fra settori: chi partiva con margini alti li riduce, chi partiva basso li aumenta <span class="citation" data-cites="agcm2026Concorrenza">[1, p.&nbsp;15]</span>.<sup>1</sup> L’avvicinamento conta per la lettura sulla concorrenza: margini che crescono insieme, partendo dal basso, raccontano un recupero dei settori in difficoltà più che un aumento del potere di mercato dei settori già forti.</p>
+<p>La conclusione poggia su due figure. La figura 1.5 confronta il markup di ogni divisione Ateco nella media 2010-12 con quello nella media 2021-23. La figura 1.6 confronta il markup del 2010 con la sua crescita fino al 2023 <span class="citation" data-cites="agcm2026Concorrenza">[1, pp.&nbsp;18–20]</span>. Questo lavoro chiede quanto il risultato dipenda da quegli anni.</p>
+</section>
+<section id="dati-e-indicatori" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Dati e indicatori</h1>
+<p>I dati sono le statistiche strutturali sulle imprese di Eurostat, che riprendono per l’Italia i conti delle imprese dell’Istat: valore della produzione e margine operativo lordo per classe Ateco a 4 cifre <span class="citation" data-cites="eurostatSbsLegacy eurostatSbsOvw">[2], [3]</span>. Coprono gli anni dal 2010 al 2024: il Rapporto si ferma al 2023, il 2024 è stato diffuso da Eurostat il 30 settembre 2026. Il markup di una classe è il valore della produzione diviso per i costi operativi; quello di una divisione è la media delle sue classi, pesata per il valore della produzione. Come nel Rapporto il tabacco è escluso.</p>
+<p>Gli indicatori di avvicinamento sono tre.</p>
+<ul>
+<li><strong>Pendenza</strong> della retta che lega markup iniziale e finale: sotto 1 i settori si avvicinano, sopra 1 si allontanano.</li>
+<li><strong>Correlazione fra livello iniziale e crescita</strong>: negativa se chi parte basso cresce di più.</li>
+<li><strong>Quota della produzione nei quadranti di convergenza</strong> della figura 1.6: settori sopra la media che crescono meno della media, o sotto la media che crescono di più.</li>
+</ul>
+<p>Il Rapporto usa le stesse due letture.<sup>2</sup><sup>3</sup></p>
+<p><img src="https://paolovolterra.com/posts/2611_ConvergenzaMargini/figure/fig01.png" class="figure-img" width="1190" height="440"></p>
+<p>Figura&nbsp;1: Markup aggregato delle imprese italiane, 2010-2024. Elaborazione su dati Eurostat, statistiche strutturali sulle imprese.</p>
+<p><em>In parole semplici:</em> il margine medio passa da 1,195 nel 2010 a 1,227 nel 2023 e 1,229 nel 2024; il punto più basso è il 2012, negli anni della recessione, con il 2013 subito dopo (fascia grigia). Partire da quegli anni o dal 2010 cambia il punto di confronto.</p>
+</section>
+<section id="la-specifica-del-rapporto" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> La specifica del Rapporto</h1>
+<p><img src="https://paolovolterra.com/posts/2611_ConvergenzaMargini/figure/fig02.png" class="figure-img" width="1190" height="1038"></p>
+<p>Figura&nbsp;2: Figura 1.5 (in alto: markup medio 2010-12 e 2021-23) e figura 1.6 (in basso: markup 2010-12 e sua variazione fino al 2021-23) per divisione Ateco, industria e servizi; nel Rapporto la figura 1.6 parte dal solo 2010, caso compreso nella sezione successiva. La dimensione delle bolle è proporzionale al valore della produzione. Elaborazione su dati Eurostat.</p>
+<p><em>In parole semplici:</em> in alto, i settori sopra la diagonale tratteggiata hanno aumentato il margine; una retta arancione meno inclinata della diagonale vuol dire che i settori si avvicinano. In basso, i quadranti in alto a sinistra e in basso a destra raccolgono i settori che riducono la distanza dalla media.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 10%">
+<col style="width: 30%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Macrosettore</th>
+<th style="text-align: right;">Pendenza</th>
+<th style="text-align: right;">Correlazione livello-crescita</th>
+<th style="text-align: right;">Produzione nei quadranti di convergenza (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">industria</td>
+<td style="text-align: right;">0,94</td>
+<td style="text-align: right;">-0,23</td>
+<td style="text-align: right;">51,67</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">servizi</td>
+<td style="text-align: right;">0,75</td>
+<td style="text-align: right;">-0,59</td>
+<td style="text-align: right;">77,37</td>
+</tr>
+</tbody>
+</table>
+<p><em>In parole semplici:</em> con le medie triennali del Rapporto nei servizi l’avvicinamento è netto (pendenza 0,75), nell’industria debole (pendenza 0,94, vicina a 1).</p>
+</section>
+<section id="tutte-le-combinazioni-di-anni" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Tutte le combinazioni di anni</h1>
+<p>Il calcolo si ripete con un solo anno di partenza, dal 2010 al 2016, e un solo anno di arrivo, dal 2021 al 2024.</p>
+<p><img src="https://paolovolterra.com/posts/2611_ConvergenzaMargini/figure/fig03.png" class="figure-img" width="1090" height="552"></p>
+<p>Figura&nbsp;3: Correlazione fra markup dell’anno di partenza e sua crescita fino all’anno di arrivo, per divisione Ateco. Blu: convergenza; rosso: divergenza. Elaborazione su dati Eurostat.</p>
+<p><em>In parole semplici:</em> nei servizi ogni casella è blu: la correlazione va da −0,67 a −0,39. Nell’industria le righe del 2010 e del 2011 sono chiare o rosate (da −0,26 a 0,28), quelle dal 2012 in poi blu (da −0,81 a −0,41).</p>
+</section>
+<section id="anni-singoli-o-medie" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Anni singoli o medie</h1>
+<p>Con un solo anno di partenza un settore che quell’anno era basso per motivi temporanei risale da solo, e il grafico lo mostra come avvicinamento: è la regressione verso la media. Le medie triennali attenuano l’effetto.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 13%">
+<col style="width: 12%">
+<col style="width: 7%">
+<col style="width: 22%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Macrosettore</th>
+<th style="text-align: left;">Periodo</th>
+<th style="text-align: left;">Misura</th>
+<th style="text-align: right;">Pendenza</th>
+<th style="text-align: right;">Correlazione livello-crescita</th>
+<th style="text-align: right;">Produzione nei quadranti di convergenza (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">industria</td>
+<td style="text-align: left;">2010 → 2023</td>
+<td style="text-align: left;">anni singoli</td>
+<td style="text-align: right;">1,16</td>
+<td style="text-align: right;">0,15</td>
+<td style="text-align: right;">54,03</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">servizi</td>
+<td style="text-align: left;">2010 → 2023</td>
+<td style="text-align: left;">anni singoli</td>
+<td style="text-align: right;">0,74</td>
+<td style="text-align: right;">-0,57</td>
+<td style="text-align: right;">79,22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">industria</td>
+<td style="text-align: left;">2012 → 2023</td>
+<td style="text-align: left;">anni singoli</td>
+<td style="text-align: right;">0,75</td>
+<td style="text-align: right;">-0,65</td>
+<td style="text-align: right;">64,97</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">servizi</td>
+<td style="text-align: left;">2012 → 2023</td>
+<td style="text-align: left;">anni singoli</td>
+<td style="text-align: right;">0,80</td>
+<td style="text-align: right;">-0,52</td>
+<td style="text-align: right;">68,11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">industria</td>
+<td style="text-align: left;">2013 → 2023</td>
+<td style="text-align: left;">anni singoli</td>
+<td style="text-align: right;">0,83</td>
+<td style="text-align: right;">-0,55</td>
+<td style="text-align: right;">68,85</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">servizi</td>
+<td style="text-align: left;">2013 → 2023</td>
+<td style="text-align: left;">anni singoli</td>
+<td style="text-align: right;">0,82</td>
+<td style="text-align: right;">-0,52</td>
+<td style="text-align: right;">69,95</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">industria</td>
+<td style="text-align: left;">2010-12 → 2021-23</td>
+<td style="text-align: left;">medie triennali</td>
+<td style="text-align: right;">0,94</td>
+<td style="text-align: right;">-0,23</td>
+<td style="text-align: right;">51,67</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">servizi</td>
+<td style="text-align: left;">2010-12 → 2021-23</td>
+<td style="text-align: left;">medie triennali</td>
+<td style="text-align: right;">0,75</td>
+<td style="text-align: right;">-0,59</td>
+<td style="text-align: right;">77,37</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">industria</td>
+<td style="text-align: left;">2012-14 → 2021-23</td>
+<td style="text-align: left;">medie triennali</td>
+<td style="text-align: right;">0,71</td>
+<td style="text-align: right;">-0,71</td>
+<td style="text-align: right;">75,86</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">servizi</td>
+<td style="text-align: left;">2012-14 → 2021-23</td>
+<td style="text-align: left;">medie triennali</td>
+<td style="text-align: right;">0,80</td>
+<td style="text-align: right;">-0,57</td>
+<td style="text-align: right;">77,37</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">industria</td>
+<td style="text-align: left;">2013-15 → 2021-23</td>
+<td style="text-align: left;">medie triennali</td>
+<td style="text-align: right;">0,73</td>
+<td style="text-align: right;">-0,70</td>
+<td style="text-align: right;">75,60</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">servizi</td>
+<td style="text-align: left;">2013-15 → 2021-23</td>
+<td style="text-align: left;">medie triennali</td>
+<td style="text-align: right;">0,82</td>
+<td style="text-align: right;">-0,55</td>
+<td style="text-align: right;">58,01</td>
+</tr>
+</tbody>
+</table>
+<p><em>In parole semplici:</em> nell’industria le medie che partono dal 2012-14 o dal 2013-15 confermano l’avvicinamento (pendenza 0,71 e 0,73), quella del Rapporto, dal 2010-12, lo mostra appena. La dipendenza dall’anno di partenza non è quindi solo un effetto della regressione verso la media.</p>
+</section>
+<section id="traiettorie-energia-e-costruzioni" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Traiettorie: energia e costruzioni</h1>
+<p>Due divisioni grandi spiegano buona parte della differenza nell’industria: la fornitura di energia (35) e la costruzione di edifici (41). Il Rapporto indica l’energia fra i settori che allargano le distanze.<sup>4</sup></p>
+<p><img src="https://paolovolterra.com/posts/2611_ConvergenzaMargini/figure/fig04.png" class="figure-img" width="1188" height="558"></p>
+<p>Figura&nbsp;4: Traiettoria anno per anno, 2010-2024: quota della divisione sul valore della produzione totale (asse orizzontale) e markup (asse verticale). Il punto vuoto segnala un anno con classi riservate, quindi dato incompleto, escluso dalla linea. Elaborazione su dati Eurostat.</p>
+<p><em>In parole semplici:</em> l’energia perde peso nell’economia (dal 6,5% al 4,9% della produzione) ma alza il margine (da 1,214 a 1,376), e lo fa quasi tutto fra il 2011 e il 2013: per questo partire dal 2013 la fa sembrare ferma. Le costruzioni perdono peso fino al 2020 (quota 2,7%), con il margine fermo sui minimi dal 2013 (1,072 nel 2013, 1,085 nel 2020), e poi risalgono insieme in peso e margine con gli incentivi edilizi (4,0% e 1,147 nel 2024). Il punto vuoto dell’energia, nel 2016, ha due classi su otto coperte da segreto statistico e non va letto.</p>
+</section>
+<section id="lindustria-senza-energia-e-il-2024" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> L’industria senza energia e il 2024</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 8%">
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 24%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Industria</th>
+<th style="text-align: left;">Partenza</th>
+<th style="text-align: left;">Arrivo</th>
+<th style="text-align: right;">Pendenza</th>
+<th style="text-align: right;">Correlazione livello-crescita</th>
+<th style="text-align: right;">Produzione nei quadranti di convergenza (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">tutte le divisioni</td>
+<td style="text-align: left;">2010</td>
+<td style="text-align: left;">2023</td>
+<td style="text-align: right;">1,16</td>
+<td style="text-align: right;">0,15</td>
+<td style="text-align: right;">54,03</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">senza energia (35)</td>
+<td style="text-align: left;">2010</td>
+<td style="text-align: left;">2023</td>
+<td style="text-align: right;">1,09</td>
+<td style="text-align: right;">0,05</td>
+<td style="text-align: right;">55,64</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tutte le divisioni</td>
+<td style="text-align: left;">2010</td>
+<td style="text-align: left;">2024</td>
+<td style="text-align: right;">1,26</td>
+<td style="text-align: right;">0,28</td>
+<td style="text-align: right;">24,08</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tutte le divisioni</td>
+<td style="text-align: left;">2013</td>
+<td style="text-align: left;">2023</td>
+<td style="text-align: right;">0,83</td>
+<td style="text-align: right;">-0,55</td>
+<td style="text-align: right;">68,85</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">senza energia (35)</td>
+<td style="text-align: left;">2013</td>
+<td style="text-align: left;">2023</td>
+<td style="text-align: right;">0,87</td>
+<td style="text-align: right;">-0,45</td>
+<td style="text-align: right;">69,64</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tutte le divisioni</td>
+<td style="text-align: left;">2013</td>
+<td style="text-align: left;">2024</td>
+<td style="text-align: right;">0,89</td>
+<td style="text-align: right;">-0,43</td>
+<td style="text-align: right;">59,13</td>
+</tr>
+</tbody>
+</table>
+<p><em>In parole semplici:</em> togliendo l’energia il quadro cambia poco: dal 2010 l’industria resta senza avvicinamento (pendenza 1,09), dal 2013 lo conserva (0,87); conta più l’anno di partenza che il singolo settore. Con il 2024 come anno di arrivo, partendo dal 2010, la pendenza sale a 1,26 e solo il 24% della produzione industriale sta nei quadranti di convergenza; nei servizi la pendenza resta 0,72.</p>
+</section>
+<section id="conclusioni" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Conclusioni</h1>
+<ol type="1">
+<li><strong>Servizi.</strong> L’avvicinamento dei margini è solido: compare con ogni coppia di anni, con anni singoli e con medie triennali, e prosegue nel 2024.</li>
+<li><strong>Industria.</strong> Il risultato dipende dall’anno di partenza. Partendo dal 2010 o dal 2011 i settori non si avvicinano; partendo da uno degli anni successivi, a cominciare dal 2012-13, il punto più basso del ciclo, si avvicinano nettamente. Le medie triennali confermano la differenza, che quindi non è solo un effetto statistico.</li>
+<li><strong>Energia e costruzioni.</strong> L’energia alza il margine quasi tutto fra il 2011 e il 2013, le costruzioni toccano il fondo nel 2013 e risalgono dopo il 2020: la scelta del 2010 o del 2013 cambia il loro ruolo, anche se togliere l’energia non basta a cambiare la conclusione.</li>
+<li><strong>Lettura del Rapporto.</strong> La conclusione «i settori convergono» vale con sicurezza per i servizi; per l’industria va presentata come dipendente dal periodo, e il 2024 la indebolisce.</li>
+</ol>
+</section>
+<section id="riferimenti" class="level1 unnumbered">
+<h1 class="unnumbered">Riferimenti</h1>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0">
+<div id="ref-agcm2026Concorrenza" class="csl-entry">
+<div class="csl-left-margin">
+[1]
+</div>
+<div class="csl-right-inline">
+Autorità garante della concorrenza e del mercato e Banca d’Italia, <a href="https://www.bancaditalia.it/pubblicazioni/altri-rapporti/2026-concorrenza-in-italia/Rapporto-BI-AGCM-20261105.pdf">«Lo stato della concorrenza in Italia»</a>, Autorità garante della concorrenza e del mercato; Banca d’Italia, Rapporto, ott. 2026.
+</div>
+</div>
+<div id="ref-eurostatSbsLegacy" class="csl-entry">
+<div class="csl-left-margin">
+[2]
+</div>
+<div class="csl-right-inline">
+Eurostat, <a href="https://ec.europa.eu/eurostat/databrowser/view/sbs_na_ind_r2/default/table">«Structural business statistics, NACE Rev.&nbsp;2: industry, construction, trade and services, 2008-2020»</a>. 2026.
+</div>
+</div>
+<div id="ref-eurostatSbsOvw" class="csl-entry">
+<div class="csl-left-margin">
+[3]
+</div>
+<div class="csl-right-inline">
+Eurostat, <a href="https://ec.europa.eu/eurostat/databrowser/view/sbs_ovw_act/default/table">«Enterprises by detailed NACE Rev.&nbsp;2 activity and special aggregates»</a>. 2026.
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Nota metodologica</strong></p>
+<p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
+<p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale; l’analisi è pertanto integralmente auditabile e replicabile da terzi a partire da esse. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+<div id="quarto-appendix" class="default">
+<div id="footnotes" class="footnotes footnotes-end-of-document">
+<section id="note" class="level2 anchored quarto-appendix-heading" data-number="8.1">
+<h2 class="anchored quarto-appendix-heading" data-number="8.1" data-anchor-id="note"><span class="header-section-number">8.1</span> Note</h2>
+</section>
+</div>
+</div>
+
+
+</section>
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Note</h2>
+
+<ol>
+<li id="fn1"><p>«A livello aggregato, si osserva una convergenza tra il gruppo dei settori caratterizzati da markup inizialmente elevati, che hanno registrato una lieve flessione su quasi tutto il periodo preso in esame, e i gruppi dei settori con markup medio o basso, che hanno invece mostrato un trend positivo di crescita.» <span class="citation" data-cites="agcm2026Concorrenza">[1, p.&nbsp;15]</span>↩︎</p></li>
+<li id="fn2"><p>«Nei servizi, invece, il coefficiente angolare più basso segnala una maggiore convergenza: i settori con markup inizialmente più elevati tendono ad aumentare meno, o in alcuni casi a ridurre il proprio markup, rispetto a quelli con livelli iniziali più contenuti.» <span class="citation" data-cites="agcm2026Concorrenza">[1, p.&nbsp;19]</span>↩︎</p></li>
+<li id="fn3"><p>«Al contrario, i settori nei quadranti (2) e (4) contribuiscono a un processo di convergenza, nella misura in cui livelli iniziali e crescita dei markup presentano scostamenti di segno opposto rispetto alla media settoriale, riducendo la distanza da quest’ultima.» <span class="citation" data-cites="agcm2026Concorrenza">[1, p.&nbsp;20]</span>↩︎</p></li>
+<li id="fn4"><p>«Nell’ambito dell’industria (pannello a), tra i comparti che hanno contribuito ad aumentare la dispersione settoriale si rilevano la fornitura di energia elettrica, gas, vapore e aria condizionata (35) – posizionata nel quadrante in alto a destra – l’industria alimentare (10), la metallurgia (24) e la fabbricazione di macchinari ed apparecchiature n.c.a. (28), questi ultimi collocati nel quadrante in basso a sinistra.» <span class="citation" data-cites="agcm2026Concorrenza">[1, p.&nbsp;20]</span>↩︎</p></li>
+</ol>
+</section></div> ]]></description>
+  <category>Imprese</category>
+  <category>Dati e metodo</category>
+  <guid>https://paolovolterra.com/posts/2611_ConvergenzaMargini/</guid>
   <pubDate>Wed, 04 Nov 2026 23:00:00 GMT</pubDate>
 </item>
 <item>
@@ -18212,324 +18552,6 @@ Camera di Commercio delle Marche, <a href="https://opendata.marche.camcom.it/">�
   <category>Imprese</category>
   <guid>https://paolovolterra.com/posts/2610_DemografiaImprese/</guid>
   <pubDate>Sun, 27 Sep 2026 22:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Dalla politica industriale al credito di filiera</title>
-  <dc:creator>Paolo Volterra</dc:creator>
-  <link>https://paolovolterra.com/posts/2610_CreditoFiliera/</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="il-portafoglio-caie-dimensioni-e-fonti-di-finanziamento" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Il portafoglio CAIE: dimensioni e fonti di finanziamento</h1>
-<p>Il monitoraggio MIMIT/CAIE comprende 75 dossier: 60 in corso, 7 chiusi e 8 sospesi. L’investimento lordo, comprensivo dei finanziamenti pubblici come risorse PNRR, contratti di sviluppo e contributi regionali, ammonta a circa 71,1 miliardi di euro; il programma pluriennale Expand/Vitali, conteggiato separatamente, aggiunge 25 miliardi. Quindici dossier interessano le regioni meridionali, per un investimento programmato di 30,3 miliardi, mentre dieci programmi per 29,6 miliardi seguono il canale straordinario dell’articolo 13 del decreto-legge 104/2023 <span class="citation" data-cites="fotina2026Investimenti italiaDlAsset2023">[1], [2]</span>.</p>
-<p>Questi importi descrivono programmi, business plan e decisioni societarie; misurano l’intenzione di investire, mentre investimenti realizzati, credito erogato e valore aggiunto prodotto richiedono altre fonti. Poiché il valore lordo incorpora la componente pubblica, il contributo privato è inferiore ai totali dichiarati. OpenCUP associa al progetto Silicon Box un costo di 3,218 miliardi e un finanziamento pubblico di 1,338 miliardi; per Metinvest Adria risultano quindici CUP, 925,49 milioni di costo e 323,92 milioni di finanziamento pubblico <span class="citation" data-cites="dipeOpenCupSiliconBox dipeOpenCupMetinvest">[3], [4]</span>.</p>
-<p>Il Piano nazionale di ripresa e resilienza pesa poco in questo finanziamento pubblico. Alle 31 imprese del portafoglio identificate tramite codice fiscale OpenCUP associa 128 codici unici di progetto, anche estranei all’investimento monitorato, per 2,23 miliardi di finanziamento pubblico. Di questi codici, solo cinque compaiono fra i progetti del PNRR, con 95,6 milioni di risorse PNRR, pari al 4,3%: due impianti per l’idrogeno in aree industriali dismesse (Expand a Cairate e Solvay a Rosignano), il progetto IPCEI microelettronica di MEMC, il contratto di sviluppo di Takeda e un progetto Vestas registrato sulla misura rinnovabili e batterie senza risorse PNRR <span class="citation" data-cites="italiaDomani2026Progetti">[5]</span>. I progetti di Silicon Box e Metinvest Adria, che hanno la componente pubblica più ampia, non figurano fra i progetti del PNRR. Il dato riguarda circa metà delle righe del portafoglio e l’estrazione del 13 giugno 2026.</p>
-<p>Per una banca il portafoglio rappresenta quindi una mappa di opportunità potenziali, da vagliare caso per caso prima di qualsiasi affidamento. La selezione deve distinguere investimento annunciato, autorizzato, agevolato, contrattualizzato e realizzato. Deve inoltre valutare se il progetto genera fornitori, occupazione qualificata e capacità produttiva locale oppure rimane un impianto scarsamente connesso al territorio.</p>
-</section>
-<section id="dallimpresa-àncora-alla-filiera" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Dall’impresa-àncora alla filiera</h1>
-<p>Le multinazionali e le grandi imprese possono ricorrere a banche nazionali e internazionali, prestiti sindacati, obbligazioni, leasing, factoring o capitale istituzionale. Una banca orientata al Mezzogiorno possiede raramente un vantaggio competitivo fondato sul solo finanziamento dell’impresa-àncora. Il suo spazio specifico è collegare l’investimento alla struttura produttiva locale.</p>
-<p>La politica creditizia dovrebbe seguire tre passaggi:</p>
-<ol type="1">
-<li><p>identificare i fabbisogni acquistabili localmente: lavorazioni, manutenzione, logistica, servizi tecnici, energia, certificazioni e capitale umano;</p></li>
-<li><p>individuare le imprese in grado di entrare nella catena di fornitura e i loro divari di scala, tecnologia, organizzazione e capitale circolante;</p></li>
-<li><p>finanziare l’adeguamento prima che l’ordine commerciale sia pienamente maturo, usando contratti, garanzie e milestone per contenere il rischio.</p></li>
-</ol>
-<p>Il credito di filiera non coincide con un sussidio settoriale. Richiede informazioni granulari su prodotti, relazioni di fornitura e capacità dell’impresa. Una classificazione fondata soltanto sui codici ATECO non identifica la posizione effettiva nella catena del valore né la distanza tecnologica dall’attività richiesta. Una strategia selettiva deve premiare progetti capaci di generare apprendimento, diversificazione e connessioni produttive, evitando di disperdere risorse fra priorità troppo ampie <span class="citation" data-cites="commissioneEuropea2026CountryReport bontadiniMeliciani2026Priorita">[6], [7]</span>.</p>
-</section>
-<section id="sportelli-e-funzioni-della-relazione-creditizia" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Sportelli e funzioni della relazione creditizia</h1>
-<p>Lo sportello resta una proxy del radicamento storico: segnala continuità locale, reputazione, rapporti con professionisti, associazioni e imprese. Non descrive però dove si svolge la maggior parte dell’operatività, né dove viene presa la decisione creditizia.</p>
-<p>Documenti, firme, pagamenti, incassi, revisioni e monitoraggio transitano sempre più attraverso canali remoti. Una banca può chiudere filiali mantenendo clienti, gestori e conoscenza territoriale; può anche conservare numerosi sportelli e accentrare le delibere, perdendo capacità di interpretare l’informazione locale. La relazione creditizia va quindi scomposta in funzioni distinte.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 18%">
-<col style="width: 50%">
-<col style="width: 29%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Funzione</th>
-<th style="text-align: left;">Canali principali</th>
-<th style="text-align: left;">Variabile rilevante</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Radicamento</td>
-<td style="text-align: left;">sportelli, professionisti, associazioni, confidi</td>
-<td style="text-align: left;">anzianità e densità delle relazioni</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Origination</td>
-<td style="text-align: left;">gestori, mediatori, portali, consulenti</td>
-<td style="text-align: left;">domande qualificate per canale</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Advisory</td>
-<td style="text-align: left;">specialisti di settore, estero, agevolazioni, project finance</td>
-<td style="text-align: left;">competenze e operazioni strutturate</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Decisione</td>
-<td style="text-align: left;">deleghe territoriali, comitati, direzioni crediti</td>
-<td style="text-align: left;">limiti di firma e tempi di delibera</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Esecuzione</td>
-<td style="text-align: left;">onboarding remoto, firma digitale, piattaforme</td>
-<td style="text-align: left;">completamento e tempi del processo</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Monitoraggio</td>
-<td style="text-align: left;">relationship manager, dati transazionali, covenant</td>
-<td style="text-align: left;">frequenza e qualità dei controlli</td>
-</tr>
-</tbody>
-</table>
-<p>Tabella&nbsp;1: Le funzioni della relazione creditizia</p>
-<p>La distanza conta in modo diverso secondo l’impresa. Le piccole organizzazioni bancarie hanno un vantaggio relativo quando il credito dipende da informazioni qualitative difficili da trasmettere. Le strutture grandi e gerarchiche operano meglio quando bilanci, rating e altre informazioni verificabili possono essere codificati e trasferiti <span class="citation" data-cites="stein2000Information">[8]</span>. Anche nelle pratiche corporate, tuttavia, una maggiore distanza gerarchica e geografica fra chi raccoglie l’informazione e chi approva il prestito riduce il peso delle valutazioni soggettive; interazioni frequenti attenuano il problema <span class="citation" data-cites="libertiMian2009Hierarchies">[9]</span>.</p>
-</section>
-<section id="piccole-imprese-confidi-digitale-e-relazione-umana" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Piccole imprese: confidi, digitale e relazione umana</h1>
-<p>Per micro e piccole imprese lo sportello è uno dei possibili ingressi, insieme a gestori mobili, confidi, associazioni, agenti, mediatori e portali digitali. Questi canali non sono sostituti perfetti.</p>
-<p>I confidi rilasciano garanzie collettive per facilitare l’accesso al credito delle PMI e possono gestire fondi pubblici o stipulare convenzioni con le banche <span class="citation" data-cites="bancaditaliaConfidi">[10]</span>. Possono inoltre accompagnare l’impresa nella preparazione della pratica e tradurre informazioni qualitative in un linguaggio utilizzabile dall’intermediario. Questa capacità va verificata per ogni organizzazione: il valore della garanzia non misura automaticamente la qualità dell’assistenza.</p>
-<p>L’onboarding remoto riduce costi e tempi di identificazione e raccolta documentale. Le linee guida europee richiedono procedure affidabili, proporzionate al rischio e coerenti con gli obblighi antiriciclaggio <span class="citation" data-cites="eba2022RemoteOnboarding">[11]</span>. L’ingresso digitale non coincide però con una delibera automatica: una pratica può iniziare online, essere assistita da un mediatore o da un confidi e proseguire con istruttoria e decisione umana.</p>
-<p>Il modello più realistico è ibrido:</p>
-<p><code>confidi o mediatore → onboarding digitale → istruttoria → garanzia → delibera → monitoraggio</code></p>
-<p>La digitalizzazione rende meno informativa la semplice presenza dello sportello, ma non elimina la necessità di relazione. Per un’impresa opaca, la conoscenza accumulata dal gestore resta rilevante; per una pratica standardizzabile, dati fiscali e transazionali consentono invece processi più rapidi e remoti.</p>
-</section>
-<section id="medie-e-grandi-imprese-gestori-advisor-e-finanza-strutturata" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Medie e grandi imprese: gestori, advisor e finanza strutturata</h1>
-<p>Al crescere della dimensione dell’impresa, il canale dominante diventa il relationship manager affiancato da specialisti. Il fabbisogno può includere credito a medio termine, project finance, coperture, servizi internazionali, factoring, leasing, emissioni obbligazionarie e prestiti in pool. La banca deve saper coordinare più prodotti e, quando necessario, più finanziatori.</p>
-<p>In questo segmento la prossimità rilevante è organizzativa: riguarda il rapporto fra cliente, gestore, specialisti e decisori più che la distanza fra impresa e sportello. Contano la stabilità del relationship manager, la capacità di visitare gli impianti, la comprensione del business plan, i poteri delegati e la velocità con cui un’informazione raccolta sul territorio raggiunge il comitato competente.</p>
-<p>Le imprese possono inoltre utilizzare consulenti, arranger e mediatori per confrontare offerte e costruire l’operazione. Al 31 dicembre 2025 risultavano iscritte all’OAM 343 società di mediazione creditizia, con 8.738 collaboratori <span class="citation" data-cites="oam2026Relazione2025">[12]</span>. Il dato descrive l’infrastruttura potenziale di origination, non il credito effettivamente generato né la sua qualità.</p>
-</section>
-<section id="una-strategia-per-una-banca-orientata-al-mezzogiorno" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Una strategia per una banca orientata al Mezzogiorno</h1>
-<p>L’orientamento territoriale si misura meglio con la capacità di originare, valutare, deliberare e accompagnare investimenti e filiere nel Mezzogiorno che con il numero assoluto di filiali. Il modello operativo può poggiare su sei componenti.</p>
-<section id="hub-corporate-e-gestori-di-filiera" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="hub-corporate-e-gestori-di-filiera"><span class="header-section-number">6.1</span> Hub corporate e gestori di filiera</h2>
-<p>Pochi centri ad alta competenza possono servire aree ampie se dispongono di gestori mobili, conoscenza settoriale e accesso rapido ai decisori. I portafogli commerciali dovrebbero essere organizzati anche per filiera e progetto-àncora, non soltanto per provincia o codice ATECO.</p>
-</section>
-<section id="desk-incentivi-e-garanzie" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="desk-incentivi-e-garanzie"><span class="header-section-number">6.2</span> Desk incentivi e garanzie</h2>
-<p>La banca dovrebbe distinguere agevolazioni richieste, concesse ed erogate, verificando CUP, Registro nazionale degli aiuti e strumenti di garanzia. Il finanziamento ponte è appropriato soltanto quando esistono un diritto o una concessione sufficientemente determinati e un cronoprogramma credibile.</p>
-</section>
-<section id="supply-chain-finance" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="supply-chain-finance"><span class="header-section-number">6.3</span> Supply-chain finance</h2>
-<p>Ordini, contratti e fatture dell’impresa-àncora possono ridurre l’incertezza sui flussi dei fornitori. Anticipo ordini, factoring, reverse factoring e finanziamenti per macchinari permettono di distribuire il beneficio dell’investimento oltre il capofila.</p>
-</section>
-<section id="finanziamento-per-milestone" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="finanziamento-per-milestone"><span class="header-section-number">6.4</span> Finanziamento per milestone</h2>
-<p>Le erogazioni possono essere collegate ad autorizzazione, disponibilità dell’area, equity versato, ordine dei macchinari, collaudo e avvio produttivo. Le linee guida EBA richiedono standard robusti di concessione e monitoraggio lungo il ciclo di vita del credito <span class="citation" data-cites="eba2020LoanOrigination">[13]</span>.</p>
-</section>
-<section id="ecosistema-di-origination" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="ecosistema-di-origination"><span class="header-section-number">6.5</span> Ecosistema di origination</h2>
-<p>Confidi, mediatori, commercialisti, associazioni e consulenti possono ampliare la copertura senza replicare una rete capillare di filiali. La banca deve però misurare qualità delle segnalazioni, conversione, rischio e costo di acquisizione di ciascun canale.</p>
-</section>
-<section id="decisioni-territorialmente-informate" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="decisioni-territorialmente-informate"><span class="header-section-number">6.6</span> Decisioni territorialmente informate</h2>
-<p>Una delega locale priva di competenze e dati non migliora il credito; un sistema accentrato può funzionare se mantiene comunicazione continua con chi conosce l’impresa. L’obiettivo non è il decentramento formale, ma ridurre la distanza informativa fra origination e delibera.</p>
-</section>
-</section>
-<section id="come-misurare-laddizionalità" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Come misurare l’addizionalità</h1>
-<p>Una strategia di sviluppo non può essere valutata soltanto attraverso gli impieghi erogati. Occorre separare produzione commerciale, rischio assunto e risultato territoriale.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 31%">
-<col style="width: 66%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Dimensione</th>
-<th style="text-align: left;">Indicatore</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Accesso</td>
-<td style="text-align: left;">domande per canale e segmento d’impresa</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Conversione</td>
-<td style="text-align: left;">quota onboarding → istruttoria → delibera → erogazione</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Velocità</td>
-<td style="text-align: left;">giorni mediani per fase e complessità della pratica</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Rischio</td>
-<td style="text-align: left;">pricing, garanzie, quota trattenuta e performance successiva</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Addizionalità</td>
-<td style="text-align: left;">credito che non sarebbe stato erogato senza garanzia o intervento</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Filiera</td>
-<td style="text-align: left;">fornitori locali finanziati e ordini serviti</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Radicamento</td>
-<td style="text-align: left;">continuità del gestore e densità delle reti professionali</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Impatto</td>
-<td style="text-align: left;">investimenti realizzati, occupazione qualificata e valore aggiunto locale</td>
-</tr>
-</tbody>
-</table>
-<p>Tabella&nbsp;2: Indicatori per una politica creditizia territoriale</p>
-<p>Le relazioni banca-impresa sono inoltre interdipendenti: una stessa impresa può finanziarsi presso più banche e gli effetti di uno shock dipendono dalla rete complessiva dei rapporti. I finanziamenti di banche diverse risultano complementari durante le recessioni e più sostituibili nelle altre fasi del ciclo <span class="citation" data-cites="pietrosantiRainone2026Interdipendenze">[14]</span>. Valutare soltanto la banca principale perderebbe quindi una parte importante dell’architettura finanziaria.</p>
-</section>
-<section id="conclusioni" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Conclusioni</h1>
-<p>La politica industriale offre alla banca una mappa iniziale di progetti, incentivi e fabbisogni, ma non determina automaticamente l’allocazione del credito. Il compito distintivo di una banca orientata al Mezzogiorno è trasformare il grande investimento in capacità produttiva diffusa: selezionare fornitori, finanziare l’adeguamento, integrare garanzie e accompagnare la crescita.</p>
-<p>Lo sportello conserva valore come traccia del radicamento relazionale, mentre gran parte dell’operatività viene eseguita online. La capacità creditizia dipende però dalla combinazione fra relazione umana, dati, competenze specialistiche e poteri decisionali. Per le piccole imprese questa combinazione può passare da confidi, mediatori e onboarding digitale; per le imprese maggiori passa da gestori corporate, advisor e strutture finanziarie complesse.</p>
-<p>Il criterio di valutazione finale è il valore produttivo che il credito contribuisce a trattenere e sviluppare nel territorio, più del volume di credito collocato nel Mezzogiorno.</p>
-<hr>
-<p><strong>Nota metodologica</strong></p>
-<p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
-<p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale; l’analisi è pertanto integralmente auditabile e replicabile da terzi a partire da esse. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
-<p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
-<div id="quarto-appendix" class="default">
-<section id="quarto-bibliography" class="level2 quarto-appendix-heading" data-number="8.1">
-<h2 class="quarto-appendix-heading anchored" data-number="8.1" data-anchor-id="quarto-bibliography"><span class="header-section-number">8.1</span> Referenze</h2>
-<div id="refs" class="references csl-bib-body" data-entry-spacing="0">
-<div id="ref-fotina2026Investimenti" class="csl-entry">
-<div class="csl-left-margin">
-[1]
-</div>
-<div class="csl-right-inline">
-C. Fotina, «Investimenti esteri, 60 progetti in campo con il tutor di Stato», <em>Il Sole 24 Ore</em>, fasc.&nbsp;264, p.&nbsp;2, set. 2026.
-</div>
-</div>
-</div>
-<div id="ref-italiaDlAsset2023" class="csl-entry">
-<div class="csl-left-margin">
-[2]
-</div>
-<div class="csl-right-inline">
-Repubblica Italiana, <a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2023-08-10;104~art13=">«Decreto-Legge 10 agosto 2023, n.&nbsp;104, art. 13: Misure per favorire i grandi investimenti esteri in Italia»</a>, <em>Gazzetta Ufficiale</em>. agosto 2023.
-</div>
-</div>
-<div id="ref-dipeOpenCupSiliconBox" class="csl-entry">
-<div class="csl-left-margin">
-[3]
-</div>
-<div class="csl-right-inline">
-Dipartimento per la Programmazione Economica (DIPE), <a href="https://www.opencup.gov.it/portale/web/opencup/accesso-agli-open-data">«Codice Unico di Progetto C15H24003340007: SILICON BOX S.R.L. - Investimento produttivo a Novara»</a>. luglio 2024.
-</div>
-</div>
-<div id="ref-dipeOpenCupMetinvest" class="csl-entry">
-<div class="csl-left-margin">
-[4]
-</div>
-<div class="csl-right-inline">
-Dipartimento per la Programmazione Economica (DIPE), <a href="https://www.opencup.gov.it/portale/web/opencup/accesso-agli-open-data">«Codici Unici di Progetto serie C75H24004630007 - C75H24004770007: METINVEST ADRIA S.P.A. - Polo Siderurgico Green Piombino»</a>. 2024.
-</div>
-</div>
-<div id="ref-italiaDomani2026Progetti" class="csl-entry">
-<div class="csl-left-margin">
-[5]
-</div>
-<div class="csl-right-inline">
-Presidenza del Consiglio dei Ministri – Struttura di missione PNRR, <a href="https://www.italiadomani.gov.it/content/sogei-ng/it/it/catalogo-open-data/Progetti_del_PNRR.html">«Progetti del PNRR – Catalogo open data Italia Domani»</a>. 13 giugno 2026.
-</div>
-</div>
-<div id="ref-commissioneEuropea2026CountryReport" class="csl-entry">
-<div class="csl-left-margin">
-[6]
-</div>
-<div class="csl-right-inline">
-Commissione Europea, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52026SC0212">«Country Report Italy 2026 - European Semester Spring Package»</a>, European Commission, SWD(2026) 212, giu. 2026.
-</div>
-</div>
-<div id="ref-bontadiniMeliciani2026Priorita" class="csl-entry">
-<div class="csl-left-margin">
-[7]
-</div>
-<div class="csl-right-inline">
-F. Bontadini e V. Meliciani, <a href="https://leap.luiss.it/publication-research/publications/f-bontadini-v-meliciani-le-priorita-della-politica-industriale-dove-concentrare-gli-interventi/">«Le priorità della politica industriale»</a>, LEAP - Luiss Lab of European Affairs; Policy / LUHNIP, Policy Brief 6/2026, set. 2026.
-</div>
-</div>
-<div id="ref-stein2000Information" class="csl-entry">
-<div class="csl-left-margin">
-[8]
-</div>
-<div class="csl-right-inline">
-J. C. Stein, <a href="https://www.nber.org/papers/w7705">«Information Production and Capital Allocation: Decentralized versus Hierarchical Firms»</a>, National Bureau of Economic Research, 7705, 2000. doi: <a href="https://doi.org/10.3386/w7705">10.3386/w7705</a>.
-</div>
-</div>
-<div id="ref-libertiMian2009Hierarchies" class="csl-entry">
-<div class="csl-left-margin">
-[9]
-</div>
-<div class="csl-right-inline">
-J. M. Liberti e A. R. Mian, <a href="https://academic.oup.com/rfs/article/22/10/4057/1590114">«Estimating the Effect of Hierarchies on Information Use»</a>, <em>The Review of Financial Studies</em>, vol.&nbsp;22, fasc.&nbsp;10, pp.&nbsp;4057–4090, 2009, doi: <a href="https://doi.org/10.1093/rfs/hhn118">10.1093/rfs/hhn118</a>.
-</div>
-</div>
-<div id="ref-bancaditaliaConfidi" class="csl-entry">
-<div class="csl-left-margin">
-[10]
-</div>
-<div class="csl-right-inline">
-Banca d’Italia, <a href="https://www.bancaditalia.it/compiti/vigilanza/accesso-mercato/confidi/">«Confidi: attività esercitata e requisiti»</a>. 2026.
-</div>
-</div>
-<div id="ref-eba2022RemoteOnboarding" class="csl-entry">
-<div class="csl-left-margin">
-[11]
-</div>
-<div class="csl-right-inline">
-European Banking Authority, <a href="https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-guidelines-remote-customer-onboarding">«Guidelines on the use of remote customer onboarding solutions»</a>. 2022.
-</div>
-</div>
-<div id="ref-oam2026Relazione2025" class="csl-entry">
-<div class="csl-left-margin">
-[12]
-</div>
-<div class="csl-right-inline">
-Organismo Agenti e Mediatori, <a href="https://www.organismo-am.it/documenti/Altri_documenti/OAM_Relazione_annuale_2025.pdf">«Relazione annuale 2025»</a>, OAM, 2026.
-</div>
-</div>
-<div id="ref-eba2020LoanOrigination" class="csl-entry">
-<div class="csl-left-margin">
-[13]
-</div>
-<div class="csl-right-inline">
-European Banking Authority, <a href="https://www.eba.europa.eu/activities/single-rulebook/regulatory-activities/credit-risk/guidelines-loan-origination-and-monitoring">«Guidelines on loan origination and monitoring»</a>. 2020.
-</div>
-</div>
-<div id="ref-pietrosantiRainone2026Interdipendenze" class="csl-entry">
-<div class="csl-left-margin">
-[14]
-</div>
-<div class="csl-right-inline">
-S. Pietrosanti e E. Rainone, <a href="https://www.bancaditalia.it/pubblicazioni/qef/2026-1029/">«Interdipendenze tra banche e imprese nel mercato del credito»</a>, Banca d’Italia, 1029, 2026.
-</div>
-</div>
-</section>
-</div>
-
-
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a><!-- vedi-anche:start -->
-<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2603_CreditoImpresePugliesi/index.html">Credito e finanziamenti alle imprese pugliesi</a><small>Analisi quantitativa su dati Banca d’Italia e Fondo di Garanzia PMI</small></li><li><a href="../2607_CreditoMicroimprese/index.html">Molte, piccole, sottofinanziate: il credito alle microimprese</a><small>Le micro e piccole imprese sono circa il 99% delle imprese italiane ma ricevono poco più del 15% del credito bancario alle imprese.</small></li><li><a href="../2611_CreditoMicroimprese2026/index.html">Molte, piccole, sottofinanziate: il credito alle microimprese</a><small>Le imprese sotto i venti addetti ricevono meno del 15% del credito, e la quota scende. L’indagine BCE sull’accesso al finanziamento indica che il calo è soprattutto di domanda; l’offerta pesa sul prezzo dei piccoli prest</small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
-<!-- vedi-anche:end -->
- ]]></description>
-  <category>Europa e geopolitica</category>
-  <category>Banche e credito</category>
-  <category>Agevolazioni e garanzie</category>
-  <guid>https://paolovolterra.com/posts/2610_CreditoFiliera/</guid>
-  <pubDate>Fri, 25 Sep 2026 22:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
