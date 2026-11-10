@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="dati sintetici, bilanci d’impresa, generative model, data generating process, stock-flow consistent, calibrazione empirica">
+<meta name="description" content="Che cosa sono i bilanci d’impresa sintetici, a che cosa servono e come si costruiscono e si personalizzano: generazione in due passi, vincoli contabili e ancoraggio a statistiche ufficiali.">
+
+<title>Bilanci d’impresa sintetici – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Bilanci d’impresa sintetici – Paolo Volterra">
+<meta property="og:description" content="Che cosa sono i bilanci d’impresa sintetici, a che cosa servono e come si costruiscono e si personalizzano: generazione in due passi, vincoli contabili e ancoraggio a statistiche ufficiali.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2611_BilanciSintetici/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Bilanci d’impresa sintetici – Paolo Volterra">
+<meta name="twitter:description" content="Che cosa sono i bilanci d’impresa sintetici, a che cosa servono e come si costruiscono e si personalizzano: generazione in due passi, vincoli contabili e ancoraggio a statistiche ufficiali.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2611_BilanciSintetici/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/in_parole_semplici/"> <i class="bi bi-instagram" role="img" aria-label="Instagram">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#introduzione" id="toc-introduzione" class="nav-link active" data-scroll-target="#introduzione"><span class="header-section-number">1</span> Introduzione</a>
+  <ul class="collapse">
+  <li><a href="#il-perimetro-documentale-del-bilancio-civilistico" id="toc-il-perimetro-documentale-del-bilancio-civilistico" class="nav-link" data-scroll-target="#il-perimetro-documentale-del-bilancio-civilistico"><span class="header-section-number">1.1</span> Il perimetro documentale del bilancio civilistico</a></li>
+  </ul></li>
+  <li><a href="#perché-sono-utili" id="toc-perché-sono-utili" class="nav-link" data-scroll-target="#perché-sono-utili"><span class="header-section-number">2</span> Perché sono utili</a></li>
+  <li><a href="#come-si-costruiscono" id="toc-come-si-costruiscono" class="nav-link" data-scroll-target="#come-si-costruiscono"><span class="header-section-number">3</span> Come si costruiscono</a>
+  <ul class="collapse">
+  <li><a href="#due-famiglie-di-metodi" id="toc-due-famiglie-di-metodi" class="nav-link" data-scroll-target="#due-famiglie-di-metodi"><span class="header-section-number">3.1</span> Due famiglie di metodi</a></li>
+  <li><a href="#il-principio-campionare-risolvere-scalare-validare" id="toc-il-principio-campionare-risolvere-scalare-validare" class="nav-link" data-scroll-target="#il-principio-campionare-risolvere-scalare-validare"><span class="header-section-number">3.2</span> Il principio: campionare, risolvere, scalare, validare</a></li>
+  </ul></li>
+  <li><a href="#le-regole-che-un-generatore-deve-rispettare" id="toc-le-regole-che-un-generatore-deve-rispettare" class="nav-link" data-scroll-target="#le-regole-che-un-generatore-deve-rispettare"><span class="header-section-number">4</span> Le regole che un generatore deve rispettare</a>
+  <ul class="collapse">
+  <li><a href="#identità-contabili-rigide" id="toc-identità-contabili-rigide" class="nav-link" data-scroll-target="#identità-contabili-rigide"><span class="header-section-number">4.1</span> Identità contabili rigide</a></li>
+  <li><a href="#regole-strutturali-e-statistiche" id="toc-regole-strutturali-e-statistiche" class="nav-link" data-scroll-target="#regole-strutturali-e-statistiche"><span class="header-section-number">4.2</span> Regole strutturali e statistiche</a></li>
+  </ul></li>
+  <li><a href="#come-si-personalizzano" id="toc-come-si-personalizzano" class="nav-link" data-scroll-target="#come-si-personalizzano"><span class="header-section-number">5</span> Come si personalizzano</a>
+  <ul class="collapse">
+  <li><a href="#il-contesto-dichiarato-dellimpresa" id="toc-il-contesto-dichiarato-dellimpresa" class="nav-link" data-scroll-target="#il-contesto-dichiarato-dellimpresa"><span class="header-section-number">5.1</span> Il contesto dichiarato dell’impresa</a></li>
+  <li><a href="#la-calibrazione-su-aggregati-reali" id="toc-la-calibrazione-su-aggregati-reali" class="nav-link" data-scroll-target="#la-calibrazione-su-aggregati-reali"><span class="header-section-number">5.2</span> La calibrazione su aggregati reali</a></li>
+  <li><a href="#il-condizionamento-al-ciclo-macroeconomico" id="toc-il-condizionamento-al-ciclo-macroeconomico" class="nav-link" data-scroll-target="#il-condizionamento-al-ciclo-macroeconomico"><span class="header-section-number">5.3</span> Il condizionamento al ciclo macroeconomico</a></li>
+  </ul></li>
+  <li><a href="#esempi" id="toc-esempi" class="nav-link" data-scroll-target="#esempi"><span class="header-section-number">6</span> Esempi</a>
+  <ul class="collapse">
+  <li><a href="#un-campione-di-bilanci-sintetici" id="toc-un-campione-di-bilanci-sintetici" class="nav-link" data-scroll-target="#un-campione-di-bilanci-sintetici"><span class="header-section-number">6.1</span> Un campione di bilanci sintetici</a></li>
+  <li><a href="#lesito-dei-controlli-di-coerenza" id="toc-lesito-dei-controlli-di-coerenza" class="nav-link" data-scroll-target="#lesito-dei-controlli-di-coerenza"><span class="header-section-number">6.2</span> L’esito dei controlli di coerenza</a></li>
+  <li><a href="#leffetto-della-personalizzazione-per-anno" id="toc-leffetto-della-personalizzazione-per-anno" class="nav-link" data-scroll-target="#leffetto-della-personalizzazione-per-anno"><span class="header-section-number">6.3</span> L’effetto della personalizzazione per anno</a></li>
+  <li><a href="#un-esempio-di-shock" id="toc-un-esempio-di-shock" class="nav-link" data-scroll-target="#un-esempio-di-shock"><span class="header-section-number">6.4</span> Un esempio di shock</a></li>
+  </ul></li>
+  <li><a href="#conclusioni" id="toc-conclusioni" class="nav-link" data-scroll-target="#conclusioni"><span class="header-section-number">7</span> Conclusioni</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Bilanci d’impresa sintetici</h1>
+<p class="subtitle lead">Cosa sono, a cosa servono, come si costruiscono e come si personalizzano</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Imprese</div>
+    <div class="quarto-category">Dati e metodo</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Che cosa sono i bilanci d’impresa sintetici, a che cosa servono e come si costruiscono e si personalizzano: generazione in due passi, vincoli contabili e ancoraggio a statistiche ufficiali.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">15 settembre 2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Data di modifica</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">15 settembre 2026</p>
+    </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.22766523">10.5281/zenodo.22766523</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>I dati sintetici di bilancio sono insiemi di prospetti contabili d’impresa generati artificialmente, costruiti per essere internamente coerenti con le regole della contabilità civilistica e statisticamente plausibili rispetto a un campione di riferimento, pur non corrispondendo a nessuna impresa realmente esistente. Questo documento descrive un generatore di questo tipo: il principio di costruzione basato su un piccolo numero di dimensioni latenti risolte attraverso le identità contabili, le regole rigide e statistiche che ogni bilancio prodotto deve rispettare, e i tre meccanismi con cui il generatore può essere personalizzato — il contesto dichiarato dell’impresa, la calibrazione su aggregati reali e il condizionamento al ciclo macroeconomico dell’anno simulato. Include un campione illustrativo di bilanci generati e il confronto tra due periodi macroeconomici diversi.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>dati sintetici, bilanci d’impresa, generative model, data generating process, stock-flow consistent, calibrazione empirica</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Versione citabile su Zenodo, con il PDF: <a href="https://doi.org/10.5281/zenodo.22766523">doi.org/10.5281/zenodo.22766523</a>.</p>
+</div>
+</div>
+</div>
+<p><strong>DOI:</strong> <a href="https://doi.org/10.5281/zenodo.22766524">10.5281/zenodo.22766524</a></p>
+<section id="introduzione" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduzione</h1>
+<p>Un bilancio d’impresa sintetico è un prospetto contabile — stato patrimoniale e conto economico — che non descrive un’azienda realmente esistente, ma è generato da un modello matematico in modo da rispettare le stesse regole contabili di un bilancio vero e da somigliare, nella distribuzione statistica delle sue grandezze, a una popolazione di imprese reali. Il termine “sintetico” indica quindi due cose distinte: che il dato non proviene dall’osservazione diretta di un’impresa, e che è comunque costruito per essere plausibile, cioè per non contraddire ciò che si conosce empiricamente sulla struttura economica e finanziaria delle imprese.</p>
+<p>Questa distinzione separa i dati sintetici sia dai dati anonimizzati, che partono da un bilancio reale e ne oscurano l’identità mantenendone i numeri originali, sia dai dati simulati senza vincoli, che rispettano solo la forma dei prospetti contabili senza alcuna pretesa di realismo statistico. Un generatore di bilanci sintetici ben costruito occupa una posizione intermedia: nessun numero proviene da un’impresa reale, ma l’insieme dei numeri generati è calibrato su ciò che si osserva nei dati aggregati ufficiali.</p>
+<p>Il generatore descritto in questo documento produce le principali poste dello stato patrimoniale e del conto economico, insieme agli indicatori di redditività e struttura finanziaria che ne derivano. Genera sia campioni cross-section, in cui ogni impresa è osservata in un solo anno, sia pannelli pluriennali in cui la stessa impresa è seguita nel tempo con una dinamica finanziaria internamente coerente.</p>
+<section id="il-perimetro-documentale-del-bilancio-civilistico" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="il-perimetro-documentale-del-bilancio-civilistico"><span class="header-section-number">1.1</span> Il perimetro documentale del bilancio civilistico</h2>
+<p>Un bilancio d’esercizio, nel diritto societario italiano, non coincide con lo stato patrimoniale e il conto economico: l’articolo 2423 del Codice Civile, nel testo modificato dal decreto legislativo 139 del 2015, stabilisce che il bilancio è costituito da quattro documenti distinti — lo stato patrimoniale, il conto economico, il rendiconto finanziario e la nota integrativa <span class="citation" data-cites="codicecivile1942"><a href="#ref-codicecivile1942" role="doc-biblioref">[1]</a></span>. A questi si aggiunge, come documento che accompagna il bilancio senza formalmente farne parte, la relazione sulla gestione degli amministratori, che descrive l’andamento della gestione, i principali rischi a cui la società è esposta e le attività di ricerca e sviluppo svolte nell’esercizio.</p>
+<p>La legge esonera le società di dimensione minore da una parte di questi obblighi. Le società che non superano due dei tre limiti di attivo, ricavi e dipendenti previsti dall’articolo 2435-bis possono redigere il bilancio in forma abbreviata: sono esonerate dal rendiconto finanziario, la nota integrativa è semplificata e la relazione sulla gestione può essere omessa se le informazioni equivalenti compaiono nella nota integrativa. Le società ancora più piccole, che rientrano nei limiti dell’articolo 2435-ter, possono redigere il bilancio delle micro-imprese: sono esonerate dal rendiconto finanziario, dalla nota integrativa se le informazioni minime compaiono in calce allo stato patrimoniale, e dalla relazione sulla gestione alle stesse condizioni.</p>
+<p>Il generatore descritto in questo documento produce lo stato patrimoniale e il conto economico, ma non il rendiconto finanziario, la nota integrativa o la relazione sulla gestione. Questo perimetro non è una semplificazione arbitraria: coincide con quello delle fonti empiriche a cui il generatore è calibrato, descritte nella sezione sulla personalizzazione, che raccolgono a loro volta solo le voci strutturate di stato patrimoniale e conto economico e non il contenuto discorsivo della nota integrativa o della relazione sulla gestione.</p>
+<p>Lo sviluppo legislativo più recente in materia riguarda un quinto documento, non ancora rilevante per la popolazione di imprese qui simulata: il decreto legislativo 125 del 2024, che recepisce la direttiva europea sulla rendicontazione societaria di sostenibilità, introduce l’obbligo di una rendicontazione di sostenibilità per gli enti di interesse pubblico e le grandi imprese, con un’applicazione scaglionata che parte dall’esercizio 2024 per le imprese di maggiori dimensioni e si estende, con i termini più recenti fissati nel 2025, fino all’esercizio 2028 per le piccole e medie imprese quotate <span class="citation" data-cites="dlgs125_2024"><a href="#ref-dlgs125_2024" role="doc-biblioref">[2]</a></span>. L’obbligo riguarda una fascia di imprese di dimensione nettamente superiore a quella coperta dalle fonti di calibrazione usate in questo documento, e non è quindi incorporato nel generatore.</p>
+</section>
+</section>
+<section id="perché-sono-utili" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Perché sono utili</h1>
+<p>Un dato reale di bilancio è quasi sempre riservato: le società di capitali italiane depositano i propri bilanci pubblicamente, ma le basi dati strutturate che li aggregano su larga scala — quelle utilizzate per costruire modelli di previsione del rischio di credito, per esempio — sono in genere proprietarie e soggette a licenza. Un campione sintetico rimuove questo vincolo: può essere condiviso, pubblicato insieme al codice che lo ha generato e riutilizzato da terzi senza che nessuna informazione su un’impresa reale venga mai esposta.</p>
+<p>Un confronto recente tra metodi di generazione di dati contabili sintetici per finalità di audit osserva che la scelta del metodo comporta un compromesso esplicito tra fedeltà statistica, tutela della riservatezza, utilità per il compito a valle e rispetto dei vincoli strutturali dei dati, e rileva che i generatori tabellari generici faticano a riprodurre le relazioni contabili più complesse tra le voci di un bilancio <span class="citation" data-cites="kroger2025accounting"><a href="#ref-kroger2025accounting" role="doc-biblioref">[3]</a></span>. Questo secondo punto è il motivo per cui, come descritto nella sezione successiva, il generatore qui presentato non impara le relazioni contabili da un campione di addestramento ma le impone per costruzione.</p>
+<p>Oltre alla riservatezza, un campione sintetico offre un controllo che il dato reale non consente: la possibilità di variare deliberatamente una singola dimensione — la dimensione d’impresa, il settore, l’anno di riferimento, uno scenario di stress macroeconomico — tenendo tutte le altre condizioni costanti, per isolare l’effetto di quella dimensione su un indicatore o su un modello statistico costruito a valle. È l’uso a cui il generatore descritto in questo documento è stato messo inizialmente: la costruzione di un campione di addestramento per modelli di previsione del rischio di credito, dove il numero di casi di insolvenza osservabili nei dati reali è spesso troppo esiguo per una stima statisticamente solida.</p>
+</section>
+<section id="come-si-costruiscono" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Come si costruiscono</h1>
+<section id="due-famiglie-di-metodi" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="due-famiglie-di-metodi"><span class="header-section-number">3.1</span> Due famiglie di metodi</h2>
+<p>In letteratura esistono due approcci alla generazione di dati tabellari sintetici. Il primo apprende la distribuzione dei dati da un campione reale attraverso un modello generativo profondo — reti generative avversarie, modelli di diffusione, trasformatori — e ne campiona di nuovi. Un lavoro recente applica un modello a diffusione con componente trasformatore specificamente a serie temporali di bilancio, trattando ogni impresa come una sequenza pluriennale e preservando sia le dipendenze tra le voci di uno stesso anno sia la dinamica tra un anno e il successivo <span class="citation" data-cites="lee2026lftd"><a href="#ref-lee2026lftd" role="doc-biblioref">[4]</a></span>. Un limite riconosciuto di questa famiglia è che la fedeltà statistica appresa da un modello non garantisce, riga per riga, l’ammissibilità logica del risultato: un lavoro sui modelli generativi tabellari vincolati mostra che è necessario incorporare esplicitamente vincoli logici e disuguaglianze nel processo generativo, perché il modello, lasciato libero, produce con una frequenza non trascurabile combinazioni di valori statisticamente plausibili ma contabilmente inammissibili <span class="citation" data-cites="stoian2024realistic"><a href="#ref-stoian2024realistic" role="doc-biblioref">[5]</a></span>.</p>
+<p>Il secondo approccio, seguito da questo generatore, non apprende le relazioni contabili da un campione ma le definisce come un sistema di equazioni — un cosiddetto processo generatore dei dati (<em>data generating process</em>, DGP) strutturale — e risolve quel sistema per ogni impresa simulata. La variabilità tra le imprese non nasce da un modello statistico addestrato, ma da un piccolo numero di dimensioni latenti campionate casualmente all’inizio della catena di calcolo, che si propagano attraverso le equazioni fino a produrre l’intero prospetto contabile.</p>
+</section>
+<section id="il-principio-campionare-risolvere-scalare-validare" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="il-principio-campionare-risolvere-scalare-validare"><span class="header-section-number">3.2</span> Il principio: campionare, risolvere, scalare, validare</h2>
+<p>La costruzione di ogni bilancio sintetico segue quattro passi in sequenza.</p>
+<p>Nel primo passo si campionano sei dimensioni latenti continue, indipendenti tra loro nella versione di base e correlate secondo una struttura empirica nella versione calibrata: la dinamica della domanda, l’efficienza operativa, il livello tecnologico del processo produttivo, la pressione sul capitale circolante, la struttura finanziaria e la flessibilità di liquidità. Ciascuna dimensione è normalizzata in un intervallo compreso tra meno uno e uno, senza un’unità di misura propria: rappresenta la posizione relativa dell’impresa rispetto alla popolazione simulata su quella dimensione, non un valore assoluto. Il numero di sei dimensioni riflette il livello di dettaglio scelto finora, non un limite del metodo: aumentarlo per rappresentare una fonte di variabilità aggiuntiva è possibile, a condizione di ristimare su dati reali sia la nuova dimensione sia la struttura di correlazione con le altre. Insieme a queste dimensioni continue vengono campionati anche i tratti categoriali dell’impresa — settore economico, classe dimensionale, età dell’impresa, area geografica e posizione nella struttura di gruppo — con probabilità che, nella modalità di popolazione, riproducono le frequenze osservate nella realtà.</p>
+<p>Nel secondo passo le sei dimensioni latenti e i tratti categoriali vengono fatti passare attraverso un sistema di equazioni contabili che, nell’ordine, determina il margine operativo lordo, il costo del lavoro, il capitale circolante, la cassa, le immobilizzazioni, il capitale proprio, il debito finanziario e infine il risultato d’esercizio. Ogni posta è calcolata in forma normalizzata, cioè come quota del valore della produzione dell’impresa, che nel sistema di equazioni assume convenzionalmente il valore di uno.</p>
+<p>Nel terzo passo ogni impresa normalizzata viene moltiplicata per un fattore di scala espresso in euro, estratto da una distribuzione log-normale la cui ampiezza dipende dalla classe dimensionale assegnata nel primo passo. Poiché tutte le equazioni del secondo passo sono lineari nella scala, l’intero bilancio — attivo, passivo, ricavi, costi, risultato — si riscala in proporzione esatta, così che un’impresa micro e una grande impresa generate con la stessa combinazione di dimensioni latenti abbiano identica struttura percentuale e differiscano solo nell’ordine di grandezza assoluto.</p>
+<p>Nel quarto passo l’intero campione viene sottoposto a un insieme di controlli automatici — descritti nella sezione seguente — prima di essere accettato. Un campione che non supera anche un solo controllo rigido viene scartato per intero, non corretto riga per riga: la correzione avviene a monte, modificando le equazioni del secondo passo, non a valle sui singoli casi.</p>
+</section>
+</section>
+<section id="le-regole-che-un-generatore-deve-rispettare" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Le regole che un generatore deve rispettare</h1>
+<section id="identità-contabili-rigide" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="identità-contabili-rigide"><span class="header-section-number">4.1</span> Identità contabili rigide</h2>
+<p>Un bilancio sintetico deve soddisfare esattamente le stesse identità aritmetiche di un bilancio reale, senza tolleranza: il totale dell’attivo deve coincidere con la somma di patrimonio netto e passività, il margine operativo lordo deve coincidere con la somma algebrica di ricavi e costi che lo determinano, il risultato ante imposte meno le imposte deve dare esattamente l’utile netto, e il capitale circolante deve coincidere con la somma di magazzino e crediti commerciali meno i debiti verso fornitori. Il generatore qui descritto verifica queste identità su ogni riga del campione prodotto e richiede che siano soddisfatte nella totalità dei casi, non in una quota elevata: una violazione anche isolata indica un errore nelle equazioni, non un’eccezione statistica da tollerare.</p>
+<p>A queste identità si aggiungono vincoli di segno che discendono dai principi contabili italiani: le riserve di patrimonio netto non possono assumere valore negativo, e una perdita d’esercizio va imputata agli utili portati a nuovo piuttosto che alle riserve, secondo quanto previsto dal principio sul patrimonio netto <span class="citation" data-cites="oic28"><a href="#ref-oic28" role="doc-biblioref">[6]</a></span>; il saldo tra imposte differite e anticipate non può eccedere l’ammontare delle imposte totali dovute, in modo che le imposte correnti restino sempre non negative, secondo il principio sulla fiscalità differita <span class="citation" data-cites="oic25"><a href="#ref-oic25" role="doc-biblioref">[7]</a></span>. Entrambe queste regole sono state introdotte nella versione corrente del generatore dopo che una prima versione, priva del vincolo esplicito, produceva con una frequenza non trascurabile — oltre il quindici per cento dei casi in entrambe le circostanze — combinazioni numericamente coerenti ma non ammissibili secondo questi principi.</p>
+<p>Nella versione pluriennale del generatore, in cui la stessa impresa è osservata su più anni consecutivi, si aggiunge un’identità dinamica: la variazione del patrimonio netto da un anno al successivo deve coincidere esattamente con l’utile trattenuto più eventuali movimenti di capitale, e la cassa di fine periodo deve derivare dalla cassa di inizio periodo più i flussi dell’esercizio, senza voci residuali che assorbano lo sbilancio — una proprietà nota, nella letteratura di modellazione macroeconomica, come coerenza tra stock e flussi.</p>
+</section>
+<section id="regole-strutturali-e-statistiche" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="regole-strutturali-e-statistiche"><span class="header-section-number">4.2</span> Regole strutturali e statistiche</h2>
+<p>Oltre alle identità contabili, il generatore rispetta un secondo insieme di vincoli di natura strutturale: l’intero bilancio deve essere invariante rispetto al fattore di scala applicato nel terzo passo della costruzione, ogni posta derivata deve poter essere ricondotta esplicitamente alle dimensioni latenti da cui dipende, nessuna variabile può essere allo stesso tempo campionata all’origine e calcolata a valle, e l’intera generazione deve essere riproducibile in modo deterministico a partire dal seme casuale e dalla configurazione utilizzata.</p>
+<p>Un terzo insieme di vincoli, di natura statistica, riguarda la plausibilità del campione nel suo complesso piuttosto che la singola impresa: la dispersione dei valori all’interno di uno stesso contesto — per esempio tutte le imprese manifatturiere di piccola dimensione — deve superare lo spostamento medio introdotto dal contesto stesso, in modo che il contesto sposti il centro della distribuzione senza eliminarne la variabilità; la combinazione di tratti categoriali deve coprire una quota adeguata delle combinazioni possibili quando il campione è generato per finalità di test; e le frequenze con cui compaiono le classi dimensionali e settoriali nel campione di popolazione devono riprodurre le frequenze osservate nella realtà. Un criterio di accettazione ulteriore richiede che il contesto categoriale di un’impresa non predica in modo deterministico il suo esito di default: la crisi finanziaria deve poter emergere da qualunque combinazione di tratti, con probabilità diversa ma mai nulla o certa, altrimenti il campione insegnerebbe a un modello di previsione del rischio a classificare per etichetta anziché per struttura economico-finanziaria.</p>
+</section>
+</section>
+<section id="come-si-personalizzano" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Come si personalizzano</h1>
+<p>Un generatore di dati sintetici utile non produce un solo campione indifferenziato, ma può essere orientato verso popolazioni di imprese diverse per composizione o per condizioni economiche di riferimento. Un lavoro recente propone un impianto esplicito per esprimere requisiti statistici e logici personalizzati nella generazione di dati tabellari sintetici, distinguendo i requisiti che riguardano la forma della distribuzione da quelli che riguardano vincoli logici da rispettare in ogni riga <span class="citation" data-cites="vero2024cuts"><a href="#ref-vero2024cuts" role="doc-biblioref">[8]</a></span>. Il generatore qui descritto realizza una personalizzazione dello stesso tipo, ma attraverso tre meccanismi distinti costruiti sulle regole contabili esplicite descritte nella sezione precedente, piuttosto che attraverso un livello di vincoli appreso separatamente dal modello generativo.</p>
+<section id="il-contesto-dichiarato-dellimpresa" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="il-contesto-dichiarato-dellimpresa"><span class="header-section-number">5.1</span> Il contesto dichiarato dell’impresa</h2>
+<p>Il meccanismo più diretto di personalizzazione consiste nell’assegnare a ogni impresa simulata un contesto categoriale — settore economico, classe dimensionale, età dell’impresa, area geografica, posizione all’interno di un gruppo societario — e nel far dipendere da quel contesto uno spostamento contenuto, non un cambiamento di regime, delle dimensioni latenti continue. Un’impresa del Mezzogiorno, per esempio, riceve uno spostamento verso il basso sul margine operativo e uno spostamento contenuto sulla liquidità rispetto alla media nazionale, calibrato sulla differenza osservata tra le medie territoriali reali, ma resta comunque distribuita su un intervallo ampio attorno a quel nuovo centro: due imprese meridionali della stessa classe dimensionale possono avere margini molto diversi tra loro, proprio come accade nella realtà.</p>
+</section>
+<section id="la-calibrazione-su-aggregati-reali" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="la-calibrazione-su-aggregati-reali"><span class="header-section-number">5.2</span> La calibrazione su aggregati reali</h2>
+<p>Il secondo meccanismo consiste nell’ancorare i parametri delle equazioni del secondo passo a valori medi osservati in fonti aggregate ufficiali, così che il centro della distribuzione simulata coincida con un punto di riferimento noto. Il generatore utilizza la rilevazione annuale della Banca d’Italia sugli indicatori economici e finanziari delle società di capitali, condotta in collaborazione con Cerved e pubblicata all’interno delle <em>Economie regionali</em> per ciascuna regione italiana <span class="citation" data-cites="bancaditalia2024bilanci"><a href="#ref-bancaditalia2024bilanci" role="doc-biblioref">[9]</a></span>, da cui derivano il margine operativo lordo sul valore della produzione, l’incidenza del costo del lavoro e il rapporto tra liquidità e attivo, e una struttura di correlazione stimata tra le sei dimensioni latenti, in modo che le relazioni tra redditività, struttura finanziaria e liquidità nel campione simulato riproducano quelle osservate empiricamente e non siano indipendenti come nella versione di base del generatore.</p>
+</section>
+<section id="il-condizionamento-al-ciclo-macroeconomico" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="il-condizionamento-al-ciclo-macroeconomico"><span class="header-section-number">5.3</span> Il condizionamento al ciclo macroeconomico</h2>
+<p>Il terzo meccanismo, il più recente, condiziona la calibrazione descritta al punto precedente a un anno specifico o a uno scenario macroeconomico esplicito, anziché a un’unica media di riferimento raccolta su un solo periodo. La stessa rilevazione della Banca d’Italia utilizzata per la calibrazione di base copre, in serie storica, gli anni dal 2018 al 2024: per ciascuno di questi anni è quindi possibile calcolare direttamente il margine operativo, l’incidenza del costo del lavoro e la liquidità medi effettivamente osservati, e usarli al posto della media pluriennale quando si desidera un campione rappresentativo di un anno particolare.</p>
+<p>Per gli anni non coperti da questa rilevazione — periodi precedenti, anni futuri o scenari controfattuali — il generatore stima invece una relazione lineare tra questi stessi indicatori e tre variabili di contesto macroeconomico dell’Italia pubblicate da Eurostat: la crescita del prodotto interno lordo in volume <span class="citation" data-cites="eurostatNamaGdp"><a href="#ref-eurostatNamaGdp" role="doc-biblioref">[10]</a></span>, la variazione dell’indice della produzione industriale destagionalizzato <span class="citation" data-cites="eurostatStsInpr"><a href="#ref-eurostatStsInpr" role="doc-biblioref">[11]</a></span> e il tasso di inflazione misurato dall’indice armonizzato dei prezzi al consumo <span class="citation" data-cites="eurostatHicpManr"><a href="#ref-eurostatHicpManr" role="doc-biblioref">[12]</a></span>. Questa relazione, stimata sui sette anni sovrapposti tra le due fonti, consente di proiettare la calibrazione su un punto macroeconomico ipotetico — per esempio una contrazione della produzione industriale paragonabile a quella osservata nel 2020 — mantenendo esplicito il legame tra il ciclo economico e i parametri della generazione, invece di trattarli come indipendenti dal periodo simulato.</p>
+</section>
+</section>
+<section id="esempi" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Esempi</h1>
+<section id="un-campione-di-bilanci-sintetici" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="un-campione-di-bilanci-sintetici"><span class="header-section-number">6.1</span> Un campione di bilanci sintetici</h2>
+<p>La tabella seguente riporta un’impresa per ciascuna delle quattro classi dimensionali usate dal generatore, estratta da un campione di ottocento imprese generato con la calibrazione corrente. I valori sono espressi in euro e arrotondati all’unità; il settore economico e il valore complessivo dell’attivo variano liberamente da impresa a impresa, mentre la struttura interna di ciascun bilancio rispetta per costruzione le identità descritte nella sezione precedente.</p>
+<div id="tbl-esempio" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-esempio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;1: Esempio di quattro bilanci sintetici, uno per classe dimensionale
+</figcaption>
+<div aria-describedby="tbl-esempio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 14%">
+<col style="width: 15%">
+<col style="width: 8%">
+<col style="width: 11%">
+<col style="width: 13%">
+<col style="width: 14%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Classe</th>
+<th style="text-align: left;">Settore</th>
+<th style="text-align: left;">Valore produzione (€)</th>
+<th style="text-align: left;">EBITDA (€)</th>
+<th style="text-align: left;">Utile netto (€)</th>
+<th style="text-align: left;">Totale attivo (€)</th>
+<th style="text-align: left;">Patrimonio netto (€)</th>
+<th style="text-align: left;">Debiti finanziari (€)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Micro</td>
+<td style="text-align: left;">Commercio</td>
+<td style="text-align: left;">672.907</td>
+<td style="text-align: left;">63.906</td>
+<td style="text-align: left;">27.297</td>
+<td style="text-align: left;">641.015</td>
+<td style="text-align: left;">305.826</td>
+<td style="text-align: left;">236.593</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Piccola</td>
+<td style="text-align: left;">Servizi professionali</td>
+<td style="text-align: left;">3.017.291</td>
+<td style="text-align: left;">33.627</td>
+<td style="text-align: left;">-131.038</td>
+<td style="text-align: left;">3.264.317</td>
+<td style="text-align: left;">1.124.808</td>
+<td style="text-align: left;">1.486.854</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Media</td>
+<td style="text-align: left;">Manifattura</td>
+<td style="text-align: left;">17.060.327</td>
+<td style="text-align: left;">2.952.736</td>
+<td style="text-align: left;">1.513.298</td>
+<td style="text-align: left;">18.301.150</td>
+<td style="text-align: left;">5.899.930</td>
+<td style="text-align: left;">8.772.322</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Grande</td>
+<td style="text-align: left;">Costruzioni</td>
+<td style="text-align: left;">145.342.983</td>
+<td style="text-align: left;">20.498.537</td>
+<td style="text-align: left;">11.424.127</td>
+<td style="text-align: left;">115.353.393</td>
+<td style="text-align: left;">43.496.394</td>
+<td style="text-align: left;">49.560.466</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>La seconda impresa della tabella, di piccola dimensione e operante nei servizi professionali, chiude l’esercizio in perdita pur avendo un margine operativo lordo positivo: la combinazione di un onere finanziario elevato rispetto al risultato operativo e di un carico fiscale che non compensa la perdita porta a un utile netto negativo. Questa impresa non è un errore né un’eccezione filtrata dal campione: è il tipo di caso che un campione realistico deve contenere, perché una quota di imprese in difficoltà è parte della popolazione reale che il generatore intende riprodurre.</p>
+<p>La figura seguente mostra la distribuzione del margine EBITDA e della leva finanziaria netta sull’intero campione di ottocento imprese, per classe dimensionale. Il margine è sostanzialmente stabile al variare della dimensione, mentre la leva finanziaria netta decresce nelle classi dimensionali maggiori: le imprese più grandi del campione mostrano una dipendenza dal debito finanziario netto relativamente inferiore rispetto al proprio patrimonio netto, un pattern coerente con la letteratura sulla struttura finanziaria delle imprese italiane per classe dimensionale.</p>
+<div id="fig-size-dist" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-size-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="OUT/media_qmd/fig_quadra_size_distributions.svg" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-size-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Distribuzione del margine EBITDA e della leva finanziaria netta per classe dimensionale, campione di 800 imprese sintetiche.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="lesito-dei-controlli-di-coerenza" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="lesito-dei-controlli-di-coerenza"><span class="header-section-number">6.2</span> L’esito dei controlli di coerenza</h2>
+<p>La tabella seguente riporta l’esito degli otto controlli rigidi applicati allo stesso campione di ottocento imprese. Ogni controllo è verificato riga per riga: un campione con anche una sola violazione non viene accettato.</p>
+<div id="tbl-audit" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-audit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;2: Esito dei controlli di coerenza contabile sul campione illustrativo
+</figcaption>
+<div aria-describedby="tbl-audit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 21%">
+<col style="width: 17%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Controllo</th>
+<th style="text-align: right;">Superati</th>
+<th style="text-align: right;">Totale</th>
+<th style="text-align: left;">Quota</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Quadratura stato patrimoniale</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: left;">100%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Identità EBITDA</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: left;">100%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Identità EBIT</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: left;">100%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Identità del risultato d’esercizio</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: left;">100%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Identità del capitale circolante</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: left;">100%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Non negatività dell’attivo</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: left;">100%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Non negatività del passivo</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: left;">100%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Valori finiti</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: left;">100%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="leffetto-della-personalizzazione-per-anno" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="leffetto-della-personalizzazione-per-anno"><span class="header-section-number">6.3</span> L’effetto della personalizzazione per anno</h2>
+<p>La tabella seguente confronta i tre parametri chiave della calibrazione — il margine EBITDA obiettivo, l’incidenza del costo del lavoro sul valore della produzione e il rapporto tra liquidità e valore della produzione — per tre anni osservati direttamente nella rilevazione della Banca d’Italia: il 2019, ultimo anno prima della pandemia; il 2020, anno di contrazione economica generalizzata; e il 2024, anno più recente disponibile.</p>
+<div id="tbl-calib-anni" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-calib-anni-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;3: Parametri di calibrazione per anno osservato
+</figcaption>
+<div aria-describedby="tbl-calib-anni-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 28%">
+<col style="width: 31%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Anno</th>
+<th style="text-align: left;">Margine EBITDA obiettivo</th>
+<th style="text-align: left;">Incidenza costo del lavoro</th>
+<th style="text-align: left;">Liquidità/valore produzione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2019</td>
+<td style="text-align: left;">9,1%</td>
+<td style="text-align: left;">15,6%</td>
+<td style="text-align: left;">9,6%</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2020</td>
+<td style="text-align: left;">8,7%</td>
+<td style="text-align: left;">15,6%</td>
+<td style="text-align: left;">11,9%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">10,3%</td>
+<td style="text-align: left;">14,3%</td>
+<td style="text-align: left;">11,8%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Il 2020 mostra, coerentemente con la contrazione economica di quell’anno, il margine EBITDA obiettivo più basso dei tre periodi e un rapporto tra liquidità e valore della produzione più elevato rispetto al 2019: un comportamento compatibile con un irrigidimento precauzionale della gestione della cassa da parte delle imprese in un contesto di incertezza. La figura seguente mostra come questo spostamento del parametro di calibrazione si traduca in una distribuzione del margine EBITDA effettivamente diversa nel campione simulato per ciascuno dei tre anni, a parità di ogni altro elemento del generatore.</p>
+<div id="fig-year-comparison" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-year-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="OUT/media_qmd/fig_quadra_year_comparison.svg" class="img-fluid figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-year-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Distribuzione del margine EBITDA in tre campioni di 400 imprese sintetiche, ciascuno generato con la calibrazione osservata per l’anno indicato.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="un-esempio-di-shock" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="un-esempio-di-shock"><span class="header-section-number">6.4</span> Un esempio di shock</h2>
+<p>Oltre a personalizzare la calibrazione per un periodo osservato, il generatore permette di imporre uno shock: una variazione improvvisa e transitoria di una o più condizioni di mercato, applicata alle stesse imprese già generate invece che a una nuova calibrazione di base. La differenza rispetto al condizionamento per anno descritto nella sezione precedente è che lo shock non sposta il centro della distribuzione da cui le imprese sono estratte, ma perturba direttamente le condizioni — il costo del debito, la domanda del proprio mercato di sbocco — a cui ciascuna impresa già generata viene nuovamente esposta, permettendo di osservare come la stessa impresa reagisce.</p>
+<p>La figura seguente confronta lo stesso campione di ottocento imprese sintetiche in due condizioni: quella di base, con le condizioni di mercato con cui erano state generate, e uno scenario di shock in cui il costo del debito aumenta di due punti percentuali e la crescita della domanda del settore di riferimento si riduce di 2,5 punti percentuali rispetto al caso base, tenendo fissa ogni altra caratteristica dell’impresa.</p>
+<div id="fig-shock" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-shock-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="OUT/media_qmd/fig_quadra_shock_scenario.svg" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-shock-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Effetto di uno shock di tasso e domanda sullo stesso campione di 800 imprese sintetiche: margine EBITDA e quota di imprese in perdita ante imposte, base vs shock.
+</figcaption>
+</figure>
+</div>
+<div id="tbl-shock" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-shock-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;4: Effetto dello shock sullo stesso campione di imprese sintetiche
+</figcaption>
+<div aria-describedby="tbl-shock-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicatore</th>
+<th style="text-align: left;">Base</th>
+<th style="text-align: left;">Shock</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Margine EBITDA (mediana)</td>
+<td style="text-align: left;">9,1%</td>
+<td style="text-align: left;">9,0%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Copertura interessi, EBITDA/oneri finanziari (mediana)</td>
+<td style="text-align: left;">5,0x</td>
+<td style="text-align: left;">3,9x</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Imprese in perdita ante imposte</td>
+<td style="text-align: left;">28,1%</td>
+<td style="text-align: left;">30,4%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Il margine EBITDA si sposta di poco, perché lo shock qui simulato non agisce direttamente sui prezzi di vendita o sui costi operativi dell’impresa. L’effetto si concentra invece sulla copertura degli interessi, che peggiora in modo netto perché l’aumento del costo del debito incide direttamente sugli oneri finanziari a parità di debito, e sulla quota di imprese che chiudono l’esercizio in perdita, che aumenta di oltre due punti percentuali. Questo tipo di confronto rende possibile isolare l’effetto di una singola condizione di mercato su un campione altrimenti identico, un esperimento che sui dati reali richiederebbe di attendere che quella condizione si verifichi effettivamente.</p>
+</section>
+</section>
+<section id="conclusioni" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Conclusioni</h1>
+<p>Un generatore di bilanci sintetici costruito come sistema di equazioni contabili, anziché come modello statistico appreso da un campione reale, garantisce per costruzione l’ammissibilità di ogni riga prodotta rispetto alle identità di bilancio e ai principi contabili di riferimento, al costo di richiedere che quelle equazioni siano esplicitate e mantenute nel tempo. La personalizzazione del campione generato — per contesto d’impresa, per calibrazione su dati aggregati reali, per periodo macroeconomico di riferimento — non richiede un livello di vincoli separato dal modello, come nei generatori appresi, ma si ottiene spostando i parametri delle stesse equazioni che definiscono il bilancio, mantenendo sempre valide le identità contabili rigide descritte in questo documento.</p>
+<hr>
+<p><strong>Nota metodologica</strong></p>
+<p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
+<p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale; l’analisi è pertanto integralmente auditabile e replicabile da terzi a partire da esse. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referenze</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-codicecivile1942" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">Repubblica Italiana, <span>«Codice civile, artt. 2423–2429, 2435-bis, 2435-ter (bilancio d’esercizio, forma abbreviata, micro-imprese)»</span>. 1942. Disponibile su: <a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1942-03-16;262">https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1942-03-16;262</a></div>
+</div>
+<div id="ref-dlgs125_2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">Repubblica Italiana, <span>«Decreto legislativo 6 settembre 2024, n. 125 – Attuazione della direttiva (UE) 2022/2464 sulla rendicontazione societaria di sostenibilità»</span>. 2024. Disponibile su: <a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2024-09-06;125">https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2024-09-06;125</a></div>
+</div>
+<div id="ref-kroger2025accounting" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">T. Kroger e M. Schultz, <span>«Generation of Synthetic Accounting Data in Audit: A Comparison of Tabular Generation Methods»</span>, in <em>AMCIS 2025 Proceedings</em>, 2025. Disponibile su: <a href="https://aisel.aisnet.org/amcis2025/acctinfosys/acctinfosys/4/">https://aisel.aisnet.org/amcis2025/acctinfosys/acctinfosys/4/</a></div>
+</div>
+<div id="ref-lee2026lftd" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">G. Choi, D. Jo, W. Song, H. Na, e H. Kim, <span>«<span>LFTD</span>: Transformer-Enhanced Diffusion Model for Realistic Financial Time-Series Data Generation»</span>, <em>AI</em>, vol. 7, fasc. 2, p. 60, 2026, doi: <a href="https://doi.org/10.3390/ai7020060">10.3390/ai7020060</a>.</div>
+</div>
+<div id="ref-stoian2024realistic" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">M. C. Stoian, S. Dyrmishi, M. Cordy, T. Lukasiewicz, e E. Giunchiglia, <span>«How Realistic Is Your Synthetic Data? Constraining Deep Generative Models for Tabular Data»</span>, in <em>International Conference on Learning Representations</em>, 2024. Disponibile su: <a href="https://proceedings.iclr.cc/paper_files/paper/2024/hash/887932131fddf943e8fe3310b62c0147-Abstract-Conference.html">https://proceedings.iclr.cc/paper_files/paper/2024/hash/887932131fddf943e8fe3310b62c0147-Abstract-Conference.html</a></div>
+</div>
+<div id="ref-oic28" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">Organismo Italiano di Contabilità, <span>«OIC 28 – Patrimonio netto»</span>. 2022. Disponibile su: <a href="https://www.fondazioneoic.eu/principi-contabili/">https://www.fondazioneoic.eu/principi-contabili/</a></div>
+</div>
+<div id="ref-oic25" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">Organismo Italiano di Contabilità, <span>«OIC 25 – Imposte sul reddito»</span>. 2024. Disponibile su: <a href="https://www.fondazioneoic.eu/principi-contabili/">https://www.fondazioneoic.eu/principi-contabili/</a></div>
+</div>
+<div id="ref-vero2024cuts" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">M. Vero, M. Balunovic, e M. Vechev, <span>«<span>CuTS</span>: Customizable Tabular Synthetic Data Generation»</span>, in <em>Proceedings of the 41st International Conference on Machine Learning</em>, in Proceedings of Machine Learning Research, vol. 235. 2024, pp. 49408–49433. Disponibile su: <a href="https://proceedings.mlr.press/v235/vero24a.html">https://proceedings.mlr.press/v235/vero24a.html</a></div>
+</div>
+<div id="ref-bancaditalia2024bilanci" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">Banca d’Italia e Cerved, <span>«L’economia delle regioni italiane: dinamica dei bilanci delle imprese e indicatori di redditivita e struttura finanziaria»</span>, Banca d’Italia, 2024. Disponibile su: <a href="https://www.bancaditalia.it/pubblicazioni/economie-regionali/">https://www.bancaditalia.it/pubblicazioni/economie-regionali/</a></div>
+</div>
+<div id="ref-eurostatNamaGdp" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">Eurostat, <span>«Conti nazionali annuali — PIL e principali aggregati (nama_10_gdp)»</span>. 2026. Disponibile su: <a href="https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table">https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table</a></div>
+</div>
+<div id="ref-eurostatStsInpr" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">Eurostat, <span>«Statistiche congiunturali — indice della produzione industriale (sts_inpr_m)»</span>. 2026. Disponibile su: <a href="https://ec.europa.eu/eurostat/databrowser/view/sts_inpr_m/default/table">https://ec.europa.eu/eurostat/databrowser/view/sts_inpr_m/default/table</a></div>
+</div>
+<div id="ref-eurostatHicpManr" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">Eurostat, <span>«Indice armonizzato dei prezzi al consumo — tassi di variazione annuali (prc_hicp_manr)»</span>. 2026. Disponibile su: <a href="https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_manr/default/table">https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_manr/default/table</a></div>
+</div>
+</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Riutilizzare</h2><div class="quarto-appendix-contents"><div>CC-BY-4.0</div></div></section></div></main> <!-- /main -->
+<script>
+// Salto interno ai riferimenti [n] e ai rimandi #… indipendente dall'URL della pagina:
+// funziona anche quando l'HTML è aperto in un iframe, in un'anteprima o con un <base> diverso.
+document.addEventListener("click", function (e) {
+  var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+  if (!a) return;
+  var id = decodeURIComponent(a.getAttribute("href").slice(1));
+  var el = id && document.getElementById(id);
+  if (!el) return;
+  e.preventDefault();
+  el.scrollIntoView({ block: "start" });
+  try { history.replaceState(null, "", "#" + id); } catch (err) {}
+}, true);
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
