@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="indice composito, double counting, Mezzogiorno, Confindustria, SRM, indicatori economici, Python, SDMX, Eurostat">
+<meta name="description" content="Questa nota discute un limite metodologico ricorrente negli indici compositi: la selezione di variabili non indipendenti, legate da relazioni contabili, causali o cicliche, puo’ generare sovrappeso implicito e double counting.">
+
+<title>Quando un indice composito sovrappesa il ciclo – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Quando un indice composito sovrappesa il ciclo – Paolo Volterra">
+<meta property="og:description" content="Questa nota discute un limite metodologico ricorrente negli indici compositi: la selezione di variabili non indipendenti, legate da relazioni contabili, causali o cicliche, puo’ generare sovrappeso implicito e double counting.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2611_IndiceComposito/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Quando un indice composito sovrappesa il ciclo – Paolo Volterra">
+<meta name="twitter:description" content="Questa nota discute un limite metodologico ricorrente negli indici compositi: la selezione di variabili non indipendenti, legate da relazioni contabili, causali o cicliche, puo’ generare sovrappeso implicito e double counting.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2611_IndiceComposito/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/in_parole_semplici/"> <i class="bi bi-instagram" role="img" aria-label="Instagram">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#che-cosa-fa-lindice" id="toc-che-cosa-fa-lindice" class="nav-link active" data-scroll-target="#che-cosa-fa-lindice"><span class="header-section-number">1</span> Che cosa fa l’indice</a></li>
+  <li><a href="#il-problema-generale" id="toc-il-problema-generale" class="nav-link" data-scroll-target="#il-problema-generale"><span class="header-section-number">2</span> Il problema generale</a></li>
+  <li><a href="#cosa-significa-includere-variabili-interdipendenti" id="toc-cosa-significa-includere-variabili-interdipendenti" class="nav-link" data-scroll-target="#cosa-significa-includere-variabili-interdipendenti"><span class="header-section-number">3</span> Cosa significa includere variabili interdipendenti</a></li>
+  <li><a href="#il-caso-srm-confindustria" id="toc-il-caso-srm-confindustria" class="nav-link" data-scroll-target="#il-caso-srm-confindustria"><span class="header-section-number">4</span> Il caso SRM-Confindustria</a></li>
+  <li><a href="#perche-le-cinque-componenti-non-sono-ortogonali" id="toc-perche-le-cinque-componenti-non-sono-ortogonali" class="nav-link" data-scroll-target="#perche-le-cinque-componenti-non-sono-ortogonali"><span class="header-section-number">5</span> Perche’ le cinque componenti non sono ortogonali</a></li>
+  <li><a href="#chi-guida-la-crescita-dellindice" id="toc-chi-guida-la-crescita-dellindice" class="nav-link" data-scroll-target="#chi-guida-la-crescita-dellindice"><span class="header-section-number">6</span> Chi guida la crescita dell’indice</a></li>
+  <li><a href="#verifica-indipendente-delle-componenti" id="toc-verifica-indipendente-delle-componenti" class="nav-link" data-scroll-target="#verifica-indipendente-delle-componenti"><span class="header-section-number">7</span> Verifica indipendente delle componenti</a></li>
+  <li><a href="#evidenza-storica-lindice-cambia-oggetto" id="toc-evidenza-storica-lindice-cambia-oggetto" class="nav-link" data-scroll-target="#evidenza-storica-lindice-cambia-oggetto"><span class="header-section-number">8</span> Evidenza storica: l’indice cambia oggetto</a></li>
+  <li><a href="#filiera-di-verifica" id="toc-filiera-di-verifica" class="nav-link" data-scroll-target="#filiera-di-verifica"><span class="header-section-number">9</span> Filiera di verifica</a></li>
+  <li><a href="#come-testare-empiricamente-il-double-counting" id="toc-come-testare-empiricamente-il-double-counting" class="nav-link" data-scroll-target="#come-testare-empiricamente-il-double-counting"><span class="header-section-number">10</span> Come testare empiricamente il double counting</a></li>
+  <li><a href="#perche-la-critica-e-piu-forte-della-semplice-discrepanza-sui-dati" id="toc-perche-la-critica-e-piu-forte-della-semplice-discrepanza-sui-dati" class="nav-link" data-scroll-target="#perche-la-critica-e-piu-forte-della-semplice-discrepanza-sui-dati"><span class="header-section-number">11</span> Perche’ la critica e’ piu’ forte della semplice discrepanza sui dati</a></li>
+  <li><a href="#una-controproposta" id="toc-una-controproposta" class="nav-link" data-scroll-target="#una-controproposta"><span class="header-section-number">12</span> Una controproposta</a></li>
+  <li><a href="#conclusione" id="toc-conclusione" class="nav-link" data-scroll-target="#conclusione"><span class="header-section-number">13</span> Conclusione</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Quando un indice composito sovrappesa il ciclo</h1>
+<p class="subtitle lead">Interdipendenza delle variabili e double counting nel caso SRM-Confindustria sul Mezzogiorno</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Dati e metodo</div>
+    <div class="quarto-category">Mezzogiorno e territori</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Questa nota discute un limite metodologico ricorrente negli indici compositi: la selezione di variabili non indipendenti, legate da relazioni contabili, causali o cicliche, puo’ generare sovrappeso implicito e double counting.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">17 luglio 2026</p>
+    </div>
+  </div>
+  
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.21423637">10.5281/zenodo.21423637</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>Questa nota discute un limite metodologico ricorrente negli indici compositi: la selezione di variabili non indipendenti, legate da relazioni contabili, causali o cicliche, puo’ generare sovrappeso implicito e double counting. Il caso dell’indice sintetico SRM-Confindustria sul Mezzogiorno e’ utile per mostrare il problema in modo concreto. L’indice somma cinque grandezze indicizzate - PIL/valore aggiunto, investimenti, occupati, imprese attive ed export - senza pesi, senza normalizzazione per volatilita’ e senza una trattazione esplicita della loro interdipendenza. La verifica e’ condotta con una filiera replicabile in Python, basata su tabelle long, controlli di schema, ricostruzione dei vintage e confronto con fonti machine-readable quando disponibili: SDMX ISTAT per conti territoriali, occupazione ed export, Movimprese/InfoCamere per le imprese e API JSON Eurostat per controlli macro di coerenza. La ricostruzione indipendente conferma la formula e riproduce il 2019 con uno scarto minimo, ma mostra anche che il raccordo degli investimenti 2025 non e’ documentabile puntualmente dal solo materiale pubblico. La genealogia dei report mostra inoltre cambi di formula, base e vintage che rendono fragile la comparabilita’ storica. I numeri non sono necessariamente errati; l’indice va pero’ interpretato come dispositivo descrittivo e comunicativo, non come misura statistica robusta dello sviluppo economico.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>indice composito, double counting, Mezzogiorno, Confindustria, SRM, indicatori economici, Python, SDMX, Eurostat</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Versione citabile su Zenodo, con il PDF: <a href="https://doi.org/10.5281/zenodo.21423637">doi.org/10.5281/zenodo.21423637</a>.</p>
+</div>
+</div>
+</div>
+<section id="che-cosa-fa-lindice" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="che-cosa-fa-lindice"><span class="header-section-number">1</span> Che cosa fa l’indice</h2>
+<p>L’indice SRM-Confindustria nasce come sintesi congiunturale dell’economia meridionale. La costruzione e’ lineare: alcune variabili macroeconomiche considerate rappresentative dello stato dell’economia vengono trasformate in indici con una base comune e poi sommate. Nelle versioni piu’ recenti le componenti sono cinque: valore aggiunto o PIL, investimenti fissi lordi, occupati, imprese attive ed export. Il risultato e’ un numero unico, leggibile nel tempo e confrontabile tra aree territoriali, pensato per restituire in modo rapido la direzione complessiva del ciclo economico.</p>
+<p>Questa impostazione ha un vantaggio pratico. Il lettore non deve interpretare separatamente cinque serie diverse: puo’ partire da una misura sintetica e poi tornare alle componenti per capire quali variabili guidano il movimento. La formula e’ semplice e decomponibile. Quando i valori delle singole componenti sono pubblicati, si puo’ verificare se il totale torna e quale parte della variazione dipende da investimenti, export, occupazione, imprese o prodotto.</p>
+<p>La domanda metodologica nasce nel passaggio dal cruscotto al numero unico. Che cosa si perde quando cinque serie economiche vengono sommate come se producessero informazione separata? La risposta non riguarda l’utilita’ delle variabili considerate, che sono tutte rilevanti. Riguarda il modo in cui la loro aggregazione puo’ amplificare alcune dimensioni del ciclo e rendere meno visibile la differenza tra crescita diffusa e movimento concentrato su poche componenti.</p>
+<p>La verifica parte quindi da una posizione prudente. L’indice viene preso sul serio per la fonte che lo produce, per la sua continuita’ nel dibattito pubblico e per la semplicita’ della formula. Il dubbio non riguarda l’autorevolezza dell’operazione, ma la portata del numero che ne risulta. Se l’indice viene letto come termometro congiunturale, la costruzione puo’ essere adeguata al suo scopo. Se invece viene usato come misura sintetica di sviluppo, convergenza o superiorita’ relativa tra aree, occorre chiedere alla formula qualcosa di piu’.</p>
+</section>
+<section id="il-problema-generale" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="il-problema-generale"><span class="header-section-number">2</span> Il problema generale</h2>
+<p>Un indice composito nasce per ridurre molte informazioni a un solo numero. La riduzione puo’ essere utile, soprattutto quando si vuole seguire nel tempo un fenomeno articolato o comunicarne rapidamente la direzione. La sintesi, tuttavia, non e’ mai neutra. La scelta delle variabili, della base, della normalizzazione, dei pesi e della regola di aggregazione determina il significato dell’indice almeno quanto i dati sottostanti.</p>
+<p>La rilevanza delle variabili non basta. Un indicatore puo’ includere grandezze importanti e restare comunque fragile, se quelle grandezze non rappresentano dimensioni sufficientemente distinguibili del fenomeno. Quando le componenti sono fortemente correlate, oppure quando alcune sono cause o conseguenze di altre, la somma semplice puo’ trasformarsi in una contabilizzazione multipla dello stesso impulso economico.</p>
+<p>La letteratura metodologica sugli indicatori compositi insiste proprio su questo punto: prima di aggregare, occorre esaminare struttura informativa, ridondanza, correlazioni, pesi impliciti e robustezza dell’indicatore <span class="citation" data-cites="oecd_jrc_composite_2008 greco_composite_review_2019 dobbie_dail_robustness_2013"><a href="#ref-oecd_jrc_composite_2008" role="doc-biblioref">[1]</a>, <a href="#ref-greco_composite_review_2019" role="doc-biblioref">[2]</a>, <a href="#ref-dobbie_dail_robustness_2013" role="doc-biblioref">[3]</a></span>. Una matrice di indicatori non dovrebbe essere trattata come un paniere di informazioni indipendenti solo perche’ le colonne hanno nomi diversi.</p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Standard metodologico">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>Standard metodologico
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p><span class="screen-reader-only">Nota</span>Standard metodologico</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La documentazione accademica e istituzionale sugli indicatori compositi non tratta l’aggregazione come un passaggio puramente aritmetico. Prima della sintesi occorre verificare selezione delle variabili, direzione economica degli indicatori, normalizzazione, correlazioni, ridondanza informativa, pesi effettivi e robustezza della formula <span class="citation" data-cites="oecd_jrc_composite_2008 greco_composite_review_2019"><a href="#ref-oecd_jrc_composite_2008" role="doc-biblioref">[1]</a>, <a href="#ref-greco_composite_review_2019" role="doc-biblioref">[2]</a></span>. Questo richiamo non implica che un indice semplice sia sbagliato. Implica che la sua interpretazione deve restare coerente con i controlli che sono stati documentati.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="cosa-significa-includere-variabili-interdipendenti" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="cosa-significa-includere-variabili-interdipendenti"><span class="header-section-number">3</span> Cosa significa includere variabili interdipendenti</h2>
+<p>Un esempio minimo rende visibile il meccanismo. Si immagini di costruire un indice composito di “dinamismo economico” usando due componenti:</p>
+<ul>
+<li>investimenti;</li>
+<li>prodotto interno lordo.</li>
+</ul>
+<p>Le due variabili sono entrambe rilevanti, ma non sono indipendenti. Gli investimenti sono una componente della domanda aggregata e, nel tempo, influenzano anche la capacita’ produttiva. Se una politica pubblica aumenta gli investimenti, parte dello stesso impulso puo’ comparire anche nel PIL. Se l’indice somma investimenti e PIL come se fossero due segnali separati, quello stesso impulso viene contato due volte: una volta nella variabile originaria e una volta nella variabile che ne incorpora gli effetti.</p>
+<p>Lo stesso vale per export e PIL. L’export non e’ una dimensione esterna al prodotto: e’ una componente della domanda. Una crescita dell’export puo’ aumentare il valore aggiunto delle imprese esportatrici, l’occupazione nei settori coinvolti e gli investimenti collegati. Se un indice include contemporaneamente export, PIL, occupati e investimenti, rischia di trasformare un unico ciclo espansivo in quattro conferme apparenti.</p>
+<p>Queste variabili possono essere considerate insieme, ma non sommate come se fossero ortogonali. Vanno trattate come un sistema di variabili collegate.</p>
+<table class="caption-top table table-sm table-striped small">
+<caption>Esempio semplificato di double counting in un indice composito {#T_b99d6}</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Scenario</th>
+<th style="text-align: left;">Investimenti</th>
+<th style="text-align: left;">PIL</th>
+<th style="text-align: left;">Indice semplice</th>
+<th style="text-align: left;">Interpretazione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Anno base</td>
+<td style="text-align: left;">100</td>
+<td style="text-align: left;">100</td>
+<td style="text-align: left;">200</td>
+<td style="text-align: left;">nessuno shock</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Shock investimenti</td>
+<td style="text-align: left;">120</td>
+<td style="text-align: left;">110</td>
+<td style="text-align: left;">230</td>
+<td style="text-align: left;">lo stesso impulso entra negli investimenti e in parte nel PIL</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Lettura ingenua</td>
+<td style="text-align: left;">+20</td>
+<td style="text-align: left;">+10</td>
+<td style="text-align: left;">+30</td>
+<td style="text-align: left;">l'indice attribuisce 30 punti a un impulso originario di 20</td>
+</tr>
+</tbody>
+</table>
+<p>Nell’esempio, l’indice semplice cresce di 30 punti. La variazione non corrisponde pero’ a due fenomeni indipendenti, perche’ l’aumento del PIL e’ in parte conseguenza dello shock sugli investimenti. L’indice non distingue tra impulso primario ed effetto derivato; li somma entrambi e produce un sovrappeso implicito.</p>
+<p>La stessa logica vale quando si includono:</p>
+<ul>
+<li>una variabile di input e una di output, come occupati e valore aggiunto;</li>
+<li>una componente della domanda e il prodotto aggregato, come export e PIL;</li>
+<li>una misura di stock produttivo e una misura di attivita’, come imprese attive e occupazione;</li>
+<li>una politica o leva di investimento e gli esiti economici che quella leva produce.</li>
+</ul>
+<p>In tutti questi casi, il composito puo’ avere una forma apparentemente equilibrata - cinque componenti, cinque pesi uguali - ma pesare in modo eccessivo il blocco causale piu’ rappresentato. Se tre componenti sono manifestazioni dello stesso ciclo e due sono piu’ autonome, il peso effettivo del ciclo non e’ tre quinti per scelta teorica: e’ tre quinti per ridondanza. La letteratura sugli indicatori compositi distingue infatti tra peso nominale e importanza effettiva: varianza, scala residua e correlazione tra componenti modificano il contributo reale di ciascun indicatore <span class="citation" data-cites="becker_weights_importance_2017"><a href="#ref-becker_weights_importance_2017" role="doc-biblioref">[4]</a></span>.</p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Pesi dichiarati e pesi effettivi">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>Pesi dichiarati e pesi effettivi
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p><span class="screen-reader-only">Avviso</span>Pesi dichiarati e pesi effettivi</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Un indice puo’ assegnare lo stesso coefficiente nominale a tutte le componenti e produrre comunque importanze effettive molto diverse. Componenti piu’ variabili o piu’ correlate con le altre incidono di piu’ sul movimento del totale. Per questo la letteratura distingue tra peso assegnato nella formula e importanza osservata nell’indice <span class="citation" data-cites="becker_weights_importance_2017"><a href="#ref-becker_weights_importance_2017" role="doc-biblioref">[4]</a></span>. Nel caso SRM-Confindustria, il problema non e’ trovare una percentuale di ponderazione nascosta; e’ capire quali componenti finiscono per guidare il numero finale.</p>
+</div>
+</div>
+</div>
+<p>Qui “peso” va inteso in senso aritmetico, non come percentuale dichiarata dagli autori. Se cinque serie indicizzate valgono tutte 100 nell’anno base e vengono sommate senza coefficienti, ciascuna entra con lo stesso coefficiente nominale iniziale. Le quote percentuali calcolate piu’ avanti non sono quindi pesi scelti: sono contributi ex post alla crescita del totale, utili per capire quali componenti dominano il movimento dell’indice.</p>
+</section>
+<section id="il-caso-srm-confindustria" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="il-caso-srm-confindustria"><span class="header-section-number">4</span> Il caso SRM-Confindustria</h2>
+<p>L’<strong>indice sintetico/composito SRM-Confindustria sul Mezzogiorno</strong> e’ un caso utile perche’ consente di osservare insieme due piani diversi <span class="citation" data-cites="srm2026checkup"><a href="#ref-srm2026checkup" role="doc-biblioref">[5]</a></span>. Il primo riguarda la continuita’ storica dell’indicatore: nel tempo cambiano perimetro, numero di componenti, base e vintage statistici. Il secondo riguarda la forma recente dell’indice: cinque serie economiche indicizzate vengono sommate senza una ponderazione statistica progettata e senza un controllo documentato della loro interdipendenza.</p>
+<p><img src="figure/fig01.png" class="img-fluid figure-img" role="img"></p>
+<p>Figura&nbsp;1: Composizione dell’Indice Sintetico del Mezzogiorno, confronto 2014-2019-2025, anno base 2014. Riproduzione dalla fonte originale <span class="citation" data-cites="srm2026checkup"><a href="#ref-srm2026checkup" role="doc-biblioref">[5]</a></span>.</p>
+<table class="caption-top table table-sm table-striped small">
+<caption>Famiglie metodologiche dell’indice SRM-Confindustria ricostruite dai report {#T_05b44}</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Famiglia</th>
+<th style="text-align: left;">Componenti</th>
+<th style="text-align: left;">Base</th>
+<th style="text-align: left;">Nota</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Antecedenti omonimi</td>
+<td style="text-align: left;">infrastrutture / sviluppo provinciale</td>
+<td style="text-align: left;">Italia=100</td>
+<td style="text-align: left;">non comparabili con l'indice macro</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Focus crisi 6 variabili</td>
+<td style="text-align: left;">PIL, investimenti, imprese, fatturato, export, occupazione</td>
+<td style="text-align: left;">2007=600</td>
+<td style="text-align: left;">prima versione macroeconomica; include fatturato</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Focus crisi 5 variabili</td>
+<td style="text-align: left;">PIL, investimenti, imprese, export, occupazione</td>
+<td style="text-align: left;">2007=500</td>
+<td style="text-align: left;">il fatturato esce dall'indice</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Composito 2007</td>
+<td style="text-align: left;">PIL, investimenti, imprese, export, occupati</td>
+<td style="text-align: left;">2007=500</td>
+<td style="text-align: left;">cambiano basi contabili e vintage dei dati</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Composito 2014</td>
+<td style="text-align: left;">PIL, investimenti, occupati, imprese, export</td>
+<td style="text-align: left;">2014=500</td>
+<td style="text-align: left;">nuova base e confronto territoriale Nord/Centro/Mezzogiorno</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Storia dell'indice in breve">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>Storia dell’indice in breve
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p><span class="screen-reader-only">Nota</span>Storia dell’indice in breve</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>L’indice nasce nel filone dei <em>Focus Crisi</em> come lettura sintetica dell’impatto della crisi sull’economia meridionale. Nella prima versione macroeconomica ricostruita, pubblicata nel 2012 con base 2007, il totale vale 600 perche’ somma sei componenti indicizzate: PIL, investimenti, imprese, fatturato, export e occupazione.</p>
+<p>Dal 2013 l’indice diventa sostanzialmente un composito a cinque variabili: il fatturato esce, restano PIL, investimenti, imprese, export e occupazione. La scala di base passa quindi da 600 a 500. Negli anni successivi la struttura resta riconoscibile, ma non perfettamente stabile: cambiano basi contabili dei conti nazionali, vintage statistici e disponibilita’ degli ultimi anni. In diversi report gli anni piu’ recenti sono indicati o trattati come stime, in particolare per PIL e investimenti quando i dati territoriali definitivi non sono ancora pubblicati.</p>
+<p>La serie non e’ una semplice sequenza meccanica di valori definitivi. Alcuni anni vengono riscritti nei report successivi. Il 2020, ad esempio, compare a 426,4 nel report 2020, viene poi riscritto a 443,5 nel report 2021 e si assesta intorno a 440 nei vintage successivi. La rettifica non e’ di per se’ un errore: una misura costruita su dati provvisori cambia quando cambiano stime e conti territoriali. Resta improprio leggere tutta la serie come un indicatore unico e immutabile.</p>
+<p>La versione piu’ recente cambia ancora impostazione: assume il 2014 come anno base, mantiene cinque componenti e introduce il confronto territoriale Nord-Centro-Mezzogiorno. Il 2026 segnala inoltre una modifica rispetto al 2025 legata a nuove stime sugli investimenti. L’indice ha una genealogia: nasce come strumento di monitoraggio della crisi, viene stabilizzato come somma di cinque grandezze macroeconomiche, attraversa revisioni e dati provvisori, e infine viene ribasato al 2014 per diventare un confronto territoriale. Questa storia non invalida l’indice, ma obbliga a separare tre piani: formula, fonte/vintage e interpretazione economica.</p>
+</div>
+</div>
+</div>
+<p>Sul piano strutturale, la versione recente somma cinque componenti indicizzate - PIL o valore aggiunto, investimenti fissi lordi, occupati, imprese attive ed export - senza una ponderazione statistica progettata. Non risulta un criterio esplicito che trasformi le cinque variabili in pesi: non una PCA, non pesi inversi alla volatilita’, non una calibrazione predittiva, non un’analisi di sensitivita’. La formula assegna solo lo stesso coefficiente aritmetico iniziale a cinque serie poste a 100 nell’anno base.</p>
+<p>La fragilita’ e’ piu’ seria di una scelta di pesi discutibile ma dichiarata. In assenza di normalizzazione per volatilita’, controllo delle correlazioni e analisi di robustezza, sono i dati stessi a determinare i pesi effettivi dell’indice. Le componenti piu’ mobili, piu’ cicliche o piu’ soggette a revisione finiscono per guidare il totale. L’indice appare non ponderato, ma nella pratica trasferisce la ponderazione a volatilita’, trend e interdipendenza delle serie. Le cinque componenti non entrano quindi come cinque dimensioni indipendenti.</p>
+<p>La struttura e’ quasi didattica: l’indice prende una misura aggregata dell’attivita’ economica, il PIL/valore aggiunto, e le affianca variabili che in parte ne sono determinanti, componenti o conseguenze. Investimenti ed export sono canali della domanda e dell’accumulazione; occupati e imprese attive sono legati alla produzione che il PIL/valore aggiunto misura. La criticita’ non riguarda soltanto la correlazione statistica, ma la ridondanza concettuale: l’indice contiene contemporaneamente un risultato macroeconomico e alcune sue determinanti o manifestazioni.</p>
+</section>
+<section id="perche-le-cinque-componenti-non-sono-ortogonali" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="perche-le-cinque-componenti-non-sono-ortogonali"><span class="header-section-number">5</span> Perche’ le cinque componenti non sono ortogonali</h2>
+<p>La non indipendenza e’ sia economica sia contabile.</p>
+<p>Gli investimenti sono una componente della domanda aggregata e modificano la capacita’ produttiva. Una loro accelerazione puo’ comparire direttamente nell’attivita’ economica e poi riapparire nel valore aggiunto, nell’occupazione, nelle imprese fornitrici e in parte anche nell’export. L’export e’ a sua volta domanda estera: se cresce, contribuisce al prodotto. L’occupazione e’ insieme input produttivo ed esito del ciclo. Il numero di imprese attive riflette struttura produttiva, ciclo, demografia imprenditoriale e politiche di incentivo.</p>
+<p>Sommarle senza trattare questa interdipendenza equivale ad assumere che ogni variazione rappresenti informazione nuova e separata. L’assunzione e’ fragile. Se un impulso di politica economica aumenta investimenti, attivita’ produttiva, occupazione ed export, l’indice puo’ registrarlo piu’ volte: una volta nel canale diretto e poi nelle variabili che ne sono conseguenza.</p>
+<p>In termini metodologici, il rischio e’ double counting. In termini comunicativi, il rischio e’ amplificazione del ciclo: la crescita dell’indice puo’ sembrare una convergenza ampia e strutturale quando e’ trainata da poche componenti cicliche e correlate.</p>
+</section>
+<section id="chi-guida-la-crescita-dellindice" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="chi-guida-la-crescita-dellindice"><span class="header-section-number">6</span> Chi guida la crescita dell’indice</h2>
+<p>La versione 2026 del rapporto pubblica per il Mezzogiorno i valori delle cinque componenti nel 2014, 2019 e 2025. Il valore complessivo del 2025 e’ la somma diretta:</p>
+<div>
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>Componenti pubblicate nel report 2026, Mezzogiorno {data-border='1'}</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">2014</th>
+<th style="text-align: left;">2019</th>
+<th style="text-align: left;">2025</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Export</td>
+<td style="text-align: left;">100.0</td>
+<td style="text-align: left;">122.5</td>
+<td style="text-align: left;">157.4</td>
+</tr>
+<tr class="even">
+<td>Imprese</td>
+<td style="text-align: left;">100.0</td>
+<td style="text-align: left;">101.4</td>
+<td style="text-align: left;">101.8</td>
+</tr>
+<tr class="odd">
+<td>Investimenti</td>
+<td style="text-align: left;">100.0</td>
+<td style="text-align: left;">109.8</td>
+<td style="text-align: left;">158.9</td>
+</tr>
+<tr class="even">
+<td>Occupati</td>
+<td style="text-align: left;">100.0</td>
+<td style="text-align: left;">106.0</td>
+<td style="text-align: left;">113.7</td>
+</tr>
+<tr class="odd">
+<td>PIL</td>
+<td style="text-align: left;">100.0</td>
+<td style="text-align: left;">102.7</td>
+<td style="text-align: left;">111.2</td>
+</tr>
+<tr class="even">
+<td>Totale</td>
+<td style="text-align: left;">500.0</td>
+<td style="text-align: left;">542.4</td>
+<td style="text-align: left;">643.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>L’aritmetica torna. Resta da stabilire che cosa misuri quella somma. La crescita dell’indice dal 2014 al 2025 non e’ distribuita in modo equilibrato tra le componenti:</p>
+<div>
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>Contributi ex post alla crescita dell’indice tra 2014 e 2025 {data-border='1'}</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">punti_indice</th>
+<th style="text-align: left;">quota_percentuale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Investimenti</td>
+<td style="text-align: left;">58.9</td>
+<td style="text-align: left;">41.2</td>
+</tr>
+<tr class="even">
+<td>Export</td>
+<td style="text-align: left;">57.4</td>
+<td style="text-align: left;">40.1</td>
+</tr>
+<tr class="odd">
+<td>Occupati</td>
+<td style="text-align: left;">13.7</td>
+<td style="text-align: left;">9.6</td>
+</tr>
+<tr class="even">
+<td>PIL</td>
+<td style="text-align: left;">11.2</td>
+<td style="text-align: left;">7.8</td>
+</tr>
+<tr class="odd">
+<td>Imprese</td>
+<td style="text-align: left;">1.8</td>
+<td style="text-align: left;">1.3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Investimenti ed export spiegano insieme oltre l’80% della crescita complessiva dell’indice 2014-2025. Non e’ una percentuale scelta nella formula: e’ la scomposizione ex post di una somma diretta. Le tre componenti piu’ strutturali - valore aggiunto/PIL, occupati e imprese attive - spiegano meno di un quinto del movimento. Questa non e’ una prova definitiva di double counting, ma e’ un segnale forte: la somma non pesata concentra il messaggio dell’indice sulle componenti piu’ mobili e potenzialmente piu’ correlate al ciclo.</p>
+<p><img src="figure/fig02.png" class="figure-img" role="img" width="758" height="420"></p>
+<p>Quota ex post delle componenti sulla crescita dell’indice pubblicato, 2014-2025</p>
+</section>
+<section id="verifica-indipendente-delle-componenti" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="verifica-indipendente-delle-componenti"><span class="header-section-number">7</span> Verifica indipendente delle componenti</h2>
+<p>La critica di double counting non nasce da una contestazione generica dei numeri pubblicati. Prima viene la verifica della costruzione. La formula dichiarata e’ una somma diretta di cinque indici a base 2014=100: nell’anno base il totale vale 500 e nel 2025 la somma <code>111,2 + 158,9 + 113,7 + 101,8 + 157,4</code> restituisce esattamente 643,0. Non emergono quindi componenti nascoste, pesi impliciti diversi da quelli aritmetici o normalizzazioni non dichiarate.</p>
+<p>Le cinque componenti sono state poi ricostruite da fonti statistiche esterne al rapporto. Per il valore aggiunto/PIL e per gli investimenti fissi lordi si usano i conti economici territoriali ISTAT in valori concatenati; per gli occupati la rilevazione trimestrale sulle forze di lavoro; per l’export il commercio estero regionale; per le imprese attive la serie Movimprese/InfoCamere <span class="citation" data-cites="istat_contiregionali istat_forzelavoro istat_comestero infocamere_movimprese"><a href="#ref-istat_contiregionali" role="doc-biblioref">[6]</a>, <a href="#ref-istat_forzelavoro" role="doc-biblioref">[7]</a>, <a href="#ref-istat_comestero" role="doc-biblioref">[8]</a>, <a href="#ref-infocamere_movimprese" role="doc-biblioref">[9]</a></span>. Un punto va chiarito: a livello regionale la fonte ordinaria pubblica il valore aggiunto, non un PIL territoriale comprensivo di imposte nette sui prodotti. L’etichetta “PIL” dell’indice va quindi letta, in pratica, come valore aggiunto territoriale.</p>
+<table class="caption-top table table-sm table-striped small">
+<caption>Fonti pubbliche usate nella ricostruzione {#T_da49f}</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Componente</th>
+<th style="text-align: left;">Fonte</th>
+<th style="text-align: left;">Interfaccia</th>
+<th style="text-align: left;">Riferimento pubblico</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PIL/valore aggiunto</td>
+<td style="text-align: left;">ISTAT, conti economici territoriali</td>
+<td style="text-align: left;">SDMX</td>
+<td style="text-align: left;">dataflow ISTAT 93_1227, aggregato B1G_B_W2_S1, L_2020</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Investimenti fissi lordi</td>
+<td style="text-align: left;">ISTAT, conti economici territoriali</td>
+<td style="text-align: left;">SDMX</td>
+<td style="text-align: left;">dataflow ISTAT 93_1227, aggregato P51G_D_W2_S1, asset N11, L_2020</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Occupati</td>
+<td style="text-align: left;">ISTAT, forze di lavoro</td>
+<td style="text-align: left;">SDMX</td>
+<td style="text-align: left;">dataflow ISTAT 150_882_DF_DCCV_OCCUPATITDE1_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Imprese attive</td>
+<td style="text-align: left;">Movimprese/InfoCamere</td>
+<td style="text-align: left;">serie camerale trimestrale</td>
+<td style="text-align: left;">Movimprese, stock imprese attive di fine periodo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Export</td>
+<td style="text-align: left;">ISTAT, commercio estero regionale</td>
+<td style="text-align: left;">SDMX</td>
+<td style="text-align: left;">dataflow ISTAT DF_DCSE_CPA_AT2007_COE_OPT_A_REG_ALL_REG</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Controllo macro PIL</td>
+<td style="text-align: left;">Eurostat, national accounts</td>
+<td style="text-align: left;">JSON API</td>
+<td style="text-align: left;">Eurostat nama_10_gdp, na_item=B1GQ, unit=CLV20_MEUR, geo=IT</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Controllo macro investimenti</td>
+<td style="text-align: left;">Eurostat, national accounts</td>
+<td style="text-align: left;">JSON API</td>
+<td style="text-align: left;">Eurostat nama_10_gdp, na_item=P51G, unit=CLV20_MEUR, geo=IT</td>
+</tr>
+</tbody>
+</table>
+<p>Il controllo Eurostat non sostituisce la ricostruzione territoriale: serve a verificare che la dinamica nazionale dei conti in volumi concatenati sia coerente con il quadro macroeconomico usato per interpretare il dato regionale <span class="citation" data-cites="eurostat_nama10gdp"><a href="#ref-eurostat_nama10gdp" role="doc-biblioref">[10]</a></span>.</p>
+<div>
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>Valori pubblicati e ricostruiti: anni in colonna {data-border='1'}</caption>
+<colgroup>
+<col style="width: 17%">
+<col style="width: 15%">
+<col style="width: 16%">
+<col style="width: 15%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th colspan="2">2019</th>
+<th colspan="2">2025</th>
+</tr>
+<tr class="even">
+<th></th>
+<th>pubblicato</th>
+<th>ricostruito</th>
+<th>pubblicato</th>
+<th>ricostruito/verificabile</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PIL/VA</td>
+<td>102.7</td>
+<td>103.5</td>
+<td>111.2</td>
+<td>113.0</td>
+</tr>
+<tr class="even">
+<td>Investimenti</td>
+<td>109.8</td>
+<td>109.8</td>
+<td>158.9</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td>Occupati</td>
+<td>106.0</td>
+<td>105.7</td>
+<td>113.7</td>
+<td>113.6</td>
+</tr>
+<tr class="even">
+<td>Imprese</td>
+<td>101.4</td>
+<td>101.4</td>
+<td>101.8</td>
+<td>101.8</td>
+</tr>
+<tr class="odd">
+<td>Export</td>
+<td>122.5</td>
+<td>122.4</td>
+<td>157.4</td>
+<td>157.4</td>
+</tr>
+<tr class="even">
+<td>Totale</td>
+<td>542.4</td>
+<td>542.9</td>
+<td>643.0</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Il 2019 e’ il controllo piu’ pulito, perche’ tutte e cinque le componenti sono osservabili su fonti ufficiali consolidate: lo scarto sul totale e’ 0,5 punti su 542,4, cioe’ circa lo 0,08%. Nel 2025, invece, occupati, imprese ed export sono verificabili e coincidono sostanzialmente; il PIL/valore aggiunto e’ confrontabile con la stima preliminare ISTAT per ripartizione territoriale; gli investimenti fissi lordi restano il punto non replicabile in modo puntuale con il solo materiale pubblico disponibile.</p>
+<p><img src="figure/fig03.png" class="img-fluid figure-img" role="img"></p>
+<p>Figura&nbsp;2: Le cinque componenti dell’indice per il Mezzogiorno nel 2019: valori pubblicati nel rapporto contro ricostruzione da fonti ufficiali indipendenti.</p>
+<div>
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>Sensibilita’ del composito 2025 agli investimenti: anni in colonna {data-border='1'}</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">SRM pubblicato 2025</th>
+<th style="text-align: left;">Ricostruzione ibrida 2025</th>
+<th style="text-align: left;">Solo dati territoriali consolidati</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PIL/VA</td>
+<td style="text-align: left;">111.2</td>
+<td style="text-align: left;">113.0</td>
+<td style="text-align: left;">112.4</td>
+</tr>
+<tr class="even">
+<td>Investimenti</td>
+<td style="text-align: left;">158.9</td>
+<td style="text-align: left;">158.9</td>
+<td style="text-align: left;">118.3</td>
+</tr>
+<tr class="odd">
+<td>Occupati</td>
+<td style="text-align: left;">113.7</td>
+<td style="text-align: left;">113.6</td>
+<td style="text-align: left;">113.6</td>
+</tr>
+<tr class="even">
+<td>Imprese</td>
+<td style="text-align: left;">101.8</td>
+<td style="text-align: left;">101.8</td>
+<td style="text-align: left;">101.8</td>
+</tr>
+<tr class="odd">
+<td>Export</td>
+<td style="text-align: left;">157.4</td>
+<td style="text-align: left;">157.4</td>
+<td style="text-align: left;">157.4</td>
+</tr>
+<tr class="even">
+<td>Totale</td>
+<td style="text-align: left;">643.0</td>
+<td style="text-align: left;">644.7</td>
+<td style="text-align: left;">603.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Il controllo di sensibilita’ mostra perche’ la questione degli investimenti e’ decisiva. Se per il 2025 si usa l’ultimo dato territoriale consolidato disponibile per gli investimenti, il composito scende a 603,5. Il valore pubblicato puo’ riflettere una stima territoriale piu’ alta, coerente con la dinamica recente di costruzioni, opere pubbliche e PNRR. Il raccordo quantitativo dal materiale pubblico al numero indice 158,9 resta pero’ non documentato riga per riga.</p>
+</section>
+<section id="evidenza-storica-lindice-cambia-oggetto" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="evidenza-storica-lindice-cambia-oggetto"><span class="header-section-number">8</span> Evidenza storica: l’indice cambia oggetto</h2>
+<p>Un indice composito puo’ essere fragile anche quando ogni singolo calcolo e’ corretto. Se formula, base e fonti cambiano, la serie storica pubblicata non va letta come se fosse un unico indicatore stabile.</p>
+<p>Nel caso SRM-Confindustria, la genealogia ricostruita dai report mostra almeno tre fratture: l’uscita del fatturato dopo la prima versione macro, il cambio delle basi contabili e la nuova base 2014 con confronto territoriale. Inoltre i valori passati vengono rettificati tra vintage.</p>
+<table class="caption-top table table-sm table-striped small">
+<caption>Esempio di rettifica: valore 2020 del composito pubblicato in vintage successivi {#T_3fd49}</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Report</th>
+<th style="text-align: left;">Formula</th>
+<th style="text-align: left;">Valore 2020</th>
+<th style="text-align: left;">Base</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2020 dicembre</td>
+<td style="text-align: left;">macro_5var_2007_base2015</td>
+<td style="text-align: left;">426.400000</td>
+<td style="text-align: left;">2007=500</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2021 dicembre</td>
+<td style="text-align: left;">macro_5var_2007_base2015</td>
+<td style="text-align: left;">443.500000</td>
+<td style="text-align: left;">2007=500</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2022 dicembre</td>
+<td style="text-align: left;">macro_5var_2007_base2015</td>
+<td style="text-align: left;">440.800000</td>
+<td style="text-align: left;">2007=500</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023 dicembre</td>
+<td style="text-align: left;">macro_5var_2007_base2015</td>
+<td style="text-align: left;">440.100000</td>
+<td style="text-align: left;">2007=500</td>
+</tr>
+</tbody>
+</table>
+<p>La rettifica del 2020 e’ informativa. Nel report 2020 il valore viene pubblicato a 426,4; nel report 2021 lo stesso anno e’ riscritto a 443,5; nei report successivi si assesta intorno a 440. Questo mostra che SRM non trascina sempre meccanicamente il primo valore stimato. Ma mostra anche che l’indice dipende da vintage e raccordi non sempre documentati in modo pienamente replicabile.</p>
+</section>
+<section id="filiera-di-verifica" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="filiera-di-verifica"><span class="header-section-number">9</span> Filiera di verifica</h2>
+<p>La ricostruzione non si basa su una trascrizione manuale isolata dei numeri del rapporto. I valori pubblicati sono portati in una struttura long, con campi separati per report, vintage, formula, base, anno del dato, componente e valore. Questa forma consente controlli semplici ma decisivi: unicita’ della coppia anno-componente dentro ciascun vintage, coerenza della base, somma delle componenti rispetto al totale dichiarato, cambi di formula e rettifiche degli anni gia’ pubblicati.</p>
+<p>Quando le componenti sono disponibili da fonti statistiche aperte, il controllo segue la stessa logica: interrogazione diretta degli endpoint, lettura delle dimensioni, selezione esplicita di unita’, territorio, prezzo, frequenza e periodo, aggregazione per macroarea e indicizzazione alla base del rapporto. Per ISTAT questo significa lavorare sulle chiavi SDMX dei dataflow territoriali; per i controlli nazionali e di coerenza esterna, quando rilevanti, significa usare anche le API JSON di Eurostat, ad esempio per verificare livelli e variazioni dei conti nazionali.</p>
+<p>La critica all’indice arriva dopo due passaggi distinti. Prima si controlla che l’indice pubblicato sia aritmeticamente ricostruibile e che le componenti non siano state lette fuori contesto. Poi si valuta se la regola di aggregazione produca un indicatore informativo o se, al contrario, amplifichi un fattore comune. La verifica degli indici non e’ quindi un dettaglio tecnico separato dall’analisi. E’ il passaggio che consente di distinguere un errore nei dati da una fragilita’ nella costruzione del composito.</p>
+</section>
+<section id="come-testare-empiricamente-il-double-counting" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="come-testare-empiricamente-il-double-counting"><span class="header-section-number">10</span> Come testare empiricamente il double counting</h2>
+<p>La critica metodologica deve essere verificata sui dati, non solo argomentata. Il test corretto non va fatto sui livelli indicizzati, perche’ serie con trend comune producono correlazioni alte quasi per costruzione. L’analisi deve spostarsi sulle variazioni annue, preferibilmente log-differenze o differenze percentuali delle componenti originali. In questo modo si osserva se le serie reagiscono insieme agli stessi impulsi, invece di misurare soltanto il fatto che molte grandezze economiche crescono o scendono lungo una traiettoria comune.</p>
+<p>Il protocollo di verifica puo’ essere organizzato in piu’ controlli, ordinati dal piu’ trasparente al piu’ sintetico. La sequenza separa la ricostruzione delle fonti dalla diagnosi statistica e rende chiaro dove finisce il controllo dei numeri e dove comincia il giudizio sulla forma dell’indice:</p>
+<ol type="1">
+<li>Ricostruire una matrice annuale omogenea delle cinque componenti, separando formule storiche, basi e vintage.</li>
+<li>Portare le serie originali in formato coerente, preferendo download ripetibili da SDMX o API JSON quando la fonte lo consente.</li>
+<li>Calcolare la matrice di correlazione sulle variazioni annue.</li>
+<li>Verificare quanto il totale dipende da ciascuna componente, ricalcolandolo dopo aver escluso una variabile alla volta.</li>
+<li>Misurare la volatilita’ delle variazioni annue, per capire se la somma lascia dominare le serie piu’ mobili.</li>
+<li>Stimare una PCA sulle variazioni standardizzate.</li>
+<li>Rappresentare i loadings delle variabili in un biplot, per verificare se PIL/valore aggiunto, investimenti, occupati, imprese ed export puntano verso uno stesso asse ciclico o se descrivono dimensioni effettivamente distinte.</li>
+</ol>
+<p>La matrice da produrre avra’ questa forma:</p>
+<table class="caption-top table table-sm table-striped small">
+<caption>Schema della matrice necessaria per il test di correlazione/PCA {#T_4a64f}</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">anno</th>
+<th style="text-align: left;">d_log_pil_va</th>
+<th style="text-align: left;">d_log_investimenti</th>
+<th style="text-align: left;">d_log_occupati</th>
+<th style="text-align: left;">d_log_imprese</th>
+<th style="text-align: left;">d_log_export</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2015</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2016</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2017</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+</tr>
+</tbody>
+</table>
+<p>La prima verifica guarda le correlazioni tra variazioni annue. Si usa la matrice ricostruita dalle cinque fonti ufficiali e si tengono solo gli anni disponibili per tutte le componenti. Il periodo completo e’ 2014-2023; le variazioni osservate sono quindi quelle dal 2015 al 2023. Il numero di osservazioni resta limitato, ma la tavola ha un vantaggio: mostra direttamente se le serie si muovono insieme, senza imporre ancora una struttura fattoriale.</p>
+<div>
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>Correlazioni tra variazioni annue delle componenti ufficiali, 2015-2023 {data-border='1'}</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">PIL/VA</th>
+<th style="text-align: left;">Investimenti</th>
+<th style="text-align: left;">Occupati</th>
+<th style="text-align: left;">Imprese</th>
+<th style="text-align: left;">Export</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PIL/VA</td>
+<td style="text-align: left;">1.00</td>
+<td style="text-align: left;">0.86</td>
+<td style="text-align: left;">0.77</td>
+<td style="text-align: left;">-0.06</td>
+<td style="text-align: left;">0.90</td>
+</tr>
+<tr class="even">
+<td>Investimenti</td>
+<td style="text-align: left;">0.86</td>
+<td style="text-align: left;">1.00</td>
+<td style="text-align: left;">0.59</td>
+<td style="text-align: left;">0.03</td>
+<td style="text-align: left;">0.65</td>
+</tr>
+<tr class="odd">
+<td>Occupati</td>
+<td style="text-align: left;">0.77</td>
+<td style="text-align: left;">0.59</td>
+<td style="text-align: left;">1.00</td>
+<td style="text-align: left;">-0.51</td>
+<td style="text-align: left;">0.70</td>
+</tr>
+<tr class="even">
+<td>Imprese</td>
+<td style="text-align: left;">-0.06</td>
+<td style="text-align: left;">0.03</td>
+<td style="text-align: left;">-0.51</td>
+<td style="text-align: left;">1.00</td>
+<td style="text-align: left;">-0.14</td>
+</tr>
+<tr class="odd">
+<td>Export</td>
+<td style="text-align: left;">0.90</td>
+<td style="text-align: left;">0.65</td>
+<td style="text-align: left;">0.70</td>
+<td style="text-align: left;">-0.14</td>
+<td style="text-align: left;">1.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="figure/fig04.png" class="figure-img" role="img" width="520" height="421"></p>
+<p>Correlazioni tra variazioni annue delle componenti ufficiali</p>
+<p>La seconda verifica ricalcola il totale pubblicato togliendo una componente alla volta. Non e’ una proposta di nuovo indice, ma un test di dipendenza: se l’esclusione di una componente cambia molto la crescita della somma, quella componente ha guidato una parte rilevante del messaggio sintetico. Nel 2025 il controllo e’ particolarmente utile per distinguere una crescita diffusa da una crescita concentrata.</p>
+<div>
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>Indice pubblicato ricalcolato escludendo una componente alla volta {data-border='1'}</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">2014</th>
+<th style="text-align: left;">2019</th>
+<th style="text-align: left;">2025</th>
+<th style="text-align: left;">crescita_2014_2025</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Indice completo</td>
+<td style="text-align: left;">500.0</td>
+<td style="text-align: left;">542.4</td>
+<td style="text-align: left;">643.0</td>
+<td style="text-align: left;">143.0</td>
+</tr>
+<tr class="even">
+<td>Senza Export</td>
+<td style="text-align: left;">400.0</td>
+<td style="text-align: left;">419.9</td>
+<td style="text-align: left;">485.6</td>
+<td style="text-align: left;">85.6</td>
+</tr>
+<tr class="odd">
+<td>Senza Imprese</td>
+<td style="text-align: left;">400.0</td>
+<td style="text-align: left;">441.0</td>
+<td style="text-align: left;">541.2</td>
+<td style="text-align: left;">141.2</td>
+</tr>
+<tr class="even">
+<td>Senza Investimenti</td>
+<td style="text-align: left;">400.0</td>
+<td style="text-align: left;">432.6</td>
+<td style="text-align: left;">484.1</td>
+<td style="text-align: left;">84.1</td>
+</tr>
+<tr class="odd">
+<td>Senza Occupati</td>
+<td style="text-align: left;">400.0</td>
+<td style="text-align: left;">436.4</td>
+<td style="text-align: left;">529.3</td>
+<td style="text-align: left;">129.3</td>
+</tr>
+<tr class="even">
+<td>Senza PIL</td>
+<td style="text-align: left;">400.0</td>
+<td style="text-align: left;">439.7</td>
+<td style="text-align: left;">531.8</td>
+<td style="text-align: left;">131.8</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>La terza verifica riguarda la volatilita’. Una somma di indici base 100 non rende automaticamente comparabili componenti molto stabili e componenti molto mobili. Se una serie ha variazioni annue piu’ ampie, puo’ pesare molto nel movimento del totale anche senza ricevere un coefficiente formale piu’ alto. La tavola seguente misura la volatilita’ delle variazioni annue ufficiali e mostra quale peso avrebbe ciascuna componente se si adottasse, solo come controllo, un criterio inverso alla volatilita’.</p>
+<div>
+<table class="dataframe caption-top table table-sm table-striped small">
+<caption>Volatilita’ delle variazioni annue e pesi inversi alla volatilita’, 2015-2023 {data-border='1'}</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">volatilita_annua_percentuale</th>
+<th style="text-align: left;">peso_inverso_volatilita_percentuale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Export</td>
+<td style="text-align: left;">10.8</td>
+<td style="text-align: left;">3.5</td>
+</tr>
+<tr class="even">
+<td>Investimenti</td>
+<td style="text-align: left;">8.8</td>
+<td style="text-align: left;">4.3</td>
+</tr>
+<tr class="odd">
+<td>PIL/VA</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">8.4</td>
+</tr>
+<tr class="even">
+<td>Occupati</td>
+<td style="text-align: left;">1.7</td>
+<td style="text-align: left;">21.8</td>
+</tr>
+<tr class="odd">
+<td>Imprese</td>
+<td style="text-align: left;">0.6</td>
+<td style="text-align: left;">62.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>La soglia interpretativa non deve essere meccanica. Se le correlazioni sono diffusamente alte e la prima componente principale spiega una quota elevata della varianza, l’indice sta aggregando molte manifestazioni dello stesso ciclo. In quel caso la somma delle cinque serie non produce cinque volte informazione. Produce un numero sintetico che amplifica un fattore comune e rende meno visibile la distinzione tra crescita diffusa e movimento concentrato su poche componenti.</p>
+<p>La PCA arriva dopo questi controlli. Con pochi anni completi non va caricata di un significato eccessivo, ma resta utile come rappresentazione compatta della stessa diagnosi. Se correlazioni, leave-one-out e volatilita’ indicano gia’ che il movimento dell’indice e’ guidato da poche serie cicliche, il biplot diventa una conferma visuale, non il fondamento dell’argomento. L’uso di correlazioni e PCA per individuare ridondanze, ed eventualmente ridurre un indicatore composito, e’ coerente con applicazioni recenti su indici regionali multidimensionali <span class="citation" data-cites="bruno_reduced_desi_2023"><a href="#ref-bruno_reduced_desi_2023" role="doc-biblioref">[11]</a></span>.</p>
+<p>Il biplot e’ utile soprattutto come controllo visuale dei loadings, non come prova autosufficiente. Se le frecce delle cinque componenti risultano ravvicinate e orientate nello stesso quadrante, la figura rende immediatamente visibile la ridondanza informativa: l’indice non sta combinando cinque direzioni indipendenti, ma piu’ misure esposte allo stesso fattore comune. Se invece le frecce sono disperse su assi diversi, l’argomento del double counting va ridimensionato o qualificato.</p>
+<p>Un biplot costruito sui valori pubblicati da SRM mescolerebbe finalita’ diverse: da un lato la verifica dell’aritmetica dell’indice, dall’altro il test statistico della ridondanza. Il biplot va costruito sulla matrice indipendente ricavata dalle cinque fonti individuate: valore aggiunto/PIL, investimenti, occupati ed export da fonti ISTAT interrogate via SDMX; imprese attive da Movimprese/InfoCamere. Tenendo solo gli anni disponibili su tutte e cinque le dimensioni, la matrice completa copre il periodo 2014-2023; la PCA e’ quindi stimata sulle nove variazioni annue 2015-2023.</p>
+<p><img src="figure/fig05.png" class="figure-img" role="img" width="754" height="420"></p>
+<p>Biplot PCA sulle variazioni annue delle cinque componenti ricostruite da fonti ufficiali</p>
+<table class="caption-top table table-sm table-striped small">
+<caption>Sintesi della PCA sulle variazioni annue complete {#T_7c79b}</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">misura</th>
+<th style="text-align: left;">valore</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">osservazioni annue</td>
+<td style="text-align: left;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">anni livello completi</td>
+<td style="text-align: left;">2014-2023</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">varianza spiegata PC1</td>
+<td style="text-align: left;">65.9%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">varianza spiegata PC1+PC2</td>
+<td style="text-align: left;">89.3%</td>
+</tr>
+</tbody>
+</table>
+<p>Il risultato va letto come evidenza esplorativa, perche’ nove osservazioni annue restano poche per una PCA stabile. Tuttavia il primo asse cattura una quota elevata della varianza e raccoglie nella stessa direzione valore aggiunto/PIL, investimenti, occupati ed export. Le imprese attive appaiono piu’ autonome e pesano soprattutto sul secondo asse. La figura e’ quindi coerente con una lettura piu’ precisa del double counting: il composito non aggrega cinque dimensioni pienamente indipendenti, ma combina quattro componenti molto esposte al ciclo e una componente demografico-produttiva piu’ lenta.</p>
+<p>Nessuno di questi controlli, preso da solo, chiude la questione. Le correlazioni sono stimate su pochi anni, il leave-one-out descrive la dipendenza meccanica della somma, la volatilita’ dipende dal periodo scelto e la PCA resta esplorativa. La forza dell’evidenza nasce dalla convergenza: controlli diversi, con limiti diversi, segnalano tutti che il numero unico e’ guidato da poche componenti cicliche e che una parte rilevante dell’informazione aggregata non e’ indipendente.</p>
+<p>Un indice a pesi uguali puo’ essere una scelta difendibile. In alcuni contesti, soprattutto con serie brevi o irregolari, la media a pesi uguali puo’ essere competitiva rispetto a PCA e modelli fattoriali, anche perche’ resta decomponibile e riduce l’incertezza di stima <span class="citation" data-cites="arrigoni_fci_equal_weights_2022 suerf_fci_world_2024"><a href="#ref-arrigoni_fci_equal_weights_2022" role="doc-biblioref">[12]</a>, <a href="#ref-suerf_fci_world_2024" role="doc-biblioref">[13]</a></span>. Quel risultato presuppone pero’ un impianto statistico esplicito: selezione coerente delle variabili, standardizzazione, controllo del segno economico, valutazione predittiva o di robustezza. Nel caso in esame, la criticita’ riguarda la somma di indicatori interdipendenti senza una verifica documentata della loro struttura informativa.</p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Quando i pesi uguali sono difendibili">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>Quando i pesi uguali sono difendibili
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p><span class="screen-reader-only">Nota</span>Quando i pesi uguali sono difendibili</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I pesi uguali non sono un errore metodologico in se’. Possono essere preferibili quando le serie sono poche, brevi o irregolari, e quando la trasparenza della decomposizione conta piu’ della complessita’ del modello <span class="citation" data-cites="arrigoni_fci_equal_weights_2022 suerf_fci_world_2024"><a href="#ref-arrigoni_fci_equal_weights_2022" role="doc-biblioref">[12]</a>, <a href="#ref-suerf_fci_world_2024" role="doc-biblioref">[13]</a></span>. Questa difesa richiede pero’ un passaggio ulteriore: mostrare che la scelta resta stabile rispetto a volatilita’, correlazioni, segno economico e robustezza. Senza questi controlli, la semplicita’ della formula resta utile per comunicare il ciclo, ma non basta a sostenere una misura robusta di sviluppo o convergenza.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="perche-la-critica-e-piu-forte-della-semplice-discrepanza-sui-dati" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="perche-la-critica-e-piu-forte-della-semplice-discrepanza-sui-dati"><span class="header-section-number">11</span> Perche’ la critica e’ piu’ forte della semplice discrepanza sui dati</h2>
+<p>La verifica dei dati resta necessaria, soprattutto per gli investimenti recenti. Una critica basata solo su “questo numero non torna” resta pero’ vulnerabile: SRM puo’ rispondere che usa un diverso vintage, una stima preliminare o una fonte specialistica non ancora pubblicata in dettaglio. La ricostruzione indipendente riduce molto questo margine, ma non lo elimina del tutto per gli anni piu’ recenti.</p>
+<p>La critica strutturale e’ piu’ robusta perche’ non dipende da un singolo scarto puntuale. Anche concedendo che ogni valore sia calcolato correttamente, restano tre problemi:</p>
+<ol type="1">
+<li>le componenti non sono indipendenti;</li>
+<li>la somma non pesata non controlla ne’ volatilita’ ne’ ridondanza;</li>
+<li>l’indice cambia formula e base nel tempo.</li>
+</ol>
+<p>Questi tre elementi bastano per ridimensionare l’uso dell’indice. Il composito puo’ restare utile come dispositivo descrittivo, perche’ mette insieme indicatori economici rilevanti e consente una lettura rapida della congiuntura. La sua forma attuale non consente pero’ di trattarlo come una misura sintetica robusta dello sviluppo del Mezzogiorno. Il giudizio resta quindi volutamente circoscritto: non riguarda l’utilita’ dell’indice come strumento di comunicazione, ma l’ampiezza delle conclusioni che si possono trarre dal numero finale.</p>
+<p>La distinzione tra fatto verificato e valutazione metodologica e’ essenziale. La formula pubblicata e’ una somma diretta di cinque serie indicizzate. Non risultano coefficienti di ponderazione diversi da quelli aritmetici, ne’ una procedura documentata di standardizzazione, controllo della ridondanza o robustezza. Questa e’ la parte accertabile. La valutazione riguarda invece l’adeguatezza di quella scelta: una somma cosi’ costruita e’ leggibile e comunicabile, ma resta debole quando viene interpretata come misura autonoma dello sviluppo o della convergenza.</p>
+<p>Il contesto va trattato con maggiore cautela. La persistenza dell’indice nella comunicazione pubblica sembra dipendere anche dalla sua semplicita’, dalla sua riconoscibilita’ e dall’abitudine a leggerlo come termometro congiunturale. Questa e’ un’inferenza, non una prova sulle intenzioni degli autori o sulla qualita’ del loro lavoro complessivo. La critica resta quindi sul metodo pubblicamente osservabile: il passaggio dalla lista di indicatori al numero unico non espone i controlli che oggi ci si aspetterebbe da un indicatore composito robusto.</p>
+</section>
+<section id="una-controproposta" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="una-controproposta"><span class="header-section-number">12</span> Una controproposta</h2>
+<p>La parte utile dell’indice non va dispersa. Le cinque grandezze scelte da SRM-Confindustria sono informative: valore aggiunto, investimenti, occupazione, imprese ed export raccontano aspetti rilevanti dell’economia meridionale. La criticita’ nasce quando queste serie vengono compresse in un solo numero senza esplicitare come si trattano volatilita’, correlazioni, revisioni e sovrapposizioni economiche.</p>
+<p>Una soluzione piu’ trasparente sarebbe trattare l’indice come un cruscotto, non come una graduatoria. Le cinque serie resterebbero visibili, con la stessa base e lo stesso vintage, e il lettore vedrebbe subito se la crescita e’ diffusa o concentrata. Nel caso 2025, ad esempio, il messaggio cambierebbe: non “il Mezzogiorno supera il Nord” come sintesi indistinta, ma “investimenti ed export guidano gran parte del recupero, mentre valore aggiunto, occupati e imprese si muovono molto meno”.</p>
+<p>Se si vuole mantenere un numero unico, la costruzione dovrebbe seguire una procedura dichiarata. Le serie andrebbero trasformate in variazioni comparabili, standardizzate rispetto alla volatilita’, orientate tutte nello stesso verso economico e controllate per correlazione. A quel punto si possono confrontare almeno tre versioni: media standardizzata a pesi uguali, indice con pesi corretti per la volatilita’ e primo fattore comune stimato con PCA. La differenza tra queste versioni diventerebbe parte dell’informazione, non un dettaglio tecnico nascosto.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 28%">
+<col style="width: 25%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Prodotto informativo</th>
+<th style="text-align: left;">Uso corretto</th>
+<th style="text-align: left;">Vantaggio</th>
+<th style="text-align: left;">Limite</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Cruscotto a cinque serie</td>
+<td style="text-align: left;">Lettura descrittiva delle componenti</td>
+<td style="text-align: left;">Evita di nascondere chi guida il movimento</td>
+<td style="text-align: left;">Non produce una classifica unica</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Somma di indici base 100</td>
+<td style="text-align: left;">Sintesi comunicativa rapida</td>
+<td style="text-align: left;">Facile da leggere e decomporre</td>
+<td style="text-align: left;">Lascia i pesi effettivi a volatilita’ e correlazioni</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Media standardizzata</td>
+<td style="text-align: left;">Confronto tra variabili con scale e volatilita’ diverse</td>
+<td style="text-align: left;">Riduce il dominio delle serie piu’ mobili</td>
+<td style="text-align: left;">Richiede una scelta esplicita del periodo di standardizzazione</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Indice a fattore comune</td>
+<td style="text-align: left;">Misura del ciclo condiviso tra le componenti</td>
+<td style="text-align: left;">Separa fattore comune e componenti piu’ autonome</td>
+<td style="text-align: left;">Meno immediato per un pubblico non tecnico</td>
+</tr>
+</tbody>
+</table>
+<p>La controproposta non elimina la comunicazione sintetica; la rende verificabile. Il lettore puo’ continuare ad avere un numero di sintesi, ma insieme a una tavola che mostra componenti, fonti, vintage, contributi alla variazione e sensibilita’ della formula. In questo modo l’indice non chiede fiducia nell’autorita’ di chi lo produce. Espone la propria costruzione e permette di capire se il risultato dipende da un miglioramento diffuso oppure da poche serie molto mobili.</p>
+</section>
+<section id="conclusione" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="conclusione"><span class="header-section-number">13</span> Conclusione</h2>
+<p>Il caso SRM-Confindustria consente di partire da un principio generale e arrivare a una valutazione concreta. Un indice composito deve trattare la selezione delle variabili come una scelta metodologica forte, non come un elenco di grandezze importanti. Quando le variabili sono interdipendenti, la loro somma puo’ sovrappesare alcune componenti e contabilizzare piu’ volte lo stesso impulso macroeconomico.</p>
+<p>Nel caso dell’indice del Mezzogiorno, questa criticita’ e’ evidente. Investimenti, export, occupazione, imprese e valore aggiunto appartengono allo stesso sistema di relazioni economiche. La somma diretta di cinque indici a base 100 non dimostra che il Mezzogiorno migliori simultaneamente su cinque dimensioni indipendenti. Mostra che alcune variabili del ciclo, soprattutto investimenti ed export, si sono mosse molto e dominano il totale.</p>
+<p>L’indice puo’ essere usato come sintesi comunicativa e come porta d’ingresso per leggere le singole componenti. Il suo uso diventa fragile quando viene trattato come metrica autonoma di sviluppo o convergenza, senza un’analisi di ridondanza, pesi impliciti, vintage e robustezza. Lo smontaggio dell’indice produce quindi un risultato piu’ utile di una semplice contestazione: mostra che il calcolo e’ in larga parte ricostruibile, ma anche che l’interpretazione pubblica del numero eccede cio’ che la formula consente di sostenere. La critica non richiede di attribuire intenzioni o competenze agli autori; richiede solo di prendere sul serio la formula pubblicata e di valutarla con gli standard ordinari degli indicatori compositi.</p>
+<hr>
+<p><strong>Trasparenza sull’uso dell’intelligenza artificiale</strong></p>
+<p>L’uso di strumenti di intelligenza artificiale generativa e’ dichiarato esplicitamente in quanto parte del processo di lavoro seguito nella redazione del presente documento. Tali strumenti sono stati impiegati a supporto della lettura, della sintesi, della riorganizzazione argomentativa e della revisione testuale, sempre nell’ambito di un processo pienamente controllato dall’autore.</p>
+<p>La responsabilita’ per le fonti utilizzate, le analisi condotte, le verifiche effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore.</p>
+<p>L’intelligenza artificiale e’ stata utilizzata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+</section>
+<div id="quarto-appendix" class="default">
+<section id="quarto-bibliography" class="level2 quarto-appendix-heading" data-number="14">
+<h2 class="quarto-appendix-heading anchored" data-number="14" data-anchor-id="quarto-bibliography"><span class="header-section-number">14</span> Referenze</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-oecd_jrc_composite_2008" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[1]
+</div>
+<div class="csl-right-inline">
+OECD e Joint Research Centre of the European Commission, <em>Handbook on Constructing Composite Indicators: Methodology and User Guide</em>. Paris: OECD Publishing, 2008. doi: <a href="https://doi.org/10.1787/9789264043466-en">10.1787/9789264043466-en</a>.
+</div>
+</div>
+<div id="ref-greco_composite_review_2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[2]
+</div>
+<div class="csl-right-inline">
+S. Greco, A. Ishizaka, M. Tasiou, e G. Torrisi, «On the Methodological Framework of Composite Indices: A Review of the Issues of Weighting, Aggregation, and Robustness», <em>Social Indicators Research</em>, vol.&nbsp;141, fasc.&nbsp;1, pp.&nbsp;61–94, 2019, doi: <a href="https://doi.org/10.1007/s11205-017-1832-9">10.1007/s11205-017-1832-9</a>.
+</div>
+</div>
+<div id="ref-dobbie_dail_robustness_2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[3]
+</div>
+<div class="csl-right-inline">
+M. J. Dobbie e D. B. Dail, «Robustness and Sensitivity of Weighting and Aggregation in Constructing Composite Indices», <em>Ecological Indicators</em>, vol.&nbsp;29, pp.&nbsp;270–277, 2013, doi: <a href="https://doi.org/10.1016/j.ecolind.2012.12.025">10.1016/j.ecolind.2012.12.025</a>.
+</div>
+</div>
+<div id="ref-becker_weights_importance_2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[4]
+</div>
+<div class="csl-right-inline">
+W. Becker, M. Saisana, P. Paruolo, e I. Vandecasteele, «Weights and Importance in Composite Indicators: Closing the Gap», <em>Ecological Indicators</em>, vol.&nbsp;80, pp.&nbsp;12–22, 2017, doi: <a href="https://doi.org/10.1016/j.ecolind.2017.03.056">10.1016/j.ecolind.2017.03.056</a>.
+</div>
+</div>
+<div id="ref-srm2026checkup" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[5]
+</div>
+<div class="csl-right-inline">
+SRM e Confindustria, «Check-Up Mezzogiorno», lug. 2026.
+</div>
+</div>
+<div id="ref-istat_contiregionali" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[6]
+</div>
+<div class="csl-right-inline">
+Istituto Nazionale di Statistica (ISTAT), «Conti economici territoriali». Banca dati statistica ISTAT, 2026. Disponibile su: <a href="https://esploradati.istat.it" class="uri">https://esploradati.istat.it</a>
+</div>
+</div>
+<div id="ref-istat_forzelavoro" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[7]
+</div>
+<div class="csl-right-inline">
+Istituto Nazionale di Statistica (ISTAT), «Rilevazione sulle forze di lavoro — dati trimestrali destagionalizzati». Banca dati statistica ISTAT, 2026. Disponibile su: <a href="https://esploradati.istat.it" class="uri">https://esploradati.istat.it</a>
+</div>
+</div>
+<div id="ref-istat_comestero" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[8]
+</div>
+<div class="csl-right-inline">
+Istituto Nazionale di Statistica (ISTAT), «Commercio estero e attività internazionali delle imprese — dati regionali». Banca dati statistica ISTAT, 2026. Disponibile su: <a href="https://esploradati.istat.it" class="uri">https://esploradati.istat.it</a>
+</div>
+</div>
+<div id="ref-infocamere_movimprese" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[9]
+</div>
+<div class="csl-right-inline">
+InfoCamere / Unioncamere, «Movimprese — natalità e mortalità delle imprese registrate». Rilevazione trimestrale del sistema camerale italiano, 2026.
+</div>
+</div>
+<div id="ref-eurostat_nama10gdp" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[10]
+</div>
+<div class="csl-right-inline">
+Eurostat, «Gross domestic product (GDP) and main components (output, expenditure and income) - annual data». Eurostat dataset nama_10_gdp, 2026. Disponibile su: <a href="https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_gdp" class="uri">https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_gdp</a>
+</div>
+</div>
+<div id="ref-bruno_reduced_desi_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[11]
+</div>
+<div class="csl-right-inline">
+G. Bruno, A. Diglio, C. Piccolo, e E. Pipicelli, «A Reduced Composite Indicator for Digital Divide Measurement at the Regional Level: An Application to the Digital Economy and Society Index (DESI)», <em>Technological Forecasting and Social Change</em>, vol.&nbsp;190, p.&nbsp;122461, 2023, doi: <a href="https://doi.org/10.1016/j.techfore.2023.122461">10.1016/j.techfore.2023.122461</a>.
+</div>
+</div>
+<div id="ref-arrigoni_fci_equal_weights_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[12]
+</div>
+<div class="csl-right-inline">
+S. Arrigoni, A. Bobasu, e F. Venditti, «Measuring Financial Conditions Using Equal Weights Combination», <em>IMF Economic Review</em>, vol.&nbsp;70, fasc.&nbsp;4, pp.&nbsp;668–697, 2022, doi: <a href="https://doi.org/10.1057/s41308-022-00170-y">10.1057/s41308-022-00170-y</a>.
+</div>
+</div>
+<div id="ref-suerf_fci_world_2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[13]
+</div>
+<div class="csl-right-inline">
+S. Arrigoni, A. Bobasu, e F. Venditti, «Financial Conditions Around the World». SUERF Policy Brief, No.&nbsp;892, 31 maggio 2024. Disponibile su: <a href="https://www.suerf.org/publications/suerf-policy-notes-and-briefs/financial-conditions-around-the-world/" class="uri">https://www.suerf.org/publications/suerf-policy-notes-and-briefs/financial-conditions-around-the-world/</a>
+</div>
+</div>
+</div>
+</section>
+<section id="quarto-reuse" class="level2 quarto-appendix-heading" data-number="15">
+<h2 class="quarto-appendix-heading anchored" data-number="15" data-anchor-id="quarto-reuse"><span class="header-section-number">15</span> Riutilizzare</h2>
+<div class="quarto-appendix-contents">
+<div>
+<p>CC-BY-4.0</p>
+</div>
+</div>
+</section>
+</div>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
