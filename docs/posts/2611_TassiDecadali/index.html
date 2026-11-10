@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="tassi di interesse, banche, segnalazioni statistiche, Banca d’Italia, PUMA, MIR, BCE">
+<meta name="description" content="Che cosa sono le segnalazioni decadali dei tassi bancari, come sono costruite e come si confrontano con la rilevazione mensile armonizzata della BCE (MIR); con una griglia illustrativa a valori simulati.">
+
+<title>Tassi bancari a cadenza decadale – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Tassi bancari a cadenza decadale – Paolo Volterra">
+<meta property="og:description" content="Che cosa sono le segnalazioni decadali dei tassi bancari, come sono costruite e come si confrontano con la rilevazione mensile armonizzata della BCE (MIR); con una griglia illustrativa a valori simulati.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2611_TassiDecadali/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Tassi bancari a cadenza decadale – Paolo Volterra">
+<meta name="twitter:description" content="Che cosa sono le segnalazioni decadali dei tassi bancari, come sono costruite e come si confrontano con la rilevazione mensile armonizzata della BCE (MIR); con una griglia illustrativa a valori simulati.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2611_TassiDecadali/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/in_parole_semplici/"> <i class="bi bi-instagram" role="img" aria-label="Instagram">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#introduzione" id="toc-introduzione" class="nav-link active" data-scroll-target="#introduzione"><span class="header-section-number">1</span> Introduzione</a></li>
+  <li><a href="#la-rilevazione-decadale-nel-sistema-segnaletico-di-banca-ditalia" id="toc-la-rilevazione-decadale-nel-sistema-segnaletico-di-banca-ditalia" class="nav-link" data-scroll-target="#la-rilevazione-decadale-nel-sistema-segnaletico-di-banca-ditalia"><span class="header-section-number">2</span> La rilevazione decadale nel sistema segnaletico di Banca d’Italia</a></li>
+  <li><a href="#il-tracciato-record-a-posizione-fissa" id="toc-il-tracciato-record-a-posizione-fissa" class="nav-link" data-scroll-target="#il-tracciato-record-a-posizione-fissa"><span class="header-section-number">3</span> Il tracciato: record a posizione fissa</a>
+  <ul class="collapse">
+  <li><a href="#il-record-come-combinazione-di-dimensioni" id="toc-il-record-come-combinazione-di-dimensioni" class="nav-link" data-scroll-target="#il-record-come-combinazione-di-dimensioni"><span class="header-section-number">3.1</span> Il record come combinazione di dimensioni</a></li>
+  </ul></li>
+  <li><a href="#come-si-leggono-i-tassi-concetti-e-codici" id="toc-come-si-leggono-i-tassi-concetti-e-codici" class="nav-link" data-scroll-target="#come-si-leggono-i-tassi-concetti-e-codici"><span class="header-section-number">4</span> Come si leggono i tassi: concetti e codici</a></li>
+  <li><a href="#un-esempio-illustrativo-della-griglia-decadale" id="toc-un-esempio-illustrativo-della-griglia-decadale" class="nav-link" data-scroll-target="#un-esempio-illustrativo-della-griglia-decadale"><span class="header-section-number">5</span> Un esempio illustrativo della griglia decadale</a>
+  <ul class="collapse">
+  <li><a href="#come-è-costruita-la-serie-illustrativa" id="toc-come-è-costruita-la-serie-illustrativa" class="nav-link" data-scroll-target="#come-è-costruita-la-serie-illustrativa"><span class="header-section-number">5.1</span> Come è costruita la serie illustrativa</a></li>
+  <li><a href="#le-tavole" id="toc-le-tavole" class="nav-link" data-scroll-target="#le-tavole"><span class="header-section-number">5.2</span> Le tavole</a></li>
+  <li><a href="#le-consistenze-per-popolazione" id="toc-le-consistenze-per-popolazione" class="nav-link" data-scroll-target="#le-consistenze-per-popolazione"><span class="header-section-number">5.3</span> Le consistenze per popolazione</a></li>
+  <li><a href="#le-nuove-operazioni-alle-imprese" id="toc-le-nuove-operazioni-alle-imprese" class="nav-link" data-scroll-target="#le-nuove-operazioni-alle-imprese"><span class="header-section-number">5.4</span> Le nuove operazioni alle imprese</a></li>
+  <li><a href="#i-mutui-per-labitazione" id="toc-i-mutui-per-labitazione" class="nav-link" data-scroll-target="#i-mutui-per-labitazione"><span class="header-section-number">5.5</span> I mutui per l’abitazione</a></li>
+  <li><a href="#la-frequenza-decadale-contro-mensile" id="toc-la-frequenza-decadale-contro-mensile" class="nav-link" data-scroll-target="#la-frequenza-decadale-contro-mensile"><span class="header-section-number">5.6</span> La frequenza: decadale contro mensile</a></li>
+  <li><a href="#una-lettura-dinsieme" id="toc-una-lettura-dinsieme" class="nav-link" data-scroll-target="#una-lettura-dinsieme"><span class="header-section-number">5.7</span> Una lettura d’insieme</a></li>
+  </ul></li>
+  <li><a href="#il-confronto-con-la-rilevazione-armonizzata-mensile" id="toc-il-confronto-con-la-rilevazione-armonizzata-mensile" class="nav-link" data-scroll-target="#il-confronto-con-la-rilevazione-armonizzata-mensile"><span class="header-section-number">6</span> Il confronto con la rilevazione armonizzata mensile</a></li>
+  <li><a href="#la-delicatezza-delle-segnalazioni-volontarie" id="toc-la-delicatezza-delle-segnalazioni-volontarie" class="nav-link" data-scroll-target="#la-delicatezza-delle-segnalazioni-volontarie"><span class="header-section-number">7</span> La delicatezza delle segnalazioni volontarie</a></li>
+  <li><a href="#levoluzione-dei-sistemi-segnaletici-il-progetto-iref" id="toc-levoluzione-dei-sistemi-segnaletici-il-progetto-iref" class="nav-link" data-scroll-target="#levoluzione-dei-sistemi-segnaletici-il-progetto-iref"><span class="header-section-number">8</span> L’evoluzione dei sistemi segnaletici: il progetto IReF</a></li>
+  <li><a href="#le-codifiche-a-confronto-raccordi" id="toc-le-codifiche-a-confronto-raccordi" class="nav-link" data-scroll-target="#le-codifiche-a-confronto-raccordi"><span class="header-section-number">9</span> Le codifiche a confronto: raccordi</a></li>
+  <li><a href="#conclusioni" id="toc-conclusioni" class="nav-link" data-scroll-target="#conclusioni"><span class="header-section-number">10</span> Conclusioni</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Tassi bancari a cadenza decadale</h1>
+<p class="subtitle lead">L’infrastruttura statistica infra-mensile di Banca d’Italia e il confronto con la rilevazione armonizzata europea</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Banche e credito</div>
+    <div class="quarto-category">Dati e metodo</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Che cosa sono le segnalazioni decadali dei tassi bancari, come sono costruite e come si confrontano con la rilevazione mensile armonizzata della BCE (MIR); con una griglia illustrativa a valori simulati.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">17 settembre 2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Data di modifica</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">20 settembre 2026</p>
+    </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.22842836">10.5281/zenodo.22842836</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>Le statistiche pubbliche sui tassi di interesse bancari italiani hanno cadenza mensile. Meno nota è l’esistenza, all’interno del sistema di segnalazioni statistiche e di vigilanza di Banca d’Italia, di una rilevazione infra-mensile a cadenza decadale (tre date contabili al mese) sui principali tassi attivi e passivi applicati dalle banche. Questo documento ne descrive la natura e la collocazione nel sistema segnaletico nazionale, e la confronta con la rilevazione armonizzata mensile della Banca Centrale Europea sui tassi di interesse delle istituzioni finanziarie monetarie, individuando per quale uso la maggiore frequenza della rilevazione decadale sia effettivamente rilevante e per quale, al contrario, la statistica mensile resti l’unica fonte disponibile.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>tassi di interesse, banche, segnalazioni statistiche, Banca d’Italia, PUMA, MIR, BCE</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Versione citabile su Zenodo, con il PDF: <a href="https://doi.org/10.5281/zenodo.22842836">doi.org/10.5281/zenodo.22842836</a>.</p>
+</div>
+</div>
+</div>
+<section id="introduzione" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="introduzione"><span class="header-section-number">1</span> Introduzione</h2>
+<p>Gli intermediari creditizi e finanziari italiani trasmettono a Banca d’Italia un insieme ampio di segnalazioni statistiche e di vigilanza, che alimentano sia i controlli prudenziali sia le statistiche ufficiali diffuse al pubblico. La cadenza con cui queste informazioni vengono raccolte non è uniforme: accanto alle rilevazioni mensili e trimestrali, che sono anche quelle alla base delle statistiche pubblicate, esiste una rilevazione decadale — tre date contabili al mese — dedicata ai tassi di interesse bancari e ad alcuni aggregati di intermediazione con la clientela, alla quale partecipa un campione rappresentativo di enti creditizi.</p>
+<p>Questa rilevazione decadale è meno conosciuta delle statistiche mensili perché non è concepita come uno strumento di diffusione pubblica, ma come un meccanismo di controllo e di restituzione alle banche partecipanti di aggregati e tassi medi del campione. Il documento ne descrive la struttura generale e la colloca rispetto alla rilevazione armonizzata mensile della Banca Centrale Europea, che resta invece la fonte pubblica di riferimento per l’andamento dei tassi bancari italiani.</p>
+</section>
+<section id="la-rilevazione-decadale-nel-sistema-segnaletico-di-banca-ditalia" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="la-rilevazione-decadale-nel-sistema-segnaletico-di-banca-ditalia"><span class="header-section-number">2</span> La rilevazione decadale nel sistema segnaletico di Banca d’Italia</h2>
+<p>La rilevazione decadale dei tassi bancari è disciplinata dalla Circolare n.&nbsp;136 dell’8 gennaio 1991 della Banca d’Italia, che ne fissa i criteri e gli schemi segnaletici <span class="citation" data-cites="bdi1991circolare136qmd"><a href="#ref-bdi1991circolare136qmd" role="doc-biblioref">[1]</a></span>. Vi partecipa un campione di enti creditizi rappresentativo dell’intero sistema, che trasmette a Banca d’Italia, con cadenza decadale, valori assoluti di consistenze e tassi di interesse su consistenze e flussi <span class="citation" data-cites="bdi_fride"><a href="#ref-bdi_fride" role="doc-biblioref">[2]</a></span>. Il quadro più generale delle segnalazioni statistiche e di vigilanza resta definito dalla Circolare n.&nbsp;154 del 1991, che descrive lo schema della cosiddetta Matrice dei conti e le variabili di classificazione comuni alle basi informative, quali la valuta dell’operazione, la durata e la residenza della controparte <span class="citation" data-cites="bdi1991circolare154qmd"><a href="#ref-bdi1991circolare154qmd" role="doc-biblioref">[3]</a></span>; il contenuto analitico delle singole basi informative — cubi, variabili e codifiche — è raccolto nella documentazione tecnica condivisa tra Banca d’Italia e intermediari nota come PUMA (Procedura Unificata Matrici Aziendali) <span class="citation" data-cites="bdi_puma"><a href="#ref-bdi_puma" role="doc-biblioref">[4]</a></span>. È in questo vocabolario che la base dedicata ai tassi è identificata come <code>D1</code> e denominata «decadali» <span class="citation" data-cites="bdi_puma"><a href="#ref-bdi_puma" role="doc-biblioref">[4]</a></span>. La sua cadenza è di tre date contabili al mese: una frequenza superiore a quella di qualunque rilevazione sui tassi bancari diffusa al pubblico per il sistema italiano.</p>
+<p>Le banche del campione trasmettono i propri dati e ricevono a loro volta un flusso di ritorno — il <strong>FRIDE (Flusso di Ritorno delle segnalazioni Decadali)</strong> — che contiene aggregati del campione e tassi medi ponderati riferiti all’intero campione, oltre ai valori assoluti di consistenza aggregati per campione <span class="citation" data-cites="bdi_fride"><a href="#ref-bdi_fride" role="doc-biblioref">[2]</a></span>. Il flusso copre le principali forme tecniche del rapporto banca-cliente:</p>
+<ul>
+<li>conti correnti attivi e prestiti rotativi,</li>
+<li>utilizzi di carte di credito,</li>
+<li>finanziamenti diversi da questi ultimi disaggregati
+<ul>
+<li>per fascia di importo e</li>
+<li>per periodo di determinazione del tasso,</li>
+</ul></li>
+<li>mutui per l’acquisto dell’abitazione,</li>
+<li>depositi a vista e depositi a tempo,</li>
+<li>pronti contro termine e</li>
+<li>obbligazioni emesse.</li>
+</ul>
+<p>Per ciascuna di queste voci la rilevazione distingue i tassi calcolati sulle consistenze di fine periodo da quelli calcolati sulle nuove operazioni effettuate nel periodo, e separa la clientela famiglie da quella delle imprese non finanziarie (SNF).</p>
+<p>La base decadale si articola in quarantadue cubi, dei quali dodici sono esplicitamente dedicati ai tassi di interesse, mentre i restanti riguardano gli importi in valore delle operazioni e le altre voci della base <span class="citation" data-cites="bdi_puma"><a href="#ref-bdi_puma" role="doc-biblioref">[4]</a></span>.</p>
+<p>I dodici cubi-tasso combinano tre dimensioni:</p>
+<ul>
+<li>la forma tecnica (conti correnti attivi e prestiti rotativi, utilizzi di carte di credito, altri finanziamenti, mutui per l’acquisto dell’abitazione, depositi a vista e altri depositi, pronti contro termine, obbligazioni emesse);</li>
+<li>il tipo di operazione (consistenze di fine periodo oppure nuove operazioni del periodo); e,</li>
+<li>per i finanziamenti, la classe di importo e il periodo di determinazione del tasso.</li>
+</ul>
+<p>La base tecnica include inoltre un indicatore distributivo — il primo decile della distribuzione degli impieghi — che però, secondo la documentazione del flusso di ritorno, non viene restituito alle banche <span class="citation" data-cites="bdi_fride"><a href="#ref-bdi_fride" role="doc-biblioref">[2]</a></span>. Una particolarità riguarda le obbligazioni emesse, per le quali la rilevazione resta mensile anche all’interno della base decadale: è l’unica voce per cui la cadenza non è decadale <span class="citation" data-cites="bdi_puma"><a href="#ref-bdi_puma" role="doc-biblioref">[4]</a></span>.</p>
+<p>La finalità dichiarata della rilevazione, tuttavia, non è la diffusione pubblica ma il controllo di qualità dei dati e la restituzione di un riscontro tempestivo alle banche segnalanti: la cadenza decadale serve a intercettare rapidamente anomalie nella segnalazione, non a costituire una serie storica pubblicabile. Le forme tecniche e le categorie di controparte sono in parte analoghe a quelle della reportistica mensile sui tassi bancari — la stessa distinzione tra consistenze di fine periodo e nuove operazioni, la stessa separazione tra famiglie e imprese non finanziarie — ma poggiano su una base giuridica e su una popolazione di riferimento proprie, distinte da quelle della rilevazione armonizzata europea descritta nella sezione seguente.</p>
+</section>
+<section id="il-tracciato-record-a-posizione-fissa" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="il-tracciato-record-a-posizione-fissa"><span class="header-section-number">3</span> Il tracciato: record a posizione fissa</h2>
+<p>Il flusso di ritorno non arriva come un file tabellare nel senso consueto. È un file di testo composto da una sequenza di <strong>record di lunghezza fissa</strong>, ciascuno una stringa di caratteri <strong>senza separatori</strong>: non ci sono virgole, tabulazioni o altri delimitatori a distinguere un campo dall’altro. La struttura — il «tracciato record» — è definita nella documentazione tecnica del flusso <span class="citation" data-cites="bdi_fride"><a href="#ref-bdi_fride" role="doc-biblioref">[2]</a></span>, e ogni campo si individua in due modi: per la <strong>posizione</strong> che occupa entro il record e per il numero di caratteri a esso assegnati, e per il <strong>codice</strong> che vi è scritto, da interpretare con le tabelle del vocabolario PUMA e della Circolare n.&nbsp;154 <span class="citation" data-cites="bdi_puma bdi1991circolare154qmd"><a href="#ref-bdi1991circolare154qmd" role="doc-biblioref">[3]</a>, <a href="#ref-bdi_puma" role="doc-biblioref">[4]</a></span>. È il formato tipico delle segnalazioni del sistema segnaletico, dove i campi sono definiti da un tracciato a lunghezza fissa comune a tutte le basi informative <span class="citation" data-cites="bdi1991circolare154qmd"><a href="#ref-bdi1991circolare154qmd" role="doc-biblioref">[3]</a></span>.</p>
+<p>Il record del flusso comprende, nell’ordine, un numero progressivo, la data contabile della decade, la natura del dato (tasso, consistenza o importo), il codice del segnalante, il codice del fenomeno, e poi le variabili di classificazione — divisa, durata dell’operazione, residenza e settore della controparte, periodo di determinazione del tasso, classe di importo. Chiude il record il campo del valore: una stringa di cifre in cui i decimali non sono materialmente presenti ma sono stabiliti una volta per tutte dalla documentazione, come interi con un numero fisso di decimali impliciti. Ne segue che il file è leggibile solo conoscendo il tracciato: prese da sole le posizioni non significano nulla, e uno scostamento di un solo carattere nei confini dei campi rende il contenuto incomprensibile. È l’errore tipico di chi prova a decodificare il file per tentativi, senza il tracciato ufficiale.</p>
+<div id="tbl-tracciato" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tracciato-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;1: Campi del record del flusso di ritorno decadale, in ordine di posizione
+</figcaption>
+<div aria-describedby="tbl-tracciato-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Campo</th>
+<th>Natura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>numero progressivo</td>
+<td>contatore del record</td>
+</tr>
+<tr class="even">
+<td>data contabile</td>
+<td>la decade di riferimento, in formato anno-mese-giorno</td>
+</tr>
+<tr class="odd">
+<td>natura del dato</td>
+<td>distingue tasso, consistenza e importo</td>
+</tr>
+<tr class="even">
+<td>segnalante</td>
+<td>codice dell’ente o dell’aggregato segnalante</td>
+</tr>
+<tr class="odd">
+<td>fenomeno</td>
+<td>la voce (forma tecnica) della base <code>D1</code></td>
+</tr>
+<tr class="even">
+<td>divisa · durata · residenza</td>
+<td>valuta, durata dell’operazione, residenza della controparte</td>
+</tr>
+<tr class="odd">
+<td>settore · periodo di determinazione · classe di importo</td>
+<td>variabili di classificazione della controparte e dell’operazione</td>
+</tr>
+<tr class="even">
+<td>valore</td>
+<td>il dato numerico, con decimali impliciti</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<section id="il-record-come-combinazione-di-dimensioni" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="il-record-come-combinazione-di-dimensioni"><span class="header-section-number">3.1</span> Il record come combinazione di dimensioni</h3>
+<p>Se si guarda alla sostanza e non al formato, ogni record è un <strong>punto in una griglia multidimensionale</strong>. Un caso concreto: il tasso sui <strong>mutui per l’acquisto dell’abitazione</strong> sulle <strong>nuove operazioni</strong>, verso le <strong>famiglie</strong>, con <strong>periodo di determinazione del tasso tra 5 e 10 anni</strong>, nella decade chiusa a <strong>fine agosto</strong>. Quel singolo valore è già l’incrocio di cinque dimensioni — fenomeno, tipo di operazione, controparte, periodo di determinazione del tasso, data — ciascuna delle quali assume uno solo dei valori ammessi dalle rispettive tabelle di codici. Aggiungendo le altre variabili del tracciato (divisa, durata dell’operazione, residenza, classe di importo) si arriva a una decina di dimensioni.</p>
+<p>Il file intero non è altro che questo: <strong>X dimensioni</strong>, ognuna valorizzata secondo le proprie tabelle di codici, e una riga per ogni combinazione effettivamente segnalata. Il risultato è una tabella in <strong>forma lunga</strong>: <strong>Y righe</strong>, una per valore, con le dimensioni come colonne di classificazione. Le combinazioni non previste per quella voce — o semplicemente assenti nella decade — non compaiono: il numero di righe dipende da quante celle della griglia la rilevazione popola, non dal prodotto teorico delle dimensioni.</p>
+<p><strong>La dimensione temporale non è una serie completa.</strong> Vale una precisazione sul campo <code>data</code>. Il flusso di ritorno non restituisce l’intera storia delle decadi: ogni estrazione copre le decadi più recenti rispetto alla data contabile di riferimento e le corrispondenti decadi dell’anno precedente (t−1), in modo da rendere immediato il confronto anno su anno. Non è quindi un calendario continuo, ma una finestra mobile di date contabili, la cui profondità dipende dal flusso <span class="citation" data-cites="bdi_fride"><a href="#ref-bdi_fride" role="doc-biblioref">[2]</a></span>.</p>
+<p><strong>Una dimensione spaziale solo nominale.</strong> Tra le variabili del tracciato non figura alcuna disaggregazione geografica — regione, provincia o area — bensì la sola <strong>residenza</strong> della controparte, che distingue i residenti in Italia dai non residenti <span class="citation" data-cites="bdi1991circolare154qmd bdi_fride"><a href="#ref-bdi_fride" role="doc-biblioref">[2]</a>, <a href="#ref-bdi1991circolare154qmd" role="doc-biblioref">[3]</a></span>. Non è una dimensione di territorio ma una partizione binaria, e per il campione considerato assume in pratica un solo valore, quello dei residenti. La rilevazione decadale non segnala quindi il dettaglio territoriale: una lettura per area geografica richiede altre basi informative del sistema segnaletico, non il flusso dei tassi.</p>
+</section>
+</section>
+<section id="come-si-leggono-i-tassi-concetti-e-codici" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="come-si-leggono-i-tassi-concetti-e-codici"><span class="header-section-number">4</span> Come si leggono i tassi: concetti e codici</h2>
+<p>Prima dei numeri conviene fissare che cosa rappresenta il dato e come si leggono le sue etichette.</p>
+<p><strong>Il valore è un tasso nominale medio ponderato.</strong> In tutte le rilevazioni qui considerate il «tasso» è un <strong>tasso annuo nominale (TAN) medio ponderato</strong>: la media dei tassi applicati alle singole operazioni, pesata per il relativo importo, espressa in percentuale annua <span class="citation" data-cites="bdi_fride bdi_tassi_guida"><a href="#ref-bdi_fride" role="doc-biblioref">[2]</a>, <a href="#ref-bdi_tassi_guida" role="doc-biblioref">[5]</a></span>. Non è un TAEG/TEG — che incorpora oneri e spese accessorie — né uno spread rispetto a un indice di riferimento: sono livelli assoluti.</p>
+<p><strong>Due tagli temporali.</strong> Ogni voce distingue il tasso sulle <strong>consistenze di fine periodo</strong> (lo stock in essere a una data contabile) da quello sulle <strong>nuove operazioni del periodo</strong> (le operazioni stipulate nella decade).</p>
+<p><strong>Le controparti.</strong> La clientela è separata tra <strong>famiglie</strong> e <strong>imprese non finanziarie</strong>; la rilevazione decadale tiene distinte anche le <strong>istituzioni senza scopo di lucro</strong> al servizio delle famiglie.</p>
+<p><strong>Il dettaglio sui finanziamenti.</strong> Per i prestiti la rilevazione decadale aggiunge due variabili: la <strong>classe di importo</strong> dell’operazione e il <strong>periodo di determinazione del tasso</strong> (quanto a lungo il tasso resta fisso, o la cadenza di indicizzazione).</p>
+<p><strong>I codici in chiaro.</strong> Le etichette di classificazione della rilevazione decadale, definite nella Circolare n.&nbsp;154 e nel vocabolario PUMA, si leggono così <span class="citation" data-cites="bdi1991circolare154qmd bdi_puma"><a href="#ref-bdi1991circolare154qmd" role="doc-biblioref">[3]</a>, <a href="#ref-bdi_puma" role="doc-biblioref">[4]</a></span>:</p>
+<div id="tbl-codici" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codici-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;2: Codici di classificazione della rilevazione decadale
+</figcaption>
+<div aria-describedby="tbl-codici-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>variabile</th>
+<th>codici → significato</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>controparte</td>
+<td><code>004</code> imprese non finanziarie · <code>006</code> famiglie · <code>008</code> istituzioni senza scopo di lucro · <code>901</code> totale</td>
+</tr>
+<tr class="even">
+<td>classe di importo</td>
+<td><code>0035</code> fino a 250.000 € · <code>0036</code> da 250.000 € a 1 mln · <code>0047</code> oltre 1 mln</td>
+</tr>
+<tr class="odd">
+<td>periodo di determinazione del tasso</td>
+<td><code>014</code> variabile o fino a 3 mesi · <code>120</code> oltre 3 mesi–1 anno · <code>121</code> 1–3 anni · <code>122</code> 3–5 anni · <code>036</code> 5–10 anni · <code>037</code> oltre 10 anni</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>Il caso delle imprese.</strong> Per le nuove operazioni alle imprese la rilevazione incrocia le due variabili precedenti — tre classi di importo per sei periodi di determinazione del tasso — ed è il dettaglio più fine disponibile a <strong>frequenza decadale</strong>. La statistica armonizzata diffonde mensilmente un incrocio analogo per le nuove operazioni alle imprese, ma con periodi di determinazione più aggregati (la classe 1–5 anni non è distinta in 1–3 e 3–5) e, appunto, a cadenza mensile <span class="citation" data-cites="ecb_mir"><a href="#ref-ecb_mir" role="doc-biblioref">[6]</a></span>.</p>
+<p><strong>Le nuove operazioni e il dettaglio che le pubblicazioni ufficiali non offrono.</strong> Il tasso sulle <strong>nuove operazioni</strong> misura il prezzo praticato alle operazioni stipulate nel periodo: riflette le condizioni correnti di mercato, non la media — stratificata per anno di erogazione — delle consistenze in essere, che risente dei tassi fissati in passato. È il taglio con cui si segue la trasmissione della politica monetaria al credito effettivamente erogato. Le pubblicazioni ufficiali non trascurano questo taglio: la rilevazione armonizzata MIR diffonde mensilmente i tassi sulle nuove operazioni anche incrociando <strong>classe di importo</strong> e <strong>periodo di determinazione del tasso</strong> <span class="citation" data-cites="ecb_mir"><a href="#ref-ecb_mir" role="doc-biblioref">[6]</a></span>. Ciò che le pubblicazioni ufficiali <strong>non</strong> restituiscono è però la <strong>granularità propria della base <code>D1</code></strong>: una partizione più fine dei periodi di determinazione del tasso (sei classi contro le cinque della MIR, con la distinzione tra 1–3 e 3–5 anni che la MIR aggrega), una separazione più spinta delle forme tecniche (le carte di credito distinte dai conti correnti attivi, che la MIR accorpa), e soprattutto la <strong>cadenza decadale</strong>. È questo il livello di dettaglio che resta fuori dalle statistiche diffuse al pubblico: nell’aggregato di campione che il flusso di ritorno restituisce alle sole banche partecipanti <span class="citation" data-cites="bdi_puma bdi_fride"><a href="#ref-bdi_fride" role="doc-biblioref">[2]</a>, <a href="#ref-bdi_puma" role="doc-biblioref">[4]</a></span>.</p>
+<p><strong>A cosa servono i dati <code>D1</code>.</strong> La base decadale assolve due funzioni distinte, che conviene non confondere. La prima è interna al sistema segnaletico: il flusso di ritorno restituisce alle banche del campione un <strong>benchmark</strong> — aggregati e tassi medi ponderati — utile al controllo di qualità della segnalazione e al confronto tempestivo del proprio posizionamento, con la frequenza infra-mensile che nessuna statistica pubblica possiede <span class="citation" data-cites="bdi_fride"><a href="#ref-bdi_fride" role="doc-biblioref">[2]</a></span>. La seconda è statistica: dalla base <code>D1</code> la Banca d’Italia deriva alcune <strong>serie pubbliche mensili</strong> — il tasso minimo sui prestiti a breve termine e due tassi sulle obbligazioni bancarie — diffuse in «Banche e moneta: serie nazionali» <span class="citation" data-cites="bdi_tassi_guida"><a href="#ref-bdi_tassi_guida" role="doc-biblioref">[5]</a></span>. Le due funzioni hanno regimi di accesso diversi: la <strong>struttura</strong> e le codifiche della base sono documentazione pubblica, mentre i <strong>valori</strong> dell’aggregato del campione non sono diffusi come statistica pubblica. È il dettaglio sulle nuove operazioni descritto sopra a rendere la base utile all’analisi di <em>pricing</em> — per fascia di importo, per durata del tasso e per controparte — molto al di là di quanto le statistiche pubbliche consentano.</p>
+</section>
+<section id="un-esempio-illustrativo-della-griglia-decadale" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="un-esempio-illustrativo-della-griglia-decadale"><span class="header-section-number">5</span> Un esempio illustrativo della griglia decadale</h2>
+<p>Per rendere concreta la struttura descritta, le tavole e le figure di questa sezione la illustrano con <strong>valori sintetici ma verosimili</strong>, costruiti ancorandoli ai livelli delle serie MIR mensili pubbliche <span class="citation" data-cites="ecb_mir"><a href="#ref-ecb_mir" role="doc-biblioref">[6]</a></span>. <strong>Tutti i valori numerici mostrati qui — tabelle, grafici, assi, legende — sono illustrativi</strong>: non sono i valori effettivi della rilevazione e non vanno letti come tali. Ciò che l’esempio mette in evidenza non è il livello — qui arbitrario — ma la <strong>forma</strong> della griglia: quali incroci la base <code>D1</code> popola, con quale periodicità e a quale granularità.</p>
+<section id="come-è-costruita-la-serie-illustrativa" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="come-è-costruita-la-serie-illustrativa"><span class="header-section-number">5.1</span> Come è costruita la serie illustrativa</h3>
+<p>Le serie mostrate in questa sezione sono <strong>simulate</strong>, e sono costruite ricalcando l’impostazione della rilevazione di Banca d’Italia. <strong>Tutto coincide con quella impostazione tranne i valori</strong>: la struttura, i campi, le codifiche e i passaggi di analisi sono gli stessi; ciò che cambia è soltanto il contenuto numerico, che è calcolato e non rilevato. La struttura del record — la sequenza dei campi a posizione fissa — e le decodifiche delle variabili di classificazione si ricavano dalla documentazione pubblica: le circolari che disciplinano la rilevazione e le variabili comuni alle basi informative <span class="citation" data-cites="bdi1991circolare136qmd bdi1991circolare154qmd"><a href="#ref-bdi1991circolare136qmd" role="doc-biblioref">[1]</a>, <a href="#ref-bdi1991circolare154qmd" role="doc-biblioref">[3]</a></span>, il vocabolario delle basi informative condiviso tra Banca d’Italia e intermediari <span class="citation" data-cites="bdi_puma"><a href="#ref-bdi_puma" role="doc-biblioref">[4]</a></span> e la documentazione tecnica del flusso di ritorno <span class="citation" data-cites="bdi_fride"><a href="#ref-bdi_fride" role="doc-biblioref">[2]</a></span>. Da queste fonti si è ricostruito un <strong>tracciato equivalente</strong>, con la stessa impostazione, gli stessi campi e le stesse codifiche, che è stato poi caricato nella medesima procedura di decodifica e di analisi impiegata per la griglia: i campi di classificazione individuano forma tecnica, controparte, classe di importo e periodo di determinazione del tasso, mentre il campo del tasso alimenta l’indicatore in percentuale annua. Identica è dunque la forma; i <strong>valori</strong> sono calcolati, non rilevati, e assomigliano a quelli che la rilevazione produrrebbe senza coincidere con essi.</p>
+<p>Per calcolarli si fa riferimento alle serie armonizzate mensili MIR diffuse dalla Banca Centrale Europea e riprese da Banca d’Italia <span class="citation" data-cites="ecb_mir bdi_banche_moneta"><a href="#ref-ecb_mir" role="doc-biblioref">[6]</a>, <a href="#ref-bdi_banche_moneta" role="doc-biblioref">[7]</a></span>: per ogni cella della griglia — forma tecnica, controparte, classe di importo, periodo di determinazione del tasso — si individua la serie MIR pubblica più vicina per definizione, e il suo valore mensile viene assunto come livello plausibile della cella.</p>
+<p>Il passaggio dal mese alla decade avviene per <strong>interpolazione lineare</strong>. Il valore mensile è collocato a metà del mese di riferimento e i valori delle singole date contabili — il 10, il 20 e l’ultimo giorno — sono ottenuti interpolando tra i mesi adiacenti, così che le tre decadi di un mese cadano tra i due ancoraggi mensili e la serie risulti continua, senza salti. Le voci che la rilevazione decadale segnala con cadenza mensile — le obbligazioni — sono riportate solo in corrispondenza dell’ultimo giorno del mese.</p>
+<p>Dove la MIR non offre un equivalente diretto si interviene con <strong>aggiustamenti additivi</strong>, scelti in modo da conservare l’ordine di grandezza e la distanza relativa tra le forme. Gli utilizzi di carte di credito, che la MIR pubblica insieme ai conti correnti attivi, ricevono ad esempio un margine che li colloca al di sopra dei tassi sui conti correnti; le forme prive di riscontro pubblico — i pronti contro termine, le obbligazioni — assumono un livello costante; le celle incrociate che non trovano una serie dedicata — alcune combinazioni di classe di importo e periodo del tasso — sono derivate dalla serie di classe con uno scarto contenuto.</p>
+<p>Su ciascuna osservazione è infine applicata una piccola <strong>perturbazione deterministica</strong>, dell’ordine di pochi centesimi di punto percentuale, funzione della cella e della decade. Serve a evitare che valori identici si ripetano e a dare alla serie l’aspetto di una rilevazione osservata; essendo deterministica, l’intero campione resta riproducibile. La perturbazione non altera i livelli, che restano quelli delle serie di partenza.</p>
+<p>Gli accorgimenti adottati mirano a rendere i valori <strong>plausibili</strong>, non a stimare quelli effettivi. I livelli sono ancorati a dati pubblici, così che ogni forma e ogni controparte restino nel proprio ordine di grandezza; le differenze tra settori e tra durate sono conservate; la continuità tra le decadi evita gli scarti che tradirebbero una ricostruzione; la griglia è coperta per intero, senza celle mancanti, su un anno di date contabili. In breve: <strong>la struttura è sempre la stessa, i dati sono simulati ma verosimili</strong>. La serie non è una previsione né una stima dei tassi <code>D1</code>: descrive la <strong>forma</strong> della griglia, e i suoi livelli restano illustrativi.</p>
+</section>
+<section id="le-tavole" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="le-tavole"><span class="header-section-number">5.2</span> Le tavole</h3>
+<p>La prima tavola riporta l’incrocio più fine disponibile a frequenza decadale — le <strong>nuove operazioni alle imprese</strong> per <strong>classe di importo</strong> e <strong>periodo di determinazione del tasso</strong> — riferito a una singola data contabile. Le due successive riassumono, alla stessa data, i <strong>nuovi mutui per l’abitazione</strong> per periodo del tasso e le <strong>consistenze per popolazione</strong>. Tutti i valori sono illustrativi.</p>
+<div class="cell" data-execution_count="2">
+<div id="tbl-d1-illustrativo" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="2">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-d1-illustrativo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;3: Esempio illustrativo (valori sintetici) della griglia D1: tasso sulle nuove operazioni alle imprese non finanziarie per classe di importo e periodo di determinazione del tasso, data contabile 2026-08-31. Valori illustrativi ancorati alle serie MIR mensili pubbliche.
+</figcaption>
+<div aria-describedby="tbl-d1-illustrativo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe cell caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">periodo di determinazione del tasso</th>
+<th data-quarto-table-cell-role="th">Variabile o fino a 3 mesi</th>
+<th data-quarto-table-cell-role="th">Oltre 3 mesi e fino a 1 anno</th>
+<th data-quarto-table-cell-role="th">Oltre 1 e fino a 3 anni</th>
+<th data-quarto-table-cell-role="th">Oltre 3 e fino a 5 anni</th>
+<th data-quarto-table-cell-role="th">Oltre 5 e fino a 10 anni</th>
+<th data-quarto-table-cell-role="th">Oltre 10 anni</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">classe di importo</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Fino a 250.000 euro</th>
+<td>4.32</td>
+<td>4.64</td>
+<td>4.97</td>
+<td>5.12</td>
+<td>6.13</td>
+<td>4.59</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Oltre 250.000 e fino a 1.000.000 euro</th>
+<td>3.70</td>
+<td>3.71</td>
+<td>3.98</td>
+<td>4.13</td>
+<td>4.71</td>
+<td>4.76</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Oltre 1.000.000 euro</th>
+<td>3.30</td>
+<td>3.49</td>
+<td>3.65</td>
+<td>3.80</td>
+<td>4.42</td>
+<td>3.71</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<div id="tbl-d1-mutui" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-d1-mutui-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;4: Esempio illustrativo (valori sintetici): tasso sulle nuove operazioni per l’acquisto dell’abitazione alle famiglie, per periodo di determinazione del tasso, data contabile 2026-08-31.
+</figcaption>
+<div aria-describedby="tbl-d1-mutui-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe cell caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">tasso (%) — illustrativo</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">periodo di determinazione del tasso</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Variabile o fino a 3 mesi</th>
+<td>2.99</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Oltre 3 mesi e fino a 1 anno</th>
+<td>2.99</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Oltre 1 e fino a 3 anni</th>
+<td>3.58</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Oltre 3 e fino a 5 anni</th>
+<td>3.73</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Oltre 5 e fino a 10 anni</th>
+<td>3.79</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Oltre 10 anni</th>
+<td>3.56</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div id="tbl-d1-consistenze" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-d1-consistenze-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;5: Esempio illustrativo (valori sintetici): tassi sulle consistenze di fine periodo per popolazione, data contabile 2026-08-31.
+</figcaption>
+<div aria-describedby="tbl-d1-consistenze-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe cell caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">pop</th>
+<th data-quarto-table-cell-role="th">Famiglie</th>
+<th data-quarto-table-cell-role="th">ISP</th>
+<th data-quarto-table-cell-role="th">Imprese</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">voce</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">c/c attivi e rotativi</th>
+<td>4.97</td>
+<td>4.61</td>
+<td>4.25</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">carte di credito</th>
+<td>12.77</td>
+<td>12.41</td>
+<td>12.05</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">depositi a vista</th>
+<td>0.19</td>
+<td>0.41</td>
+<td>0.63</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">depositi a tempo</th>
+<td>2.47</td>
+<td>2.40</td>
+<td>2.33</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">p.c.t. passivi</th>
+<td>2.00</td>
+<td>2.00</td>
+<td>2.00</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="le-consistenze-per-popolazione" class="level3" data-number="5.3">
+<h3 data-number="5.3" class="anchored" data-anchor-id="le-consistenze-per-popolazione"><span class="header-section-number">5.3</span> Le consistenze per popolazione</h3>
+<p>La figura riporta le stesse voci della terza tavola lungo l’intero calendario decadale disponibile — famiglie, imprese e istituzioni senza scopo di lucro — più, nell’ultimo pannello, i finanziamenti diversi disaggregati per durata. <strong>Valori illustrativi.</strong> Sono 36 decadi (tre al mese, giorno 10, 20 e fine mese) da settembre 2025 ad agosto 2026 — un anno: una serie continua, senza salti, interpolata sulle serie MIR mensili pubbliche.</p>
+<div id="cell-fig-d1-consistenze" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div id="fig-d1-consistenze" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-d1-consistenze-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-d1-consistenze-output-1.png" width="1429" height="757" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-d1-consistenze-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Esempio illustrativo (valori sintetici) delle consistenze per popolazione e, nell’ultimo pannello, per durata. Tassi in percentuale annua; valori illustrativi.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="le-nuove-operazioni-alle-imprese" class="level3" data-number="5.4">
+<h3 data-number="5.4" class="anchored" data-anchor-id="le-nuove-operazioni-alle-imprese"><span class="header-section-number">5.4</span> Le nuove operazioni alle imprese</h3>
+<p>La figura isola le nuove operazioni alle imprese, separando l’effetto della <strong>classe di importo</strong> da quello del <strong>periodo di determinazione del tasso</strong>; la mappa di calore riassume l’ultima decade nell’incrocio completo delle due variabili. <strong>Valori illustrativi.</strong></p>
+<div id="cell-fig-d1-imprese" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<div id="fig-d1-imprese" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-d1-imprese-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-d1-imprese-output-1.png" width="1237" height="420" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-d1-imprese-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Esempio illustrativo (valori sintetici): nuove operazioni alle imprese non finanziarie, per classe di importo (sinistra) e per periodo di determinazione del tasso (destra). Tassi in percentuale annua; valori illustrativi.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-fig-d1-heatmap" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<div id="fig-d1-heatmap" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-d1-heatmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-d1-heatmap-output-1.png" width="982" height="326" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-d1-heatmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Esempio illustrativo (valori sintetici): nuove operazioni alle imprese per classe di importo e periodo di determinazione del tasso, data contabile 2026-08-31. Tassi in percentuale annua; valori illustrativi.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="i-mutui-per-labitazione" class="level3" data-number="5.5">
+<h3 data-number="5.5" class="anchored" data-anchor-id="i-mutui-per-labitazione"><span class="header-section-number">5.5</span> I mutui per l’abitazione</h3>
+<p>Nuove operazioni alle famiglie per l’acquisto dell’abitazione, per periodo di determinazione del tasso. <strong>Valori illustrativi.</strong></p>
+<div id="cell-fig-d1-mutui" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<div id="fig-d1-mutui" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-d1-mutui-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-d1-mutui-output-1.png" width="853" height="421" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-d1-mutui-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Esempio illustrativo (valori sintetici): nuove operazioni per l’acquisto dell’abitazione alle famiglie, per periodo di determinazione del tasso. Tassi in percentuale annua; valori illustrativi.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="la-frequenza-decadale-contro-mensile" class="level3" data-number="5.6">
+<h3 data-number="5.6" class="anchored" data-anchor-id="la-frequenza-decadale-contro-mensile"><span class="header-section-number">5.6</span> La frequenza: decadale contro mensile</h3>
+<p>Due voci <code>D1</code> illustrative, ai valori delle singole date contabili, a confronto con la serie MIR mensile pubblica usata come ancora: è il confronto che mette in evidenza la <strong>maggiore frequenza</strong> della rilevazione decadale. Linea: dato MIR mensile reale e pubblico; punti: valori <code>D1</code> <strong>illustrativi</strong>.</p>
+<div id="cell-fig-d1-frequenza" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div id="fig-d1-frequenza" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-d1-frequenza-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-d1-frequenza-output-1.png" width="1233" height="421" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-d1-frequenza-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Esempio illustrativo (valori sintetici) della cadenza decadale: nuovi mutui per l’abitazione a tasso fisso oltre 10 anni (sinistra) e nuove operazioni alle imprese di importo superiore a 1 mln € a tasso variabile (destra). Linea: serie MIR mensile pubblica usata come ancora; punti chiari: decadi del 10/20, interpolate tra le ancore mensili; punti pieni: decade di fine mese, coincidente con l’ancora MIR del mese. I livelli dei punti sono sintetici.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="una-lettura-dinsieme" class="level3" data-number="5.7">
+<h3 data-number="5.7" class="anchored" data-anchor-id="una-lettura-dinsieme"><span class="header-section-number">5.7</span> Una lettura d’insieme</h3>
+<p>Le due viste finali riassumono l’esempio: il confronto tra popolazioni all’ultima data contabile e la dispersione dei valori illustrativi per voce sull’intero campione di decadi. <strong>Valori illustrativi.</strong></p>
+<div id="cell-fig-d1-sintesi" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display">
+<div id="fig-d1-sintesi" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-d1-sintesi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-d1-sintesi-output-1.png" width="1327" height="449" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-d1-sintesi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Esempio illustrativo (valori sintetici): a sinistra, tassi sulle consistenze per voce e popolazione all’ultima data contabile; a destra, distribuzione dei valori illustrativi per voce su tutte le decadi. Tassi in percentuale annua; valori illustrativi.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="il-confronto-con-la-rilevazione-armonizzata-mensile" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="il-confronto-con-la-rilevazione-armonizzata-mensile"><span class="header-section-number">6</span> Il confronto con la rilevazione armonizzata mensile</h2>
+<p>A livello europeo, la statistica di riferimento sui tassi di interesse bancari è la rilevazione armonizzata sui tassi di interesse delle istituzioni finanziarie monetarie, curata dalla Banca Centrale Europea e nota con l’acronimo MIR <span class="citation" data-cites="ecb_mir"><a href="#ref-ecb_mir" role="doc-biblioref">[6]</a></span>. La rilevazione è disciplinata dal Regolamento (UE) n.&nbsp;1072/2013 (BCE/2013/34), che ne fissa le definizioni, i criteri di campionamento e la frequenza mensile <span class="citation" data-cites="ecb_reg_1072_2013"><a href="#ref-ecb_reg_1072_2013" role="doc-biblioref">[8]</a></span>: le banche centrali nazionali possono ricorrere a un censimento oppure a un campione nazionale rappresentativo di istituzioni finanziarie monetarie segnalanti. Le forme tecniche del credito e della raccolta sono in parte analoghe a quelle della rilevazione decadale italiana, i cui schemi segnaletici sono stati a loro volta adeguati, a partire dal 2010 e da ultimo nel 2019, alle definizioni del regolamento europeo <span class="citation" data-cites="bdi_fride"><a href="#ref-bdi_fride" role="doc-biblioref">[2]</a></span>. La periodicità è mensile. In Italia i tassi armonizzati, con il dettaglio per forma tecnica e settore di controparte, sono diffusi nelle pubblicazioni statistiche della Banca d’Italia, in particolare in «Banche e moneta: serie nazionali» <span class="citation" data-cites="bdi_banche_moneta"><a href="#ref-bdi_banche_moneta" role="doc-biblioref">[7]</a></span>. Lo stesso fascicolo pubblica inoltre tre serie mensili derivate dalle segnalazioni decadali, che integrano le corrispondenti serie MIR: il tasso minimo sui prestiti a breve termine — media ponderata dei tassi applicati al primo decile della distribuzione degli impieghi alle imprese con durata originaria fino a un anno — e due tassi sulle obbligazioni bancarie <span class="citation" data-cites="bdi_tassi_guida"><a href="#ref-bdi_tassi_guida" role="doc-biblioref">[5]</a></span>.</p>
+<p>Le due rilevazioni differiscono quindi principalmente per due aspetti: la copertura geografica, nazionale nel caso decadale e armonizzata a livello di area euro nel caso MIR, e la frequenza, che passa da tre date contabili al mese a una. Va aggiunto che le due basi giuridiche e le due popolazioni di riferimento non coincidono: la rilevazione decadale discende dalla Circolare n.&nbsp;136 ed è segnalata da un campione rappresentativo di enti creditizi, la cui struttura analitica è definita nel vocabolario PUMA, mentre la rilevazione MIR poggia su un regolamento europeo e su un campione nazionale rappresentativo di istituzioni finanziarie monetarie. Nessuna delle due fonti, va precisato, pubblica un dato disaggregato per singola banca: sia la statistica mensile sia, a maggior ragione, la rilevazione decadale restano aggregate e non serie riferite a un singolo intermediario.</p>
+<div id="tbl-confronto" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-confronto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;6: Confronto tra le fonti sui tassi di interesse bancari
+</figcaption>
+<div aria-describedby="tbl-confronto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Caratteristica</th>
+<th>Decadale <code>D1</code> (Banca d’Italia / FRIDE)</th>
+<th>Rilevazione armonizzata MIR (BCE)</th>
+<th>Banche e moneta: serie nazionali (Banca d’Italia)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Frequenza</td>
+<td>tre date contabili al mese; mensile per le obbligazioni</td>
+<td>mensile</td>
+<td>mensile</td>
+</tr>
+<tr class="even">
+<td>Riferimento</td>
+<td>Italia</td>
+<td>area euro, metodologia armonizzata</td>
+<td>Italia</td>
+</tr>
+<tr class="odd">
+<td>Base giuridica</td>
+<td>Circolare n.&nbsp;136 del 1991 (criteri); vocabolario PUMA (struttura della base <code>D1</code>)</td>
+<td>Regolamento (UE) n.&nbsp;1072/2013</td>
+<td>pubblicazione statistica che diffonde le serie MIR e alcune serie derivate dalle segnalazioni decadali</td>
+</tr>
+<tr class="even">
+<td>Popolazione</td>
+<td>campione di enti creditizi rappresentativo dell’intero sistema</td>
+<td>campione nazionale rappresentativo di istituzioni finanziarie monetarie, oppure censimento</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>Tipo di operazione</td>
+<td>consistenze di fine periodo e nuove operazioni</td>
+<td>consistenze e nuove operazioni</td>
+<td>consistenze e nuove operazioni</td>
+</tr>
+<tr class="even">
+<td>Diffusione</td>
+<td>aggregati del campione restituiti alle banche partecipanti (FRIDE), non diffusi al pubblico</td>
+<td>pubblica</td>
+<td>pubblica</td>
+</tr>
+<tr class="odd">
+<td>Dettaglio per singola banca</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Per rendere concreto il tipo di informazione che la statistica mensile pubblica mette a disposizione, la figura seguente riporta l’andamento recente dei tassi medi sui nuovi prestiti alle imprese e sui nuovi mutui per l’acquisto dell’abitazione in Italia, ricavati dalle serie armonizzate MIR.</p>
+<div id="cell-fig-mir" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<div id="fig-mir" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mir-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-mir-output-1.png" width="576" height="411" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mir-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Tassi di interesse bancari in Italia, rilevazione armonizzata mensile (MIR): tasso medio sulle nuove operazioni, prestiti alle imprese e mutui per l’acquisto dell’abitazione (serie MIR5411, controparti imprese e famiglie), in percentuale annua. Elaborazione su statistiche MIR di Banca d’Italia e Banca Centrale Europea.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Come si legge.</strong> L’asse verticale è il tasso in percentuale annua; ogni linea è un <strong>tasso medio sulle nuove operazioni</strong> — quindi non il costo medio dello stock in essere, ma quello delle operazioni stipulate nel mese. La differenza tra le due linee riflette forme tecniche diverse (prestiti alle imprese e mutui alle famiglie), non un confronto tra controparti sulla stessa forma.</p>
+<p>La figura seguente isola il solo tasso sui nuovi prestiti alle imprese, per leggerne l’andamento recente senza sovrapposizioni.</p>
+<div id="cell-fig-imprese" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display">
+<div id="fig-imprese" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-imprese-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-imprese-output-1.png" width="576" height="411" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-imprese-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: Focus imprese: tasso medio sulle nuove operazioni (prestiti alle società non finanziarie), serie MIR5411, in percentuale annua. Elaborazione su statistiche MIR di Banca d’Italia e Banca Centrale Europea.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Il dataset MIR è disponibile a partire da gennaio 2003, con revisioni periodiche. La rilevazione decadale, per contro, non è diffusa nella sua forma piena: l’aggregato del campione che il flusso FRIDE restituisce non è diffuso al pubblico, e le serie derivate che la Banca d’Italia ne pubblica sono mensili e limitate a poche voci.</p>
+<p>Questa distinzione ha una conseguenza pratica diretta. Un’analisi che debba fondarsi su dati pubblicabili e verificabili da terzi trova nella rilevazione mensile armonizzata l’unica fonte effettivamente utilizzabile: non esiste, a oggi, un aggregato decadale accessibile al pubblico che riproduca l’intera batteria di voci alla frequenza originaria. Da un lato il flusso di ritorno FRIDE restituisce un benchmark decadale del campione — tassi medi ponderati dell’intero campione, utili a valutare il proprio posizionamento di mercato — ma solo alle banche che vi partecipano, non a terzi. Dall’altro la Banca d’Italia pubblica bensì alcune serie derivate dalle segnalazioni decadali (il tasso minimo sui prestiti a breve termine e i tassi sulle obbligazioni bancarie), ma a frequenza mensile e per quelle sole voci <span class="citation" data-cites="bdi_tassi_guida"><a href="#ref-bdi_tassi_guida" role="doc-biblioref">[5]</a></span>. Per l’analista esterno, dunque, la maggiore frequenza della rilevazione decadale resta non disponibile.</p>
+</section>
+<section id="la-delicatezza-delle-segnalazioni-volontarie" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="la-delicatezza-delle-segnalazioni-volontarie"><span class="header-section-number">7</span> La delicatezza delle segnalazioni volontarie</h2>
+<p><strong>Non un censimento.</strong> Le segnalazioni decadali non coprono l’intero sistema: alla rilevazione partecipa, su base <strong>volontaria</strong>, un campione di enti creditizi rappresentativo dell’insieme, e il flusso di ritorno restituisce loro l’aggregato del campione <span class="citation" data-cites="bdi1991circolare136qmd bdi_fride bdi_tassi_guida"><a href="#ref-bdi1991circolare136qmd" role="doc-biblioref">[1]</a>, <a href="#ref-bdi_fride" role="doc-biblioref">[2]</a>, <a href="#ref-bdi_tassi_guida" role="doc-biblioref">[5]</a></span>. È un perimetro diverso da quello delle <strong>segnalazioni di vigilanza</strong>, che riguardano per legge tutte le banche iscritte all’albo, e diverso anche dall’insieme degli <strong>associati ABI</strong>, che riunisce «quasi tutte le banche italiane o attive in Italia» insieme a una parte rilevante degli intermediari finanziari <span class="citation" data-cites="abi_associati"><a href="#ref-abi_associati" role="doc-biblioref">[9]</a></span>. Il campione decadale è quindi un <strong>sottoinsieme</strong>, e la sua composizione può cambiare nel tempo con la partecipazione delle banche.</p>
+<p><strong>Il benchmark e le celle sottili.</strong> L’uso più immediato dei dati restituiti è il confronto del proprio <em>pricing</em> con l’aggregato del campione. La griglia, però, è molto fine: per i finanziamenti diversi alle imprese incrocia tre classi di importo e sei periodi di determinazione del tasso, per <strong>diciotto celle su ogni singola data contabile</strong>, ciascuna riferita alle <strong>nuove operazioni</strong> della decade. Ne seguono alcuni limiti nell’uso come benchmark:</p>
+<ul>
+<li>il tasso è una <strong>media ponderata per importo</strong>: in una cella sottile poche operazioni — o una sola di grande dimensione — possono spostare il valore;</li>
+<li>il flusso di ritorno restituisce i <strong>tassi</strong> sulle nuove operazioni ma <strong>non i corrispondenti importi erogati</strong> (gli importi aggregati sono di consistenza, riferiti all’intero campione e senza classe di importo): lo <em>spessore</em> della cella non è quindi verificabile dal flusso stesso <span class="citation" data-cites="bdi_fride bdi_puma"><a href="#ref-bdi_fride" role="doc-biblioref">[2]</a>, <a href="#ref-bdi_puma" role="doc-biblioref">[4]</a></span>;</li>
+<li>le <strong>definizioni</strong> della griglia — soglie di importo, periodi di determinazione del tasso — non coincidono necessariamente con la segmentazione commerciale con cui una banca costruisce le proprie offerte.</li>
+</ul>
+<p>Per un confronto robusto restano dunque più adatte le grandezze larghe — i totali e la rilevazione armonizzata mensile, con molte più osservazioni — mentre il dettaglio fine della base <code>D1</code> va letto in chiave <strong>direzionale e di posizionamento</strong>, non come prezzo di riferimento stabile.</p>
+<p><strong>Il profilo dello scambio informativo.</strong> Un aggregato di prezzi scambiato tra concorrenti è, per natura, un’informazione sensibile, tanto più quanto più le celle sono fini e identificabili. Che il flusso sia un <strong>benchmark</strong> ad uso delle banche partecipanti, e non un dato pubblico, è ciò che ne consente l’uso operativo ma anche ciò che ne richiede cautela. Va detto con chiarezza che non risulta alcun provvedimento dell’autorità di concorrenza che abbia censurato la rilevazione decadale sotto questo profilo: la fragilità segnalata è di natura <strong>statistica e prudenziale</strong>, non oggetto di un accertamento.</p>
+</section>
+<section id="levoluzione-dei-sistemi-segnaletici-il-progetto-iref" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="levoluzione-dei-sistemi-segnaletici-il-progetto-iref"><span class="header-section-number">8</span> L’evoluzione dei sistemi segnaletici: il progetto IReF</h2>
+<p>Il sistema delle segnalazioni statistiche delle banche è in via di riorganizzazione a livello europeo. Il progetto <strong>IReF (Integrated Reporting Framework)</strong> del Sistema europeo delle banche centrali mira a integrare in un unico schema segnaletico i requisiti informativi oggi disciplinati da regolamenti distinti — i bilanci statistici (<strong>BSI</strong>, Reg. UE 379/2021), i tassi di interesse (<strong>MIR</strong>, Reg. UE 1072/2013), le statistiche sulle disponibilità in titoli (<strong>SHS</strong>, Reg. UE 1011/2012) e i dati granulari sul credito (<strong>AnaCredit</strong>, Reg. UE 867/2016) — insieme a taluni requisiti di altre istituzioni internazionali <span class="citation" data-cites="bdi2026iref bdi_iref_aggiornamento"><a href="#ref-bdi2026iref" role="doc-biblioref">[10]</a>, <a href="#ref-bdi_iref_aggiornamento" role="doc-biblioref">[11]</a></span>. In Italia i primi tre confluiscono oggi nella sezione statistica della <strong>Matrice dei conti</strong> (Circolare n.&nbsp;272), mentre i dati granulari sul credito sono raccolti con la Circolare n.&nbsp;297: IReF ne armonizza modello, formato e processo <span class="citation" data-cites="bdi2026iref bdi_circ272"><a href="#ref-bdi2026iref" role="doc-biblioref">[10]</a>, <a href="#ref-bdi_circ272" role="doc-biblioref">[12]</a></span>.</p>
+<p><strong>Le tappe</strong> (aggiornamento di luglio 2026) sono le seguenti <span class="citation" data-cites="bdi2026iref"><a href="#ref-bdi2026iref" role="doc-biblioref">[10]</a></span>:</p>
+<ul>
+<li><strong>secondo semestre 2027</strong> — consultazione pubblica sulla bozza di regolamento;</li>
+<li><strong>secondo trimestre 2030</strong> — avvio della fase pilota, della durata di dodici mesi;</li>
+<li><strong>secondo trimestre 2031</strong> — prima segnalazione ufficiale IReF;</li>
+<li><strong>un anno di parallelo</strong>, in cui le segnalazioni vigenti convivono con IReF e con i relativi controlli.</li>
+</ul>
+<p><strong>Requisiti nazionali e segnalazioni decadali.</strong> I requisiti informativi nazionali ulteriori — i <em>Country Specific Requirements</em> — restano disciplinati da norme nazionali e raccolti su piattaforme locali, ma seguono il modello, il formato e il dizionario di IReF. Le segnalazioni decadali (Circolare n.&nbsp;136) sono un requisito <strong>nazionale</strong> aggiuntivo rispetto al regolamento MIR: a confluire in IReF è dunque il requisito MIR, mentre la sopravvivenza della cadenza decadale come requisito nazionale non è stabilita nei documenti disponibili. Per l’analista conviene leggerne l’evoluzione come <strong>incerta e di orizzonte lungo</strong> — 2031 e oltre — non come imminente. La produzione sarà supportata dal <strong>BIRD</strong> (Banks’ Integrated Reporting Dictionary), iniziativa volontaria tra il SEBC e il settore bancario analoga, per l’Italia, alla cooperazione PUMA <span class="citation" data-cites="bdi2026iref bdi_iref_aggiornamento bdi_puma"><a href="#ref-bdi_puma" role="doc-biblioref">[4]</a>, <a href="#ref-bdi2026iref" role="doc-biblioref">[10]</a>, <a href="#ref-bdi_iref_aggiornamento" role="doc-biblioref">[11]</a></span>.</p>
+</section>
+<section id="le-codifiche-a-confronto-raccordi" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="le-codifiche-a-confronto-raccordi"><span class="header-section-number">9</span> Le codifiche a confronto: raccordi</h2>
+<p>Le stesse grandezze compaiono in tre sistemi di codifica distinti: le voci e le variabili della base decadale <code>D1</code> nel vocabolario PUMA, le serie di Banca d’Italia (chiavi <code>BAM_MIR.*</code> nelle tabelle <code>MIR*</code> della base statistica), e le chiavi del dataset armonizzato MIR della Banca Centrale Europea. I due raccordi seguenti ne propongono la corrispondenza. Va letta come <strong>corrispondenza concettuale, non identità di perimetro</strong>: la base decadale è un aggregato di campione a frequenza decadale, le altre due sono statistiche mensili di sistema, e solo una parte delle voci <code>D1</code> trova un equivalente nelle altre fonti. Nelle serie di Banca d’Italia i puntini sostituiscono il prefisso costante <code>BAM_MIR.M.1300010.</code>; nelle chiavi BCE restano fissi <code>MIR.M.IT.B.</code> (Italia) e la coda <code>.&lt;EUR.N&gt;</code> (valuta euro, nuove operazioni). Nel seguito le chiavi sono riportate senza quei prefissi e suffissi costanti <span class="citation" data-cites="bdi_puma ecb_mir bdi_banche_moneta"><a href="#ref-bdi_puma" role="doc-biblioref">[4]</a>, <a href="#ref-ecb_mir" role="doc-biblioref">[6]</a>, <a href="#ref-bdi_banche_moneta" role="doc-biblioref">[7]</a></span>.</p>
+<p><strong>Voci e forme tecniche.</strong></p>
+<ul>
+<li><strong>Conti correnti attivi e prestiti rotativi</strong> — base <code>D1</code> <code>054102900</code>; Banca d’Italia: nessun equivalente; BCE <code>A2Z.A.R.A.2240</code> (con le carte di credito).</li>
+<li><strong>Prestiti alle imprese non finanziarie, nuove operazioni, totale</strong> — base <code>D1</code> <code>054104902</code>; Banca d’Italia <code>MIR5411.9.950.1000.SBI77.EUR.110.997</code>; BCE <code>A2A.A.R.A.2240</code>.</li>
+<li><strong>Prestiti alle imprese, nuove operazioni, tasso variabile (≤ 1 anno)</strong> — base <code>D1</code> <code>durori_tasso</code> <code>014</code>/<code>120</code>; Banca d’Italia <code>MIR5411.5.950.1000.SBI77.EUR.110.997</code>; BCE <code>A2A.F.R.A.2240</code>.</li>
+<li><strong>Prestiti alle imprese, nuove operazioni, tasso fisso (oltre 10 anni)</strong> — base <code>D1</code> <code>durori_tasso</code> <code>037</code>; Banca d’Italia: nessun equivalente; BCE <code>A2A.P.R.A.2240</code>.</li>
+<li><strong>Mutui per l’acquisto dell’abitazione (famiglie), nuove operazioni</strong> — base <code>D1</code> <code>054105302</code>; Banca d’Italia <code>MIR5411.9.950.1000.SBI17.EUR.110.212</code>; BCE <code>A2C.A.R.A.2250</code>.</li>
+<li><strong>Credito al consumo (famiglie)</strong> — base <code>D1</code>: voce assente; Banca d’Italia <code>MIR5411.9.950.1000.SBI17.EUR.110.202</code>; BCE <code>A2B.A.R.A.2250</code>.</li>
+<li><strong>Altri prestiti alle famiglie</strong> — base <code>D1</code>: voce assente; Banca d’Italia <code>MIR5411.9.950.1000.SBI17.EUR.110.222</code>; BCE <code>A2D.A.R.A.2250</code>.</li>
+<li><strong>Depositi a vista (conti correnti passivi), famiglie</strong> — base <code>D1</code> <code>054103802</code>; Banca d’Italia: nessun equivalente; BCE <code>L21.A.R.A.2250</code>.</li>
+<li><strong>Depositi a vista (conti correnti passivi), imprese</strong> — base <code>D1</code> <code>054103802</code>; Banca d’Italia: nessun equivalente; BCE <code>L21.A.R.A.2240</code>.</li>
+<li><strong>Depositi a tempo (scadenza prestabilita), famiglie</strong> — base <code>D1</code> <code>054103804</code>; Banca d’Italia: nessun equivalente; BCE <code>L22.A.R.A.2250</code>.</li>
+<li><strong>Depositi rimborsabili con preavviso</strong> — base <code>D1</code>: voce assente; Banca d’Italia: nessun equivalente; BCE <code>L23.A.R.A.2250</code>.</li>
+<li><strong>Utilizzi di carte di credito</strong> — base <code>D1</code> <code>054103100</code>; Banca d’Italia: nessun equivalente; BCE: compresi in <code>A2Z</code>.</li>
+<li><strong>Pronti contro termine passivi</strong> — base <code>D1</code> <code>054104000</code>; Banca d’Italia: nessun equivalente; BCE: nessun equivalente.</li>
+<li><strong>Obbligazioni emesse</strong> — base <code>D1</code> <code>054104400</code>; Banca d’Italia: due serie mensili derivate; BCE: nessun equivalente.</li>
+<li><strong>Primo decile degli impieghi alle imprese</strong> — base <code>D1</code> <code>D1_4103600_1010</code>, non restituito dal flusso; Banca d’Italia: serie pubblica «tasso minimo sui prestiti a breve termine»; BCE: nessun equivalente.</li>
+</ul>
+<p><strong>Variabili di classificazione.</strong> Anche le variabili hanno nomi e valori diversi nei tre sistemi, e il raccordo è qui particolarmente delicato perché le classi non coincidono: la base <code>D1</code> usa tre classi di importo e sei periodi di determinazione del tasso, le serie di Banca d’Italia due classi di importo e tre maturità, la MIR tre classi di importo e una scala di maturità articolata su altri valori.</p>
+<ul>
+<li><strong>Controparte (settore)</strong> — base <code>D1</code> <code>setcon</code>: <code>00004</code> imprese non finanziarie, <code>00006</code> famiglie, <code>00008</code> istituzioni senza scopo di lucro, <code>00901</code> totale, <code>12053</code> famiglie e istituzioni senza scopo di lucro; Banca d’Italia <code>SBI77</code> imprese, <code>SBI17</code> famiglie, <code>SBI78</code> famiglie e artigiani; BCE <code>BS_COUNT_SECTOR</code>: <code>2240</code> società non finanziarie (S.11), <code>2250</code> famiglie e istituzioni senza scopo di lucro (S.14+S.15).</li>
+<li><strong>Classe di importo</strong> — base <code>D1</code> <code>classeimp</code>: <code>0035</code> fino a 250 000 €, <code>0036</code> 250 000 €–1 mln, <code>0047</code> oltre 1 mln; Banca d’Italia <code>MIR_IMPORTO</code>: <code>46</code> sotto 1 mln, <code>47</code> 1 mln e oltre; BCE <code>AMOUNT_CAT</code>: <code>2</code> fino a 0,25 mln, <code>3</code> 0,25–1 mln, <code>1</code> oltre 1 mln.</li>
+<li><strong>Maturità e periodo di determinazione del tasso</strong> — base <code>D1</code> <code>durori_tasso</code>: <code>014</code> variabile o fino a 3 mesi, <code>120</code> 3 mesi–1 anno, <code>121</code> 1–3 anni, <code>122</code> 3–5 anni, <code>036</code> 5–10 anni, <code>037</code> oltre 10 anni; Banca d’Italia <code>durata</code>: <code>9</code> totale, <code>5</code> breve termine (≤ 1 anno), <code>175</code> medio-lungo termine; BCE <code>MATURITY_NOT_IRATE</code>: <code>A</code> totale, <code>D</code> variabile (≤ 3 mesi), <code>F</code> variabile (≤ 1 anno), <code>I</code> 1–5 anni, <code>O</code> 5–10 anni, <code>P</code> oltre 10 anni.</li>
+<li><strong>Tipo di operazione</strong> — base <code>D1</code> <code>famiglia</code>: <code>002</code> consistenze di fine periodo, <code>001</code> nuove operazioni del periodo; Banca d’Italia <code>MIR_IND</code>: <code>MIR5410</code> consistenze, <code>MIR5411</code> nuovi prestiti; BCE <code>IR_BUS_COV</code>: <code>N</code> nuove operazioni (<em>new business</em>).</li>
+<li><strong>Divisa</strong> — base <code>D1</code> <code>divisa</code>: <code>1</code> euro, <code>2</code> altre valute; Banca d’Italia <code>VALUTA</code>: <code>EUR</code>; BCE <code>CURRENCY_TRANS</code>: <code>EUR</code>.</li>
+<li><strong>Residenza della controparte</strong> — base <code>D1</code> <code>residenza</code>: <code>1</code> residenti in Italia, <code>2</code> non residenti; Banca d’Italia: nessun equivalente; BCE: nessun equivalente, l’area è definita da <code>REF_AREA</code> = <code>IT</code>.</li>
+</ul>
+</section>
+<section id="conclusioni" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="conclusioni"><span class="header-section-number">10</span> Conclusioni</h2>
+<p>La rilevazione decadale dei tassi di interesse bancari italiani costituisce un livello di dettaglio temporale superiore rispetto a quanto normalmente diffuso al pubblico, ma è concepita come strumento di controllo interno al sistema segnaletico di Banca d’Italia, non come statistica destinata alla pubblicazione. Le sue forme tecniche, il tipo di operazione e il periodo di determinazione del tasso sono in parte analoghi a quelli della rilevazione armonizzata mensile europea sui tassi di interesse bancari, con la quale condivide l’impianto concettuale pur non condividendone la finalità di diffusione. Per l’analisi dei tassi bancari italiani basata su fonti pubbliche resta pertanto la rilevazione armonizzata mensile, diffusa dalle pubblicazioni statistiche di Banca d’Italia, la fonte di riferimento; la cadenza decadale resta un livello di dettaglio accessibile solo all’interno del circuito delle banche che partecipano alla rilevazione, al di fuori delle poche serie derivate che la Banca d’Italia ne pubblica a frequenza mensile.</p>
+<hr>
+<p><strong>Nota metodologica</strong></p>
+<p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
+<p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale; l’analisi è pertanto integralmente auditabile e replicabile da terzi a partire da esse. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referenze</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-bdi1991circolare136qmd" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">Banca d’Italia, <span>«Circolare n. 136 dell’8 gennaio 1991 – Segnalazioni <span>“decadali”</span> delle istituzioni creditizie»</span>, 1991.</div>
+</div>
+<div id="ref-bdi_fride" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">Banca d’Italia, <span>«FRIDE – Flusso di Ritorno delle segnalazioni Decadali: documentazione amministrativa»</span>. 2020.</div>
+</div>
+<div id="ref-bdi1991circolare154qmd" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">Banca d’Italia, <span>«Segnalazioni di vigilanza delle istituzioni creditizie e finanziarie – Circolare n. 154 del 22 novembre 1991»</span>, 1991.</div>
+</div>
+<div id="ref-bdi_puma" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">Cooperazione PUMA, <span>«Cooperazione PUMA – Procedura Unificata Matrici Aziendali: vocabolario tecnico delle segnalazioni»</span>. 2026. Disponibile su: <a href="https://www.cooperazionepuma.org">https://www.cooperazionepuma.org</a></div>
+</div>
+<div id="ref-bdi_tassi_guida" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">Banca d’Italia, <span>«I tassi di interesse bancari – Guida ai dati pubblicati dalla Banca d’Italia»</span>. marzo 2023. Disponibile su: <a href="https://www.bancaditalia.it/pubblicazioni/metodi-e-fonti-approfondimenti/metodi-fonti-2023/Metodi_e_Fonti_I_tassi_di_interesse.pdf">https://www.bancaditalia.it/pubblicazioni/metodi-e-fonti-approfondimenti/metodi-fonti-2023/Metodi_e_Fonti_I_tassi_di_interesse.pdf</a></div>
+</div>
+<div id="ref-ecb_mir" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">European Central Bank, <span>«<span>MFI</span> Interest Rate Statistics (<span>MIR</span>)»</span>. 2026. Disponibile su: <a href="https://data.ecb.europa.eu/data/datasets/MIR">https://data.ecb.europa.eu/data/datasets/MIR</a></div>
+</div>
+<div id="ref-bdi_banche_moneta" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">Banca d’Italia, <span>«Banche e moneta: serie nazionali»</span>. 2026. Disponibile su: <a href="https://www.bancaditalia.it/pubblicazioni/moneta-banche/">https://www.bancaditalia.it/pubblicazioni/moneta-banche/</a></div>
+</div>
+<div id="ref-ecb_reg_1072_2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">European Central Bank, <span>«Regulation (<span>EU</span>) No 1072/2013 of the European Central Bank of 24 September 2013 concerning statistics on interest rates applied by monetary financial institutions (<span>recast</span>) (<span>ECB</span>/2013/34)»</span>. 2013. Disponibile su: <a href="https://eur-lex.europa.eu/eli/reg/2013/1072/oj">https://eur-lex.europa.eu/eli/reg/2013/1072/oj</a></div>
+</div>
+<div id="ref-abi_associati" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">Associazione Bancaria Italiana, <span>«Associati – elenco degli Associati <span>ABI</span> al 20 maggio 2026»</span>. maggio 2026. Disponibile su: <a href="https://www.abi.it/associati/">https://www.abi.it/associati/</a></div>
+</div>
+<div id="ref-bdi2026iref" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">Banca d’Italia, <span>«Il progetto <span>Integrated Reporting Framework</span> (<span>IReF</span>) – le principali tappe per l’implementazione»</span>. luglio 2026. Disponibile su: <a href="https://www.bancaditalia.it/statistiche/iref-bird/IReF-le-principali-tappe-per-l-implementazione.pdf">https://www.bancaditalia.it/statistiche/iref-bird/IReF-le-principali-tappe-per-l-implementazione.pdf</a></div>
+</div>
+<div id="ref-bdi_iref_aggiornamento" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">Banca d’Italia, <span>«Aggiornamento sul progetto <span>SEBC</span> <span>Integrated Reporting Framework</span> (<span>IReF</span>)»</span>. 2026. Disponibile su: <a href="https://www.bancaditalia.it/statistiche/iref-bird/Aggiornamento_su_progetto_IReF.pdf">https://www.bancaditalia.it/statistiche/iref-bird/Aggiornamento_su_progetto_IReF.pdf</a></div>
+</div>
+<div id="ref-bdi_circ272" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">Banca d’Italia, <span>«Circolare n. 272 – Matrice dei conti»</span>. 2026.</div>
+</div>
+</div></section></div></main> <!-- /main -->
+<script>
+// Salto interno ai riferimenti [n] e ai rimandi #… indipendente dall'URL della pagina:
+// funziona anche quando l'HTML è aperto in un iframe, in un'anteprima o con un <base> diverso.
+document.addEventListener("click", function (e) {
+  var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+  if (!a) return;
+  var id = decodeURIComponent(a.getAttribute("href").slice(1));
+  var el = id && document.getElementById(id);
+  if (!el) return;
+  e.preventDefault();
+  el.scrollIntoView({ block: "start" });
+  try { history.replaceState(null, "", "#" + id); } catch (err) {}
+}, true);
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
