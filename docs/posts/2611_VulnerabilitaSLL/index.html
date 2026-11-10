@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="SLL, sistemi locali del lavoro, rischio creditizio, vulnerabilità strutturale, Mezzogiorno, IFRS 9, market failure, copertura bancaria">
+<meta name="description" content="I Sistemi Locali del Lavoro (SLL) — unità territoriali funzionali costruite sui flussi di pendolarismo — offrono una granularità territoriale superiore a province e regioni per analizzare la struttura produttiva e le condizioni creditizie del territorio italiano.">
+
+<title>Struttura produttiva e vulnerabilità creditizia nei Sistemi Locali del Lavoro italiani – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Struttura produttiva e vulnerabilità creditizia nei Sistemi Locali del Lavoro italiani – Paolo Volterra">
+<meta property="og:description" content="I Sistemi Locali del Lavoro (SLL) — unità territoriali funzionali costruite sui flussi di pendolarismo — offrono una granularità territoriale superiore a province e regioni per analizzare la struttura produttiva e le condizioni creditizie del territorio italiano.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2611_VulnerabilitaSLL/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Struttura produttiva e vulnerabilità creditizia nei Sistemi Locali del Lavoro italiani – Paolo Volterra">
+<meta name="twitter:description" content="I Sistemi Locali del Lavoro (SLL) — unità territoriali funzionali costruite sui flussi di pendolarismo — offrono una granularità territoriale superiore a province e regioni per analizzare la struttura produttiva e le condizioni creditizie del territorio italiano.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2611_VulnerabilitaSLL/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/in_parole_semplici/"> <i class="bi bi-instagram" role="img" aria-label="Instagram">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#perché-gli-sll" id="toc-perché-gli-sll" class="nav-link active" data-scroll-target="#perché-gli-sll"><span class="header-section-number">1</span> Perché gli SLL</a></li>
+  <li><a href="#il-dataset-empirico-cosa-è-ora-disponibile" id="toc-il-dataset-empirico-cosa-è-ora-disponibile" class="nav-link" data-scroll-target="#il-dataset-empirico-cosa-è-ora-disponibile"><span class="header-section-number">2</span> Il dataset empirico: cosa è ora disponibile</a></li>
+  <li><a href="#matrice-delle-correlazioni-strutturali" id="toc-matrice-delle-correlazioni-strutturali" class="nav-link" data-scroll-target="#matrice-delle-correlazioni-strutturali"><span class="header-section-number">3</span> Matrice delle correlazioni strutturali</a></li>
+  <li><a href="#costruzione-dellindice-sll_vuln" id="toc-costruzione-dellindice-sll_vuln" class="nav-link" data-scroll-target="#costruzione-dellindice-sll_vuln"><span class="header-section-number">4</span> Costruzione dell’indice SLL_VULN</a></li>
+  <li><a href="#distribuzione-geografica-e-settoriale" id="toc-distribuzione-geografica-e-settoriale" class="nav-link" data-scroll-target="#distribuzione-geografica-e-settoriale"><span class="header-section-number">5</span> Distribuzione geografica e settoriale</a></li>
+  <li><a href="#i-25-sll-più-vulnerabili" id="toc-i-25-sll-più-vulnerabili" class="nav-link" data-scroll-target="#i-25-sll-più-vulnerabili"><span class="header-section-number">6</span> I 25 SLL più vulnerabili</a></li>
+  <li><a href="#sll_vuln-e-copertura-bancaria-relazione-circolare" id="toc-sll_vuln-e-copertura-bancaria-relazione-circolare" class="nav-link" data-scroll-target="#sll_vuln-e-copertura-bancaria-relazione-circolare"><span class="header-section-number">7</span> SLL_VULN e copertura bancaria: relazione circolare</a></li>
+  <li><a href="#possibili-applicazioni-esplorative-al-risk-management-bancario" id="toc-possibili-applicazioni-esplorative-al-risk-management-bancario" class="nav-link" data-scroll-target="#possibili-applicazioni-esplorative-al-risk-management-bancario"><span class="header-section-number">8</span> Possibili applicazioni esplorative al risk management bancario</a>
+  <ul class="collapse">
+  <li><a href="#sll_vuln-come-overlay-territoriale" id="toc-sll_vuln-come-overlay-territoriale" class="nav-link" data-scroll-target="#sll_vuln-come-overlay-territoriale"><span class="header-section-number">8.1</span> SLL_VULN come overlay territoriale</a></li>
+  <li><a href="#limiti-e-obiezioni" id="toc-limiti-e-obiezioni" class="nav-link" data-scroll-target="#limiti-e-obiezioni"><span class="header-section-number">8.2</span> Limiti e obiezioni</a></li>
+  <li><a href="#il-caso-del-mezzogiorno-market-failure-documentabile" id="toc-il-caso-del-mezzogiorno-market-failure-documentabile" class="nav-link" data-scroll-target="#il-caso-del-mezzogiorno-market-failure-documentabile"><span class="header-section-number">8.3</span> Il caso del Mezzogiorno: market failure documentabile</a></li>
+  </ul></li>
+  <li><a href="#prossimi-passi" id="toc-prossimi-passi" class="nav-link" data-scroll-target="#prossimi-passi"><span class="header-section-number">9</span> Prossimi passi</a></li>
+  <li><a href="#avvertenza-metodologica" id="toc-avvertenza-metodologica" class="nav-link" data-scroll-target="#avvertenza-metodologica"><span class="header-section-number">10</span> Avvertenza metodologica</a></li>
+  <li><a href="#riferimenti" id="toc-riferimenti" class="nav-link" data-scroll-target="#riferimenti">Riferimenti</a></li>
+  <li><a href="#appendice" id="toc-appendice" class="nav-link" data-scroll-target="#appendice">Appendice</a>
+  <ul class="collapse">
+  <li><a href="#a.1-graduatoria-completa-dei-25-sll-più-vulnerabili" id="toc-a.1-graduatoria-completa-dei-25-sll-più-vulnerabili" class="nav-link" data-scroll-target="#a.1-graduatoria-completa-dei-25-sll-più-vulnerabili">A.1 — Graduatoria completa dei 25 SLL più vulnerabili</a></li>
+  <li><a href="#a.2-dizionario-delle-variabili-utilizzate" id="toc-a.2-dizionario-delle-variabili-utilizzate" class="nav-link" data-scroll-target="#a.2-dizionario-delle-variabili-utilizzate">A.2 — Dizionario delle variabili utilizzate</a></li>
+  <li><a href="#a.3-trasparenza-sulluso-dellintelligenza-artificiale" id="toc-a.3-trasparenza-sulluso-dellintelligenza-artificiale" class="nav-link" data-scroll-target="#a.3-trasparenza-sulluso-dellintelligenza-artificiale">A.3 — Trasparenza sull’uso dell’intelligenza artificiale</a></li>
+  </ul></li>
+  <li><a href="#come-citare-questo-documento" id="toc-come-citare-questo-documento" class="nav-link" data-scroll-target="#come-citare-questo-documento">Come citare questo documento</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Struttura produttiva e vulnerabilità creditizia nei Sistemi Locali del Lavoro italiani</h1>
+<p class="subtitle lead">Sviluppo di un indice territoriale SLL_VULN su 515 sistemi locali</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Mezzogiorno e territori</div>
+    <div class="quarto-category">Banche e credito</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    I Sistemi Locali del Lavoro (SLL) — unità territoriali funzionali costruite sui flussi di pendolarismo — offrono una granularità territoriale superiore a province e regioni per analizzare la struttura produttiva e le condizioni creditizie del territorio italiano.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">5 giugno 2026</p>
+    </div>
+  </div>
+  
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.20631785">10.5281/zenodo.20631785</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>I Sistemi Locali del Lavoro (SLL) — unità territoriali funzionali costruite sui flussi di pendolarismo — offrono una granularità territoriale superiore a province e regioni per analizzare la struttura produttiva e le condizioni creditizie del territorio italiano. Questo documento combina il framework analitico sviluppato in febbraio 2026 con il dataset empirico <code>sll_master_v3</code> (515 SLL × 72 colonne, giugno 2026) per costruire un indice di vulnerabilità strutturale <code>SLL_VULN</code>, validarne la coerenza geografica e settoriale, e discutere le implicazioni per il risk management bancario e la policy pubblica. I risultati mostrano che la vulnerabilità strutturale è fortemente concentrata nel Mezzogiorno (classe D), correlata con bassa occupazione, basso reddito e scarsa presenza bancaria, e attenuata dalla specializzazione produttiva distrettuale.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>SLL, sistemi locali del lavoro, rischio creditizio, vulnerabilità strutturale, Mezzogiorno, IFRS 9, market failure, copertura bancaria</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Versione citabile su Zenodo, con il PDF: <a href="https://doi.org/10.5281/zenodo.20631785">doi.org/10.5281/zenodo.20631785</a>.</p>
+</div>
+</div>
+</div>
+<section id="perché-gli-sll" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="perché-gli-sll"><span class="header-section-number">1</span> Perché gli SLL</h2>
+<p>I Sistemi Locali del Lavoro sono la risposta italiana alla domanda: <em>qual è l’unità territoriale che cattura meglio la struttura produttiva reale?</em> Province e regioni sono unità amministrative; i SLL sono costruiti sui flussi effettivi di pendolarismo casa-lavoro rilevati al censimento. Un SLL è autocontenuto per definizione: almeno il 75% degli addetti che vi lavorano risiede nell’area, e almeno il 75% dei residenti che lavorano lo fanno nell’area stessa.</p>
+<p>Questa costruzione li rende coerenti con la struttura del rischio creditizio locale in un modo che le province non catturano:</p>
+<ul>
+<li>Il rischio di un’impresa manifatturiera dipende dalla sua filiera locale, non dal confine provinciale</li>
+<li>La mobilità del lavoro — e quindi la resilienza occupazionale — segue i confini SLL, non quelli amministrativi</li>
+<li>L’aggregazione bancaria a livello SLL non produce gli artefatti che si producono aggregando sportelli per provincia (dove una città capoluogo domina statisticamente l’intero territorio)</li>
+</ul>
+<p>L’ISTAT ha classificato i 515 SLL 2021 in quattro macro-classi e 17 gruppi sulla base della specializzazione produttiva prevalente. Questa classificazione è il punto di partenza per qualsiasi analisi del rischio territoriale che voglia distinguere le diverse strutture produttive.</p>
+<p><img src="figure/fig01.png" class="figure-img" role="img" width="1046" height="372"></p>
+<p>Figura&nbsp;1: Distribuzione dei 515 SLL e della popolazione residente per classe produttiva (tassonomia ISTAT 2021).</p>
+</section>
+<section id="il-dataset-empirico-cosa-è-ora-disponibile" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="il-dataset-empirico-cosa-è-ora-disponibile"><span class="header-section-number">2</span> Il dataset empirico: cosa è ora disponibile</h2>
+<p>Il documento originale del febbraio 2026 identificava come lacuna centrale l’assenza di dati finanziari e creditizi mappati a livello SLL. Il dataset <code>sll_master_v3</code> costruito nel giugno 2026 colma in gran parte questa lacuna.</p>
+<p><strong>Tabella 1 — Dimensioni e fonti del dataset <code>sll_master_v3</code>.</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 40%">
+<col style="width: 22%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Dimensione</th>
+<th style="text-align: left;">Indicatori</th>
+<th style="text-align: left;">Fonte</th>
+<th style="text-align: left;">Copertura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Copertura finanziaria</strong></td>
+<td style="text-align: left;">Sportelli bancari, UP Poste, ATM</td>
+<td style="text-align: left;">Bankit TDB + Poste Italiane</td>
+<td style="text-align: left;">515/515 SLL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Intermediazione</strong></td>
+<td style="text-align: left;">Depositi totali, crediti MLT</td>
+<td style="text-align: left;">Bankit TDB10195/TFR10241</td>
+<td style="text-align: left;">515/515 SLL</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Reddito</strong></td>
+<td style="text-align: left;">IRPEF medio per contribuente</td>
+<td style="text-align: left;">MEF 2022</td>
+<td style="text-align: left;">515/515 SLL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Mercato del lavoro</strong></td>
+<td style="text-align: left;">Tasso occupazione/disoccupazione, auto-contenimento</td>
+<td style="text-align: left;">ISTAT 2021–2023</td>
+<td style="text-align: left;">515/515 SLL</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Struttura produttiva</strong></td>
+<td style="text-align: left;">17 gruppi ISTAT, flag distretto 2011</td>
+<td style="text-align: left;">ISTAT</td>
+<td style="text-align: left;">515/515 SLL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Imprenditorialità</strong></td>
+<td style="text-align: left;">Tasso imprenditorialità, addetti artigiani%</td>
+<td style="text-align: left;">ISTAT</td>
+<td style="text-align: left;">515/515 SLL</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Innovazione</strong></td>
+<td style="text-align: left;">Copertura FTTH%</td>
+<td style="text-align: left;">ISTAT</td>
+<td style="text-align: left;">515/515 SLL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Struttura demografica</strong></td>
+<td style="text-align: left;">Indice vecchiaia, tasso migratorio, età media</td>
+<td style="text-align: left;">ISTAT</td>
+<td style="text-align: left;">515/515 SLL</td>
+</tr>
+</tbody>
+</table>
+<p>Il gap che rimane è la correlazione con dati di default dalla Centrale Rischi (NPL ratio, PD per SLL): questi non sono disponibili alla granularità SLL e richiederebbero accesso ai micro-dati di vigilanza.</p>
+</section>
+<section id="matrice-delle-correlazioni-strutturali" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="matrice-delle-correlazioni-strutturali"><span class="header-section-number">3</span> Matrice delle correlazioni strutturali</h2>
+<p>Prima di costruire l’indice sintetico, è utile visualizzare le correlazioni tra le dimensioni chiave.</p>
+<p><img src="figure/fig02.png" class="figure-img" role="img" width="923" height="730"></p>
+<p>Figura&nbsp;2: Matrice di correlazione Spearman tra le dimensioni strutturali dei 515 SLL.</p>
+<p>La matrice rivela tre pattern rilevanti per il risk management:</p>
+<ol type="1">
+<li><strong>Cluster “economia reale”</strong>: sportelli bancari, depositi, crediti e reddito IRPEF sono fortemente correlati tra loro (ρ &gt; 0.6). Chi ha più banche ha più depositi, più crediti e redditi più alti. È un blocco strutturalmente coerente.</li>
+<li><strong>Disoccupazione anti-correlata</strong>: il tasso di disoccupazione è negativamente correlato con tutti gli indicatori del cluster “economia reale” (ρ ≈ −0.5/−0.6). Mercati del lavoro deboli e sistemi finanziari deboli si sovrappongono geograficamente.</li>
+<li><strong>Poste Italiane indipendenti</strong>: <code>up_100k</code> ha correlazione prossima a zero con reddito, depositi e sportelli bancari. Conferma empiricamente la funzione di presidio universale, indipendente dalla struttura economica locale.</li>
+</ol>
+</section>
+<section id="costruzione-dellindice-sll_vuln" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="costruzione-dellindice-sll_vuln"><span class="header-section-number">4</span> Costruzione dell’indice SLL_VULN</h2>
+<p>L’indice sintetico di vulnerabilità strutturale <code>SLL_VULN</code> aggregga cinque dimensioni con z-score di uguale peso, normalizzato 0–100.</p>
+<p><strong>Tabella 2 — SLL_VULN per classe produttiva.</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Classe produttiva</th>
+<th style="text-align: right;">Mediana</th>
+<th style="text-align: right;">Media</th>
+<th style="text-align: right;">Dev. std</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Made in Italy</td>
+<td style="text-align: right;">58.5</td>
+<td style="text-align: right;">61.1</td>
+<td style="text-align: right;">15.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ind. pesante</td>
+<td style="text-align: right;">60.4</td>
+<td style="text-align: right;">61.3</td>
+<td style="text-align: right;">13.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Non manifatt.</td>
+<td style="text-align: right;">53.8</td>
+<td style="text-align: right;">54.1</td>
+<td style="text-align: right;">18.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">81.8</td>
+<td style="text-align: right;">79</td>
+<td style="text-align: right;">12.8</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p>Nota</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Componenti SLL_VULN</strong>: z-score composito di sei indicatori — sportelli bancari per 100k abitanti, tasso di occupazione, reddito IRPEF medio per contribuente, auto-contenimento domanda (<code>sc_dom_2021</code>), tasso di imprenditorialità, flag area interna SNAI 2020 (<code>area_interna_flag</code>: 1 se &gt;50% dei comuni del SLL classificati come area interna). Pesi uguali; valori mancanti sostituiti con la mediana. Score finale normalizzato 0–100 (0 = minima vulnerabilità, 100 = massima vulnerabilità).</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="distribuzione-geografica-e-settoriale" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="distribuzione-geografica-e-settoriale"><span class="header-section-number">5</span> Distribuzione geografica e settoriale</h2>
+<p><img src="figure/fig03.png" class="figure-img" role="img" width="1237" height="469"></p>
+<p>Figura&nbsp;3: Distribuzione di SLL_VULN per classe produttiva (sinistra) e relazione con il reddito IRPEF medio, Mezzogiorno vs Centro-Nord (destra).</p>
+<p><img src="figure/fig04.png" class="figure-img" role="img" width="950" height="564"></p>
+<p>Figura&nbsp;4: SLL_VULN mediano per regione (rosso: Mezzogiorno; azzurro: Centro-Nord).</p>
+</section>
+<section id="i-25-sll-più-vulnerabili" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="i-25-sll-più-vulnerabili"><span class="header-section-number">6</span> I 25 SLL più vulnerabili</h2>
+<p><strong>Tabella 3 — I 10 SLL più vulnerabili</strong> (graduatoria completa dei 25 in Appendice, Tabella A.1).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 22%">
+<col style="width: 8%">
+<col style="width: 16%">
+<col style="width: 5%">
+<col style="width: 11%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">SLL</th>
+<th style="text-align: left;">Regione</th>
+<th style="text-align: left;">Classe</th>
+<th style="text-align: right;">VULN</th>
+<th style="text-align: right;">Sport./100k</th>
+<th style="text-align: right;">Occ. %</th>
+<th style="text-align: left;">IRPEF</th>
+<th style="text-align: right;">SC dom.</th>
+<th style="text-align: left;">Distr.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td style="text-align: left;">Palagonia</td>
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">18.9</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: left;">12.7k</td>
+<td style="text-align: right;">0.83</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td style="text-align: left;">Lentini</td>
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">Made in Italy</td>
+<td style="text-align: right;">99.8</td>
+<td style="text-align: right;">22.1</td>
+<td style="text-align: right;">33.2</td>
+<td style="text-align: left;">15.7k</td>
+<td style="text-align: right;">0.73</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td style="text-align: left;">Soriano Calabro</td>
+<td style="text-align: left;">Calabria</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">99.3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">36.4</td>
+<td style="text-align: left;">12.9k</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td style="text-align: left;">Adrano</td>
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">98.9</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">31.6</td>
+<td style="text-align: left;">13.4k</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td style="text-align: left;">Mondragone</td>
+<td style="text-align: left;">Campania</td>
+<td style="text-align: left;">Made in Italy</td>
+<td style="text-align: right;">98.7</td>
+<td style="text-align: right;">9.9</td>
+<td style="text-align: right;">38.6</td>
+<td style="text-align: left;">15.0k</td>
+<td style="text-align: right;">0.73</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td style="text-align: left;">Paternò</td>
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">96.9</td>
+<td style="text-align: right;">18.3</td>
+<td style="text-align: right;">36.2</td>
+<td style="text-align: left;">14.6k</td>
+<td style="text-align: right;">0.74</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td style="text-align: left;">San Marco Argentano</td>
+<td style="text-align: left;">Calabria</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">96.7</td>
+<td style="text-align: right;">20.2</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: left;">13.4k</td>
+<td style="text-align: right;">0.77</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td style="text-align: left;">Sant’Eufemia D’Aspromonte</td>
+<td style="text-align: left;">Calabria</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">96.5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">39.2</td>
+<td style="text-align: left;">13.1k</td>
+<td style="text-align: right;">0.84</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td style="text-align: left;">Sessa Aurunca</td>
+<td style="text-align: left;">Campania</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">96.3</td>
+<td style="text-align: right;">17.6</td>
+<td style="text-align: right;">38.7</td>
+<td style="text-align: left;">16.3k</td>
+<td style="text-align: right;">0.66</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td style="text-align: left;">Oppido Mamertina</td>
+<td style="text-align: left;">Calabria</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">96.1</td>
+<td style="text-align: right;">19.9</td>
+<td style="text-align: right;">40.5</td>
+<td style="text-align: left;">13.6k</td>
+<td style="text-align: right;">0.74</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p>Nessuno dei 25 SLL più vulnerabili (Tabella A.1 in Appendice) è un distretto industriale. Quasi tutti appartengono alla classe D (non specializzati) o alla classe A con sub-specializzazione agro-alimentare nel Mezzogiorno. Il tasso di occupazione inferiore al 40% in molti di questi SLL indica mercati del lavoro strutturalmente depressi, non ciclicamente depressi.</p>
+</section>
+<section id="sll_vuln-e-copertura-bancaria-relazione-circolare" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="sll_vuln-e-copertura-bancaria-relazione-circolare"><span class="header-section-number">7</span> SLL_VULN e copertura bancaria: relazione circolare</h2>
+<p><img src="figure/fig05.png" class="figure-img" role="img" width="1237" height="468"></p>
+<p>Figura&nbsp;5: SLL_VULN e densità bancaria: relazione per classe produttiva (sinistra) e distribuzione per quartile di sportelli per 100k abitanti (destra).</p>
+<p>La relazione è quasi monotona: i SLL con meno banche (Q1) sono anche quelli con vulnerabilità strutturale più alta. Questo non dimostra causalità — è plausibile che la bassa densità bancaria sia effetto della struttura produttiva debole piuttosto che causa — ma è esattamente il tipo di correlazione che giustifica sia un overlay IFRS 9 territoriale sia un intervento pubblico di market failure.</p>
+</section>
+<section id="possibili-applicazioni-esplorative-al-risk-management-bancario" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="possibili-applicazioni-esplorative-al-risk-management-bancario"><span class="header-section-number">8</span> Possibili applicazioni esplorative al risk management bancario</h2>
+<section id="sll_vuln-come-overlay-territoriale" class="level3" data-number="8.1">
+<h3 data-number="8.1" class="anchored" data-anchor-id="sll_vuln-come-overlay-territoriale"><span class="header-section-number">8.1</span> SLL_VULN come overlay territoriale</h3>
+<p>Le tre ipotesi che seguono sono <strong>esercizi metodologici generali</strong>, non raccomandazioni operative né prassi riferibili a uno specifico intermediario. In via puramente esplorativa, un indice territoriale di questo tipo potrebbe essere considerato come layer informativo aggiuntivo:</p>
+<ol type="1">
+<li><p><strong>Overlay IFRS 9 Stage 2 (ipotesi)</strong>: SLL con VULN &gt; 75 potrebbero, in linea di principio, essere studiati come territori candidati a un “significant increase in credit risk” ai fini dello staging forward-looking. La soglia è soggettiva e l’ipotesi richiederebbe backtesting su dati storici (quando disponibili) prima di qualsiasi considerazione applicativa.</p></li>
+<li><p><strong>Stress test geografico (ipotesi)</strong>: scenari di shock territoriale localizzato (es. chiusura di un grande impianto, catastrofe naturale) potrebbero essere calibrati sul livello di VULN per stimare l’impatto su un portafoglio teorico.</p></li>
+<li><p><strong>Pricing adjustment (ipotesi)</strong>: un add-on per SLL ad alta vulnerabilità sarebbe metodologicamente coerente con i principi generali di risk-based pricing, ma richiederebbe la validazione empirica — oggi non possibile su dati pubblici — che la vulnerabilità strutturale predica effettivamente default o LGD più elevati.</p></li>
+</ol>
+</section>
+<section id="limiti-e-obiezioni" class="level3" data-number="8.2">
+<h3 data-number="8.2" class="anchored" data-anchor-id="limiti-e-obiezioni"><span class="header-section-number">8.2</span> Limiti e obiezioni</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p>Avviso</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Obiezioni metodologiche residue</strong> (non risolte da questo documento):</p>
+<ul>
+<li><strong>Causalità non identificata</strong>: la correlazione strutturale non è identificazione causale. Senza strumenti o disegni quasi-sperimentali, non si può affermare che ridurre la vulnerabilità SLL riduca il rischio creditizio individuale.</li>
+<li><strong>Dati di default mancanti</strong>: NPL ratio e PD a livello SLL non sono disponibili pubblicamente. Senza questo, l’indice non è back-testabile.</li>
+<li><strong>Granularità insufficiente per portafogli individuali</strong>: un’impresa può avere sede in un SLL vulnerabile ma operare in mercati nazionali o internazionali. Il layer SLL va usato come prior bayesiano, non come determinante.</li>
+<li><strong>Obsolescenza decennale</strong>: la classificazione ISTAT si aggiorna al censimento (ogni 10 anni). Tra un censimento e l’altro, le specializzazioni produttive cambiano.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="il-caso-del-mezzogiorno-market-failure-documentabile" class="level3" data-number="8.3">
+<h3 data-number="8.3" class="anchored" data-anchor-id="il-caso-del-mezzogiorno-market-failure-documentabile"><span class="header-section-number">8.3</span> Il caso del Mezzogiorno: market failure documentabile</h3>
+<p>Per il contesto specifico del Mezzogiorno e degli strumenti di finanza pubblica, l’analisi è più robusta. Il combinato di:</p>
+<ul>
+<li>ρ(sportelli, reddito) = 0.65 → le banche si concentrano nelle aree ricche</li>
+<li>ρ(UP Poste, reddito) ≈ 0 → Poste presidia indipendentemente dal reddito</li>
+<li>68% dei SLL in doppio svantaggio localizzati nel Mezzogiorno</li>
+</ul>
+<p>potrebbe costituire, in termini generali, una base quantitativa per documentare un <em>market failure</em> creditizio nel quadro della disciplina sugli aiuti di Stato (artt. 107–109 TFUE). In astratto, un intervento pubblico che operasse nei SLL con VULN &gt; 60 e <code>sport_banche_100k</code> &lt; mediana si sovrapporrebbe a un mercato assente o marginale, non a un mercato funzionante. Si tratta di una considerazione di policy generale, non riferita ad alcuna iniziativa specifica.</p>
+</section>
+</section>
+<section id="prossimi-passi" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="prossimi-passi"><span class="header-section-number">9</span> Prossimi passi</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 46%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Priorità</th>
+<th style="text-align: left;">Azione</th>
+<th style="text-align: left;">Dati necessari</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Alta</td>
+<td style="text-align: left;">Collegare SLL_VULN a dati di default banca (backtesting)</td>
+<td style="text-align: left;">Dati interni: PD/NPL per provincia → SLL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Alta</td>
+<td style="text-align: left;">PIL Eurostat NUTS3 allocato a SLL per peso popolazione</td>
+<td style="text-align: left;"><code>nama_10r_3gdp</code> Eurostat</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Media</td>
+<td style="text-align: left;">Aggiungere dimensione ambientale/transizione energetica</td>
+<td style="text-align: left;">Emissioni CO2 per settore ATECO × SLL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Media</td>
+<td style="text-align: left;">Aggiornare al censimento 2031 quando disponibile</td>
+<td style="text-align: left;">SITUAS ISTAT</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bassa</td>
+<td style="text-align: left;">Confronto con Labour Market Areas Eurostat</td>
+<td style="text-align: left;">Dati Eurostat cross-country</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="avvertenza-metodologica" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="avvertenza-metodologica"><span class="header-section-number">10</span> Avvertenza metodologica</h2>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p>Importante</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il presente documento è una versione preliminare di lavoro, elaborata a titolo personale e indipendente: le opinioni, le analisi e le conclusioni sono esclusivamente dell’autore e non rappresentano necessariamente quelle dell’organizzazione di appartenenza. L’indice <code>SLL_VULN</code> ha finalità esplorativa e descrittiva: non costituisce policy aziendale, modello regolamentare, rating creditizio ufficiale né strumento autonomo per decisioni di concessione, pricing, classificazione o gestione del rischio. La validazione predittiva richiederebbe il collegamento con dati di default (PD, LGD, NPL ratio) a livello territoriale, attualmente non disponibili su base pubblica alla granularità SLL.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="riferimenti" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="riferimenti">Riferimenti</h2>
+<ul>
+<li>Banca d’Italia. <em>Base Dati Statistica</em> — serie TDB10195 (sportelli e depositi per localizzazione) e TFR10241 (finanziamenti oltre il breve termine). <a href="https://infostat.bancaditalia.it/" class="uri">https://infostat.bancaditalia.it/</a></li>
+<li>IFRS Foundation (2014). <em>IFRS 9 — Financial Instruments</em>.</li>
+<li>ISTAT (2022). <em>I sistemi locali del lavoro 2021</em> — nota metodologica e classificazione per specializzazione produttiva. <a href="https://www.istat.it/" class="uri">https://www.istat.it/</a></li>
+<li>ISTAT. <em>SITUAS — Sistema Informativo Territoriale delle Unità Amministrative e Statistiche</em> (accesso via CLI <code>opensituas</code>, report 61, 74, 75, 408, 444).</li>
+<li>MEF — Dipartimento delle Finanze. <em>Dichiarazioni IRPEF per comune, anno d’imposta 2022</em> (open data).</li>
+<li>Presidenza del Consiglio dei Ministri — Dipartimento per le Politiche di Coesione. <em>Strategia Nazionale per le Aree Interne (SNAI)</em> — classificazione 2020.</li>
+<li>Volterra, P. (2026). <em>Financial Desertification in Italy: Why Digital Banking Excludes the Most Vulnerable</em>. Zenodo. <a href="https://doi.org/10.5281/zenodo.20082460" class="uri">https://doi.org/10.5281/zenodo.20082460</a></li>
+</ul>
+<div style="page-break-after: always;">
+
+</div>
+</section>
+<section id="appendice" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="appendice">Appendice</h2>
+<section id="a.1-graduatoria-completa-dei-25-sll-più-vulnerabili" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="a.1-graduatoria-completa-dei-25-sll-più-vulnerabili">A.1 — Graduatoria completa dei 25 SLL più vulnerabili</h3>
+<p><strong>Tabella A.1 — I 25 SLL più vulnerabili per SLL_VULN.</strong> Sport./100k = sportelli bancari per 100.000 abitanti; Occ. % = tasso di occupazione; IRPEF = reddito medio per contribuente (migliaia di €); SC dom. = auto-contenimento della domanda 2021; Distr. = distretto industriale 2011.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 22%">
+<col style="width: 8%">
+<col style="width: 16%">
+<col style="width: 5%">
+<col style="width: 11%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">SLL</th>
+<th style="text-align: left;">Regione</th>
+<th style="text-align: left;">Classe</th>
+<th style="text-align: right;">VULN</th>
+<th style="text-align: right;">Sport./100k</th>
+<th style="text-align: right;">Occ. %</th>
+<th style="text-align: left;">IRPEF</th>
+<th style="text-align: right;">SC dom.</th>
+<th style="text-align: left;">Distr.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td style="text-align: left;">Palagonia</td>
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">18.9</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: left;">12.7k</td>
+<td style="text-align: right;">0.83</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td style="text-align: left;">Lentini</td>
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">Made in Italy</td>
+<td style="text-align: right;">99.8</td>
+<td style="text-align: right;">22.1</td>
+<td style="text-align: right;">33.2</td>
+<td style="text-align: left;">15.7k</td>
+<td style="text-align: right;">0.73</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td style="text-align: left;">Soriano Calabro</td>
+<td style="text-align: left;">Calabria</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">99.3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">36.4</td>
+<td style="text-align: left;">12.9k</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td style="text-align: left;">Adrano</td>
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">98.9</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">31.6</td>
+<td style="text-align: left;">13.4k</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td style="text-align: left;">Mondragone</td>
+<td style="text-align: left;">Campania</td>
+<td style="text-align: left;">Made in Italy</td>
+<td style="text-align: right;">98.7</td>
+<td style="text-align: right;">9.9</td>
+<td style="text-align: right;">38.6</td>
+<td style="text-align: left;">15.0k</td>
+<td style="text-align: right;">0.73</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td style="text-align: left;">Paternò</td>
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">96.9</td>
+<td style="text-align: right;">18.3</td>
+<td style="text-align: right;">36.2</td>
+<td style="text-align: left;">14.6k</td>
+<td style="text-align: right;">0.74</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td style="text-align: left;">San Marco Argentano</td>
+<td style="text-align: left;">Calabria</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">96.7</td>
+<td style="text-align: right;">20.2</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: left;">13.4k</td>
+<td style="text-align: right;">0.77</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td style="text-align: left;">Sant’Eufemia D’Aspromonte</td>
+<td style="text-align: left;">Calabria</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">96.5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">39.2</td>
+<td style="text-align: left;">13.1k</td>
+<td style="text-align: right;">0.84</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td style="text-align: left;">Sessa Aurunca</td>
+<td style="text-align: left;">Campania</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">96.3</td>
+<td style="text-align: right;">17.6</td>
+<td style="text-align: right;">38.7</td>
+<td style="text-align: left;">16.3k</td>
+<td style="text-align: right;">0.66</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td style="text-align: left;">Oppido Mamertina</td>
+<td style="text-align: left;">Calabria</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">96.1</td>
+<td style="text-align: right;">19.9</td>
+<td style="text-align: right;">40.5</td>
+<td style="text-align: left;">13.6k</td>
+<td style="text-align: right;">0.74</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td style="text-align: left;">Scordia</td>
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">95.2</td>
+<td style="text-align: right;">22.1</td>
+<td style="text-align: right;">31.8</td>
+<td style="text-align: left;">14.3k</td>
+<td style="text-align: right;">0.84</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td style="text-align: left;">Terme Vigliatore</td>
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">94.6</td>
+<td style="text-align: right;">17.1</td>
+<td style="text-align: right;">37.9</td>
+<td style="text-align: left;">14.2k</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td style="text-align: left;">Mazzarrone</td>
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">94.6</td>
+<td style="text-align: right;">40.4</td>
+<td style="text-align: right;">36.4</td>
+<td style="text-align: left;">12.4k</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td style="text-align: left;">Cariati</td>
+<td style="text-align: left;">Calabria</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">94.1</td>
+<td style="text-align: right;">6.8</td>
+<td style="text-align: right;">35.7</td>
+<td style="text-align: left;">13.1k</td>
+<td style="text-align: right;">0.84</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td style="text-align: left;">Teano</td>
+<td style="text-align: left;">Campania</td>
+<td style="text-align: left;">Made in Italy</td>
+<td style="text-align: right;">93.5</td>
+<td style="text-align: right;">16.3</td>
+<td style="text-align: right;">40.2</td>
+<td style="text-align: left;">16.3k</td>
+<td style="text-align: right;">0.71</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td style="text-align: left;">Gioia Tauro</td>
+<td style="text-align: left;">Calabria</td>
+<td style="text-align: left;">Ind. pesante</td>
+<td style="text-align: right;">93.4</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">38.3</td>
+<td style="text-align: left;">13.5k</td>
+<td style="text-align: right;">0.78</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td style="text-align: left;">Partinico</td>
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">92.6</td>
+<td style="text-align: right;">12.7</td>
+<td style="text-align: right;">34.9</td>
+<td style="text-align: left;">15.3k</td>
+<td style="text-align: right;">0.84</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td style="text-align: left;">Monasterace</td>
+<td style="text-align: left;">Calabria</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">92.4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">36.3</td>
+<td style="text-align: left;">13.6k</td>
+<td style="text-align: right;">0.89</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td style="text-align: left;">Bronte</td>
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">Made in Italy</td>
+<td style="text-align: right;">92.1</td>
+<td style="text-align: right;">17.4</td>
+<td style="text-align: right;">39.2</td>
+<td style="text-align: left;">13.8k</td>
+<td style="text-align: right;">0.77</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td style="text-align: left;">Bagheria</td>
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">91.9</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">34.6</td>
+<td style="text-align: left;">16.7k</td>
+<td style="text-align: right;">0.67</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td>21</td>
+<td style="text-align: left;">Canicattì</td>
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">91.4</td>
+<td style="text-align: right;">21.9</td>
+<td style="text-align: right;">34.3</td>
+<td style="text-align: left;">13.8k</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td>22</td>
+<td style="text-align: left;">San Giovanni Gemini</td>
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">91.2</td>
+<td style="text-align: right;">24.5</td>
+<td style="text-align: right;">36.1</td>
+<td style="text-align: left;">15.1k</td>
+<td style="text-align: right;">0.77</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td>23</td>
+<td style="text-align: left;">Licata</td>
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">Made in Italy</td>
+<td style="text-align: right;">90.6</td>
+<td style="text-align: right;">23.4</td>
+<td style="text-align: right;">32.5</td>
+<td style="text-align: left;">13.6k</td>
+<td style="text-align: right;">0.91</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td>24</td>
+<td style="text-align: left;">Piazza Armerina</td>
+<td style="text-align: left;">Sicilia</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">90.1</td>
+<td style="text-align: right;">19.3</td>
+<td style="text-align: right;">35.6</td>
+<td style="text-align: left;">15.0k</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td>25</td>
+<td style="text-align: left;">Roccella Ionica</td>
+<td style="text-align: left;">Calabria</td>
+<td style="text-align: left;">Non specializzati</td>
+<td style="text-align: right;">90.1</td>
+<td style="text-align: right;">20.1</td>
+<td style="text-align: right;">35.1</td>
+<td style="text-align: left;">15.3k</td>
+<td style="text-align: right;">0.78</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="a.2-dizionario-delle-variabili-utilizzate" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="a.2-dizionario-delle-variabili-utilizzate">A.2 — Dizionario delle variabili utilizzate</h3>
+<p><strong>Tabella A.2 — Variabili di <code>sll_master_v3</code> impiegate nell’analisi.</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 50%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variabile</th>
+<th style="text-align: left;">Descrizione</th>
+<th style="text-align: left;">Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>sport_banche_100k</code></td>
+<td style="text-align: left;">Sportelli bancari per 100.000 abitanti (2024)</td>
+<td style="text-align: left;">Banca d’Italia TDB10195</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>up_100k</code></td>
+<td style="text-align: left;">Uffici postali per 100.000 abitanti (2024)</td>
+<td style="text-align: left;">Poste Italiane</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>dep_pc</code></td>
+<td style="text-align: left;">Depositi bancari pro capite (€)</td>
+<td style="text-align: left;">Banca d’Italia TDB10195</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>cred_pc</code></td>
+<td style="text-align: left;">Crediti MLT pro capite (€); totale NUTS2 allocato per quota di popolazione</td>
+<td style="text-align: left;">Banca d’Italia TFR10241</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>irpef_med</code></td>
+<td style="text-align: left;">Reddito IRPEF medio per contribuente (€, anno d’imposta 2022)</td>
+<td style="text-align: left;">MEF</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>tasso_occupazione</code>, <code>tasso_disoccupazione</code></td>
+<td style="text-align: left;">Tassi del mercato del lavoro a livello SLL</td>
+<td style="text-align: left;">ISTAT</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>sc_dom_2021</code></td>
+<td style="text-align: left;">Auto-contenimento della domanda di lavoro (Censimento 2021)</td>
+<td style="text-align: left;">ISTAT</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>tasso_imprenditorialita</code></td>
+<td style="text-align: left;">Tasso di imprenditorialità</td>
+<td style="text-align: left;">ISTAT</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>indice_vecchiaia</code></td>
+<td style="text-align: left;">Indice di vecchiaia</td>
+<td style="text-align: left;">ISTAT</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>area_interna_flag</code></td>
+<td style="text-align: left;">1 se &gt;50% dei comuni dell’SLL è area interna SNAI 2020</td>
+<td style="text-align: left;">SNAI/SITUAS</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>CLASSE_2021_NAME</code>, <code>distretto_2011</code></td>
+<td style="text-align: left;">Classe produttiva 2021; flag distretto industriale 2011</td>
+<td style="text-align: left;">ISTAT</td>
+</tr>
+</tbody>
+</table>
+<p>L’avvertenza sulle variabili allocate: crediti e PIL non sono osservati a livello SLL ma ripartiti dai totali NUTS2/NUTS3 per quota di popolazione; sono adatti a confronti relativi tra SLL, non a stime puntuali locali.</p>
+</section>
+<section id="a.3-trasparenza-sulluso-dellintelligenza-artificiale" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="a.3-trasparenza-sulluso-dellintelligenza-artificiale">A.3 — Trasparenza sull’uso dell’intelligenza artificiale</h3>
+<p>L’uso di strumenti di intelligenza artificiale generativa è dichiarato esplicitamente in quanto parte del processo di lavoro seguito nella redazione del presente documento. Tali strumenti sono stati impiegati a supporto della lettura, della sintesi, della riorganizzazione argomentativa e della revisione testuale, sempre nell’ambito di un processo pienamente controllato dall’autore.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le verifiche effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore.</p>
+<p>L’intelligenza artificiale è stata utilizzata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+<div style="page-break-after: always;">
+
+</div>
+</section>
+</section>
+<section id="come-citare-questo-documento" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="come-citare-questo-documento">Come citare questo documento</h2>
+<blockquote class="blockquote">
+<p>Volterra, P. (2026). <em>Struttura produttiva e vulnerabilità creditizia nei Sistemi Locali del Lavoro italiani: sviluppo di un indice territoriale SLL_VULN su 515 sistemi locali</em> (Working Paper, v1.0). Zenodo. <a href="https://doi.org/10.5281/zenodo.20631786" class="uri">https://doi.org/10.5281/zenodo.20631786</a></p>
+</blockquote>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Versione</strong></td>
+<td style="text-align: left;">v1.0 — 5 giugno 2026</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>DOI</strong></td>
+<td style="text-align: left;"><a href="https://doi.org/10.5281/zenodo.20631786">10.5281/zenodo.20631786</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Licenza</strong></td>
+<td style="text-align: left;"><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Autore</strong></td>
+<td style="text-align: left;">Paolo Volterra — ORCID <a href="https://orcid.org/0009-0004-2229-7519">0009-0004-2229-7519</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Repository</strong></td>
+<td style="text-align: left;">Zenodo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Lavori collegati</strong></td>
+<td style="text-align: left;"><em>Financial Desertification in Italy</em> — <a href="https://doi.org/10.5281/zenodo.20082460">10.5281/zenodo.20082460</a></td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

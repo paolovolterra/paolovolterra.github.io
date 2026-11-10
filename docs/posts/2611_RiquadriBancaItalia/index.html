@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="central bank communication, financial stability, agenda-setting, LLM classification, institutional isomorphism, Banca d’Italia, riquadri, transmission model">
+<meta name="description" content="Banca d’Italia’s Annual Report has a stable chapter structure, but its analytical boxes (riquadri) provide a flexible editorial space for new evidence and emerging risks.">
+
+<title>Forecasting Central-Bank Analytical Agendas – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Forecasting Central-Bank Analytical Agendas – Paolo Volterra">
+<meta property="og:description" content="Banca d’Italia’s Annual Report has a stable chapter structure, but its analytical boxes (riquadri) provide a flexible editorial space for new evidence and emerging risks.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2611_RiquadriBancaItalia/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Forecasting Central-Bank Analytical Agendas – Paolo Volterra">
+<meta name="twitter:description" content="Banca d’Italia’s Annual Report has a stable chapter structure, but its analytical boxes (riquadri) provide a flexible editorial space for new evidence and emerging risks.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2611_RiquadriBancaItalia/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/in_parole_semplici/"> <i class="bi bi-instagram" role="img" aria-label="Instagram">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#sez-background" id="toc-sez-background" class="nav-link" data-scroll-target="#sez-background"><span class="header-section-number">2</span> Institutional Background</a></li>
+  <li><a href="#sez-data" id="toc-sez-data" class="nav-link" data-scroll-target="#sez-data"><span class="header-section-number">3</span> Data: The Riquadri Corpus</a>
+  <ul class="collapse">
+  <li><a href="#corpus-construction" id="toc-corpus-construction" class="nav-link" data-scroll-target="#corpus-construction"><span class="header-section-number">3.1</span> Corpus construction</a></li>
+  <li><a href="#extraction-procedure" id="toc-extraction-procedure" class="nav-link" data-scroll-target="#extraction-procedure"><span class="header-section-number">3.2</span> Extraction procedure</a></li>
+  <li><a href="#thematic-classification" id="toc-thematic-classification" class="nav-link" data-scroll-target="#thematic-classification"><span class="header-section-number">3.3</span> Thematic classification</a></li>
+  <li><a href="#corpus-statistics" id="toc-corpus-statistics" class="nav-link" data-scroll-target="#corpus-statistics"><span class="header-section-number">3.4</span> Corpus statistics</a></li>
+  </ul></li>
+  <li><a href="#sez-lit" id="toc-sez-lit" class="nav-link" data-scroll-target="#sez-lit"><span class="header-section-number">4</span> Literature Review</a>
+  <ul class="collapse">
+  <li><a href="#central-bank-communication-and-financial-stability" id="toc-central-bank-communication-and-financial-stability" class="nav-link" data-scroll-target="#central-bank-communication-and-financial-stability"><span class="header-section-number">4.1</span> Central bank communication and financial stability</a></li>
+  <li><a href="#nlp-and-llm-applications-in-central-banking" id="toc-nlp-and-llm-applications-in-central-banking" class="nav-link" data-scroll-target="#nlp-and-llm-applications-in-central-banking"><span class="header-section-number">4.2</span> NLP and LLM applications in central banking</a></li>
+  <li><a href="#institutional-isomorphism-and-agenda-diffusion" id="toc-institutional-isomorphism-and-agenda-diffusion" class="nav-link" data-scroll-target="#institutional-isomorphism-and-agenda-diffusion"><span class="header-section-number">4.3</span> Institutional isomorphism and agenda diffusion</a></li>
+  <li><a href="#scope-relative-to-related-work" id="toc-scope-relative-to-related-work" class="nav-link" data-scroll-target="#scope-relative-to-related-work"><span class="header-section-number">4.4</span> Scope relative to related work</a></li>
+  </ul></li>
+  <li><a href="#sez-method" id="toc-sez-method" class="nav-link" data-scroll-target="#sez-method"><span class="header-section-number">5</span> Formal Methodology</a>
+  <ul class="collapse">
+  <li><a href="#corpus-formalization" id="toc-corpus-formalization" class="nav-link" data-scroll-target="#corpus-formalization"><span class="header-section-number">5.1</span> Corpus formalization</a></li>
+  <li><a href="#llm-thematic-classification" id="toc-llm-thematic-classification" class="nav-link" data-scroll-target="#llm-thematic-classification"><span class="header-section-number">5.2</span> LLM thematic classification</a></li>
+  <li><a href="#watchlist-corpus-and-institutional-signals" id="toc-watchlist-corpus-and-institutional-signals" class="nav-link" data-scroll-target="#watchlist-corpus-and-institutional-signals"><span class="header-section-number">5.3</span> Watchlist corpus and institutional signals</a></li>
+  <li><a href="#the-double-filter-transmission-model" id="toc-the-double-filter-transmission-model" class="nav-link" data-scroll-target="#the-double-filter-transmission-model"><span class="header-section-number">5.4</span> The double-filter transmission model</a></li>
+  <li><a href="#actual-theme-set" id="toc-actual-theme-set" class="nav-link" data-scroll-target="#actual-theme-set"><span class="header-section-number">5.5</span> Actual theme set</a></li>
+  <li><a href="#evaluation-protocol" id="toc-evaluation-protocol" class="nav-link" data-scroll-target="#evaluation-protocol"><span class="header-section-number">5.6</span> Evaluation protocol</a></li>
+  </ul></li>
+  <li><a href="#sez-results" id="toc-sez-results" class="nav-link" data-scroll-target="#sez-results"><span class="header-section-number">6</span> Results</a>
+  <ul class="collapse">
+  <li><a href="#thematic-distribution-and-macro-phases" id="toc-thematic-distribution-and-macro-phases" class="nav-link" data-scroll-target="#thematic-distribution-and-macro-phases"><span class="header-section-number">6.1</span> Thematic distribution and macro-phases</a></li>
+  <li><a href="#channel-distribution" id="toc-channel-distribution" class="nav-link" data-scroll-target="#channel-distribution"><span class="header-section-number">6.2</span> Channel distribution</a></li>
+  <li><a href="#backtesting-20212025" id="toc-backtesting-20212025" class="nav-link" data-scroll-target="#backtesting-20212025"><span class="header-section-number">6.3</span> Backtesting 2021–2025</a></li>
+  <li><a href="#false-positive-and-false-negative-analysis" id="toc-false-positive-and-false-negative-analysis" class="nav-link" data-scroll-target="#false-positive-and-false-negative-analysis"><span class="header-section-number">6.4</span> False positive and false negative analysis</a></li>
+  </ul></li>
+  <li><a href="#sez-discussion" id="toc-sez-discussion" class="nav-link" data-scroll-target="#sez-discussion"><span class="header-section-number">7</span> Discussion and Predictions for 2027</a>
+  <ul class="collapse">
+  <li><a href="#model-interpretation" id="toc-model-interpretation" class="nav-link" data-scroll-target="#model-interpretation"><span class="header-section-number">7.1</span> Model interpretation</a></li>
+  <li><a href="#persistent-false-positives-and-the-accumulation-hypothesis" id="toc-persistent-false-positives-and-the-accumulation-hypothesis" class="nav-link" data-scroll-target="#persistent-false-positives-and-the-accumulation-hypothesis"><span class="header-section-number">7.2</span> Persistent false positives and the accumulation hypothesis</a></li>
+  <li><a href="#predictions-for-the-2027-annual-report" id="toc-predictions-for-the-2027-annual-report" class="nav-link" data-scroll-target="#predictions-for-the-2027-annual-report"><span class="header-section-number">7.3</span> Predictions for the 2027 Annual Report</a></li>
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations"><span class="header-section-number">7.4</span> Limitations</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">8</span> Conclusion</a></li>
+  <li><a href="#data-and-code-availability" id="toc-data-and-code-availability" class="nav-link" data-scroll-target="#data-and-code-availability"><span class="header-section-number">9</span> Data and code availability</a></li>
+  <li><a href="#transparency-on-the-use-of-artificial-intelligence" id="toc-transparency-on-the-use-of-artificial-intelligence" class="nav-link" data-scroll-target="#transparency-on-the-use-of-artificial-intelligence"><span class="header-section-number">10</span> Transparency on the use of artificial intelligence</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Forecasting Central-Bank Analytical Agendas</h1>
+<p class="subtitle lead">Exploratory evidence from 372 boxes in Banca d’Italia’s Annual Reports, 2014–2025</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Mercati e politica monetaria</div>
+    <div class="quarto-category">Intelligenza artificiale</div>
+    <div class="quarto-category">Dati e metodo</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Banca d’Italia’s Annual Report has a stable chapter structure, but its analytical boxes (<em>riquadri</em>) provide a flexible editorial space for new evidence and emerging risks.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">19 giugno 2026</p>
+    </div>
+  </div>
+  
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.20756501">10.5281/zenodo.20756501</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>Banca d’Italia’s Annual Report has a stable chapter structure, but its analytical boxes (<em>riquadri</em>) provide a flexible editorial space for new evidence and emerging risks. This paper builds a dataset of 372 boxes published in twelve reports (data years 2014–2025) and classifies their titles by theme and transmission channel with a locally run instruction-tuned language model (qwen2.5:7b-instruct, temperature 0). It then evaluates a <em>double-filter transmission hypothesis</em>: international macrofinancial topics are first developed by agenda-setting institutions and subsequently normalized by bodies such as the FSB, ECB, BIS and ESRB before entering a national central bank’s analytical agenda. Annual signal matrices, manually coded from a 107-document institutional watchlist, are compared retrospectively with the themes observed in 2021–2025. Mean F1 is 0.60 (annual range 0.47–0.76), compared with 0.54 for a keyword-based classification baseline. The result is exploratory rather than causal or genuinely out of sample: the evaluation covers five years, signal coding involves judgement, and no human-labelled gold standard is available for the LLM taxonomy. The channel classification nevertheless gives an important scope condition: 78% of boxes are domestic and 2% institutional, leaving 20% in the international channel addressed by the hypothesis. The paper closes with explicitly uncalibrated, pre-verifiable scenarios for the report due in 2027, led by private credit/NBFI, financial fragmentation, tokenisation, AI-related financial risk and cyber resilience.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>central bank communication, financial stability, agenda-setting, LLM classification, institutional isomorphism, Banca d’Italia, riquadri, transmission model</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Versione citabile su Zenodo, con il PDF: <a href="https://doi.org/10.5281/zenodo.20756501">doi.org/10.5281/zenodo.20756501</a>.</p>
+</div>
+</div>
+</div>
+<section id="introduction" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
+<p>Central bank communication has evolved from a tool of last resort to a primary policy instrument <span class="citation" data-cites="woodford2005 blinder2008">(<a href="#ref-woodford2005" role="doc-biblioref">Woodford 2005</a>; <a href="#ref-blinder2008" role="doc-biblioref">Blinder et al.&nbsp;2008</a>)</span>. Yet the literature has largely focused on monetary policy communication — forward guidance, inflation targeting statements, press conference transcripts — while the communication of <em>financial stability assessments</em> has received comparatively less attention <span class="citation" data-cites="cihak2006 nagy2022suerf">(<a href="#ref-cihak2006" role="doc-biblioref">Čihák 2006</a>; <a href="#ref-nagy2022suerf" role="doc-biblioref">Nagy 2022</a>)</span>.</p>
+<p>Annual reports of central banks are a particularly understudied channel. Unlike financial stability reviews (FSRs), which are explicitly forward-looking risk assessments, annual reports embed the institution’s overall analytical agenda: they reveal what the central bank believes is worth understanding, measuring, and communicating to the financial community and the public. Within these reports, <em>analytical boxes</em> — in Italian: <em>riquadri</em> — occupy a special editorial role. They are the space where the institution experiments with new themes, introduces emerging concepts, and signals attention to risks that may not yet warrant full-chapter treatment.</p>
+<p>This paper examines whether the international component of Banca d’Italia’s annual-report agenda can be forecast by monitoring institutional publications. The hypothesis, informed by institutional isomorphism theory <span class="citation" data-cites="dimaggio1983">(<a href="#ref-dimaggio1983" role="doc-biblioref">DiMaggio and Powell 1983</a>)</span>, is that BdI participates in an international transmission network rather than forming its macrofinancial agenda in isolation. Themes may move from agenda-setting institutions (including the BoE, Fed and BdF) to consolidators (FSB, ECB, BIS and ESRB) and then to national central banks. The direction and timing of this sequence are empirical propositions, not assumptions of causality.</p>
+<p>We contribute to the literature in three ways:</p>
+<ol type="1">
+<li><p><strong>Dataset</strong>: a systematic classification of 372 <em>riquadri</em> from 12 BdI Annual Reports (2014–2025), providing a longitudinal record of the institution’s analytical agenda across four macro-phases.</p></li>
+<li><p><strong>Model</strong>: a formalized double-filter transmission model with explicit lag structure, binary prediction matrices, and a reproducible evaluation protocol.</p></li>
+<li><p><strong>Method</strong>: an exploratory comparison in which LLM-based thematic classification (qwen2.5:7b-instruct) produces a higher mean model F1 than keyword matching (0.60 vs.&nbsp;0.54), while making explicit that this is not a classifier-accuracy test because no human-labelled gold standard is available.</p></li>
+</ol>
+<p>The paper proceeds as follows. Section 2 provides institutional background on BdI’s position in the international financial stability network. Section 3 describes the riquadri corpus and extraction methodology. Section 4 reviews the relevant literature. Section 5 formalizes the methodology. Section 6 presents results. Section 7 discusses implications and 2027 predictions. Section 8 concludes.</p>
+<hr>
+</section>
+<section id="sez-background" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="sez-background"><span class="header-section-number">2</span> Institutional Background</h2>
+<p>Banca d’Italia occupies a distinctive position in the European and global financial stability architecture. As Italy’s central bank and microprudential authority (jointly with the ECB for significant institutions under the SSM), BdI participates in multiple layers of the international regulatory and analytical hierarchy.</p>
+<p><strong>International standard-setting layer.</strong> The Financial Stability Board (FSB), the Basel Committee on Banking Supervision (BCBS), and the International Organization of Securities Commissions (IOSCO) set global standards and identify systemic vulnerabilities on behalf of the G20. Their publications provide common taxonomies, monitoring frameworks and policy priorities and can therefore serve as observable signals of themes that may later enter national analytical agendas.</p>
+<p><strong>European layer.</strong> The European Systemic Risk Board (ESRB) and the European Central Bank translate global signals into European risk assessments, issuing the FSR semiannually <span class="citation" data-cites="bce2025fsr esrb2026">(<a href="#ref-bce2025fsr" role="doc-biblioref">European Central Bank 2025</a>; <a href="#ref-esrb2026" role="doc-biblioref">European Systemic Risk Board 2026</a>)</span>. The Bank for International Settlements, through its Annual Economic Report <span class="citation" data-cites="bis2025aer">(<a href="#ref-bis2025aer" role="doc-biblioref">Bank for International Settlements 2025</a>)</span> and Working Papers series, provides the analytical-intellectual infrastructure underpinning both layers.</p>
+<p><strong>National laboratory tier.</strong> A subset of national central banks operates advanced research units that publish original risk analysis ahead of the international consolidators. The Bank of England FPC/FSR, the Federal Reserve FSR <span class="citation" data-cites="fed2026fsr">(<a href="#ref-fed2026fsr" role="doc-biblioref">Federal Reserve 2026</a>)</span>, and the Banque de France RSF <span class="citation" data-cites="bdf2025rsf">(<a href="#ref-bdf2025rsf" role="doc-biblioref">Banque de France 2025</a>)</span> are well-established <em>agenda-laboratory</em> outlets: they identify risks earlier, use them as pedagogical case studies, and build the analytical vocabulary that consolidators will later adopt.</p>
+<p>Within this architecture, we treat BdI as a <em>national integrator</em> for the purpose of the hypothesis. Its annual report integrates signals received from both the European and international layers, filtered through its domestic mandate: the Italian banking system, the real economy, regional disparities. The BdI <em>Piano Strategico 2026–2028</em> <span class="citation" data-cites="bancaditalia2026piano">(<a href="#ref-bancaditalia2026piano" role="doc-biblioref">Banca d’Italia 2026a</a>)</span> reinforces this reading: its three declared strategic axes (financial stability enhancement, fintech/digital transformation, cyber resilience) are directly traceable to themes already present in FSB, ECB, and BIS publications in 2023–2025.</p>
+<p>This proposed architecture — agenda setters → consolidators → national integrators — is the mechanism evaluated below; the labels are analytical constructs and do not imply a formal institutional hierarchy.</p>
+<hr>
+</section>
+<section id="sez-data" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="sez-data"><span class="header-section-number">3</span> Data: The Riquadri Corpus</h2>
+<section id="corpus-construction" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="corpus-construction"><span class="header-section-number">3.1</span> Corpus construction</h3>
+<p>We extracted the <em>riquadri</em> from 12 BdI Annual Reports covering data years 2014 to 2025 <span class="citation" data-cites="bancaditalia2025">(<a href="#ref-bancaditalia2025" role="doc-biblioref">Banca d’Italia 2026b</a>)</span>. Each report follows a stable architecture with five main sections (international economy, euro area, Italian economy, thematic chapter, BdI administration) and 14 chapters. Within each chapter, <em>riquadri</em> appear as sidebar analytical boxes — typically 1–3 per chapter — treating emerging or methodologically novel topics. They are consistently marked typographically and carry standalone titles.</p>
+</section>
+<section id="extraction-procedure" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="extraction-procedure"><span class="header-section-number">3.2</span> Extraction procedure</h3>
+<p>All volumes were converted to text with PyMuPDF. Titles were identified from the recurring <code>Riquadro:</code> marker; the first occurrence in the table of contents was used to preserve the complete title. Reports before data year 2014 were checked separately and excluded because their apparent matches are references to boxes published in the <em>Economic Bulletin</em>, rather than boxes internal to the Annual Report. The final corpus contains <span class="math inline">\(|\mathcal{R}| = 372\)</span> riquadri with data year, sequence number and title. The classification and evaluation pipeline operates on titles only.</p>
+</section>
+<section id="thematic-classification" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="thematic-classification"><span class="header-section-number">3.3</span> Thematic classification</h3>
+<p>We define 18 substantive thematic categories plus a residual <code>Altro</code> category, covering both macro-financial international themes (e.g., NBFI_CredPrivato, Inflazione_Prezzi, Energia_Clima) and domestic Italian topics (e.g., Strutturale_Italiano, Mezzogiorno_Territorio, PNRR_PA). Each riquadro was classified by the LLM with a primary theme, up to two secondary themes, and a transmission channel (internazionale, domestico, istituzionale).</p>
+</section>
+<section id="corpus-statistics" class="level3" data-number="3.4">
+<h3 data-number="3.4" class="anchored" data-anchor-id="corpus-statistics"><span class="header-section-number">3.4</span> Corpus statistics</h3>
+<p>Average 31 riquadri per annual report (range: 21–47). Channel distribution: 78% <em>domestico</em> (290/372), 20% <em>internazionale</em> (76/372), 2% <em>istituzionale</em> (6/372). The three most frequent primary themes are Banche_Credito_Stabilità (<span class="math inline">\(n=110\)</span>, 30%), Lavoro_Mercato (52, 14%), and Inflazione_Prezzi (34, 9%). NBFI_CredPrivato appears 4 times across 12 years; Cyber_Rischio in 3 (a cluster in 2017).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Data year</th>
+<th style="text-align: right;">2014</th>
+<th style="text-align: right;">2015</th>
+<th style="text-align: right;">2016</th>
+<th style="text-align: right;">2017</th>
+<th style="text-align: right;">2018</th>
+<th style="text-align: right;">2019</th>
+<th style="text-align: right;">2020</th>
+<th style="text-align: right;">2021</th>
+<th style="text-align: right;">2022</th>
+<th style="text-align: right;">2023</th>
+<th style="text-align: right;">2024</th>
+<th style="text-align: right;">2025</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">Riquadri</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">25</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="sez-lit" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="sez-lit"><span class="header-section-number">4</span> Literature Review</h2>
+<section id="central-bank-communication-and-financial-stability" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="central-bank-communication-and-financial-stability"><span class="header-section-number">4.1</span> Central bank communication and financial stability</h3>
+<p>The literature on central bank communication expanded substantially following the “transparency revolution” of the 1990s <span class="citation" data-cites="woodford2005 blinder2008">(<a href="#ref-woodford2005" role="doc-biblioref">Woodford 2005</a>; <a href="#ref-blinder2008" role="doc-biblioref">Blinder et al.&nbsp;2008</a>)</span>. Blinder et al.&nbsp;<span class="citation" data-cites="blinder2008">(<a href="#ref-blinder2008" role="doc-biblioref">2008</a>)</span>, in their comprehensive survey, document the shift from “constructive ambiguity” to transparency as the dominant paradigm, showing that communication reduces information asymmetries and anchors expectations at lower cost than policy action alone. However, this literature focuses almost exclusively on <em>monetary policy</em> communication — interest rate decisions, inflation reports, press conference transcripts.</p>
+<p>Financial stability communication has received comparatively less theoretical attention. <span class="citation" data-cites="cihak2006">Čihák (<a href="#ref-cihak2006" role="doc-biblioref">2006</a>)</span> pioneered systematic analysis of FSR content, comparing scope, format, and publication frequency across 47 central banks. He found substantial heterogeneity in analytical depth and the degree to which FSRs engage with systemic (as opposed to institution-specific) risks, noting that the UK and Sweden were early leaders in systemic risk communication. <span class="citation" data-cites="hansen2016">Hansen and McMahon (<a href="#ref-hansen2016" role="doc-biblioref">2016</a>)</span> applied topic models to FOMC transcripts, decomposing CB communication into “forward guidance” and “economic conditions” components and finding that the former has stronger macroeconomic effects — an indication that <em>what</em> the CB chooses to highlight matters independently of its quantitative assessment.</p>
+<p>The closest parallel to our study is <span class="citation" data-cites="nagy2022suerf">Nagy (<a href="#ref-nagy2022suerf" role="doc-biblioref">2022</a>)</span>, who applies text analysis to FSR executive summaries to track how macroprudential communication evolves in response to international risk cycles. <span class="citation" data-cites="park2024suerf">Park et al.&nbsp;(<a href="#ref-park2024suerf" role="doc-biblioref">2024</a>)</span> use transformer models to map the semantic content of CB communications, finding clustering by institutional role — with BIS as outlier and strong regional similarity among European NCBs. Our paper extends this strand in two ways: by focusing on <em>annual reports</em> rather than FSRs, and by constructing an explicitly <em>predictive</em> (rather than descriptive) model of agenda transmission.</p>
+</section>
+<section id="nlp-and-llm-applications-in-central-banking" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="nlp-and-llm-applications-in-central-banking"><span class="header-section-number">4.2</span> NLP and LLM applications in central banking</h3>
+<p><span class="citation" data-cites="biscblm2024">Bank for International Settlements (<a href="#ref-biscblm2024" role="doc-biblioref">2024</a>)</span> demonstrate that language models pre-trained on CB corpora outperform general-purpose models in extracting macrofinancial signals from central bank texts. Their CB-LM framework shows that domain-specific fine-tuning is most valuable for classification tasks with technical vocabulary — precisely the use case we face with <em>riquadri</em> titles. However, they also show diminishing returns from fine-tuning when the task is structured classification (as opposed to generation or summarization).</p>
+<p>We use Ollama qwen2.5:7b-instruct rather than a fine-tuned model for local execution and low infrastructure cost. As reported in <a href="#sez-results" class="quarto-xref">Section&nbsp;6</a>, replacing keyword labels with its taxonomy changes the downstream mean F1 from 0.54 to 0.60. Without a human-labelled test set, this result does not establish that the model is an accurate classifier or that prompt design is preferable to domain adaptation.</p>
+</section>
+<section id="institutional-isomorphism-and-agenda-diffusion" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="institutional-isomorphism-and-agenda-diffusion"><span class="header-section-number">4.3</span> Institutional isomorphism and agenda diffusion</h3>
+<p><span class="citation" data-cites="dimaggio1983">DiMaggio and Powell (<a href="#ref-dimaggio1983" role="doc-biblioref">1983</a>)</span> distinguish three mechanisms of institutional isomorphism in organizational fields: <em>coercive</em> (regulatory mandate), <em>mimetic</em> (uncertainty-driven imitation), and <em>normative</em> (professional socialization). All three are operative in the BdI context.</p>
+<p><em>Coercive isomorphism</em> operates through BdI’s direct participation in ESRB, SSM, FSB workstreams, and BCBS committees, creating formal obligations to adopt shared risk frameworks within defined review cycles. <em>Mimetic isomorphism</em> operates when a systemic risk designated by the FSB gains acceptance at the ESRB level: the cost of non-adoption for a national central bank — both reputational and practical — becomes high. <em>Normative isomorphism</em> operates through the professional circulation of economists and supervisors through BIS working groups and ESRB technical committees, homogenizing analytical frameworks and vocabulary.</p>
+<p>Our double-filter model formalizes the coercive + mimetic channel: the threshold for BdI riquadro treatment is reached when a theme has been validated by at least one consolidator institution (FSB/ECB/BIS/ESRB), which is itself downstream of laboratory institutions. The normative channel explains the <em>lag</em>: professional consensus takes time to crystallize into editorial decisions.</p>
+</section>
+<section id="scope-relative-to-related-work" class="level3" data-number="4.4">
+<h3 data-number="4.4" class="anchored" data-anchor-id="scope-relative-to-related-work"><span class="header-section-number">4.4</span> Scope relative to related work</h3>
+<p>Our approach differs from topic-model-based change detection <span class="citation" data-cites="blei2003latent">(<a href="#ref-blei2003latent" role="doc-biblioref">Blei et al.&nbsp;2003</a>)</span> in that we build a <em>prediction matrix</em> from exogenous institutional sources rather than discovering topics endogenously from the target corpus. This is closer to signal-based forecasting than to text mining: the time-indexed prediction is built from external institutional signals and motivated by a transmission mechanism rather than by target-corpus topic co-occurrence. The retrospective design does not establish that mechanism as causal.</p>
+<hr>
+</section>
+</section>
+<section id="sez-method" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="sez-method"><span class="header-section-number">5</span> Formal Methodology</h2>
+<section id="corpus-formalization" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="corpus-formalization"><span class="header-section-number">5.1</span> Corpus formalization</h3>
+<p>Let <span class="math inline">\(\mathcal{T} = \{2014, 2015, \ldots, 2025\}\)</span> denote the set of annual report years. For each year <span class="math inline">\(t \in \mathcal{T}\)</span>, denote the set of riquadri as <span class="math inline">\(\mathcal{R}_t = \{r_{i,t}\}_{i=1}^{n_t}\)</span>, where <span class="math inline">\(r_{i,t}\)</span> is the <span class="math inline">\(i\)</span>-th riquadro identified by its title string. The full corpus is <span class="math inline">\(\mathcal{R} = \bigcup_{t \in \mathcal{T}} \mathcal{R}_t\)</span> with <span class="math inline">\(|\mathcal{R}| = 372\)</span>.</p>
+</section>
+<section id="llm-thematic-classification" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="llm-thematic-classification"><span class="header-section-number">5.2</span> LLM thematic classification</h3>
+<p>Let <span class="math inline">\(\mathcal{K} = \{k_1, \ldots, k_{19}\}\)</span> be the predefined taxonomy (18 substantive categories and one residual category) and <span class="math inline">\(\mathcal{C} = \{\text{internazionale},\, \text{domestico},\, \text{istituzionale}\}\)</span> the set of transmission channels.</p>
+<p>Define the LLM classifier:</p>
+<p><span class="math display">\[f_\theta: \mathcal{T}_{\text{title}} \to \mathcal{K} \times 2^\mathcal{K} \times \mathcal{C}\]</span></p>
+<p>where <span class="math inline">\(\theta\)</span> denotes the model parameters (Ollama qwen2.5:7b-instruct, temperature <span class="math inline">\(T = 0\)</span>). For riquadro <span class="math inline">\(r_{i,t}\)</span>:</p>
+<p><span class="math display">\[f_\theta\!\left(\text{title}(r_{i,t})\right) = \left(k^*,\, \mathcal{K}^{\text{sec}},\, c^*\right)\]</span></p>
+<p>where <span class="math inline">\(k^* \in \mathcal{K}\)</span> is the primary theme, <span class="math inline">\(\mathcal{K}^{\text{sec}} \subseteq \mathcal{K}\)</span> the secondary themes (<span class="math inline">\(|\mathcal{K}^{\text{sec}}| \leq 2\)</span>), and <span class="math inline">\(c^* \in \mathcal{C}\)</span> the channel. Structured JSON output is enforced through a system prompt containing descriptions of all 19 categories.</p>
+<p>The LLM classifier is implemented via a structured inference loop with three automatic retries on malformed JSON responses. Temperature zero reduces sampling variation but does not guarantee bit-for-bit determinism across inference engines or hardware.</p>
+</section>
+<section id="watchlist-corpus-and-institutional-signals" class="level3" data-number="5.3">
+<h3 data-number="5.3" class="anchored" data-anchor-id="watchlist-corpus-and-institutional-signals"><span class="header-section-number">5.3</span> Watchlist corpus and institutional signals</h3>
+<p>Define the <em>institutional watchlist</em> <span class="math inline">\(\mathcal{W}\)</span> as the collection of 107 documents assembled in the project and organized analytically into two tiers:</p>
+<ul>
+<li><em>Agenda-setting tier</em> <span class="math inline">\(\mathcal{L}\)</span>: chiefly Bank of England (FPC/FSR), Federal Reserve (FSR) and Banque de France (RSF), supplemented by other national-central-bank publications in the watchlist.</li>
+<li><em>Consolidator tier</em> <span class="math inline">\(\mathcal{C}^{\text{inst}}\)</span>: FSB (NBFI Monitor, thematic reports), ECB (FSR), BIS (Annual Economic Report), ESRB (Risk Dashboard, technical notes).</li>
+</ul>
+<p>For theme <span class="math inline">\(k \in \mathcal{K}\)</span> and year <span class="math inline">\(t\)</span>, define binary institutional signals:</p>
+<p><span class="math display">\[S^{\mathcal{L}}_{k,t} = \mathbb{1}\!\left[\text{theme } k \text{ explicitly treated in } \mathcal{L} \text{ during calendar year } t\right]\]</span></p>
+<p><span class="math display">\[S^{\mathcal{C}}_{k,t} = \mathbb{1}\!\left[\text{theme } k \text{ explicitly treated in } \mathcal{C}^{\text{inst}} \text{ during calendar year } t\right]\]</span></p>
+<p>where “explicitly treated” is coded manually from titles, abstracts, executive summaries and relevant sections, applying a conservative threshold (dedicated section or prominent treatment, not an incidental reference).</p>
+</section>
+<section id="the-double-filter-transmission-model" class="level3" data-number="5.4">
+<h3 data-number="5.4" class="anchored" data-anchor-id="the-double-filter-transmission-model"><span class="header-section-number">5.4</span> The double-filter transmission model</h3>
+<p>The hypothesized transmission chain allows an indicative total lag of 6–30 months, composed of two potentially overlapping stages:</p>
+<ol type="1">
+<li><p><em>Publication lag</em> <span class="math inline">\(\delta_L \approx 6\text{--}12\)</span> months: time between a laboratory-tier publication addressing theme <span class="math inline">\(k\)</span> and its formal adoption into an FSB/ECB/BIS consolidator document.</p></li>
+<li><p><em>Adoption lag</em> <span class="math inline">\(\delta_C \approx 6\text{--}18\)</span> months: time between consolidator-tier treatment and BdI’s editorial decision to commission a riquadro on that theme.</p></li>
+</ol>
+<p><strong>Definition (Double Filter).</strong> A theme is eligible for prediction when it is macrofinancially relevant and has received prominent treatment by at least one institutional consolidator. The annual binary prediction is coded as:</p>
+<p><span class="math display">\[\hat{P}_{k,t} = \mathbb{1}[k \text{ passes the relevance filter at } t] \cdot \mathbb{1}[S^{\mathcal{C}}_{k,t-1}=1]\]</span></p>
+<p>In implementation, the matrices for 2021–2025 were manually reconstructed from documents available by the end of <span class="math inline">\(t-1\)</span>. This is a retrospective, time-indexed exercise, not a preregistered out-of-sample forecast. Agenda-setting signals at <span class="math inline">\(t-2\)</span> inform interpretation and the 2027 scenarios but are not a separate regressor in the reported backtest.</p>
+<p><strong>Predicted set:</strong></p>
+<p><span class="math display">\[\hat{\mathcal{A}}_t = \{k \in \mathcal{K}_{\text{eval}} : \hat{P}_{k,t} = 1\}\]</span></p>
+<p>where <span class="math inline">\(\mathcal{K}_{\text{eval}}=\mathcal{K}\setminus \{\text{Strutturale\_Italiano},\text{Istituzionale\_Legale},\text{Altro}\}\)</span>, matching the released code. This evaluation universe is broader than the international channel label and includes themes such as labour, public debt and the PNRR when the annual signal matrix marks them as internationally salient.</p>
+</section>
+<section id="actual-theme-set" class="level3" data-number="5.5">
+<h3 data-number="5.5" class="anchored" data-anchor-id="actual-theme-set"><span class="header-section-number">5.5</span> Actual theme set</h3>
+<p>From the LLM classification, the <em>actual theme presence</em> for year <span class="math inline">\(t\)</span> is:</p>
+<p><span class="math display">\[A_{k,t} = \mathbb{1}\!\left[\exists\, i \text{ s.t. } k \text{ is a primary or secondary theme of } r_{i,t}\right]\]</span></p>
+<p>The actual set for evaluation is <span class="math inline">\(\mathcal{A}^+_t = \{k \in \mathcal{K}_{\text{eval}} : A_{k,t} = 1\}\)</span>.</p>
+</section>
+<section id="evaluation-protocol" class="level3" data-number="5.6">
+<h3 data-number="5.6" class="anchored" data-anchor-id="evaluation-protocol"><span class="header-section-number">5.6</span> Evaluation protocol</h3>
+<p>Standard information retrieval metrics applied per evaluation year <span class="math inline">\(t \in \mathcal{T}_{\text{eval}} = \{2021, 2022, 2023, 2024, 2025\}\)</span>:</p>
+<p><span class="math display">\[\text{Precision}_t = \frac{|\hat{\mathcal{A}}_t \cap \mathcal{A}^+_t|}{|\hat{\mathcal{A}}_t|}, \quad \text{Recall}_t = \frac{|\hat{\mathcal{A}}_t \cap \mathcal{A}^+_t|}{|\mathcal{A}^+_t|}, \quad F1_t = \frac{2 \cdot \text{Precision}_t \cdot \text{Recall}_t}{\text{Precision}_t + \text{Recall}_t}\]</span></p>
+<p>Mean metrics reported over <span class="math inline">\(\mathcal{T}_{\text{eval}}\)</span>.</p>
+<p><strong>Baseline (v1)</strong>: keyword-based classification with manually crafted thematic lexicons, evaluated under the same protocol. The comparison between v1 and v2 holds the prediction matrix fixed, but it does not measure classifier accuracy without an independently human-coded reference set.</p>
+<p><strong>Identification note.</strong> The source documents in <span class="math inline">\(\mathcal{W}\)</span> are external to the target corpus, but document exogeneity does not make retrospective manual coding independent of researcher knowledge. The exercise estimates historical association and forecast feasibility; it does not identify a causal effect of international publications on BdI editorial decisions. The document inventory and annual coding are documented in the project files.</p>
+<hr>
+</section>
+</section>
+<section id="sez-results" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="sez-results"><span class="header-section-number">6</span> Results</h2>
+<section id="thematic-distribution-and-macro-phases" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="thematic-distribution-and-macro-phases"><span class="header-section-number">6.1</span> Thematic distribution and macro-phases</h3>
+<p><img src="figure/fig01.png" class="figure-img" role="img" width="891" height="517"></p>
+<p>Figure&nbsp;1: Selected themes by year, BdI riquadri 2014–2025. Cells count primary-theme assignments; domestic/structural, Covid and residual categories are omitted for readability.</p>
+<p>The heatmap suggests four descriptive phases in BdI’s analytical agenda:</p>
+<ul>
+<li><strong>2014–2018</strong> (<em>post-crisis consolidation</em>): dominated by banking stability, labour market reform, and public finances in the context of euro-area recovery.</li>
+<li><strong>2019–2020</strong> (<em>pandemic concentration</em>): fewer boxes and a sharp narrowing of the agenda around the health and economic emergency.</li>
+<li><strong>2021–2022</strong> (<em>shock absorption</em>): Covid-19 after-effects, energy crisis, inflation surge, and war in Ukraine produce the most predictable year (2022, F1 = 0.76).</li>
+<li><strong>2023–2025</strong> (<em>transition + emerging risks</em>): geopolitics, AI, defence industry and climate coexist; NBFI remains sparse despite strong international attention.</li>
+</ul>
+</section>
+<section id="channel-distribution" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="channel-distribution"><span class="header-section-number">6.2</span> Channel distribution</h3>
+<p><img src="figure/fig02.png" class="figure-img" role="img" width="662" height="325"></p>
+<p>Figure&nbsp;2: Distribution of 372 BdI riquadri (2014–2025) by LLM-assigned transmission channel.</p>
+<p>The 78%/20%/2% channel split is a useful descriptive result. It bounds the substantive ambition of the transmission hypothesis: approximately four in five BdI riquadri address Italian structural or institutional topics (labour markets, public finances, regional disparities, monetary policy transmission) that are generated by BdI’s domestic mandate rather than international transmission. The double-filter model targets the remaining international component. Because the channel itself is model-assigned and has not been validated against human labels, the 20% estimate should not be read as a known population parameter.</p>
+</section>
+<section id="backtesting-20212025" class="level3" data-number="6.3">
+<h3 data-number="6.3" class="anchored" data-anchor-id="backtesting-20212025"><span class="header-section-number">6.3</span> Backtesting 2021–2025</h3>
+<p><img src="figure/fig03.png" class="figure-img" role="img" width="758" height="374"></p>
+<p>Figure&nbsp;3: Backtesting 2021–2025: Precision, Recall, F1 by year. LLM classification (qwen2.5:7b-instruct, v2) vs keyword matching (v1, dashed). Macro-financial international themes only.</p>
+<pre><code>|    Year |   TP |   FP |   FN |   Precision |   Recall |   F1 |
+|--------:|-----:|-----:|-----:|------------:|---------:|-----:|
+| 2021.00 | 5.00 | 2.00 | 4.00 |        0.71 |     0.56 | 0.63 |
+| 2022.00 | 8.00 | 2.00 | 3.00 |        0.80 |     0.73 | 0.76 |
+| 2023.00 | 5.00 | 2.00 | 5.00 |        0.71 |     0.50 | 0.59 |
+| 2024.00 | 4.00 | 3.00 | 6.00 |        0.57 |     0.40 | 0.47 |
+| 2025.00 | 5.00 | 4.00 | 4.00 |        0.56 |     0.56 | 0.56 |</code></pre>
+<p>Table&nbsp;1: Per-year metrics using LLM classification (v2). TP/FP/FN are computed on the evaluation taxonomy defined in Section 5.</p>
+<p>Using the LLM classification (v2), the model achieves mean F1 = 0.60, 0.06 above the result obtained with keyword classification (v1). This comparison concerns downstream forecast scores, not standalone classifier accuracy. The difference is asymmetric: v2 gains most in 2021 (+0.32), where keyword rules fail on emerging NBFI vocabulary (“fondi alternativi chiusi”), and in 2024 (+0.12), where geopolitics/defence terminology resists keyword matching. Conversely, v1 outperforms v2 in 2022 (+0.08), a year with high lexical overlap between keywords and riquadri titles.</p>
+</section>
+<section id="false-positive-and-false-negative-analysis" class="level3" data-number="6.4">
+<h3 data-number="6.4" class="anchored" data-anchor-id="false-positive-and-false-negative-analysis"><span class="header-section-number">6.4</span> False positive and false negative analysis</h3>
+<p><strong>NBFI/Private credit (FP in 2022–2025).</strong> The FSB has escalated private credit and NBFI vulnerabilities from “emerging risk” (2020–2021) to “core monitoring” (2022–2025) and published dedicated thematic reports in 2025–2026 <span class="citation" data-cites="fsb2026private">(<a href="#ref-fsb2026private" role="doc-biblioref">Financial Stability Board 2025</a>)</span>. Despite this, BdI produced only one NBFI-classified riquadro (2021: “fondi di investimento alternativi chiusi”) in the 2014–2025 period. One possible interpretation is a longer institutional lag associated with BdI’s bank-centred analytical focus. A competing interpretation is simpler: the signal rule may overpredict NBFI. The prospective 2027 forecast provides a way to discriminate between these accounts (see <a href="#sez-discussion" class="quarto-xref">Section&nbsp;7</a>).</p>
+<p><strong>Domestic themes as a source of false negatives.</strong> Labour, territorial, PNRR and public-finance themes appear regularly in BdI riquadri but are only partly captured by international signals. This is consistent with the proposed scope condition, but does not independently validate the channel taxonomy.</p>
+<p><strong>2022 Geopolitica_Dazi FP.</strong> The riquadro “L’autonomia strategica del settore produttivo italiano” was predicted as geopolitics/trade (international signal from FSB, ECB, BdF all flagging geo-economic fragmentation) but classified by the LLM as Strutturale_Italiano (correct: the framing is domestic industrial policy). This reflects genuine conceptual proximity between geo-economic fragmentation (international channel) and strategic autonomy (Italian industrial policy channel) and is the main source of model ambiguity in 2022.</p>
+<p><strong>2022 as benchmark year.</strong> The war in Ukraine, energy crisis, and crypto market collapse in 2022 generated simultaneous first-tier and second-tier signals across the monitored institutions. The resulting F1 = 0.76 is the highest value in the five-year evaluation window. A longer series would be needed to call it a performance ceiling.</p>
+<hr>
+</section>
+</section>
+<section id="sez-discussion" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="sez-discussion"><span class="header-section-number">7</span> Discussion and Predictions for 2027</h2>
+<section id="model-interpretation" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="model-interpretation"><span class="header-section-number">7.1</span> Model interpretation</h3>
+<p>The double-filter model operationalizes a directional hypothesis: international risk frameworks precede related treatment in BdI’s Annual Report. Membership of common committees offers a plausible mechanism, but the present design cannot observe internal editorial decisions or distinguish transmission from common responses to the same underlying shocks.</p>
+<p>The <em>Piano Strategico 2026–2028</em> <span class="citation" data-cites="bancaditalia2026piano">(<a href="#ref-bancaditalia2026piano" role="doc-biblioref">Banca d’Italia 2026a</a>)</span> introduces a third signal: declared institutional priorities create a structural advantage in the editorial pipeline independent of the international transmission channel. Cyber resilience and digital/fintech are the clearest examples: even if the international signal were absent, their inclusion in the strategic plan makes riquadri on these themes likely.</p>
+</section>
+<section id="persistent-false-positives-and-the-accumulation-hypothesis" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="persistent-false-positives-and-the-accumulation-hypothesis"><span class="header-section-number">7.2</span> Persistent false positives and the accumulation hypothesis</h3>
+<p>When the model produces a false positive for <span class="math inline">\(k\)</span> years in succession, the standard interpretation is prediction failure. We propose an alternative: <strong>institutional lag accumulation</strong>. Under this hypothesis, a theme that passes the consolidator-tier filter but does not appear in BdI riquadri may have cleared the international agenda but not yet BdI’s editorial threshold. Each additional consolidator publication would then add pressure without immediate editorial treatment. This interpretation is a hypothesis, not a rule: persistent false positives may instead reveal an overly broad signal definition.</p>
+<p>The historical precedent supports this interpretation: the cyber cluster of 2017 (3 riquadri in a single year) arrived approximately 2–3 years after the first FSB/BIS framework publications on operational/cyber risk (2014–2015). The NBFI FP series (2022–2025, four consecutive years) is longer than the cyber precedent. Its inclusion below is therefore a deliberately high-risk prospective test of the accumulation account.</p>
+</section>
+<section id="predictions-for-the-2027-annual-report" class="level3" data-number="7.3">
+<h3 data-number="7.3" class="anchored" data-anchor-id="predictions-for-the-2027-annual-report"><span class="header-section-number">7.3</span> Predictions for the 2027 Annual Report</h3>
+<p>The percentages below are structured judgement scores derived from source convergence, recency, historical lag and BdI strategic alignment. They are not estimated probabilities and have not been calibrated against a historical forecast distribution.</p>
+<table class="caption-top table">
+<caption>Scenario scores for the 2027 BdI Annual Report (heuristic, uncalibrated).</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Theme</th>
+<th style="text-align: center;">Confidence</th>
+<th style="text-align: left;">Determining sources</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Private Credit / NBFI</strong></td>
+<td style="text-align: center;"><strong>97%</strong></td>
+<td style="text-align: left;"><span class="citation" data-cites="fed2026fsr">Federal Reserve (<a href="#ref-fed2026fsr" role="doc-biblioref">2026</a>)</span>; <span class="citation" data-cites="bdf2025rsf">Banque de France (<a href="#ref-bdf2025rsf" role="doc-biblioref">2025</a>)</span>; <span class="citation" data-cites="fsb2026private">Financial Stability Board (<a href="#ref-fsb2026private" role="doc-biblioref">2025</a>)</span>; <span class="citation" data-cites="eba2024rar">European Banking Authority (<a href="#ref-eba2024rar" role="doc-biblioref">2024</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Financial fragmentation</strong></td>
+<td style="text-align: center;"><strong>80%</strong></td>
+<td style="text-align: left;"><span class="citation" data-cites="bceesrb2026">European Central Bank and European Systemic Risk Board (<a href="#ref-bceesrb2026" role="doc-biblioref">2026</a>)</span>; <span class="citation" data-cites="boj2026fsr">Bank of Japan (<a href="#ref-boj2026fsr" role="doc-biblioref">2026</a>)</span>; <span class="citation" data-cites="fed2026fsr">Federal Reserve (<a href="#ref-fed2026fsr" role="doc-biblioref">2026</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Tokenisation / stablecoins</strong></td>
+<td style="text-align: center;"><strong>80%</strong></td>
+<td style="text-align: left;"><span class="citation" data-cites="bdf2025rsf">Banque de France (<a href="#ref-bdf2025rsf" role="doc-biblioref">2025</a>)</span>; <span class="citation" data-cites="bis2025aer">Bank for International Settlements (<a href="#ref-bis2025aer" role="doc-biblioref">2025</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>BoJ carry / EM volatility</strong></td>
+<td style="text-align: center;"><strong>75%</strong></td>
+<td style="text-align: left;"><span class="citation" data-cites="boj2026fsr">Bank of Japan (<a href="#ref-boj2026fsr" role="doc-biblioref">2026</a>)</span> (4 post-August 2024 editions)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>US tariffs / trade protectionism</strong></td>
+<td style="text-align: center;"><strong>72%</strong></td>
+<td style="text-align: left;"><span class="citation" data-cites="bdf2025rsf">Banque de France (<a href="#ref-bdf2025rsf" role="doc-biblioref">2025</a>)</span>; <span class="citation" data-cites="fed2026fsr">Federal Reserve (<a href="#ref-fed2026fsr" role="doc-biblioref">2026</a>)</span>; <span class="citation" data-cites="boj2026fsr">Bank of Japan (<a href="#ref-boj2026fsr" role="doc-biblioref">2026</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>AI in financial markets</strong></td>
+<td style="text-align: center;"><strong>70%</strong></td>
+<td style="text-align: left;"><span class="citation" data-cites="boj2026fsr">Bank of Japan (<a href="#ref-boj2026fsr" role="doc-biblioref">2026</a>)</span>; <span class="citation" data-cites="fed2026fsr">Federal Reserve (<a href="#ref-fed2026fsr" role="doc-biblioref">2026</a>)</span>; <span class="citation" data-cites="bancaditalia2026piano">Banca d’Italia (<a href="#ref-bancaditalia2026piano" role="doc-biblioref">2026a</a>)</span>; <span class="citation" data-cites="biscblm2024">Bank for International Settlements (<a href="#ref-biscblm2024" role="doc-biblioref">2024</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Systemic cyber risk</strong></td>
+<td style="text-align: center;"><strong>65%</strong></td>
+<td style="text-align: left;"><span class="citation" data-cites="bancaditalia2026piano">Banca d’Italia (<a href="#ref-bancaditalia2026piano" role="doc-biblioref">2026a</a>)</span>; 2017 cluster; BoE FSR; <span class="citation" data-cites="bdf2025rsf">Banque de France (<a href="#ref-bdf2025rsf" role="doc-biblioref">2025</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Commercial real estate (CRE)</strong></td>
+<td style="text-align: center;"><strong>55%</strong></td>
+<td style="text-align: left;"><span class="citation" data-cites="fed2026fsr">Federal Reserve (<a href="#ref-fed2026fsr" role="doc-biblioref">2026</a>)</span>; <span class="citation" data-cites="bdf2025rsf">Banque de France (<a href="#ref-bdf2025rsf" role="doc-biblioref">2025</a>)</span>; <span class="citation" data-cites="eba2024rar">European Banking Authority (<a href="#ref-eba2024rar" role="doc-biblioref">2024</a>)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Private Credit / NBFI (97%).</strong> The FSB has escalated from “emerging risk” to “core monitoring” and published a dedicated report <span class="citation" data-cites="fsb2026private">(<a href="#ref-fsb2026private" role="doc-biblioref">Financial Stability Board 2025</a>)</span>. The Fed <span class="citation" data-cites="fed2026fsr">(<a href="#ref-fed2026fsr" role="doc-biblioref">Federal Reserve 2026</a>)</span> and BdF <span class="citation" data-cites="bdf2025rsf">(<a href="#ref-bdf2025rsf" role="doc-biblioref">Banque de France 2025</a>)</span> both treat private credit as a near-term systemic concern. The EBA <span class="citation" data-cites="eba2024rar">(<a href="#ref-eba2024rar" role="doc-biblioref">European Banking Authority 2024</a>)</span> includes NBFI exposure in its risk heat map. Four sources from different institutional tiers converge within two publication cycles, producing the highest heuristic score in the scenario set.</p>
+<p><strong>AI in financial markets (70%).</strong> Seventeen riquadri classified as IA_Digitale_Fintech across 2014–2025, with increasing frequency in 2023–2025. BIS WP 1215 <span class="citation" data-cites="biscblm2024">(<a href="#ref-biscblm2024" role="doc-biblioref">Bank for International Settlements 2024</a>)</span> signals the consolidation of AI risk as a systemic concern at the analytical infrastructure level. ECB FSR (2025) includes AI-related vulnerabilities. BdI Piano Strategico 2026–2028 explicitly names fintech/digital as a strategic axis — the strongest domestic signal available.</p>
+<p><strong>Cyber risk (65%).</strong> The 2017 cluster (3 riquadri on ICT/operational risk) demonstrated that BdI <em>can</em> produce cyber riquadri when the signal arrives. BdI Piano Strategico 2026–2028 explicitly names cyber resilience as a strategic priority — a first. BoE FPC, ECB, and BIS all escalated cyber to core FSR priority in 2024–2025. The combination of historical precedent, strategic declaration, and international signal gives 65%.</p>
+</section>
+<section id="limitations" class="level3" data-number="7.4">
+<h3 data-number="7.4" class="anchored" data-anchor-id="limitations"><span class="header-section-number">7.4</span> Limitations</h3>
+<p>The prediction matrix is manually coded: the coding of <span class="math inline">\(S^{\mathcal{C}}_{k,t}\)</span> from 107 documents involves judgment calls at the margin, particularly for themes that receive incidental rather than dedicated treatment. A future version could automate signal extraction using the CB-LM framework <span class="citation" data-cites="biscblm2024">(<a href="#ref-biscblm2024" role="doc-biblioref">Bank for International Settlements 2024</a>)</span>.</p>
+<p>The model’s substantive scope is the <em>internazionale</em> channel (20% of riquadri under the LLM assignment), although the released evaluation taxonomy is broader. It cannot predict domestic agenda items driven by Italian-specific developments (labour market reform, regional policy, PNRR implementation).</p>
+<p>No human-labelled validation sample is available for either themes or channels. Consequently, the comparison with keyword matching measures sensitivity of the downstream forecast score to classification method, not classification quality.</p>
+<p>The evaluation period (2021–2025, <span class="math inline">\(n=5\)</span> years) is short for robust statistical inference. The F1 scores should be interpreted as proof-of-concept performance estimates, not stable population parameters.</p>
+<hr>
+</section>
+</section>
+<section id="conclusion" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">8</span> Conclusion</h2>
+<p>We have presented a systematic analysis of 372 <em>riquadri</em> from Banca d’Italia Annual Reports (2014–2025). The results suggest that the international component of BdI’s editorial agenda may be partly forecastable by monitoring a multi-institutional watchlist. The double-filter transmission model, formalized with explicit lag structure and evaluated via standard IR metrics, achieves F1 = 0.60 mean (peak 0.76 in 2022) using LLM-based thematic classification.</p>
+<p>Three methodological results are noteworthy. First, use of the LLM taxonomy (qwen2.5:7b-instruct at <span class="math inline">\(T=0\)</span>) raises the downstream mean F1 relative to keyword matching, especially for terminology not covered by the lexicon. Second, the channel taxonomy makes the model’s scope explicit. Third, the accumulation hypothesis turns persistent false positives into a prospective and falsifiable test: continued non-appearance of NBFI will count against, not for, the model.</p>
+<p>The 2027 scores are uncalibrated scenario rankings, not estimated probabilities. They will be verifiable when the BdI Annual Report for data year 2026 is published in May 2027. The workflow is documented and potentially transferable to other national central banks within the international financial stability network. Future extensions should add double-coded human labels, automate or preregister watchlist signal coding, and test the model on other G10 NCBs to assess whether the transmission architecture described here is specific to BdI or characteristic of European NCBs more broadly.</p>
+<hr>
+</section>
+<section id="data-and-code-availability" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="data-and-code-availability"><span class="header-section-number">9</span> Data and code availability</h2>
+<p>The accompanying deposit contains the title-level corpus (<code>OUT/riquadri_dataset.csv</code>), the cached LLM classifications (<code>OUT/riquadri_classified_llm.csv</code>), annual evaluation results (<code>OUT/backtest_v2_metrics.csv</code>), the extraction scripts and both backtesting implementations. The cached classifications permit reproduction of all tables and figures without rerunning the language model. Rerunning classification requires a local Ollama service and <code>qwen2.5:7b-instruct</code>; exact outputs may vary with model and runtime versions. The paper and released project materials are licensed under CC BY 4.0 unless a bundled source states otherwise.</p>
+<hr>
+</section>
+<section id="transparency-on-the-use-of-artificial-intelligence" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="transparency-on-the-use-of-artificial-intelligence"><span class="header-section-number">10</span> Transparency on the use of artificial intelligence</h2>
+<p>The use of generative artificial intelligence tools is explicitly declared as part of the workflow followed in preparing this document. Such tools were employed to support reading, synthesis, argumentative reorganization, and textual revision, always within a process fully controlled by the author.</p>
+<p>Responsibility for the sources used, analyses conducted, verifications performed, interpretations proposed, and conclusions drawn remains entirely with the author. Artificial intelligence was used as a cognitive and editorial support environment, not as a primary source, autonomous author, or substitute for critical judgement.</p>
+</section>
+<div id="quarto-appendix" class="default">
+<section id="quarto-bibliography" class="level2 quarto-appendix-heading" data-number="11">
+<h2 class="quarto-appendix-heading anchored" data-number="11" data-anchor-id="quarto-bibliography"><span class="header-section-number">11</span> References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-bancaditalia2026piano" class="csl-entry" role="listitem">
+Banca d’Italia. 2026a. <em>Piano Strategico 2026–2028</em>. Banca d’Italia. <a href="https://www.bancaditalia.it/chi-siamo/organizzazione/Piano-Strategico-2026-2028.pdf" class="uri">https://www.bancaditalia.it/chi-siamo/organizzazione/Piano-Strategico-2026-2028.pdf</a>.
+</div>
+<div id="ref-bancaditalia2025" class="csl-entry" role="listitem">
+Banca d’Italia. 2026b. <em>Relazione Annuale 2025</em>. Banca d’Italia. <a href="https://www.bancaditalia.it/pubblicazioni/relazione-annuale/" class="uri">https://www.bancaditalia.it/pubblicazioni/relazione-annuale/</a>.
+</div>
+<div id="ref-biscblm2024" class="csl-entry" role="listitem">
+Bank for International Settlements. 2024. <em>CB-LM: Language Models for Central Banking</em>. BIS Working Paper No.&nbsp;1215. Bank for International Settlements. <a href="https://www.bis.org/publ/work1215.htm" class="uri">https://www.bis.org/publ/work1215.htm</a>.
+</div>
+<div id="ref-bis2025aer" class="csl-entry" role="listitem">
+Bank for International Settlements. 2025. <em>Annual Economic Report</em>. Bank for International Settlements. <a href="https://www.bis.org/publ/arpdf/ar2025e.htm" class="uri">https://www.bis.org/publ/arpdf/ar2025e.htm</a>.
+</div>
+<div id="ref-boj2026fsr" class="csl-entry" role="listitem">
+Bank of Japan. 2026. “Financial System Report.” <em>Bank of Japan Financial System Report</em>, April. <a href="https://www.boj.or.jp/en/research/brp/fsr/index.htm" class="uri">https://www.boj.or.jp/en/research/brp/fsr/index.htm</a>.
+</div>
+<div id="ref-bdf2025rsf" class="csl-entry" role="listitem">
+Banque de France. 2025. <em>Revue de La Stabilité Financière</em>. Banque de France. <a href="https://www.banque-france.fr/fr/publications-et-recherche/nos-principales-publications/rapport-sur-la-stabilite-financiere" class="uri">https://www.banque-france.fr/fr/publications-et-recherche/nos-principales-publications/rapport-sur-la-stabilite-financiere</a>.
+</div>
+<div id="ref-blei2003latent" class="csl-entry" role="listitem">
+Blei, David M., Andrew Y. Ng, and Michael I. Jordan. 2003. “Latent Dirichlet Allocation.” <em>Journal of Machine Learning Research</em> 3: 993–1022.
+</div>
+<div id="ref-blinder2008" class="csl-entry" role="listitem">
+Blinder, Alan S., Michael Ehrmann, Marcel Fratzscher, Jakob De Haan, and David-Jan Jansen. 2008. “Central Bank Communication and Monetary Policy: A Survey of Theory and Evidence.” <em>Journal of Economic Literature</em> 46 (4): 910–45. <a href="https://doi.org/10.1257/jel.46.4.910" class="uri">https://doi.org/10.1257/jel.46.4.910</a>.
+</div>
+<div id="ref-cihak2006" class="csl-entry" role="listitem">
+Čihák, Martin. 2006. <em>How Do Central Banks Write on Financial Stability?</em> IMF Working Paper WP/06/163. International Monetary Fund. <a href="https://www.imf.org/external/pubs/ft/wp/2006/wp06163.pdf" class="uri">https://www.imf.org/external/pubs/ft/wp/2006/wp06163.pdf</a>.
+</div>
+<div id="ref-dimaggio1983" class="csl-entry" role="listitem">
+DiMaggio, Paul J., and Walter W. Powell. 1983. “The Iron Cage Revisited: Institutional Isomorphism and Collective Rationality in Organizational Fields.” <em>American Sociological Review</em> 48 (2): 147–60. <a href="https://doi.org/10.2307/2095101" class="uri">https://doi.org/10.2307/2095101</a>.
+</div>
+<div id="ref-eba2024rar" class="csl-entry" role="listitem">
+European Banking Authority. 2024. <em>Risk Assessment Report</em>. European Banking Authority. <a href="https://www.eba.europa.eu/risk-analysis-and-data/risk-assessment-reports" class="uri">https://www.eba.europa.eu/risk-analysis-and-data/risk-assessment-reports</a>.
+</div>
+<div id="ref-bce2025fsr" class="csl-entry" role="listitem">
+European Central Bank. 2025. <em>Financial Stability Review</em>. European Central Bank. <a href="https://www.ecb.europa.eu/press/financial-stability-publications/fsr/html/index.en.html" class="uri">https://www.ecb.europa.eu/press/financial-stability-publications/fsr/html/index.en.html</a>.
+</div>
+<div id="ref-bceesrb2026" class="csl-entry" role="listitem">
+European Central Bank, and European Systemic Risk Board. 2026. <em>Financial Stability Risks from Geo-Economic Fragmentation</em>. European Central Bank / European Systemic Risk Board. <a href="https://www.ecb.europa.eu/pub/financial-stability/" class="uri">https://www.ecb.europa.eu/pub/financial-stability/</a>.
+</div>
+<div id="ref-esrb2026" class="csl-entry" role="listitem">
+European Systemic Risk Board. 2026. <em>ESRB Risk Dashboard</em>. European Systemic Risk Board. <a href="https://www.esrb.europa.eu/pub/rd/html/index.en.html" class="uri">https://www.esrb.europa.eu/pub/rd/html/index.en.html</a>.
+</div>
+<div id="ref-fed2026fsr" class="csl-entry" role="listitem">
+Federal Reserve. 2026. <em>Financial Stability Report</em>. Board of Governors of the Federal Reserve System. <a href="https://www.federalreserve.gov/publications/financial-stability-report.htm" class="uri">https://www.federalreserve.gov/publications/financial-stability-report.htm</a>.
+</div>
+<div id="ref-fsb2026private" class="csl-entry" role="listitem">
+Financial Stability Board. 2025. <em>Global Monitoring Report on Non-Bank Financial Intermediation 2025</em>. Financial Stability Board. <a href="https://www.fsb.org/work-of-the-fsb/financial-innovation-and-structural-change/non-bank-financial-intermediation/" class="uri">https://www.fsb.org/work-of-the-fsb/financial-innovation-and-structural-change/non-bank-financial-intermediation/</a>.
+</div>
+<div id="ref-hansen2016" class="csl-entry" role="listitem">
+Hansen, Stephen, and Michael McMahon. 2016. “Shocking Language: Understanding the Macroeconomic Effects of Central Bank Communication.” <em>Journal of International Economics</em> 99: S114–33. <a href="https://doi.org/10.1016/j.jinteco.2015.12.008" class="uri">https://doi.org/10.1016/j.jinteco.2015.12.008</a>.
+</div>
+<div id="ref-nagy2022suerf" class="csl-entry" role="listitem">
+Nagy, Péter Milán. 2022. <em>Macroprudential Policy Communication: Text Analysis of Financial Stability Report Executive Summaries</em>. SUERF Policy Note. SUERF – The European Money and Finance Forum. <a href="https://www.suerf.org/" class="uri">https://www.suerf.org/</a>.
+</div>
+<div id="ref-park2024suerf" class="csl-entry" role="listitem">
+Park, Hyeonju, Fernando Perez-Cruz, and Hyun Song Shin. 2024. <em>Mapping Central Bank Communication with Artificial Intelligence</em>. SUERF Policy Brief No.&nbsp;1319. SUERF – The European Money and Finance Forum. <a href="https://www.suerf.org/publications/suerf-policy-notes-and-briefs/" class="uri">https://www.suerf.org/publications/suerf-policy-notes-and-briefs/</a>.
+</div>
+<div id="ref-woodford2005" class="csl-entry" role="listitem">
+Woodford, Michael. 2005. <em>Central Bank Communication and Policy Effectiveness</em>. NBER Working Paper No.&nbsp;11898. National Bureau of Economic Research. <a href="https://doi.org/10.3386/w11898" class="uri">https://doi.org/10.3386/w11898</a>.
+</div>
+</div>
+</section>
+<section id="quarto-reuse" class="level2 quarto-appendix-heading" data-number="12">
+<h2 class="quarto-appendix-heading anchored" data-number="12" data-anchor-id="quarto-reuse"><span class="header-section-number">12</span> Reuse</h2>
+<div class="quarto-appendix-contents">
+<div>
+<p><a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a></p>
+</div>
+</div>
+</section>
+</div>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="structured evidence inference, argument mining, analisi istituzionale, ECAF, ICAS, collateral framework, pesatura epistemica, analisi di policy, metodologia grounded">
+<meta name="description" content="This paper introduces structured evidence inference, a pipeline methodology for transforming heterogeneous institutional policy documentation into a multi-layer, computationally auditable evidence structure.">
+
+<title>Structured Evidence Inference: un metodo grounded per l’analisi di documentazione istituzionale – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Structured Evidence Inference: un metodo grounded per l’analisi di documentazione istituzionale – Paolo Volterra">
+<meta property="og:description" content="This paper introduces structured evidence inference, a pipeline methodology for transforming heterogeneous institutional policy documentation into a multi-layer, computationally auditable evidence structure.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2611_StructuredEvidence/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Structured Evidence Inference: un metodo grounded per l’analisi di documentazione istituzionale – Paolo Volterra">
+<meta name="twitter:description" content="This paper introduces structured evidence inference, a pipeline methodology for transforming heterogeneous institutional policy documentation into a multi-layer, computationally auditable evidence structure.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2611_StructuredEvidence/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/in_parole_semplici/"> <i class="bi bi-instagram" role="img" aria-label="Instagram">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#abstract-italiano" id="toc-abstract-italiano" class="nav-link active" data-scroll-target="#abstract-italiano"><span class="header-section-number">1</span> Abstract (Italiano)</a></li>
+  <li><a href="#il-problema-metodologico" id="toc-il-problema-metodologico" class="nav-link" data-scroll-target="#il-problema-metodologico"><span class="header-section-number">2</span> 1. Il problema metodologico</a></li>
+  <li><a href="#la-proposta-structured-evidence-inference" id="toc-la-proposta-structured-evidence-inference" class="nav-link" data-scroll-target="#la-proposta-structured-evidence-inference"><span class="header-section-number">3</span> 2. La proposta: structured evidence inference</a></li>
+  <li><a href="#architettura-della-pipeline" id="toc-architettura-della-pipeline" class="nav-link" data-scroll-target="#architettura-della-pipeline"><span class="header-section-number">4</span> 3. Architettura della pipeline</a>
+  <ul class="collapse">
+  <li><a href="#livello-1-corpus" id="toc-livello-1-corpus" class="nav-link" data-scroll-target="#livello-1-corpus"><span class="header-section-number">4.1</span> 3.1 Livello 1 — Corpus</a></li>
+  <li><a href="#livello-2-retrieval" id="toc-livello-2-retrieval" class="nav-link" data-scroll-target="#livello-2-retrieval"><span class="header-section-number">4.2</span> 3.2 Livello 2 — Retrieval</a></li>
+  <li><a href="#livello-3-claim-extraction" id="toc-livello-3-claim-extraction" class="nav-link" data-scroll-target="#livello-3-claim-extraction"><span class="header-section-number">4.3</span> 3.3 Livello 3 — Claim extraction</a></li>
+  <li><a href="#livello-4-grafo-argomentativo" id="toc-livello-4-grafo-argomentativo" class="nav-link" data-scroll-target="#livello-4-grafo-argomentativo"><span class="header-section-number">4.4</span> 3.4 Livello 4 — Grafo argomentativo</a></li>
+  <li><a href="#livello-5-meta-claim-e-pesatura-epistemica" id="toc-livello-5-meta-claim-e-pesatura-epistemica" class="nav-link" data-scroll-target="#livello-5-meta-claim-e-pesatura-epistemica"><span class="header-section-number">4.5</span> 3.5 Livello 5 — Meta-claim e pesatura epistemica</a></li>
+  <li><a href="#livello-6-temporal-e-causal-reasoning" id="toc-livello-6-temporal-e-causal-reasoning" class="nav-link" data-scroll-target="#livello-6-temporal-e-causal-reasoning"><span class="header-section-number">4.6</span> 3.6 Livello 6 — Temporal e causal reasoning</a></li>
+  </ul></li>
+  <li><a href="#criteri-di-valutazione-del-metodo" id="toc-criteri-di-valutazione-del-metodo" class="nav-link" data-scroll-target="#criteri-di-valutazione-del-metodo"><span class="header-section-number">5</span> 4. Criteri di valutazione del metodo</a></li>
+  <li><a href="#il-caso-ecaficas-come-banco-di-prova" id="toc-il-caso-ecaficas-come-banco-di-prova" class="nav-link" data-scroll-target="#il-caso-ecaficas-come-banco-di-prova"><span class="header-section-number">6</span> 5. Il caso ECAF/ICAS come banco di prova</a>
+  <ul class="collapse">
+  <li><a href="#perché-ecaficas-è-un-test-severo" id="toc-perché-ecaficas-è-un-test-severo" class="nav-link" data-scroll-target="#perché-ecaficas-è-un-test-severo"><span class="header-section-number">6.1</span> 5.1 Perché ECAF/ICAS è un test severo</a></li>
+  <li><a href="#tassonomia-delle-fonti-ecaf" id="toc-tassonomia-delle-fonti-ecaf" class="nav-link" data-scroll-target="#tassonomia-delle-fonti-ecaf"><span class="header-section-number">6.2</span> 5.2 Tassonomia delle fonti ECAF</a></li>
+  <li><a href="#meccanica-operativa-della-mobilizzazione-dei-credit-claims" id="toc-meccanica-operativa-della-mobilizzazione-dei-credit-claims" class="nav-link" data-scroll-target="#meccanica-operativa-della-mobilizzazione-dei-credit-claims"><span class="header-section-number">6.3</span> 5.3 Meccanica operativa della mobilizzazione dei credit claims</a></li>
+  <li><a href="#il-punto-sulle-garanzie-pubbliche" id="toc-il-punto-sulle-garanzie-pubbliche" class="nav-link" data-scroll-target="#il-punto-sulle-garanzie-pubbliche"><span class="header-section-number">6.4</span> 5.4 Il punto sulle garanzie pubbliche</a></li>
+  </ul></li>
+  <li><a href="#risultati-del-test" id="toc-risultati-del-test" class="nav-link" data-scroll-target="#risultati-del-test"><span class="header-section-number">7</span> 6. Risultati del test</a>
+  <ul class="collapse">
+  <li><a href="#applicazione-al-corpus-ecaficas" id="toc-applicazione-al-corpus-ecaficas" class="nav-link" data-scroll-target="#applicazione-al-corpus-ecaficas"><span class="header-section-number">7.1</span> 6.1 Applicazione al corpus ECAF/ICAS</a></li>
+  <li><a href="#applicazione-al-corpus-su-garanzie-pubbliche-e-pmi" id="toc-applicazione-al-corpus-su-garanzie-pubbliche-e-pmi" class="nav-link" data-scroll-target="#applicazione-al-corpus-su-garanzie-pubbliche-e-pmi"><span class="header-section-number">7.2</span> 6.2 Applicazione al corpus su garanzie pubbliche e PMI</a></li>
+  <li><a href="#il-valore-metodologico-dei-risultati" id="toc-il-valore-metodologico-dei-risultati" class="nav-link" data-scroll-target="#il-valore-metodologico-dei-risultati"><span class="header-section-number">7.3</span> 6.3 Il valore metodologico dei risultati</a></li>
+  </ul></li>
+  <li><a href="#discussione" id="toc-discussione" class="nav-link" data-scroll-target="#discussione"><span class="header-section-number">8</span> 7. Discussione</a>
+  <ul class="collapse">
+  <li><a href="#cosa-il-test-dimostra-sul-metodo" id="toc-cosa-il-test-dimostra-sul-metodo" class="nav-link" data-scroll-target="#cosa-il-test-dimostra-sul-metodo"><span class="header-section-number">8.1</span> 7.1 Cosa il test dimostra sul metodo</a></li>
+  <li><a href="#confronto-con-la-sintesi-generativa" id="toc-confronto-con-la-sintesi-generativa" class="nav-link" data-scroll-target="#confronto-con-la-sintesi-generativa"><span class="header-section-number">8.2</span> 7.2 Confronto con la sintesi generativa</a></li>
+  <li><a href="#trasferibilità" id="toc-trasferibilità" class="nav-link" data-scroll-target="#trasferibilità"><span class="header-section-number">8.3</span> 7.3 Trasferibilità</a></li>
+  </ul></li>
+  <li><a href="#limiti-e-agenda-di-ricerca" id="toc-limiti-e-agenda-di-ricerca" class="nav-link" data-scroll-target="#limiti-e-agenda-di-ricerca"><span class="header-section-number">9</span> 8. Limiti e agenda di ricerca</a></li>
+  <li><a href="#conclusione" id="toc-conclusione" class="nav-link" data-scroll-target="#conclusione"><span class="header-section-number">10</span> 9. Conclusione</a></li>
+  <li><a href="#sez-appa" id="toc-sez-appa" class="nav-link" data-scroll-target="#sez-appa"><span class="header-section-number">11</span> Appendice A — Artefatti della pipeline</a></li>
+  <li><a href="#sez-appb" id="toc-sez-appb" class="nav-link" data-scroll-target="#sez-appb"><span class="header-section-number">12</span> Appendice B — Derivazione numerica degli score epistemici (Tabella 2)</a></li>
+  <li><a href="#riferimenti" id="toc-riferimenti" class="nav-link" data-scroll-target="#riferimenti">Riferimenti</a></li>
+  <li><a href="#note" id="toc-note" class="nav-link" data-scroll-target="#note"><span class="header-section-number">13</span> Note</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Structured Evidence Inference: un metodo grounded per l’analisi di documentazione istituzionale</h1>
+<p class="subtitle lead">Validazione sul caso ECAF/ICAS</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Intelligenza artificiale</div>
+    <div class="quarto-category">Dati e metodo</div>
+    <div class="quarto-category">Banche e credito</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    This paper introduces <em>structured evidence inference</em>, a pipeline methodology for transforming heterogeneous institutional policy documentation into a multi-layer, computationally auditable evidence structure.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">17 maggio 2026</p>
+    </div>
+  </div>
+  
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.20254151">10.5281/zenodo.20254151</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>This paper introduces <em>structured evidence inference</em>, a pipeline methodology for transforming heterogeneous institutional policy documentation into a multi-layer, computationally auditable evidence structure. The methodology operates through six sequential levels: corpus selection, semantic retrieval, atomic claim extraction, argumentative graph construction, epistemic weighting of meta-claims, and temporal and causal reasoning. Each level produces a discrete, verifiable output and corrects a specific bias introduced by the preceding step. The Eurosystem Credit Assessment Framework (ECAF) and In-House Credit Assessment Systems (ICAS) are used as a validation case. Results show the method can identify latent argumentative tensions — including a counter-intuitive finding on the epistemic weight of competing meta-claims — that are not visible from sequential document reading.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>structured evidence inference, argument mining, analisi istituzionale, ECAF, ICAS, collateral framework, pesatura epistemica, analisi di policy, metodologia grounded</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Versione citabile su Zenodo, con il PDF: <a href="https://doi.org/10.5281/zenodo.20254151">doi.org/10.5281/zenodo.20254151</a>.</p>
+</div>
+</div>
+</div>
+<section id="abstract-italiano" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="abstract-italiano"><span class="header-section-number">1</span> Abstract (Italiano)</h2>
+<p>Il paper introduce <em>structured evidence inference</em>, una metodologia a pipeline per trasformare documentazione istituzionale eterogenea in una struttura di evidenza multi-livello, computazionalmente auditabile. La metodologia opera attraverso sei livelli sequenziali: selezione del corpus, retrieval semantico, estrazione di claim atomici, costruzione di un grafo argomentativo, pesatura epistemica dei meta-claim, ragionamento temporale e causale. Ogni livello produce un output discreto e verificabile e corregge un bias specifico introdotto dal livello precedente. La tesi centrale è che questo approccio produce analisi istituzionale più tracciabile, verificabile ed epistemicamente onesta rispetto alla sintesi generativa standard. L’Eurosystem Credit Assessment Framework (ECAF) e gli In-House Credit Assessment Systems (ICAS) sono usati come caso di validazione perché combinano complessità regolamentare, pluralità di fonti, claim condizionali, relazioni causali deboli e dipendenza temporale delle evidenze — esattamente le condizioni in cui la sintesi generativa tende a produrre output coerente ma non verificabile.</p>
+<p><strong>Parole chiave</strong>: structured evidence inference, argument mining, analisi istituzionale, ECAF, ICAS, collateral framework, pesatura epistemica, analisi di policy, metodologia grounded.</p>
+<hr>
+</section>
+<section id="il-problema-metodologico" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="il-problema-metodologico"><span class="header-section-number">2</span> 1. Il problema metodologico</h2>
+<p>L’analisi di documentazione istituzionale di policy pone un problema epistemologico che le tecniche di sintesi generativa non risolvono, e che la letteratura sull’analisi del testo affronta solo parzialmente.</p>
+<p>Il problema non è la disponibilità di informazione. Per oggetti regolamentari come il collateral framework dell’Eurosistema, il volume di documentazione primaria è consistente: occasional paper delle banche centrali nazionali, working paper BCE, policy note SUERF, linee guida operative, review periodiche del framework. Il problema è la struttura. I documenti istituzionali si caratterizzano per eterogeneità di registro (tecnico, normativo, descrittivo), variabilità nella densità informativa, ridondanza inter-documento e — soprattutto — presenza di claim condizionali che cambiano di significato al variare del contesto temporale o di policy. Sintetizzare questa documentazione attraverso un modello linguistico generativo produce output coerente, ma non strutturato: il testo risultante non è tracciabile alle fonti, non esplicita le relazioni tra affermazioni di documenti diversi, e non segnala dove l’evidenza è forte, dove è concentrata su poche fonti, e dove è assente.</p>
+<p>Il nodo è epistemologico, non tecnico. Un modello generativo può produrre una sintesi fluida di documentazione ECAF/ICAS che afferma, per esempio, “gli ICAS ampliano la base di collateral disponibile e rafforzano la trasmissione monetaria”. Questa affermazione può essere corretta, ma non è verificabile nel senso rilevante per l’analisi di policy: non è possibile stabilire da quale fonte proviene, se esistono affermazioni contrarie nel corpus, e con quale forza epistemica la tesi è supportata rispetto a tesi alternative. La coerenza del testo generato è una proprietà dell’output, non dell’evidenza sottostante.</p>
+<p>La letteratura sull’<em>argument mining</em> <span class="citation" data-cites="lippi2016 stede2018 lawrence2020">(<a href="#ref-lawrence2020" role="doc-biblioref">Lawrence &amp; Reed, 2020</a>; <a href="#ref-lippi2016" role="doc-biblioref">Lippi &amp; Torroni, 2016</a>; <a href="#ref-stede2018" role="doc-biblioref">Stede &amp; Schneider, 2018</a>)</span> ha sviluppato tecniche per l’identificazione automatica di claim e relazioni argomentative in testi giuridici, scientifici e politici. Lawrence &amp; Reed <span class="citation" data-cites="lawrence2020">(<a href="#ref-lawrence2020" role="doc-biblioref">2020</a>)</span> definiscono l’argument mining come l’identificazione della struttura inferenziale e del ragionamento espresso in linguaggio naturale — una definizione che cattura bene l’obiettivo di livello 3 e 4 della pipeline qui proposta. Tali approcci operano tuttavia principalmente su singoli documenti o su coppie, con l’obiettivo di identificare la struttura argomentativa interna di un testo, non di costruire una rappresentazione integrata dell’evidenza attraverso un corpus multi-fonte. La metodologia qui proposta si distingue per l’obiettivo: non identificare la struttura argomentativa di un documento, ma costruire una rappresentazione computabile dell’evidenza disponibile su una domanda di policy specifica, attraverso fonti eterogenee, con tracciabilità e pesatura epistemica esplicita.</p>
+<p>Sul piano della <em>sintesi dell’evidenza</em>, il metodo è più vicino alla logica della systematic review <span class="citation" data-cites="gough2017">(<a href="#ref-gough2017" role="doc-biblioref">Gough et al., 2017</a>)</span> e della realist synthesis <span class="citation" data-cites="pawson2006">(<a href="#ref-pawson2006" role="doc-biblioref">Pawson, 2006</a>)</span> che alla meta-analisi statistica. Come nelle review sistematiche, l’obiettivo è non tanto misurare un effetto medio ma strutturare l’evidenza disponibile in modo trasparente, riconoscendo esplicitamente dove è robusta, dove è condizionale e dove è assente. A differenza delle review sistematiche standard, tuttavia, il metodo opera su evidenza qualitativa e istituzionale, non su studi con disegno di ricerca omogeneo. La pesatura epistemica per diversità documentale è analoga, in spirito, ai criteri di qualità e trasparenza raccomandati da <span class="citation" data-cites="cartwright2012">Cartwright &amp; Hardie (<a href="#ref-cartwright2012" role="doc-biblioref">2012</a>)</span> per la policy evidence.</p>
+<p>La domanda di ricerca di questo paper è: è possibile costruire una pipeline metodologica che trasformi documentazione istituzionale eterogenea in una struttura di evidenza verificabile, auditabile e replicabile, e che produca analisi di policy qualitativamente superiore alla sintesi generativa? ECAF/ICAS è il caso di validazione: un dominio regolamentare tecnico, multi-fonte e ancora poco analizzato attraverso approcci esplicitamente evidence-structured.</p>
+<p>Il paper si colloca principalmente nella letteratura su argument mining, sintesi strutturata dell’evidenza e analisi istituzionale retrieval-grounded. La documentazione ECAF/ICAS non costituisce il campo teorico principale del lavoro, ma il corpus empirico utilizzato per testare la pipeline di structured evidence inference.</p>
+<hr>
+</section>
+<section id="la-proposta-structured-evidence-inference" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="la-proposta-structured-evidence-inference"><span class="header-section-number">3</span> 2. La proposta: structured evidence inference</h2>
+<p><em>Structured evidence inference</em> è un approccio metodologico che opera la seguente trasformazione:</p>
+<blockquote class="blockquote">
+<p>corpus documentale → struttura computabile di claim, relazioni e pesi epistemici → analisi di policy verificabile.</p>
+</blockquote>
+<p>Il principio fondamentale è che l’unità epistemica dell’analisi non è il documento, né il paragrafo, né la categoria tematica, ma il <strong>claim atomico</strong>: un’affermazione verificabile, attributabile a una fonte specifica, classificabile per stance rispetto alla domanda di ricerca e collocabile temporalmente. La struttura dell’evidenza è costruita dalla rete di relazioni tra claim, non dai claim in isolamento.</p>
+<p>Il contributo principale del paper non è una nuova interpretazione dell’ECAF/ICAS, ma la dimostrazione che una pipeline di structured evidence inference può produrre analisi istituzionale più verificabile, auditabile e replicabile rispetto alla sintesi generativa standard. Il caso ECAF/ICAS è usato perché combina complessità regolamentare, pluralità di fonti, claim condizionali, relazioni causali deboli e dipendenza temporale delle evidenze — esattamente le condizioni in cui la sintesi generativa tende a produrre output coerente ma non verificabile.</p>
+<p>Il posizionamento rispetto alle tecniche esistenti è il seguente. Rispetto all’<em>argument mining</em> classico <span class="citation" data-cites="lippi2016 lawrence2020">(<a href="#ref-lawrence2020" role="doc-biblioref">Lawrence &amp; Reed, 2020</a>; <a href="#ref-lippi2016" role="doc-biblioref">Lippi &amp; Torroni, 2016</a>)</span>, l’approccio opera su corpora multi-fonte con obiettivo di policy analysis, non sull’analisi argomentativa interna di un singolo documento. Rispetto alle pipeline RAG (<em>Retrieval-Augmented Generation</em>, <span class="citation" data-cites="lewis2020">Lewis et al.&nbsp;(<a href="#ref-lewis2020" role="doc-biblioref">2020</a>)</span>), aggiunge la strutturazione esplicita delle relazioni tra chunk, la pesatura epistemica e il ragionamento temporale: il retrieval è un punto di partenza, non il prodotto finale. Rispetto alla meta-analisi statistica, opera su evidenza non quantitativa e produce misure di robustezza che incorporano diversità documentale e autorevolezza della fonte — avvicinandosi per spirito alla <em>realist synthesis</em> <span class="citation" data-cites="pawson2006">(<a href="#ref-pawson2006" role="doc-biblioref">Pawson, 2006</a>)</span> e ai criteri di qualità dell’evidenza per la policy <span class="citation" data-cites="nutley2007">(<a href="#ref-nutley2007" role="doc-biblioref">Nutley et al., 2007</a>)</span>. Rispetto alla systematic review <span class="citation" data-cites="gough2017">(<a href="#ref-gough2017" role="doc-biblioref">Gough et al., 2017</a>)</span>, il metodo è applicabile a corpora non omogenei per disegno di ricerca e non richiede selezione di studi secondo criteri di inclusione/esclusione standard.</p>
+<hr>
+</section>
+<section id="architettura-della-pipeline" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="architettura-della-pipeline"><span class="header-section-number">4</span> 3. Architettura della pipeline</h2>
+<p>La pipeline è articolata in sei livelli sequenziali. Ogni livello prende come input l’output del livello precedente, produce un output discreto e verificabile, e corregge un bias specifico.</p>
+<p><strong>Tabella 1 — Architettura della pipeline</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 17%">
+<col style="width: 28%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Livello</th>
+<th style="text-align: left;">Operazione</th>
+<th style="text-align: left;">Output</th>
+<th style="text-align: left;">Bias corretto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Selezione del corpus</td>
+<td style="text-align: left;">Documenti primari indicizzati</td>
+<td style="text-align: left;">Copertura non rappresentativa</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Retrieval semantico</td>
+<td style="text-align: left;">Chunk rilevanti re-ranked</td>
+<td style="text-align: left;">Similarità semantica generica vs.&nbsp;pertinenza di dominio</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">Claim extraction</td>
+<td style="text-align: left;">Claim atomici (fonte, stance, fase)</td>
+<td style="text-align: left;">Argomentazioni composite non confrontabili</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">Grafo argomentativo</td>
+<td style="text-align: left;">Rete di relazioni tipizzate tra claim</td>
+<td style="text-align: left;">Tensioni latenti tra documenti non collegate</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">Meta-claim + pesatura</td>
+<td style="text-align: left;">Meta-claim con score epistemici</td>
+<td style="text-align: left;">Bias di frequenza documentale</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">Temporal + causal</td>
+<td style="text-align: left;">Catene causali, brief grounded</td>
+<td style="text-align: left;">Generalizzazioni a-temporali</td>
+</tr>
+</tbody>
+</table>
+<section id="livello-1-corpus" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="livello-1-corpus"><span class="header-section-number">4.1</span> 3.1 Livello 1 — Corpus</h3>
+<p>Il corpus è selezionato da fonti primarie istituzionali: occasional paper e research paper delle BCN, documenti ECB, policy brief di istituzioni internazionali (FMI, OCSE, BRI), pubblicazioni di centri di ricerca riconosciuti (SUERF, CEPR). I documenti vengono segmentati in chunk di dimensione fissa con overlap e indicizzati attraverso un modello di embedding testuale (nel caso applicativo: bge-m3, 1024 dimensioni).</p>
+<p>La <em>logica</em> è che la qualità e la composizione del corpus è il vincolo più stringente dell’intera catena. Fonti autorevoli producono claim con peso epistemico maggiore; fonti eterogenee per istituzione, anno e approccio producono meta-claim più robusti rispetto a corpora mono-fonte. La selezione del corpus è una decisione metodologica che richiede giudizio esperto del dominio.</p>
+</section>
+<section id="livello-2-retrieval" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="livello-2-retrieval"><span class="header-section-number">4.2</span> 3.2 Livello 2 — Retrieval</h3>
+<p>Per ogni domanda di ricerca, il sistema recupera i chunk più simili semanticamente attraverso ricerca vettoriale, con re-ranking basato su corrispondenza con termini di dominio esplicitamente specificati. Il retrieval è integrato con query expansion iterativa per coprire sinonimi tecnici e varianti linguistiche rilevanti. L’architettura è concettualmente vicina ai sistemi RAG <span class="citation" data-cites="lewis2020">(<a href="#ref-lewis2020" role="doc-biblioref">Lewis et al., 2020</a>)</span>, ma si distingue per l’obiettivo: non la generazione di una risposta, ma la raccolta di evidenza strutturata.</p>
+<p>La <em>logica</em> è che il retrieval semantico generico privilegia chunk tematicamente centrali ma non necessariamente informativamente densi rispetto alla domanda di policy. Il re-ranking per termini di dominio aumenta la precisione; l’espansione iterativa riduce il rischio di lacune di copertura per terminologia tecnica specialistica.</p>
+</section>
+<section id="livello-3-claim-extraction" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="livello-3-claim-extraction"><span class="header-section-number">4.3</span> 3.3 Livello 3 — Claim extraction</h3>
+<p>Dai chunk recuperati vengono estratti claim atomici: affermazioni della forma soggetto-predicato-oggetto, verificabili e attribuibili alla fonte. La struttura del claim riprende la distinzione toulminiana tra <em>claim</em> (la tesi), <em>data</em> (l’evidenza di supporto) e <em>warrant</em> (la regola che giustifica il passaggio dall’evidenza alla tesi) <span class="citation" data-cites="toulmin1958">(<a href="#ref-toulmin1958" role="doc-biblioref">Toulmin, 1958</a>)</span>, semplificata per applicazione a corpus istituzionali. Ogni claim viene classificato per: <em>stance</em> rispetto alla domanda di ricerca (support, oppose, neutral); <em>fase temporale</em> di riferimento (crisi acuta, tempo normale, non specificato); <em>tipo di documento</em> (paper peer-reviewed, occasional paper istituzionale, policy note, comunicazione istituzionale).</p>
+<p>La <em>logica</em> è che l’atomizzazione trasforma argomentazioni composite — spesso implicite, condizionali o distribuite su più paragrafi — in unità elementari confrontabili tra fonti diverse e aggregabili in strutture superiori.</p>
+</section>
+<section id="livello-4-grafo-argomentativo" class="level3" data-number="4.4">
+<h3 data-number="4.4" class="anchored" data-anchor-id="livello-4-grafo-argomentativo"><span class="header-section-number">4.4</span> 3.4 Livello 4 — Grafo argomentativo</h3>
+<p>I claim vengono messi in relazione attraverso un grafo orientato. La struttura a grafo è ispirata ai <em>knowledge graphs</em> <span class="citation" data-cites="hogan2021">(<a href="#ref-hogan2021" role="doc-biblioref"><span class="nocase">Hogan et al.</span>, 2021</a>)</span> ma è specializzata per relazioni epistemiche, non fattuali: i nodi sono claim, non entità. Le relazioni rilevanti sono: <em>support</em> (un claim rafforza un altro), <em>conflict</em> (posizioni opposte), <em>qualifies</em> (introduce una condizione di contorno o un limite di validità), <em>tradeoff_with</em> (tensione sistemica non risolvibile con più informazione). Per ogni arco viene calcolata una confidenza basata sulla plausibilità semantica della relazione e sulla coerenza delle stance.</p>
+<p>La <em>logica</em> è che le tensioni argomentative tra documenti prodotti da istituzioni diverse o in fasi temporali diverse raramente emergono dalla lettura sequenziale. Il grafo le rende esplicite e computabili.</p>
+</section>
+<section id="livello-5-meta-claim-e-pesatura-epistemica" class="level3" data-number="4.5">
+<h3 data-number="4.5" class="anchored" data-anchor-id="livello-5-meta-claim-e-pesatura-epistemica"><span class="header-section-number">4.5</span> 3.5 Livello 5 — Meta-claim e pesatura epistemica</h3>
+<p>I claim vengono aggregati in <em>meta-claim</em>: tesi di ordine superiore che sintetizzano famiglie argomentative coerenti. Il peso epistemico di ogni meta-claim è calcolato combinando: numero di claim di supporto; diversità documentale; autorevolezza stimata delle fonti; distribuzione delle stance.</p>
+<p>La <em>logica</em> è che la pesatura epistemica corregge il bias di frequenza: un meta-claim supportato da molti claim provenienti da una sola fonte ha peso inferiore rispetto a un meta-claim supportato da meno claim ma con autorevolezza documentale più alta.</p>
+<p>Formalmente, il peso epistemico di un meta-claim <span class="math inline">\(M_k\)</span> è:</p>
+<p><span class="math display">\[\Phi(M_k) = \bar{\alpha}(M_k) \cdot B(M_k)\]</span></p>
+<p>dove <span class="math inline">\(\bar{\alpha}(M_k)\)</span> è la media dei pesi epistemici dei claim associati a <span class="math inline">\(M_k\)</span>:</p>
+<p><span class="math display">\[\bar{\alpha}(M_k) = \frac{1}{|C_k|} \sum_{c_i \in C_k} \alpha_i, \qquad \alpha_i = A(s_i) \cdot W(\sigma_i)\]</span></p>
+<p>con <span class="math inline">\(A(s_i) \in [0{,}60;\, 0{,}95]\)</span> autorevolezza della fonte (ECB/OECD: 0,95; EIB: 0,90; SUERF: 0,80; altro: 0,60) e <span class="math inline">\(W(\sigma_i) \in [0{,}60;\, 1{,}00]\)</span> peso della stance (support: 1,00; oppose: 0,85; neutral: 0,75; mixed: 0,70). Il bonus di diversità documentale è:</p>
+<p><span class="math display">\[B(M_k) = 1 + \min\!\bigl(D(M_k),\, 4\bigr) \cdot 0{,}05\]</span></p>
+<p>dove <span class="math inline">\(D(M_k)\)</span> è il numero di famiglie di fonti indipendenti che contribuiscono ai claim di <span class="math inline">\(M_k\)</span>. I valori numerici dei coefficienti sono euristici e richiedono calibrazione su set annotati (cfr. §8); la struttura funzionale della formula è il contributo metodologico stabile. La derivazione numerica per il caso ECAF/ICAS è in Appendice B.</p>
+</section>
+<section id="livello-6-temporal-e-causal-reasoning" class="level3" data-number="4.6">
+<h3 data-number="4.6" class="anchored" data-anchor-id="livello-6-temporal-e-causal-reasoning"><span class="header-section-number">4.6</span> 3.6 Livello 6 — Temporal e causal reasoning</h3>
+<p>I meta-claim vengono interpretati in funzione della fase temporale: affermazioni valide in crisi acuta possono non valere in tempo normale. Il reasoning causale ricostruisce catene di meccanismo — non identificazione causale formale nel senso econometrico — specificando la direzione del nesso, i meccanismi intermedi e la confidenza associata.</p>
+<p>La <em>logica</em> è che la dipendenza temporale è una delle principali fonti di ambiguità nell’analisi di policy. Collassare affermazioni valide in contesti diversi in un’unica tesi produce generalizzazioni che non sono supportate dall’evidenza per nessuno dei contesti specifici.</p>
+<hr>
+</section>
+</section>
+<section id="criteri-di-valutazione-del-metodo" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="criteri-di-valutazione-del-metodo"><span class="header-section-number">5</span> 4. Criteri di valutazione del metodo</h2>
+<p>Per valutare se la pipeline produce analisi qualitativamente superiore alla sintesi generativa, è necessario specificare i criteri di confronto. Ne proponiamo quattro.</p>
+<p><strong>Tracciabilità</strong>: ogni affermazione del brief finale è attributabile a un claim specifico, a sua volta attributabile a una fonte specifica con riferimento al chunk di provenienza.</p>
+<p><strong>Verificabilità</strong>: ogni relazione tra affermazioni è esplicitamente tipizzata (support, conflict, qualifies, tradeoff_with) e computazionalmente motivata. Il lettore può verificare o contestare singole relazioni senza dover rigenerare l’intero output.</p>
+<p><strong>Robustezza epistemica</strong>: i pesi dei meta-claim riflettono la diversità documentale e l’autorevolezza delle fonti, non la frequenza delle affermazioni nel corpus.</p>
+<p><strong>Capacità di far emergere trade-off latenti</strong>: il grafo argomentativo può identificare tensioni tra claim provenienti da documenti che non si citano reciprocamente.</p>
+<p>Un quinto criterio — <strong>replicabilità</strong> — si applica all’intera pipeline: dato lo stesso corpus e la stessa domanda, la pipeline produce lo stesso output strutturale, a differenza della generazione stocastica.</p>
+<hr>
+</section>
+<section id="il-caso-ecaficas-come-banco-di-prova" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="il-caso-ecaficas-come-banco-di-prova"><span class="header-section-number">6</span> 5. Il caso ECAF/ICAS come banco di prova</h2>
+<section id="perché-ecaficas-è-un-test-severo" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="perché-ecaficas-è-un-test-severo"><span class="header-section-number">6.1</span> 5.1 Perché ECAF/ICAS è un test severo</h3>
+<p>Un caso di validazione metodologica ideale è quello che presenta le caratteristiche che mettono più sotto pressione il metodo. ECAF/ICAS ne presenta almeno cinque.</p>
+<p><em>Complessità regolamentare</em>: il framework ammette quattro fonti di valutazione distinte (ECAI, F-ICAS, S-ICAS, IRB), con funzioni, perimetri e governance non sovrapponibili.</p>
+<p><em>Pluralità di fonti</em>: la documentazione primaria proviene da ECB, Banca d’Italia, altre BCN, SUERF, OCSE, BRI — con registri, finalità e profili di autorevolezza diversi.</p>
+<p><em>Claim condizionali</em>: molte affermazioni rilevanti sono valide solo sotto condizioni specifiche (“gli ICAS ampliano la base di collateral <em>per le banche senza IRB</em>”; “la funzione anticiclica <em>nelle crisi</em>”).</p>
+<p><em>Relazioni causali deboli</em>: il collegamento tra ICAS e accesso al credito delle PMI è indiretto e mediato da più passaggi (ICAS → eleggibilità credit claim → liquidità banca → capacità di erogazione → credito PMI).</p>
+<p><em>Dipendenza temporale</em>: il framework è cambiato nel tempo — introduzione degli S-ICAS nel 2026; misure di collateral easing durante la crisi Covid.</p>
+</section>
+<section id="tassonomia-delle-fonti-ecaf" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="tassonomia-delle-fonti-ecaf"><span class="header-section-number">6.2</span> 5.2 Tassonomia delle fonti ECAF</h3>
+<p>L’Eurosystem Credit Assessment Framework (ECAF) definisce le procedure, le regole e le tecniche che governano la valutazione della qualità creditizia degli attivi conferiti come garanzia nelle operazioni di credito dell’Eurosistema. La definizione normativa è contenuta nella Guideline ECB/2026/1 <span class="citation" data-cites="ecb2026b">(<a href="#ref-ecb2026b" role="doc-biblioref">European Central Bank, 2026a</a>)</span>, mentre <span class="citation" data-cites="auria2021">Auria et al.&nbsp;(<a href="#ref-auria2021" role="doc-biblioref">2021</a>)</span> offre una descrizione analitica sistematica dei sistemi ICAS nell’Eurosistema. Le quattro fonti ammesse hanno funzioni distinte.</p>
+<p>Le <strong>ECAI</strong> (<em>External Credit Assessment Institutions</em>) sono agenzie di rating accreditate. Coprono la quota di debitori con rating pubblico disponibile — marginale per le PMI italiane ed europee.</p>
+<p>Le <strong>F-ICAS</strong> (<em>Full In-House Credit Assessment Systems</em>) delle BCN combinano modelli statistici e giudizio esperto; sono sottoposti a requisiti di governance definiti a livello di Eurosistema <span class="citation" data-cites="auria2021">(<a href="#ref-auria2021" role="doc-biblioref">Auria et al., 2021</a>)</span>. Sono la fonte primaria per i credit claims in molti Paesi.</p>
+<p>Gli <strong>S-ICAS</strong> (<em>Statistical In-House Credit Assessment Systems</em>) sono stati ammessi nell’ECAF dal 1° gennaio 2026 con decisione del Consiglio direttivo ECB del 29 novembre 2024, formalizzata nella Guideline ECB/2026/1 <span class="citation" data-cites="ecb2026a ecb2026b">(<a href="#ref-ecb2026a" role="doc-biblioref">European Central Bank, 2026b</a>, <a href="#ref-ecb2026b" role="doc-biblioref">2026a</a>)</span>. Sono modelli puramente statistici, senza componente di giudizio esperto, progettati per aumentare la comparabilità europea della valutazione del rischio di credito. La stessa decisione ha rinominato i sistemi pieni come F-ICAS, per distinguerli dagli S-ICAS.</p>
+<p>I sistemi <strong>IRB</strong> delle banche sono modelli approvati dalla supervisione prudenziale; possono essere usati nell’ECAF solo dalle banche con sistema validato.</p>
+<p>Il sistema BI-ICAS della Banca d’Italia — classificabile come F-ICAS — valuta la qualità creditizia di circa 370.000 imprese italiane non finanziarie attraverso un modello statistico che produce probabilità di default mensili a un anno, integrato da analisi esperta su circa 4.000 valutazioni annue <span class="citation" data-cites="divirgilio2025 narizzano2024">(<a href="#ref-divirgilio2025" role="doc-biblioref">Di Virgilio et al., 2025</a>; <a href="#ref-narizzano2024" role="doc-biblioref">Narizzano et al., 2024</a>)</span>.</p>
+</section>
+<section id="meccanica-operativa-della-mobilizzazione-dei-credit-claims" class="level3" data-number="6.3">
+<h3 data-number="6.3" class="anchored" data-anchor-id="meccanica-operativa-della-mobilizzazione-dei-credit-claims"><span class="header-section-number">6.3</span> 5.3 Meccanica operativa della mobilizzazione dei credit claims</h3>
+<p>Nel contesto dell’Eurosistema, la banca non cede il credito alla BCE in senso commerciale, ma mobilizza un credit claim come collateral nelle operazioni di credito, secondo procedure gestite dalla banca centrale nazionale competente e disciplinate dal collateral framework comune. La catena operativa è la seguente: una banca eroga un prestito a un’impresa non finanziaria; intende conferire quel credito come garanzia in un’operazione di rifinanziamento presso l’Eurosistema, attraverso la propria banca centrale nazionale; la BCN verifica l’eleggibilità del credit claim, inclusa la qualità creditizia del debitore, attraverso il proprio ICAS; se il credit claim supera le soglie, viene mobilizzato come collateral e la banca ottiene liquidità commisurata al valore nominale ridotto dell’haircut <span class="citation" data-cites="tamura2013">(<a href="#ref-tamura2013" role="doc-biblioref">Tamura &amp; Tabakis, 2013</a>)</span>.</p>
+<p>Il punto di accesso operativo non è direttamente la BCE ma la BCN competente. Nel caso italiano, è la Banca d’Italia che gestisce il BI-ICAS, la relazione con le banche italiane e la verifica di eleggibilità dei credit claims <span class="citation" data-cites="giovannelli2020 divirgilio2025">(<a href="#ref-divirgilio2025" role="doc-biblioref">Di Virgilio et al., 2025</a>; <a href="#ref-giovannelli2020" role="doc-biblioref">Giovannelli et al., 2020</a>)</span>. Questo dettaglio operativo è rilevante metodologicamente: parte dei documenti primari descrive il sistema dal punto di vista ECB (procedure comuni); un’altra parte lo descrive dal punto di vista BI-ICAS (implementazione nazionale). La pipeline deve gestire questa differenza di prospettiva senza collassarla.</p>
+</section>
+<section id="il-punto-sulle-garanzie-pubbliche" class="level3" data-number="6.4">
+<h3 data-number="6.4" class="anchored" data-anchor-id="il-punto-sulle-garanzie-pubbliche"><span class="header-section-number">6.4</span> 5.4 Il punto sulle garanzie pubbliche</h3>
+<p>Un claim ricorrente nella documentazione riguarda il rapporto tra garanzie pubbliche sui prestiti e stanziabilità del collateral. La posizione che emerge dall’analisi del framework ECAF è che la garanzia pubblica può incidere sul profilo di rischio economico del credito, ma non sostituisce la verifica dei requisiti di eleggibilità ECAF, inclusa la valutazione della qualità creditizia del debitore.</p>
+<p>Questo claim è interessante per il test metodologico perché non emerge in modo esplicito da nessun singolo documento del corpus: è costruito dalla messa in relazione di affermazioni provenienti dalla documentazione ECAF con affermazioni provenienti dalla letteratura sulle garanzie Covid-19. La relazione <em>qualifies</em> tra questi due set di claim è identificata dal grafo argomentativo intersecting due domini.</p>
+<hr>
+</section>
+</section>
+<section id="risultati-del-test" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="risultati-del-test"><span class="header-section-number">7</span> 6. Risultati del test</h2>
+<section id="applicazione-al-corpus-ecaficas" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="applicazione-al-corpus-ecaficas"><span class="header-section-number">7.1</span> 6.1 Applicazione al corpus ECAF/ICAS</h3>
+<p>La pipeline è stata applicata a un corpus di documentazione primaria sull’ECAF/ICAS composto da: <span class="citation" data-cites="auria2021">Auria et al.&nbsp;(<a href="#ref-auria2021" role="doc-biblioref">2021</a>)</span>, <span class="citation" data-cites="giovannelli2020">Giovannelli et al.&nbsp;(<a href="#ref-giovannelli2020" role="doc-biblioref">2020</a>)</span>, <span class="citation" data-cites="narizzano2024">Narizzano et al.&nbsp;(<a href="#ref-narizzano2024" role="doc-biblioref">2024</a>)</span>, <span class="citation" data-cites="divirgilio2025">Di Virgilio et al.&nbsp;(<a href="#ref-divirgilio2025" role="doc-biblioref">2025</a>)</span>, <span class="citation" data-cites="ecb2026a">European Central Bank (<a href="#ref-ecb2026a" role="doc-biblioref">2026b</a>)</span>, <span class="citation" data-cites="ecb2026b">European Central Bank (<a href="#ref-ecb2026b" role="doc-biblioref">2026a</a>)</span> e documentazione istituzionale primaria dell’Eurosistema e di Banca d’Italia.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Il corpus copre un arco temporale dal 2013 al 2026 e include tre tipologie documentali: research paper istituzionali, occasional paper BCN, documenti normativi.</p>
+<p>Il grounded brief prodotto dalla pipeline identifica tre funzioni principali dell’ECAF/ICAS come sistema integrato:</p>
+<ol type="1">
+<li><p><em>Ampliamento della base di collateral</em>: gli ICAS consentono di mobilizzare credit claims verso imprese non finanziarie che altrimenti non avrebbero accesso al mercato dei titoli o a sistemi IRB bancari <span class="citation" data-cites="auria2021">(<a href="#ref-auria2021" role="doc-biblioref">Auria et al., 2021</a>)</span>. Questa funzione è documentata con evidenza forte in tutto il corpus.</p></li>
+<li><p><em>Riduzione della dipendenza da rating esterni</em>: per le banche orientate al credito alle PMI, gli ICAS sostituiscono la dipendenza da ECAI in un segmento in cui il rating esterno è strutturalmente assente. Evidenza forte, con copertura multi-fonte.</p></li>
+<li><p><em>Funzione anticiclica nelle crisi</em>: nelle fasi di stress finanziario, la possibilità di conferire credit claims come collateral attraverso la BCN riduce il vincolo di liquidità delle banche con portafogli concentrati su credito alle imprese. Evidenza forte per il periodo Covid-19; evidenza parziale per condizioni normali. <span class="citation" data-cites="divirgilio2025">Di Virgilio et al.&nbsp;(<a href="#ref-divirgilio2025" role="doc-biblioref">2025</a>)</span> documentano che le misure di supporto pandemico hanno ridotto le probabilità di default nel periodo 2020–2022, con un parziale deterioramento dal 2023 legato all’inasprimento delle condizioni finanziarie.</p></li>
+</ol>
+<p>La pipeline identifica anche una tensione argomentativa latente — relazione <em>tradeoff_with</em> — tra la standardizzazione statistica introdotta dagli S-ICAS e la capacità del sistema di valutare correttamente imprese con strutture contabili eterodasse. Questa tensione non è esplicita in nessun documento del corpus; emerge dalla messa in relazione di <span class="citation" data-cites="ecb2026a">European Central Bank (<a href="#ref-ecb2026a" role="doc-biblioref">2026b</a>)</span> con la descrizione del giudizio esperto in <span class="citation" data-cites="giovannelli2020">Giovannelli et al.&nbsp;(<a href="#ref-giovannelli2020" role="doc-biblioref">2020</a>)</span> e <span class="citation" data-cites="narizzano2024">Narizzano et al.&nbsp;(<a href="#ref-narizzano2024" role="doc-biblioref">2024</a>)</span>.</p>
+</section>
+<section id="applicazione-al-corpus-su-garanzie-pubbliche-e-pmi" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="applicazione-al-corpus-su-garanzie-pubbliche-e-pmi"><span class="header-section-number">7.2</span> 6.2 Applicazione al corpus su garanzie pubbliche e PMI</h3>
+<p>Una seconda applicazione della pipeline a un corpus correlato — focalizzato sulle garanzie pubbliche al credito durante la crisi Covid-19 (OCSE, fonti policy-oriented) — produce tre meta-claim con score epistemici misurabili.</p>
+<p><strong>Tabella 2 — Meta-claim e pesatura epistemica: analisi garanzie pubbliche/PMI</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 6%">
+<col style="width: 11%">
+<col style="width: 22%">
+<col style="width: 28%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Meta-claim</th>
+<th style="text-align: center;">N claim</th>
+<th style="text-align: left;">Famiglie fonti</th>
+<th style="text-align: center;"><span class="math inline">\(D(M_k)\)</span> Score <span class="math inline">\(\Phi(M_k)\)</span></th>
+<th style="text-align: center;">Forza</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Structural distortion risk</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">OCSE</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0,77</td>
+<td>strong</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Banking transmission channel</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">SUERF</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0,71</td>
+<td>moderate</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Anticyclical stabilization</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: left;">altra</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0,60</td>
+<td>limited</td>
+</tr>
+</tbody>
+</table>
+<p><em>Fonte: evidence_weighting.json, pipeline run ecaf_icas_crediti_imprese_collateral, maggio 2026. Derivazione numerica in Appendice B.</em></p>
+<p>Il risultato contro-intuitivo è che il meta-claim <em>Structural distortion risk</em> — che aggrega le affermazioni sui rischi di misallocazione, debt overhang e zombie firms — ha lo score epistemico più alto (0,77), superiore al meta-claim <em>Anticyclical stabilization</em> (0,60) nonostante sia supportato da soli due claim contro cinque.</p>
+<p>Il meccanismo è il seguente: i due claim OCSE (<span class="math inline">\(A = 0{,}95\)</span>) con stance <em>mixed</em> e <em>oppose</em> producono un peso medio <span class="math inline">\(\bar{\alpha} = 0{,}74\)</span>; i cinque claim di fonte “altra” (<span class="math inline">\(A = 0{,}60\)</span>) con stance prevalentemente <em>support</em> producono <span class="math inline">\(\bar{\alpha} = 0{,}57\)</span>. Il bonus di diversità <span class="math inline">\(B\)</span> è identico per entrambi (<span class="math inline">\(D = 1\)</span>, <span class="math inline">\(B = 1{,}05\)</span>). Il risultato è determinato dall’autorevolezza istituzionale della fonte: i claim OCSE, anche se pochi, hanno peso individuale quasi doppio rispetto a fonti non categorizzate.</p>
+<p>Questo tipo di risultato — una priorità epistemica più alta per un meta-claim meno citato — non emerge normalmente da sintesi generativa non strutturata, che pesa implicitamente per frequenza delle affermazioni.</p>
+</section>
+<section id="il-valore-metodologico-dei-risultati" class="level3" data-number="7.3">
+<h3 data-number="7.3" class="anchored" data-anchor-id="il-valore-metodologico-dei-risultati"><span class="header-section-number">7.3</span> 6.3 Il valore metodologico dei risultati</h3>
+<p>I due risultati principali — la tensione latente standardizzazione/giudizio esperto negli ICAS, e l’inversione dei pesi epistemici per le garanzie pubbliche — dimostrano due capacità distinte della pipeline.</p>
+<p>Il primo dimostra la capacità di identificare <em>tensioni argomentative cross-documento</em>: relazioni tra claim che non sono esplicite in nessuna fonte e che emergono solo dalla costruzione del grafo. Il secondo dimostra la capacità di produrre <em>pesatura epistemica corretta</em>: una misura di robustezza che riflette l’autorevolezza della fonte, non la distribuzione del corpus.</p>
+<p>Entrambe queste capacità non sono normalmente producibili da retrieval semantico, da sintesi generativa non strutturata, né da lettura sequenziale dei documenti anche da parte di un analista esperto.</p>
+<hr>
+</section>
+</section>
+<section id="discussione" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="discussione"><span class="header-section-number">8</span> 7. Discussione</h2>
+<section id="cosa-il-test-dimostra-sul-metodo" class="level3" data-number="8.1">
+<h3 data-number="8.1" class="anchored" data-anchor-id="cosa-il-test-dimostra-sul-metodo"><span class="header-section-number">8.1</span> 7.1 Cosa il test dimostra sul metodo</h3>
+<p>Il caso ECAF/ICAS conferma che la pipeline soddisfa i quattro criteri enunciati nella sezione 4. La tracciabilità è garantita per costruzione. La verificabilità è dimostrata dall’esplicitazione della tensione standardizzazione/giudizio esperto, che può essere confermata o contestata da chi conosce il dominio. La robustezza epistemica è dimostrata dall’inversione dei pesi per le garanzie pubbliche. La capacità di far emergere trade-off è dimostrata da entrambi i risultati.</p>
+<p>Il test dimostra anche un limite del metodo: la pipeline non identifica automaticamente quando il corpus è incompleto. La tensione standardizzazione/giudizio esperto emerge solo perché entrambi i documenti rilevanti (<span class="citation" data-cites="ecb2026a">European Central Bank (<a href="#ref-ecb2026a" role="doc-biblioref">2026b</a>)</span> e <span class="citation" data-cites="giovannelli2020">Giovannelli et al.&nbsp;(<a href="#ref-giovannelli2020" role="doc-biblioref">2020</a>)</span>) sono presenti nel corpus. Questo non è un limite della struttura della pipeline, ma un vincolo intrinseco a qualsiasi metodo basato su corpus.</p>
+</section>
+<section id="confronto-con-la-sintesi-generativa" class="level3" data-number="8.2">
+<h3 data-number="8.2" class="anchored" data-anchor-id="confronto-con-la-sintesi-generativa"><span class="header-section-number">8.2</span> 7.2 Confronto con la sintesi generativa</h3>
+<p>Il confronto tra pipeline e sintesi generativa su questo corpus ha carattere esplorativo e illustrativo, non di benchmark sistematico; una valutazione rigorosa richiederebbe annotatori esperti di dominio e protocolli di valutazione standardizzati. Con questa premessa, l’analisi condotta sul corpus ECAF/ICAS suggerisce che la sintesi generativa non strutturata tende a produrre un testo che: descrive correttamente le funzioni principali degli ICAS; non distingue in modo preciso tra F-ICAS e S-ICAS; non identifica la tensione standardizzazione/giudizio esperto; non pesa diversamente i meta-claim in funzione dell’autorevolezza documentale; produce affermazioni sulle garanzie pubbliche che mescolano il profilo di rischio economico con i requisiti di eleggibilità ECAF senza segnalare la condizionalità.</p>
+<p>La pipeline produce invece: distinzione netta tra le quattro fonti ECAF; identificazione esplicita della tensione latente; inversione dei pesi per le garanzie; segnalazione della condizionalità. Il costo è la complessità operativa: la pipeline richiede preparazione del corpus, configurazione dei termini di dominio, revisione esperta dei claim estratti. La sintesi generativa è immediata ma non verificabile; la pipeline è più lenta ma auditabile.</p>
+</section>
+<section id="trasferibilità" class="level3" data-number="8.3">
+<h3 data-number="8.3" class="anchored" data-anchor-id="trasferibilità"><span class="header-section-number">8.3</span> 7.3 Trasferibilità</h3>
+<p>La pipeline non contiene elementi specifici del dominio ECAF/ICAS. Il modello di embedding, la struttura del grafo argomentativo e la funzione di pesatura epistemica sono indifferenti al dominio. La selezione dei termini di dominio per il re-ranking (livello 2) e la revisione dei claim estratti (livello 3) richiedono giudizio esperto, ma questo vale per qualsiasi metodo di analisi serio.</p>
+<p>Casi di applicazione naturale includono framework di supervisione bancaria, meccanismi di trasmissione della politica fiscale, analisi di sistemi pubblici di garanzia del credito, strutturazione di evidenza su policy di transizione energetica.</p>
+<hr>
+</section>
+</section>
+<section id="limiti-e-agenda-di-ricerca" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="limiti-e-agenda-di-ricerca"><span class="header-section-number">9</span> 8. Limiti e agenda di ricerca</h2>
+<p><strong>Dipendenza dal corpus.</strong> La struttura dell’evidenza è determinata dal corpus selezionato. In una pipeline esplicita questo limite è almeno visibile e dichiarato: il corpus è descritto, le fonti sono enumerate, le lacune sono identificabili.</p>
+<p><strong>Classificazione semi-automatica.</strong> L’estrazione di claim, la classificazione delle stance e la tipizzazione delle relazioni argomentative combinano componenti automatizzate con giudizio. Il margine di errore nella classificazione non è quantificato. Studi di validazione su sample annotati da esperti di dominio sono necessari prima di applicare la pipeline a contesti ad alto impatto decisionale.</p>
+<p><strong>Score epistemico ≠ verità.</strong> Lo score <span class="math inline">\(\Phi(M_k)\)</span> misura la forza inferenziale dell’evidenza disponibile nel corpus, non la verità della tesi. I coefficienti <span class="math inline">\(A(s_i)\)</span> e <span class="math inline">\(W(\sigma_i)\)</span> nella formula di §3.5 sono euristici e richiedono calibrazione empirica.</p>
+<p><strong>Causalità.</strong> Le catene causali prodotte al livello 6 sono ricostruzioni di meccanismo plausibili, non identificazione causale nel senso econometrico.</p>
+<p><strong>Agenda di ricerca.</strong> I passaggi successivi più rilevanti sono: (a) validazione della classificazione attraverso annotazione esperta; (b) applicazione cross-dominio per testare la generalizzabilità; (c) sviluppo di una funzione di pesatura più formale che incorpori incertezza sulla stima dell’autorevolezza; (d) integrazione di segnali quantitativi nella stima del peso epistemico.</p>
+<hr>
+</section>
+<section id="conclusione" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="conclusione"><span class="header-section-number">10</span> 9. Conclusione</h2>
+<p>Il paper ha proposto e validato <em>structured evidence inference</em>, una pipeline metodologica per l’analisi di documentazione istituzionale di policy. La pipeline trasforma documentazione eterogenea in una struttura computabile di claim, relazioni argomentative e meta-claim pesati per robustezza epistemica. Il caso ECAF/ICAS è stato usato come banco di prova perché combina le condizioni più sfavorevoli per la sintesi generativa: complessità regolamentare, claim condizionali, pluralità di fonti, dipendenza temporale.</p>
+<p>I risultati mostrano che la pipeline produce due tipi di valore aggiunto che non emergono normalmente da sintesi generativa non strutturata: l’identificazione di tensioni argomentative latenti tra documenti che non si citano reciprocamente, e una pesatura epistemica dei meta-claim che riflette l’autorevolezza documentale piuttosto che la frequenza delle affermazioni.</p>
+<p>Il contributo non è una nuova interpretazione dell’ECAF/ICAS. È la dimostrazione che un approccio strutturato e auditabile all’analisi di documentazione istituzionale è praticabile, produce risultati qualitativamente superiori alla sintesi generativa su criteri rilevanti per l’analisi di policy, e può essere applicato a qualsiasi dominio regolamentare che soddisfi le condizioni di complessità qui testate.</p>
+<hr>
+</section>
+<section id="sez-appa" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="sez-appa"><span class="header-section-number">11</span> Appendice A — Artefatti della pipeline</h2>
+<p>La pipeline produce una sequenza di artefatti discreti, ciascuno corrispondente a un livello dell’architettura descritta in §3.</p>
+<p><strong>Tabella A1 — Artefatti della pipeline</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 20%">
+<col style="width: 10%">
+<col style="width: 54%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Artefatto</th>
+<th style="text-align: left;">File prodotto</th>
+<th style="text-align: center;">Livello</th>
+<th style="text-align: left;">Contenuto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Evidence</td>
+<td style="text-align: left;"><code>evidence.json</code></td>
+<td style="text-align: center;">1–2</td>
+<td style="text-align: left;">Chunk rilevanti re-ranked con score di pertinenza</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Claims</td>
+<td style="text-align: left;"><code>claims.json</code></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: left;">Claim atomici: testo, stance, fase, fonte, chunk_id</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Grafo</td>
+<td style="text-align: left;"><code>claim_relations_v3.json</code></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">Archi tipizzati con confidenza</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Meta-claim</td>
+<td style="text-align: left;"><code>meta_claims.json</code></td>
+<td style="text-align: center;">4–5</td>
+<td style="text-align: left;">Famiglie argomentative con claim associati</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pesatura</td>
+<td style="text-align: left;"><code>evidence_weighting.json</code></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: left;">Score <span class="math inline">\(\Phi(M_k)\)</span>, diversità, distribuzione stance</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Causal</td>
+<td style="text-align: left;"><code>causal_reasoning.json</code></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: left;">Catene causali con meccanismi e confidenza</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Temporal</td>
+<td style="text-align: left;"><code>temporal_reasoning.json</code></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: left;">Variazione di stance per fase temporale</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Brief</td>
+<td style="text-align: left;"><code>final_brief.md</code></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: left;">Narrativa grounded con claim traceability inline</td>
+</tr>
+</tbody>
+</table>
+<p>Run del caso ECAF/ICAS: <code>ecaf_icas_definizione_core_end2end/out/</code> e <code>ecaf_icas_crediti_imprese_collateral/out/</code>.</p>
+<hr>
+</section>
+<section id="sez-appb" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="sez-appb"><span class="header-section-number">12</span> Appendice B — Derivazione numerica degli score epistemici (Tabella 2)</h2>
+<p><strong>Tabella B1 — Claim individuali e pesi epistemici</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 4%">
+<col style="width: 17%">
+<col style="width: 5%">
+<col style="width: 16%">
+<col style="width: 20%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Meta-claim</th>
+<th style="text-align: left;">Claim</th>
+<th style="text-align: left;">Fonte</th>
+<th style="text-align: left;">Stance</th>
+<th style="text-align: right;"><span class="math inline">\(A(s_i)\)</span> <span class="math inline">\(W(\sigma_i)\)</span> $</th>
+<th style="text-align: left;">pha_i$</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Anticyclical stabilization</td>
+<td style="text-align: left;">C0001</td>
+<td style="text-align: left;">Credit Guarantees COVID-19</td>
+<td style="text-align: left;">support</td>
+<td style="text-align: right;">0,60</td>
+<td style="text-align: left;">1,00</td>
+<td>0,60</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">C0002</td>
+<td style="text-align: left;">Credit Guarantees COVID-19</td>
+<td style="text-align: left;">support</td>
+<td style="text-align: right;">0,60</td>
+<td style="text-align: left;">1,00</td>
+<td>0,60</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">C0003</td>
+<td style="text-align: left;">Credit Guarantees COVID-19</td>
+<td style="text-align: left;">neutral</td>
+<td style="text-align: right;">0,60</td>
+<td style="text-align: left;">0,75</td>
+<td>0,45</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">C0004</td>
+<td style="text-align: left;">Credit Guarantees COVID-19</td>
+<td style="text-align: left;">support</td>
+<td style="text-align: right;">0,60</td>
+<td style="text-align: left;">1,00</td>
+<td>0,60</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">C0005</td>
+<td style="text-align: left;">Credit Guarantees COVID-19</td>
+<td style="text-align: left;">support</td>
+<td style="text-align: right;">0,60</td>
+<td style="text-align: left;">1,00</td>
+<td>0,60</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Structural distortion risk</td>
+<td style="text-align: left;">C0009</td>
+<td style="text-align: left;">SMEs in COVID Times (OECD)</td>
+<td style="text-align: left;">mixed</td>
+<td style="text-align: right;">0,95</td>
+<td style="text-align: left;">0,70</td>
+<td>0,665</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">C0010</td>
+<td style="text-align: left;">SMEs in COVID Times (OECD)</td>
+<td style="text-align: left;">oppose</td>
+<td style="text-align: right;">0,95</td>
+<td style="text-align: left;">0,85</td>
+<td>0,808</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Banking transmission channel</td>
+<td style="text-align: left;">C0007</td>
+<td style="text-align: left;">Public Guarantees SMBs (SUERF)</td>
+<td style="text-align: left;">oppose</td>
+<td style="text-align: right;">0,80</td>
+<td style="text-align: left;">0,85</td>
+<td>0,680</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabella B2 — Aggregazione e score finale</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 30%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 17%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Meta-claim</th>
+<th style="text-align: center;"><span class="math inline">\(\bar{\alpha}(M_k)\)</span> <span class="math inline">\(D(M_k)\)</span> <span class="math inline">\(B(M_k)\)</span></th>
+<th style="text-align: left;"><span class="math inline">\(\Phi(M_k)\)</span> Forza</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Anticyclical stabilization</td>
+<td style="text-align: center;"><span class="math inline">\((4{\times}0{,}60 + 0{,}45)/5 = 0{,}57\)</span> 1</td>
+<td style="text-align: left;">1,05</td>
+<td>0,599</td>
+<td>limited</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Structural distortion risk</td>
+<td style="text-align: center;"><span class="math inline">\((0{,}665 + 0{,}808)/2 = 0{,}736\)</span> 1</td>
+<td style="text-align: left;">1,05</td>
+<td>0,773</td>
+<td>strong</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Banking transmission channel</td>
+<td style="text-align: center;"><span class="math inline">\(0{,}680\)</span> 1</td>
+<td style="text-align: left;">1,05</td>
+<td>0,714</td>
+<td>moderate</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>La differenza di score tra <em>Structural distortion risk</em> (0,77) e <em>Anticyclical stabilization</em> (0,60) è prodotta esclusivamente dall’autorevolezza della fonte (<span class="math inline">\(A_\text{OECD} = 0{,}95\)</span> vs <span class="math inline">\(A_\text{altro} = 0{,}60\)</span>) e dalla composizione delle stance, non dalla diversità documentale (<span class="math inline">\(D = 1\)</span> identico per entrambi).</p>
+<hr>
+</section>
+<section id="riferimenti" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="riferimenti">Riferimenti</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-auria2021" class="csl-entry" role="listitem">
+Auria, L., Bingmer, M., Caicedo Graciano, C. M., Charave, C., Gavilá, S., Iannamorelli, A., Levy, A., Maldonado, A., Resch, F., Rossi, A. M., &amp; Sauer, S. (2021). Overview of Central Banks’ In-House Credit Assessment Systems in the Euro Area. <em>Banca d’Italia, Markets, Infrastructures, Payment Systems</em>, (13).
+</div>
+<div id="ref-cartwright2012" class="csl-entry" role="listitem">
+Cartwright, N., &amp; Hardie, J. (2012). <em>Evidence-Based Policy: A Practical Guide to Doing It Better</em>. Oxford University Press.
+</div>
+<div id="ref-divirgilio2025" class="csl-entry" role="listitem">
+Di Virgilio, S., Iannamorelli, A., Monterisi, F., &amp; Narizzano, S. (2025). The Use of Banca d’Italia’s Credit Assessment System for Italian Non-Financial Firms within the Eurosystem’s Collateral Framework. <em>Banca d’Italia, Markets, Infrastructures, Payment Systems</em>, (60).
+</div>
+<div id="ref-ecb2026b" class="csl-entry" role="listitem">
+European Central Bank. (2026a). <em>Guideline of 22 January 2026 Amending Guideline (EU) 2015/510 on the Implementation of the Eurosystem Monetary Policy Framework (ECB/2014/60) (ECB/2026/1)</em>. European Central Bank.
+</div>
+<div id="ref-ecb2026a" class="csl-entry" role="listitem">
+European Central Bank. (2026b). Statistical In-House Credit Assessment Systems in the Eurosystem Collateral Framework. <em>ECB Economic Bulletin</em>, <em>Focus</em>(Issue 3/2025).
+</div>
+<div id="ref-giovannelli2020" class="csl-entry" role="listitem">
+Giovannelli, F., Iannamorelli, A., Levy, A., &amp; Orlandi, M. (2020). The In-House Credit Assessment System of Banca d’Italia. <em>Banca d’Italia, Questioni di Economia e Finanza (Occasional Papers)</em>, (586).
+</div>
+<div id="ref-gough2017" class="csl-entry" role="listitem">
+Gough, D., Oliver, S., &amp; Thomas, J. (2017). <em>An Introduction to Systematic Reviews</em> (2ª ed.). SAGE.
+</div>
+<div id="ref-hogan2021" class="csl-entry" role="listitem">
+<span class="nocase">Hogan, A., Blomqvist, E., Cochez, M., d’Amato, C., Melo, G., Gutierrez, C., Kirrane, S., Gayo, J. E. L., Navigli, R., Neumaier, S., Ngonga Ngomo, A.-C., Polleres, A., Rashid, S. M., Rula, A., Schmelzeisen, L., Sequeda, J. F., Staab, S., &amp; Zimmermann, A.</span> (2021). Knowledge Graphs. <em>ACM Computing Surveys</em>, <em>54</em>(4), 1–37.
+</div>
+<div id="ref-lawrence2020" class="csl-entry" role="listitem">
+Lawrence, J., &amp; Reed, C. (2020). Argument Mining: A Survey. <em>Computational Linguistics</em>, <em>45</em>(4), 765–818.
+</div>
+<div id="ref-lewis2020" class="csl-entry" role="listitem">
+Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., Küttler, H., Lewis, M., Yih, W., Rocktäschel, T., Riedel, S., &amp; Kiela, D. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. <em>Advances in Neural Information Processing Systems (NeurIPS)</em>, <em>33</em>, 9459–9474.
+</div>
+<div id="ref-lippi2016" class="csl-entry" role="listitem">
+Lippi, M., &amp; Torroni, P. (2016). Argumentation Mining: State of the Art and Emerging Trends. <em>ACM Transactions on Internet Technology</em>, <em>16</em>(2), 1–25.
+</div>
+<div id="ref-narizzano2024" class="csl-entry" role="listitem">
+Narizzano, S., Orlandi, M., &amp; Scalia, A. (2024). The Bank of Italy’s Statistical Model for the Credit Assessment of Non-Financial Firms. <em>Banca d’Italia, Markets, Infrastructures, Payment Systems</em>, (53).
+</div>
+<div id="ref-nutley2007" class="csl-entry" role="listitem">
+Nutley, S., Walter, I., &amp; Davies, H. (2007). <em>Using Evidence: How Research Can Inform Public Services</em>. Policy Press.
+</div>
+<div id="ref-pawson2006" class="csl-entry" role="listitem">
+Pawson, R. (2006). <em>Evidence-Based Policy: A Realist Perspective</em>. SAGE.
+</div>
+<div id="ref-stede2018" class="csl-entry" role="listitem">
+Stede, M., &amp; Schneider, J. (2018). <em>Argumentation Mining</em>. Morgan &amp; Claypool.
+</div>
+<div id="ref-tamura2013" class="csl-entry" role="listitem">
+Tamura, K., &amp; Tabakis, E. (2013). The Use of Credit Claims as Collateral for Eurosystem Credit Operations. <em>ECB Occasional Paper Series</em>, (148).
+</div>
+<div id="ref-toulmin1958" class="csl-entry" role="listitem">
+Toulmin, S. E. (1958). <em>The Uses of Argument</em>. Cambridge University Press.
+</div>
+</div>
+</section>
+<div id="quarto-appendix" class="default">
+<div id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<section id="note" class="level2 anchored quarto-appendix-heading" data-number="13">
+<h2 class="anchored quarto-appendix-heading" data-number="13" data-anchor-id="note"><span class="header-section-number">13</span> Note</h2>
+</section>
+</div>
+</div>
+
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Note</h2>
+
+<ol>
+<li id="fn1"><p>La pipeline ha utilizzato anche fonti policy-oriented sull’ECAF e sul collateral framework, i cui titoli completi e autori sono in fase di verifica nel corpus locale.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
