@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="inflazione, BCE, tassi di interesse, shock energetico, margine di interesse, costo del capitale, rischio di credito">
+<meta name="description" content="Il 10 settembre 2026 il Consiglio direttivo della Banca centrale europea si riunisce con un quadro di segnali contrastanti: l’inflazione complessiva dell’area dell’euro è risalita al 3,3 per cento ad agosto, trainata quasi esclusivamente dai prezzi dell’energia, mentre l’inflazione di fondo…">
+
+<title>Il 10 settembre dei tassi – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Il 10 settembre dei tassi – Paolo Volterra">
+<meta property="og:description" content="Il 10 settembre 2026 il Consiglio direttivo della Banca centrale europea si riunisce con un quadro di segnali contrastanti: l’inflazione complessiva dell’area dell’euro è risalita al 3,3 per cento ad agosto, trainata quasi esclusivamente dai prezzi dell’energia, mentre l’inflazione di fondo…">
+<meta property="og:image" content="https://paolovolterra.com/posts/2611_DieciSettembreTassi/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Il 10 settembre dei tassi – Paolo Volterra">
+<meta name="twitter:description" content="Il 10 settembre 2026 il Consiglio direttivo della Banca centrale europea si riunisce con un quadro di segnali contrastanti: l’inflazione complessiva dell’area dell’euro è risalita al 3,3 per cento ad agosto, trainata quasi esclusivamente dai prezzi dell’energia, mentre l’inflazione di fondo…">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2611_DieciSettembreTassi/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/in_parole_semplici/"> <i class="bi bi-instagram" role="img" aria-label="Instagram">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#cosa-è-in-gioco-il-10-settembre" id="toc-cosa-è-in-gioco-il-10-settembre" class="nav-link active" data-scroll-target="#cosa-è-in-gioco-il-10-settembre"><span class="header-section-number">1</span> Cosa è in gioco il 10 settembre</a></li>
+  <li><a href="#i-segnali-contrastanti" id="toc-i-segnali-contrastanti" class="nav-link" data-scroll-target="#i-segnali-contrastanti"><span class="header-section-number">2</span> I segnali contrastanti</a>
+  <ul class="collapse">
+  <li><a href="#inflazione-complessiva-in-risalita-inflazione-di-fondo-in-calo" id="toc-inflazione-complessiva-in-risalita-inflazione-di-fondo-in-calo" class="nav-link" data-scroll-target="#inflazione-complessiva-in-risalita-inflazione-di-fondo-in-calo"><span class="header-section-number">2.1</span> Inflazione complessiva in risalita, inflazione di fondo in calo</a></li>
+  <li><a href="#le-aspettative-misurate-dalla-bce" id="toc-le-aspettative-misurate-dalla-bce" class="nav-link" data-scroll-target="#le-aspettative-misurate-dalla-bce"><span class="header-section-number">2.2</span> Le aspettative misurate dalla BCE</a></li>
+  <li><a href="#i-prezzi-dellenergia-non-rientrano" id="toc-i-prezzi-dellenergia-non-rientrano" class="nav-link" data-scroll-target="#i-prezzi-dellenergia-non-rientrano"><span class="header-section-number">2.3</span> I prezzi dell’energia non rientrano</a></li>
+  <li><a href="#leuro-più-forte-lavora-nella-direzione-opposta" id="toc-leuro-più-forte-lavora-nella-direzione-opposta" class="nav-link" data-scroll-target="#leuro-più-forte-lavora-nella-direzione-opposta"><span class="header-section-number">2.4</span> L’euro più forte lavora nella direzione opposta</a></li>
+  <li><a href="#il-contesto-esterno" id="toc-il-contesto-esterno" class="nav-link" data-scroll-target="#il-contesto-esterno"><span class="header-section-number">2.5</span> Il contesto esterno</a></li>
+  <li><a href="#sintesi-dei-segnali" id="toc-sintesi-dei-segnali" class="nav-link" data-scroll-target="#sintesi-dei-segnali"><span class="header-section-number">2.6</span> Sintesi dei segnali</a></li>
+  </ul></li>
+  <li><a href="#due-blocchi-informativi-e-un-confronto-econometrico" id="toc-due-blocchi-informativi-e-un-confronto-econometrico" class="nav-link" data-scroll-target="#due-blocchi-informativi-e-un-confronto-econometrico"><span class="header-section-number">3</span> Due blocchi informativi e un confronto econometrico</a></li>
+  <li><a href="#cosa-può-decidere-la-banca-centrale-europea" id="toc-cosa-può-decidere-la-banca-centrale-europea" class="nav-link" data-scroll-target="#cosa-può-decidere-la-banca-centrale-europea"><span class="header-section-number">4</span> Cosa può decidere la Banca centrale europea</a>
+  <ul class="collapse">
+  <li><a href="#dalla-curva-dei-tassi-a-una-probabilità" id="toc-dalla-curva-dei-tassi-a-una-probabilità" class="nav-link" data-scroll-target="#dalla-curva-dei-tassi-a-una-probabilità"><span class="header-section-number">4.1</span> Dalla curva dei tassi a una probabilità</a></li>
+  <li><a href="#un-rischio-possibile-non-un-disancoraggio-osservato" id="toc-un-rischio-possibile-non-un-disancoraggio-osservato" class="nav-link" data-scroll-target="#un-rischio-possibile-non-un-disancoraggio-osservato"><span class="header-section-number">4.2</span> Un rischio possibile, non un disancoraggio osservato</a></li>
+  <li><a href="#aumento-di-25-punti-base" id="toc-aumento-di-25-punti-base" class="nav-link" data-scroll-target="#aumento-di-25-punti-base"><span class="header-section-number">4.3</span> Aumento di 25 punti base</a></li>
+  <li><a href="#tassi-invariati" id="toc-tassi-invariati" class="nav-link" data-scroll-target="#tassi-invariati"><span class="header-section-number">4.4</span> Tassi invariati</a></li>
+  <li><a href="#il-segnale-sul-seguito-conta-più-della-decisione" id="toc-il-segnale-sul-seguito-conta-più-della-decisione" class="nav-link" data-scroll-target="#il-segnale-sul-seguito-conta-più-della-decisione"><span class="header-section-number">4.5</span> Il segnale sul seguito conta più della decisione</a></li>
+  </ul></li>
+  <li><a href="#conseguenze-per-le-banche" id="toc-conseguenze-per-le-banche" class="nav-link" data-scroll-target="#conseguenze-per-le-banche"><span class="header-section-number">5</span> Conseguenze per le banche</a>
+  <ul class="collapse">
+  <li><a href="#il-margine-di-interesse" id="toc-il-margine-di-interesse" class="nav-link" data-scroll-target="#il-margine-di-interesse"><span class="header-section-number">5.1</span> Il margine di interesse</a></li>
+  <li><a href="#le-minusvalenze-sul-portafoglio-titoli" id="toc-le-minusvalenze-sul-portafoglio-titoli" class="nav-link" data-scroll-target="#le-minusvalenze-sul-portafoglio-titoli"><span class="header-section-number">5.2</span> Le minusvalenze sul portafoglio titoli</a></li>
+  <li><a href="#il-rischio-di-credito" id="toc-il-rischio-di-credito" class="nav-link" data-scroll-target="#il-rischio-di-credito"><span class="header-section-number">5.3</span> Il rischio di credito</a></li>
+  </ul></li>
+  <li><a href="#conseguenze-per-le-imprese" id="toc-conseguenze-per-le-imprese" class="nav-link" data-scroll-target="#conseguenze-per-le-imprese"><span class="header-section-number">6</span> Conseguenze per le imprese</a>
+  <ul class="collapse">
+  <li><a href="#perché-uno-shock-di-offerta-è-più-difficile-da-gestire" id="toc-perché-uno-shock-di-offerta-è-più-difficile-da-gestire" class="nav-link" data-scroll-target="#perché-uno-shock-di-offerta-è-più-difficile-da-gestire"><span class="header-section-number">6.1</span> Perché uno shock di offerta è più difficile da gestire</a></li>
+  <li><a href="#chi-è-più-esposto" id="toc-chi-è-più-esposto" class="nav-link" data-scroll-target="#chi-è-più-esposto"><span class="header-section-number">6.2</span> Chi è più esposto</a></li>
+  <li><a href="#il-costo-del-capitale-e-gli-investimenti" id="toc-il-costo-del-capitale-e-gli-investimenti" class="nav-link" data-scroll-target="#il-costo-del-capitale-e-gli-investimenti"><span class="header-section-number">6.3</span> Il costo del capitale e gli investimenti</a></li>
+  </ul></li>
+  <li><a href="#lo-stato" id="toc-lo-stato" class="nav-link" data-scroll-target="#lo-stato"><span class="header-section-number">7</span> Lo Stato</a></li>
+  <li><a href="#quadro-dinsieme" id="toc-quadro-dinsieme" class="nav-link" data-scroll-target="#quadro-dinsieme"><span class="header-section-number">8</span> Quadro d’insieme</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Il 10 settembre dei tassi</h1>
+<p class="subtitle lead">Cosa può decidere la Banca centrale europea e cosa cambia per banche e imprese</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Mercati e politica monetaria</div>
+    <div class="quarto-category">Banche e credito</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Il 10 settembre 2026 il Consiglio direttivo della Banca centrale europea si riunisce con un quadro di segnali contrastanti: l’inflazione complessiva dell’area dell’euro è risalita al 3,3 per cento ad agosto, trainata quasi esclusivamente dai prezzi dell’energia, mentre l’inflazione di fondo…
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">3 settembre 2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Data di modifica</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">5 settembre 2026</p>
+    </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.22299182">10.5281/zenodo.22299182</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>Il 10 settembre 2026 il Consiglio direttivo della Banca centrale europea si riunisce con un quadro di segnali contrastanti: l’inflazione complessiva dell’area dell’euro è risalita al 3,3 per cento ad agosto, trainata quasi esclusivamente dai prezzi dell’energia, mentre l’inflazione di fondo continua a scendere. I prezzi del petrolio e del gas restano elevati alla vigilia della riunione e non danno segni di rientro; l’euro, però, si è rafforzato e attenua in parte la pressione sui prezzi importati. Questo lavoro ricostruisce i segnali che orientano la decisione, valuta i possibili esiti della riunione e ne analizza le conseguenze per il sistema bancario e per le imprese. Al momento della stesura, i prezzi di mercato indicano come esito prevalente un aumento di 25 punti base, che porterebbe il tasso sui depositi al 2,50 per cento. L’eventuale rialzo avrebbe natura assicurativa contro un possibile disancoraggio delle aspettative, non risponderebbe a un eccesso di domanda; i dati osservati, tuttavia, non mostrano che tale disancoraggio sia già in corso.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>inflazione, BCE, tassi di interesse, shock energetico, margine di interesse, costo del capitale, rischio di credito</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Versione citabile su Zenodo, con il PDF: <a href="https://doi.org/10.5281/zenodo.22299182">doi.org/10.5281/zenodo.22299182</a>.</p>
+</div>
+</div>
+</div>
+<section id="cosa-è-in-gioco-il-10-settembre" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="cosa-è-in-gioco-il-10-settembre"><span class="header-section-number">1</span> Cosa è in gioco il 10 settembre</h2>
+<p>Il Consiglio direttivo della Banca centrale europea ha alzato i tassi ufficiali di 25 punti base l’11 giugno 2026, portando il tasso sui depositi al 2,25 per cento, e li ha lasciati invariati il 23 luglio <span class="citation" data-cites="ecbMP20260611 ecbMP20260723"><a href="#ref-ecbMP20260611" role="doc-biblioref">[1]</a>, <a href="#ref-ecbMP20260723" role="doc-biblioref">[2]</a></span>. La riunione del 10 settembre arriva dopo la pubblicazione della stima preliminare dell’inflazione di agosto e sarà accompagnata dalle nuove proiezioni macroeconomiche dello staff <span class="citation" data-cites="ecbStaffProjections202609"><a href="#ref-ecbStaffProjections202609" role="doc-biblioref">[3]</a></span>.</p>
+<p>Al momento della stesura, le analisi di mercato e la previsione di Intesa Sanpaolo indicano come esito prevalente un ulteriore aumento di 25 punti base, che porterebbe il tasso sui depositi al 2,50 per cento <span class="citation" data-cites="ninfole20260902 ispMrr20260903"><a href="#ref-ninfole20260902" role="doc-biblioref">[4]</a>, <a href="#ref-ispMrr20260903" role="doc-biblioref">[5]</a></span>. Le fonti disponibili non pubblicano però quotazione, timestamp e metodo di conversione sufficienti a ricostruire una probabilità numerica: il presente lavoro non attribuisce quindi una percentuale ai possibili esiti.</p>
+<p>La decisione non è però scontata nel merito, perché i segnali disponibili puntano in direzioni opposte.</p>
+</section>
+<section id="i-segnali-contrastanti" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="i-segnali-contrastanti"><span class="header-section-number">2</span> I segnali contrastanti</h2>
+<section id="inflazione-complessiva-in-risalita-inflazione-di-fondo-in-calo" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="inflazione-complessiva-in-risalita-inflazione-di-fondo-in-calo"><span class="header-section-number">2.1</span> Inflazione complessiva in risalita, inflazione di fondo in calo</h3>
+<p>Secondo la stima preliminare di Eurostat, l’inflazione dell’area dell’euro è salita al 3,3 per cento su base annua ad agosto 2026, dal 2,9 per cento di luglio; è il valore più alto degli ultimi tre anni circa <span class="citation" data-cites="eurostatHICP202608flash"><a href="#ref-eurostatHICP202608flash" role="doc-biblioref">[6]</a></span>. In Italia l’indice nazionale dei prezzi al consumo segna una variazione del 3,3 per cento e l’indice armonizzato del 3,2 per cento <span class="citation" data-cites="istatPrezziConsumo202608"><a href="#ref-istatPrezziConsumo202608" role="doc-biblioref">[7]</a></span>.</p>
+<p>L’aumento è quasi interamente riconducibile alla componente energetica: i prezzi dell’energia nell’area dell’euro crescono del 14,3 per cento su base annua, e in Italia i beni energetici salgono del 17,0 per cento <span class="citation" data-cites="eurostatHICP202608flash istatPrezziConsumo202608"><a href="#ref-eurostatHICP202608flash" role="doc-biblioref">[6]</a>, <a href="#ref-istatPrezziConsumo202608" role="doc-biblioref">[7]</a></span>. L’inflazione di fondo, che esclude energia e alimentari, si muove invece nella direzione opposta: 2,4 per cento nell’area dell’euro e 1,5 per cento in Italia, entrambe in riduzione rispetto ai mesi precedenti. Le pressioni sui prezzi dei servizi e sui salari, che segnalerebbero la propagazione dello shock al resto dell’economia, non si sono manifestate. Anche gli indici PMI sui prezzi degli input e di vendita indicano ad agosto un’ulteriore attenuazione delle pressioni inflazionistiche, con tensioni sull’offerta stabilizzate e nessuna propagazione all’inflazione al netto dell’energia <span class="citation" data-cites="bnpEurozona20260903"><a href="#ref-bnpEurozona20260903" role="doc-biblioref">[8]</a></span>. Questa evidenza depone contro un disancoraggio già in corso; non può essere presentata come prova del rischio opposto.</p>
+</section>
+<section id="le-aspettative-misurate-dalla-bce" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="le-aspettative-misurate-dalla-bce"><span class="header-section-number">2.2</span> Le aspettative misurate dalla BCE</h3>
+<p>La Consumer Expectations Survey della BCE rileva mensilmente le aspettative delle famiglie. La Survey of Professional Forecasters rileva invece ogni trimestre le previsioni degli esperti <span class="citation" data-cites="ecbCES ecbSPF"><a href="#ref-ecbCES" role="doc-biblioref">[9]</a>, <a href="#ref-ecbSPF" role="doc-biblioref">[10]</a></span>. Le due fonti misurano popolazioni e orizzonti differenti e non vanno fuse in un solo indicatore; lette insieme permettono però di distinguere una revisione ciclica a breve da uno spostamento persistente delle aspettative lontano dall’obiettivo.</p>
+<p><img src="figure/fig01.png" class="figure-img" role="img" width="757" height="421"></p>
+<p>Figura&nbsp;1: Aspettative d’inflazione nell’area dell’euro, gennaio 2022-ultima osservazione disponibile. Mediane ponderate delle famiglie a 1, 3 e 5 anni (CES) e media delle previsioni professionali di lungo periodo (SPF).</p>
+<p>Per quantificare la revisione dopo l’inizio dello shock si usa, per ciascun orizzonte <span class="math inline">\(h\)</span>,</p>
+<p><span class="math display">\[\Delta E_h = E_{t_1}(\pi_{t_1+h}) - E_{t_0}(\pi_{t_0+h}),\]</span></p>
+<p>dove <span class="math inline">\(t_0\)</span> è febbraio 2026 e <span class="math inline">\(t_1\)</span> è l’ultima osservazione disponibile della stessa serie.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 20%">
+<col style="width: 27%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Misura</th>
+<th style="text-align: right;">Inizio 2026 (%)</th>
+<th style="text-align: right;">Ultima osservazione (%)</th>
+<th style="text-align: right;">Variazione (p.p.)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Famiglie, 12 mesi</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: right;">+0.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Famiglie, 3 anni</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">+0.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Famiglie, 5 anni</td>
+<td style="text-align: right;">2.3</td>
+<td style="text-align: right;">2.4</td>
+<td style="text-align: right;">+0.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Previsori, lungo termine</td>
+<td style="text-align: right;">2.02</td>
+<td style="text-align: right;">2.04</td>
+<td style="text-align: right;">+0.02</td>
+</tr>
+</tbody>
+</table>
+<p>Le aspettative delle famiglie aumentano soprattutto sull’orizzonte annuale e molto meno su quello quinquennale; quelle di lungo periodo dei previsori professionali rimangono prossime al 2 per cento. Il quadro indica una percezione dello shock nel breve periodo, ma non una revisione generalizzata e crescente delle aspettative a tutte le scadenze. Non costituisce pertanto evidenza di disancoraggio.</p>
+</section>
+<section id="i-prezzi-dellenergia-non-rientrano" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="i-prezzi-dellenergia-non-rientrano"><span class="header-section-number">2.3</span> I prezzi dell’energia non rientrano</h3>
+<p><img src="figure/fig02.png" class="figure-img" role="img" width="756" height="421"></p>
+<p>Figura&nbsp;2: Prezzo del greggio Brent (scala sinistra) e cambio euro-dollaro (scala destra), 2026. Il greggio raddoppia tra la primavera e l’estate e resta su livelli elevati; l’euro si rafforza dalla fine di giugno.</p>
+<p>Alla vigilia della riunione il prezzo del greggio Brent è intorno ai 96 dollari al barile, dopo aver toccato circa 70 dollari alla fine di giugno <span class="citation" data-cites="eiaBrent"><a href="#ref-eiaBrent" role="doc-biblioref">[11]</a></span>. Il prezzo del gas naturale europeo di riferimento, il contratto sull’hub olandese Title Transfer Facility, è risalito oltre i 70 euro per megawattora, il livello più alto dalla fine del 2022 <span class="citation" data-cites="iceTtf"><a href="#ref-iceTtf" role="doc-biblioref">[12]</a></span>. La pressione all’origine dell’inflazione di agosto, quindi, è ancora presente al momento della decisione e non in via di riassorbimento. Questo toglie forza all’argomento principale di chi propende per un rinvio, che si reggerebbe su un rientro rapido e visibile dei prezzi energetici.</p>
+</section>
+<section id="leuro-più-forte-lavora-nella-direzione-opposta" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="leuro-più-forte-lavora-nella-direzione-opposta"><span class="header-section-number">2.4</span> L’euro più forte lavora nella direzione opposta</h3>
+<p>Dalla fine di giugno l’euro si è apprezzato nei confronti del dollaro statunitense, passando da circa 1,14 a circa 1,16 dollari per euro <span class="citation" data-cites="ecbFx"><a href="#ref-ecbFx" role="doc-biblioref">[13]</a></span>. Un cambio più forte riduce il prezzo in euro delle importazioni denominate in dollari, a partire dalle materie prime energetiche, e trasferisce all’economia dell’area una parte di disinflazione. In questo senso l’apprezzamento del cambio svolge una parte del lavoro che la banca centrale otterrebbe alzando i tassi, e attenua l’urgenza di un intervento.</p>
+</section>
+<section id="il-contesto-esterno" class="level3" data-number="2.5">
+<h3 data-number="2.5" class="anchored" data-anchor-id="il-contesto-esterno"><span class="header-section-number">2.5</span> Il contesto esterno</h3>
+<p>La Federal Reserve mantiene i tassi ufficiali nell’intervallo 3,50-3,75 per cento da cinque riunioni consecutive <span class="citation" data-cites="fedJuly2026"><a href="#ref-fedJuly2026" role="doc-biblioref">[14]</a></span>. Un aumento dei tassi europei allargherebbe il divario di orientamento tra le due banche centrali e tenderebbe a rafforzare ulteriormente l’euro. Sui mercati obbligazionari internazionali i rendimenti dei titoli di Stato a lunga scadenza sono su livelli elevati in tutte le principali economie avanzate <span class="citation" data-cites="difoggia20260902"><a href="#ref-difoggia20260902" role="doc-biblioref">[15]</a></span>, un contesto che di per sé spinge verso l’alto anche i rendimenti europei.</p>
+</section>
+<section id="sintesi-dei-segnali" class="level3" data-number="2.6">
+<h3 data-number="2.6" class="anchored" data-anchor-id="sintesi-dei-segnali"><span class="header-section-number">2.6</span> Sintesi dei segnali</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 62%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Elemento</th>
+<th style="text-align: left;">Direzione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Inflazione complessiva 3,3 per cento, in risalita</td>
+<td style="text-align: left;">verso il rialzo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Prezzi di petrolio e gas elevati e non in rientro</td>
+<td style="text-align: left;">verso il rialzo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Aspettative dichiarate dalla banca centrale a luglio</td>
+<td style="text-align: left;">verso il rialzo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Prezzi di mercato dei contratti sui tassi</td>
+<td style="text-align: left;">verso il rialzo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inflazione di fondo in calo (2,4 e 1,5 per cento)</td>
+<td style="text-align: left;">verso l’attesa</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Euro più forte, effetto disinflazionistico sulle importazioni</td>
+<td style="text-align: left;">verso l’attesa</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Crescita dell’area dell’euro debole</td>
+<td style="text-align: left;">verso l’attesa</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Natura di offerta dello shock, temporaneo per costruzione</td>
+<td style="text-align: left;">verso l’attesa</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Divario di orientamento con la Federal Reserve</td>
+<td style="text-align: left;">verso l’attesa</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="due-blocchi-informativi-e-un-confronto-econometrico" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="due-blocchi-informativi-e-un-confronto-econometrico"><span class="header-section-number">3</span> Due blocchi informativi e un confronto econometrico</h2>
+<p>L’analisi distingue due blocchi. Il primo raccoglie le variabili economiche che possono segnalare intensità, persistenza e propagazione dello shock. Il secondo raccoglie le variabili finanziarie che incorporano previsioni sulla politica monetaria, premi per il rischio e riallocazioni di portafoglio. La distinzione evita di usare il prezzo di un’attività finanziaria come prova circolare del fenomeno economico che il mercato sta cercando di prevedere.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 57%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Blocco economico: alert</th>
+<th style="text-align: left;">Blocco finanziario: pricing e trasmissione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">energia, inflazione headline e core</td>
+<td style="text-align: left;">futures €STR e OIS riferiti alle riunioni</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">servizi, salari e prezzi delle imprese</td>
+<td style="text-align: left;">inflation-linked swap a diverse scadenze</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CES, SPF e sondaggi presso le imprese</td>
+<td style="text-align: left;">Bund, OAT, BTP e relativi spread</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PIL, PMI, disoccupazione e credito</td>
+<td style="text-align: left;">Treasury, Gilt e titoli svizzeri</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">persistenza e ampiezza della propagazione</td>
+<td style="text-align: left;">EUR/USD, cambio effettivo, forward FX e cross-currency basis</td>
+</tr>
+</tbody>
+</table>
+<p>In una successiva estensione econometrica, l’esito della riunione può essere codificato come <span class="math inline">\(y_t\in\{-1,0,+1\}\)</span> — taglio, invariato, rialzo — e stimato mediante un logit multinomiale basato soltanto sulle informazioni economiche disponibili prima della riunione:</p>
+<p><span class="math display">\[P(y_t=k\mid X_t)= \frac{\exp(\alpha_k+X_t'\beta_k)} {\sum_j\exp(\alpha_j+X_t'\beta_j)}.\]</span></p>
+<p>La probabilità fondamentale <span class="math inline">\(p_t^E\)</span> può essere confrontata con quella implicita nei mercati <span class="math inline">\(p_t^M\)</span> attraverso <span class="math inline">\(g_t=p_t^M-p_t^E\)</span>. Il divario non è un errore automaticamente attribuibile a uno dei due blocchi: può riflettere informazione più tempestiva, comunicazione della banca centrale oppure premi per il rischio. Il modello richiede dati organizzati per riunione, vintage realmente disponibili a ciascuna data e validazione fuori campione; non è stimato nel presente lavoro.</p>
+<p>Titoli sovrani e cambi aiutano a interpretare il divario, ma non identificano isolatamente una decisione BCE. Il rendimento di un titolo del paese <span class="math inline">\(i\)</span> può essere rappresentato come:</p>
+<p><span class="math display">\[y_{i,t}^{(n)}=\overline{E_t(r)}^{(n)}+TP_t^{(n)}+CR_{i,t}^{(n)}+LP_{i,t}^{(n)},\]</span></p>
+<p>dove ai tassi brevi attesi si sommano premio a termine, rischio sovrano e liquidità. Il confronto fra Bund e Treasury aiuta a separare gli shock europei dai fattori globali; OAT–Bund e BTP–Bund isolano soprattutto componenti sovrane. Analogamente, EUR/USD riflette il differenziale monetario atteso fra BCE e Federal Reserve, ma anche premi valutari, crescita relativa, shock energetici e domanda di attività rifugio. Per identificare nuova informazione sono quindi preferibili variazioni in finestre strette attorno a comunicati BCE e sorprese macroeconomiche, osservando congiuntamente €STR/OIS, Bund, spread ed euro.</p>
+</section>
+<section id="cosa-può-decidere-la-banca-centrale-europea" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="cosa-può-decidere-la-banca-centrale-europea"><span class="header-section-number">4</span> Cosa può decidere la Banca centrale europea</h2>
+<section id="dalla-curva-dei-tassi-a-una-probabilità" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="dalla-curva-dei-tassi-a-una-probabilità"><span class="header-section-number">4.1</span> Dalla curva dei tassi a una probabilità</h3>
+<p>Gli overnight index swap sono comunemente impiegati come indicazione di mercato del percorso atteso dei tassi ufficiali <span class="citation" data-cites="deVincentHumphreys2010"><a href="#ref-deVincentHumphreys2010" role="doc-biblioref">[16]</a></span>. La conversione di un tasso implicito in probabilità segue il modello binario documentato dal CME FedWatch e analizzato anche nella letteratura accademica <span class="citation" data-cites="cmeFedWatchMethodology boniniHuangSimaan2026"><a href="#ref-cmeFedWatchMethodology" role="doc-biblioref">[17]</a>, <a href="#ref-boniniHuangSimaan2026" role="doc-biblioref">[18]</a></span>. Se il mercato ammettesse soltanto due esiti — tasso invariato <span class="math inline">\(r_0\)</span> oppure rialzo di 25 punti base a <span class="math inline">\(r_1\)</span> — il tasso forward successivo alla riunione sarebbe il valore atteso:</p>
+<p><span class="math display">\[f=(1-p)r_0+pr_1.\]</span></p>
+<p>Risolvendo rispetto a <span class="math inline">\(p\)</span> si ottiene:</p>
+<p><span class="math display">\[p(\text{rialzo}) = \frac{f-r_0}{r_1-r_0}.\]</span></p>
+<p>Se il contratto restituisce la media <span class="math inline">\(R\)</span> del tasso overnight durante un mese che contiene la riunione, occorre prima separare i <span class="math inline">\(n_{pre}\)</span> giorni antecedenti dai <span class="math inline">\(n_{post}\)</span> giorni successivi:</p>
+<p><span class="math display">\[R=\frac{n_{pre}r_{pre}+n_{post}f}{n_{pre}+n_{post}}, \qquad f=\frac{(n_{pre}+n_{post})R-n_{pre}r_{pre}}{n_{post}}.\]</span></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 37%">
+<col style="width: 28%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quantità</th>
+<th style="text-align: left;">Fonte necessaria</th>
+<th style="text-align: left;">Stato nel presente lavoro</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(r_0\)</span> deposit facility rate</td>
+<td style="text-align: left;">BCE disponibile via Data</td>
+<td style="text-align: left;">Portal BCE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(R\)</span> oppure <span class="math inline">\(f\)</span> future €STR o OIS riferito alla riunione</td>
+<td style="text-align: left;">quotazione auditabile non disponibile</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(n_{pre}, n_{post}\)</span> calendario del contratt</td>
+<td style="text-align: left;">o e della riunione calcolabile dopo la sce</td>
+<td style="text-align: left;">lta del contratto</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">spread €STR–DFR</td>
+<td style="text-align: left;">serie €STR e tasso sui depositi</td>
+<td style="text-align: left;">da stimare alla data della quotazione</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">insieme degli esiti</td>
+<td style="text-align: left;">ipotesi esplicita sulla decisione</td>
+<td style="text-align: left;">modello binario: invariato oppure +25 punti base</td>
+</tr>
+</tbody>
+</table>
+<p>Il Data Portal della BCE documenta che il tasso sui depositi vigente alla data di aggiornamento è pari a 2.25 per cento. Non pubblica però nel dataset utilizzato un forward specifico della riunione dal quale ricavare <span class="math inline">\(R\)</span> o <span class="math inline">\(f\)</span>. Senza contratto, quotazione e timestamp una percentuale puntuale non è replicabile; si può affermare soltanto che le fonti di mercato consultate considerano il rialzo l’esito prevalente.</p>
+<p>La letteratura invita inoltre a non identificare meccanicamente il forward con una probabilità fisica. I futures sui tassi possono contenere premi per il rischio variabili nel tempo <span class="citation" data-cites="piazzesiSwanson2008"><a href="#ref-piazzesiSwanson2008" role="doc-biblioref">[19]</a></span>; più in generale, forward e futures non sono misure pure delle aspettative perché incorporano il prezzo del rischio <span class="citation" data-cites="chernenkoSchwarzWright2004"><a href="#ref-chernenkoSchwarzWright2004" role="doc-biblioref">[20]</a></span>. Le densità ricavate dai derivati sono pertanto probabilità <em>risk-neutral</em>, appropriate per la valutazione finanziaria ma non necessariamente coincidenti con le frequenze soggettive degli investitori <span class="citation" data-cites="hordahlVestin2003"><a href="#ref-hordahlVestin2003" role="doc-biblioref">[21]</a></span>. Anche disponendo della quotazione, il risultato andrebbe dunque presentato come probabilità implicita nei prezzi, condizionata alle ipotesi elencate, non come probabilità statistica oggettiva.</p>
+</section>
+<section id="un-rischio-possibile-non-un-disancoraggio-osservato" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="un-rischio-possibile-non-un-disancoraggio-osservato"><span class="header-section-number">4.2</span> Un rischio possibile, non un disancoraggio osservato</h3>
+<p>I dati qui esaminati documentano uno shock energetico ampio e persistente, ma non documentano un disancoraggio delle aspettative. Una misura di mercato disponibile punta semmai nella direzione opposta: l’inflation swap dell’area dell’euro a dieci anni si colloca intorno al 2,3 per cento, ma l’analisi di Intesa Sanpaolo lo giudica moderatamente sopravvalutato rispetto ai fondamentali e ne prevede la discesa verso il 2,2 per cento alla fine del 2026 e sotto il 2 per cento entro dicembre 2027 <span class="citation" data-cites="ispManenti20260902"><a href="#ref-ispManenti20260902" role="doc-biblioref">[22]</a></span>. Uno swap incorpora anche premi per il rischio e condizioni di liquidità e non coincide quindi con una previsione pura; non mostra tuttavia una deriva persistente delle aspettative lontano dall’obiettivo.</p>
+<p>Per sostenere l’esistenza di un disancoraggio servirebbe una convergenza di misure dirette e aggiornate — aspettative a cinque anni, inflation swap su più scadenze e sondaggi presso imprese e famiglie — che qui non emerge. Il richiamo al 2022-2023 stabilisce soltanto un’analogia: poiché lo shock corrente è ampio, anche il rischio potrebbe esserlo. Il confronto sistematico pubblicato il 3 settembre da BNP Paribas indebolisce però l’ipotesi di equivalenza: sulla base dei dati fino ad agosto, valuta l’impatto dello shock del 2026 sull’inflazione e sull’attività come sensibilmente minore di quello del 2022 e non ne trova traccia complessiva nei dati d’indagine <span class="citation" data-cites="bnpShock20260903"><a href="#ref-bnpShock20260903" role="doc-biblioref">[23]</a></span>. Il rischio resta quindi una congettura plausibile su cui una banca centrale può scegliere di assicurarsi, non un fatto verificato dai dati presentati.</p>
+</section>
+<section id="aumento-di-25-punti-base" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="aumento-di-25-punti-base"><span class="header-section-number">4.3</span> Aumento di 25 punti base</h3>
+<p>Le analisi consultate lo indicano come esito prevalente. Il tasso sui depositi passerebbe dal 2,25 al 2,50 per cento. La logica non è quella di raffreddare un eccesso di domanda, che non c’è: l’inflazione di fondo scende e la crescita è debole. La logica sarebbe assicurativa. Uno shock di offerta sui prezzi dell’energia è per sua natura temporaneo, e il manuale di politica monetaria suggerirebbe di “guardare oltre” l’impulso, evitando di comprimere l’attività economica per un aumento dei prezzi destinato a rientrare. Questo vale però solo finché le aspettative di inflazione a medio termine restano ancorate al 2 per cento. Quando lo shock è ampio, prolungato e ripetuto — un aumento del 14-17 per cento dei prezzi energetici, dopo l’episodio del 2022-2023 — la banca centrale può giudicare aumentato il rischio che imprese e lavoratori incorporino stabilmente un’inflazione più alta nelle decisioni di prezzo e di salario. Un rialzo servirebbe allora a segnalare che la banca centrale intende prevenire quel disancoraggio, non a contrastarne uno già osservato né a incidere direttamente sui prezzi dell’energia, sui quali la politica monetaria non ha presa.</p>
+</section>
+<section id="tassi-invariati" class="level3" data-number="4.4">
+<h3 data-number="4.4" class="anchored" data-anchor-id="tassi-invariati"><span class="header-section-number">4.4</span> Tassi invariati</h3>
+<p>È l’esito alternativo. Un rientro del petrolio o del gas nei giorni immediatamente precedenti la riunione, oppure proiezioni dello staff più favorevoli per il 2026 e il 2027, potrebbero aumentarne rapidamente il peso. Le fonti disponibili non consentono di quantificare né la probabilità dell’esito né una soglia di Brent o TTF oltre la quale il mercato cambierebbe orientamento.</p>
+</section>
+<section id="il-segnale-sul-seguito-conta-più-della-decisione" class="level3" data-number="4.5">
+<h3 data-number="4.5" class="anchored" data-anchor-id="il-segnale-sul-seguito-conta-più-della-decisione"><span class="header-section-number">4.5</span> Il segnale sul seguito conta più della decisione</h3>
+<p>Poiché l’aumento di settembre è in larga parte già incorporato nei prezzi di mercato, la reazione dei rendimenti dipenderà soprattutto da come la banca centrale si esprimerà sul percorso successivo. Un’indicazione che apra a un ulteriore rialzo entro dicembre spingerebbe i rendimenti verso l’alto; un’indicazione che presenti quello di settembre come l’ultimo passo di un ciclo li lascerebbe stabili o li farebbe scendere. La banca centrale, dal luglio 2026, ha smesso di fornire indicazioni prospettiche vincolanti e decide riunione per riunione: è probabile che mantenga questa impostazione, lasciando aperte entrambe le possibilità.</p>
+</section>
+</section>
+<section id="conseguenze-per-le-banche" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="conseguenze-per-le-banche"><span class="header-section-number">5</span> Conseguenze per le banche</h2>
+<p>L’effetto di un aumento dei tassi sul conto economico di una banca dipende dai tempi con cui si riprezzano le due parti del bilancio.</p>
+<section id="il-margine-di-interesse" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="il-margine-di-interesse"><span class="header-section-number">5.1</span> Il margine di interesse</h3>
+<p>Sul lato dell’attivo, i prestiti a tasso variabile e i titoli in scadenza si adeguano rapidamente ai nuovi tassi di mercato. Sul lato del passivo, il costo della raccolta si adegua con ritardo. All’inizio di un ciclo di rialzi questo sfasamento allarga il margine di interesse, perché i rendimenti dell’attivo salgono prima dei costi del passivo.</p>
+<p>Il vantaggio si riduce nel tempo. La quota dell’aumento dei tassi ufficiali che una banca trasferisce ai propri depositanti — la sensibilità del costo dei depositi, in inglese <em>deposit beta</em> — parte bassa e cresce con il progredire del ciclo e con la concorrenza. Con titoli di Stato che rendono il 3-4 per cento e collocamenti al dettaglio dedicati ai risparmiatori, i clienti spostano la liquidità dai conti correnti non remunerati verso depositi vincolati e conti a rendimento. Per trattenere la raccolta, le banche alzano i tassi passivi, e il costo del funding sale. Il margine si normalizza. Nel primo semestre del 2026 il costo della raccolta obbligazionaria delle banche italiane è aumentato di circa 70 punti base.</p>
+</section>
+<section id="le-minusvalenze-sul-portafoglio-titoli" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="le-minusvalenze-sul-portafoglio-titoli"><span class="header-section-number">5.2</span> Le minusvalenze sul portafoglio titoli</h3>
+<p>Un aumento dei rendimenti di mercato riduce il prezzo dei titoli a reddito fisso già in portafoglio, e la perdita cresce con la vita residua dei titoli. Per un titolo di Stato italiano a scadenza 2037, con una durata finanziaria vicina a dieci, un aumento di 25 punti base del rendimento corrisponde a una riduzione del prezzo di circa il 2,4 per cento.</p>
+<p>L’impatto contabile dipende da come i titoli sono classificati. I titoli valutati al costo ammortizzato non generano effetti sul conto economico né sul patrimonio finché sono detenuti, ma la perdita resta latente e si manifesterebbe in caso di vendita anticipata per esigenze di liquidità. I titoli valutati al fair value con contropartita a patrimonio netto riducono direttamente il capitale della banca. I titoli di negoziazione colpiscono il conto economico. È il meccanismo che ha reso vulnerabili alcune banche nel 2022-2023, quando la rapidità del rialzo dei tassi ha prodotto minusvalenze latenti ingenti sui portafogli di titoli a lunga scadenza.</p>
+<p>Un elemento attenua il quadro per le banche italiane. Lo scarto di rendimento tra il titolo di Stato italiano e quello tedesco a dieci anni è rimasto stabile, nell’intervallo di 76-83 punti base, per tutto il periodo recente di tensione sui mercati obbligazionari internazionali. L’Italia sale in sincronia con il resto del mercato, non più di esso: non è in corso una riprezzatura del rischio sovrano italiano specifica, del tipo osservato nel 2011-2012.</p>
+</section>
+<section id="il-rischio-di-credito" class="level3" data-number="5.3">
+<h3 data-number="5.3" class="anchored" data-anchor-id="il-rischio-di-credito"><span class="header-section-number">5.3</span> Il rischio di credito</h3>
+<p>L’aumento dei tassi si trasmette alla qualità del portafoglio prestiti attraverso i conti delle imprese affidate. Un margine operativo più basso e oneri finanziari più alti peggiorano gli indici di copertura del servizio del debito, e quindi aumentano la probabilità di insolvenza stimata. Le rettifiche di valore su crediti e il costo del rischio tendono a salire: nel primo semestre del 2026 le stime interne di sistema collocavano il costo del rischio in scenario avverso intorno ai 45 punti base, con crediti deteriorati in aumento e rettifiche in crescita rispetto all’anno precedente.</p>
+</section>
+</section>
+<section id="conseguenze-per-le-imprese" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="conseguenze-per-le-imprese"><span class="header-section-number">6</span> Conseguenze per le imprese</h2>
+<p>Nello scenario del 2026 l’impresa non affronta un problema isolato, ma quattro pressioni simultanee.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 48%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Pressione</th>
+<th style="text-align: left;">Origine</th>
+<th style="text-align: left;">Effetto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Materie prime ed energia più care</td>
+<td style="text-align: left;">shock geopolitico sui prezzi energetici; beni energetici in Italia +17 per cento su base annua</td>
+<td style="text-align: left;">costi di produzione in aumento, margine operativo in calo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Finanziamento più costoso</td>
+<td style="text-align: left;">rialzi della banca centrale, obbligazioni societarie intorno al 5 per cento, prestiti bancari in riprezzamento</td>
+<td style="text-align: left;">oneri finanziari in aumento, utile ante imposte in calo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Soglia di rendimento più alta</td>
+<td style="text-align: left;">il rendimento privo di rischio più alto alza il costo del capitale proprio</td>
+<td style="text-align: left;">meno progetti di investimento superano la soglia di convenienza</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Domanda più debole</td>
+<td style="text-align: left;">l’inflazione erode il potere d’acquisto delle famiglie e i tassi alti raffreddano la spesa a credito</td>
+<td style="text-align: left;">ricavi e volumi sotto pressione, difficoltà a trasferire a valle i maggiori costi</td>
+</tr>
+</tbody>
+</table>
+<p>Le prime due pressioni comprimono i conti dal lato dei costi, la quarta dal lato dei ricavi, la terza alza l’asticella che il risultato deve comunque raggiungere.</p>
+<section id="perché-uno-shock-di-offerta-è-più-difficile-da-gestire" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="perché-uno-shock-di-offerta-è-più-difficile-da-gestire"><span class="header-section-number">6.1</span> Perché uno shock di offerta è più difficile da gestire</h3>
+<p>Quando l’inflazione nasce da un eccesso di domanda, la banca centrale alza i tassi, la domanda si raffredda e i margini delle imprese reggono perché i costi non aumentano. Quando l’inflazione nasce da uno shock di offerta, come nel 2026, i costi aumentano e la banca centrale alza comunque i tassi per proteggere le aspettative: l’impresa si trova ad affrontare costi più alti, domanda più debole e finanziamento più costoso nello stesso momento. La politica monetaria non può attenuare questa combinazione, perché lo strumento che userebbe — tassi più bassi — riaccenderebbe l’inflazione.</p>
+</section>
+<section id="chi-è-più-esposto" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="chi-è-più-esposto"><span class="header-section-number">6.2</span> Chi è più esposto</h3>
+<p>Sono più esposte le imprese a forte consumo di energia, come la metallurgia, la chimica, la ceramica, il vetro, la carta e il cemento; le imprese molto indebitate, che devono rifinanziarsi a tassi doppi rispetto al 2021; le imprese con basso potere di mercato, che non riescono a trasferire a valle gli aumenti di costo; e i produttori di beni durevoli e di beni di investimento, la cui domanda è rinviabile e spesso finanziata a credito. Attenuano l’impatto un marchio forte, i contratti indicizzati, le coperture su cambio ed energia, una leva finanziaria bassa e un portafoglio ordini pieno.</p>
+</section>
+<section id="il-costo-del-capitale-e-gli-investimenti" class="level3" data-number="6.3">
+<h3 data-number="6.3" class="anchored" data-anchor-id="il-costo-del-capitale-e-gli-investimenti"><span class="header-section-number">6.3</span> Il costo del capitale e gli investimenti</h3>
+<p>Il rendimento richiesto dagli azionisti si può descrivere come la somma del rendimento privo di rischio e di un premio per il rischio azionario, storicamente nell’ordine di 4-6 punti percentuali per l’area dell’euro. Se il titolo di Stato decennale rende il 4 per cento, il costo del capitale proprio di un’impresa media si colloca intorno all’8-9 per cento; se il rendimento privo di rischio sale al 5 per cento, il costo del capitale sale al 9-10 per cento anche a premio invariato. Questa soglia è il rendimento minimo che un progetto di investimento deve promettere per essere realizzato: quando si alza, i progetti che prima erano ai margini della convenienza non vengono più avviati, e il valore attuale degli utili futuri, scontati a un tasso più alto, si riduce.</p>
+<p>A questo si aggiunge la concorrenza delle obbligazioni. Fino al 2021 i rendimenti obbligazionari vicini a zero costringevano i risparmiatori a rivolgersi alle azioni e agli attivi rischiosi per ottenere un rendimento. Nel 2026 un’obbligazione di una buona impresa italiana paga circa il 5 per cento lordo, e un titolo di Stato circa il 4 per cento: il capitale a reddito fisso torna a essere un’alternativa all’azionario, e le imprese devono offrire di più per finanziarsi.</p>
+</section>
+</section>
+<section id="lo-stato" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="lo-stato"><span class="header-section-number">7</span> Lo Stato</h2>
+<p>L’aumento dei tassi si riflette sul bilancio pubblico in modo graduale. Lo stock del debito è in larga parte a cedola fissa, quindi il costo medio del debito sale solo sulle nuove emissioni e sui rinnovi dei titoli in scadenza, che in Italia ammontano a circa 350-400 miliardi di euro lordi l’anno. L’effetto pieno sulla spesa per interessi si dispiega su più anni. Agiscono in senso opposto l’erosione del valore reale del debito prodotta dall’inflazione e la crescita del prodotto interno lordo nominale e del gettito fiscale.</p>
+</section>
+<section id="quadro-dinsieme" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="quadro-dinsieme"><span class="header-section-number">8</span> Quadro d’insieme</h2>
+<p>L’aumento dei tassi del 10 settembre, se confermato, sarebbe una decisione presa in condizioni di inflazione di fondo calante e crescita debole. Potrebbe essere motivato dall’intento di proteggere preventivamente l’ancoraggio delle aspettative di fronte a uno shock energetico ampio e prolungato; i dati presentati, tuttavia, non mostrano un disancoraggio già in corso. Il rialzo trasferirebbe alle banche un vantaggio iniziale sul margine di interesse destinato a ridursi, e un costo immediato sotto forma di minusvalenze sui portafogli di titoli. Aggiungerebbe una pressione al quadro già difficile delle imprese, in particolare di quelle a forte consumo di energia, indebitate e con basso potere di mercato. Non modificherebbe in modo apprezzabile, nel breve periodo, il costo del debito pubblico. Il punto di attenzione per i mesi successivi non è soltanto la decisione, che il mercato prezzava come prevalente alla data della rilevazione, ma l’indicazione che la banca centrale darà sul percorso dei tassi verso la fine del 2026.</p>
+<hr>
+<p><strong>Nota metodologica</strong></p>
+<p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
+<p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale; l’analisi è pertanto integralmente auditabile e replicabile da terzi a partire da esse. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+</section>
+<div id="quarto-appendix" class="default">
+<section id="quarto-bibliography" class="level2 quarto-appendix-heading" data-number="9">
+<h2 class="quarto-appendix-heading anchored" data-number="9" data-anchor-id="quarto-bibliography"><span class="header-section-number">9</span> Referenze</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-ecbMP20260611" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[1]
+</div>
+<div class="csl-right-inline">
+European Central Bank, «Monetary policy decisions». giugno 2026. Disponibile su: <a href="https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260611~4d41bd5e83.en.html" class="uri">https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260611~4d41bd5e83.en.html</a>
+</div>
+</div>
+<div id="ref-ecbMP20260723" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[2]
+</div>
+<div class="csl-right-inline">
+European Central Bank, «Monetary policy decisions». luglio 2026. Disponibile su: <a href="https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260723~29f24d99bc.en.html" class="uri">https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260723~29f24d99bc.en.html</a>
+</div>
+</div>
+<div id="ref-ecbStaffProjections202609" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[3]
+</div>
+<div class="csl-right-inline">
+European Central Bank, «ECB staff macroeconomic projections for the euro area». 2026. Disponibile su: <a href="https://www.ecb.europa.eu/press/projections/html/index.en.html" class="uri">https://www.ecb.europa.eu/press/projections/html/index.en.html</a>
+</div>
+</div>
+<div id="ref-ninfole20260902" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[4]
+</div>
+<div class="csl-right-inline">
+F. Ninfole e A. Chimenti, «L’inflazione avvicina la stretta». Milano Finanza, 2 settembre 2026, 2026.
+</div>
+</div>
+<div id="ref-ispMrr20260903" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[5]
+</div>
+<div class="csl-right-inline">
+L. Mezzomo, «Macro Rapid Response: un rialzo dei tassi è quasi certo alla prossima riunione BCE». settembre 2026. Disponibile su: <a href="https://imi.intesasanpaolo.com/content/dam/imi-cib/imicib/area-pubblica-doc/Ricerche-e-Commenti/studi-e-ricerche/macroeconomia-e-congiuntura/Macro-Rapid-Response/20260903-NE0038-a4xWi000000C49VIAS.pdf" class="uri">https://imi.intesasanpaolo.com/content/dam/imi-cib/imicib/area-pubblica-doc/Ricerche-e-Commenti/studi-e-ricerche/macroeconomia-e-congiuntura/Macro-Rapid-Response/20260903-NE0038-a4xWi000000C49VIAS.pdf</a>
+</div>
+</div>
+<div id="ref-eurostatHICP202608flash" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[6]
+</div>
+<div class="csl-right-inline">
+Eurostat, «Euro area annual inflation up to 3.3%». settembre 2026. Disponibile su: <a href="https://ec.europa.eu/eurostat/en/web/products-euro-indicators/w/2-01092026-ap" class="uri">https://ec.europa.eu/eurostat/en/web/products-euro-indicators/w/2-01092026-ap</a>
+</div>
+</div>
+<div id="ref-istatPrezziConsumo202608" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[7]
+</div>
+<div class="csl-right-inline">
+ISTAT, «Prezzi al consumo (dati provvisori) – Agosto 2026». settembre 2026. Disponibile su: <a href="https://www.istat.it/" class="uri">https://www.istat.it/</a>
+</div>
+</div>
+<div id="ref-bnpEurozona20260903" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[8]
+</div>
+<div class="csl-right-inline">
+BNP Paribas Economic Research, «Zone euro : l’inflation remonte, tirée par les prix de l’énergie, les pressions inflationnistes s’atténuent davantage et les enquêtes de confiance continuent de s’améliorer». 3 settembre 2026. Disponibile su: <a href="https://economic-research.bnpparibas.com/pdf/fr-FR/Zone-euro-inflation-remonte-tiree-prix-energie-pressions-inflationnistes-attenuent-davantage-enquetes-confiance-continuent-ameliorer-03/09/2026,53721" class="uri">https://economic-research.bnpparibas.com/pdf/fr-FR/Zone-euro-inflation-remonte-tiree-prix-energie-pressions-inflationnistes-attenuent-davantage-enquetes-confiance-continuent-ameliorer-03/09/2026,53721</a>
+</div>
+</div>
+<div id="ref-ecbCES" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[9]
+</div>
+<div class="csl-right-inline">
+European Central Bank, «Consumer Expectations Survey: inflation expectations». 2026. Disponibile su: <a href="https://data.ecb.europa.eu/data/datasets/CES" class="uri">https://data.ecb.europa.eu/data/datasets/CES</a>
+</div>
+</div>
+<div id="ref-ecbSPF" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[10]
+</div>
+<div class="csl-right-inline">
+European Central Bank, «Survey of Professional Forecasters: long-term HICP forecasts». 2026. Disponibile su: <a href="https://data.ecb.europa.eu/data/datasets/SPF" class="uri">https://data.ecb.europa.eu/data/datasets/SPF</a>
+</div>
+</div>
+<div id="ref-eiaBrent" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[11]
+</div>
+<div class="csl-right-inline">
+U.S. Energy Information Administration, «Europe Brent spot price FOB, daily». 2026. Disponibile su: <a href="https://www.eia.gov/dnav/pet/hist/RBRTEd.htm" class="uri">https://www.eia.gov/dnav/pet/hist/RBRTEd.htm</a>
+</div>
+</div>
+<div id="ref-iceTtf" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[12]
+</div>
+<div class="csl-right-inline">
+Intercontinental Exchange, «Dutch TTF natural gas futures». 2026. Disponibile su: <a href="https://www.ice.com/products/27996665/Dutch-TTF-Gas-Futures" class="uri">https://www.ice.com/products/27996665/Dutch-TTF-Gas-Futures</a>
+</div>
+</div>
+<div id="ref-ecbFx" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[13]
+</div>
+<div class="csl-right-inline">
+European Central Bank, «Euro foreign exchange reference rates». 2026. Disponibile su: <a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html" class="uri">https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html</a>
+</div>
+</div>
+<div id="ref-fedJuly2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[14]
+</div>
+<div class="csl-right-inline">
+Federal Open Market Committee, «Federal Reserve holds rates at 3.50–3.75% (fifth consecutive hold)». luglio 2026. Disponibile su: <a href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm" class="uri">https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm</a>
+</div>
+</div>
+<div id="ref-difoggia20260902" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[15]
+</div>
+<div class="csl-right-inline">
+C. Di Foggia e M. Palombi, «Debiti, titoli a picco: la crisi ora spaventa Usa, Ue e Giappone». Il Fatto Quotidiano, 2 settembre 2026, 2026.
+</div>
+</div>
+<div id="ref-deVincentHumphreys2010" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[16]
+</div>
+<div class="csl-right-inline">
+R. de Vincent-Humphreys e J. M. Puigvert Gutiérrez, «A Quantitative Mirror on the Euribor Market Using Implied Probability Density Functions», European Central Bank, 1281, dic. 2010. Disponibile su: <a href="https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1281.pdf" class="uri">https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1281.pdf</a>
+</div>
+</div>
+<div id="ref-cmeFedWatchMethodology" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[17]
+</div>
+<div class="csl-right-inline">
+CME Group, «Understanding the CME Group FedWatch Tool Methodology». 2023. Consultato: 5 settembre 2026. [Online]. Disponibile su: <a href="https://www.cmegroup.com/articles/2023/understanding-the-cme-group-fedwatch-tool-methodology.html" class="uri">https://www.cmegroup.com/articles/2023/understanding-the-cme-group-fedwatch-tool-methodology.html</a>
+</div>
+</div>
+<div id="ref-boniniHuangSimaan2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[18]
+</div>
+<div class="csl-right-inline">
+S. Bonini, S. Huang, e M. Simaan, «Watching the FedWatch», <em>Journal of Futures Markets</em>, vol.&nbsp;46, fasc.&nbsp;4, pp.&nbsp;675–697, 2026, doi: <a href="https://doi.org/10.1002/fut.70077">10.1002/fut.70077</a>.
+</div>
+</div>
+<div id="ref-piazzesiSwanson2008" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[19]
+</div>
+<div class="csl-right-inline">
+M. Piazzesi e E. T. Swanson, «Futures Prices as Risk-Adjusted Forecasts of Monetary Policy», <em>Journal of Monetary Economics</em>, vol.&nbsp;55, fasc.&nbsp;4, pp.&nbsp;677–691, 2008, doi: <a href="https://doi.org/10.1016/j.jmoneco.2008.04.003">10.1016/j.jmoneco.2008.04.003</a>.
+</div>
+</div>
+<div id="ref-chernenkoSchwarzWright2004" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[20]
+</div>
+<div class="csl-right-inline">
+S. V. Chernenko, K. B. Schwarz, e J. H. Wright, «The Information Content of Forward and Futures Prices: Market Expectations and the Price of Risk», Board of Governors of the Federal Reserve System, 808, giu. 2004. Disponibile su: <a href="https://www.federalreserve.gov/pubs/ifdp/2004/808/ifdp808.pdf" class="uri">https://www.federalreserve.gov/pubs/ifdp/2004/808/ifdp808.pdf</a>
+</div>
+</div>
+<div id="ref-hordahlVestin2003" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[21]
+</div>
+<div class="csl-right-inline">
+P. Hördahl e D. Vestin, «Interpreting Implied Risk-Neutral Densities: The Role of Risk Premia», European Central Bank, 274, set. 2003. Disponibile su: <a href="https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp274.pdf" class="uri">https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp274.pdf</a>
+</div>
+</div>
+<div id="ref-ispManenti20260902" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[22]
+</div>
+<div class="csl-right-inline">
+C. Manenti, «Interest Rate Strategy: EUR swap, tassi reali strutturalmente elevati e normalizzazione dell’inflazione». settembre 2026. Disponibile su: <a href="https://imi.intesasanpaolo.com/content/dam/imi-cib/imicib/area-pubblica-doc/Ricerche-e-Commenti/studi-e-ricerche/reddito-fisso/interest-rate-strategy/20260902-NE0015-a4xWi000000C36zIAC.pdf" class="uri">https://imi.intesasanpaolo.com/content/dam/imi-cib/imicib/area-pubblica-doc/Ricerche-e-Commenti/studi-e-ricerche/reddito-fisso/interest-rate-strategy/20260902-NE0015-a4xWi000000C36zIAC.pdf</a>
+</div>
+</div>
+<div id="ref-bnpShock20260903" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[23]
+</div>
+<div class="csl-right-inline">
+BNP Paribas Economic Research, «Choc énergétique : tableau de bord 2026 vs 2022». 3 settembre 2026. Disponibile su: <a href="https://economic-research.bnpparibas.com/pdf/fr-FR/Choc-energetique-tableau-bord-2026-2022-septembre-2026-03/09/2026,53719" class="uri">https://economic-research.bnpparibas.com/pdf/fr-FR/Choc-energetique-tableau-bord-2026-2022-septembre-2026-03/09/2026,53719</a>
+</div>
+</div>
+</div>
+</section>
+<section id="quarto-reuse" class="level2 quarto-appendix-heading" data-number="10">
+<h2 class="quarto-appendix-heading anchored" data-number="10" data-anchor-id="quarto-reuse"><span class="header-section-number">10</span> Riutilizzare</h2>
+<div class="quarto-appendix-contents">
+<div>
+<p>CC-BY-4.0</p>
+</div>
+</div>
+</section>
+</div>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

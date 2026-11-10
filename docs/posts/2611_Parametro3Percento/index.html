@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="tasso naturale, r-star, inflazione, frammentazione geoeconomica, energia, produttività, intelligenza artificiale, cambiamento di regime">
+<meta name="description" content="Questa nota propone un’ipotesi: il 3% come nuovo parametro di riferimento, in due sensi collegati.">
+
+<title>Il 3% come nuovo parametro di riferimento? – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Il 3% come nuovo parametro di riferimento? – Paolo Volterra">
+<meta property="og:description" content="Questa nota propone un’ipotesi: il 3% come nuovo parametro di riferimento, in due sensi collegati.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2611_Parametro3Percento/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Il 3% come nuovo parametro di riferimento? – Paolo Volterra">
+<meta name="twitter:description" content="Questa nota propone un’ipotesi: il 3% come nuovo parametro di riferimento, in due sensi collegati.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2611_Parametro3Percento/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/in_parole_semplici/"> <i class="bi bi-instagram" role="img" aria-label="Instagram">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#lipotesi" id="toc-lipotesi" class="nav-link active" data-scroll-target="#lipotesi"><span class="header-section-number">1</span> L’ipotesi</a></li>
+  <li><a href="#prima-gamba-produttività-e-costo-del-capitale" id="toc-prima-gamba-produttività-e-costo-del-capitale" class="nav-link" data-scroll-target="#prima-gamba-produttività-e-costo-del-capitale"><span class="header-section-number">2</span> Prima gamba: produttività e costo del capitale</a></li>
+  <li><a href="#seconda-gamba-riassetto-geopolitico-energia-e-inflazione" id="toc-seconda-gamba-riassetto-geopolitico-energia-e-inflazione" class="nav-link" data-scroll-target="#seconda-gamba-riassetto-geopolitico-energia-e-inflazione"><span class="header-section-number">3</span> Seconda gamba: riassetto geopolitico, energia e inflazione</a></li>
+  <li><a href="#lipotesi-alla-prova-dei-dati" id="toc-lipotesi-alla-prova-dei-dati" class="nav-link" data-scroll-target="#lipotesi-alla-prova-dei-dati"><span class="header-section-number">4</span> L’ipotesi alla prova dei dati</a></li>
+  <li><a href="#le-teorie-alternative-al-2" id="toc-le-teorie-alternative-al-2" class="nav-link" data-scroll-target="#le-teorie-alternative-al-2"><span class="header-section-number">5</span> Le teorie alternative al 2%</a></li>
+  <li><a href="#previsioni-condizionate-alla-normalizzazione" id="toc-previsioni-condizionate-alla-normalizzazione" class="nav-link" data-scroll-target="#previsioni-condizionate-alla-normalizzazione"><span class="header-section-number">6</span> Previsioni condizionate alla normalizzazione</a></li>
+  <li><a href="#come-capire-se-il-regime-è-cambiato" id="toc-come-capire-se-il-regime-è-cambiato" class="nav-link" data-scroll-target="#come-capire-se-il-regime-è-cambiato"><span class="header-section-number">7</span> Come capire se il regime è cambiato</a></li>
+  <li><a href="#che-cosa-cambierebbe-un-mondo-al-3" id="toc-che-cosa-cambierebbe-un-mondo-al-3" class="nav-link" data-scroll-target="#che-cosa-cambierebbe-un-mondo-al-3"><span class="header-section-number">8</span> Che cosa cambierebbe un mondo al 3%</a></li>
+  <li><a href="#conclusione" id="toc-conclusione" class="nav-link" data-scroll-target="#conclusione"><span class="header-section-number">9</span> Conclusione</a></li>
+  <li><a href="#riferimenti" id="toc-riferimenti" class="nav-link" data-scroll-target="#riferimenti">Riferimenti</a>
+  <ul class="collapse">
+  <li><a href="#appendice-dati-e-trasformazioni" id="toc-appendice-dati-e-trasformazioni" class="nav-link" data-scroll-target="#appendice-dati-e-trasformazioni"><span class="header-section-number">9.1</span> Appendice: dati e trasformazioni</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Il 3% come nuovo parametro di riferimento?</h1>
+<p class="subtitle lead">Tassi più alti e inflazione persistente: uno scenario da verificare</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Macroeconomia</div>
+    <div class="quarto-category">Mercati e politica monetaria</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Questa nota propone un’ipotesi: il 3% come nuovo parametro di riferimento, in due sensi collegati.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">29 settembre 2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Data di modifica</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">1 ottobre 2026</p>
+    </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.23086513">10.5281/zenodo.23086513</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p><strong>Italiano.</strong> Questa nota propone un’ipotesi: il 3% come nuovo parametro di riferimento, in due sensi collegati. È un parametro plausibile ma non vincolante, proposto come provocazione per riaprire il confronto fra il consolidato obiettivo simmetrico del 2% e le teorie alternative, alla luce di un mondo con molti più attori economici in competizione. Il costo del denaro di riferimento non tornerebbe vicino allo zero ma si collocherebbe intorno al 3% o più, perché la crescita della produttività globale, spinta dagli investimenti in intelligenza artificiale, alza il tasso reale neutrale. L’inflazione si assesterebbe intorno al 3% anziché al 2%, perché il riassetto dell’ordine economico mondiale, con la competizione per la leadership e i conflitti che ne derivano, rende più frequenti gli shock d’offerta su energia e materie prime. I dati del 2026 sostengono la prima gamba: le stime di r* implicano un tasso nominale neutrale fra il 3% e il 4%, e FMI e OCSE indicano tassi ufficiali e neutrali più alti del passato. La seconda gamba descrive bene il livello attuale dell’inflazione, ma le previsioni ufficiali indicano un ritorno verso il 2%. Quelle previsioni sono però condizionate a ipotesi di normalizzazione, come la fine rapida del conflitto e il calo dei prezzi dell’energia indicato dai mercati futures. La nota formula quindi il 3% come scenario condizionato e propone criteri osservabili per stabilire, nei prossimi trimestri, se il regime è cambiato: aspettative d’inflazione a lungo termine, inflazione di fondo, tassi reali a lungo termine, stime di r* e ricorrenza degli shock energetici. Oggi è oltre la soglia proposta solo il tasso reale a lungo termine statunitense, mentre la stima più bassa di r* è sostanzialmente sulla soglia; l’evidenza a favore della prima gamba è più forte negli Stati Uniti che nell’area dell’euro; le soglie formano una griglia di monitoraggio, non un test conclusivo. Dati aggiornati al 1° ottobre 2026.</p>
+    <p><strong>English.</strong> This note puts forward a hypothesis: 3 per cent as the new reference parameter, in two linked senses. It is a plausible but non-binding parameter, put forward as a provocation to reopen the debate between the established 2 per cent target and alternative frameworks, in a world with many more competing economic actors. The benchmark cost of money would not return to near zero but would settle around 3 per cent or higher, because faster global productivity growth, driven by investment in artificial intelligence, raises the neutral real rate. Inflation would settle around 3 rather than 2 per cent, because the reshaping of the world economic order, with competition for leadership and the conflicts it generates, makes supply shocks to energy and commodities more frequent. 2026 data support the first leg: estimates of r* imply a nominal neutral rate between 3 and 4 per cent, and the IMF and OECD point to higher policy and neutral rates than in the past. The second leg describes the current level of inflation well, but official forecasts show a return towards 2 per cent. Those forecasts, however, are conditional on normalisation assumptions, such as a quick end to the conflict and the decline in energy prices implied by futures markets. The note therefore frames 3 per cent as a conditional scenario and proposes observable criteria for judging, over the coming quarters, whether the regime has changed: long-term inflation expectations, core inflation, long-term real rates, estimates of r* and the recurrence of energy shocks. Today only the US long-term real rate is above its proposed threshold, while the lowest estimate of r* sits essentially on the threshold; the evidence for the first leg is stronger in the United States than in the euro area; the thresholds form a monitoring grid, not a conclusive test. Data updated to 1 October 2026.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>tasso naturale, r-star, inflazione, frammentazione geoeconomica, energia, produttività, intelligenza artificiale, cambiamento di regime</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Versione citabile su Zenodo, con il PDF: <a href="https://doi.org/10.5281/zenodo.23086513">doi.org/10.5281/zenodo.23086513</a>.</p>
+</div>
+</div>
+</div>
+<section id="lipotesi" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> L’ipotesi</h1>
+<p>Il riferimento consolidato è il 2% simmetrico. Dal 2021 la BCE definisce la stabilità dei prezzi come un’inflazione del 2% nel medio termine e considera ugualmente indesiderabili le deviazioni verso l’alto e verso il basso; il riesame della strategia del 2025 lo ha confermato <span class="citation" data-cites="ecb2025strategy"><a href="#ref-ecb2025strategy" role="doc-biblioref">[1]</a></span>. Anche la Federal Reserve persegue un obiettivo di lungo periodo del 2% e, con la revisione del 2025, ha abbandonato la formula dell’obiettivo medio adottata nel 2020 <span class="citation" data-cites="fomc2025longerrun"><a href="#ref-fomc2025longerrun" role="doc-biblioref">[2]</a></span>. L’ipotesi di questa nota è che il nuovo contesto, con più attori economici in competizione e shock d’offerta più frequenti, possa comportare tassi nominali di equilibrio più elevati e un’inflazione più persistente. Si valuta quindi il 3% come riferimento di scenario, senza assumerlo come obiettivo monetario preferibile; livello e simmetria dell’obiettivo restano scelte distinte, e anche un obiettivo del 3% potrebbe essere simmetrico. Il 3% è inteso in due sensi collegati.</p>
+<ol type="1">
+<li><p><strong>Il costo del denaro.</strong> Il tasso ufficiale «normale», quello che non frena né spinge l’economia, si collocherebbe intorno al 3% o più, perché la crescita della produttività globale alza il rendimento del capitale e quindi il tasso reale neutrale r*.</p></li>
+<li><p><strong>L’inflazione.</strong> L’inflazione si assesterebbe intorno al 3% anziché al 2%, perché il riassetto dell’ordine economico mondiale rende più frequenti gli shock d’offerta su energia e materie prime.</p></li>
+</ol>
+<p>Il 3% del titolo è una sintesi comunicativa, non una previsione puntuale: un parametro plausibile ma non vincolante, proposto come provocazione per riaprire il confronto fra il consolidato obiettivo simmetrico del 2% e le teorie alternative che lo superano, alla luce di cambiamenti geopolitici che hanno moltiplicato gli attori economici in competizione. Le due gambe arrivano allo stesso numero per strade diverse e vanno tenute distinte: la prima riguarda il prezzo reale del capitale, la seconda il livello dei prezzi. Il legame fra le due è nella formula che definisce il tasso nominale neutrale:</p>
+<p><span class="math display">\[i^* \approx r^* + \pi^e.\]</span></p>
+<p>In parole semplici: il costo del denaro «normale» è la somma del rendimento reale di equilibrio e dell’inflazione attesa. Con r* all’1% e inflazione al 2% il tasso nominale neutrale è vicino al 3%; con r* all’1% e inflazione al 3%, o con r* al 2% e inflazione al 2%, sale verso il 4%.</p>
+<p>Che le due gambe arrivino allo stesso numero non è una legge: è una coincidenza di questa fase. Con r* all’1% e inflazione al 3%, il costo del denaro «normale» sarebbe vicino al 4%, non al 3%. Il 3% di questa nota non va confuso nemmeno con il valore di riferimento del 3% per il disavanzo pubblico europeo, che ha un’origine e una funzione diverse e viene ripreso solo nell’ultima parte.</p>
+<p>L’ipotesi è formulata come <strong>scenario condizionato</strong>: descrive che cosa accadrebbe se produttività e shock d’offerta restassero sul percorso osservato nel 2026, e propone criteri osservabili per stabilire, nei prossimi trimestri, se ciò stia accadendo. Un solo anno di dati e alcune correlazioni non bastano per affermare che il regime sia cambiato.</p>
+</section>
+<section id="prima-gamba-produttività-e-costo-del-capitale" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Prima gamba: produttività e costo del capitale</h1>
+<p>Nella teoria della crescita il tasso reale di equilibrio è legato al rendimento marginale del capitale, anche se nei dati il legame fra r* e crescita è più debole di quanto la teoria suggerisca <span class="citation" data-cites="hamilton2016equilibrium"><a href="#ref-hamilton2016equilibrium" role="doc-biblioref">[3]</a></span>: se la produttività accelera, aumentano le opportunità di investimento, la domanda di capitale cresce e con essa il tasso reale che rende risparmio e investimento compatibili <span class="citation" data-cites="obstfeld2023natural"><a href="#ref-obstfeld2023natural" role="doc-biblioref">[4]</a></span>. L’ipotesi sostenuta qui è che gli investimenti in intelligenza artificiale avviino una fase di questo tipo. La Banca Mondiale stima che l’adozione dell’intelligenza artificiale, anche se deludesse le attese più ottimistiche, porterebbe la crescita della produttività globale sopra la media degli anni Venti <span class="citation" data-cites="worldbank2026gep"><a href="#ref-worldbank2026gep" role="doc-biblioref">[5]</a></span>. L’OCSE registra nel 2026 una forte attività legata all’intelligenza artificiale, che ha compensato in parte gli effetti del conflitto in Medio Oriente, e osserva che il rialzo dei tassi reali attesi di lungo periodo solleva la questione se i tassi neutrali siano più alti di quanto si ritenesse <span class="citation" data-cites="oecd2026interim"><a href="#ref-oecd2026interim" role="doc-biblioref">[6]</a></span>. La BIS collega esplicitamente una produttività più alta a un prodotto marginale del capitale e a un r* più elevati <span class="citation" data-cites="bis2026aer"><a href="#ref-bis2026aer" role="doc-biblioref">[7]</a></span>.</p>
+<p>I numeri sono già vicini all’ipotesi. Le cinque stime di r* raccolte dalla Federal Reserve di Atlanta per il terzo trimestre del 2026 vanno dall’1,01% all’1,85% <span class="citation" data-cites="atlantafed2026taylorrule"><a href="#ref-atlantafed2026taylorrule" role="doc-biblioref">[8]</a></span>: con un’inflazione al 2% implicano un tasso nominale neutrale fra il 3,0% e il 3,85%. Il Fondo monetario internazionale prevede che il tasso sui fondi federali raggiunga un livello finale di circa il 3,1% alla fine del 2027 <span class="citation" data-cites="imf2026weoapril"><a href="#ref-imf2026weoapril" role="doc-biblioref">[9]</a></span>, e un suo modello che usa anche i tassi di mercato stima un r* statunitense salito all’1,5% dopo la pandemia <span class="citation" data-cites="farkas2026rstars"><a href="#ref-farkas2026rstars" role="doc-biblioref">[10]</a></span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figure/fig01.svg" class="img-fluid figure-img" role="img" aria-label="Quattro stime di r* per gli Stati Uniti dal 2000 al 2026: Holston-Laubach-Williams, Laubach-Williams, mediana delle proiezioni FOMC e Lubik-Matthes; nel 2026 vanno da circa 1 a circa 1,9 per cento."></p>
+<figcaption>Quattro stime di r* per gli Stati Uniti dal 2000 al 2026: Holston-Laubach-Williams, Laubach-Williams, mediana delle proiezioni FOMC e Lubik-Matthes; nel 2026 vanno da circa 1 a circa 1,9 per cento.</figcaption>
+</figure>
+</div>
+<p>Figura&nbsp;1: Quattro delle cinque stime del tasso reale neutrale r* per gli Stati Uniti raccolte dalla Federal Reserve di Atlanta, valori trimestrali</p>
+<p><em>Fonte:</em> elaborazioni su Federal Reserve Bank of Atlanta, Taylor Rule Utility, versione del 30 settembre 2026 <span class="citation" data-cites="atlantafed2026taylorrule"><a href="#ref-atlantafed2026taylorrule" role="doc-biblioref">[8]</a></span>. La quinta stima, la tendenza centrale delle proiezioni del FOMC (1,29% nel terzo trimestre 2026), è vicina alla mediana e non è riportata.</p>
+<p>In parole semplici: dopo il 2021 le stime si separano; quelle che incorporano le aspettative di mercato e dei banchieri centrali salgono, quella Holston–Laubach–Williams, che usa dati macroeconomici e tassi osservati senza ricorrere direttamente alla curva dei rendimenti, scende. Tutte, combinate con un’inflazione al 2%, portano il costo del denaro «normale» intorno o sopra il 3%.</p>
+<p>Gli argomenti contrari sono noti. Le stime di r* sono imprecise <span class="citation" data-cites="laubach2003measuring"><a href="#ref-laubach2003measuring" role="doc-biblioref">[11]</a></span>, il legame fra r* e crescita è più debole di quanto spesso si assuma <span class="citation" data-cites="hamilton2016equilibrium"><a href="#ref-hamilton2016equilibrium" role="doc-biblioref">[3]</a></span> e i guadagni di produttività dell’intelligenza artificiale restano incerti, con il rischio di sovrainvestimento <span class="citation" data-cites="rungcharoenkitkul2026ai"><a href="#ref-rungcharoenkitkul2026ai" role="doc-biblioref">[12]</a></span>. Parte del finanziamento è inoltre circolare: fra il 2021 e il 2025 il 55,2% degli investimenti ricevuti dalle imprese dell’intelligenza artificiale proveniva da altre imprese dello stesso settore, spesso legate da rapporti di fornitura, con rischi macroeconomici e minore trasparenza <span class="citation" data-cites="frost2026circular"><a href="#ref-frost2026circular" role="doc-biblioref">[13]</a></span>.</p>
+<p>Un’obiezione riguarda la coerenza fra le due gambe: un aumento di produttività è uno shock d’offerta positivo, che di per sé fa scendere i prezzi, mentre la seconda gamba richiede shock d’offerta negativi. La contraddizione è solo apparente. Secondo un modello della BIS, se imprese e famiglie non anticipano i guadagni di produttività dell’intelligenza artificiale l’effetto iniziale è disinflazionistico, ma nel tempo la maggiore domanda di investimento e di consumo produce un’inflazione moderata; se li anticipano, l’inflazione sale subito <span class="citation" data-cites="aldasoro2024impact"><a href="#ref-aldasoro2024impact" role="doc-biblioref">[14]</a></span>. Nella fase di investimento, quella in corso, la prima gamba può quindi sommarsi alla seconda invece di compensarla.</p>
+<p>Un terzo canale spinge nella stessa direzione della produttività: il fabbisogno pubblico. Negli Stati Uniti un punto di PIL in più di disavanzo previsto è associato a un aumento di circa 25 punti base dei tassi a termine a lunga scadenza <span class="citation" data-cites="laubach2009new"><a href="#ref-laubach2009new" role="doc-biblioref">[15]</a></span>, e studi più recenti confermano un effetto positivo del debito sui tassi, di entità variabile secondo il metodo <span class="citation" data-cites="plante2026revisiting furceri2025impact"><a href="#ref-plante2026revisiting" role="doc-biblioref">[16]</a>, <a href="#ref-furceri2025impact" role="doc-biblioref">[17]</a></span>. Un costo del denaro più alto può quindi riflettere anche un maggiore assorbimento di risparmio da parte degli Stati, non solo una maggiore produttività.</p>
+<p>La prima gamba, infine, è più debole in Europa. Le stime di r* per l’area dell’euro sono più basse di quelle statunitensi: una stima basata sui titoli indicizzati all’inflazione lo trova sceso di circa due punti dal 2002 e ancora negativo alla fine del campione <span class="citation" data-cites="christensen2024natural"><a href="#ref-christensen2024natural" role="doc-biblioref">[18]</a></span>, mentre il modello del Fondo monetario che usa i tassi di mercato lo stima salito da circa −3,5% a 0,5% dopo la pandemia <span class="citation" data-cites="farkas2026rstars"><a href="#ref-farkas2026rstars" role="doc-biblioref">[10]</a></span>. Con un’inflazione al 2%, il costo del denaro «normale» nell’area dell’euro andrebbe quindi da poco meno del 2% al 2,5%, sotto il 3%.</p>
+</section>
+<section id="seconda-gamba-riassetto-geopolitico-energia-e-inflazione" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Seconda gamba: riassetto geopolitico, energia e inflazione</h1>
+<p>La seconda gamba parte da un’interpretazione geopolitica: l’emergere di molti più attori economici in competizione mette in discussione la posizione degli Stati Uniti, la competizione per il riassetto dell’ordine mondiale accresce i conflitti, i conflitti producono shock su energia e materie prime. È un’interpretazione, non un risultato: i dati economici non possono dimostrarne le cause, possono però verificarne le conseguenze. La letteratura istituzionale sulla frammentazione geoeconomica arriva per altra via a una conclusione compatibile: un’economia mondiale divisa in blocchi sarebbe esposta a shock d’offerta più ampi e più frequenti, con maggiore volatilità di prodotto e inflazione, perché la frammentazione delle catene di fornitura riduce la capacità di assorbirli <span class="citation" data-cites="attinasi2024navigating esrb2026fragmentation"><a href="#ref-attinasi2024navigating" role="doc-biblioref">[19]</a>, <a href="#ref-esrb2026fragmentation" role="doc-biblioref">[20]</a></span>. In uno scenario estremo di barriere generalizzate fra blocchi, la BCE stima un aumento dell’inflazione mondiale di 4 punti nel primo anno, con effetti che durano almeno cinque anni <span class="citation" data-cites="attinasi2024navigating"><a href="#ref-attinasi2024navigating" role="doc-biblioref">[19]</a></span>. Il Fondo monetario indica la frammentazione geoeconomica fra i fattori che pesano sulla crescita di medio periodo <span class="citation" data-cites="imf2026weoapril"><a href="#ref-imf2026weoapril" role="doc-biblioref">[9]</a></span>.</p>
+<p>Shock d’offerta più frequenti, però, non portano da soli a un’inflazione media stabilmente più alta: possono anche produrre soltanto un’inflazione più volatile, con scostamenti dall’obiettivo in entrambe le direzioni, come prevede la BCE <span class="citation" data-cites="ecb2025strategy"><a href="#ref-ecb2025strategy" role="doc-biblioref">[1]</a></span>. Perché la media salga servono altri passaggi: che gli shock lascino effetti persistenti sui prezzi, che si trasmettano a salari e margini con effetti di secondo impatto, che le aspettative d’inflazione si spostino verso l’alto e che la banca centrale scelga di non contrastare del tutto ogni deviazione. La BIS avverte che anche shock d’offerta temporanei possono innescare effetti di secondo impatto e un’inflazione persistente <span class="citation" data-cites="bis2026report"><a href="#ref-bis2026report" role="doc-biblioref">[21]</a></span>. È su questi passaggi, più che sul numero degli shock, che si gioca la seconda gamba.</p>
+<p>Il 2026 ha offerto un caso concreto. Con il conflitto in Medio Oriente il prezzo del Brent è passato da 61 dollari al barile a fine 2025 a un massimo di 138 dollari in aprile ed era a 114 dollari a fine settembre <span class="citation" data-cites="fred2026series"><a href="#ref-fred2026series" role="doc-biblioref">[22]</a></span>; la Banca Mondiale prevede una media di 94 dollari per l’anno, il 36% in più del 2025 <span class="citation" data-cites="worldbank2026gep"><a href="#ref-worldbank2026gep" role="doc-biblioref">[5]</a></span>. L’inflazione ne ha seguito il percorso.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figure/fig02.svg" class="img-fluid figure-img" role="img" aria-label="Serie mensili 2019-2026 dell'inflazione totale e di fondo nell'area dell'euro e negli Stati Uniti, con le linee di riferimento del 2 e del 3 per cento: nel 2026 l'inflazione totale sale intorno al 3 per cento in entrambe le aree mentre quella di fondo resta fra 2,2 e 2,8 per cento."></p>
+<figcaption>Serie mensili 2019-2026 dell'inflazione totale e di fondo nell'area dell'euro e negli Stati Uniti, con le linee di riferimento del 2 e del 3 per cento: nel 2026 l'inflazione totale sale intorno al 3 per cento in entrambe le aree mentre quella di fondo resta fra 2,2 e 2,8 per cento.</figcaption>
+</figure>
+</div>
+<p>Figura&nbsp;2: Inflazione totale e di fondo nell’area dell’euro e negli Stati Uniti, variazione sui dodici mesi</p>
+<p><em>Fonte:</em> elaborazioni su Eurostat, indice armonizzato dei prezzi al consumo (classificazione COICOP 2018), e Federal Reserve Bank of St.&nbsp;Louis, indice dei prezzi al consumo <span class="citation" data-cites="eurostat2026hicp fred2026series"><a href="#ref-fred2026series" role="doc-biblioref">[22]</a>, <a href="#ref-eurostat2026hicp" role="doc-biblioref">[23]</a></span>. L’inflazione di fondo esclude energia e alimentari.</p>
+<p>In parole semplici: dopo lo shock del 2022 l’inflazione era tornata vicina al 2%; nel 2026 l’energia l’ha riportata intorno al 3% in entrambe le aree. Ad agosto l’inflazione totale era al 3,2% nell’area dell’euro e al 3,35% negli Stati Uniti, mentre quella di fondo era al 2,4% e al 2,45% <span class="citation" data-cites="eurostat2026hicp fred2026series"><a href="#ref-fred2026series" role="doc-biblioref">[22]</a>, <a href="#ref-eurostat2026hicp" role="doc-biblioref">[23]</a></span>.</p>
+<p>La scomposizione del rialzo del 2026 mostra che cosa si è mosso. Fra la fine del 2025 e la fine di settembre 2026 il rendimento del Treasury decennale è salito di 108 punti base: 98 nella componente reale e 11 nell’inflazione attesa implicita nei prezzi di mercato <span class="citation" data-cites="fred2026series"><a href="#ref-fred2026series" role="doc-biblioref">[22]</a></span>. La ripartizione del rialzo nominale fra tassi brevi attesi e premio a termine dipende invece dal modello: il premio a termine è salito di circa 45 punti base secondo la stima di Kim e Wright e di 2 punti base secondo il modello Adrian–Crump–Moench, misurato fino al 25 settembre <span class="citation" data-cites="kim2005arbitrage nyfed2026acm"><a href="#ref-kim2005arbitrage" role="doc-biblioref">[24]</a>, <a href="#ref-nyfed2026acm" role="doc-biblioref">[25]</a></span>. Il rialzo, quindi, non viene dalle aspettative d’inflazione di lungo periodo, coerentemente con il fatto che la seconda gamba non è ancora confermata.</p>
+<p>Lo shock energetico si è trasmesso anche ai tassi. Nel 2026, settimana per settimana, le variazioni del prezzo del petrolio si sono mosse insieme a quelle del rendimento a due anni, delle aspettative d’inflazione a cinque anni e del premio a termine, con correlazioni intorno a 0,6; molto meno con le aspettative d’inflazione fra cinque e dieci anni.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figure/fig03.svg" class="img-fluid figure-img" role="img" aria-label="Diagramma a dispersione di 40 settimane del 2026: le settimane con forti aumenti del prezzo del Brent coincidono in prevalenza con aumenti del rendimento a due anni; la retta di regressione ha pendenza positiva."></p>
+<figcaption>Diagramma a dispersione di 40 settimane del 2026: le settimane con forti aumenti del prezzo del Brent coincidono in prevalenza con aumenti del rendimento a due anni; la retta di regressione ha pendenza positiva.</figcaption>
+</figure>
+</div>
+<p>Figura&nbsp;3: Stati Uniti, 2026: variazioni settimanali del prezzo del Brent e del rendimento del Treasury a due anni</p>
+<p><em>Fonte:</em> elaborazioni su Federal Reserve Bank of St.&nbsp;Louis <span class="citation" data-cites="fred2026series"><a href="#ref-fred2026series" role="doc-biblioref">[22]</a></span>. Ogni punto è una settimana del 2026; la retta è la regressione lineare.</p>
+<p>In parole semplici: nelle settimane in cui il petrolio è salito, il mercato si è atteso tassi ufficiali più alti. Un aumento del 10% del Brent in una settimana si è accompagnato in media a circa 6 punti base in più sul rendimento a due anni. È una correlazione, non la prova di un nesso causale, ma è coerente con l’idea che gli shock energetici passino attraverso la reazione attesa delle banche centrali.</p>
+</section>
+<section id="lipotesi-alla-prova-dei-dati" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> L’ipotesi alla prova dei dati</h1>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Gamba</th>
+<th style="text-align: left;">Elementi a favore</th>
+<th style="text-align: left;">Elementi contrari</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Costo del denaro intorno al 3%</td>
+<td style="text-align: left;">Stime di r* fra l’1,0% e l’1,85%, quindi tasso nominale neutrale fra il 3,0% e il 3,85% con inflazione al 2% <span class="citation" data-cites="atlantafed2026taylorrule"><a href="#ref-atlantafed2026taylorrule" role="doc-biblioref">[8]</a></span>; tasso finale della Fed previsto dal FMI intorno al 3,1% <span class="citation" data-cites="imf2026weoapril"><a href="#ref-imf2026weoapril" role="doc-biblioref">[9]</a></span>; OCSE: i tassi neutrali potrebbero essere più alti di quanto si ritenesse <span class="citation" data-cites="oecd2026interim"><a href="#ref-oecd2026interim" role="doc-biblioref">[6]</a></span>; r* da modello con dati di mercato all’1,5% <span class="citation" data-cites="farkas2026rstars"><a href="#ref-farkas2026rstars" role="doc-biblioref">[10]</a></span></td>
+<td style="text-align: left;">Stima Holston–Laubach–Williams in calo dall’1,33% all’1,01% dal 2020 <span class="citation" data-cites="nyfed2026hlw"><a href="#ref-nyfed2026hlw" role="doc-biblioref">[26]</a></span>; stime molto imprecise <span class="citation" data-cites="laubach2003measuring"><a href="#ref-laubach2003measuring" role="doc-biblioref">[11]</a></span>; scomposizione del rialzo dei rendimenti dipendente dal modello <span class="citation" data-cites="nyfed2026acm kim2005arbitrage"><a href="#ref-kim2005arbitrage" role="doc-biblioref">[24]</a>, <a href="#ref-nyfed2026acm" role="doc-biblioref">[25]</a></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Inflazione intorno al 3%</td>
+<td style="text-align: left;">Inflazione totale al 3,2% nell’area dell’euro e al 3,35% negli Stati Uniti ad agosto 2026 <span class="citation" data-cites="eurostat2026hicp fred2026series"><a href="#ref-fred2026series" role="doc-biblioref">[22]</a>, <a href="#ref-eurostat2026hicp" role="doc-biblioref">[23]</a></span>; OCSE: inflazione nell’area dell’euro al 3,0% nel 2026 e al 2,9% nel 2027, con quella di fondo in salita al 2,6% <span class="citation" data-cites="oecd2026interim"><a href="#ref-oecd2026interim" role="doc-biblioref">[6]</a></span>; FMI: disinflazione interrotta <span class="citation" data-cites="imf2026weojuly"><a href="#ref-imf2026weojuly" role="doc-biblioref">[27]</a></span>; frammentazione con shock d’offerta più frequenti <span class="citation" data-cites="attinasi2024navigating esrb2026fragmentation"><a href="#ref-attinasi2024navigating" role="doc-biblioref">[19]</a>, <a href="#ref-esrb2026fragmentation" role="doc-biblioref">[20]</a></span></td>
+<td style="text-align: left;">BCE: inflazione al 2,5% nel 2027 e al 2,1% nel 2028 <span class="citation" data-cites="ecb2026projections"><a href="#ref-ecb2026projections" role="doc-biblioref">[28]</a></span>; aspettative d’inflazione statunitensi fra cinque e dieci anni al 2,36%, vicine alla media del 2010-2019 <span class="citation" data-cites="fred2026series"><a href="#ref-fred2026series" role="doc-biblioref">[22]</a></span>; inflazione di fondo fra il 2,4% e il 2,5%; FMI: poche tracce di disancoraggio delle aspettative <span class="citation" data-cites="imf2026weojuly"><a href="#ref-imf2026weojuly" role="doc-biblioref">[27]</a></span></td>
+</tr>
+</tbody>
+</table>
+<p>Tabella&nbsp;1: L’ipotesi del 3% alla prova delle evidenze disponibili</p>
+<p>La prima gamba regge meglio della seconda. Un costo del denaro intorno al 3% è già compatibile con le stime di r* e con le previsioni del FMI; non richiede di ipotizzare un mondo diverso, ma solo di prendere atto che il tasso reale di equilibrio non è tornato ai livelli del decennio scorso. La seconda gamba descrive bene il livello attuale dell’inflazione, ma le previsioni ufficiali e le aspettative di mercato indicano un ritorno verso il 2%.</p>
+<p>C’è inoltre una tensione fra le due gambe. La ragione classica per alzare l’obiettivo d’inflazione al 3% o al 4% è creare spazio per tagliare i tassi nelle recessioni, quando r* è basso <span class="citation" data-cites="ball2014four andrade2018optimal"><a href="#ref-ball2014four" role="doc-biblioref">[29]</a>, <a href="#ref-andrade2018optimal" role="doc-biblioref">[30]</a></span>. Se la prima gamba è vera e r* sale, quella ragione si indebolisce. Un 3% d’inflazione come riferimento dovrebbe quindi poggiare su un argomento diverso: la frequenza degli shock d’offerta in un mondo frammentato, che rende costoso riportare ogni volta l’inflazione esattamente al 2%.</p>
+</section>
+<section id="le-teorie-alternative-al-2" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Le teorie alternative al 2%</h1>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+
+</div>
+<div class="callout-title-container flex-fill">
+<p><span class="screen-reader-only">Nota</span>Un obiettivo ufficiale e un dibattito, non due teorie</p>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Idea</th>
+<th style="text-align: left;">Da quando</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Inflazione al 2%</td>
+<td style="text-align: left;">Il riferimento moderno nasce in Nuova Zelanda: il primo accordo sugli obiettivi di politica monetaria, del marzo 1990, fissa come traguardo una fascia dello 0–2% <span class="citation" data-cites="mccallum1996inflation"><a href="#ref-mccallum1996inflation" role="doc-biblioref">[31]</a></span>. Nei primi anni Novanta altre banche centrali adottano obiettivi del 2% o inferiori <span class="citation" data-cites="ball2014four"><a href="#ref-ball2014four" role="doc-biblioref">[29]</a></span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Il 2% della BCE</td>
+<td style="text-align: left;">Nel 1998 la BCE definisce la stabilità dei prezzi come inflazione inferiore al 2%; nel 2003 precisa «inferiore ma prossima al 2%»; dal 2021 adotta il 2% simmetrico, confermato nel 2025 <span class="citation" data-cites="ecb2025strategy"><a href="#ref-ecb2025strategy" role="doc-biblioref">[1]</a></span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Obiettivo al 3–4%</td>
+<td style="text-align: left;">Il dibattito prende forza dopo la crisi del 2008, quando i tassi vicini allo zero limitano gli interventi delle banche centrali. Nel 2010 Blanchard, Dell’Ariccia e Mauro indicano il 4% come opzione <span class="citation" data-cites="blanchard2010rethinking"><a href="#ref-blanchard2010rethinking" role="doc-biblioref">[32]</a></span>; nel 2014 Ball ne sviluppa la proposta <span class="citation" data-cites="ball2014four"><a href="#ref-ball2014four" role="doc-biblioref">[29]</a></span>.</td>
+</tr>
+</tbody>
+</table>
+<p>Tabella&nbsp;2: Cronologia del 2% e delle proposte di innalzamento</p>
+<p>Il 2% ha oltre trent’anni di storia; il dibattito moderno per alzarlo ne ha circa quindici. Un obiettivo al 3% non è quindi una teoria nuova, ma una proposta di modifica di un obiettivo consolidato.</p>
+</div>
+</div>
+</div>
+</div>
+<p>Il 2% non è l’unica regola studiata. Accanto alla proposta di alzare l’obiettivo, la letteratura ha sviluppato altre strategie, accantonate negli anni della bassa inflazione e che il nuovo contesto rende di nuovo pertinenti.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Strategia</th>
+<th style="text-align: left;">Idea</th>
+<th style="text-align: left;">Che cosa dice in un mondo di shock d’offerta frequenti</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Obiettivo più alto, al 3–4%</td>
+<td style="text-align: left;">Lasciare più spazio per tagliare i tassi nelle recessioni <span class="citation" data-cites="blanchard2010rethinking ball2014four blanco2021optimal"><a href="#ref-ball2014four" role="doc-biblioref">[29]</a>, <a href="#ref-blanchard2010rethinking" role="doc-biblioref">[32]</a>, <a href="#ref-blanco2021optimal" role="doc-biblioref">[33]</a></span></td>
+<td style="text-align: left;">La ragione classica si indebolisce se r* sale <span class="citation" data-cites="andrade2018optimal"><a href="#ref-andrade2018optimal" role="doc-biblioref">[30]</a></span>; resta l’argomento del costo di riportare ogni volta l’inflazione al 2% dopo shock ricorrenti</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fascia di tolleranza attorno al 2%</td>
+<td style="text-align: left;">Tollerare scostamenti entro un intervallo invece di mirare a un punto</td>
+<td style="text-align: left;">Una fascia non può essere una zona di inazione: senza reazione al suo interno aumentano instabilità e rischio di equilibri multipli <span class="citation" data-cites="lebihan2021tolerance"><a href="#ref-lebihan2021tolerance" role="doc-biblioref">[34]</a></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Obiettivo medio</td>
+<td style="text-align: left;">Compensare i periodi sotto l’obiettivo con periodi sopra, in media nel tempo</td>
+<td style="text-align: left;">Adottato dalla Federal Reserve nel 2020 e abbandonato con la revisione del 2025, che è tornata a un obiettivo del 2% non riferito alla media <span class="citation" data-cites="fomc2025longerrun"><a href="#ref-fomc2025longerrun" role="doc-biblioref">[2]</a></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Obiettivo sul livello dei prezzi</td>
+<td style="text-align: left;">Riportare il livello dei prezzi su un sentiero prefissato, recuperando gli scostamenti passati</td>
+<td style="text-align: left;">Rende più prevedibile il livello dei prezzi nel lungo periodo <span class="citation" data-cites="svensson1999price"><a href="#ref-svensson1999price" role="doc-biblioref">[35]</a></span>, ma dopo uno shock d’offerta impone di recuperare l’eccesso d’inflazione con una fase di inflazione più bassa</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Indice di stabilizzazione diverso dall’indice dei prezzi al consumo</td>
+<td style="text-align: left;">Stabilizzare l’inflazione dei beni discrezionali, sui quali la politica monetaria agisce, anziché quella complessiva</td>
+<td style="text-align: left;">I beni di necessità, come energia e alimentari, spiegano gran parte della variabilità dell’inflazione ma rispondono poco ai tassi; le regole ottime danno quasi tutto il peso all’inflazione dei beni discrezionali <span class="citation" data-cites="andreolli2026inflation"><a href="#ref-andreolli2026inflation" role="doc-biblioref">[36]</a></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Obiettivo sul PIL nominale</td>
+<td style="text-align: left;">Stabilizzare la crescita del PIL nominale anziché l’inflazione</td>
+<td style="text-align: left;">In un modello con prezzi e salari rigidi supera nettamente l’obiettivo d’inflazione, soprattutto in presenza di shock d’offerta, perché ripartisce l’aggiustamento fra prezzi e quantità <span class="citation" data-cites="garin2016desirability"><a href="#ref-garin2016desirability" role="doc-biblioref">[37]</a></span></td>
+</tr>
+</tbody>
+</table>
+<p>Tabella&nbsp;3: Strategie alternative all’obiettivo d’inflazione del 2%</p>
+<p>L’ultima alternativa riporta al punto da cui è partito il dibattito, il PIL nominale, ma con un ruolo diverso: non come causa dei tassi più alti, bensì come possibile àncora della politica monetaria in un mondo di shock d’offerta. Le istituzioni, per ora, hanno scelto di conservare il 2% rafforzando le analisi di scenario <span class="citation" data-cites="ecb2025strategy"><a href="#ref-ecb2025strategy" role="doc-biblioref">[1]</a></span>; il 3% di questa nota serve a ricordare che la scelta non è l’unica possibile e che il suo costo cresce se gli shock diventano più frequenti e più persistenti.</p>
+</section>
+<section id="previsioni-condizionate-alla-normalizzazione" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Previsioni condizionate alla normalizzazione</h1>
+<p>Gli elementi contrari alla seconda gamba vengono in buona parte da previsioni che incorporano esplicitamente un ritorno alla normalità. Le previsioni del Fondo monetario di aprile si basano su un conflitto relativamente breve <span class="citation" data-cites="imf2026weoapril"><a href="#ref-imf2026weoapril" role="doc-biblioref">[9]</a></span>. L’OCSE assume che i prezzi dell’energia scendano come indicato dai mercati futures e che il conflitto si risolva <span class="citation" data-cites="oecd2026interim"><a href="#ref-oecd2026interim" role="doc-biblioref">[6]</a></span>. Le proiezioni della BCE assumono che lo shock d’offerta energetico si attenui gradualmente e prendono le ipotesi su tassi e materie prime dalle quotazioni di mercato <span class="citation" data-cites="ecb2026projections"><a href="#ref-ecb2026projections" role="doc-biblioref">[28]</a></span>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 42%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Istituzione</th>
+<th style="text-align: left;">Previsione</th>
+<th style="text-align: left;">Ipotesi su cui si regge</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">FMI, aprile e luglio 2026</td>
+<td style="text-align: left;">Inflazione mondiale dal 4,7% nel 2026 al 3,9% nel 2027; tasso finale della Fed intorno al 3,1%</td>
+<td style="text-align: left;">Conflitto relativamente breve; aumento dei prezzi dell’energia del 19% nel 2026</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">OCSE, settembre 2026</td>
+<td style="text-align: left;">Inflazione nell’area dell’euro al 3,0% nel 2026 e al 2,9% nel 2027</td>
+<td style="text-align: left;">Prezzi dell’energia in calo come indicato dai futures; risoluzione del conflitto</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BCE, settembre 2026</td>
+<td style="text-align: left;">Inflazione nell’area dell’euro al 3,0% nel 2026, al 2,5% nel 2027 e al 2,1% nel 2028</td>
+<td style="text-align: left;">Attenuazione graduale dello shock energetico; materie prime e tassi dalle quotazioni di mercato</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Banca Mondiale, giugno 2026</td>
+<td style="text-align: left;">Brent a 94 dollari nel 2026 e ritorno verso livelli più bassi</td>
+<td style="text-align: left;">Disfunzioni dell’offerta in graduale attenuazione nella seconda metà dell’anno</td>
+</tr>
+</tbody>
+</table>
+<p>Tabella&nbsp;4: Previsioni ufficiali e ipotesi di normalizzazione</p>
+<p><em>Fonti:</em> <span class="citation" data-cites="imf2026weoapril imf2026weojuly oecd2026interim ecb2026projections worldbank2026gep"><a href="#ref-worldbank2026gep" role="doc-biblioref">[5]</a>, <a href="#ref-oecd2026interim" role="doc-biblioref">[6]</a>, <a href="#ref-imf2026weoapril" role="doc-biblioref">[9]</a>, <a href="#ref-imf2026weojuly" role="doc-biblioref">[27]</a>, <a href="#ref-ecb2026projections" role="doc-biblioref">[28]</a></span>.</p>
+<p>Il problema non è nuovo. Le relazioni stimate in un regime non restano necessariamente valide quando il regime cambia <span class="citation" data-cites="lucas1976econometric"><a href="#ref-lucas1976econometric" role="doc-biblioref">[38]</a></span>. I modelli macroeconomici usati per stimare r* filtrano dati di prodotto, inflazione e tassi osservati e si adeguano lentamente ai cambiamenti <span class="citation" data-cites="laubach2003measuring lewis2019measuring"><a href="#ref-laubach2003measuring" role="doc-biblioref">[11]</a>, <a href="#ref-lewis2019measuring" role="doc-biblioref">[39]</a></span>; le previsioni d’inflazione a medio termine assumono che le aspettative restino ancorate e che gli shock si riassorbano. Se la frammentazione rende gli shock d’offerta più frequenti, ogni previsione che assume il loro riassorbimento tenderà a sottostimare l’inflazione media. La stessa BCE riconosce che la frammentazione aumenta la complessità e l’imprevedibilità del contesto in cui operano le banche centrali e richiede strumenti di analisi nuovi <span class="citation" data-cites="attinasi2024navigating"><a href="#ref-attinasi2024navigating" role="doc-biblioref">[19]</a></span>.</p>
+<p>Un ripensamento è già in corso nelle istituzioni, ma è parziale: riguarda metodi e strumenti, non il parametro. Nel riesame della strategia del 2025 la BCE ha confermato l’obiettivo del 2%, ma ha scritto che i cambiamenti strutturali legati a geopolitica, digitalizzazione, intelligenza artificiale e demografia rendono il contesto dell’inflazione incerto e potenzialmente più volatile, con scostamenti più ampi dall’obiettivo in entrambe le direzioni, e ha dato più spazio alle analisi di scenario e di sensibilità <span class="citation" data-cites="ecb2025strategy"><a href="#ref-ecb2025strategy" role="doc-biblioref">[1]</a></span>. La Banca dei regolamenti internazionali osserva che gli shock d’offerta avversi sono diventati più frequenti e più intensi e che le autorità devono fare i conti con più cambiamenti strutturali insieme <span class="citation" data-cites="bis2026report"><a href="#ref-bis2026report" role="doc-biblioref">[21]</a></span>. La revisione delle previsioni della Banca d’Inghilterra affidata a Ben Bernanke ha raccomandato di affiancare stabilmente scenari alternativi alla previsione centrale e di sostituire, o almeno rinnovare a fondo, il modello di previsione <span class="citation" data-cites="bernanke2024forecasting"><a href="#ref-bernanke2024forecasting" role="doc-biblioref">[40]</a></span>. Nessuna di queste istituzioni ha proposto di abbandonare l’obiettivo del 2%.</p>
+<p>Ne seguono due indicazioni di metodo. Le previsioni ufficiali vanno lette come uno scenario, quello della normalizzazione, e affiancate da scenari di regime con shock ricorrenti. I modelli a cambiamento di regime, che stimano parametri diversi per fasi diverse e la probabilità di passare dall’una all’altra, sono lo strumento naturale per questo esercizio <span class="citation" data-cites="sims2006regime"><a href="#ref-sims2006regime" role="doc-biblioref">[41]</a></span>. Gli indicatori da seguire per capire quale scenario si stia realizzando sono la frequenza degli shock energetici, l’inflazione di fondo, le aspettative d’inflazione a lungo termine e le stime di r* che incorporano informazioni di mercato.</p>
+</section>
+<section id="come-capire-se-il-regime-è-cambiato" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Come capire se il regime è cambiato</h1>
+<p>Lo scenario del 3% si può monitorare. La tabella propone, per ciascuna gamba, un indicatore osservabile, una soglia oltre la quale l’evidenza a favore dello scenario aumenta e il valore attuale. Le soglie sono criteri indicativi proposti in questa nota, non valori ufficiali, e formano una griglia di monitoraggio, non un test conclusivo di cambiamento di regime; la durata richiesta serve a distinguere una tendenza da uno shock. Per r* la soglia è fissata in modo coerente con un costo del denaro intorno al 3%: con un’inflazione al 2%, una stima più bassa sopra l’1% implica un tasso nominale neutrale di almeno il 3%.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 35%">
+<col style="width: 18%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Gamba</th>
+<th style="text-align: left;">Indicatore</th>
+<th style="text-align: left;">Soglia</th>
+<th style="text-align: left;">Valore attuale</th>
+<th style="text-align: left;">Media 2010-2019</th>
+<th style="text-align: left;">Esito</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Inflazione</td>
+<td style="text-align: left;">Aspettative d’inflazione USA fra 5 e 10 anni (media ultimi 3 mesi)</td>
+<td style="text-align: left;">sopra 2,75% per almeno un anno</td>
+<td style="text-align: left;">2,29%</td>
+<td style="text-align: left;">2,25%</td>
+<td style="text-align: left;">Non superata</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Inflazione</td>
+<td style="text-align: left;">Aspettative d’inflazione di lungo periodo area euro (SPF BCE, ultimo trimestre)</td>
+<td style="text-align: left;">sopra 2,5% per almeno un anno</td>
+<td style="text-align: left;">2,04%</td>
+<td style="text-align: left;">1,82%</td>
+<td style="text-align: left;">Non superata</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inflazione</td>
+<td style="text-align: left;">Inflazione di fondo USA (media ultimi 6 mesi)</td>
+<td style="text-align: left;">sopra 2,75% per almeno quattro trimestri</td>
+<td style="text-align: left;">2,61%</td>
+<td style="text-align: left;">1,85%</td>
+<td style="text-align: left;">Vicina, non superata</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Inflazione</td>
+<td style="text-align: left;">Inflazione di fondo area euro (media ultimi 6 mesi)</td>
+<td style="text-align: left;">sopra 2,75% per almeno quattro trimestri</td>
+<td style="text-align: left;">2,40%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Non superata</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Costo del denaro</td>
+<td style="text-align: left;">Tasso reale a 10 anni USA (media ultimi 3 mesi)</td>
+<td style="text-align: left;">sopra 2% per almeno un anno</td>
+<td style="text-align: left;">2,44%</td>
+<td style="text-align: left;">0,42%</td>
+<td style="text-align: left;">Superata da maggio 2026, non ancora per un anno</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Costo del denaro</td>
+<td style="text-align: left;">r* USA, cinque stime (Atlanta Fed)</td>
+<td style="text-align: left;">stima più bassa sopra 1%</td>
+<td style="text-align: left;">da 1,01% a 1,85%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Sostanzialmente sulla soglia</td>
+</tr>
+</tbody>
+</table>
+<p>Tabella&nbsp;5: Indicatori per verificare lo scenario del 3%</p>
+<p><em>Fonte:</em> elaborazioni su Federal Reserve Bank of St.&nbsp;Louis, Banca centrale europea (Survey of Professional Forecasters), Eurostat e Federal Reserve Bank of Atlanta <span class="citation" data-cites="fred2026series ecb2026spf eurostat2026hicp atlantafed2026taylorrule"><a href="#ref-atlantafed2026taylorrule" role="doc-biblioref">[8]</a>, <a href="#ref-fred2026series" role="doc-biblioref">[22]</a>, <a href="#ref-eurostat2026hicp" role="doc-biblioref">[23]</a>, <a href="#ref-ecb2026spf" role="doc-biblioref">[42]</a></span>.</p>
+<p>In parole semplici: oggi ha superato la soglia solo il tasso reale a lungo termine statunitense, e da pochi mesi; la stima più bassa di r* (1,009%) è sostanzialmente sulla soglia e, data l’incertezza delle stime, non va contata come conferma; le aspettative d’inflazione a lungo termine restano vicine al 2% su entrambe le sponde dell’Atlantico e l’inflazione di fondo è sotto il 2,75%, anche se quella statunitense ci si avvicina. Il quadro è quindi coerente con la prima gamba, un costo del denaro reale più alto, e non ancora con la seconda.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figure/fig04.svg" class="img-fluid figure-img" role="img" aria-label="Quattro pannelli dal 2015 al 2026: aspettative d'inflazione a lungo termine USA e area euro sotto le soglie; inflazione di fondo sopra la soglia nel 2021-2025 negli USA e nel 2022-2024 nell'area euro; tasso reale a 10 anni USA sopra il 2 per cento dal 2026; intervallo delle stime di r* con la stima più bassa appena sopra la soglia dell'1 per cento."></p>
+<figcaption>Quattro pannelli dal 2015 al 2026: aspettative d'inflazione a lungo termine USA e area euro sotto le soglie; inflazione di fondo sopra la soglia nel 2021-2025 negli USA e nel 2022-2024 nell'area euro; tasso reale a 10 anni USA sopra il 2 per cento dal 2026; intervallo delle stime di r* con la stima più bassa appena sopra la soglia dell'1 per cento.</figcaption>
+</figure>
+</div>
+<p>Figura&nbsp;4: Indicatori dello scenario del 3% e soglie proposte, dati mensili e trimestrali dal 2015</p>
+<p><em>Fonte:</em> elaborazioni su Federal Reserve Bank of St.&nbsp;Louis, Banca centrale europea, Eurostat e Federal Reserve Bank of Atlanta <span class="citation" data-cites="fred2026series ecb2026spf eurostat2026hicp atlantafed2026taylorrule"><a href="#ref-atlantafed2026taylorrule" role="doc-biblioref">[8]</a>, <a href="#ref-fred2026series" role="doc-biblioref">[22]</a>, <a href="#ref-eurostat2026hicp" role="doc-biblioref">[23]</a>, <a href="#ref-ecb2026spf" role="doc-biblioref">[42]</a></span>. Le linee tratteggiate sono le soglie proposte nella tabella.</p>
+<p>In parole semplici: dal 2015 le aspettative d’inflazione a lungo termine non hanno mai superato le soglie, nemmeno durante lo shock del 2022 (il massimo statunitense è stato il 2,46% nell’ottobre 2023); l’inflazione di fondo le ha superate fra il 2021 e il 2025 negli Stati Uniti e fra il 2022 e il 2024 nell’area dell’euro, per poi rientrare; il tasso reale a 10 anni, negativo fino all’inizio del 2022, oscilla intorno al 2% dalla fine del 2024 ed è sopra la soglia da maggio 2026. È il quadro di un costo del denaro più alto senza, finora, un’inflazione stabilmente più alta.</p>
+<p>Un ultimo indicatore, la ricorrenza degli shock energetici, non compare in tabella perché è il più difficile da misurare. Una misura grezza, i periodi in cui il prezzo medio mensile del Brent supera di oltre il 50% quello di un anno prima, individua due episodi negli anni Venti, nel 2021-2022 e nel 2026, contro almeno cinque negli anni Duemila, considerando un unico episodio i mesi oltre la soglia distanti meno di un anno fra loro <span class="citation" data-cites="fred2026series"><a href="#ref-fred2026series" role="doc-biblioref">[22]</a></span>. Con questa misura gli shock non risultano ancora più frequenti; molti episodi passati sono però rimbalzi dopo forti cali, mentre quelli recenti sono legati a guerre. Lo scenario richiederebbe un nuovo shock rilevante, non di rimbalzo, entro pochi anni.</p>
+</section>
+<section id="che-cosa-cambierebbe-un-mondo-al-3" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Che cosa cambierebbe un mondo al 3%</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 5%">
+<col style="width: 20%">
+<col style="width: 22%">
+<col style="width: 16%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Inflazione</th>
+<th style="text-align: right;">r*</th>
+<th style="text-align: right;">Tasso nominale neutrale</th>
+<th style="text-align: right;">Costo del debito a regime</th>
+<th style="text-align: right;">Crescita nominale</th>
+<th style="text-align: right;">Saldo primario necessario</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2%</td>
+<td style="text-align: right;">0,5%</td>
+<td style="text-align: right;">2,5%</td>
+<td style="text-align: right;">3,5%</td>
+<td style="text-align: right;">3,0%</td>
+<td style="text-align: right;">0,6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2%</td>
+<td style="text-align: right;">1,0%</td>
+<td style="text-align: right;">3,0%</td>
+<td style="text-align: right;">4,0%</td>
+<td style="text-align: right;">3,0%</td>
+<td style="text-align: right;">1,3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2%</td>
+<td style="text-align: right;">1,5%</td>
+<td style="text-align: right;">3,5%</td>
+<td style="text-align: right;">4,5%</td>
+<td style="text-align: right;">3,0%</td>
+<td style="text-align: right;">2,0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2%</td>
+<td style="text-align: right;">2,0%</td>
+<td style="text-align: right;">4,0%</td>
+<td style="text-align: right;">5,0%</td>
+<td style="text-align: right;">3,0%</td>
+<td style="text-align: right;">2,6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3%</td>
+<td style="text-align: right;">0,5%</td>
+<td style="text-align: right;">3,5%</td>
+<td style="text-align: right;">4,5%</td>
+<td style="text-align: right;">4,0%</td>
+<td style="text-align: right;">0,6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3%</td>
+<td style="text-align: right;">1,0%</td>
+<td style="text-align: right;">4,0%</td>
+<td style="text-align: right;">5,0%</td>
+<td style="text-align: right;">4,0%</td>
+<td style="text-align: right;">1,3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3%</td>
+<td style="text-align: right;">1,5%</td>
+<td style="text-align: right;">4,5%</td>
+<td style="text-align: right;">5,5%</td>
+<td style="text-align: right;">4,0%</td>
+<td style="text-align: right;">1,9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3%</td>
+<td style="text-align: right;">2,0%</td>
+<td style="text-align: right;">5,0%</td>
+<td style="text-align: right;">6,0%</td>
+<td style="text-align: right;">4,0%</td>
+<td style="text-align: right;">2,6</td>
+</tr>
+</tbody>
+</table>
+<p>Tabella&nbsp;6: Tasso nominale neutrale e saldo primario necessario a stabilizzare un debito pubblico pari al 137% del PIL, secondo r* e inflazione</p>
+<p><em>Fonte:</em> calcolo aritmetico. Ipotesi: crescita reale dell’1%, costo medio del debito pubblico a regime pari al tasso nominale neutrale più un punto di premio per durata e rischio, debito pari al 137% del PIL, valore vicino a quello italiano del 2025 <span class="citation" data-cites="eurostat2026gov"><a href="#ref-eurostat2026gov" role="doc-biblioref">[43]</a></span>. Il saldo primario necessario è <span class="math inline">\((r-g)\,b/(1+g)\)</span>, in punti di PIL.</p>
+<p>In parole semplici: nel mondo al 3% il costo del denaro «normale» va dal 3,5% al 5%. Per un debito pubblico elevato, ciò che conta non è il livello dell’inflazione, ma la differenza fra r* e crescita reale: quando il costo del debito si è adeguato, un’inflazione più alta fa crescere allo stesso modo il PIL nominale e gli interessi, e il saldo primario necessario cambia poco. Un r* più alto senza una crescita reale più alta, invece, richiede avanzi primari maggiori; se la produttività accelera davvero, la crescita reale sale insieme a r* e l’effetto si attenua.</p>
+<p>Le conseguenze per gli altri attori seguono la stessa logica.</p>
+<ul>
+<li><p><strong>Imprese.</strong> Un costo del denaro intorno al 3-4% rende decisivo il confronto fra rendimento del capitale investito e costo del debito. Nell’insieme di 1.700 grandi e medie società italiane rilevato da Mediobanca il costo medio implicito del debito è salito dal 2,3% del 2021 al 4,8% del 2024 e al 4,2% del 2025, mentre il rendimento del capitale investito è rimasto più alto <span class="citation" data-cites="mediobanca2026cumulativi"><a href="#ref-mediobanca2026cumulativi" role="doc-biblioref">[44]</a></span>. Nella prima gamba i ricavi crescono insieme ai tassi; nella seconda il costo cresce senza un aumento equivalente dei flussi di cassa.</p></li>
+<li><p><strong>Banche.</strong> Tassi più alti allargano la distanza fra tassi attivi e remunerazione dei depositi: in Italia il differenziale fra nuovi prestiti alle imprese e depositi a vista è passato da 1,15 a 5,03 punti fra la fine del 2021 e il settembre 2023 <span class="citation" data-cites="ecb2026mir"><a href="#ref-ecb2026mir" role="doc-biblioref">[45]</a></span>, e il margine d’interesse delle banche significative è salito dall’1,16% al 2,33% fra il 2021 e il 2024 <span class="citation" data-cites="ecb2026sup"><a href="#ref-ecb2026sup" role="doc-biblioref">[46]</a></span>. In un regime di shock ricorrenti, però, il beneficio sui margini convive con rischio di credito, perdite di valore sui titoli e minore stabilità della raccolta <span class="citation" data-cites="drechsler2017deposits jiang2024monetary"><a href="#ref-drechsler2017deposits" role="doc-biblioref">[47]</a>, <a href="#ref-jiang2024monetary" role="doc-biblioref">[48]</a></span>.</p></li>
+<li><p><strong>Conti pubblici.</strong> Il riferimento europeo del 3% per il disavanzo, una grandezza diversa da quella discussa in questa nota, resta legato alla crescita nominale e al costo del debito: per l’Italia nel 2025 il disavanzo che mantiene costante il rapporto debito/PIL è circa il 3,2% <span class="citation" data-cites="eurostat2026gov"><a href="#ref-eurostat2026gov" role="doc-biblioref">[43]</a></span>. Il nuovo quadro europeo affianca al 3% traiettorie di spesa specifiche per paese <span class="citation" data-cites="eu2024regulation1263"><a href="#ref-eu2024regulation1263" role="doc-biblioref">[49]</a></span>.</p></li>
+</ul>
+<p>Il rialzo del 2022-2023 offre un’anticipazione di che cosa significhi, per le imprese italiane, un costo del denaro stabilmente più alto. Secondo gli indicatori di bilancio delle società di capitali raccolti dalla Banca d’Italia, in tutte le 19 regioni per cui il confronto è possibile il peso degli oneri finanziari sul margine operativo lordo è salito fra il 2021 e il 2024, dal 9,1% al 16,2% in media semplice fra le regioni, mentre la leva finanziaria è scesa, sempre in media semplice, dal 42,1% al 37,0% <span class="citation" data-cites="bankit2026economieregionali"><a href="#ref-bankit2026economieregionali" role="doc-biblioref">[50]</a></span>. Le medie semplici delle regioni non coincidono con i rapporti aggregati nazionali. Il peso degli oneri finanziari è aumentato nonostante la riduzione della leva. Il risultato è coerente con il rincaro del finanziamento, ma i rapporti aggregati non consentono di separare gli effetti di tassi, debito e margini operativi: una leva più bassa può riflettere anche un patrimonio più alto, e il rapporto con il margine operativo lordo sale anche quando il margine diminuisce.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figure/fig05.svg" class="img-fluid figure-img" role="img" aria-label="Grafico a manubrio per 19 regioni: in tutte gli oneri finanziari in rapporto al margine operativo lordo aumentano fra il 2021 e il 2024, con valori 2024 da circa 12 per cento in Valle d'Aosta a circa 20 per cento in Lombardia."></p>
+<figcaption>Grafico a manubrio per 19 regioni: in tutte gli oneri finanziari in rapporto al margine operativo lordo aumentano fra il 2021 e il 2024, con valori 2024 da circa 12 per cento in Valle d'Aosta a circa 20 per cento in Lombardia.</figcaption>
+</figure>
+</div>
+<p>Figura&nbsp;5: Oneri finanziari in rapporto al margine operativo lordo delle società di capitali, per regione, 2021 e 2024</p>
+<p><em>Fonte:</em> elaborazioni su Banca d’Italia, Economie regionali 2026, tavola A2.9, dati Cerved sulle società di capitali <span class="citation" data-cites="bankit2026economieregionali"><a href="#ref-bankit2026economieregionali" role="doc-biblioref">[50]</a></span>. Per l’Umbria l’edizione 2026 riporta solo il dato del 2024.</p>
+<p>In parole semplici: nel 2021 le società di capitali destinavano agli interessi fra il 6% e il 12% del margine operativo lordo, secondo la regione; nel 2024 fra il 12% e il 20%. In un mondo con il costo del denaro stabilmente intorno al 3%, questi livelli potrebbero diventare la norma anziché un picco.</p>
+</section>
+<section id="conclusione" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Conclusione</h1>
+<p>Il 3% come nuovo parametro di riferimento è uno scenario plausibile, non ancora un fatto, e va declinato per area monetaria. Negli Stati Uniti un costo del denaro intorno al 3% o più è già coerente con le stime disponibili di r*, con i tassi reali a lungo termine e con le previsioni del Fondo monetario e dell’OCSE: per imprese e banche statunitensi, o esposte al dollaro, è il riferimento più prudente su cui costruire piani e prezzi, al posto dei tassi vicini allo zero del decennio scorso. Nell’area dell’euro le stime di r* sono più basse e il costo del denaro «normale» si colloca fra poco meno del 2% e il 2,5%: qui il 3% è uno scenario avverso da considerare, non il caso centrale. Un’inflazione stabilmente intorno al 3% descrive il 2026 su entrambe le sponde, ma non è ancora ciò che indicano le aspettative a lungo termine né l’inflazione di fondo; diventerebbe il nuovo riferimento solo se gli shock d’offerta legati al riassetto geopolitico si dimostrassero ricorrenti e, soprattutto, persistenti nei loro effetti su salari e aspettative; in quel caso il suo fondamento sarebbe la natura degli shock, non il limite inferiore dei tassi.</p>
+<p>Il 3% resta quindi un parametro plausibile ma non vincolante. Resta netta anche una distinzione: osservare un’inflazione persistente intorno al 3% non dimostra che un obiettivo del 3% sia preferibile. La prima è un’ipotesi sul comportamento dell’economia; la seconda richiede un confronto fra benefici e costi delle strategie monetarie, come quelle elencate nella tabella delle alternative. Il suo valore è soprattutto di riaprire una domanda che il consenso sul 2% aveva chiuso: quale regola monetaria è più adatta a un mondo con più attori in competizione e shock d’offerta più frequenti. Le alternative esistono e sono state studiate; il nuovo contesto ne rende di nuovo attuale il confronto.</p>
+<p>La risposta non verrà dalle sole previsioni condizionate alla normalizzazione, ma dal monitoraggio degli indicatori proposti: se nei prossimi trimestri aspettative d’inflazione a lungo termine e inflazione di fondo supereranno stabilmente le soglie e gli shock energetici si ripeteranno, aumenterà l’evidenza a favore dello scenario; se resteranno vicini al 2%, il 2026 apparirà come uno shock, per quanto ampio, dentro il regime precedente.</p>
+</section>
+<section id="riferimenti" class="level1 unnumbered">
+<h1 class="unnumbered">Riferimenti</h1>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-ecb2025strategy" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[1]
+</div>
+<div class="csl-right-inline">
+European Central Bank, <a href="https://www.ecb.europa.eu/mopo/strategy/strategy-review/html/index.en.html">«An Overview of the ECB’s Monetary Policy Strategy»</a>. ECB strategy review, giugno 2025.
+</div>
+</div>
+<div id="ref-fomc2025longerrun" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[2]
+</div>
+<div class="csl-right-inline">
+Federal Open Market Committee, <a href="https://www.federalreserve.gov/monetarypolicy/review-of-monetary-policy-strategy-tools-and-communications.htm">«Statement on Longer-Run Goals and Monetary Policy Strategy»</a>. Board of Governors of the Federal Reserve System, 2025.
+</div>
+</div>
+<div id="ref-hamilton2016equilibrium" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[3]
+</div>
+<div class="csl-right-inline">
+J. D. Hamilton, E. S. Harris, J. Hatzius, e K. D. West, <a href="https://doi.org/10.1057/s41308-016-0015-z">«The Equilibrium Real Funds Rate: Past, Present, and Future»</a>, <em>IMF Economic Review</em>, vol.&nbsp;64, fasc.&nbsp;4, pp.&nbsp;660–707, 2016, doi: <a href="https://doi.org/10.1057/s41308-016-0015-z">10.1057/s41308-016-0015-z</a>.
+</div>
+</div>
+<div id="ref-obstfeld2023natural" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[4]
+</div>
+<div class="csl-right-inline">
+M. Obstfeld, <a href="https://www.nber.org/papers/w31949">«Natural and Neutral Real Interest Rates: Past and Future»</a>, National Bureau of Economic Research, NBER Working Paper 31949, dic. 2023. doi: <a href="https://doi.org/10.3386/w31949">10.3386/w31949</a>.
+</div>
+</div>
+<div id="ref-worldbank2026gep" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[5]
+</div>
+<div class="csl-right-inline">
+World Bank, <a href="https://www.worldbank.org/en/publication/global-economic-prospects">«Global Economic Prospects, June 2026»</a>, World Bank, Washington, DC, giu. 2026.
+</div>
+</div>
+<div id="ref-oecd2026interim" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[6]
+</div>
+<div class="csl-right-inline">
+OECD, «OECD Economic Outlook, Interim Report September 2026: Weathering Successive Shocks», OECD Publishing, Paris, set. 2026.
+</div>
+</div>
+</div>
+<div id="ref-bis2026aer" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[7]
+</div>
+<div class="csl-right-inline">
+Bank for International Settlements, <a href="https://www.bis.org/annualeconomicreports/index.htm">«Box C: Transformative AI, long-term growth and r-star»</a>, in <em>Annual Economic Report 2026</em>, Bank for International Settlements, 2026, pp.&nbsp;20–21.
+</div>
+</div>
+<div id="ref-atlantafed2026taylorrule" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[8]
+</div>
+<div class="csl-right-inline">
+Federal Reserve Bank of Atlanta, <a href="https://www.atlantafed.org/research-and-data/data/taylor-rule">«Taylor Rule Utility»</a>. 2026.
+</div>
+</div>
+<div id="ref-imf2026weoapril" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[9]
+</div>
+<div class="csl-right-inline">
+International Monetary Fund, <a href="https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026">«World Economic Outlook, April 2026: Global Economy in the Shadow of War. Chapter 1: Global Prospects and Policies»</a>, International Monetary Fund, apr. 2026.
+</div>
+</div>
+<div id="ref-farkas2026rstars" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[10]
+</div>
+<div class="csl-right-inline">
+M. Farkas, Z. Jakab, e J. Lindé, <a href="https://www.imf.org/en/Publications/WP/Issues/2026/08/07/r-stars-across-the-atlantic-the-role-of-policy-expectations-578665">«R-stars Across the Atlantic—The Role of Policy Expectations»</a>, International Monetary Fund, IMF Working Paper 2026/168, ago. 2026. doi: <a href="https://doi.org/10.5089/9798229058384.001">10.5089/9798229058384.001</a>.
+</div>
+</div>
+<div id="ref-laubach2003measuring" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[11]
+</div>
+<div class="csl-right-inline">
+T. Laubach e J. C. Williams, <a href="https://doi.org/10.1162/003465303772815934">«Measuring the Natural Rate of Interest»</a>, <em>Review of Economics and Statistics</em>, vol.&nbsp;85, fasc.&nbsp;4, pp.&nbsp;1063–1070, 2003, doi: <a href="https://doi.org/10.1162/003465303772815934">10.1162/003465303772815934</a>.
+</div>
+</div>
+<div id="ref-rungcharoenkitkul2026ai" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[12]
+</div>
+<div class="csl-right-inline">
+P. Rungcharoenkitkul, <a href="https://www.bis.org/publications/working-paper-1367-ai-investment-race">«The AI Investment Race»</a>, Bank for International Settlements, BIS Working Paper 1367, lug. 2026.
+</div>
+</div>
+<div id="ref-frost2026circular" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[13]
+</div>
+<div class="csl-right-inline">
+J. Frost, R. Kansal, K. Rishabh, V. Shreeti, e L. S. Y. Zhang, «Circular Relationships among AI Firms», Bank for International Settlements, BIS Bulletin 137, ott. 2026.
+</div>
+</div>
+<div id="ref-aldasoro2024impact" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[14]
+</div>
+<div class="csl-right-inline">
+I. Aldasoro, S. Doerr, L. Gambacorta, e D. Rees, <a href="https://www.bis.org/publ/work1179.htm">«The Impact of Artificial Intelligence on Output and Inflation»</a>, Bank for International Settlements, BIS Working Papers 1179, apr. 2024.
+</div>
+</div>
+<div id="ref-laubach2009new" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[15]
+</div>
+<div class="csl-right-inline">
+T. Laubach, <a href="https://doi.org/10.1162/jeea.2009.7.4.858">«New Evidence on the Interest Rate Effects of Budget Deficits and Debt»</a>, <em>Journal of the European Economic Association</em>, vol.&nbsp;7, fasc.&nbsp;4, pp.&nbsp;858–885, 2009, doi: <a href="https://doi.org/10.1162/jeea.2009.7.4.858">10.1162/jeea.2009.7.4.858</a>.
+</div>
+</div>
+<div id="ref-plante2026revisiting" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[16]
+</div>
+<div class="csl-right-inline">
+M. Plante, A. W. Richter, e S. Zubairy, <a href="https://doi.org/10.1162/rest.a.1746">«Revisiting the Interest Rate Effects of Federal Debt»</a>, <em>Review of Economics and Statistics</em>, pp.&nbsp;1–24, 2026, doi: <a href="https://doi.org/10.1162/rest.a.1746">10.1162/rest.a.1746</a>.
+</div>
+</div>
+<div id="ref-furceri2025impact" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[17]
+</div>
+<div class="csl-right-inline">
+D. Furceri, C. Goncalves, e H. Li, <a href="https://www.suerf.org/wp-content/uploads/2025/08/SUERF-Policy-Brief-1237_Furceri_Goncalves_Li.pdf">«The impact of debt and deficits on long-term interest rates in the US»</a>, SUERF – The European Money; Finance Forum, SUERF Policy Brief 1237, ago. 2025.
+</div>
+</div>
+<div id="ref-christensen2024natural" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[18]
+</div>
+<div class="csl-right-inline">
+J. Christensen e S. Mouabbi, «The Natural Rate of Interest in the Euro Area: Evidence from Inflation-Indexed Bonds», Banque de France, Working Paper 948, 2024.
+</div>
+</div>
+<div id="ref-attinasi2024navigating" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[19]
+</div>
+<div class="csl-right-inline">
+<span class="nocase">M. G. Attinasi, M. Mancini, L. Boeckelmann, C. Giordano, B. Meunier, <a href="https://doi.org/10.2139/ssrn.5065237"><em>et al.</em></a></span>, «Navigating a Fragmenting Global Trading System: Insights for Central Banks», European Central Bank, 2024. doi: <a href="https://doi.org/10.2139/ssrn.5065237">10.2139/ssrn.5065237</a>.
+</div>
+</div>
+<div id="ref-esrb2026fragmentation" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[20]
+</div>
+<div class="csl-right-inline">
+European Systemic Risk Board e European Central Bank, <a href="https://doi.org/10.2849/1027957"><em>Financial Stability Risks from Geoeconomic Fragmentation</em></a>. European Systemic Risk Board, 2026. doi: <a href="https://doi.org/10.2849/1027957">10.2849/1027957</a>.
+</div>
+</div>
+<div id="ref-bis2026report" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[21]
+</div>
+<div class="csl-right-inline">
+Bank for International Settlements, <a href="https://www.bis.org/annualeconomicreports/index.htm">«Annual Economic Report 2026»</a>, Bank for International Settlements, Basel, giu. 2026.
+</div>
+</div>
+<div id="ref-fred2026series" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[22]
+</div>
+<div class="csl-right-inline">
+Federal Reserve Bank of St.&nbsp;Louis, <a href="https://fred.stlouisfed.org/">«FRED Economic Data: rendimenti Treasury, tassi reali, breakeven, term premium, PIL nominale, debito federale»</a>. Serie GDP, DGS10, DGS30, DFII10, T10YIE, T5YIFR, THREEFYTP10, GFDEBTN, NCBDBIQ027S, A679RC1Q027SBEA, 2026.
+</div>
+</div>
+<div id="ref-eurostat2026hicp" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[23]
+</div>
+<div class="csl-right-inline">
+Eurostat, <a href="https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table">«HICP – Monthly Data (Annual Rate of Change), COICOP 2018 (prc_hicp_minr)»</a>. Eurostat database, 2026.
+</div>
+</div>
+<div id="ref-kim2005arbitrage" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[24]
+</div>
+<div class="csl-right-inline">
+D. H. Kim e J. H. Wright, <a href="https://doi.org/10.2139/ssrn.813267">«An Arbitrage-Free Three-Factor Term Structure Model and the Recent Behavior of Long-Term Yields and Distant-Horizon Forward Rates»</a>, Board of Governors of the Federal Reserve System, Finance and Economics Discussion Series 2005-33, 2005. doi: <a href="https://doi.org/10.2139/ssrn.813267">10.2139/ssrn.813267</a>.
+</div>
+</div>
+<div id="ref-nyfed2026acm" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[25]
+</div>
+<div class="csl-right-inline">
+Federal Reserve Bank of New York, <a href="https://www.newyorkfed.org/research/data_indicators/term-premia-tabs">«Treasury Term Premia (Adrian-Crump-Moench)»</a>. Serie giornaliere e mensili 1-10 anni, 2026.
+</div>
+</div>
+<div id="ref-nyfed2026hlw" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[26]
+</div>
+<div class="csl-right-inline">
+Federal Reserve Bank of New York, <a href="https://www.newyorkfed.org/research/policy/rstar">«Measuring the Natural Rate of Interest: Holston-Laubach-Williams Estimates»</a>. Foglio di calcolo delle stime correnti, ultimo dato 2026Q2, 2026.
+</div>
+</div>
+<div id="ref-imf2026weojuly" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[27]
+</div>
+<div class="csl-right-inline">
+International Monetary Fund, <a href="https://www.imf.org/-/media/files/publications/weo/2026/update/july/english/text.pdf">«World Economic Outlook Update, July 2026: Global Economy in Crosscurrents of War and Technology»</a>, International Monetary Fund, lug. 2026.
+</div>
+</div>
+<div id="ref-ecb2026projections" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[28]
+</div>
+<div class="csl-right-inline">
+European Central Bank, <a href="https://www.ecb.europa.eu/press/projections/html/ecb.projections202609_ecbstaff~8e340fc69d.en.html">«ECB Staff Macroeconomic Projections for the Euro Area, September 2026»</a>. European Central Bank, settembre 2026.
+</div>
+</div>
+<div id="ref-ball2014four" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[29]
+</div>
+<div class="csl-right-inline">
+L. M. Ball, <a href="https://www.imf.org/en/Publications/WP/Issues/2016/12/31/The-Case-for-a-Long-Run-Inflation-Target-of-Four-Percent-41625">«The Case for a Long-Run Inflation Target of Four Percent»</a>, International Monetary Fund, IMF Working Paper 14/92, giu. 2014. doi: <a href="https://doi.org/10.5089/9781498395601.001">10.5089/9781498395601.001</a>.
+</div>
+</div>
+<div id="ref-andrade2018optimal" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[30]
+</div>
+<div class="csl-right-inline">
+P. Andrade, J. Galí, H. Le Bihan, e J. Matheron, «The Optimal Inflation Target and the Natural Rate of Interest», Banque de France, Working Paper 670, 2018.
+</div>
+</div>
+<div id="ref-mccallum1996inflation" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[31]
+</div>
+<div class="csl-right-inline">
+B. T. McCallum, <a href="https://www.nber.org/papers/w5579">«Inflation Targeting in Canada, New Zealand, Sweden, the United Kingdom, and in General»</a>, National Bureau of Economic Research, NBER Working Paper 5579, mag. 1996. doi: <a href="https://doi.org/10.3386/w5579">10.3386/w5579</a>.
+</div>
+</div>
+<div id="ref-blanchard2010rethinking" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[32]
+</div>
+<div class="csl-right-inline">
+O. Blanchard, G. Dell’Ariccia, e P. Mauro, <a href="https://doi.org/10.5089/9781455224982.004">«Rethinking Macroeconomic Policy»</a>, International Monetary Fund, IMF Staff Position Note SPN/10/03, feb. 2010. doi: <a href="https://doi.org/10.5089/9781455224982.004">10.5089/9781455224982.004</a>.
+</div>
+</div>
+<div id="ref-blanco2021optimal" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[33]
+</div>
+<div class="csl-right-inline">
+A. Blanco, <a href="https://doi.org/10.1257/mac.20180198">«Optimal Inflation Target in an Economy with Menu Costs and a Zero Lower Bound»</a>, <em>American Economic Journal: Macroeconomics</em>, vol.&nbsp;13, fasc.&nbsp;3, pp.&nbsp;108–141, 2021, doi: <a href="https://doi.org/10.1257/mac.20180198">10.1257/mac.20180198</a>.
+</div>
+</div>
+<div id="ref-lebihan2021tolerance" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[34]
+</div>
+<div class="csl-right-inline">
+H. Le Bihan, M. Marx, e J. Matheron, «Inflation Tolerance Ranges in the New Keynesian Model», Banque de France, Working Paper 820, 2021.
+</div>
+</div>
+<div id="ref-svensson1999price" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[35]
+</div>
+<div class="csl-right-inline">
+L. E. O. Svensson, <a href="https://doi.org/10.2307/2601112">«Price-Level Targeting versus Inflation Targeting: A Free Lunch?»</a>, <em>Journal of Money, Credit and Banking</em>, vol.&nbsp;31, fasc.&nbsp;3, pp.&nbsp;277–295, 1999, doi: <a href="https://doi.org/10.2307/2601112">10.2307/2601112</a>.
+</div>
+</div>
+<div id="ref-andreolli2026inflation" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[36]
+</div>
+<div class="csl-right-inline">
+M. Andreolli, N. Rickard, P. Surico, e C. Vergeat, «Inflation Composition and Monetary Stabilization», Bank of England, Staff Working Paper 1208, set. 2026.
+</div>
+</div>
+<div id="ref-garin2016desirability" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[37]
+</div>
+<div class="csl-right-inline">
+J. Garı́n, R. Lester, e E. Sims, <a href="https://doi.org/10.1016/j.jedc.2016.05.004">«On the Desirability of Nominal GDP Targeting»</a>, <em>Journal of Economic Dynamics and Control</em>, vol.&nbsp;69, pp.&nbsp;21–44, 2016, doi: <a href="https://doi.org/10.1016/j.jedc.2016.05.004">10.1016/j.jedc.2016.05.004</a>.
+</div>
+</div>
+<div id="ref-lucas1976econometric" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[38]
+</div>
+<div class="csl-right-inline">
+R. E. Lucas, <a href="https://doi.org/10.1016/S0167-2231(76)80003-6">«Econometric Policy Evaluation: A Critique»</a>, <em>Carnegie-Rochester Conference Series on Public Policy</em>, vol.&nbsp;1, pp.&nbsp;19–46, 1976, doi: <a href="https://doi.org/10.1016/S0167-2231(76)80003-6">10.1016/S0167-2231(76)80003-6</a>.
+</div>
+</div>
+<div id="ref-lewis2019measuring" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[39]
+</div>
+<div class="csl-right-inline">
+K. F. Lewis e F. Vazquez-Grande, <a href="https://doi.org/10.1002/jae.2671">«Measuring the Natural Rate of Interest: A Note on Transitory Shocks»</a>, <em>Journal of Applied Econometrics</em>, vol.&nbsp;34, fasc.&nbsp;3, pp.&nbsp;425–436, 2019, doi: <a href="https://doi.org/10.1002/jae.2671">10.1002/jae.2671</a>.
+</div>
+</div>
+<div id="ref-bernanke2024forecasting" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[40]
+</div>
+<div class="csl-right-inline">
+B. S. Bernanke, <a href="https://www.bankofengland.co.uk/independent-evaluation-office/forecasting-for-monetary-policy-making-and-communication-at-the-bank-of-england-a-review/forecasting-for-monetary-policy-making-and-communication-at-the-bank-of-england-a-review">«Forecasting for Monetary Policy Making and Communication at the Bank of England: A Review»</a>, Bank of England, Independent Evaluation Office, apr. 2024.
+</div>
+</div>
+<div id="ref-sims2006regime" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[41]
+</div>
+<div class="csl-right-inline">
+C. A. Sims e T. Zha, <a href="https://doi.org/10.1257/000282806776157678">«Were There Regime Switches in U.S. Monetary Policy?»</a>, <em>American Economic Review</em>, vol.&nbsp;96, fasc.&nbsp;1, pp.&nbsp;54–81, 2006, doi: <a href="https://doi.org/10.1257/000282806776157678">10.1257/000282806776157678</a>.
+</div>
+</div>
+<div id="ref-ecb2026spf" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[42]
+</div>
+<div class="csl-right-inline">
+European Central Bank, <a href="https://data.ecb.europa.eu/data/datasets/SPF">«Survey of Professional Forecasters: Longer-Term HICP Inflation Expectations»</a>. ECB Data Portal, 2026.
+</div>
+</div>
+<div id="ref-eurostat2026gov" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[43]
+</div>
+<div class="csl-right-inline">
+Eurostat, <a href="https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table">«Government Deficit/Surplus, Debt and Associated Data (gov_10dd_edpt1) and GDP and Main Components (nama_10_gdp)»</a>. Eurostat database, 2026.
+</div>
+</div>
+<div id="ref-mediobanca2026cumulativi" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[44]
+</div>
+<div class="csl-right-inline">
+Mediobanca Area Studi, <a href="https://www.areastudimediobanca.com/it/catalogo/tipologia/dati-cumulativi-di-societa-italiane">«Dati cumulativi di 1700 società italiane»</a>, Mediobanca – Banca di Credito Finanziario S.p.A., Area Studi, Milano, set. 2026.
+</div>
+</div>
+<div id="ref-ecb2026mir" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[45]
+</div>
+<div class="csl-right-inline">
+European Central Bank, <a href="https://data.ecb.europa.eu/data/datasets/MIR">«MFI Interest Rate Statistics (MIR) and Key ECB Interest Rates»</a>. ECB Data Portal, 2026.
+</div>
+</div>
+<div id="ref-ecb2026sup" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[46]
+</div>
+<div class="csl-right-inline">
+European Central Bank, <a href="https://data.ecb.europa.eu/data/datasets/SUP">«Supervisory Banking Statistics: Net Interest Margin of Significant Institutions»</a>. ECB Data Portal, 2026.
+</div>
+</div>
+<div id="ref-drechsler2017deposits" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[47]
+</div>
+<div class="csl-right-inline">
+I. Drechsler, A. Savov, e P. Schnabl, <a href="https://doi.org/10.1093/qje/qjx019">«The Deposits Channel of Monetary Policy»</a>, <em>The Quarterly Journal of Economics</em>, vol.&nbsp;132, fasc.&nbsp;4, pp.&nbsp;1819–1876, 2017, doi: <a href="https://doi.org/10.1093/qje/qjx019">10.1093/qje/qjx019</a>.
+</div>
+</div>
+<div id="ref-jiang2024monetary" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[48]
+</div>
+<div class="csl-right-inline">
+E. X. Jiang, G. Matvos, T. Piskorski, e A. Seru, <a href="https://doi.org/10.1016/j.jfineco.2024.103899">«Monetary Tightening and U.S. Bank Fragility in 2023: Mark-to-Market Losses and Uninsured Depositor Runs?»</a>, <em>Journal of Financial Economics</em>, vol.&nbsp;159, p.&nbsp;103899, 2024, doi: <a href="https://doi.org/10.1016/j.jfineco.2024.103899">10.1016/j.jfineco.2024.103899</a>.
+</div>
+</div>
+<div id="ref-eu2024regulation1263" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[49]
+</div>
+<div class="csl-right-inline">
+Parlamento europeo e Consiglio dell’Unione europea, <a href="http://data.europa.eu/eli/reg/2024/1263/oj">«Regolamento (UE) 2024/1263 del Parlamento europeo e del Consiglio, del 29 aprile 2024, relativo al coordinamento efficace delle politiche economiche e alla sorveglianza di bilancio multilaterale e che abroga il regolamento (CE) n.&nbsp;1466/97 del Consiglio»</a>. Gazzetta ufficiale dell’Unione europea, serie L, 2024/1263, 30 aprile 2024, 2024.
+</div>
+</div>
+<div id="ref-bankit2026economieregionali" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[50]
+</div>
+<div class="csl-right-inline">
+Banca d’Italia, <a href="https://www.bancaditalia.it/pubblicazioni/economie-regionali/">«Economie regionali 2026: l’economia delle regioni italiane. Tavola A2.9, Indicatori economici e finanziari delle imprese»</a>. Banca d’Italia, collana Economie regionali, fascicoli regionali, giugno 2026.
+</div>
+</div>
+<hr>
+<p><strong>Nota metodologica</strong></p>
+<p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
+<p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale; l’analisi è pertanto integralmente auditabile e replicabile da terzi a partire da esse. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+<div id="quarto-appendix" class="default">
+<section id="appendice-dati-e-trasformazioni" class="level2 quarto-appendix-heading" data-number="9.1">
+<h2 class="quarto-appendix-heading anchored" data-number="9.1" data-anchor-id="appendice-dati-e-trasformazioni"><span class="header-section-number">9.1</span> Appendice: dati e trasformazioni</h2>
+<div class="quarto-appendix-contents">
+<p>I dati sono aggiornati al 1° ottobre 2026.</p>
+<ul>
+<li><p>Stime di r* per gli Stati Uniti: Federal Reserve Bank of Atlanta, Taylor Rule Utility, versione con serie aggiornate al 30 settembre 2026 <span class="citation" data-cites="atlantafed2026taylorrule"><a href="#ref-atlantafed2026taylorrule" role="doc-biblioref">[8]</a></span>.</p></li>
+<li><p>Inflazione nell’area dell’euro: Eurostat, indice armonizzato dei prezzi al consumo, nuova classificazione COICOP 2018 in vigore dal 2026, area dell’euro a composizione evolutiva (21 paesi dal 2026); indice totale, indice esclusi energia, alimentari, alcol e tabacchi, energia; variazione sui dodici mesi <span class="citation" data-cites="eurostat2026hicp"><a href="#ref-eurostat2026hicp" role="doc-biblioref">[23]</a></span>.</p></li>
+<li><p>Inflazione negli Stati Uniti: indice dei prezzi al consumo totale, al netto di alimentari ed energia, ed energia (codici FRED CPIAUCSL, CPILFESL, CPIENGSL); variazione sui dodici mesi <span class="citation" data-cites="fred2026series"><a href="#ref-fred2026series" role="doc-biblioref">[22]</a></span>.</p></li>
+<li><p>Petrolio e tassi: prezzo spot del Brent (DCOILBRENTEU), rendimenti dei Treasury a 2 e 10 anni (DGS2, DGS10), aspettative d’inflazione fra cinque e dieci anni (T5YIFR), premio a termine di Kim e Wright (THREEFYTP10); variazioni settimanali calcolate sul dato del venerdì, 40 settimane del 2026 <span class="citation" data-cites="fred2026series kim2005arbitrage"><a href="#ref-fred2026series" role="doc-biblioref">[22]</a>, <a href="#ref-kim2005arbitrage" role="doc-biblioref">[24]</a></span>.</p></li>
+<li><p>Previsioni istituzionali: FMI, World Economic Outlook di aprile e aggiornamento di luglio 2026; OCSE, Interim Economic Outlook di settembre 2026; BCE, proiezioni macroeconomiche di settembre 2026; Banca Mondiale, Global Economic Prospects di giugno 2026 <span class="citation" data-cites="imf2026weoapril imf2026weojuly oecd2026interim ecb2026projections worldbank2026gep"><a href="#ref-worldbank2026gep" role="doc-biblioref">[5]</a>, <a href="#ref-oecd2026interim" role="doc-biblioref">[6]</a>, <a href="#ref-imf2026weoapril" role="doc-biblioref">[9]</a>, <a href="#ref-imf2026weojuly" role="doc-biblioref">[27]</a>, <a href="#ref-ecb2026projections" role="doc-biblioref">[28]</a></span>.</p></li>
+<li><p>Indicatori di regime: aspettative d’inflazione fra cinque e dieci anni (T5YIFR, media degli ultimi tre mesi), Survey of Professional Forecasters della BCE sull’inflazione di lungo periodo nell’area dell’euro (media delle previsioni puntuali), inflazione di fondo statunitense (CPILFESL) e dell’area dell’euro (media degli ultimi sei mesi), tasso reale a 10 anni (DFII10, media degli ultimi tre mesi), episodi in cui la media mensile del Brent supera di oltre il 50% quella di dodici mesi prima; medie 2010-2019 come termine di confronto <span class="citation" data-cites="fred2026series ecb2026spf eurostat2026hicp"><a href="#ref-fred2026series" role="doc-biblioref">[22]</a>, <a href="#ref-eurostat2026hicp" role="doc-biblioref">[23]</a>, <a href="#ref-ecb2026spf" role="doc-biblioref">[42]</a></span>.</p></li>
+<li><p>Imprese, banche e debito pubblico: Mediobanca Area Studi, statistiche bancarie della BCE e notifica Eurostat dei disavanzi e dei debiti pubblici <span class="citation" data-cites="mediobanca2026cumulativi ecb2026mir ecb2026sup eurostat2026gov"><a href="#ref-eurostat2026gov" role="doc-biblioref">[43]</a>, <a href="#ref-mediobanca2026cumulativi" role="doc-biblioref">[44]</a>, <a href="#ref-ecb2026mir" role="doc-biblioref">[45]</a>, <a href="#ref-ecb2026sup" role="doc-biblioref">[46]</a></span>.</p></li>
+</ul>
+</div>
+</section>
+</div>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
