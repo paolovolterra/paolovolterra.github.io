@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="finalità del credito, DESINV, agevolazioni pubbliche, moral hazard, AnaCredit, EBA GL/2020/06, AMLA, PSD2, prevenzione delle frodi, finanza sostenibile">
+<meta name="description" content="Quanta parte del credito bancario a medio-lungo termine non ha una finalità dichiarata, perché e come verificarla: regole, dati pubblici della Banca d’Italia, agevolazioni pubbliche, open banking.">
+
+<title>La finalità del finanziamento bancario – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="La finalità del finanziamento bancario – Paolo Volterra">
+<meta property="og:description" content="Quanta parte del credito bancario a medio-lungo termine non ha una finalità dichiarata, perché e come verificarla: regole, dati pubblici della Banca d’Italia, agevolazioni pubbliche, open banking.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2611_FinalitaCredito/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="La finalità del finanziamento bancario – Paolo Volterra">
+<meta name="twitter:description" content="Quanta parte del credito bancario a medio-lungo termine non ha una finalità dichiarata, perché e come verificarla: regole, dati pubblici della Banca d’Italia, agevolazioni pubbliche, open banking.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2611_FinalitaCredito/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/in_parole_semplici/"> <i class="bi bi-instagram" role="img" aria-label="Instagram">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#sec-intro" id="toc-sec-intro" class="nav-link active" data-scroll-target="#sec-intro"><span class="header-section-number">1</span> Introduzione</a></li>
+  <li><a href="#sec-taxonomy" id="toc-sec-taxonomy" class="nav-link" data-scroll-target="#sec-taxonomy"><span class="header-section-number">2</span> Tre failure mode: una tassonomia operativa</a></li>
+  <li><a href="#sec-reg" id="toc-sec-reg" class="nav-link" data-scroll-target="#sec-reg"><span class="header-section-number">3</span> Il gap regolatorio: un framework principle-based in un contesto che evolve</a>
+  <ul class="collapse">
+  <li><a href="#sec-reg-cosa" id="toc-sec-reg-cosa" class="nav-link" data-scroll-target="#sec-reg-cosa"><span class="header-section-number">3.1</span> Cosa prevede il framework attuale</a></li>
+  <li><a href="#sec-genealogia" id="toc-sec-genealogia" class="nav-link" data-scroll-target="#sec-genealogia"><span class="header-section-number">3.2</span> La genealogia: trent’anni di divario</a></li>
+  <li><a href="#sec-lit" id="toc-sec-lit" class="nav-link" data-scroll-target="#sec-lit"><span class="header-section-number">3.3</span> Il gap nella letteratura</a></li>
+  </ul></li>
+  <li><a href="#sec-data" id="toc-sec-data" class="nav-link" data-scroll-target="#sec-data"><span class="header-section-number">4</span> Misurare il gap: la qualità del dato DESINV</a>
+  <ul class="collapse">
+  <li><a href="#sec-desinv-aggregate" id="toc-sec-desinv-aggregate" class="nav-link" data-scroll-target="#sec-desinv-aggregate"><span class="header-section-number">4.1</span> Il “buco nero” nel sistema aggregato</a></li>
+  <li><a href="#sec-circ154" id="toc-sec-circ154" class="nav-link" data-scroll-target="#sec-circ154"><span class="header-section-number">4.2</span> La spiegazione strutturale: Circolare BdI n.&nbsp;154</a></li>
+  <li><a href="#sec-eterogeneita-classificazioni" id="toc-sec-eterogeneita-classificazioni" class="nav-link" data-scroll-target="#sec-eterogeneita-classificazioni"><span class="header-section-number">4.3</span> Scomporre il residuale: struttura normativa, prodotto, dichiarazione</a></li>
+  <li><a href="#sec-credit-risk" id="toc-sec-credit-risk" class="nav-link" data-scroll-target="#sec-credit-risk"><span class="header-section-number">4.4</span> Implicazioni per la modellistica del rischio di credito</a></li>
+  </ul></li>
+  <li><a href="#sec-agevolazioni" id="toc-sec-agevolazioni" class="nav-link" data-scroll-target="#sec-agevolazioni"><span class="header-section-number">5</span> Il parallelo con le agevolazioni pubbliche</a></li>
+  <li><a href="#sec-verso" id="toc-sec-verso" class="nav-link" data-scroll-target="#sec-verso"><span class="header-section-number">6</span> Verso la verifica: design del prodotto, tecnologia e convergenza istituzionale</a>
+  <ul class="collapse">
+  <li><a href="#sec-prodotto" id="toc-sec-prodotto" class="nav-link" data-scroll-target="#sec-prodotto"><span class="header-section-number">6.1</span> Il prodotto bancario come sistema di verifica distribuita</a></li>
+  <li><a href="#sec-psd2" id="toc-sec-psd2" class="nav-link" data-scroll-target="#sec-psd2"><span class="header-section-number">6.2</span> Open banking come infrastruttura di verifica</a></li>
+  <li><a href="#sec-green" id="toc-sec-green" class="nav-link" data-scroll-target="#sec-green"><span class="header-section-number">6.3</span> La finanza verde come prova di scalabilità</a></li>
+  <li><a href="#sec-amla" id="toc-sec-amla" class="nav-link" data-scroll-target="#sec-amla"><span class="header-section-number">6.4</span> AMLA come punto di convergenza istituzionale</a></li>
+  </ul></li>
+  <li><a href="#sec-conclusioni" id="toc-sec-conclusioni" class="nav-link" data-scroll-target="#sec-conclusioni"><span class="header-section-number">7</span> Conclusioni e implicazioni di policy</a>
+  <ul class="collapse">
+  <li><a href="#findings-principali" id="toc-findings-principali" class="nav-link" data-scroll-target="#findings-principali"><span class="header-section-number">7.1</span> Findings principali</a></li>
+  <li><a href="#menu-di-policy-ordinato-per-fattibilitàimpatto-a-breve-medio-termine" id="toc-menu-di-policy-ordinato-per-fattibilitàimpatto-a-breve-medio-termine" class="nav-link" data-scroll-target="#menu-di-policy-ordinato-per-fattibilitàimpatto-a-breve-medio-termine"><span class="header-section-number">7.2</span> Menu di policy (ordinato per fattibilità/impatto a breve-medio termine)</a></li>
+  </ul></li>
+  <li><a href="#app-normativa" id="toc-app-normativa" class="nav-link" data-scroll-target="#app-normativa"><span class="header-section-number">8</span> Appendice A — Normativa: tabella completa</a></li>
+  <li><a href="#app-genealogia" id="toc-app-genealogia" class="nav-link" data-scroll-target="#app-genealogia"><span class="header-section-number">9</span> Appendice B — La genealogia normativa: testi primari</a>
+  <ul class="collapse">
+  <li><a href="#d.lgs.-1231998-artt.-6-9" id="toc-d.lgs.-1231998-artt.-6-9" class="nav-link" data-scroll-target="#d.lgs.-1231998-artt.-6-9"><span class="header-section-number">9.1</span> D.lgs. 123/1998, artt. 6-9</a></li>
+  <li><a href="#reg.-ue-13032013-artt.-20-22-testo-italiano-da-eur-lex" id="toc-reg.-ue-13032013-artt.-20-22-testo-italiano-da-eur-lex" class="nav-link" data-scroll-target="#reg.-ue-13032013-artt.-20-22-testo-italiano-da-eur-lex"><span class="header-section-number">9.2</span> Reg. (UE) 1303/2013, artt. 20-22 (testo italiano da EUR-Lex)</a></li>
+  <li><a href="#reg.-ue-2021241-rrf-artt.-20-24-testo-italiano-da-eur-lex" id="toc-reg.-ue-2021241-rrf-artt.-20-24-testo-italiano-da-eur-lex" class="nav-link" data-scroll-target="#reg.-ue-2021241-rrf-artt.-20-24-testo-italiano-da-eur-lex"><span class="header-section-number">9.3</span> Reg. (UE) 2021/241 (RRF), artt. 20, 24 (testo italiano da EUR-Lex)</a></li>
+  <li><a href="#dpcm-842026-art.-21" id="toc-dpcm-842026-art.-21" class="nav-link" data-scroll-target="#dpcm-842026-art.-21"><span class="header-section-number">9.4</span> DPCM 84/2026, art. 2(1)</a></li>
+  </ul></li>
+  <li><a href="#app-desinv" id="toc-app-desinv" class="nav-link" data-scroll-target="#app-desinv"><span class="header-section-number">10</span> Appendice C — Dati DESINV 2008-2025</a></li>
+  <li><a href="#riferimenti-bibliografici" id="toc-riferimenti-bibliografici" class="nav-link" data-scroll-target="#riferimenti-bibliografici">Riferimenti bibliografici</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">La finalità del finanziamento bancario</h1>
+<p class="subtitle lead">Evidenze esterne e riferimenti operativi per controlli proporzionati</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Banche e credito</div>
+    <div class="quarto-category">Agevolazioni e garanzie</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Quanta parte del credito bancario a medio-lungo termine non ha una finalità dichiarata, perché e come verificarla: regole, dati pubblici della Banca d’Italia, agevolazioni pubbliche, open banking.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">21 maggio 2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Data di modifica</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">3 settembre 2026</p>
+    </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.20342444">10.5281/zenodo.20342444</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>Questo studio ricostruisce la finalità del finanziamento bancario esclusivamente attraverso evidenze esterne e pubblicamente accessibili: norme, segnalazioni aggregate, open data, documenti istituzionali e letteratura. Non valuta le procedure delle singole banche: organizza invece una serie di riferimenti utilizzabili per rafforzare il lavoro che gli intermediari già svolgono nel controllo della destinazione, nella prevenzione delle frodi e nell’intercettazione delle irregolarità. In questo perimetro, la finalità viene raccolta all’origination ma raramente emerge come oggetto di una verifica ex post standardizzata e osservabile nei dati pubblici. Le segnalazioni alla Banca d’Italia mostrano che il 42% dello stock di prestiti a medio-lungo termine e il 63% delle nuove operazioni non presenta una finalità specifica codificata (categoria residuale DESINV998). Questo lavoro esamina il problema da tre angolazioni complementari.</p>
+    <p>Sul piano normativo, il framework prudenziale bancario presidia soprattutto la regolarità procedurale — verificare che l’erogazione sia avvenuta in linea con la delibera — mentre la finanza pubblica ha percorso in trent’anni la strada che porta alla legittimità basata sui risultati: dalla documentazione della spesa (D.lgs. 123/1998) al pagamento condizionato al raggiungimento dei milestone (Reg. 2021/241 — RRF), fino alla codificazione della valutazione ex ante/in itinere/ex post come principio generale (D.lgs. 184/2025).</p>
+    <p>Il confronto con le agevolazioni pubbliche mostra un diverso grado di formalizzazione della finalità. Gli interventi pubblici devono conformarsi al diritto dell’Unione europea applicabile, alla disciplina degli aiuti di Stato e alle regole dei singoli programmi; la destinazione delle risorse, la documentazione e i controlli assumono quindi una funzione costitutiva nell’architettura dell’intervento. Nel credito bancario ordinario, invece, dalle evidenze pubblicamente osservabili non emerge uno standard tecnico generale equivalente di verifica ex post dell’uso dei fondi.</p>
+    <p>Sul piano tecnologico-istituzionale, la verifica ex post è già realizzata in produzione da intermediari di frontiera (AFC Digital Hub, Intesa Sanpaolo, operativo dal 2022) e il quadro normativo si sta convergendo — tramite il pacchetto europeo AML 2024, l’avvio di AMLA, il Green Bond Standard europeo (Reg. 2023/2631) e la CSRD — verso standard più stringenti di verifica della finalità. Il credito bancario privato ordinario rimane tra i comparti meno presidiati da standard specifici.</p>
+    <p>Lo studio usa pertanto le agevolazioni pubbliche come termine di confronto istituzionale. Non propone di assimilare automaticamente il credito privato all’intervento pubblico, ma ordina principi, dati e soluzioni — finalizzazione del prodotto, esplicitazione della finalità, tracciabilità, proporzionalità dei controlli e analisi delle anomalie — che possono migliorare i presidi bancari e renderne più osservabili gli esiti.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>finalità del credito, DESINV, agevolazioni pubbliche, moral hazard, AnaCredit, EBA GL/2020/06, AMLA, PSD2, prevenzione delle frodi, finanza sostenibile</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Versione citabile su Zenodo, con il PDF: <a href="https://doi.org/10.5281/zenodo.20342444">doi.org/10.5281/zenodo.20342444</a>.</p>
+</div>
+</div>
+</div>
+<section id="sec-intro" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="sec-intro"><span class="header-section-number">1</span> Introduzione</h2>
+<p>La finalità del finanziamento bancario è l’attributo che descrive lo scopo per cui il debitore ha richiesto il credito: acquisto di macchinari, ristrutturazione immobiliare, liquidità per il capitale circolante, acquisto di abitazione, investimento verde. Viene dichiarata all’origination, registrata nei contratti, nei registri creditizi (AnaCredit, Centrale dei Rischi italiani) e nel reporting regolamentare obbligatorio verso Banca d’Italia.</p>
+<p>L’oggetto dello studio non sono le procedure interne delle singole banche, che le fonti disponibili non consentono di osservare, ma lo <strong>status quo esternamente documentabile</strong>. L’analisi considera norme, dati aggregati, documenti istituzionali, informazioni pubblicate dagli operatori e letteratura. Quando un controllo non emerge da queste fonti, il risultato riguarda la sua osservabilità pubblica: non equivale alla prova che quel controllo non esista internamente.</p>
+<blockquote class="blockquote">
+<p><em>Le evidenze esterne mostrano un continuum: alcuni prodotti incorporano la finalità e il relativo riscontro; altri affidano il controllo alle condizioni contrattuali, ai presidi interni e ai segnali di anomalia. Il margine di miglioramento riguarda la standardizzazione proporzionata e l’osservabilità degli esiti, non una presunta assenza generalizzata di controlli.</em></p>
+</blockquote>
+<p>Questo lavoro interpreta la diversa verificabilità della finalità come il risultato congiunto di tre fattori: architettura dell’offerta e forma tecnica; condizioni previste dalla decisione di credito e dal contratto; raccordo tra controlli creditizi, presidio antifrode e antiriciclaggio. La minore formalizzazione osservabile rispetto alle agevolazioni pubbliche costituisce un termine di confronto, non un giudizio sulle procedure interne degli intermediari.</p>
+<p><strong>L’evidenza quantitativa è netta.</strong> Le tavole della Banca d’Italia sullo stock di prestiti a medio-lungo termine mostrano che la categoria residuale DESINV998 — prestiti senza finalità specifica codificata — copre il 42% dello stock aggregato (€525 miliardi su €1.249 miliardi nel 2025) e il 63% delle nuove operazioni nello stesso anno. Questo dato, analizzato nel tempo, presenta componenti sia strutturali (la finalità non è campo obbligatorio nelle segnalazioni per i prestiti alle imprese) sia dichiarative (il mix di incentivi può distorcere la classificazione).</p>
+<p><strong>L’evidenza normativa è altrettanto netta, ma in senso opposto.</strong> Mentre il framework bancario prudenziale è rimasto a una logica di regolarità procedurale — verificare che l’erogazione sia avvenuta in linea con la delibera di credito — la finanza pubblica ha percorso in trent’anni la strada verso la legittimità basata sui risultati: dal condizionamento all’uso documentato del 1998 al pagamento-milestone del PNRR, alla codificazione della valutazione ex post come principio generale del Codice degli incentivi (D.lgs. 184/2025). Il credito bancario privato conserva, rispetto a questa genealogia, un impianto più vicino alla regolarità procedurale che alla verifica documentata del risultato.</p>
+<p><strong>Il sistema tuttavia sta convergendo.</strong> Il pacchetto europeo AML 2024, l’avvio di AMLA, l’EU Green Bond Standard (Reg. 2023/2631) e il DPCM 84/2026 segnalano una traiettoria verso forme più stringenti di verifica della finalità. Chi pubblica studi empirici prima dell’entrata in vigore di questi strumenti ha un vantaggio evidenziale per le decisioni di policy.</p>
+<p><strong>Contributi dello studio.</strong> Questo lavoro offre alle banche, ai supervisori e ai ricercatori: (i) una misurazione sistematica della qualità del dato DESINV nelle segnalazioni BdI, con dati aggregati; (ii) una genealogia normativa con testi primari che documenta il divario tra finanza pubblica e credito bancario nella governance della finalità; (iii) un confronto istituzionale che individua nei principi di finalizzazione, tracciabilità e valutazione delle agevolazioni pubbliche un possibile riferimento; (iv) una scala operativa che collega prodotti, dati disponibili e controlli utili a intercettare deviazioni, frodi e irregolarità, senza postulare l’identità tra credito privato e intervento pubblico.</p>
+<p><strong>Struttura.</strong> La <a href="#sec-taxonomy" class="quarto-xref">Sezione&nbsp;2</a> introduce la tassonomia dei failure mode (F1/F2/F3). La <a href="#sec-reg" class="quarto-xref">Sezione&nbsp;3</a> analizza il gap regolatorio e la genealogia normativa. La <a href="#sec-data" class="quarto-xref">Sezione&nbsp;4</a> misura il gap con i dati DESINV. La <a href="#sec-agevolazioni" class="quarto-xref">Sezione&nbsp;5</a> sviluppa il confronto con le agevolazioni pubbliche e con il quadro dell’Unione europea. La <a href="#sec-verso" class="quarto-xref">Sezione&nbsp;6</a> delinea le traiettorie tecnologiche e istituzionali verso la verifica. La <a href="#sec-conclusioni" class="quarto-xref">Sezione&nbsp;7</a> conclude con un menu di policy.</p>
+<hr>
+</section>
+<section id="sec-taxonomy" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="sec-taxonomy"><span class="header-section-number">2</span> Tre failure mode: una tassonomia operativa</h2>
+<p>Prima di analizzare il problema è necessario distinguere tre fenomeni spesso confusi sotto l’etichetta “mancata verifica della finalità”:</p>
+<div id="tbl-taxonomy" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[12,25,15,48]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-taxonomy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;1: Tassonomia dei failure mode nel monitoraggio della finalità
+</figcaption>
+<div aria-describedby="tbl-taxonomy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 25%">
+<col style="width: 15%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Failure mode</th>
+<th>Quando si manifesta</th>
+<th>Responsabile primario</th>
+<th>Canale di intercettazione attuale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>F1 — Selezione</strong></td>
+<td>All’origination: la banca finanzia un soggetto ineleggibile (già in crisi, fraudolento, collegato a strutture criminali)</td>
+<td>La banca</td>
+<td>Ispezioni prudenziali; UIF/Procura</td>
+</tr>
+<tr class="even">
+<td><strong>F2 — Dirottamento immediato</strong></td>
+<td>Al disbursement: i fondi vengono usati subito per scopi diversi (rimborso debiti preesistenti, distrazione verso conti personali)</td>
+<td>Il debitore</td>
+<td>Intelligence UIF (SOS) — con 2-3 anni di ritardo</td>
+</tr>
+<tr class="odd">
+<td><strong>F3 — Deviazione ex post</strong></td>
+<td>Mesi o anni dopo l’erogazione: il debitore, inizialmente eleggibile, alla fine usa i fondi per scopi diversi da quelli dichiarati</td>
+<td>Il debitore</td>
+<td>Nessun canale sistematico</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Il presente lavoro si concentra su <strong>F2 e F3</strong>. F1 è coperto da letteratura consolidata sulla criminalità organizzata nel settore bancario <span class="citation" data-cites="buchetti2025"><a href="#ref-buchetti2025" role="doc-biblioref">[1]</a></span>, dal diritto penale, e da indagini giudiziarie in corso. F2 e F3 non sono intercettati sistematicamente da nessuno dei canali regolatori esistenti.</p>
+<hr>
+</section>
+<section id="sec-reg" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="sec-reg"><span class="header-section-number">3</span> Il gap regolatorio: un framework principle-based in un contesto che evolve</h2>
+<section id="sec-reg-cosa" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="sec-reg-cosa"><span class="header-section-number">3.1</span> Cosa prevede il framework attuale</h3>
+<p>Il framework regolatorio sul monitoraggio della finalità del finanziamento bancario è frammentato in almeno cinque strumenti distinti, con coperture e gradi di vincolatività diversi:</p>
+<div id="tbl-framework" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[20,47,33]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-framework-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;2: Il framework regolatorio sul monitoraggio della finalità del credito bancario
+</figcaption>
+<div aria-describedby="tbl-framework-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 47%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Strumento</th>
+<th>Oggetto</th>
+<th>Gap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>EBA GL/2020/06, par. 46</strong> <span class="citation" data-cites="ebagl2020"><a href="#ref-ebagl2020" role="doc-biblioref">[2]</a></span></td>
+<td>Controllo al disbursement: l’erogazione deve avvenire <em>“in linea con la decisione di credito e il contratto”</em>.</td>
+<td>Se la destinazione è una condizione deliberata o contrattuale, la banca deve verificarla; la disposizione non introduce da sola un controllo universale dell’uso finale.</td>
+</tr>
+<tr class="even">
+<td><strong>EBA GL/2020/06, par. 251-252</strong></td>
+<td>Monitoraggio ongoing delle condizioni contrattuali, inclusi covenant.</td>
+<td>Condizionale: si attiva solo se la finalità è formalizzata come condizione nel contratto — rara nel credito PMI ordinario.</td>
+</tr>
+<tr class="odd">
+<td><strong>EBA GL/2020/06, Annex 2</strong> <span class="citation" data-cites="ebagl2020"><a href="#ref-ebagl2020" role="doc-biblioref">[2]</a></span></td>
+<td>Per le imprese richiede informazioni sulla finalità e, <em>“se del caso, prova della finalità del prestito”</em>.</td>
+<td>La prova è esplicitamente prevista ma proporzionata al caso; l’Annex riguarda l’origination e non formula un obbligo indistinto di verifica successiva.</td>
+</tr>
+<tr class="even">
+<td><strong>D.lgs. 231/2007, Art. 35 + Provv. UIF 2023</strong></td>
+<td>SOS senza soglia monetaria; coerenza tra transazioni e finalità è criterio di sospetto.</td>
+<td>Canale episodico (SOS), non sistematico; nessun indicatore dedicato alla deviazione di finalità nel credito privato ordinario.</td>
+</tr>
+<tr class="odd">
+<td><strong>Regole delle agevolazioni pubbliche</strong></td>
+<td>Finalità, spese ammissibili, documentazione e controlli sono definiti dal programma nel quadro nazionale ed europeo applicabile.</td>
+<td>Perimetro specifico dell’intervento; disciplina non automaticamente trasferibile al credito ordinario.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Il risultato è che:</p>
+<ul>
+<li>Obblighi di destinazione e controllo <strong>esistono</strong> nel perimetro pubblico secondo la disciplina europea e nazionale e le regole dei singoli programmi</li>
+<li>Nel credito ordinario gli obblighi dipendono anche dal <strong>prodotto, dalla decisione creditizia e dal contratto</strong>: la conformità dell’erogazione alle condizioni deliberate deve essere controllata</li>
+<li>Non emerge invece uno standard tecnico <strong>uniforme e trasversale a tutti i finanziamenti</strong> che imponga la verifica successiva dell’uso finale dei fondi indipendentemente dalle condizioni pattuite</li>
+</ul>
+<p>Questa distinzione è sostanziale. Un finanziamento a medio-lungo termine può subordinare l’erogazione alla presentazione della fattura, di uno stato di avanzamento o di altra evidenza dell’acquisto; in quel caso il controllo della destinazione discende dalla delibera e dal contratto. Nel leasing la finalizzazione è incorporata nell’acquisto e nella proprietà del bene. Nel factoring, nell’anticipo fatture e negli anticipi su flussi, l’operazione trova riscontro nei crediti o nei flussi sottostanti. Il problema residuo riguarda soprattutto i prodotti nei quali la finalità non è strutturalmente vincolata o tradotta in una condizione verificabile. Anche questa ricostruzione si basa sulle caratteristiche contrattuali pubblicamente osservabili e non censisce le procedure interne adottate dai singoli intermediari.</p>
+<p>La distinzione trova riscontro anche nella tassonomia ufficiale della Banca d’Italia. Il credito finalizzato presuppone una <em>“stretta connessione tra l’acquisto di un bene o servizio e la concessione del finanziamento”</em>; nel credito non finalizzato il cliente dispone invece dei fondi per esigenze generiche <span class="citation" data-cites="bdiCirc272_2025"><a href="#ref-bdiCirc272_2025" role="doc-biblioref">[3]</a></span>. La fonte documenta dunque la coesistenza di prodotti con gradi diversi di vincolo, non l’assenza generalizzata di controllo.</p>
+<p>La BCE colloca questi obblighi nella vigilanza sul ciclo del credito e segnala che alcune banche devono ancora <em>“fully comply with the EBA guidelines on loan origination and monitoring”</em> <span class="citation" data-cites="ecbPriorities2025"><a href="#ref-ecbPriorities2025" role="doc-biblioref">[4]</a></span>. Il richiamo prova la rilevanza prudenziale del framework EBA, senza trasformarlo in una regola autonoma sull’uso finale dei fondi.</p>
+<p>Anche i principi FSB sui mutui residenziali delimitano il proprio oggetto: <em>“focus on the credit granting decision rather than wider issues of credit risk management”</em> <span class="citation" data-cites="fsbMortgage2012"><a href="#ref-fsbMortgage2012" role="doc-biblioref">[5]</a></span>. Il documento è quindi evidenza di standard rigorosi all’origination, non di un obbligo generale di verifica della destinazione durante l’intera vita di ogni prestito.</p>
+<p><strong>Tre funzioni regolatorie distinte.</strong> Un punto di frequente confusione: “Banca d’Italia” esercita tre funzioni con oggetti e poteri diversi sul tema della finalità.</p>
+<div id="tbl-bdi" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[18,25,57]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bdi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;3: Le tre funzioni regolatorie di Banca d’Italia sulla finalità
+</figcaption>
+<div aria-describedby="tbl-bdi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 25%">
+<col style="width: 56%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Funzione</th>
+<th>Base legale</th>
+<th>Rapporto con la finalità</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>UIF</strong> (intelligence finanziaria)</td>
+<td>Art. 6 D.lgs. 231/2007; autonoma <em>presso</em> BdI</td>
+<td>Riceve SOS; la finalità dichiarata entra nell’analisi quando i flussi ne divergono. Canale episodico.</td>
+</tr>
+<tr class="even">
+<td><strong>BdI Vigilanza</strong> (supervisione prudenziale)</td>
+<td>TUB (D.lgs. 385/1993); EBA GL/2020/06</td>
+<td>Verifica le procedure di concessione (par. 46, 251-252). Non aggrega né riporta dati sull’esito della verifica.</td>
+</tr>
+<tr class="odd">
+<td><strong>BdI come autorità AML</strong></td>
+<td>D.lgs. 231/2007, Art. 7 ss.</td>
+<td>Ispezioni di conformità AML. Controlla che le banche abbiano presidi adeguati; non misura direttamente la deviazione nel portafoglio.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Il caso Banca Progetto è stato intercettato dal canale (1) — UIF intelligence — e non dai canali (2) o (3). L’esito è coerente con un framework che non prevede la verifica sistematica della finalità per il credito privato.</p>
+</section>
+<section id="sec-genealogia" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="sec-genealogia"><span class="header-section-number">3.2</span> La genealogia: trent’anni di divario</h3>
+<p>La frattura storica riguarda il passaggio dal controllo della regolarità formale della spesa alla legittimità dell’erogazione fondata sulla dimostrazione della destinazione, dell’attuazione e, infine, del risultato.</p>
+<p>Questa frattura è al centro del confronto tra finanza pubblica e credito bancario nella governance della finalità. La finanza pubblica ha percorso in trent’anni la strada verso la legittimità basata sui risultati; il framework prudenziale bancario è rimasto al paradigma pre-1998 della regolarità procedurale.</p>
+<div id="tbl-genealogia" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[8,18,57,17]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-genealogia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;4: Genealogia normativa: dalla regolarità procedurale alla legittimità basata sui risultati
+</figcaption>
+<div aria-describedby="tbl-genealogia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 18%">
+<col style="width: 56%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Anno</th>
+<th>Tappa</th>
+<th>Principio introdotto</th>
+<th>Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1998</td>
+<td>D.lgs. 123/1998</td>
+<td>Erogazione condizionata alla documentazione della spesa (ultima quota dopo rendiconto)</td>
+<td><span class="citation" data-cites="dlgs123_1998"><a href="#ref-dlgs123_1998" role="doc-biblioref">[6]</a></span></td>
+</tr>
+<tr class="even">
+<td>2011</td>
+<td>Piano di Azione Coesione</td>
+<td>Presa d’atto: assorbimento senza attuazione → disimpegno automatico (regola N+2 ESIF)</td>
+<td>DPC 2011</td>
+</tr>
+<tr class="odd">
+<td>2013</td>
+<td>Reg. 1303/2013, artt. 20-22</td>
+<td>6% delle risorse ESIF condizionato al raggiungimento dei target intermedi al 2018</td>
+<td><span class="citation" data-cites="reg1303_2013"><a href="#ref-reg1303_2013" role="doc-biblioref">[7]</a></span></td>
+</tr>
+<tr class="even">
+<td>2021</td>
+<td>Reg. 2021/241 (RRF), artt. 20, 24</td>
+<td>100% del pagamento condizionato al raggiungimento dei milestone; nessun pagamento per la sola spesa</td>
+<td><span class="citation" data-cites="reg2021_241"><a href="#ref-reg2021_241" role="doc-biblioref">[8]</a></span></td>
+</tr>
+<tr class="odd">
+<td>2024-26</td>
+<td>L.207/2024, commi 857-858 + DPCM 84/2026</td>
+<td>Estensione ai contributi nazionali significativi (&gt;1M€/anno o ≥50% entrate): relazione annuale al MEF entro 30 aprile</td>
+<td><span class="citation" data-cites="dpcm84_2026"><a href="#ref-dpcm84_2026" role="doc-biblioref">[9]</a></span></td>
+</tr>
+<tr class="even">
+<td>2026</td>
+<td>D.lgs. 184/2025 (Codice degli incentivi)</td>
+<td>Valutazione ex ante/in itinere/ex post come principio generale; sostituisce D.lgs. 123/1998</td>
+<td><span class="citation" data-cites="dlgs184_2025"><a href="#ref-dlgs184_2025" role="doc-biblioref">[10]</a></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>Testi primari — le due cesure principali:</strong></p>
+<p>Il <strong>Reg. 1303/2013</strong> introduce per la prima volta una riserva finanziaria condizionata al raggiungimento dei target. L’art. 20 stabilisce: <em>“Il 6 % delle risorse destinate al FESR, al FSE e al Fondo di coesione […] costituisce una riserva di efficacia dell’attuazione che è stabilita nell’accordo e nei programmi di partenariato ed è destinata a priorità specifiche conformemente all’articolo 22.”</em> L’art. 22(7) prevede rettifiche finanziarie in caso di grave carenza nel raggiungimento dei target finali.</p>
+<p>Il <strong>Reg. 2021/241</strong> compie il salto paradigmatico. L’art. 24(2) stabilisce che il pagamento avviene solo <em>“dopo aver raggiunto i traguardi e gli obiettivi concordati”</em>; l’art. 24(6) dispone la sospensione del pagamento se i traguardi <em>“non sono stati conseguiti in misura soddisfacente”</em>. La logica è invertita rispetto al credito bancario: nel RRF il denaro segue la dimostrazione del risultato; nel credito bancario il denaro precede qualsiasi verifica.</p>
+<p><strong>Il DPCM 84/2026</strong> «domestica» questa logica applicandola ai contributi nazionali significativi: l’art. 2(1) obbliga gli organi di controllo dei beneficiari a inviare al MEF-RGS entro il 30 aprile una <em>“relazione contenente le risultanze delle verifiche effettuate”</em> sull’utilizzo dei contributi <em>“nel rispetto delle finalità per le quali i medesimi sono stati concessi”</em>.</p>
+<p>In questa genealogia il credito bancario privato conserva un’impostazione assimilabile al paradigma pre-1998: il framework EBA GL/2020/06, par. 46, presidia soprattutto la regolarità procedurale dell’erogazione e non introduce uno standard autonomo di verifica dell’uso effettivo dei fondi.</p>
+</section>
+<section id="sec-lit" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="sec-lit"><span class="header-section-number">3.3</span> Il gap nella letteratura</h3>
+<p>La ricognizione delle fonti istituzionali e della letteratura economico-bancaria pubblicamente accessibile non ha individuato lavori specificamente dedicati alla verifica ex post della finalità nel credito bancario europeo. Entro il perimetro della ricognizione svolta, il gap appare documentabile:</p>
+<ol type="1">
+<li><strong>Non sono stati individuati studi empirici</strong> che misurino la frequenza di deviazione della finalità in portafogli bancari europei</li>
+<li><strong>Non sono stati individuati studi teorici</strong> che modellino il tradeoff banca-debitore sulla verifica post-erogazione</li>
+<li><strong>Non sono state individuate analisi comparative</strong> tra paesi UE sulle prassi di verifica</li>
+<li><strong>Non sono stati individuati studi</strong> sulla qualità del dato “finalità” nelle segnalazioni AnaCredit / Centrale dei Rischi</li>
+<li><strong>Non sono stati individuati studi</strong> sull’uso del campo PURPOSE di AnaCredit come variabile nei modelli di credit risk</li>
+</ol>
+<p>Esiste letteratura su temi adiacenti: monitoring bancario e intensità del controllo post-erogazione <span class="citation" data-cites="branzoli2020 gustafson2021"><a href="#ref-branzoli2020" role="doc-biblioref">[11]</a>, <a href="#ref-gustafson2021" role="doc-biblioref">[12]</a></span>; enforcement dei covenant e incentivi endogeni alla capitalizzazione bancaria <span class="citation" data-cites="colonnello2021"><a href="#ref-colonnello2021" role="doc-biblioref">[13]</a></span>; garanzie pubbliche e addizionalità creditizia <span class="citation" data-cites="cascarino2022 demarco2020 bdi2024_1462"><a href="#ref-cascarino2022" role="doc-biblioref">[14]</a>, <a href="#ref-demarco2020" role="doc-biblioref">[15]</a>, <a href="#ref-bdi2024_1462" role="doc-biblioref">[16]</a></span>; uso del campo PURPOSE in AnaCredit <span class="citation" data-cites="israel2017 buchetti2025"><a href="#ref-buchetti2025" role="doc-biblioref">[1]</a>, <a href="#ref-israel2017" role="doc-biblioref">[17]</a></span>; green loans e use-of-proceeds <span class="citation" data-cites="accetturo2024 kedward2022"><a href="#ref-accetturo2024" role="doc-biblioref">[18]</a>, <a href="#ref-kedward2022" role="doc-biblioref">[19]</a></span>. Nessuno affronta direttamente il problema della verifica ex post della finalità dichiarata nel credito bancario ordinario.</p>
+<p><strong>Il gap tra letteratura accademica e pratiche pubblicamente documentate del settore</strong> è esso stesso un dato di ricerca. L’AFC Digital Hub (Intesa Sanpaolo, operativo dal giugno 2022) implementa in produzione algoritmi di verifica ex post della destinazione dei fondi per i finanziamenti agevolati — ma non ha generato letteratura accademica indicizzata. La tecnologia esiste; la letteratura non la conosce.</p>
+<hr>
+</section>
+</section>
+<section id="sec-data" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="sec-data"><span class="header-section-number">4</span> Misurare il gap: la qualità del dato DESINV</h2>
+<p>Questa sezione misura ciò che le segnalazioni aggregate rendono visibile, non la qualità delle istruttorie o dei controlli interni. DESINV descrive la finalità codificata nel dato statistico: la categoria residuale segnala quindi un limite informativo della fonte osservata e non costituisce, da sola, evidenza di mancata acquisizione o verifica della finalità da parte della banca.</p>
+<section id="sec-desinv-aggregate" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="sec-desinv-aggregate"><span class="header-section-number">4.1</span> Il “buco nero” nel sistema aggregato</h3>
+<p>Le tavole della Banca d’Italia sui prestiti a medio-lungo termine (TFR10420 per lo stock, TFR10430 per le nuove operazioni) registrano la finalità dichiarata attraverso la variabile DESINV secondo la tassonomia della Circolare n.&nbsp;272 (Base Dati Statistica). La categoria residuale DESINV998 (“investimenti diversi dai non-finanziari + residuale”) raccoglie i prestiti senza finalità specifica codificata.</p>
+<div id="cell-fig-desinv-sistema" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div id="fig-desinv-sistema" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-desinv-sistema-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-desinv-sistema-output-1.png" width="949" height="394" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-desinv-sistema-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Distribuzione dello stock MLT per finalità dichiarata (DESINV). Dati BdI TFR10420, TIPTASSO=800, LOC_CTP=IT, fine dicembre.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Lettura del pattern:</strong></p>
+<ol type="1">
+<li><p><strong>La quota residuale è strutturalmente stabile al 40-42%</strong> dello stock MLT dal 2008 al 2025. Nel 2025 corrisponde a circa €525 miliardi su €1.249 miliardi di stock totale senza una finalità specifica nelle segnalazioni BdI.</p></li>
+<li><p><strong>Lo shock COVID</strong> ha determinato un salto di DESINV120 (investimenti finanziari) dal 6,7%</p>
+<ol start="2019" type="1">
+<li>all’8,5-8,8% (2020-2021), poi rientrato. La spiegazione più parsimoniosa invoca la riclassificazione come “investimento finanziario” di operazioni di ristrutturazione del debito nei prestiti emergenziali.</li>
+</ol></li>
+<li><p><strong>Il declino strutturale degli investimenti reali</strong>: la quota di macchinari (DESINV905) scende dall’8,5% (2008) al 5,2% (2025); le costruzioni non residenziali (DESINV912) dal 7,5% al 3,0%. La quota di finalità produttive nel portafoglio MLT si è dimezzata in 17 anni.</p></li>
+<li><p><strong>Il divario stock/flussi è ampio.</strong> La quota residuale nelle nuove operazioni (TFR10430) è del <strong>63,3%</strong> nel 2025 contro il 42% dello stock. I prestiti più recenti — quelli che dovrebbero avere il profilo di rischio più aggiornato — hanno la maggiore quota di missing impliciti nel campo finalità. Il “buco” si allarga nel tempo, non si chiude.</p></li>
+</ol>
+</section>
+<section id="sec-circ154" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="sec-circ154"><span class="header-section-number">4.2</span> La spiegazione strutturale: Circolare BdI n.&nbsp;154</h3>
+<p>La quota elevata di DESINV998 deriva in primo luogo da un <strong>design normativo</strong>, più che da un errore dichiarativo generalizzato. La Circolare della Banca d’Italia n.&nbsp;154 — l’ultimo aggiornamento in vigore è il 78°; è in consultazione pubblica una bozza di 79° aggiornamento del 14 luglio 2026 <span class="citation" data-cites="bdiCirc154_2026"><a href="#ref-bdiCirc154_2026" role="doc-biblioref">[20]</a></span> — chiarisce nella nota “F” al Tomo III (testo integrale del 77° aggiornamento, marzo 2025):</p>
+<blockquote class="blockquote">
+<p><em>“LA INDICAZIONE DELLA VARIABILE ‘FINALITÀ DEL CREDITO’ RIGUARDA SOLTANTO LE ‘FAMIGLIE’ E LE ‘ISTITUZIONI SENZA SCOPO DI LUCRO’ (SOTTOSETTORI 51, 60, 61, 86 E 87).”</em></p>
+</blockquote>
+<p>Per i prestiti alle <strong>imprese</strong> la variabile finalità non è richiesta nella Matrice dei Conti (A1). Tutti i finanziamenti a imprese senza finalità codificata si accumulano in DESINV998. La quota strutturalmente assente rappresenta quindi il segmento di portafoglio che, per design normativo, non ha un obbligo di classificazione: non va letta automaticamente come rumore casuale o come uso improprio dei fondi.</p>
+<p>Questo ha due implicazioni metodologiche critiche per la ricerca empirica:</p>
+<ul>
+<li>Prima di misurare il grado di misclassificazione dichiarativa, occorre <strong>isolare la quota strutturalmente assente</strong> (imprese senza obbligo) dalla quota dove l’obbligo esiste ma la finalità è dichiarata come generica (famiglie e ISL con DESINV998)</li>
+<li>Il confronto internazionale è confuso se non si tiene conto del fatto che altri paesi potrebbero avere requisiti di segnalazione diversi</li>
+</ul>
+</section>
+<section id="sec-eterogeneita-classificazioni" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="sec-eterogeneita-classificazioni"><span class="header-section-number">4.3</span> Scomporre il residuale: struttura normativa, prodotto, dichiarazione</h3>
+<p>Il dato residuale non è una proprietà uniforme del sistema. Concorrono almeno tre componenti:</p>
+<ul>
+<li><strong>quota strutturalmente non classificata</strong> — finanziamenti per i quali la finalità non è campo richiesto (imprese nella Matrice dei conti, per la nota “F” della Circ. 154);</li>
+<li><strong>quota di prodotto</strong> — forme tecniche o processi nei quali la finalità non è raccolta in modo granulare, oppure prodotti la cui natura è propriamente “non finalizzata” (prestito personale);</li>
+<li><strong>quota dichiarativa</strong> — soggetti con obbligo che segnalano una finalità generica, più le riclassificazioni indotte da incentivi.</li>
+</ul>
+<p><strong>La separazione quantitativa delle tre componenti non è possibile con le tavole statistiche pubbliche.</strong> Nessuna tavola della Base Dati Statistica incrocia la tassonomia DESINV completa con il settore istituzionale della controparte: le tavole con la finalità (TFR10420/10430) non riportano il settore; quelle per settore (TFR10232, TFR10255, TFR10269) non riportano la finalità; la tavola per forma tecnica che espone entrambe (TFR10281) riduce la finalità a una variabile binaria. La decomposizione richiede i <strong>micro-dati AnaCredit o della Centrale dei rischi</strong> — campo PURPOSE incrociato con il sottosettore — non accessibili pubblicamente. Questo è un limite di osservabilità della fonte, non una misura di controllo mancato.</p>
+<p>Le fonti pubbliche consentono comunque di <strong>delimitare</strong> le tre componenti. Lo stock DESINV998 (≈ 42% del totale MLT) è di dimensione <strong>inferiore</strong> allo stock MLT complessivo delle società non finanziarie: in linea di principio la sola quota strutturale — imprese senza obbligo di classificazione — può spiegare l’intero residuale, e la parte di credito alle imprese che riceve comunque una finalità codificata (tipicamente operazioni agevolate) spiega perché il residuale non lo satura del tutto. La quota “di prodotto” va ulteriormente ridotta escludendo il credito al consumo propriamente non finalizzato, che la tassonomia prevede come categoria a sé. La sola componente <strong>dichiarativa da incentivi</strong> che i dati aggregati rendono visibile e databile è l’oscillazione di DESINV120 nel triennio COVID (<a href="#fig-desinv-sistema" class="quarto-xref">Figura&nbsp;1</a>): un ordine di grandezza di uno-due punti percentuali, non di decine. La priorità della ricerca empirica si sposta quindi dall’analisi aggregata all’<strong>accesso ai micro-dati</strong>.</p>
+</section>
+<section id="sec-credit-risk" class="level3" data-number="4.4">
+<h3 data-number="4.4" class="anchored" data-anchor-id="sec-credit-risk"><span class="header-section-number">4.4</span> Implicazioni per la modellistica del rischio di credito</h3>
+<p>Il campo DESINV è utilizzato nei modelli di credit risk come feature per distinguere la rischiosità di diverse categorie di impiego. In presenza di un tasso di missing impliciti del 42-63%, le implicazioni sono non banali:</p>
+<ul>
+<li>I modelli stimati sull’intero portafoglio confondono l’effetto “finalità” con l’effetto “mancanza di finalità codificata”</li>
+<li>La verifica della robustezza richiederebbe di stimare il modello escludendo DESINV998 e confrontare i coefficienti — un test metodologico di per sé rilevante</li>
+<li>I prestiti più recenti, che hanno la quota più alta di DESINV998, potrebbero avere profili di rischio sistematicamente sottostimati se l’algoritmo ha imparato a usare la finalità come segnale di qualità</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="sec-agevolazioni" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="sec-agevolazioni"><span class="header-section-number">5</span> Il parallelo con le agevolazioni pubbliche</h2>
+<p>Le agevolazioni pubbliche offrono un termine di confronto utile perché la finalità non vi opera come semplice attributo descrittivo: concorre a definire l’ammissibilità dell’intervento, le spese finanziabili, la documentazione richiesta e i controlli successivi. La destinazione delle risorse è, in questo ambito, una condizione di legittimità del finanziamento, non un dato accessorio.</p>
+<p><strong>La verifica dell’uso dei fondi opera su due livelli sovrapposti.</strong> Il <em>livello comune</em> è fissato dal diritto dell’Unione e stabilisce chi verifica, che cosa e con quali conseguenze; il <em>livello nazionale</em> definisce le regole di ammissibilità della spesa, gli standard documentali e gli organismi. È una distinzione utile perché mostra che la parte “rigida” delle agevolazioni — quella che davvero le separa dal credito ordinario — non sta nei dettagli procedurali nazionali, ma nell’architettura comune.</p>
+<p>Al livello comune, i fondi in gestione concorrente sono soggetti alle <em>“verifiche di gestione”</em> dell’articolo 74 del Regolamento (UE) 2021/1060: controllo amministrativo della totalità delle domande di rimborso e verifiche in loco su base campionaria, svolte dall’Autorità di gestione o da controllori di primo livello funzionalmente indipendenti dall’Autorità di audit <span class="citation" data-cites="cpr2021_1060"><a href="#ref-cpr2021_1060" role="doc-biblioref">[21]</a></span>. Le irregolarità comportano rettifiche finanziarie; il mancato utilizzo entro i termini determina il disimpegno automatico delle risorse (art. 105). Il RRF aggiunge il condizionamento del pagamento al conseguimento verificato di traguardi e obiettivi e un sistema di controllo interno con strumenti obbligatori di <em>data-mining</em> (art. 22) <span class="citation" data-cites="reg2021_241"><a href="#ref-reg2021_241" role="doc-biblioref">[8]</a></span>; i fondi strutturali della programmazione precedente associavano già risorse, priorità, indicatori e verifiche <span class="citation" data-cites="reg1303_2013"><a href="#ref-reg1303_2013" role="doc-biblioref">[7]</a></span>. La disciplina degli aiuti di Stato presidia le condizioni di compatibilità a monte — effetto di incentivazione, costi ammissibili, intensità massima — e prevede il recupero con interessi dell’aiuto incompatibile <span class="citation" data-cites="gber2014 reg2015_1589"><a href="#ref-gber2014" role="doc-biblioref">[22]</a>, <a href="#ref-reg2015_1589" role="doc-biblioref">[23]</a></span>; l’obbligo di valutazione ex post riguarda però l’impatto dei regimi di importo maggiore, non l’uso del singolo contributo.</p>
+<p>Al livello nazionale, il diritto dell’Unione rinvia agli Stati membri per le regole di ammissibilità (in Italia il DPR 22/2018 per i fondi 2021-2027) <span class="citation" data-cites="dpr22_2018"><a href="#ref-dpr22_2018" role="doc-biblioref">[24]</a></span>, per la designazione degli organismi di gestione, contabili e di audit, e per gli standard del rendiconto — fattura quietanzata, pagamento tracciato, relazione di avanzamento — oggi gestiti attraverso sistemi informativi unici (ReGiS per il RRF italiano). Il Codice degli incentivi generalizza per gli incentivi alle imprese il ciclo di valutazione ex ante, in itinere ed ex post e il fascicolo elettronico dell’incentivo <span class="citation" data-cites="dlgs184_2025"><a href="#ref-dlgs184_2025" role="doc-biblioref">[10]</a></span>.</p>
+<p>Lo stesso meccanismo è visibile nella finanza pubblica condizionata dell’ESM: il database dei programmi espone erogazioni <em>“as per use of funds”</em> insieme a condizionalità e relative verifiche <span class="citation" data-cites="esmProgrammeDatabase"><a href="#ref-esmProgrammeDatabase" role="doc-biblioref">[25]</a></span>; nelle linee sull’assistenza alla ricapitalizzazione, il monitoraggio è collegato alla <em>“compliance with institution-specific conditionality”</em> e all’uso delle risorse stabilito nell’accordo <span class="citation" data-cites="esmRecapitalisation"><a href="#ref-esmRecapitalisation" role="doc-biblioref">[26]</a></span>. Sono regole della finanza pubblica condizionata, non obblighi applicabili al credito bancario ordinario; proprio per questo costituiscono un termine di confronto istituzionale trasparente.</p>
+<div id="tbl-agevolazioni" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[16,44,40]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-agevolazioni-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;5: Agevolazioni pubbliche e credito ordinario: confronto dello status quo osservabile
+</figcaption>
+<div aria-describedby="tbl-agevolazioni-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 44%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dimensione</th>
+<th>Agevolazioni pubbliche (livello comune UE + attuazione nazionale)</th>
+<th>Credito bancario ordinario osservabile dall’esterno</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Finalità</td>
+<td>Condizione di ammissibilità definita dal programma</td>
+<td>Raccolta all’origination, con granularità variabile</td>
+</tr>
+<tr class="even">
+<td>Quadro sovranazionale</td>
+<td>Diritto UE, disciplina degli aiuti di Stato, regole del programma</td>
+<td>Normativa prudenziale, bancaria e antiriciclaggio europea</td>
+</tr>
+<tr class="odd">
+<td>Chi verifica l’uso dei fondi</td>
+<td>Organismo indipendente designato (controllo di primo livello) + Autorità di audit</td>
+<td>La banca, secondo delibera e contratto; nessun organismo terzo generale</td>
+</tr>
+<tr class="even">
+<td>Standard di prova</td>
+<td>Regole di ammissibilità pubblicate + rendiconto documentale obbligatorio</td>
+<td>Dipende dal prodotto e dal contratto; nessuno standard pubblico trasversale</td>
+</tr>
+<tr class="odd">
+<td>Conseguenza della deviazione</td>
+<td>Rettifica finanziaria, disimpegno automatico, recupero con interessi</td>
+<td>Nel credito garantito, revoca prevista ma priva di apparato attuativo; nel credito puro, rimedi contrattuali discrezionali</td>
+</tr>
+<tr class="even">
+<td>Valutazione</td>
+<td>Ciclo ex ante / in itinere / ex post codificato</td>
+<td>Centrata sul rischio e sulla regolarità del rapporto creditizio</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Il parallelo non implica che il credito privato debba essere assoggettato alle stesse procedure delle agevolazioni. I due ambiti hanno natura, rischi e basi giuridiche differenti. Mostra però che ciò che distingue le agevolazioni non è un principio astratto di rigore, ma la presenza simultanea di un <strong>verificatore indipendente</strong> e di una <strong>conseguenza automatica</strong> della deviazione — ed è proprio il livello comune, non l’attuazione nazionale, a mancare del tutto nel credito garantito, dove la revoca della garanzia è prevista sulla carta ma priva del meccanismo che la attiva. Per il credito bancario la questione di policy diventa quindi più circoscritta: quali elementi di quel modello siano trasferibili in modo proporzionato, senza confondere il rapporto creditizio privato con l’amministrazione di risorse pubbliche.</p>
+<p>Il limite conoscitivo resta essenziale. Lo studio ricostruisce lo status quo sulla base delle evidenze pubblicamente accessibili. L’assenza di procedure o risultati nelle fonti osservate indica un limite di osservabilità esterna e non dimostra, di per sé, che controlli equivalenti siano assenti nei processi interni degli intermediari.</p>
+<hr>
+</section>
+<section id="sec-verso" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="sec-verso"><span class="header-section-number">6</span> Verso la verifica: design del prodotto, tecnologia e convergenza istituzionale</h2>
+<section id="sec-prodotto" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="sec-prodotto"><span class="header-section-number">6.1</span> Il prodotto bancario come sistema di verifica distribuita</h3>
+<p>Il problema della verifica ex post viene generalmente concepito come un problema di monitoring post-erogazione. Esiste tuttavia una prospettiva alternativa: il design del prodotto bancario può incorporare la verifica ex ante, rendendo il monitoraggio ex post parzialmente superfluo.</p>
+<p>Il caso paradigmatico è il <strong>leasing</strong>: la società di leasing acquista il bene e la struttura del prodotto rende la finalità direttamente osservabile. Il vincolo contrattuale riduce fortemente il rischio di dirottamento, pur senza escludere la necessità di controlli proporzionati.</p>
+<p>Il continuum dei prodotti per grado di finalizzazione strutturale non è una graduatoria di qualità: ogni forma risponde a fabbisogni diversi. Serve a individuare quale evidenza sia ragionevolmente disponibile e quale controllo possa risultare proporzionato.</p>
+<div id="tbl-cluster" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[12,23,43,22]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cluster-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;6: Prodotti bancari per grado di finalizzazione strutturale
+</figcaption>
+<div aria-describedby="tbl-cluster-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 23%">
+<col style="width: 43%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Cluster</th>
+<th>Prodotti tipici</th>
+<th>Meccanismo di vincolo</th>
+<th>Rischio F2/F3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>V — Vincolato</strong></td>
+<td>Leasing, mutuo ipotecario</td>
+<td>Struttura contrattuale: il bene è acquistato da terzi o ipotecato</td>
+<td>Molto basso</td>
+</tr>
+<tr class="even">
+<td><strong>P — Parzialmente vincolato</strong></td>
+<td>Nuova Sabatini, mutuo macchinari con bonifico diretto, erogazione a tranche su fatture</td>
+<td>Condizione precedent documentale; erogazione condizionata alla documentazione</td>
+<td>Basso</td>
+</tr>
+<tr class="odd">
+<td><strong>A — Vincolato alle attività correnti</strong></td>
+<td>Anticipo fatture, castelletto, factoring</td>
+<td>I fondi sono collateralizzati su crediti commerciali; uso diverso è strutturalmente difficile</td>
+<td>Basso</td>
+</tr>
+<tr class="even">
+<td><strong>L — Libero</strong></td>
+<td>Prestito chirografario generico, fido di cassa, apertura di credito in c/c</td>
+<td>Nessun vincolo — i fondi arrivano sul conto del debitore</td>
+<td>Alto</td>
+</tr>
+<tr class="odd">
+<td><strong>E — Emergenziale</strong></td>
+<td>Finanziamenti emergenziali a istruttoria semplificata</td>
+<td>Vincolo debole e incentivo privato al controllo potenzialmente ridotto</td>
+<td>Elevato</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>Il rovesciamento operativo.</strong> Alla domanda su come verificare ex post un prestito generico si affianca una domanda precedente: quando il fabbisogno è specifico, quale combinazione di prodotto, contratto, modalità di erogazione e controllo rende la finalità verificabile senza introdurre oneri sproporzionati?</p>
+<p>Se la finalità dichiarata è “acquisto macchinari”, esiste già un prodotto (Nuova Sabatini o equivalente proprietario) con struttura documentale che rende la verifica tautologica. Se la banca non lo usa — e invece eroga un chirografario con DESINV=905 compilato nell’istruttoria — la qualità dell’informazione di finalità dipende interamente dalla correttezza di quella compilazione, senza vincoli strutturali.</p>
+<p><strong>Una prima misura dell’offerta osservabile.</strong> La tavola TFR20281 della Banca d’Italia consente di distribuire i prestiti alle società non finanziarie per forma tecnica. Non misura direttamente la finalizzazione né le procedure di controllo, ma verifica quanto siano diffuse alcune strutture che possono incorporare o facilitare il riscontro della destinazione.</p>
+<div class="cell" data-execution_count="3">
+<div id="tbl-forme-offerta" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-forme-offerta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;7: Prestiti alle società non finanziarie per forma tecnica, dicembre 2025. Consistenze e quote del totale.
+</figcaption>
+<div aria-describedby="tbl-forme-offerta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe cell caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Forma tecnica</th>
+<th data-quarto-table-cell-role="th">Miliardi di euro</th>
+<th data-quarto-table-cell-role="th">Quota del totale (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Conti correnti</td>
+<td>48.2</td>
+<td>8.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Mutui</td>
+<td>322.9</td>
+<td>53.3</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Factoring</td>
+<td>20.0</td>
+<td>3.3</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Leasing finanziario</td>
+<td>21.9</td>
+<td>3.6</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Altri prestiti (residuo)</td>
+<td>192.9</td>
+<td>31.8</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>La tavola documenta che le esposizioni in conto corrente sono minoritarie (8,0%); leasing e factoring, nei quali il bene, il credito commerciale o il flusso sottostante facilitano il match, valgono insieme il 6,9%. Il 53,3% classificato come mutui non può però essere considerato per intero credito finalizzato: la forma tecnica non prova da sola un vincolo di destinazione. Simmetricamente, il residuo del 31,8% di altri prestiti non coincide necessariamente con i soli chirografari generici. Il dato sostiene quindi una lettura dell’offerta per gradi di verificabilità, non una divisione binaria tra credito controllato e non controllato.</p>
+<p><strong>Il paradosso degli incentivi.</strong> I prodotti del Cluster L possono risultare commercialmente più agevoli, perché richiedono meno documentazione e consentono processi più rapidi. L’ipotesi che ne derivi una sotto-finalizzazione strutturale resta da verificare empiricamente: la tavola sulle forme tecniche non basta a provarla. Essa mostra però dove una migliore classificazione pubblica dei prodotti e dei controlli produrrebbe informazione utile per banche, supervisori e policy maker.</p>
+<p><strong>Implicazione di policy.</strong> Il modo più efficiente per aumentare la quota di portafoglio con finalità verificabile consiste nel creare incentivi a utilizzare prodotti finalizzati quando la finalità è verificabile, evitando di concentrare tutta la risposta regolatoria su obblighi generalizzati di monitoring ex post, costosi e difficili da calibrare: condizioni differenziate per Cluster V/P, ponderazione regolamentare favorevole, requisiti documentali differenziati per i finanziamenti agevolati.</p>
+<p><strong>Una fonte pubblica ancora poco sfruttata.</strong> Le segnalazioni di vigilanza contengono già una classificazione dei finanziamenti a medio-lungo termine per destinazione economica: la voce 58320 (“classificazione per destinazione economica: finanziamenti oltre il breve termine sull’interno”, base informativa A2 della Circolare n.&nbsp;154) ripartisce lo stock per costruzioni, macchinari e attrezzature, acquisto di immobili, beni durevoli, investimenti finanziari e una categoria residuale di “altre destinazioni”. È un dato di flusso informativo obbligatorio, aggiornato trimestralmente: la dimensione e la dinamica della sua categoria residuale — così come la distribuzione tra forme di finanziamento a tasso agevolato e ordinario — sono un terreno di analisi pubblicamente disponibile per misurare quanto la finalità sia effettivamente codificata nel reporting, distinto dal fatto che essa sia vincolata a livello contrattuale.</p>
+</section>
+<section id="sec-psd2" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="sec-psd2"><span class="header-section-number">6.2</span> Open banking come infrastruttura di verifica</h3>
+<p>La direttiva PSD2 consente ai servizi di informazione sui conti di accedere, con consenso esplicito dell’utente, ai conti di pagamento designati e alle transazioni associate. L’art. 67 vieta inoltre di usare, accedere o conservare dati per finalità diverse dal servizio esplicitamente richiesto <span class="citation" data-cites="psd2_2015"><a href="#ref-psd2_2015" role="doc-biblioref">[27]</a></span>. L’open banking amplia quindi l’osservabilità dei flussi, ma non attribuisce automaticamente alla banca erogante un accesso generalizzato ai conti detenuti altrove e non crea, da solo, un obbligo di verificare la finalità del credito.</p>
+<p>Se previsto su una base giuridica e contrattuale adeguata, un servizio di account information può alimentare controlli proporzionati: riscontro di pagamenti verso il fornitore dichiarato, analisi temporale post-erogazione, deviazioni verso soggetti collegati, frazionamenti e triangolazioni. Sono segnali per la revisione umana e per i presidi antifrode/AML, non prove automatiche dell’irregolarità né autorizzazioni a riutilizzare indiscriminatamente i dati.</p>
+<p>Il consenso costituisce un limite operativo soprattutto quando il monitoraggio riguarda conti esterni. La sua assenza può impedire quella specifica fonte informativa, ma non prova di per sé un intento fraudolento e non esclude altri controlli. Una banca può disciplinare contrattualmente l’acquisizione delle evidenze necessarie, nel rispetto di necessità, proporzionalità, protezione dei dati e diritti del cliente.</p>
+<p>Va inoltre distinta la verifica della finalità dal <strong>transaction monitoring PSD2</strong>. L’art. 2 del Regolamento delegato (UE) 2018/389 richiede ai prestatori di servizi di pagamento meccanismi capaci di rilevare operazioni di pagamento non autorizzate o fraudolente <span class="citation" data-cites="rts2018_389 ebaQna4090"><a href="#ref-rts2018_389" role="doc-biblioref">[28]</a>, <a href="#ref-ebaQna4090" role="doc-biblioref">[29]</a></span>. È un presidio obbligatorio di sicurezza dei pagamenti: i relativi segnali e modelli possono essere utili anche nel sistema complessivo dei controlli, ma la norma non li configura come verifica generale dell’uso economico di un finanziamento.</p>
+<p>Le evoluzioni PSD3 e Payment Services Regulation rafforzano la prevenzione delle frodi e mirano a ridurre gli ostacoli all’open banking. Alla data di aggiornamento del lavoro, l’accordo politico è stato raggiunto e i testi risultano prossimi all’adozione, ma non vanno presentati come disciplina già pienamente applicabile <span class="citation" data-cites="epPsd3_2026"><a href="#ref-epPsd3_2026" role="doc-biblioref">[30]</a></span>. La traiettoria aumenta la qualità e la disponibilità dell’infrastruttura informativa; resta distinta dalla base giuridica richiesta per controllare la finalità di uno specifico rapporto creditizio.</p>
+<p>La lettura congiunta delle fonti produce una matrice di lavoro, da calibrare per rischio, importo, prodotto e qualità dell’evidenza:</p>
+<div id="tbl-matrice-controlli" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[13,29,29,29]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-matrice-controlli-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;8: Riferimenti operativi per il controllo proporzionato della finalità
+</figcaption>
+<div aria-describedby="tbl-matrice-controlli-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 28%">
+<col style="width: 28%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fase</th>
+<th>Evidenza utilizzabile</th>
+<th>Segnale da approfondire</th>
+<th>Risposta proporzionata</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Origination</td>
+<td>Finalità dichiarata, preventivo, contratto, controparte</td>
+<td>Incoerenza con attività, fabbisogno o capacità operativa</td>
+<td>Chiarimento, documentazione mirata, adeguamento del prodotto</td>
+</tr>
+<tr class="even">
+<td>Erogazione</td>
+<td>Fattura, SAL, bonifico al fornitore, bene o credito sottostante</td>
+<td>Beneficiario diverso, frazionamento o modifica non spiegata</td>
+<td>Sospensione della tranche o verifica rafforzata secondo contratto</td>
+</tr>
+<tr class="odd">
+<td>Primo periodo post-erogazione</td>
+<td>Movimenti sul conto servito e, con base adeguata, dati open banking</td>
+<td>Rapido trasferimento, triangolazione, ritorno dei fondi, uso personale</td>
+<td>Alert, revisione umana e raccordo con antifrode/AML</td>
+</tr>
+<tr class="even">
+<td>Vita del rapporto</td>
+<td>Covenant, andamento dei flussi, informazioni aggiornate</td>
+<td>Deviazione persistente rispetto a finalità e profilo atteso</td>
+<td>Dialogo col cliente, riclassificazione del rischio, rimedi contrattuali</td>
+</tr>
+<tr class="odd">
+<td>Portafoglio</td>
+<td>Pattern per prodotto, settore e canale distributivo</td>
+<td>Concentrazioni anomale o ripetizione di controparti</td>
+<td>Revisione di regole, catalogo prodotti e soglie di controllo</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>La matrice non crea obblighi ulteriori e non sostituisce le valutazioni legali e di conformità. Traduce lo status quo esterno in domande di controllo e mantiene gli alert separati dagli esiti: un’anomalia richiede approfondimento, non equivale automaticamente a frode o violazione.</p>
+<p><strong>La via istituzionale più realistica</strong> non passa per il PSD2 AISP ma per l’infrastruttura dei pagamenti istantanei. EBA Clearing ha sviluppato il servizio FPAD (Fraud Pattern and Anomaly Detection), integrato dal Gruppo Intesa Sanpaolo nel 2025 per le transazioni corporate: usa i dati di pagamento che la banca già processa come propria banca principale del debitore, senza richiedere un consenso aggiuntivo per l’accesso ai conti. È una via regolamentarmente più lineare e tecnicamente già funzionante. La letteratura empirica conferma il principio sottostante: <span class="citation" data-cites="gustafson2021"><a href="#ref-gustafson2021" role="doc-biblioref">[12]</a></span> documentano, sul mercato dei prestiti sindacati statunitensi, che le banche titolari del conto operativo del debitore monitorano significativamente di più perché hanno accesso diretto ai flussi di pagamento — ed esercitano questa funzione in modo misurabile. Il “main bank advantage” come infrastruttura di monitoring è dunque un risultato empirico consolidato, non solo una possibilità tecnologica.</p>
+<p><strong>Il caso AFC Digital Hub</strong> (Intesa Sanpaolo) è la proof of concept più avanzata in Italia. Nato il 16 giugno 2022 come società consortile a r.l. (ISP 70%, Università di Torino, Politecnico di Torino, CENTAI), implementa:</p>
+<ul>
+<li>Network &amp; Graph Analysis per tracciare i flussi post-erogazione oltre il primo bonifico: identifica triangolazioni, società cartiere, retrocessioni (pattern F2/F3)</li>
+<li>Anomaly Detection comportamentale: profilo dinamico del debitore vs.&nbsp;peer di settore; alert su prelievi incoerenti con la finalità dichiarata (F3)</li>
+<li>Intelligence consortile: riconosce lo stesso attore che richiede finanziamenti garantiti presso più istituti simultaneamente (F1+F2 multi-banca)</li>
+</ul>
+<p>Il pilota di aprile 2026 ha identificato 30+ casi di potenziale frode fiscale analizzando 40.000+ entità in Piemonte e Valle d’Aosta, in partnership con GdF, DIA, BdI, UIF e ABI. La partnership nazionale BdI-UIF-ABI per l’estensione del modello è stata avviata nello stesso mese.</p>
+<p>La conclusione ricavabile dalle evidenze esterne è duplice: la tecnologia per la verifica ex post della destinazione è pubblicamente documentata come utilizzata in produzione; la configurazione del caso osservato come progetto consortile <em>volontario</em> segnala l’assenza, allo stato attuale, di un obbligo regolamentare equivalente per il credito privato. Questo sviluppo si inserisce nella più ampia trasformazione digitale del sistema bancario italiano documentata da <span class="citation" data-cites="arnaudo2022"><a href="#ref-arnaudo2022" role="doc-biblioref">[31]</a></span>: la diffusione di strumenti di analisi comportamentale e di anomaly detection mostra che le condizioni tecnologiche per un monitoring più sistematico esistono almeno presso gli intermediari maggiormente attrezzati. Restano rilevanti sia il disegno normativo e gli incentivi, sia i costi di integrazione, la qualità dei dati e le differenze di capacità tecnologica tra banche.</p>
+</section>
+<section id="sec-green" class="level3" data-number="6.3">
+<h3 data-number="6.3" class="anchored" data-anchor-id="sec-green"><span class="header-section-number">6.3</span> La finanza verde come prova di scalabilità</h3>
+<p>La green finance ha percorso in cinque anni la stessa traiettoria che la finanza pubblica ha impiegato trent’anni a completare — da principi volontari a standard vincolanti per chi utilizza specifici label o rientra in determinati obblighi di disclosure:</p>
+<div id="tbl-green" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[7,28,20,45]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-green-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;9: Evoluzione degli standard di verifica nella green finance (2021-2025)
+</figcaption>
+<div aria-describedby="tbl-green-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 28%">
+<col style="width: 20%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Anno</th>
+<th>Strumento</th>
+<th>Natura</th>
+<th>Principio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2021</td>
+<td>Green Loan Principles (LMA/LSTA) <span class="citation" data-cites="icma2021"><a href="#ref-icma2021" role="doc-biblioref">[32]</a></span></td>
+<td>Volontario</td>
+<td>Use of proceeds su conto dedicato; selezione documentata; reporting annuale</td>
+</tr>
+<tr class="even">
+<td>2022</td>
+<td>Tassonomia EU + EBA Pillar 3 ESG</td>
+<td>Obbligatorio (grandi banche)</td>
+<td>Rendicontazione della quota di attivi “taxonomy-aligned”</td>
+</tr>
+<tr class="odd">
+<td>2023</td>
+<td><strong>EU Green Bond Standard</strong> (Reg. 2023/2631) <span class="citation" data-cites="eubgs2023"><a href="#ref-eubgs2023" role="doc-biblioref">[33]</a></span></td>
+<td>Obbligatorio per il label</td>
+<td>Revisore esterno registrato (ESMA); relazione annuale allocazione + impatto</td>
+</tr>
+<tr class="even">
+<td>2024</td>
+<td>CSRD (Dir. 2022/2464)</td>
+<td>Obbligatorio (~50.000 imprese UE)</td>
+<td>Rendicontazione dell’uso effettivo dei proventi per attività sostenibili</td>
+</tr>
+<tr class="odd">
+<td>2025+</td>
+<td>EBA Guidelines su ESG (consultazione)</td>
+<td>In definizione</td>
+<td>Integrazione del rischio ESG nei modelli di credit risk; verifica coerenza dichiarazioni/flussi</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>La tesi è semplice: <strong>se una banca accetta i GLP, ha già implicitamente accettato il principio</strong> che la finalità del credito bancario può e deve essere verificata. L’obiezione “è troppo costoso / tecnicamente impossibile” è confutata dall’esistenza stessa dei GLP e dalla loro diffusione crescente nel mercato europeo.</p>
+<p>Il <strong>EU Green Bond Standard</strong> rende pubblicamente osservabile una struttura di verifica esterna: un soggetto terzo (External Reviewer registrato presso ESMA) attesta l’allocazione dei proventi. Il caso è rilevante non perché sia automaticamente trasferibile al credito ordinario, ma perché mostra, in un perimetro regolato, come finalità, tracciabilità e attestazione possano essere integrate nel disegno dello strumento.</p>
+<p>La differenza osservabile tra green finance e credito ordinario riguarda soprattutto il grado di formalizzazione. Nei green loan la verifica è richiesta dalle regole volontariamente adottate e dalla domanda degli investitori ESG; nel credito ordinario una domanda equivalente è meno strutturata nelle fonti pubbliche. Anche qui il confronto riguarda gli assetti documentati, non esclude prassi interne ulteriori degli intermediari.</p>
+</section>
+<section id="sec-amla" class="level3" data-number="6.4">
+<h3 data-number="6.4" class="anchored" data-anchor-id="sec-amla"><span class="header-section-number">6.4</span> AMLA come punto di convergenza istituzionale</h3>
+<p>Il pacchetto europeo AML 2024 separa due piani: l’istituzione dell’Anti-Money Laundering Authority (AMLA) e il single rulebook antiriciclaggio contenuto nell’AMLR 2024/1624 <span class="citation" data-cites="amlr2024"><a href="#ref-amlr2024" role="doc-biblioref">[34]</a></span>. AMLA avrà sede a Francoforte; la vigilanza diretta sugli intermediari selezionati si svilupperà nella fase di avvio del nuovo assetto europeo. I suoi poteri rilevanti per la verifica della finalità:</p>
+<ul>
+<li><strong>Supervisione diretta</strong> sulle istituzioni finanziarie ad alto rischio</li>
+<li><strong>Coordinamento delle FIU nazionali</strong> (UIF per l’Italia)</li>
+<li><strong>Standard tecnici vincolanti</strong> (RTS/ITS) per le procedure di monitoring delle transazioni</li>
+<li><strong>Accesso ai dati</strong> delle autorità prudenziali (BCE, EBA, supervisori nazionali)</li>
+<li><strong>Condivisione inter-banca</strong>: l’AMLR risolve esplicitamente le questioni GDPR e antitrust che avevano limitato la scalabilità dei modelli consortili (il TMNL olandese ha cessato volontariamente le operazioni nel luglio 2024 per riconfigurarsi sul framework AMLR 2027), abilitando legalmente la condivisione inter-banca dei pattern di anomalia</li>
+</ul>
+<p>La discontinuità che AMLA può bridgare è quella tra i tre canali attuali: il supervisore prudenziale (parametri di rischio, non flussi), l’autorità AML (procedure, non risultati), l’intelligence UIF (SOS individuali, non pattern di portafoglio).</p>
+<p><strong>La convergenza in tre tempi:</strong></p>
+<div id="tbl-amla" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[13,42,45]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-amla-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;10: Traiettoria di convergenza istituzionale verso la verifica della finalità
+</figcaption>
+<div aria-describedby="tbl-amla-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 42%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Periodo</th>
+<th>Sviluppo atteso</th>
+<th>Rilevanza per la verifica della finalità</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2025-2027</td>
+<td>AMLA viene avviata; il pacchetto AML definisce il quadro legale per condivisione dati inter-banca</td>
+<td>Abilita il modello AFC Digital Hub a scala europea</td>
+</tr>
+<tr class="even">
+<td>2027-2030</td>
+<td>RTS/ITS su procedure minime di monitoring transazionale post-erogazione per prestiti ad alto rischio</td>
+<td>“Coerenza tra operatività e finalità dichiarata” diventa standard tecnico vincolante, non principio</td>
+</tr>
+<tr class="odd">
+<td>2030+</td>
+<td>Integrazione dati AMLA (flussi osservati) con AnaCredit (PURPOSE field, congelato all’origination)</td>
+<td>La discrepanza sistematica diventa segnale di supervisione prudenziale, non solo AML</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>Due scenari al 2030:</strong></p>
+<ol type="1">
+<li><em>AMLA adotta standard tecnici per la verifica della finalità</em> → il gap regolatorio si riduce entro il 2028-2030 per le istituzioni ad alto rischio</li>
+<li><em>AMLA rimane confinata alla AML compliance</em> → l’AFC Digital Hub e il modello consortile diventano lo standard de facto; la qualità del monitoring diventa proporzionale alla dimensione e all’investimento tecnologico della banca, non al rischio effettivo del portafoglio</li>
+</ol>
+<p>In entrambi gli scenari, la ricerca empirica pubblicata prima del 2027 costituirà la base evidenziale per le decisioni di policy di AMLA nella fase di setup.</p>
+<hr>
+</section>
+</section>
+<section id="sec-conclusioni" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="sec-conclusioni"><span class="header-section-number">7</span> Conclusioni e implicazioni di policy</h2>
+<section id="findings-principali" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="findings-principali"><span class="header-section-number">7.1</span> Findings principali</h3>
+<ol type="1">
+<li><p><strong>Lo studio è un repertorio per migliorare controlli già esistenti.</strong> Organizza evidenze esterne, forme tecniche e strumenti informativi che le banche possono usare per rendere più proporzionati i controlli di destinazione e più tempestiva l’intercettazione di frodi o irregolarità. Non valuta l’operato di singoli intermediari.</p></li>
+<li><p><strong>Il risultato riguarda lo status quo osservabile.</strong> Nelle norme, nei dati aggregati e nei documenti pubblicamente accessibili non emerge uno standard tecnico generale di verifica ex post dell’uso dei fondi nel credito bancario ordinario. Questo non dimostra l’assenza di controlli nelle procedure interne delle banche, che restano fuori dal perimetro osservato.</p></li>
+<li><p><strong>Il dato DESINV998 riflette componenti strutturali e dichiarative.</strong> Il 42% di residuale nello stock MLT è in parte il risultato del design normativo (esenzione per le imprese nella Matrice dei Conti, Circ. BdI 154), in parte l’effetto di incentivi che non spingono verso la classificazione accurata. La separazione empirica delle due componenti richiede un incrocio con la distribuzione settore/controparte — che è fattibile con i dati Bankit ma non è stata ancora condotta.</p></li>
+<li><p><strong>L’architettura dell’offerta determina una parte della verificabilità.</strong> Leasing, factoring, anticipi e finanziamenti documentali incorporano gradi diversi di riscontro. Bankit mostra che i conti correnti sono l’8,0% dei prestiti alle società non finanziarie, ma non consente di equiparare automaticamente mutui a credito finalizzato o altri prestiti a chirografari liberi.</p></li>
+<li><p><strong>Le agevolazioni pubbliche offrono un termine di confronto, non un modello da trasporre automaticamente.</strong> Il loro quadro nazionale ed europeo collega in modo esplicito finalità, ammissibilità, documentazione, controllo e valutazione. Il contrasto con il credito ordinario riguarda il diverso grado di formalizzazione visibile nelle fonti esterne.</p></li>
+<li><p><strong>PSD2 abilita dati, non un obbligo generale sulla finalità.</strong> Con consenso e nei limiti del servizio, l’open banking può supportare il riscontro dei flussi. Il transaction monitoring obbligatorio previsto dalla disciplina dei pagamenti è invece diretto a operazioni non autorizzate o fraudolente. L’integrazione operativa dei due piani richiede basi giuridiche, regole decisionali e controlli umani adeguati.</p></li>
+<li><p><strong>Esistono casi pubblicamente documentati di verifica tecnologicamente assistita.</strong> Le informazioni disponibili sull’AFC Digital Hub indicano che il monitoring ex post della destinazione è tecnicamente realizzabile. Non consentono, invece, di misurarne la diffusione nell’intero sistema o di escludere soluzioni interne non pubblicizzate. La diffusione dipende dal disegno normativo e dagli incentivi, ma anche dai costi di integrazione, dalla disponibilità dei dati e dalle capacità tecnologiche delle singole banche.</p></li>
+<li><p><strong>Le evidenze normative mostrano una maggiore formalizzazione della finalità in ambiti contigui.</strong> Agevolazioni pubbliche, finanza sostenibile e disciplina antiriciclaggio offrono segnali convergenti, ma non autorizzano a prevedere automaticamente un’identica evoluzione del credito ordinario.</p></li>
+</ol>
+</section>
+<section id="menu-di-policy-ordinato-per-fattibilitàimpatto-a-breve-medio-termine" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="menu-di-policy-ordinato-per-fattibilitàimpatto-a-breve-medio-termine"><span class="header-section-number">7.2</span> Menu di policy (ordinato per fattibilità/impatto a breve-medio termine)</h3>
+<p><strong>1. Incentivi per i prodotti a finalità documentabile</strong> <em>(breve termine)</em></p>
+<p>Prevedere condizioni proporzionate che favoriscano, quando coerente con il fabbisogno del cliente, i prodotti nei quali la finalità è incorporata nella struttura contrattuale o documentale. La misura andrebbe preceduta da una verifica empirica dei costi e delle prassi effettive.</p>
+<p><strong>2. Principi comuni di tracciabilità</strong> <em>(breve-medio termine)</em></p>
+<p>Valutare se i principi impiegati nelle agevolazioni pubbliche — esplicitazione della finalità, documentazione proporzionata e verificabilità — possano orientare standard minimi per specifiche classi di credito. L’eventuale applicazione dovrebbe rispettare la diversa natura giuridica ed economica del rapporto bancario.</p>
+<p><strong>3. Standard tecnico minimo BdI per verifica post-disbursement</strong> <em>(medio termine)</em></p>
+<p>Emissione di orientamenti BdI (analoghi alla Comunicazione UIF 31/3/2026 per i fondi pubblici) che chiariscano, dopo una ricognizione delle pratiche esistenti, criteri proporzionati di verifica post-disbursement per i finanziamenti nei quali la destinazione assume rilievo contrattuale.</p>
+<p><strong>4. Aggiornamento del campo PURPOSE in AnaCredit</strong> <em>(medio-lungo termine)</em></p>
+<p>Il campo PURPOSE è attualmente frozen all’origination. Un’estensione della Regulation ECB/2016/13 per consentire aggiornamenti del campo durante la vita del prestito — almeno per i prestiti con monitoraggio documentale — produrrebbe dati di finalità significativamente più accurati per l’analisi empirica e la supervisione.</p>
+<p><strong>5. Valutazione della condivisione consortile dei pattern di deviazione</strong> <em>(lungo termine)</em></p>
+<p>Con l’attuazione del pacchetto AML europeo e la risoluzione delle questioni GDPR/antitrust (AMLR art. 75), il modello consortile di condivisione dei pattern di deviazione (documentato nel caso volontario dell’AFC Digital Hub in Italia; sperimentato dal TMNL nei Paesi Bassi fino al luglio 2024, poi sospeso in attesa del nuovo quadro AMLR) diventa una possibile infrastruttura comune, da valutare sotto i profili di proporzionalità, protezione dei dati, governance e accessibilità anche per gli intermediari di minori dimensioni.</p>
+<hr>
+</section>
+</section>
+<section id="app-normativa" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="app-normativa"><span class="header-section-number">8</span> Appendice A — Normativa: tabella completa</h2>
+<p>La tabella della <a href="#sec-reg-cosa" class="quarto-xref">Sezione&nbsp;3.1</a> riporta la versione sintetica del quadro normativo. Le fonti primarie richiamate nel testo e nei riferimenti bibliografici consentono di ricostruirne la versione estesa.</p>
+<p>Strumenti non inclusi nella tabella principale:</p>
+<ul>
+<li><strong>ESRB/2019/3</strong>: amplia le categorie di finalità per i prestiti immobiliari (solo CRE/RRE)</li>
+<li><strong>EBA/GL/2017/06 (SREP)</strong>: vigilanza su rischio di credito; nessuna menzione di verifica finalità</li>
+<li><strong>ICMA Green Bond Principles (2022)</strong>: “use of proceeds” come primo pilastro; green bond, non prestiti</li>
+</ul>
+</section>
+<section id="app-genealogia" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="app-genealogia"><span class="header-section-number">9</span> Appendice B — La genealogia normativa: testi primari</h2>
+<section id="d.lgs.-1231998-artt.-6-9" class="level3" data-number="9.1">
+<h3 data-number="9.1" class="anchored" data-anchor-id="d.lgs.-1231998-artt.-6-9"><span class="header-section-number">9.1</span> D.lgs. 123/1998, artt. 6-9</h3>
+<p>Prima norma italiana che struttura il rapporto PA-beneficiario come rapporto condizionato: l’ultima quota del contributo in conto capitale viene erogata dopo documentazione finale di spesa e controlli. Abrogato dal D.lgs. 184/2025 con effetto 1/1/2026.</p>
+</section>
+<section id="reg.-ue-13032013-artt.-20-22-testo-italiano-da-eur-lex" class="level3" data-number="9.2">
+<h3 data-number="9.2" class="anchored" data-anchor-id="reg.-ue-13032013-artt.-20-22-testo-italiano-da-eur-lex"><span class="header-section-number">9.2</span> Reg. (UE) 1303/2013, artt. 20-22 (testo italiano da EUR-Lex)</h3>
+<p><strong>Art. 20</strong> (<em>Riserva di efficacia dell’attuazione</em>): <em>“Il 6 % delle risorse destinate al FESR, al FSE e al Fondo di coesione […] costituisce una riserva di efficacia dell’attuazione che è stabilita nell’accordo e nei programmi di partenariato ed è destinata a priorità specifiche conformemente all’articolo 22.”</em></p>
+<p><strong>Art. 21</strong> (<em>Verifica</em>): <em>“La Commissione, in cooperazione con gli Stati membri, effettua una verifica dell’efficacia dell’attuazione dei programmi in ciascuno Stato membro nel 2019 […] alla luce del quadro di riferimento dell’efficacia dell’attuazione stabilito nei rispettivi programmi.”</em></p>
+<p><strong>Art. 22(3)</strong>: <em>“La riserva di efficacia dell’attuazione è destinata soltanto a programmi e priorità che hanno conseguito i propri target intermedi.”</em></p>
+<p><strong>Art. 22(7)</strong>: rettifiche finanziarie in caso di <em>“grave carenza nel raggiungimento dei target finali relativi ai soli indicatori finanziari, indicatori di output e fasi di attuazione principali”</em>.</p>
+</section>
+<section id="reg.-ue-2021241-rrf-artt.-20-24-testo-italiano-da-eur-lex" class="level3" data-number="9.3">
+<h3 data-number="9.3" class="anchored" data-anchor-id="reg.-ue-2021241-rrf-artt.-20-24-testo-italiano-da-eur-lex"><span class="header-section-number">9.3</span> Reg. (UE) 2021/241 (RRF), artt. 20, 24 (testo italiano da EUR-Lex)</h3>
+<p><strong>Art. 20(2)</strong>: la proposta della Commissione <em>“stabilisce le riforme e i progetti di investimento che dovranno essere attuati dallo Stato membro, compresi i traguardi e gli obiettivi”</em>; il contributo finanziario è erogato <em>“a rate successivamente al conseguimento soddisfacente […] dei traguardi e degli obiettivi”</em>.</p>
+<p><strong>Art. 24(2)</strong>: <em>“Dopo aver raggiunto i traguardi e gli obiettivi concordati […] lo Stato membro interessato presenta alla Commissione una richiesta debitamente motivata relativa al pagamento del contributo finanziario.”</em></p>
+<p><strong>Art. 24(6)</strong>: sospensione del pagamento se <em>“la Commissione accerta che i traguardi e gli obiettivi indicati […] non sono stati conseguiti in misura soddisfacente”</em>.</p>
+</section>
+<section id="dpcm-842026-art.-21" class="level3" data-number="9.4">
+<h3 data-number="9.4" class="anchored" data-anchor-id="dpcm-842026-art.-21"><span class="header-section-number">9.4</span> DPCM 84/2026, art. 2(1)</h3>
+<p><em>“[Gli organi di controllo] provvedono a inviare al Ministero dell’economia e delle finanze — Dipartimento della Ragioneria generale dello Stato, entro il 30 aprile dell’anno successivo a quello in cui i contributi sono stati erogati, una relazione contenente le risultanze delle verifiche effettuate [sull’utilizzo dei contributi] nel rispetto delle finalità per le quali i medesimi sono stati concessi.”</em></p>
+<p>(GU n.&nbsp;115, 20/5/2026. In vigore 4/6/2026.)</p>
+</section>
+</section>
+<section id="app-desinv" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="app-desinv"><span class="header-section-number">10</span> Appendice C — Dati DESINV 2008-2025</h2>
+<div class="cell" data-execution_count="4">
+<div id="tbl-desinv-completo" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-desinv-completo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;11: Stock MLT per finalità dichiarata (DESINV) — TFR10420, TIPTASSO=800, LOC_CTP=IT, fine dicembre. Valori in % del totale (DESINV997). Fonte: elaborazione su tavole statistiche Banca d’Italia.
+</figcaption>
+<div aria-describedby="tbl-desinv-completo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe cell caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Anno</th>
+<th data-quarto-table-cell-role="th">Tot_MldEur</th>
+<th data-quarto-table-cell-role="th">Abit</th>
+<th data-quarto-table-cell-role="th">AltImm</th>
+<th data-quarto-table-cell-role="th">CosAb</th>
+<th data-quarto-table-cell-role="th">CosNR</th>
+<th data-quarto-table-cell-role="th">Macc</th>
+<th data-quarto-table-cell-role="th">BenDur</th>
+<th data-quarto-table-cell-role="th">InvFin</th>
+<th data-quarto-table-cell-role="th">Resid</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2008</td>
+<td>993.0</td>
+<td>22.7</td>
+<td>5.4</td>
+<td>7.7</td>
+<td>7.5</td>
+<td>8.5</td>
+<td>2.1</td>
+<td>6.2</td>
+<td>39.8</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2009</td>
+<td>1040.0</td>
+<td>23.5</td>
+<td>5.5</td>
+<td>7.8</td>
+<td>6.9</td>
+<td>9.8</td>
+<td>2.0</td>
+<td>6.1</td>
+<td>38.4</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2010</td>
+<td>1139.0</td>
+<td>26.6</td>
+<td>5.1</td>
+<td>7.7</td>
+<td>6.4</td>
+<td>8.9</td>
+<td>2.1</td>
+<td>5.6</td>
+<td>37.5</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2011</td>
+<td>1146.0</td>
+<td>27.5</td>
+<td>5.0</td>
+<td>7.5</td>
+<td>6.2</td>
+<td>9.1</td>
+<td>2.0</td>
+<td>5.7</td>
+<td>36.9</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2012</td>
+<td>1103.0</td>
+<td>27.1</td>
+<td>5.9</td>
+<td>7.5</td>
+<td>5.9</td>
+<td>8.8</td>
+<td>1.9</td>
+<td>6.1</td>
+<td>36.6</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>2013</td>
+<td>1055.0</td>
+<td>27.9</td>
+<td>5.8</td>
+<td>7.4</td>
+<td>5.7</td>
+<td>8.1</td>
+<td>1.9</td>
+<td>6.1</td>
+<td>37.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>2014</td>
+<td>1109.0</td>
+<td>26.4</td>
+<td>5.0</td>
+<td>6.6</td>
+<td>5.0</td>
+<td>7.1</td>
+<td>1.8</td>
+<td>4.4</td>
+<td>43.7</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">7</th>
+<td>2015</td>
+<td>1115.0</td>
+<td>26.5</td>
+<td>5.8</td>
+<td>6.0</td>
+<td>4.7</td>
+<td>7.7</td>
+<td>2.4</td>
+<td>4.5</td>
+<td>42.5</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">8</th>
+<td>2016</td>
+<td>1123.0</td>
+<td>26.9</td>
+<td>5.3</td>
+<td>5.3</td>
+<td>4.8</td>
+<td>7.9</td>
+<td>2.6</td>
+<td>4.7</td>
+<td>42.4</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">9</th>
+<td>2017</td>
+<td>1123.0</td>
+<td>27.7</td>
+<td>4.9</td>
+<td>4.8</td>
+<td>4.4</td>
+<td>8.1</td>
+<td>3.0</td>
+<td>5.9</td>
+<td>41.1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">10</th>
+<td>2018</td>
+<td>1142.0</td>
+<td>28.1</td>
+<td>4.7</td>
+<td>4.5</td>
+<td>5.7</td>
+<td>8.2</td>
+<td>3.3</td>
+<td>6.3</td>
+<td>39.1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">11</th>
+<td>2019</td>
+<td>1133.0</td>
+<td>29.0</td>
+<td>4.8</td>
+<td>4.2</td>
+<td>5.2</td>
+<td>7.2</td>
+<td>3.8</td>
+<td>6.7</td>
+<td>39.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">12</th>
+<td>2020</td>
+<td>1232.0</td>
+<td>27.4</td>
+<td>4.3</td>
+<td>3.7</td>
+<td>4.6</td>
+<td>6.2</td>
+<td>3.5</td>
+<td>8.5</td>
+<td>41.7</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">13</th>
+<td>2021</td>
+<td>1248.0</td>
+<td>28.7</td>
+<td>4.1</td>
+<td>3.5</td>
+<td>4.2</td>
+<td>5.4</td>
+<td>3.6</td>
+<td>8.8</td>
+<td>41.7</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">14</th>
+<td>2022</td>
+<td>1269.0</td>
+<td>29.6</td>
+<td>4.0</td>
+<td>3.3</td>
+<td>3.8</td>
+<td>5.1</td>
+<td>3.6</td>
+<td>8.6</td>
+<td>42.1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">15</th>
+<td>2023</td>
+<td>1236.0</td>
+<td>30.5</td>
+<td>3.8</td>
+<td>3.2</td>
+<td>3.5</td>
+<td>5.0</td>
+<td>4.0</td>
+<td>8.3</td>
+<td>41.8</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">16</th>
+<td>2024</td>
+<td>1225.0</td>
+<td>31.0</td>
+<td>3.8</td>
+<td>3.1</td>
+<td>3.3</td>
+<td>4.9</td>
+<td>4.2</td>
+<td>7.8</td>
+<td>41.9</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">17</th>
+<td>2025</td>
+<td>1248.0</td>
+<td>31.6</td>
+<td>3.8</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>5.2</td>
+<td>4.3</td>
+<td>7.1</td>
+<td>42.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p><em>Legenda</em>: Abit=DESINV70 (acquisto abitazioni famiglie), AltImm=DESINV914 (altri immobili), CosAb=DESINV10 (costruzioni abitazioni), CosNR=DESINV912 (costruzioni non residenziali + genio civile), Macc=DESINV905 (macchinari e impianti), BenDur=DESINV110 (beni durevoli), InvFin=DESINV120 (investimenti finanziari), Resid=DESINV998 (residuale/non classificato).</p>
+</section>
+<section id="riferimenti-bibliografici" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="riferimenti-bibliografici">Riferimenti bibliografici</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-buchetti2025" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline"><span class="nocase">B. Buchetti <em>et al.</em></span>, <span>«Organized Crime, Bank Lending and Productivity: Evidence from AnaCredit»</span>, SUERF – The European Money; Finance Forum, SUERF Policy Brief 1203, 2025.</div>
+</div>
+<div id="ref-ebagl2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">European Banking Authority, <span>«Guidelines on loan origination and monitoring (<span>EBA/GL/2020/06</span>)»</span>. EBA Guidelines, maggio 2020. Disponibile su: <a href="https://www.eba.europa.eu/regulation-and-policy/credit-risk/guidelines-on-loan-origination-and-monitoring">https://www.eba.europa.eu/regulation-and-policy/credit-risk/guidelines-on-loan-origination-and-monitoring</a></div>
+</div>
+<div id="ref-bdiCirc272_2025" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">Banca d’Italia, <span>«Matrice dei conti — Circolare n. 272 del 30 luglio 2008, 16° aggiornamento del 2 novembre 2022»</span>. Disposizioni segnaletiche, novembre 2022. Disponibile su: <a href="https://www.bancaditalia.it/compiti/vigilanza/normativa/archivio-norme/circolari/c272/">https://www.bancaditalia.it/compiti/vigilanza/normativa/archivio-norme/circolari/c272/</a></div>
+</div>
+<div id="ref-ecbPriorities2025" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">European Central Bank, Banking Supervision, <span>«Supervisory priorities 2025–2027»</span>. 2024. Disponibile su: <a href="https://www.bankingsupervision.europa.eu/framework/priorities/html/ssm.supervisory_priorities202412~6f69ad032f.en.html">https://www.bankingsupervision.europa.eu/framework/priorities/html/ssm.supervisory_priorities202412~6f69ad032f.en.html</a></div>
+</div>
+<div id="ref-fsbMortgage2012" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">Financial Stability Board, <span>«Principles for Sound Residential Mortgage Underwriting Practices»</span>. aprile 2012. Disponibile su: <a href="https://www.fsb.org/uploads/r_120418.pdf">https://www.fsb.org/uploads/r_120418.pdf</a></div>
+</div>
+<div id="ref-dlgs123_1998" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">Repubblica Italiana, <span>«Decreto legislativo 31 marzo 1998, n.&nbsp;123 — Disposizioni per la razionalizzazione degli interventi di sostegno pubblico alle imprese»</span>. Decreto legislativo, 1998.</div>
+</div>
+<div id="ref-reg1303_2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">Parlamento europeo e Consiglio dell’Unione europea, <span>«Regolamento (<span>UE</span>) n.&nbsp;1303/2013 del Parlamento europeo e del Consiglio, recante disposizioni comuni sui fondi strutturali e di investimento europei»</span>. Regolamento UE, dicembre 2013. Disponibile su: <a href="https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32013R1303">https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32013R1303</a></div>
+</div>
+<div id="ref-reg2021_241" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">Parlamento europeo e Consiglio dell’Unione europea, <span>«Regolamento (<span>UE</span>) 2021/241 del Parlamento europeo e del Consiglio, che istituisce il dispositivo per la ripresa e la resilienza»</span>. Regolamento UE, febbraio 2021. Disponibile su: <a href="https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32021R0241">https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32021R0241</a></div>
+</div>
+<div id="ref-dpcm84_2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">Presidenza del Consiglio dei Ministri, <span>«Decreto del Presidente del Consiglio dei Ministri 7 maggio 2026, n.&nbsp;84 — Regolamento recante disposizioni attuative della legge 30 dicembre 2024, n.&nbsp;207, commi 857–858»</span>. Decreto del Presidente del Consiglio dei Ministri, maggio 2026.</div>
+</div>
+<div id="ref-dlgs184_2025" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">Repubblica Italiana, <span>«Decreto legislativo 27 novembre 2025, n.&nbsp;184 — Codice degli incentivi»</span>. Decreto legislativo, 2025.</div>
+</div>
+<div id="ref-branzoli2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">N. Branzoli e F. Fringuellotti, <span>«The Effect of Bank Monitoring on Loan Repayment»</span>, <em>SSRN Electronic Journal</em>, 2020, doi: <a href="https://doi.org/10.2139/ssrn.3601944">10.2139/ssrn.3601944</a>.</div>
+</div>
+<div id="ref-gustafson2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">M. T. Gustafson, I. T. Ivanov, e R. R. Meisenzahl, <span>«Bank Monitoring: Evidence from Syndicated Loans»</span>, <em>Journal of Financial Economics</em>, vol. 139, fasc. 2, pp. 452–477, 2021, doi: <a href="https://doi.org/10.1016/j.jfineco.2020.08.001">10.1016/j.jfineco.2020.08.001</a>.</div>
+</div>
+<div id="ref-colonnello2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">S. Colonnello, M. Koetter, e M. Stieglitz, <span>«Benign Neglect of Covenant Violations: Blissful Banking or Ignorant Monitoring?»</span>, <em>Economic Inquiry</em>, vol. 59, fasc. 4, pp. 1503–1523, 2021, doi: <a href="https://doi.org/10.1111/ecin.12930">10.1111/ecin.12930</a>.</div>
+</div>
+<div id="ref-cascarino2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">G. Cascarino, R. Gallo, F. Palazzo, e E. Sette, <span>«Public Guarantees and Credit Additionality During the Covid-19 Pandemic»</span>, <em>SSRN Electronic Journal</em>, 2022, doi: <a href="https://doi.org/10.2139/ssrn.4110071">10.2139/ssrn.4110071</a>.</div>
+</div>
+<div id="ref-demarco2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">F. De Marco, <span>«Public Guarantees for Small Businesses in Italy during COVID-19»</span>, <em>SSRN Electronic Journal</em>, 2020, doi: <a href="https://doi.org/10.2139/ssrn.3604114">10.2139/ssrn.3604114</a>.</div>
+</div>
+<div id="ref-bdi2024_1462" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">Banca d’Italia, <span>«L’allocazione dei prestiti con garanzia pubblica alle imprese durante il <span>Covid-19</span>: rischio di credito e relazioni creditizie»</span>, Banca d’Italia, Temi di discussione (Working Papers) 1462, 2024. Disponibile su: <a href="https://www.bancaditalia.it/pubblicazioni/temi-discussione/2024/2024-1462/index.html">https://www.bancaditalia.it/pubblicazioni/temi-discussione/2024/2024-1462/index.html</a></div>
+</div>
+<div id="ref-israel2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">J. M. Israel, V. Damia, R. Bonci, e G. Watfe, <span>«The Analytical Credit Dataset. A Magnifying Glass for Analysing Credit in the Euro Area»</span>, <em>SSRN Electronic Journal</em>, 2017, doi: <a href="https://doi.org/10.2139/ssrn.2985442">10.2139/ssrn.2985442</a>.</div>
+</div>
+<div id="ref-accetturo2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">A. Accetturo, G. Barboni, M. Cascarano, E. Garcia-Appendini, e M. Tomasi, <em>Credit Supply and Green Investments</em>. in Temi di Discussione, no. 1456. Roma: Banca d’Italia, 2024. doi: <a href="https://doi.org/10.32057/0.TD.2024.1456">10.32057/0.TD.2024.1456</a>.</div>
+</div>
+<div id="ref-kedward2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">K. Kedward e J. Ryan-Collins, <span>«A Modern Credit Guidance Regime for the Green Transition»</span>, SUERF – The European Money; Finance Forum, SUERF Policy Note 294, 2022.</div>
+</div>
+<div id="ref-bdiCirc154_2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">Banca d’Italia, <span>«Segnalazioni di vigilanza delle istituzioni creditizie e finanziarie — Circolare n.&nbsp;154, bozza del 79° aggiornamento»</span>. Documento in consultazione pubblica (14 luglio 2026), luglio 2026. Disponibile su: <a href="https://www.dirittobancario.it/wp-content/uploads/2026/07/Bozza-Circolare-154-Banca-dItalia-14-luglio-2026_compressed.pdf">https://www.dirittobancario.it/wp-content/uploads/2026/07/Bozza-Circolare-154-Banca-dItalia-14-luglio-2026_compressed.pdf</a></div>
+</div>
+<div id="ref-cpr2021_1060" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">Parlamento europeo e Consiglio dell’Unione europea, <span>«Regolamento (<span>UE</span>) 2021/1060 del Parlamento europeo e del Consiglio, recante le disposizioni comuni applicabili ai fondi in gestione concorrente»</span>. Regolamento UE, giugno 2021. Disponibile su: <a href="https://eur-lex.europa.eu/eli/reg/2021/1060/oj/ita">https://eur-lex.europa.eu/eli/reg/2021/1060/oj/ita</a></div>
+</div>
+<div id="ref-gber2014" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline">Commissione europea, <span>«Regolamento (<span>UE</span>) n.&nbsp;651/2014 della Commissione che dichiara alcune categorie di aiuti compatibili con il mercato interno (<span>GBER</span>)»</span>. Regolamento UE, giugno 2014. Disponibile su: <a href="https://eur-lex.europa.eu/eli/reg/2014/651/oj/ita">https://eur-lex.europa.eu/eli/reg/2014/651/oj/ita</a></div>
+</div>
+<div id="ref-reg2015_1589" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">Consiglio dell’Unione europea, <span>«Regolamento (<span>UE</span>) 2015/1589 del Consiglio recante modalità di applicazione dell’articolo 108 <span>TFUE</span>»</span>. Regolamento UE, luglio 2015. Disponibile su: <a href="https://eur-lex.europa.eu/eli/reg/2015/1589/oj/ita">https://eur-lex.europa.eu/eli/reg/2015/1589/oj/ita</a></div>
+</div>
+<div id="ref-dpr22_2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[24] </div><div class="csl-right-inline">Repubblica Italiana, <span>«D.P.R.&nbsp;5 febbraio 2018, n.&nbsp;22 — Regolamento sui criteri di ammissibilità delle spese per i programmi cofinanziati dai fondi strutturali di investimento europei»</span>. Decreto del Presidente della Repubblica, 2018.</div>
+</div>
+<div id="ref-esmProgrammeDatabase" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[25] </div><div class="csl-right-inline">European Stability Mechanism, <span>«Programme Database»</span>. 2026. Disponibile su: <a href="https://www.esm.europa.eu/financial-assistance/programme-database">https://www.esm.europa.eu/financial-assistance/programme-database</a></div>
+</div>
+<div id="ref-esmRecapitalisation" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[26] </div><div class="csl-right-inline">European Stability Mechanism, <span>«Revised Guidelines on Financial Assistance for the Direct Recapitalisation of Institutions»</span>. 2014. Disponibile su: <a href="https://www.esm.europa.eu/sites/default/files/migration_files/esm_revised_guidelines_on_financial_assistance_for_recapitalisation_-_publication.pdf">https://www.esm.europa.eu/sites/default/files/migration_files/esm_revised_guidelines_on_financial_assistance_for_recapitalisation_-_publication.pdf</a></div>
+</div>
+<div id="ref-psd2_2015" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[27] </div><div class="csl-right-inline">European Parliament and Council of the European Union, <span>«Directive (<span>EU</span>) 2015/2366 on Payment Services in the Internal Market»</span>. 2015. Disponibile su: <a href="https://eur-lex.europa.eu/eli/dir/2015/2366/oj/eng">https://eur-lex.europa.eu/eli/dir/2015/2366/oj/eng</a></div>
+</div>
+<div id="ref-rts2018_389" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[28] </div><div class="csl-right-inline">European Commission, <span>«Commission Delegated Regulation (<span>EU</span>) 2018/389 Supplementing Directive (<span>EU</span>) 2015/2366 with Regulatory Technical Standards»</span>. 2018. Disponibile su: <a href="https://eur-lex.europa.eu/eli/reg_del/2018/389/oj/eng">https://eur-lex.europa.eu/eli/reg_del/2018/389/oj/eng</a></div>
+</div>
+<div id="ref-ebaQna4090" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[29] </div><div class="csl-right-inline">European Banking Authority, <span>«Does Transaction Monitoring Need to Be Real Time? Q&amp;A 2018-4090»</span>. 2018. Disponibile su: <a href="https://www.eba.europa.eu/single-rule-book-qa/qna/view/publicId/2018_4090">https://www.eba.europa.eu/single-rule-book-qa/qna/view/publicId/2018_4090</a></div>
+</div>
+<div id="ref-epPsd3_2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[30] </div><div class="csl-right-inline">European Parliament, <span>«Payment Services and Electronic Money Services in the Internal Market: Legislative Train»</span>. 2026. Disponibile su: <a href="https://www.europarl.europa.eu/legislative-train/carriage/payment-services-and-electronic-money-services-%28directive%29/report">https://www.europarl.europa.eu/legislative-train/carriage/payment-services-and-electronic-money-services-%28directive%29/report</a></div>
+</div>
+<div id="ref-arnaudo2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[31] </div><div class="csl-right-inline">D. Arnaudo <em>et al.</em>, <span>«The Digital Transformation in the <span>Italian</span> Banking Sector»</span>, Banca d’Italia, Questioni di Economia e Finanza (Occasional Papers) 682, apr. 2022.</div>
+</div>
+<div id="ref-icma2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[32] </div><div class="csl-right-inline">International Capital Market Association, <span>«Green Bond Principles: Voluntary Process Guidelines for Issuing Green Bonds»</span>. ICMA / LMA Green Bond Principles, 2021.</div>
+</div>
+<div id="ref-eubgs2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[33] </div><div class="csl-right-inline">Parlamento europeo e Consiglio dell’Unione europea, <span>«Regolamento (<span>UE</span>) 2023/2631 del Parlamento europeo e del Consiglio sulle obbligazioni verdi europee»</span>. Regolamento UE (EU Green Bond Standard), 2023. Disponibile su: <a href="https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32023R2631">https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32023R2631</a></div>
+</div>
+<div id="ref-amlr2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[34] </div><div class="csl-right-inline">Parlamento europeo e Consiglio dell’Unione europea, <span>«Regolamento (<span>UE</span>) 2024/1624 del Parlamento europeo e del Consiglio, relativo alla prevenzione dell’uso del sistema finanziario a fini di riciclaggio o finanziamento del terrorismo»</span>. Regolamento UE (AMLR), 2024. Disponibile su: <a href="https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32024R1624">https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32024R1624</a></div>
+</div>
+</div>
+<hr>
+<p><strong>Nota metodologica</strong></p>
+<p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
+<p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale; l’analisi è pertanto integralmente auditabile e replicabile da terzi a partire da esse. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script>
+// Salto interno ai riferimenti [n] e ai rimandi #… indipendente dall'URL della pagina:
+// funziona anche quando l'HTML è aperto in un iframe, in un'anteprima o con un <base> diverso.
+document.addEventListener("click", function (e) {
+  var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+  if (!a) return;
+  var id = decodeURIComponent(a.getAttribute("href").slice(1));
+  var el = id && document.getElementById(id);
+  if (!el) return;
+  e.preventDefault();
+  el.scrollIntoView({ block: "start" });
+  try { history.replaceState(null, "", "#" + id); } catch (err) {}
+}, true);
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
