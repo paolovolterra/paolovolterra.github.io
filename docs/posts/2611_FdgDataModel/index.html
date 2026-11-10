@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="Fondo di Garanzia, PMI, data model, OLAP, ATECO, parquet, DuckDB, fdgq">
+<meta name="description" content="Un modello dati e un cubo analitico OLAP costruiti sui microdati aperti del Fondo di garanzia per le PMI.">
+
+<title>Data model Fondo di Garanzia per le PMI – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Data model Fondo di Garanzia per le PMI – Paolo Volterra">
+<meta property="og:description" content="Un modello dati e un cubo analitico OLAP costruiti sui microdati aperti del Fondo di garanzia per le PMI.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2611_FdgDataModel/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Data model Fondo di Garanzia per le PMI – Paolo Volterra">
+<meta name="twitter:description" content="Un modello dati e un cubo analitico OLAP costruiti sui microdati aperti del Fondo di garanzia per le PMI.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2611_FdgDataModel/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/in_parole_semplici/"> <i class="bi bi-instagram" role="img" aria-label="Instagram">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#la-fonte-i-microdati-mcc" id="toc-la-fonte-i-microdati-mcc" class="nav-link active" data-scroll-target="#la-fonte-i-microdati-mcc"><span class="header-section-number">1</span> La fonte: i microdati MCC</a>
+  <ul class="collapse">
+  <li><a href="#struttura-del-csv-originale" id="toc-struttura-del-csv-originale" class="nav-link" data-scroll-target="#struttura-del-csv-originale"><span class="header-section-number">1.1</span> Struttura del CSV originale</a></li>
+  <li><a href="#perché-il-csv-non-basta" id="toc-perché-il-csv-non-basta" class="nav-link" data-scroll-target="#perché-il-csv-non-basta"><span class="header-section-number">1.2</span> Perché il CSV non basta</a></li>
+  </ul></li>
+  <li><a href="#lo-stack-tre-livelli-di-accesso" id="toc-lo-stack-tre-livelli-di-accesso" class="nav-link" data-scroll-target="#lo-stack-tre-livelli-di-accesso"><span class="header-section-number">2</span> Lo stack: tre livelli di accesso</a>
+  <ul class="collapse">
+  <li><a href="#livello-1-parquet-normalizzati" id="toc-livello-1-parquet-normalizzati" class="nav-link" data-scroll-target="#livello-1-parquet-normalizzati"><span class="header-section-number">2.1</span> Livello 1 — Parquet normalizzati</a></li>
+  <li><a href="#livello-2-cli-fdgq" id="toc-livello-2-cli-fdgq" class="nav-link" data-scroll-target="#livello-2-cli-fdgq"><span class="header-section-number">2.2</span> Livello 2 — CLI <code>fdgq</code></a></li>
+  <li><a href="#livello-3-cubo-analitico-fdg_cube.parquet" id="toc-livello-3-cubo-analitico-fdg_cube.parquet" class="nav-link" data-scroll-target="#livello-3-cubo-analitico-fdg_cube.parquet"><span class="header-section-number">2.3</span> Livello 3 — Cubo analitico (<code>fdg_cube.parquet</code>)</a></li>
+  </ul></li>
+  <li><a href="#il-data-model-struttura-del-cubo" id="toc-il-data-model-struttura-del-cubo" class="nav-link" data-scroll-target="#il-data-model-struttura-del-cubo"><span class="header-section-number">3</span> Il data model: struttura del cubo</a>
+  <ul class="collapse">
+  <li><a href="#concetto" id="toc-concetto" class="nav-link" data-scroll-target="#concetto"><span class="header-section-number">3.1</span> Concetto</a></li>
+  <li><a href="#dimensioni" id="toc-dimensioni" class="nav-link" data-scroll-target="#dimensioni"><span class="header-section-number">3.2</span> Dimensioni</a></li>
+  <li><a href="#natura-giuridica-ng" id="toc-natura-giuridica-ng" class="nav-link" data-scroll-target="#natura-giuridica-ng"><span class="header-section-number">3.3</span> Natura giuridica (<code>ng</code>)</a></li>
+  <li><a href="#misure" id="toc-misure" class="nav-link" data-scroll-target="#misure"><span class="header-section-number">3.4</span> Misure</a></li>
+  <li><a href="#il-codice-fiscale-uso-e-tutela-gdpr" id="toc-il-codice-fiscale-uso-e-tutela-gdpr" class="nav-link" data-scroll-target="#il-codice-fiscale-uso-e-tutela-gdpr"><span class="header-section-number">3.5</span> Il codice fiscale: uso e tutela GDPR</a></li>
+  </ul></li>
+  <li><a href="#scelte-metodologiche" id="toc-scelte-metodologiche" class="nav-link" data-scroll-target="#scelte-metodologiche"><span class="header-section-number">4</span> Scelte metodologiche</a>
+  <ul class="collapse">
+  <li><a href="#div2-invece-di-settore" id="toc-div2-invece-di-settore" class="nav-link" data-scroll-target="#div2-invece-di-settore"><span class="header-section-number">4.1</span> <code>div2</code> invece di <code>settore</code></a></li>
+  <li><a href="#anno-da-delibera-non-dal-campo-anno" id="toc-anno-da-delibera-non-dal-campo-anno" class="nav-link" data-scroll-target="#anno-da-delibera-non-dal-campo-anno"><span class="header-section-number">4.2</span> Anno da <code>delibera</code>, non dal campo <code>anno</code></a></li>
+  </ul></li>
+  <li><a href="#anomalie-nei-dati" id="toc-anomalie-nei-dati" class="nav-link" data-scroll-target="#anomalie-nei-dati"><span class="header-section-number">5</span> Anomalie nei dati</a>
+  <ul class="collapse">
+  <li><a href="#copertura_media-1" id="toc-copertura_media-1" class="nav-link" data-scroll-target="#copertura_media-1"><span class="header-section-number">5.1</span> <code>copertura_media</code> &gt; 1</a></li>
+  <li><a href="#picco-covid-q2-2020" id="toc-picco-covid-q2-2020" class="nav-link" data-scroll-target="#picco-covid-q2-2020"><span class="header-section-number">5.2</span> Picco COVID Q2 2020</a></li>
+  </ul></li>
+  <li><a href="#utilizzo-del-cubo" id="toc-utilizzo-del-cubo" class="nav-link" data-scroll-target="#utilizzo-del-cubo"><span class="header-section-number">6</span> Utilizzo del cubo</a>
+  <ul class="collapse">
+  <li><a href="#caricamento" id="toc-caricamento" class="nav-link" data-scroll-target="#caricamento"><span class="header-section-number">6.1</span> Caricamento</a></li>
+  <li><a href="#query-con-duckdb" id="toc-query-con-duckdb" class="nav-link" data-scroll-target="#query-con-duckdb"><span class="header-section-number">6.2</span> Query con DuckDB</a></li>
+  <li><a href="#filtri-comuni" id="toc-filtri-comuni" class="nav-link" data-scroll-target="#filtri-comuni"><span class="header-section-number">6.3</span> Filtri comuni</a></li>
+  <li><a href="#variabili-derivate-al-volo" id="toc-variabili-derivate-al-volo" class="nav-link" data-scroll-target="#variabili-derivate-al-volo"><span class="header-section-number">6.4</span> Variabili derivate al volo</a></li>
+  <li><a href="#utilizzo-con-excel-via-power-query" id="toc-utilizzo-con-excel-via-power-query" class="nav-link" data-scroll-target="#utilizzo-con-excel-via-power-query"><span class="header-section-number">6.5</span> Utilizzo con Excel via Power Query</a></li>
+  <li><a href="#query-live-con-fdgq-parquet-grezzi" id="toc-query-live-con-fdgq-parquet-grezzi" class="nav-link" data-scroll-target="#query-live-con-fdgq-parquet-grezzi"><span class="header-section-number">6.6</span> Query live con <code>fdgq</code> (parquet grezzi)</a></li>
+  <li><a href="#aggiornamento-del-cubo" id="toc-aggiornamento-del-cubo" class="nav-link" data-scroll-target="#aggiornamento-del-cubo"><span class="header-section-number">6.7</span> Aggiornamento del cubo</a></li>
+  </ul></li>
+  <li><a href="#statistiche-descrittive" id="toc-statistiche-descrittive" class="nav-link" data-scroll-target="#statistiche-descrittive"><span class="header-section-number">7</span> Statistiche descrittive</a>
+  <ul class="collapse">
+  <li><a href="#evoluzione-temporale" id="toc-evoluzione-temporale" class="nav-link" data-scroll-target="#evoluzione-temporale"><span class="header-section-number">7.1</span> Evoluzione temporale</a></li>
+  <li><a href="#distribuzione-geografica" id="toc-distribuzione-geografica" class="nav-link" data-scroll-target="#distribuzione-geografica"><span class="header-section-number">7.2</span> Distribuzione geografica</a></li>
+  <li><a href="#natura-giuridica" id="toc-natura-giuridica" class="nav-link" data-scroll-target="#natura-giuridica"><span class="header-section-number">7.3</span> Natura giuridica</a></li>
+  <li><a href="#tipo-di-intervento" id="toc-tipo-di-intervento" class="nav-link" data-scroll-target="#tipo-di-intervento"><span class="header-section-number">7.4</span> Tipo di intervento</a></li>
+  </ul></li>
+  <li><a href="#riepilogo" id="toc-riepilogo" class="nav-link" data-scroll-target="#riepilogo"><span class="header-section-number">8</span> Riepilogo</a></li>
+  <li><a href="#gdpr-e-aggregazione-impossibilità-del-reverse-engineering" id="toc-gdpr-e-aggregazione-impossibilità-del-reverse-engineering" class="nav-link" data-scroll-target="#gdpr-e-aggregazione-impossibilità-del-reverse-engineering"><span class="header-section-number">9</span> GDPR e aggregazione: impossibilità del reverse engineering</a>
+  <ul class="collapse">
+  <li><a href="#perché-il-reverse-engineering-è-impossibile" id="toc-perché-il-reverse-engineering-è-impossibile" class="nav-link" data-scroll-target="#perché-il-reverse-engineering-è-impossibile"><span class="header-section-number">9.1</span> Perché il reverse engineering è impossibile</a></li>
+  <li><a href="#base-normativa" id="toc-base-normativa" class="nav-link" data-scroll-target="#base-normativa"><span class="header-section-number">9.2</span> Base normativa</a></li>
+  <li><a href="#caveat-k-anonimità" id="toc-caveat-k-anonimità" class="nav-link" data-scroll-target="#caveat-k-anonimità"><span class="header-section-number">9.3</span> Caveat: K-anonimità</a></li>
+  <li><a href="#conseguenze-operative" id="toc-conseguenze-operative" class="nav-link" data-scroll-target="#conseguenze-operative"><span class="header-section-number">9.4</span> Conseguenze operative</a></li>
+  </ul></li>
+  <li><a href="#quarto-bibliography" id="toc-quarto-bibliography" class="nav-link" data-scroll-target="#quarto-bibliography"><span class="header-section-number">10</span> Referenze</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data model Fondo di Garanzia per le PMI</h1>
+<p class="subtitle lead">Dal CSV grezzo al cubo analitico: architettura, scelte e utilizzo</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Agevolazioni e garanzie</div>
+    <div class="quarto-category">Dati e metodo</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Un modello dati e un cubo analitico OLAP costruiti sui microdati aperti del Fondo di garanzia per le PMI.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">18 giugno 2026</p>
+    </div>
+  </div>
+  
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.20751283">10.5281/zenodo.20751283</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>Il Fondo di Garanzia per le PMI pubblica i microdati delle operazioni garantite come open data: 14 colonne, un file per mese, dal 2012 a oggi. I file sono già essenziali — il problema è la scala: 100+ file, 4,5 milioni di righe, oltre 3 GB di testo non interrogabile interattivamente. A questo si aggiunge un mismatch di granularità: il CSV è atomico (una riga = una pratica), ma le domande di business intelligence sono sempre aggregate. Il documento mostra come costruire un data model OLAP su questi dati — CSV → parquet (191 MB) → cubo analitico (5 MB) — con riduzioni di latenza da minuti a millisecondi. Sono trattati lo stack di trasformazione, le scelte di modellazione, le anomalie nei dati e il trattamento del codice fiscale (GDPR).</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>Fondo di Garanzia, PMI, data model, OLAP, ATECO, parquet, DuckDB, fdgq</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Versione citabile su Zenodo, con il PDF: <a href="https://doi.org/10.5281/zenodo.20751283">doi.org/10.5281/zenodo.20751283</a>.</p>
+</div>
+</div>
+</div>
+<section id="la-fonte-i-microdati-mcc" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="la-fonte-i-microdati-mcc"><span class="header-section-number">1</span> La fonte: i microdati MCC</h2>
+<p>Il <strong>Fondo di Garanzia per le PMI</strong> (FdG), gestito da Mediocredito Centrale per conto del MIMIT, pubblica periodicamente i microdati delle operazioni deliberate. Ogni file copre un trimestre o un mese e riporta le garanzie concesse a imprese e professionisti.</p>
+<section id="struttura-del-csv-originale" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="struttura-del-csv-originale"><span class="header-section-number">1.1</span> Struttura del CSV originale</h3>
+<p>I file sono pubblicati come <strong>open data</strong> sul portale del Fondo di Garanzia, in formato <strong>CSV con separatore <code>;</code></strong>. Ogni file copre un mese e contiene <strong>14 colonne</strong> con nomi in italiano:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 42%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">#</th>
+<th style="text-align: left;">Colonna CSV</th>
+<th style="text-align: left;">Campo parquet</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Ragione sociale e forma giuridica dell’impresa</td>
+<td style="text-align: left;"><code>impresa</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Codice fiscale dell’impresa</td>
+<td style="text-align: left;"><code>CF</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">Tipologia di intervento</td>
+<td style="text-align: left;"><code>intervento</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">Importo massimo garantito (euro)</td>
+<td style="text-align: left;"><code>garantito</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">Riserva / Sezione speciale</td>
+<td style="text-align: left;"><code>riserva</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">Data di delibera di concessione della garanzia</td>
+<td style="text-align: left;"><code>delibera</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">Importo del finanziamento</td>
+<td style="text-align: left;"><code>finanziamento</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">Codice ATECO dell’attività dell’impresa</td>
+<td style="text-align: left;"><code>ATECO</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">Anno di riferimento della classificazione ATECO</td>
+<td style="text-align: left;">— (ignorato: usare <code>YEAR(delibera)</code>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">Settore economico</td>
+<td style="text-align: left;"><code>settore</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">Regione di utilizzo</td>
+<td style="text-align: left;"><code>regione</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">Provincia (sigla) di utilizzo</td>
+<td style="text-align: left;"><code>prov</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">Comune di utilizzo</td>
+<td style="text-align: left;"><code>comune</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">Tipo di processo</td>
+<td style="text-align: left;"><code>processo</code></td>
+</tr>
+</tbody>
+</table>
+<p>Il formato è già essenziale: nessuna colonna operativa interna, nessun dato ridondante. Il problema non è la struttura del singolo file, ma la <strong>scala dell’archivio</strong>: dal 2012 a oggi i file mensili accumulano oltre 4,5 milioni di operazioni in più di 100 file.</p>
+<p><strong>Dimensioni tipiche:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Periodo</th>
+<th style="text-align: left;">Righe</th>
+<th style="text-align: left;">Dimensione CSV</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Trimestre normale</td>
+<td style="text-align: left;">~100.000</td>
+<td style="text-align: left;">~50 MB</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Trimestre COVID (picco)</td>
+<td style="text-align: left;">~250.000</td>
+<td style="text-align: left;">~130 MB</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Totale corpus 2012–2026</strong></td>
+<td style="text-align: left;"><strong>~4,5 M</strong></td>
+<td style="text-align: left;"><strong>&gt; 3 GB</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="perché-il-csv-non-basta" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="perché-il-csv-non-basta"><span class="header-section-number">1.2</span> Perché il CSV non basta</h3>
+<p>I file CSV presentano tre problemi strutturali per l’uso analitico:</p>
+<ol type="1">
+<li><strong>Dimensione</strong>: oltre 3 GB totali — non caricabili in RAM su un laptop standard senza campionamento.</li>
+<li><strong>Lentezza</strong>: ogni query richiede la scansione completa e il parsing testuale riga per riga. Su 4,5 milioni di righe distribuite in 100+ file, una semplice aggregazione per regione richiede minuti.</li>
+<li><strong>Assenza di tipi</strong>: in CSV tutto è testo. Date, importi e codici ATECO devono essere convertiti a ogni lettura, con rischio di errori silenti.</li>
+</ol>
+<p>Il formato <strong>parquet</strong> risolve tutti e tre i problemi:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Proprietà</th>
+<th style="text-align: left;">CSV</th>
+<th style="text-align: left;">Parquet</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Compressione</td>
+<td style="text-align: left;">nessuna</td>
+<td style="text-align: left;">columnar + snappy (~8–10×)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tipi</td>
+<td style="text-align: left;">stringa</td>
+<td style="text-align: left;">nativi (date, float, varchar)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Lettura parziale</td>
+<td style="text-align: left;">no — scan completo</td>
+<td style="text-align: left;">sì — colonne e row groups</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dimensione corpus</td>
+<td style="text-align: left;">&gt; 3 GB</td>
+<td style="text-align: left;"><strong>191 MB</strong> (109 file)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Query aggregazione</td>
+<td style="text-align: left;">minuti</td>
+<td style="text-align: left;"><strong>&lt; 1 secondo</strong> (DuckDB)</td>
+</tr>
+</tbody>
+</table>
+<p>La conversione rinomina le 14 colonne in nomi brevi (snake_case) adatti all’uso analitico, ignorando la colonna “Anno di riferimento ATECO” (sostituita da <code>YEAR(delibera)</code>).</p>
+<hr>
+</section>
+</section>
+<section id="lo-stack-tre-livelli-di-accesso" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="lo-stack-tre-livelli-di-accesso"><span class="header-section-number">2</span> Lo stack: tre livelli di accesso</h2>
+<p>Il corpus FdG richiede due trasformazioni prima di diventare utilizzabile per la BI. La prima — da CSV a parquet — risolve il problema di <strong>scala e performance</strong> (3 GB → 191 MB, query da minuti a secondi). La seconda — da parquet a cubo — risolve il problema di <strong>granularità</strong>: il CSV registra ogni pratica individualmente, ma le domande BI sono sempre aggregate; pre-aggregare porta 4,45 milioni di righe atomiche a 475mila celle, con latenze nell’ordine dei millisecondi. Il risultato è uno stack a tre livelli:</p>
+<pre><code>CSV open data FdG       (14 col, &gt; 3 GB)
+        ↓  conversione parquet
+Parquet normalizz.      (14 col, 191 MB, 109 file)
+        ↓  fdgq CLI         ↓  build_cube.py
+CLI fdgq (query live)   Cubo analitico (aggregato)
+  per domande ad hoc      per BI e dashboard</code></pre>
+<section id="livello-1-parquet-normalizzati" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="livello-1-parquet-normalizzati"><span class="header-section-number">2.1</span> Livello 1 — Parquet normalizzati</h3>
+<p>109 file parquet (uno per trimestre/mese), conservati in una cartella locale. Contengono le 14 colonne del CSV open data rinominate in snake_case, con tipi corretti (date, float, varchar).</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Campo</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Contenuto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>delibera</code></td>
+<td style="text-align: left;">TIMESTAMP</td>
+<td style="text-align: left;">Data di delibera della garanzia</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>garantito</code></td>
+<td style="text-align: left;">DOUBLE</td>
+<td style="text-align: left;">Importo garantito (€)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>finanziamento</code></td>
+<td style="text-align: left;">DOUBLE</td>
+<td style="text-align: left;">Importo del finanziamento sottostante (€)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>ATECO</code></td>
+<td style="text-align: left;">VARCHAR</td>
+<td style="text-align: left;">Codice attività 6 digit (<code>DDGGSS</code>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>regione</code>, <code>prov</code>, <code>comune</code></td>
+<td style="text-align: left;">VARCHAR</td>
+<td style="text-align: left;">Localizzazione impresa</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>intervento</code></td>
+<td style="text-align: left;">VARCHAR</td>
+<td style="text-align: left;">Tipo garanzia (3 valori)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>processo</code></td>
+<td style="text-align: left;">VARCHAR</td>
+<td style="text-align: left;">Procedura valutativa (20 valori)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>riserva</code></td>
+<td style="text-align: left;">VARCHAR</td>
+<td style="text-align: left;">Sezione del Fondo (88 valori)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>settore</code></td>
+<td style="text-align: left;">VARCHAR</td>
+<td style="text-align: left;">Macro-settore (compilato dall’intermediario)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>impresa</code></td>
+<td style="text-align: left;">VARCHAR</td>
+<td style="text-align: left;">Denominazione + forma giuridica</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>CF</code></td>
+<td style="text-align: left;">VARCHAR</td>
+<td style="text-align: left;">Codice fiscale impresa</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="livello-2-cli-fdgq" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="livello-2-cli-fdgq"><span class="header-section-number">2.2</span> Livello 2 — CLI <code>fdgq</code></h3>
+<p><code>fdgq</code> è un CLI bash deterministico sopra DuckDB che interroga i parquet in tempo reale. È pensato per domande ad hoc e per l’integrazione con sistemi automatizzati (output <code>--json</code>).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Operazioni per natura giuridica nel 2024</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">fdgq</span> agg 2024 ng</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Top 10 province per garantito (2023)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">fdgq</span> rank prov 10 <span class="st">"EXTRACT(YEAR FROM delibera)=2023"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Trend mensile ultimi 24 mesi</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">fdgq</span> trend month 24</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Confronto Sicilia vs Italia (2025)</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ex">fdgq</span> vs-it 2025 regione <span class="st">"Sicilia"</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Output JSON per integrazione</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ex">fdgq</span> <span class="at">--json</span> rank ng 10</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Le dimensioni disponibili in <code>fdgq</code> includono la <strong>natura giuridica</strong> (<code>ng</code>), il codice CCIAA estratto dal CF (<code>cod_cf</code>), la sezione ATECO a lettera (<code>sezione</code>, da A-Agricoltura a U-Org. Internazionali) e la divisione a 2 digit (<code>ATECO</code>). Queste dimensioni sono calcolate al volo — non esistono come colonne nei parquet.</p>
+</section>
+<section id="livello-3-cubo-analitico-fdg_cube.parquet" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="livello-3-cubo-analitico-fdg_cube.parquet"><span class="header-section-number">2.3</span> Livello 3 — Cubo analitico (<code>fdg_cube.parquet</code>)</h3>
+<p>Il cubo pre-aggrega 4,45 milioni di operazioni in 475.516 celle, riducendo il file a <strong>5,1 MB</strong>. Il vantaggio non è solo la dimensione: la granularità del cubo corrisponde esattamente alla granularità delle domande BI tipiche — nessuna riga “sprecata” in aggregazioni al momento della query. È il livello adatto per dashboard BI, report parametrici e visualizzazioni.</p>
+<hr>
+</section>
+</section>
+<section id="il-data-model-struttura-del-cubo" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="il-data-model-struttura-del-cubo"><span class="header-section-number">3</span> Il data model: struttura del cubo</h2>
+<section id="concetto" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="concetto"><span class="header-section-number">3.1</span> Concetto</h3>
+<pre><code>Dato grezzo:  4.450.355 righe  →  ogni riga = una pratica deliberata
+                   ↓  GROUP BY 7 dimensioni  (filtro: garantito numerico)
+Cubo:           475.516 righe  →  ogni riga = una cella analitica</code></pre>
+<p>Ogni cella del cubo risponde implicitamente a domande del tipo: <em>“quante SRL nel commercio al dettaglio (div=47), in Lombardia, con Garanzia Diretta, via procedura Semplificata, nel Q3 2024?”</em></p>
+</section>
+<section id="dimensioni" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="dimensioni"><span class="header-section-number">3.2</span> Dimensioni</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Dimensione</th>
+<th style="text-align: left;">Derivazione</th>
+<th style="text-align: left;">Valori unici</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>anno</code></td>
+<td style="text-align: left;"><code>YEAR(delibera)</code></td>
+<td style="text-align: left;">14 (2012–2026)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>trimestre</code></td>
+<td style="text-align: left;"><code>QUARTER(delibera)</code></td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>regione</code></td>
+<td style="text-align: left;">colonna diretta</td>
+<td style="text-align: left;">22</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>div2</code></td>
+<td style="text-align: left;"><code>LEFT(ATECO, 2)</code></td>
+<td style="text-align: left;">87</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>intervento</code></td>
+<td style="text-align: left;">colonna diretta</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>processo</code></td>
+<td style="text-align: left;">colonna diretta</td>
+<td style="text-align: left;">20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>ng</code></td>
+<td style="text-align: left;">CASE su <code>impresa</code> normalizzato</td>
+<td style="text-align: left;">18</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Celle teoriche</strong>: 14 × 4 × 22 × 87 × 3 × 20 × 18 ≈ 115 milioni. <strong>Celle effettive</strong>: <strong>475.516</strong> — sparsità ~99,6%, normale per dati territoriali/settoriali.</p>
+</section>
+<section id="natura-giuridica-ng" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="natura-giuridica-ng"><span class="header-section-number">3.3</span> Natura giuridica (<code>ng</code>)</h3>
+<p>La natura giuridica è estratta dal campo <code>impresa</code>, che nel dataset contiene la denominazione dell’azienda seguita dalla forma giuridica dopo una virgola (es. <code>"FLORA S.R.L., Soc a responsabilità limitata"</code>). La logica di normalizzazione — identica a quella usata da <code>fdgq</code> — applica UPPER, rimozione accenti e apostrofi, poi un matching esatto su 18 categorie canoniche:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 51%">
+<col style="width: 29%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Codice</th>
+<th style="text-align: left;">Forma giuridica</th>
+<th style="text-align: left;">Quota</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>SRL</code></td>
+<td style="text-align: left;">Società a responsabilità limitata</td>
+<td style="text-align: left;">~45%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>IMPRESA IND.</code></td>
+<td style="text-align: left;">Impresa individuale / Persona fisica</td>
+<td style="text-align: left;">~26%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>SNC</code></td>
+<td style="text-align: left;">Società in nome collettivo</td>
+<td style="text-align: left;">~9%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>SAS</code></td>
+<td style="text-align: left;">Società in accomandita semplice</td>
+<td style="text-align: left;">~7%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>SPA</code></td>
+<td style="text-align: left;">Società per azioni</td>
+<td style="text-align: left;">~2,5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>COOP</code></td>
+<td style="text-align: left;">Cooperative (varie forme)</td>
+<td style="text-align: left;">~1,4%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>SRLS</code></td>
+<td style="text-align: left;">SRL semplificata</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>PROFESSIONISTA</code></td>
+<td style="text-align: left;">Studi professionali, professionisti</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>CONSORZIO</code>, <code>RETE</code>, <code>STP</code>, <code>ENTE</code>, <code>ENTE PUB.</code>, <code>ESTERO</code>, <code>ALTRO</code></td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">—</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="misure" class="level3" data-number="3.4">
+<h3 data-number="3.4" class="anchored" data-anchor-id="misure"><span class="header-section-number">3.4</span> Misure</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Misura</th>
+<th style="text-align: left;">Aggregazione</th>
+<th style="text-align: left;">Unità</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>n_operazioni</code></td>
+<td style="text-align: left;">COUNT(*)</td>
+<td style="text-align: left;">numero pratiche</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>n_imprese</code></td>
+<td style="text-align: left;">COUNT(DISTINCT CF)</td>
+<td style="text-align: left;">imprese distinte</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>garantito_mln</code></td>
+<td style="text-align: left;">SUM(garantito) / 1.000.000</td>
+<td style="text-align: left;">milioni €</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>finanziamento_mln</code></td>
+<td style="text-align: left;">SUM(finanziamento) / 1.000.000</td>
+<td style="text-align: left;">milioni €</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>importo_medio</code></td>
+<td style="text-align: left;">AVG(garantito)</td>
+<td style="text-align: left;">€</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>copertura_media</code></td>
+<td style="text-align: left;">AVG(garantito / finanziamento)</td>
+<td style="text-align: left;">rapporto 0–1</td>
+</tr>
+</tbody>
+</table>
+<p>La misura <code>n_imprese</code> (imprese distinte) affianca <code>n_operazioni</code> perché la stessa impresa può avere più operazioni garantite: la media è 2,5 operazioni per impresa nel corpus completo.</p>
+</section>
+<section id="il-codice-fiscale-uso-e-tutela-gdpr" class="level3" data-number="3.5">
+<h3 data-number="3.5" class="anchored" data-anchor-id="il-codice-fiscale-uso-e-tutela-gdpr"><span class="header-section-number">3.5</span> Il codice fiscale: uso e tutela GDPR</h3>
+<p>Il CF è presente nei parquet grezzi ed è usato per due scopi nel data model:</p>
+<ol type="1">
+<li><strong>Conteggio imprese distinte</strong>: <code>COUNT(DISTINCT CF)</code> → misura <code>n_imprese</code></li>
+<li><strong>Identificazione tipo soggetto</strong>: CF a 11 digit numerici = persona giuridica; CF a 16 caratteri alfanumerici = persona fisica (ditta individuale, professionista)</li>
+</ol>
+<p>Nel cubo aggregato <strong>il CF non compare mai come colonna esposta</strong>. I CF a 16 caratteri sono dati personali (GDPR) riferiti a persone fisiche; la loro scomparsa nell’aggregazione rende il cubo condivisibile senza vincoli di trattamento dei dati personali.</p>
+<p>In <code>fdgq</code>, la dimensione <code>cod_cf</code> estrae le cifre 8–10 del CF societario (codice CCIAA della provincia di registrazione) o le cifre 12–15 del CF personale (comune di nascita in codice Belfiore) — mai il CF completo.</p>
+<hr>
+</section>
+</section>
+<section id="scelte-metodologiche" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="scelte-metodologiche"><span class="header-section-number">4</span> Scelte metodologiche</h2>
+<section id="div2-invece-di-settore" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="div2-invece-di-settore"><span class="header-section-number">4.1</span> <code>div2</code> invece di <code>settore</code></h3>
+<p>Il campo <code>settore</code> (5 valori: Commercio, Industria, Servizi, Agricoltura) è compilato dall’intermediario segnalante, non derivato automaticamente dall’ATECO. Lo stesso codice ATECO può quindi comparire assegnato a settori diversi a seconda della banca o del confidi. Per questa ragione si usa <code>div2 = LEFT(ATECO, 2)</code> — la divisione ATECO a 2 digit — che è deterministica e coerente.</p>
+</section>
+<section id="anno-da-delibera-non-dal-campo-anno" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="anno-da-delibera-non-dal-campo-anno"><span class="header-section-number">4.2</span> Anno da <code>delibera</code>, non dal campo <code>anno</code></h3>
+<p>Il campo <code>anno</code> presente nei parquet contiene valori anomali non riconducibili all’anno di delibera (es. 1991, 2002, 2025 su un numero ridotto di record). L’anno è sempre derivato da <code>YEAR(delibera)</code>.</p>
+<hr>
+</section>
+</section>
+<section id="anomalie-nei-dati" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="anomalie-nei-dati"><span class="header-section-number">5</span> Anomalie nei dati</h2>
+<section id="copertura_media-1" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="copertura_media-1"><span class="header-section-number">5.1</span> <code>copertura_media</code> &gt; 1</h3>
+<p>La copertura garantita non può superare il 100% del finanziamento. Alcune celle mostrano <code>copertura_media</code> &gt; 1, con valori estremi fino a 2.857. Le cause probabili sono errori di imputazione nella colonna <code>finanziamento</code> (valori a zero o quasi zero nel dato grezzo). Per analisi che richiedono questa misura, filtrare <code>copertura_media &lt;= 1.0</code>.</p>
+</section>
+<section id="picco-covid-q2-2020" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="picco-covid-q2-2020"><span class="header-section-number">5.2</span> Picco COVID Q2 2020</h3>
+<p>Le celle con il maggior numero di operazioni si concentrano in Q2 2020 (aprile–giugno), effetto del <strong>DL 23/2020 (Decreto Liquidità)</strong> che ha sospeso i requisiti di valutazione del merito di credito e aperto la Garanzia Diretta al 100% per le PMI. Il segnale è chiarissimo: Lombardia, Campania, Puglia, Lazio nel commercio al dettaglio (div=47) e nella ristorazione (div=56).</p>
+<hr>
+</section>
+</section>
+<section id="utilizzo-del-cubo" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="utilizzo-del-cubo"><span class="header-section-number">6</span> Utilizzo del cubo</h2>
+<p>Il cubo è distribuito come <code>OUT/fdg_cube.parquet</code> (5,0 MB).</p>
+<section id="caricamento" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="caricamento"><span class="header-section-number">6.1</span> Caricamento</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>cubo <span class="op">=</span> pd.read_parquet(<span class="st">"OUT/fdg_cube.parquet"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cubo.shape)   <span class="co"># (475516, 13)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cubo.columns.tolist())</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ['anno','trimestre','regione','div2','intervento','processo','ng',</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#  'n_operazioni','n_imprese','garantito_mln','finanziamento_mln',</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#  'importo_medio','copertura_media']</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="query-con-duckdb" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="query-con-duckdb"><span class="header-section-number">6.2</span> Query con DuckDB</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> duckdb</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Operazioni e garantito per regione nel 2024</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>duckdb.query(<span class="st">"""</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT regione,</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="st">           SUM(n_operazioni)            AS operazioni,</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="st">           SUM(n_imprese)               AS imprese,</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="st">           ROUND(SUM(garantito_mln), 1) AS garantito_mln</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM 'OUT/fdg_cube.parquet'</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE anno = 2024</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="st">    GROUP BY regione</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="st">    ORDER BY garantito_mln DESC</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span>).df()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Natura giuridica: quota garantito e operazioni (2020–2024)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>duckdb.query(<span class="st">"""</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT ng,</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">           SUM(n_operazioni)            AS operazioni,</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="st">           ROUND(SUM(garantito_mln), 1) AS garantito_mln,</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="st">           ROUND(AVG(importo_medio))    AS importo_medio_eu</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM 'OUT/fdg_cube.parquet'</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE anno BETWEEN 2020 AND 2024</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="st">    GROUP BY ng</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="st">    ORDER BY garantito_mln DESC</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span>).df()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Trend trimestrale del garantito totale</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>duckdb.query(<span class="st">"""</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT anno, trimestre,</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">           SUM(n_operazioni)            AS operazioni,</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="st">           ROUND(SUM(garantito_mln), 1) AS garantito_mln</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM 'OUT/fdg_cube.parquet'</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="st">    GROUP BY 1, 2</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="st">    ORDER BY 1, 2</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span>).df()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Top-10 divisioni ATECO per garantito, solo SRL (2023)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>duckdb.query(<span class="st">"""</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT div2,</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="st">           SUM(n_operazioni)            AS operazioni,</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="st">           ROUND(SUM(garantito_mln), 1) AS garantito_mln</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM 'OUT/fdg_cube.parquet'</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE anno = 2023 AND ng = 'SRL'</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="st">    GROUP BY div2</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="st">    ORDER BY garantito_mln DESC</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="st">    LIMIT 10</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span>).df()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="filtri-comuni" class="level3" data-number="6.3">
+<h3 data-number="6.3" class="anchored" data-anchor-id="filtri-comuni"><span class="header-section-number">6.3</span> Filtri comuni</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Solo Microcredito</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>micro <span class="op">=</span> cubo[cubo[<span class="st">'processo'</span>] <span class="op">==</span> <span class="st">'Microcredito'</span>]</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Solo Sud</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>sud <span class="op">=</span> [<span class="st">'Campania'</span>,<span class="st">'Puglia'</span>,<span class="st">'Calabria'</span>,<span class="st">'Sicilia'</span>,<span class="st">'Basilicata'</span>,<span class="st">'Molise'</span>,<span class="st">'Sardegna'</span>,<span class="st">'Abruzzo'</span>]</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>cubo_sud <span class="op">=</span> cubo[cubo[<span class="st">'regione'</span>].isin(sud)]</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Solo persone fisiche (ditte individuali + professionisti)</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>fisiche <span class="op">=</span> cubo[cubo[<span class="st">'ng'</span>].isin([<span class="st">'IMPRESA IND.'</span>, <span class="st">'PROFESSIONISTA'</span>])]</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Esclude celle con copertura anomala</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>cubo_clean <span class="op">=</span> cubo[cubo[<span class="st">'copertura_media'</span>] <span class="op">&lt;=</span> <span class="fl">1.0</span>]</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="variabili-derivate-al-volo" class="level3" data-number="6.4">
+<h3 data-number="6.4" class="anchored" data-anchor-id="variabili-derivate-al-volo"><span class="header-section-number">6.4</span> Variabili derivate al volo</h3>
+<p>Tre categorizzazioni utili calcolabili dopo il caricamento, senza aumentare le dimensioni del cubo.</p>
+<p><strong>Fascia garantito</strong> — basata sul p50 (25k €) e su soglie regolamentari FdG:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>cubo[<span class="st">'fascia_garantito'</span>] <span class="op">=</span> pd.cut(</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    cubo[<span class="st">'importo_medio'</span>],</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    bins<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">25_000</span>, <span class="dv">100_000</span>, <span class="dv">500_000</span>, <span class="dv">1_500_000</span>, <span class="bu">float</span>(<span class="st">'inf'</span>)],</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>[<span class="st">'Micro (≤25k)'</span>, <span class="st">'Piccola (25–100k)'</span>, <span class="st">'Media (100–500k)'</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Grande (500k–1,5M)'</span>, <span class="st">'Molto grande (&gt;1,5M)'</span>]</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Fascia</th>
+<th style="text-align: left;">Range</th>
+<th style="text-align: left;">% operazioni</th>
+<th style="text-align: left;">Riferimento</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Micro</td>
+<td style="text-align: left;">≤ 25.000 €</td>
+<td style="text-align: left;">~50%</td>
+<td style="text-align: left;">p50; soglia storica Microcredito</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Piccola</td>
+<td style="text-align: left;">25.001–100.000 €</td>
+<td style="text-align: left;">~25%</td>
+<td style="text-align: left;">p50–p75</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Media</td>
+<td style="text-align: left;">100.001–500.000 €</td>
+<td style="text-align: left;">~20%</td>
+<td style="text-align: left;">p75–p95</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Grande</td>
+<td style="text-align: left;">500.001–1.500.000 €</td>
+<td style="text-align: left;">~4%</td>
+<td style="text-align: left;">p95–p99</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Molto grande</td>
+<td style="text-align: left;">&gt; 1.500.000 €</td>
+<td style="text-align: left;">~1%</td>
+<td style="text-align: left;">oltre p99</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fascia finanziamento</strong> — stessa struttura, shift proporzionale (p50 a 30k €):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>cubo[<span class="st">'fascia_finanziamento'</span>] <span class="op">=</span> pd.cut(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    cubo[<span class="st">'finanziamento_mln'</span>] <span class="op">*</span> <span class="fl">1e6</span> <span class="op">/</span> cubo[<span class="st">'n_operazioni'</span>],  <span class="co"># importo medio</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    bins<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">30_000</span>, <span class="dv">100_000</span>, <span class="dv">500_000</span>, <span class="dv">1_500_000</span>, <span class="bu">float</span>(<span class="st">'inf'</span>)],</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>[<span class="st">'Micro (≤30k)'</span>, <span class="st">'Piccola (30–100k)'</span>, <span class="st">'Media (100–500k)'</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Grande (500k–1,5M)'</span>, <span class="st">'Molto grande (&gt;1,5M)'</span>]</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Fascia copertura</strong> — percentuale di garanzia sul finanziamento:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>cubo_c <span class="op">=</span> cubo[cubo[<span class="st">'copertura_media'</span>] <span class="op">&lt;=</span> <span class="fl">1.0</span>].copy()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>cubo_c[<span class="st">'fascia_copertura'</span>] <span class="op">=</span> pd.cut(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    cubo_c[<span class="st">'copertura_media'</span>],</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    bins<span class="op">=</span>[<span class="dv">0</span>, <span class="fl">0.50</span>, <span class="fl">0.80</span>, <span class="fl">0.90</span>, <span class="fl">1.001</span>],</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>[<span class="st">'Bassa (≤50%)'</span>, <span class="st">'Standard (50–80%)'</span>, <span class="st">'Alta (80–90%)'</span>, <span class="st">'Massima (&gt;90%)'</span>]</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Fascia copertura</th>
+<th style="text-align: left;">Range</th>
+<th style="text-align: left;">Contesto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Bassa</td>
+<td style="text-align: left;">≤ 50%</td>
+<td style="text-align: left;">Controgaranzia, operazioni parziali</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Standard</td>
+<td style="text-align: left;">50–80%</td>
+<td style="text-align: left;">Garanzia ordinaria (limite normativo 80%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Alta</td>
+<td style="text-align: left;">80–90%</td>
+<td style="text-align: left;">Regimi agevolati, startup, Sud</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Massima</td>
+<td style="text-align: left;">&gt; 90%</td>
+<td style="text-align: left;">COVID DL 23/2020 (100%), sezioni speciali</td>
+</tr>
+</tbody>
+</table>
+<p>Esempio di analisi combinata:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distribuzione copertura per tipo di intervento (2023)</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>(cubo_c[cubo_c[<span class="st">'anno'</span>] <span class="op">==</span> <span class="dv">2023</span>]</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a> .assign(fascia_cop<span class="op">=</span><span class="kw">lambda</span> d: pd.cut(d[<span class="st">'copertura_media'</span>],</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>     bins<span class="op">=</span>[<span class="dv">0</span>, <span class="fl">.50</span>, <span class="fl">.80</span>, <span class="fl">.90</span>, <span class="fl">1.001</span>],</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>     labels<span class="op">=</span>[<span class="st">'≤50%'</span>,<span class="st">'50–80%'</span>,<span class="st">'80–90%'</span>,<span class="st">'&gt;90%'</span>]))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a> .groupby([<span class="st">'intervento'</span>,<span class="st">'fascia_cop'</span>])[<span class="st">'n_operazioni'</span>]</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a> .<span class="bu">sum</span>()</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a> .unstack(fill_value<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="utilizzo-con-excel-via-power-query" class="level3" data-number="6.5">
+<h3 data-number="6.5" class="anchored" data-anchor-id="utilizzo-con-excel-via-power-query"><span class="header-section-number">6.5</span> Utilizzo con Excel via Power Query</h3>
+<p>Il cubo parquet è leggibile direttamente in Excel 365 / 2019+ tramite Power Query, senza conversioni intermedie:</p>
+<pre><code>Dati → Recupera dati → Da file → Da parquet
+→ seleziona fdg_cube.parquet → Carica</code></pre>
+<p>Le 475.516 righe del cubo entrano in memoria in pochi secondi. Da lì è possibile costruire pivot table normali sul dato già aggregato — senza dover gestire i 4,5 milioni di righe originali.</p>
+<p>In alternativa, conversione esplicita a Excel via Python:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>cubo <span class="op">=</span> pd.read_parquet(<span class="st">"OUT/fdg_cube.parquet"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>cubo.to_excel(<span class="st">"OUT/fdg_cube.xlsx"</span>, index<span class="op">=</span><span class="va">False</span>)  <span class="co"># ~8 MB</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Il file <code>.xlsx</code> risultante è più pesante (8–10 MB) e le pivot su 475k righe sono più lente rispetto al parquet via Power Query. Per usi analitici continuativi, Power Query è la scelta consigliata.</p>
+</section>
+<section id="query-live-con-fdgq-parquet-grezzi" class="level3" data-number="6.6">
+<h3 data-number="6.6" class="anchored" data-anchor-id="query-live-con-fdgq-parquet-grezzi"><span class="header-section-number">6.6</span> Query live con <code>fdgq</code> (parquet grezzi)</h3>
+<p>Per domande che richiedono la grana atomica o dimensioni non nel cubo (es. sezione ATECO A–U, comune, cod_cf):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distribuzione per sezione ATECO (A=Agricoltura, C=Manifattura, G=Commercio…)</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">fdgq</span> rank sezione 21 <span class="st">"EXTRACT(YEAR FROM delibera)=2024"</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Operazioni Microcredito per comune in Sicilia</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="ex">fdgq</span> rank comune 20 <span class="st">"processo='Microcredito' AND regione='Sicilia'"</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Output JSON per integrazione pipeline</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="ex">fdgq</span> <span class="at">--json</span> agg 2024 ng</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="aggiornamento-del-cubo" class="level3" data-number="6.7">
+<h3 data-number="6.7" class="anchored" data-anchor-id="aggiornamento-del-cubo"><span class="header-section-number">6.7</span> Aggiornamento del cubo</h3>
+<p>Il cubo si rigenera eseguendo <code>build_cube.py</code> ogni volta che vengono aggiunti nuovi file parquet alla cartella sorgente. Il tempo di esecuzione su 4,5 milioni di righe è inferiore a 30 secondi.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> build_cube.py</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="statistiche-descrittive" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="statistiche-descrittive"><span class="header-section-number">7</span> Statistiche descrittive</h2>
+<p>Il corpus copre <strong>4.450.292 operazioni</strong> deliberate dal 2012 al 2026 (dati parziali per l’anno corrente), per un totale di <strong>403,8 miliardi di euro</strong> garantiti.</p>
+<section id="evoluzione-temporale" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="evoluzione-temporale"><span class="header-section-number">7.1</span> Evoluzione temporale</h3>
+<p>Il dato più rilevante nell’intera serie storica è il picco del 2020, innescato dal <strong>DL 23/2020 (Decreto Liquidità)</strong>, che ha aperto la Garanzia Diretta al 100% senza valutazione del merito di credito e ha introdotto la procedura semplificata per le PMI. Nel solo 2020 si concentrano il 35% di tutte le operazioni dell’intera serie storica e il 26% del garantito cumulato. L’analisi delle garanzie emergenziali nel periodo 2020–2022 è discussa in dettaglio in <span class="citation" data-cites="AZWLF9VA"><em>Garanzie Pubbliche al Credito e Sostegno alle PMI</em> (<a href="#ref-AZWLF9VA" role="doc-biblioref">2026</a>)</span>.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Anno</th>
+<th style="text-align: right;">Operazioni</th>
+<th style="text-align: right;">Garantito (Mld €)</th>
+<th style="text-align: left;">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2012</td>
+<td style="text-align: right;">34.005</td>
+<td style="text-align: right;">2,4</td>
+<td style="text-align: left;">serie storica disponibile dal Q4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2015</td>
+<td style="text-align: right;">102.443</td>
+<td style="text-align: right;">10,3</td>
+<td style="text-align: left;">crescita strutturale</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2018</td>
+<td style="text-align: right;">129.394</td>
+<td style="text-align: right;">13,9</td>
+<td style="text-align: left;">picco pre-COVID</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2019</td>
+<td style="text-align: right;">121.928</td>
+<td style="text-align: right;">13,2</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>2020</strong></td>
+<td style="text-align: right;"><strong>1.571.514</strong></td>
+<td style="text-align: right;"><strong>104,6</strong></td>
+<td style="text-align: left;"><strong>DL 23/2020</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2021</td>
+<td style="text-align: right;">991.537</td>
+<td style="text-align: right;">66,9</td>
+<td style="text-align: left;">progressiva normalizzazione</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2022</td>
+<td style="text-align: right;">279.743</td>
+<td style="text-align: right;">42,0</td>
+<td style="text-align: left;">fine misure emergenziali</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023</td>
+<td style="text-align: right;">244.269</td>
+<td style="text-align: right;">36,2</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2024</td>
+<td style="text-align: right;">230.648</td>
+<td style="text-align: right;">30,4</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2025</td>
+<td style="text-align: right;">247.808</td>
+<td style="text-align: right;">31,9</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>2026</strong></td>
+<td style="text-align: right;"><strong>103.489</strong></td>
+<td style="text-align: right;"><strong>13,1</strong></td>
+<td style="text-align: left;"><strong>parziale (dati al Q2)</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="distribuzione-geografica" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="distribuzione-geografica"><span class="header-section-number">7.2</span> Distribuzione geografica</h3>
+<p>Le prime quattro regioni coprono il 45% delle operazioni. Il Sud — Campania, Sicilia, Puglia, Calabria, Basilicata, Molise, Sardegna, Abruzzo — pesa complessivamente per il 30% delle operazioni, ma con un garantito medio per operazione più elevato della media nazionale, effetto delle sezioni speciali riservate al Mezzogiorno.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Regione</th>
+<th style="text-align: right;">Operazioni</th>
+<th style="text-align: right;">% sul tot.</th>
+<th style="text-align: right;">Garantito (Mld €)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Lombardia</td>
+<td style="text-align: right;">775.405</td>
+<td style="text-align: right;">17,4%</td>
+<td style="text-align: right;">83,0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Veneto</td>
+<td style="text-align: right;">492.611</td>
+<td style="text-align: right;">11,1%</td>
+<td style="text-align: right;">49,0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Emilia Romagna</td>
+<td style="text-align: right;">377.845</td>
+<td style="text-align: right;">8,5%</td>
+<td style="text-align: right;">35,1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Toscana</td>
+<td style="text-align: right;">377.244</td>
+<td style="text-align: right;">8,5%</td>
+<td style="text-align: right;">27,5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Lazio</td>
+<td style="text-align: right;">375.203</td>
+<td style="text-align: right;">8,4%</td>
+<td style="text-align: right;">32,3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Campania</td>
+<td style="text-align: right;">345.951</td>
+<td style="text-align: right;">7,8%</td>
+<td style="text-align: right;">36,2</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="natura-giuridica" class="level3" data-number="7.3">
+<h3 data-number="7.3" class="anchored" data-anchor-id="natura-giuridica"><span class="header-section-number">7.3</span> Natura giuridica</h3>
+<p>Le SRL concentrano quasi la metà delle operazioni e i due terzi del garantito — un effetto dimensionale: le SRL hanno taglio medio molto più elevato delle imprese individuali. SPA e cooperative, pur minoritarie per numero, hanno taglio medio tra i più alti.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Forma giuridica</th>
+<th style="text-align: right;">Operazioni</th>
+<th style="text-align: right;">% op.</th>
+<th style="text-align: right;">Garantito (Mln €)</th>
+<th style="text-align: right;">% gar.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">SRL</td>
+<td style="text-align: right;">2.069.838</td>
+<td style="text-align: right;">46,5%</td>
+<td style="text-align: right;">271.031</td>
+<td style="text-align: right;">67,1%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Impresa individuale</td>
+<td style="text-align: right;">1.240.798</td>
+<td style="text-align: right;">27,9%</td>
+<td style="text-align: right;">30.661</td>
+<td style="text-align: right;">7,6%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SNC</td>
+<td style="text-align: right;">401.112</td>
+<td style="text-align: right;">9,0%</td>
+<td style="text-align: right;">17.872</td>
+<td style="text-align: right;">4,4%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SAS</td>
+<td style="text-align: right;">304.706</td>
+<td style="text-align: right;">6,8%</td>
+<td style="text-align: right;">14.415</td>
+<td style="text-align: right;">3,6%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SRLS</td>
+<td style="text-align: right;">148.682</td>
+<td style="text-align: right;">3,3%</td>
+<td style="text-align: right;">5.600</td>
+<td style="text-align: right;">1,4%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SPA</td>
+<td style="text-align: right;">111.595</td>
+<td style="text-align: right;">2,5%</td>
+<td style="text-align: right;">48.715</td>
+<td style="text-align: right;">12,1%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cooperativa</td>
+<td style="text-align: right;">78.057</td>
+<td style="text-align: right;">1,8%</td>
+<td style="text-align: right;">9.202</td>
+<td style="text-align: right;">2,3%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Professionista</td>
+<td style="text-align: right;">45.456</td>
+<td style="text-align: right;">1,0%</td>
+<td style="text-align: right;">1.293</td>
+<td style="text-align: right;">0,3%</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tipo-di-intervento" class="level3" data-number="7.4">
+<h3 data-number="7.4" class="anchored" data-anchor-id="tipo-di-intervento"><span class="header-section-number">7.4</span> Tipo di intervento</h3>
+<p>Il 99,9% del volume passa per la <strong>Garanzia Diretta</strong> — MCC garantisce direttamente l’operazione verso la banca. La Controgaranzia (12,6% in numero) riguarda operazioni già garantite da Confidi, su cui il Fondo offre una garanzia di secondo livello.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Intervento</th>
+<th style="text-align: right;">Operazioni</th>
+<th style="text-align: right;">%</th>
+<th style="text-align: right;">Garantito (Mld €)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Garanzia Diretta</td>
+<td style="text-align: right;">3.887.323</td>
+<td style="text-align: right;">87,3%</td>
+<td style="text-align: right;">374,7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Controgaranzia</td>
+<td style="text-align: right;">562.169</td>
+<td style="text-align: right;">12,6%</td>
+<td style="text-align: right;">29,0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cogaranzia</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">&lt; 0,1%</td>
+<td style="text-align: right;">0,02</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="riepilogo" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="riepilogo"><span class="header-section-number">8</span> Riepilogo</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">CSV grezzo</th>
+<th style="text-align: left;">Parquet</th>
+<th style="text-align: left;">Cubo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Formato</td>
+<td style="text-align: left;">CSV <code>;</code></td>
+<td style="text-align: left;">parquet (snappy)</td>
+<td style="text-align: left;">parquet (zstd)</td>
+</tr>
+<tr class="even">
+<td>File</td>
+<td style="text-align: left;">~100 file</td>
+<td style="text-align: left;">109 file</td>
+<td style="text-align: left;"><strong>1 file</strong></td>
+</tr>
+<tr class="odd">
+<td>Righe</td>
+<td style="text-align: left;">4.450.355</td>
+<td style="text-align: left;">4.450.355</td>
+<td style="text-align: left;"><strong>475.516</strong></td>
+</tr>
+<tr class="even">
+<td>Dimensione</td>
+<td style="text-align: left;">&gt; 3 GB</td>
+<td style="text-align: left;">191 MB</td>
+<td style="text-align: left;"><strong>5,1 MB</strong></td>
+</tr>
+<tr class="odd">
+<td>Fattore riduzione</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">16×</td>
+<td style="text-align: left;"><strong>870×</strong></td>
+</tr>
+<tr class="even">
+<td>Query aggregazione</td>
+<td style="text-align: left;">minuti</td>
+<td style="text-align: left;">&lt; 1 s (DuckDB)</td>
+<td style="text-align: left;"><strong>&lt; 50 ms</strong></td>
+</tr>
+<tr class="odd">
+<td>Dati individuali esposti</td>
+<td style="text-align: left;">sì (CF, denominazione)</td>
+<td style="text-align: left;">sì</td>
+<td style="text-align: left;"><strong>no</strong></td>
+</tr>
+<tr class="even">
+<td>Pronto per BI/dashboard</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;"><strong>sì</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="gdpr-e-aggregazione-impossibilità-del-reverse-engineering" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="gdpr-e-aggregazione-impossibilità-del-reverse-engineering"><span class="header-section-number">9</span> GDPR e aggregazione: impossibilità del reverse engineering</h2>
+<p>Il cubo aggregato è GDPR-safe per costruzione. Le dimensioni scelte non contengono identificatori diretti o indiretti degli individui: è strutturalmente impossibile risalire al soggetto originale.</p>
+<section id="perché-il-reverse-engineering-è-impossibile" class="level3" data-number="9.1">
+<h3 data-number="9.1" class="anchored" data-anchor-id="perché-il-reverse-engineering-è-impossibile"><span class="header-section-number">9.1</span> Perché il reverse engineering è impossibile</h3>
+<p>Il cubo espone: anno · trimestre · regione · div2 · intervento · processo · ng · misure aggregate.</p>
+<p>Non espone mai: CF, denominazione impresa, comune, codice operazione.</p>
+<p>Anche nella cella più granulare con <code>n_operazioni = 1</code>, l’informazione disponibile è soltanto: <em>“esiste una SRL nel commercio all’ingrosso in Puglia, Q1 2023, via Garanzia Diretta, procedura Semplificata”</em> — nessun identificatore, nessuna persona fisica o giuridica riconducibile.</p>
+</section>
+<section id="base-normativa" class="level3" data-number="9.2">
+<h3 data-number="9.2" class="anchored" data-anchor-id="base-normativa"><span class="header-section-number">9.2</span> Base normativa</h3>
+<p><strong>GDPR Reg. UE 2016/679, Considerando 26:</strong></p>
+<blockquote class="blockquote">
+<p>“I principi di protezione dei dati non dovrebbero applicarsi a informazioni anonime, ossia informazioni che non si riferiscono a una persona fisica identificata o identificabile o a dati personali resi sufficientemente anonimi da impedire o da non consentire più l’identificazione dell’interessato.”</p>
+</blockquote>
+<p>L’aggregazione per celle dimensionali con soppressione degli identificatori rientra in questa definizione quando: (1) il dato originale non è ricostruibile dalle celle, e (2) le dimensioni non sono esse stesse identificatori (regione + settore ≠ CF).</p>
+</section>
+<section id="caveat-k-anonimità" class="level3" data-number="9.3">
+<h3 data-number="9.3" class="anchored" data-anchor-id="caveat-k-anonimità"><span class="header-section-number">9.3</span> Caveat: K-anonimità</h3>
+<p>Le celle con <code>n_operazioni = 1</code> non violano il GDPR — non espongono il CF — ma sono statisticamente fragili. Un osservatore con conoscenza del mercato potrebbe inferire l’impresa per esclusione, non dal cubo, ma dal contesto esterno. La prassi consolidata (Istat, Eurostat) è sopprimere o raggruppare celle con n &lt; 3 o n &lt; 5 prima della pubblicazione esterna.</p>
+</section>
+<section id="conseguenze-operative" class="level3" data-number="9.4">
+<h3 data-number="9.4" class="anchored" data-anchor-id="conseguenze-operative"><span class="header-section-number">9.4</span> Conseguenze operative</h3>
+<p>Il cubo <code>fdg_cube.parquet</code> può essere:</p>
+<ul>
+<li>Condiviso via email, cloud, git</li>
+<li>Pubblicato come open data o allegato a report</li>
+<li>Integrato in dashboard accessibili a terzi</li>
+<li>Usato senza dichiarazione di trattamento dati personali</li>
+</ul>
+<p>Il dato grezzo (parquet sorgente con CF di persone fisiche e denominazioni) rimane invece soggetto a GDPR e non può essere distribuito liberamente.</p>
+<hr>
+<p><strong>Trasparenza sull’uso dell’intelligenza artificiale</strong></p>
+<p>L’uso di strumenti di intelligenza artificiale generativa è dichiarato esplicitamente in quanto parte del processo di lavoro seguito nella redazione del presente documento. Tali strumenti sono stati impiegati a supporto della lettura, della sintesi, della riorganizzazione argomentativa e della revisione testuale, sempre nell’ambito di un processo pienamente controllato dall’autore.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le verifiche effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore.</p>
+<p>L’intelligenza artificiale è stata utilizzata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+</section>
+</section>
+<div id="quarto-appendix" class="default">
+<section id="quarto-bibliography" class="level2 quarto-appendix-heading" data-number="10">
+<h2 class="quarto-appendix-heading anchored" data-number="10" data-anchor-id="quarto-bibliography"><span class="header-section-number">10</span> Referenze</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-AZWLF9VA" class="csl-entry" role="listitem">
+<em>Garanzie Pubbliche al Credito e Sostegno alle PMI: Analisi del Periodo Emergenziale 2020–2022</em>. 2026. 6/2026. Note e Studi. Assonime. <a href="https://www.assonime.it/attivita-editoriale/studi/Documents/Note%20Studi%206-2026.pdf" class="uri">https://www.assonime.it/attivita-editoriale/studi/Documents/Note%20Studi%206-2026.pdf</a>.
+</div>
+</div>
+</section>
+</div>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

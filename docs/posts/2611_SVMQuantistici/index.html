@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="quantum machine learning, support vector machines, credit scoring, quantum kernel, Altman Z-score">
+<meta name="description" content="I support vector machine quantistici battono quelli classici nel credit scoring? Verifica su bilanci sintetici e su due campioni reali pubblici.">
+
+<title>Support Vector Machines quantistici per il credit scoring – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Support Vector Machines quantistici per il credit scoring – Paolo Volterra">
+<meta property="og:description" content="I support vector machine quantistici battono quelli classici nel credit scoring? Verifica su bilanci sintetici e su due campioni reali pubblici.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2611_SVMQuantistici/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Support Vector Machines quantistici per il credit scoring – Paolo Volterra">
+<meta name="twitter:description" content="I support vector machine quantistici battono quelli classici nel credit scoring? Verifica su bilanci sintetici e su due campioni reali pubblici.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2611_SVMQuantistici/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/in_parole_semplici/"> <i class="bi bi-instagram" role="img" aria-label="Instagram">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#introduzione" id="toc-introduzione" class="nav-link active" data-scroll-target="#introduzione"><span class="header-section-number">1</span> Introduzione</a></li>
+  <li><a href="#i-modelli-a-confronto" id="toc-i-modelli-a-confronto" class="nav-link" data-scroll-target="#i-modelli-a-confronto"><span class="header-section-number">2</span> I modelli a confronto</a>
+  <ul class="collapse">
+  <li><a href="#support-vector-machines-e-support-vector-regression-classiche" id="toc-support-vector-machines-e-support-vector-regression-classiche" class="nav-link" data-scroll-target="#support-vector-machines-e-support-vector-regression-classiche"><span class="header-section-number">2.1</span> Support Vector Machines e Support Vector Regression classiche</a></li>
+  <li><a href="#kernel-quantistici" id="toc-kernel-quantistici" class="nav-link" data-scroll-target="#kernel-quantistici"><span class="header-section-number">2.2</span> Kernel quantistici</a></li>
+  </ul></li>
+  <li><a href="#dati-sintetici" id="toc-dati-sintetici" class="nav-link" data-scroll-target="#dati-sintetici"><span class="header-section-number">3</span> Dati sintetici</a></li>
+  <li><a href="#protocollo-sperimentale" id="toc-protocollo-sperimentale" class="nav-link" data-scroll-target="#protocollo-sperimentale"><span class="header-section-number">4</span> Protocollo sperimentale</a></li>
+  <li><a href="#risultati" id="toc-risultati" class="nav-link" data-scroll-target="#risultati"><span class="header-section-number">5</span> Risultati</a>
+  <ul class="collapse">
+  <li><a href="#modelli-classici-sul-campione-completo" id="toc-modelli-classici-sul-campione-completo" class="nav-link" data-scroll-target="#modelli-classici-sul-campione-completo"><span class="header-section-number">5.1</span> Modelli classici sul campione completo</a></li>
+  <li><a href="#confronto-tra-modelli-classici-e-quantistici" id="toc-confronto-tra-modelli-classici-e-quantistici" class="nav-link" data-scroll-target="#confronto-tra-modelli-classici-e-quantistici"><span class="header-section-number">5.2</span> Confronto tra modelli classici e quantistici</a></li>
+  <li><a href="#confronto-con-lo-studio-di-riferimento" id="toc-confronto-con-lo-studio-di-riferimento" class="nav-link" data-scroll-target="#confronto-con-lo-studio-di-riferimento"><span class="header-section-number">5.3</span> Confronto con lo studio di riferimento</a></li>
+  </ul></li>
+  <li><a href="#discussione" id="toc-discussione" class="nav-link" data-scroll-target="#discussione"><span class="header-section-number">6</span> Discussione</a></li>
+  <li><a href="#conclusione" id="toc-conclusione" class="nav-link" data-scroll-target="#conclusione"><span class="header-section-number">7</span> Conclusione</a>
+  <ul class="collapse">
+  <li><a href="#quarto-bibliography" id="toc-quarto-bibliography" class="nav-link" data-scroll-target="#quarto-bibliography"><span class="header-section-number">7.1</span> Referenze</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Support Vector Machines quantistici per il credit scoring</h1>
+<p class="subtitle lead">Verifica empirica del confronto tra modelli classici e quantum-enhanced su bilanci sintetici</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Intelligenza artificiale</div>
+    <div class="quarto-category">Banche e credito</div>
+    <div class="quarto-category">Dati e metodo</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    I support vector machine quantistici battono quelli classici nel credit scoring? Verifica su bilanci sintetici e su due campioni reali pubblici.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">12 settembre 2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Data di modifica</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">17 settembre 2026</p>
+    </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.22804103">10.5281/zenodo.22804103</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>I metodi kernel quantistici sono proposti come alternativa ai classificatori classici in ambito finanziario. Uno studio recente confronta Support Vector Machines e Support Vector Regression classici con le rispettive versioni quantum-enhanced su tre problemi di credit scoring e riporta un vantaggio dei modelli quantistici, soprattutto nella classificazione multiclasse. Questo documento riproduce il confronto su un campione sintetico di 4.000 imprese costruito a partire dagli indici dell’Altman Z-score. Con lo stesso protocollo di validazione e con i quantum kernel calcolati in simulazione esatta dello statevector, i modelli classici eguagliano o superano i modelli quantistici su tutti e tre i problemi: il divario è statisticamente significativo a favore dei classici nella regressione e nella classificazione multiclasse, mentre nella classificazione binaria i due approcci sono alla pari (area sotto la curva ROC identica). Il risultato non conferma il vantaggio riportato in letteratura e suggerisce cautela nell’interpretare i confronti tra metodi quantistici e classici quando il dataset di riferimento non è pubblicato e il tuning degli iperparametri non è simmetrico.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>quantum machine learning, support vector machines, credit scoring, quantum kernel, Altman Z-score</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Versione citabile su Zenodo, con il PDF: <a href="https://doi.org/10.5281/zenodo.22804103">doi.org/10.5281/zenodo.22804103</a>.</p>
+</div>
+</div>
+</div>
+<section id="introduzione" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduzione</h1>
+<p>Le Support Vector Machines (SVM) sono classificatori supervisionati introdotti da Cortes e Vapnik nel 1995 <span class="citation" data-cites="cortes1995"><a href="#ref-cortes1995" role="doc-biblioref">[1]</a></span>. La loro formulazione si fonda sull’individuazione di un iperpiano che separa due classi massimizzando il margine, cioè la distanza minima tra l’iperpiano e i punti più vicini di ciascuna classe. La versione “soft margin” tollera violazioni del margine tramite variabili di rilassamento, mentre le funzioni kernel consentono di separare dati non linearmente separabili proiettandoli implicitamente in uno spazio di dimensione superiore. Nella valutazione del merito creditizio questi strumenti sono impiegati da decenni e si appoggiano a indicatori consolidati come l’Altman Z-score, una combinazione lineare di cinque rapporti di bilancio introdotta nel 1968 per stimare la probabilità di insolvenza di un’impresa <span class="citation" data-cites="altman1968"><a href="#ref-altman1968" role="doc-biblioref">[2]</a></span>.</p>
+<p>Negli ultimi anni l’interesse si è esteso ai metodi kernel quantistici. L’idea di fondo è sostituire la mappa di feature classica con una mappa che prepara uno stato quantistico a partire dai dati e di misurare la similarità tra due osservazioni come sovrapposizione tra stati <span class="citation" data-cites="schuld2019 havlicek2019"><a href="#ref-schuld2019" role="doc-biblioref">[3]</a>, <a href="#ref-havlicek2019" role="doc-biblioref">[4]</a></span>. Il vantaggio computazionale prospettato dei primi algoritmi quantistici per le SVM richiede l’accesso a memorie quantistiche e a inversione di matrici con condizioni numeriche favorevoli <span class="citation" data-cites="rebentrost2014"><a href="#ref-rebentrost2014" role="doc-biblioref">[5]</a></span>, condizioni che hanno indirizzato la ricerca verso l’approccio basato sui kernel, più adatto alle macchine quantistiche attuali.</p>
+<p>Uno studio recente applica questo approccio al credit scoring, confrontando Support Vector Regression e Support Vector Machines classici con le rispettive versioni quantum-enhanced su tre problemi: una regressione sulla probabilità di default, una classificazione binaria di default e una classificazione multiclasse per classi di rating <span class="citation" data-cites="bacigalupo2026SVM"><a href="#ref-bacigalupo2026SVM" role="doc-biblioref">[6]</a></span>. Il lavoro riporta che i modelli quantistici ottengono prestazioni competitive e, in particolare nella classificazione multiclasse, un miglioramento di diversi punti percentuali rispetto ai modelli classici.</p>
+<p>Questo documento verifica quel confronto su dati indipendenti. La domanda è se il vantaggio riportato si riproduca quando il campione è costruito in modo trasparente e gli iperparametri dei due modelli sono trattati in modo simmetrico.</p>
+</section>
+<section id="i-modelli-a-confronto" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> I modelli a confronto</h1>
+<section id="support-vector-machines-e-support-vector-regression-classiche" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="support-vector-machines-e-support-vector-regression-classiche"><span class="header-section-number">2.1</span> Support Vector Machines e Support Vector Regression classiche</h2>
+<p>In un problema di classificazione binaria con <span class="math inline">\(N\)</span> osservazioni <span class="math inline">\((x_i, y_i)\)</span>, dove <span class="math inline">\(x_i \in \mathbb{R}^n\)</span> è il vettore delle feature e <span class="math inline">\(y_i \in \{-1, 1\}\)</span> l’etichetta, la SVM cerca l’iperpiano <span class="math inline">\(w^T x + b = 0\)</span> che massimizza il margine. La formulazione con margine morbido minimizza</p>
+<p><span class="math display">\[\min_{w, b, \xi} \; \frac{1}{2}\|w\|^2 + C \sum_{i=1}^{N} \xi_i \quad \text{con} \quad y_i(w^T x_i + b) \geq 1 - \xi_i, \; \xi_i \geq 0,\]</span></p>
+<p>dove <span class="math inline">\(C\)</span> regola il compromesso tra ampiezza del margine e penalizzazione degli errori. Passando alla formulazione duale, la soluzione dipende solo dai prodotti scalari tra le osservazioni, il che consente di introdurre la funzione kernel <span class="math inline">\(K(x_i, x_j)\)</span> al posto del prodotto scalare. I kernel più usati sono quello lineare, quello polinomiale e quello gaussiano (radial basis function). La regressione con SVM (SVR) estende lo stesso impianto al caso di una variabile dipendente continua, introducendo una fascia di tolleranza di ampiezza <span class="math inline">\(2\varepsilon\)</span> entro cui gli errori non vengono penalizzati.</p>
+</section>
+<section id="kernel-quantistici" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="kernel-quantistici"><span class="header-section-number">2.2</span> Kernel quantistici</h2>
+<p>Nella versione quantistica, ogni osservazione <span class="math inline">\(x\)</span> viene codificata in uno stato quantistico <span class="math inline">\(|\phi(x)\rangle = U_\phi(x)|0\rangle\)</span> tramite una mappa di feature realizzata con un circuito quantistico. Il kernel quantistico è definito come la sovrapposizione tra due stati, <span class="math inline">\(k_Q(x_i, x_j) = |\langle \phi(x_i) | \phi(x_j) \rangle|^2\)</span>. Una proprietà rilevante è che l’ottimizzazione del problema duale resta affidata a un solver classico: l’elemento quantistico è confinato alla codifica dei dati e al calcolo della matrice dei kernel, mentre il bias e la funzione di decisione sono calcolati in modo classico <span class="citation" data-cites="schuld2019"><a href="#ref-schuld2019" role="doc-biblioref">[3]</a></span>.</p>
+<p>In questo lavoro la matrice dei kernel è calcolata in simulazione esatta dello statevector, senza misurazioni quantistiche. Il confronto, quindi, riguarda la geometria dello spazio di feature indotto dalla codifica quantistica, non un guadagno computazionale su hardware quantistico.</p>
+</section>
+</section>
+<section id="dati-sintetici" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Dati sintetici</h1>
+<p>Il campione utilizzato è composto da 4.000 imprese simulate. La simulazione genera bilanci internamente coerenti, in cui il totale dell’attivo coincide con la somma di passività e patrimonio netto, e attribuisce a ciascuna impresa uno di sette archetipi economico-finanziari: impresa sana e stabile, in crescita, con margini bassi, indebitata, in tensione di liquidità, in crisi e in recupero. Gli archetipi definiscono intervalli plausibili per ricavi, crescita, margine operativo, leva finanziaria, patrimonio netto e ciclo del capitale circolante.</p>
+<p>Da ciascun bilancio si derivano i cinque rapporti dell’Altman Z-score: capitale circolante su attivo, utili trattenuti su attivo, risultato operativo su attivo, capitalizzazione di mercato su passività totali e ricavi su attivo. Combinandoli con i pesi originali dello Z-score si ottiene l’indice sintetico di solidità.</p>
+<p>Il campione alimenta tre problemi distinti. Nel primo la variabile dipendente è la probabilità di default, espressa in percentuale, con distribuzione fortemente asimmetrica a destra. Nel secondo la variabile dipendente è una indicazione binaria di default. Nel terzo la variabile dipendente è una classe di rating da A a E, assegnata per intervalli dell’Altman Z-score secondo la stessa griglia adottata nello studio di riferimento, con l’aggiunta di un rumore ordinale che sposta una quota contenuta di osservazioni verso la classe adiacente. Questo rumore è necessario perché, in assenza di esso, il rating è una funzione deterministica degli stessi cinque rapporti usati come variabili esplicative e il problema risulta linearmente separabile.</p>
+<p>La coerenza contabile del campione è verificata imponendo le identità dello stato patrimoniale, quelle interne al conto economico e quelle di collegamento tra i due prospetti, secondo il Codice civile <span class="citation" data-cites="codicecivile1942"><a href="#ref-codicecivile1942" role="doc-biblioref">[7]</a></span> e i principi contabili nazionali <span class="citation" data-cites="oic12"><a href="#ref-oic12" role="doc-biblioref">[8]</a></span>. I bilanci sono rappresentati nella struttura civilistica per voci: immobilizzazioni immateriali, materiali e finanziarie; crediti e debiti distinti entro e oltre l’esercizio; ratei e risconti attivi e passivi; fondi rischi e oneri e trattamento di fine rapporto; imposte correnti, differite e anticipate; patrimonio netto per componenti con il relativo roll-forward; conto economico a valore e costi della produzione. Le identità (38 controlli) risultano rispettate dall’intero campione.</p>
+</section>
+<section id="protocollo-sperimentale" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Protocollo sperimentale</h1>
+<p>I tre problemi sono valutati con lo stesso protocollo. Per ogni configurazione di iperparametri si applica una validazione incrociata a cinque partizioni, ripetuta su più semi casuali. La standardizzazione delle variabili è stimata solo sulla parte di addestramento di ciascuna partizione, per evitare contaminazione tra addestramento e valutazione; per i modelli quantistici si usa una normalizzazione nell’intervallo unitario, adatta alla codifica in angoli di rotazione.</p>
+<p>Per i modelli classici si esplorano la regolarizzazione <span class="math inline">\(C\)</span>, il parametro <span class="math inline">\(\varepsilon\)</span> della regressione e il coefficiente <span class="math inline">\(\gamma\)</span> del kernel gaussiano, insieme ai kernel lineare, polinomiale e gaussiano. Per i modelli quantistici si esplorano diverse mappe di codifica: la mappa ZZ, la codifica a rotazione sui tre assi, le mappe di Pauli con diversi insiemi di operatori e connettività circolare o completa, e una mappa con rotazioni di fase e porte di entanglement.</p>
+<p>La selezione del modello segue due stadi. Prima si scartano le configurazioni con un divario eccessivo tra prestazione in campione e fuori campione, misurato da un rapporto di divario rispetto alla prestazione fuori campione. Tra le configurazioni ammissibili si sceglie quella con la migliore prestazione fuori campione, usando il divario come criterio di spareggio. Per la classificazione si impone inoltre una soglia minima di accuratezza fuori campione.</p>
+</section>
+<section id="risultati" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Risultati</h1>
+<section id="modelli-classici-sul-campione-completo" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="modelli-classici-sul-campione-completo"><span class="header-section-number">5.1</span> Modelli classici sul campione completo</h2>
+<p>Sul campione completo di 4.000 imprese, valutato su cinque semi casuali, i modelli classici raggiungono i risultati della Tabella 1. La regressione seleziona in tutti i semi un kernel gaussiano con regolarizzazione alta; l’errore quadratico medio fuori campione è pari a 1,92 in media, con una variabilità molto contenuta tra i semi. La classificazione binaria raggiunge un’accuratezza fuori campione di 0,910, con un’area sotto la curva ROC di 0,974, e la classificazione multiclasse di 0,886. I divari tra prestazione in campione e fuori campione sono contenuti, a indicare modelli stabili.</p>
+<table class="caption-top table">
+<caption>Tabella 1 — Prestazioni dei modelli classici sul campione completo, cinque semi casuali.</caption>
+<colgroup>
+<col style="width: 36%">
+<col style="width: 21%">
+<col style="width: 25%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Problema</th>
+<th style="text-align: left;">Metrica fuori campione</th>
+<th style="text-align: right;">Media e deviazione standard</th>
+<th style="text-align: right;">Intervallo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Regressione sulla probabilità di default</td>
+<td style="text-align: left;">Errore quadratico medio</td>
+<td style="text-align: right;">1,924 ± 0,036</td>
+<td style="text-align: right;">1,892–1,995</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Classificazione binaria di default</td>
+<td style="text-align: left;">Accuratezza</td>
+<td style="text-align: right;">0,9100 ± 0,0005</td>
+<td style="text-align: right;">0,9092–0,9105</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Classificazione multiclasse di rating</td>
+<td style="text-align: left;">Accuratezza</td>
+<td style="text-align: right;">0,8860 ± 0,0017</td>
+<td style="text-align: right;">0,8827–0,8877</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="confronto-tra-modelli-classici-e-quantistici" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="confronto-tra-modelli-classici-e-quantistici"><span class="header-section-number">5.2</span> Confronto tra modelli classici e quantistici</h2>
+<p>Il confronto diretto tra le due famiglie di modelli è condotto sullo stesso sottocampione, sugli stessi semi casuali e sulle stesse partizioni, così che ogni differenza sia attribuibile al modello e non al campionamento. La differenza è riportata come prestazione quantistica meno prestazione classica; per la regressione un valore positivo indica un errore maggiore del modello quantistico. Oltre al test di Wilcoxon sui ranghi con segno si riporta un intervallo di confidenza bootstrap appaiato sulle osservazioni fuori campione. I risultati sono riportati nella Tabella 2.</p>
+<table class="caption-top table">
+<caption>Tabella 2 — Confronto appaiato tra modelli classici e quantistici su 600 imprese, due semi casuali.</caption>
+<colgroup>
+<col style="width: 34%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 11%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Problema</th>
+<th style="text-align: right;">Classico</th>
+<th style="text-align: right;">Quantistico</th>
+<th style="text-align: right;">Differenza</th>
+<th style="text-align: right;">Wilcoxon (p)</th>
+<th style="text-align: right;">Bootstrap Δ [95%]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Regressione (RMSE, minore è meglio)</td>
+<td style="text-align: right;">1,935</td>
+<td style="text-align: right;">3,512</td>
+<td style="text-align: right;">+1,577</td>
+<td style="text-align: right;">0,002</td>
+<td style="text-align: right;">+1,821 [0,972, 2,527]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Classificazione binaria (accuratezza)</td>
+<td style="text-align: right;">0,9217</td>
+<td style="text-align: right;">0,9233</td>
+<td style="text-align: right;">+0,002</td>
+<td style="text-align: right;">0,500</td>
+<td style="text-align: right;">+0,002 [−0,003, 0,008]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Classificazione multiclasse (accuratezza)</td>
+<td style="text-align: right;">0,8600</td>
+<td style="text-align: right;">0,8083</td>
+<td style="text-align: right;">−0,048</td>
+<td style="text-align: right;">0,004</td>
+<td style="text-align: right;">−0,048 [−0,063, −0,031]</td>
+</tr>
+</tbody>
+</table>
+<p>Il test di Wilcoxon sui ranghi con segno, applicato in modo appaiato sulle osservazioni delle singole partizioni, e il bootstrap appaiato concordano: nella regressione e nella classificazione multiclasse il divario a favore del modello classico è statisticamente significativo, mentre nella classificazione binaria le differenze non sono distinguibili dal rumore di campionamento e l’area sotto la curva ROC è praticamente pari (0,978 contro 0,977). Il confronto è stato ripetuto su un sottocampione più ampio di 1.200 imprese, con lo stesso esito: il modello classico resta significativamente migliore su regressione e multiclass e alla pari sulla binaria.</p>
+<p>L’esame delle singole mappe di codifica mostra che la profondità del circuito non porta benefici sistematici: la mappa ZZ con una ripetizione è la migliore nella regressione, mentre nella classificazione le mappe a rotazione e la mappa di Pauli con operatori {Z, ZZ} risultano competitive ma restano al di sotto del modello classico. Le codifiche con entanglement circolare o completo non superano le mappe più semplici su questo campione. Un valore basso della regolarizzazione, pari a quello ottimale del modello classico, porta il classificatore quantistico a una capacità di adattamento insufficiente.</p>
+</section>
+<section id="confronto-con-lo-studio-di-riferimento" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="confronto-con-lo-studio-di-riferimento"><span class="header-section-number">5.3</span> Confronto con lo studio di riferimento</h2>
+<p>Lo studio di riferimento riporta, sul proprio campione, un errore quadratico medio tra 2,62 e 3,09 per la regressione classica, un’accuratezza di 0,941 per la classificazione binaria classica contro 0,956–0,961 per quella quantistica, e un’accuratezza di 0,854 per la classificazione multiclasse classica contro 0,929 per quella quantistica <span class="citation" data-cites="bacigalupo2026SVM"><a href="#ref-bacigalupo2026SVM" role="doc-biblioref">[6]</a></span>. Nel campione qui costruito i modelli classici raggiungono prestazioni confrontabili o migliori, mentre i modelli quantistici restano al di sotto dei classici su tutti e tre i problemi, con un divario significativo in due casi su tre.</p>
+</section>
+</section>
+<section id="discussione" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Discussione</h1>
+<p>Tre elementi aiutano a interpretare la divergenza rispetto allo studio di riferimento.</p>
+<p>Il primo riguarda la simmetria del confronto. Nello studio di riferimento gli iperparametri ottimali del modello classico vengono applicati direttamente al modello quantistico, senza una ricerca dedicata. Nel campione qui utilizzato un valore basso della regolarizzazione, ottimale per il modello classico, porta il classificatore quantistico a una capacità di adattamento insufficiente: la matrice dei kernel presenta valori fuori diagonale molto bassi e il margine tra le classi non viene appreso. Solo aumentando la regolarizzazione il modello quantistico recupera capacità, restando comunque al di sotto del classico.</p>
+<p>Il secondo riguarda la natura del problema multiclasse. Le classi di rating sono definite per intervalli dello stesso indice calcolato a partire dalle variabili esplicative, quindi in assenza di rumore il problema è deterministico e separabile quasi perfettamente da un modello lineare. Su un problema di questo tipo un vantaggio dei kernel quantistici rispetto a quelli classici è difficile da giustificare sul piano metodologico.</p>
+<p>Il terzo riguarda la riproducibilità. Il campione dello studio di riferimento è simulato e non risulta pubblicato, per cui le differenze osservate possono dipendere dalla procedura di generazione dei dati oltre che dai modelli. La verifica condotta qui non può quindi stabilire se il vantaggio riportato sia errato, ma mostra che esso non si riproduce su un campione costruito in modo indipendente e con un trattamento simmetrico degli iperparametri.</p>
+<p>Il quarto riguarda la natura stessa del vantaggio. Un’analisi di sensibilità sul processo generativo, in cui la frontiera tra le classi diventa progressivamente non lineare attraverso interazioni a coppie tra i ratio, mostra che il modello quantistico non supera mai quello classico quando il processo è realistico, nemmeno ai massimi livelli di non linearità. Il vantaggio quantistico compare soltanto quando le etichette sono generate dallo stesso kernel quantistico, cioè in una configurazione circolare costruita a tavolino. Ne segue che un eventuale vantaggio è una proprietà della geometria dei dati, condizionata alla coincidenza con la mappa di feature usata, e non un risultato generale applicabile al credit scoring.</p>
+</section>
+<section id="conclusione" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Conclusione</h1>
+<p>Il confronto tra Support Vector Machines classiche e quantistiche applicato al credit scoring è stato riprodotto su un campione sintetico di 4.000 imprese coerenti con gli indici dell’Altman Z-score. Con i kernel quantistici calcolati in simulazione esatta dello statevector e con lo stesso protocollo di validazione per le due famiglie di modelli, i classificatori e regressori classici eguagliano o superano quelli quantistici su tutti e tre i problemi considerati. Il divario è statisticamente significativo a favore dei modelli classici nella classificazione multiclasse, e non significativo nella regressione e nella classificazione binaria.</p>
+<p>Il risultato invita a interpretare con cautela i confronti tra metodi quantistici e classici quando il dataset di riferimento non è pubblico e il tuning degli iperparametri non è simmetrico. Le direzioni di sviluppo naturali sono l’estensione della verifica a campioni reali di bilanci, l’uso di test di significatività più potenti e la valutazione dell’effetto del rumore su hardware quantistico reale.</p>
+<p>Una prima verifica su dati reali (UCI Polish Companies Bankruptcy, 10.503 imprese, 64 indici di bilancio) conferma il quadro <span class="citation" data-cites="tomczak2016polish"><a href="#ref-tomczak2016polish" role="doc-biblioref">[9]</a></span>: i bilanci reali sono molto meno separabili di quelli sintetici (l’Adjusted Rand Index del clustering rispetto allo stato di fallimento è circa zero) e il potere predittivo è più basso (ROC-AUC 0,87 con Random Forest, contro 0,97 sul campione sintetico). Sul sottoinsieme dei rapporti tipo-Altman, il classificatore quantistico non supera in modo significativo quello classico (ROC-AUC 0,724 contro 0,707, p=0,232). La verifica è stata estesa a un secondo campione reale (Taiwanese Bankruptcy, 6.819 imprese) <span class="citation" data-cites="taiwanese2020bankruptcy"><a href="#ref-taiwanese2020bankruptcy" role="doc-biblioref">[10]</a></span>, con esito analogo (ROC-AUC 0,936, quantum e classico indistinguibili, p=0,820), e a un obiettivo multiclass ordinale reale costruito sull’orizzonte di fallimento (da uno a cinque anni), dove l’accuratezza bilanciata resta vicina al caso (0,25) e i due approcci restano equivalenti. Il problema multiclass reale è quindi molto meno separabile di quello sintetico, e il vantaggio multiclass rivendicato dallo studio di riferimento non trova conferma nemmeno su di esso.</p>
+<hr>
+<p><strong>Nota metodologica</strong></p>
+<p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
+<p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale; l’analisi è pertanto integralmente auditabile e replicabile da terzi a partire da esse. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+<div id="quarto-appendix" class="default">
+<section id="quarto-bibliography" class="level2 quarto-appendix-heading" data-number="7.1">
+<h2 class="quarto-appendix-heading anchored" data-number="7.1" data-anchor-id="quarto-bibliography"><span class="header-section-number">7.1</span> Referenze</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-cortes1995" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[1]
+</div>
+<div class="csl-right-inline">
+C. Cortes e V. Vapnik, <a href="https://doi.org/10.1007/BF00994018">«Support-vector networks»</a>, <em>Machine Learning</em>, vol.&nbsp;20, fasc.&nbsp;3, pp.&nbsp;273–297, 1995, doi: <a href="https://doi.org/10.1007/BF00994018">10.1007/BF00994018</a>.
+</div>
+</div>
+<div id="ref-altman1968" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[2]
+</div>
+<div class="csl-right-inline">
+E. I. Altman, <a href="https://doi.org/10.1111/j.1540-6261.1968.tb00843.x">«Financial Ratios, Discriminant Analysis and the Prediction of Corporate Bankruptcy»</a>, <em>The Journal of Finance</em>, vol.&nbsp;23, fasc.&nbsp;4, pp.&nbsp;589–609, 1968, doi: <a href="https://doi.org/10.1111/j.1540-6261.1968.tb00843.x">10.1111/j.1540-6261.1968.tb00843.x</a>.
+</div>
+</div>
+<div id="ref-schuld2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[3]
+</div>
+<div class="csl-right-inline">
+M. Schuld e N. Killoran, <a href="https://doi.org/10.1103/PhysRevLett.122.040504">«Quantum Machine Learning in Feature Hilbert Spaces»</a>, <em>Physical Review Letters</em>, vol.&nbsp;122, fasc.&nbsp;4, p.&nbsp;040504, 2019, doi: <a href="https://doi.org/10.1103/PhysRevLett.122.040504">10.1103/PhysRevLett.122.040504</a>.
+</div>
+</div>
+<div id="ref-havlicek2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[4]
+</div>
+<div class="csl-right-inline">
+V. Havlíček <a href="https://doi.org/10.1038/s41586-019-0980-2"><em>et al.</em></a>, «Supervised learning with quantum-enhanced feature spaces», <em>Nature</em>, vol.&nbsp;567, pp.&nbsp;209–212, 2019, doi: <a href="https://doi.org/10.1038/s41586-019-0980-2">10.1038/s41586-019-0980-2</a>.
+</div>
+</div>
+<div id="ref-rebentrost2014" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[5]
+</div>
+<div class="csl-right-inline">
+P. Rebentrost, M. Mohseni, e S. Lloyd, <a href="https://doi.org/10.1103/PhysRevLett.113.130503">«Quantum Support Vector Machine for Big Data Classification»</a>, <em>Physical Review Letters</em>, vol.&nbsp;113, fasc.&nbsp;13, p.&nbsp;130503, 2014, doi: <a href="https://doi.org/10.1103/PhysRevLett.113.130503">10.1103/PhysRevLett.113.130503</a>.
+</div>
+</div>
+<div id="ref-bacigalupo2026SVM" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[6]
+</div>
+<div class="csl-right-inline">
+M. Bacigalupo e P. G. Giribone, <a href="https://doi.org/10.47473/2020rmm0170">«Support Vector Machines for Credit Scoring: a performance comparison between classical Machine Learning and Quantum-enhanced approach»</a>, <em>Risk Management Magazine</em>, vol.&nbsp;21, fasc.&nbsp;2, pp.&nbsp;23–61, 2026, doi: <a href="https://doi.org/10.47473/2020rmm0170">10.47473/2020rmm0170</a>.
+</div>
+</div>
+<div id="ref-codicecivile1942" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[7]
+</div>
+<div class="csl-right-inline">
+Repubblica Italiana, <a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1942-03-16;262">«Codice civile, artt. 2423–2429 (bilancio d’esercizio)»</a>. 1942.
+</div>
+</div>
+<div id="ref-oic12" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[8]
+</div>
+<div class="csl-right-inline">
+Organismo Italiano di Contabilità, <a href="https://www.fondazioneoic.eu/principi-contabili/">«OIC 12 – Composizione e schemi del bilancio d’esercizio»</a>. 2024.
+</div>
+</div>
+<div id="ref-tomczak2016polish" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[9]
+</div>
+<div class="csl-right-inline">
+S. Tomczak, <a href="https://archive.ics.uci.edu/dataset/365/polish+companies+bankruptcy+data">«Polish Companies Bankruptcy Data»</a>. UCI Machine Learning Repository, 2016. doi: <a href="https://doi.org/10.24432/C5F600">10.24432/C5F600</a>.
+</div>
+</div>
+<div id="ref-taiwanese2020bankruptcy" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[10]
+</div>
+<div class="csl-right-inline">
+Taiwan Economic Journal, <a href="https://archive.ics.uci.edu/dataset/572/taiwanese+bankruptcy+prediction">«Taiwanese Bankruptcy Prediction»</a>. UCI Machine Learning Repository, 2020. doi: <a href="https://doi.org/10.24432/C5004D">10.24432/C5004D</a>.
+</div>
+</div>
+</div>
+</section>
+</div>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

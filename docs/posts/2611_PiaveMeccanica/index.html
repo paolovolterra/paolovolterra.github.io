@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="credit scoring, dati sintetici, stress test, capitale circolante, immissione di capitale, covenant, meccanica, export">
+<meta name="description" content="Un’impresa fittizia con bilanci sintetici: merito di credito, stress test e soluzioni alternative, dal bilancio alla delibera.">
+
+<title>Piave Meccanica S.p.A. — caso di studio sintetico – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Piave Meccanica S.p.A. — caso di studio sintetico – Paolo Volterra">
+<meta property="og:description" content="Un’impresa fittizia con bilanci sintetici: merito di credito, stress test e soluzioni alternative, dal bilancio alla delibera.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2611_PiaveMeccanica/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Piave Meccanica S.p.A. — caso di studio sintetico – Paolo Volterra">
+<meta name="twitter:description" content="Un’impresa fittizia con bilanci sintetici: merito di credito, stress test e soluzioni alternative, dal bilancio alla delibera.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2611_PiaveMeccanica/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/in_parole_semplici/"> <i class="bi bi-instagram" role="img" aria-label="Instagram">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#profilo-dellimpresa" id="toc-profilo-dellimpresa" class="nav-link active" data-scroll-target="#profilo-dellimpresa"><span class="header-section-number">1</span> Profilo dell’impresa</a>
+  <ul class="collapse">
+  <li><a href="#andamento-triennale" id="toc-andamento-triennale" class="nav-link" data-scroll-target="#andamento-triennale"><span class="header-section-number">1.1</span> Andamento triennale</a></li>
+  <li><a href="#analisi-patrimoniale" id="toc-analisi-patrimoniale" class="nav-link" data-scroll-target="#analisi-patrimoniale"><span class="header-section-number">1.2</span> Analisi patrimoniale</a></li>
+  <li><a href="#analisi-finanziaria" id="toc-analisi-finanziaria" class="nav-link" data-scroll-target="#analisi-finanziaria"><span class="header-section-number">1.3</span> Analisi finanziaria</a></li>
+  <li><a href="#analisi-economica" id="toc-analisi-economica" class="nav-link" data-scroll-target="#analisi-economica"><span class="header-section-number">1.4</span> Analisi economica</a></li>
+  <li><a href="#analisi-commerciale" id="toc-analisi-commerciale" class="nav-link" data-scroll-target="#analisi-commerciale"><span class="header-section-number">1.5</span> Analisi commerciale</a></li>
+  <li><a href="#cash-flow-e-fabbisogno-di-cassa" id="toc-cash-flow-e-fabbisogno-di-cassa" class="nav-link" data-scroll-target="#cash-flow-e-fabbisogno-di-cassa"><span class="header-section-number">1.6</span> Cash flow e fabbisogno di cassa</a></li>
+  <li><a href="#domande-attivate-dai-valori" id="toc-domande-attivate-dai-valori" class="nav-link" data-scroll-target="#domande-attivate-dai-valori"><span class="header-section-number">1.7</span> Domande attivate dai valori</a></li>
+  </ul></li>
+  <li><a href="#valutazione-del-merito-di-credito" id="toc-valutazione-del-merito-di-credito" class="nav-link" data-scroll-target="#valutazione-del-merito-di-credito"><span class="header-section-number">2</span> Valutazione del merito di credito</a></li>
+  <li><a href="#analisi-swot" id="toc-analisi-swot" class="nav-link" data-scroll-target="#analisi-swot"><span class="header-section-number">3</span> Analisi SWOT</a></li>
+  <li><a href="#test-di-resistenza-quinquennale" id="toc-test-di-resistenza-quinquennale" class="nav-link" data-scroll-target="#test-di-resistenza-quinquennale"><span class="header-section-number">4</span> Test di resistenza quinquennale</a></li>
+  <li><a href="#ipotesi-di-intervento-immissione-di-capitale" id="toc-ipotesi-di-intervento-immissione-di-capitale" class="nav-link" data-scroll-target="#ipotesi-di-intervento-immissione-di-capitale"><span class="header-section-number">5</span> Ipotesi di intervento: immissione di capitale</a>
+  <ul class="collapse">
+  <li><a href="#impostazione-dellipotesi" id="toc-impostazione-dellipotesi" class="nav-link" data-scroll-target="#impostazione-dellipotesi"><span class="header-section-number">5.1</span> Impostazione dell’ipotesi</a></li>
+  <li><a href="#effetto-sul-profilo-di-bilancio" id="toc-effetto-sul-profilo-di-bilancio" class="nav-link" data-scroll-target="#effetto-sul-profilo-di-bilancio"><span class="header-section-number">5.2</span> Effetto sul profilo di bilancio</a></li>
+  </ul></li>
+  <li><a href="#confronto-tra-tre-percorsi-di-intervento" id="toc-confronto-tra-tre-percorsi-di-intervento" class="nav-link" data-scroll-target="#confronto-tra-tre-percorsi-di-intervento"><span class="header-section-number">6</span> Confronto tra tre percorsi di intervento</a>
+  <ul class="collapse">
+  <li><a href="#pacchetto-combinato-capitale-più-nuova-finanza-export" id="toc-pacchetto-combinato-capitale-più-nuova-finanza-export" class="nav-link" data-scroll-target="#pacchetto-combinato-capitale-più-nuova-finanza-export"><span class="header-section-number">6.1</span> Pacchetto combinato: capitale più nuova finanza export</a>
+  <ul class="collapse">
+  <li><a href="#test-di-resistenza-dopo-il-pacchetto-combinato" id="toc-test-di-resistenza-dopo-il-pacchetto-combinato" class="nav-link" data-scroll-target="#test-di-resistenza-dopo-il-pacchetto-combinato"><span class="header-section-number">6.1.1</span> Test di resistenza dopo il pacchetto combinato</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#apertura-a-mercati-esteri-ipotesi-narrativa" id="toc-apertura-a-mercati-esteri-ipotesi-narrativa" class="nav-link" data-scroll-target="#apertura-a-mercati-esteri-ipotesi-narrativa"><span class="header-section-number">7</span> Apertura a mercati esteri: ipotesi narrativa</a></li>
+  <li><a href="#sostenibilità-della-nuova-finanza-dscr-forward-looking" id="toc-sostenibilità-della-nuova-finanza-dscr-forward-looking" class="nav-link" data-scroll-target="#sostenibilità-della-nuova-finanza-dscr-forward-looking"><span class="header-section-number">8</span> Sostenibilità della nuova finanza: DSCR forward-looking</a></li>
+  <li><a href="#profilo-di-centrale-rischi-sintetica" id="toc-profilo-di-centrale-rischi-sintetica" class="nav-link" data-scroll-target="#profilo-di-centrale-rischi-sintetica"><span class="header-section-number">9</span> Profilo di Centrale Rischi sintetica</a></li>
+  <li><a href="#proiezione-su-scala-di-probabilità-di-default-ecaf" id="toc-proiezione-su-scala-di-probabilità-di-default-ecaf" class="nav-link" data-scroll-target="#proiezione-su-scala-di-probabilità-di-default-ecaf"><span class="header-section-number">10</span> Proiezione su scala di probabilità di default ECAF</a></li>
+  <li><a href="#covenant-proposti" id="toc-covenant-proposti" class="nav-link" data-scroll-target="#covenant-proposti"><span class="header-section-number">11</span> Covenant proposti</a></li>
+  <li><a href="#raccomandazioni" id="toc-raccomandazioni" class="nav-link" data-scroll-target="#raccomandazioni"><span class="header-section-number">12</span> Raccomandazioni</a>
+  <ul class="collapse">
+  <li><a href="#quarto-bibliography" id="toc-quarto-bibliography" class="nav-link" data-scroll-target="#quarto-bibliography"><span class="header-section-number">12.1</span> Referenze</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Piave Meccanica S.p.A. — caso di studio sintetico</h1>
+<p class="subtitle lead">Analisi del merito di credito, stress test e soluzioni alternative su un profilo aziendale sintetico</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Banche e credito</div>
+    <div class="quarto-category">Imprese</div>
+    <div class="quarto-category">Dati e metodo</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Un’impresa fittizia con bilanci sintetici: merito di credito, stress test e soluzioni alternative, dal bilancio alla delibera.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">16 settembre 2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Data di modifica</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">18 settembre 2026</p>
+    </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.22804644">10.5281/zenodo.22804644</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>Caso di studio costruito su un’impresa <strong>fittizia</strong> e su dati contabili interamente <strong>sintetici</strong>, generati dall’infrastruttura di generazione di bilanci sintetici del progetto per finalità dimostrative e metodologiche. Non fa riferimento ad alcuna impresa reale, né a dati di bilancio depositati. Il documento presenta il profilo economico-patrimoniale dell’impresa, una valutazione del merito di credito, un’analisi SWOT, un test di resistenza quinquennale, il confronto tra immissione di capitale, nuova finanza e sostituzione del debito, un’ipotesi di apertura a mercati esteri, la sostenibilità prospettica del servizio del debito, un profilo di Centrale Rischi sintetica, una proiezione su scala di probabilità di default comparabile a quella usata per l’eleggibilità del collaterale nell’Eurosistema, e un insieme di covenant proposti, su un profilo aziendale scelto perché genuinamente fragile, utile a mostrare come le diverse leve di intervento si comportino quando la difficoltà finanziaria è reale e non solo apparente.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>credit scoring, dati sintetici, stress test, capitale circolante, immissione di capitale, covenant, meccanica, export</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Versione citabile su Zenodo, con il PDF: <a href="https://doi.org/10.5281/zenodo.22804644">doi.org/10.5281/zenodo.22804644</a>.</p>
+</div>
+</div>
+</div>
+<p><strong>DOI:</strong> <a href="https://doi.org/10.5281/zenodo.22804644">10.5281/zenodo.22804644</a></p>
+<section id="profilo-dellimpresa" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Profilo dell’impresa</h1>
+<p><strong>Piave Meccanica S.p.A. è un’impresa fittizia.</strong> Il nome, la sede e la vicenda descritti in questo documento non corrispondono ad alcuna società reale; i dati di bilancio sono interamente <strong>sintetici</strong>, generati con l’infrastruttura di generazione di bilanci coerenti del progetto (calibrata su distribuzioni aggregate ufficiali delle imprese italiane, non su dati di una singola impresa reale). Il caso è costruito a fini metodologici: mostrare come le leve di intervento creditizio (immissione di capitale, nuova finanza, sostituzione del debito) si comportino quando il punto di partenza è un’impresa genuinamente in difficoltà, non solo cautelativamente classificata come tale da un modello.</p>
+<p>Profilo aziendale: impresa di grandi dimensioni del comparto manifatturiero, localizzata nel Nord-Est italiano. Il dataset identifica il profilo dimensionale, territoriale e anagrafico sintetico, ma non genera un’anagrafica societaria né controparti nominative. I campi mancanti sono quindi dichiarati, non completati con dettagli narrativi non osservati.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Identificazione</th>
+<th style="text-align: left;">Informazione disponibile</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Attività</td>
+<td style="text-align: left;">Manifattura meccanica (profilo sintetico; oggetto sociale puntuale non generato)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sede</td>
+<td style="text-align: left;">Nord-Est; sede legale e operativa non generate</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Anno di fondazione</td>
+<td style="text-align: left;">Non generato; impresa classificata “matura”, età sintetica 52 anni nel 2025</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Proprietà, controllo e gruppo</td>
+<td style="text-align: left;">Non generati</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Codice fiscale / partita IVA</td>
+<td style="text-align: left;">Non applicabili a un’impresa fittizia</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Quotazione e capitalizzazione</td>
+<td style="text-align: left;">Non generate; nessuna quotazione attribuibile</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dipendenti ed evoluzione</td>
+<td style="text-align: left;">Non generati; è disponibile soltanto il costo del personale</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Principali concorrenti</td>
+<td style="text-align: left;">Non generati</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Clienti e fornitori principali</td>
+<td style="text-align: left;">Non generati; disponibili soltanto saldi aggregati</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Banche affidanti</td>
+<td style="text-align: left;">9 nel 2025, non nominative</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Posizione della nostra banca</td>
+<td style="text-align: left;">Non generata: quota di accordato, utilizzato, rango e garanzie non disponibili</td>
+</tr>
+</tbody>
+</table>
+<section id="andamento-triennale" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="andamento-triennale"><span class="header-section-number">1.1</span> Andamento triennale</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Voce (EUR, salvo indicatori in %)</th>
+<th style="text-align: right;">2023</th>
+<th style="text-align: right;">2024</th>
+<th style="text-align: right;">2025</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Totale attivo</td>
+<td style="text-align: right;">74.763.631</td>
+<td style="text-align: right;">75.352.892</td>
+<td style="text-align: right;">74.957.770</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fatturato</td>
+<td style="text-align: right;">64.544.786</td>
+<td style="text-align: right;">65.182.704</td>
+<td style="text-align: right;">66.722.824</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Costo del personale</td>
+<td style="text-align: right;">8.334.236</td>
+<td style="text-align: right;">8.122.471</td>
+<td style="text-align: right;">8.815.730</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Utile (perdita) d’esercizio</td>
+<td style="text-align: right;">1.814.234</td>
+<td style="text-align: right;">649.292</td>
+<td style="text-align: right;">-237.076</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ROE (%)</td>
+<td style="text-align: right;">11,0</td>
+<td style="text-align: right;">3,8</td>
+<td style="text-align: right;">-1,4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ROA (%)</td>
+<td style="text-align: right;">2,4</td>
+<td style="text-align: right;">0,9</td>
+<td style="text-align: right;">-0,3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MOL / Ricavi (%)</td>
+<td style="text-align: right;">9,2</td>
+<td style="text-align: right;">8,0</td>
+<td style="text-align: right;">6,5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ROI (%)</td>
+<td style="text-align: right;">4,5</td>
+<td style="text-align: right;">3,1</td>
+<td style="text-align: right;">1,9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ROS (%)</td>
+<td style="text-align: right;">5,2</td>
+<td style="text-align: right;">3,6</td>
+<td style="text-align: right;">2,1</td>
+</tr>
+</tbody>
+</table>
+<p>A differenza di un quadro di crescita moderata, qui il fatturato cresce (+3,4% cumulato in due anni) mentre <strong>ogni indicatore di redditività peggiora senza eccezioni</strong>: il margine operativo lordo sui ricavi scende da 9,2% a 6,5%, il ROE crolla da un modesto 11,0% a un risultato negativo, e l’esercizio 2025 chiude in perdita. È il profilo tipico di un’impresa che sta perdendo pricing power o subendo una pressione sui costi di produzione più rapida della crescita dei volumi, senza che il fatturato da solo lo segnali.</p>
+</section>
+<section id="analisi-patrimoniale" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="analisi-patrimoniale"><span class="header-section-number">1.2</span> Analisi patrimoniale</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 44%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Stato patrimoniale (EUR)</th>
+<th style="text-align: right;">2025</th>
+<th style="text-align: right;">2024</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Totale attivo</td>
+<td style="text-align: right;">74.957.770</td>
+<td style="text-align: right;">75.352.892</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">di cui: immobilizzazioni</td>
+<td style="text-align: right;">57.086.610</td>
+<td style="text-align: right;">55.615.017</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">di cui: rimanenze</td>
+<td style="text-align: right;">5.411.979</td>
+<td style="text-align: right;">4.909.434</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">di cui: crediti verso clienti</td>
+<td style="text-align: right;">8.929.363</td>
+<td style="text-align: right;">7.394.297</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">di cui: disponibilità liquide</td>
+<td style="text-align: right;">3.529.818</td>
+<td style="text-align: right;">7.434.145</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Patrimonio netto</td>
+<td style="text-align: right;">16.717.348</td>
+<td style="text-align: right;">16.954.424</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Debiti finanziari</td>
+<td style="text-align: right;">39.544.414</td>
+<td style="text-align: right;">39.544.414</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Debiti verso fornitori</td>
+<td style="text-align: right;">8.118.437</td>
+<td style="text-align: right;">8.520.638</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Altre passività</td>
+<td style="text-align: right;">10.577.571</td>
+<td style="text-align: right;">10.333.416</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Debiti e altre passività complessive</strong></td>
+<td style="text-align: right;"><strong>58.240.422</strong></td>
+<td style="text-align: right;"><strong>58.398.468</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Le immobilizzazioni esposte (57,1M€) sono <strong>nette degli ammortamenti contabilizzati</strong>: il contratto corrente non conserva separatamente costo storico e fondo ammortamento. Non distingue inoltre immobilizzazioni materiali, brevetti, avviamento e altri intangibili. Il <strong>tangible net worth</strong> non è quindi calcolabile in senso rigoroso; in assenza di intangibili identificati, il patrimonio netto di 16,7M€ ne costituisce soltanto un limite superiore, non una misura verificata. Le “altre passività” aggregano poste correnti e non correnti; il dataset non separa TFR, fondi rischi, debiti tributari, previdenziali, verso dipendenti e infragruppo.</p>
+</section>
+<section id="analisi-finanziaria" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="analisi-finanziaria"><span class="header-section-number">1.3</span> Analisi finanziaria</h2>
+<p>Il giudizio è di <strong>tensione finanziaria incipiente, non ancora manifesta nei rapporti bancari</strong>. Le attività correnti 2025 ammontano a 17,9M€, contro passività correnti per 27,1M€: capitale circolante netto finanziario negativo per 9,2M€ e current ratio pari a 0,66x. La liquidità scende a 3,5M€ e copre solo il 13,0% delle passività correnti; sommando i crediti commerciali, la copertura rapida sale al 46,0%, ancora insufficiente. Il debito finanziario è composto da 13,2M€ a breve e 26,3M€ a medio-lungo termine.</p>
+<p>L’ammontare dei crediti commerciali è disponibile, ma non il relativo aging: non sappiamo quali clienti siano scaduti, incagliati o oggetto di contestazione. Mancano anche le posizioni analitiche verso Erario, INPS e dipendenti e le eventuali azioni legali. La Centrale dei Rischi sintetica non mostra sconfinamenti o insoluti, ma non identifica le banche e non consente di misurare come sia inserita la banca proponente.</p>
+</section>
+<section id="analisi-economica" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="analisi-economica"><span class="header-section-number">1.4</span> Analisi economica</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Conto economico (EUR)</th>
+<th style="text-align: right;">2025</th>
+<th style="text-align: right;">2024</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Valore della produzione</td>
+<td style="text-align: right;">67.738.908</td>
+<td style="text-align: right;">66.175.334</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">di cui: ricavi delle vendite</td>
+<td style="text-align: right;">66.722.824</td>
+<td style="text-align: right;">65.182.704</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">di cui: costo del personale</td>
+<td style="text-align: right;">8.815.730</td>
+<td style="text-align: right;">8.122.471</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MOL (EBITDA)</td>
+<td style="text-align: right;">4.300.111</td>
+<td style="text-align: right;">5.217.415</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ammortamenti</td>
+<td style="text-align: right;">2.916.382</td>
+<td style="text-align: right;">2.874.409</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Differenza valore-costi produzione (EBIT)</td>
+<td style="text-align: right;">1.383.729</td>
+<td style="text-align: right;">2.343.006</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Oneri finanziari</td>
+<td style="text-align: right;">1.620.805</td>
+<td style="text-align: right;">1.488.674</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Utile (perdita) d’esercizio</td>
+<td style="text-align: right;">-237.076</td>
+<td style="text-align: right;">649.292</td>
+</tr>
+</tbody>
+</table>
+<p>Due segnali, letti insieme, definiscono il profilo di rischio: le <strong>disponibilità liquide crollano</strong> da 7,4M€ a 3,5M€ in un solo esercizio (-53%), mentre il <strong>debito finanziario resta esattamente invariato</strong> a 39,5M€ per il quinto anno consecutivo. L’impresa non sta riducendo l’indebitamento nemmeno nelle fasi favorevoli: il debito si comporta come uno stock rinnovato integralmente a ogni scadenza, non come un piano di ammortamento in esecuzione — un dettaglio rilevante per l’analisi di sostenibilità del paragrafo finale.</p>
+</section>
+<section id="analisi-commerciale" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="analisi-commerciale"><span class="header-section-number">1.5</span> Analisi commerciale</h2>
+<p>Il fatturato cresce, ma il dataset non contiene ordini, contratti, prezzi, volumi, clienti o concorrenti. Non è quindi possibile attribuire la crescita a nuovi clienti o commesse, né misurare concentrazione, stabilità e sostituibilità della clientela. L’aumento dei crediti commerciali da 7,4M€ a 8,9M€ (+20,8%) è molto superiore alla crescita dei ricavi (+2,4%): è un segnale da approfondire con scadenzario, aging e verifica delle fatture, non la prova automatica dell’esistenza di crediti anticipabili.</p>
+</section>
+<section id="cash-flow-e-fabbisogno-di-cassa" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="cash-flow-e-fabbisogno-di-cassa"><span class="header-section-number">1.6</span> Cash flow e fabbisogno di cassa</h2>
+<p>Nel 2025 il cash flow operativo sintetico è pari a 1,86M€, il free cash flow è negativo per 3,90M€ e la cassa diminuisce di 3,90M€. Il disallineamento rispetto al MOL di 4,30M€ riflette investimenti e assorbimento del circolante: la crescita di rimanenze e crediti commerciali sottrae liquidità mentre il debito finanziario non si riduce. Il fabbisogno prospettico non può dunque essere valutato sul solo saldo di fine anno: occorrono scadenziario mensile, picchi stagionali, piano investimenti e profilo contrattuale del debito, non presenti nel dataset corrente.</p>
+</section>
+<section id="domande-attivate-dai-valori" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="domande-attivate-dai-valori"><span class="header-section-number">1.7</span> Domande attivate dai valori</h2>
+<p>La mappa diagnostica completa è in <code>OUT/71_mappa_se_allora_analisi_creditizia.md</code>. Per questo caso si attivano almeno le seguenti regole; la colonna “fonte della risposta” distingue i dati già disponibili dai documenti ancora da acquisire.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 16%">
+<col style="width: 31%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Regola</th>
+<th style="text-align: left;">Valore che attira l’attenzione</th>
+<th style="text-align: left;">Domanda</th>
+<th style="text-align: left;">Fonte della risposta</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ECO03 / META02</td>
+<td style="text-align: left;">ricavi +2,4%, MOL/ricavi 8,0%→6,5%</td>
+<td style="text-align: left;">Quali costi, prezzi o prodotti erodono il margine?</td>
+<td style="text-align: left;">valori: <code>OUT/piave_v2_contract03_history.csv</code>; causa: DOC13/DOC25, <strong>non disponibili</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FIN05 / META01</td>
+<td style="text-align: left;">crediti clienti +20,8%, ricavi +2,4%</td>
+<td style="text-align: left;">Si sono allungati gli incassi? Quali clienti spiegano l’aumento?</td>
+<td style="text-align: left;">valori: <code>OUT/piave_v2_contract03_history.csv</code>; risposta: DOC10/DOC12, <strong>non disponibili</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FIN03 / META05</td>
+<td style="text-align: left;">cassa -52,5%, debito invariato</td>
+<td style="text-align: left;">Dove è stata assorbita la liquidità e perché non vi è deleveraging?</td>
+<td style="text-align: left;">flussi sintetici: <code>OUT/piave_v2_contract03_history.csv</code>; dettaglio reale: DOC08/DOC09/DOC15, <strong>non disponibile</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FIN01</td>
+<td style="text-align: left;">current ratio 0,66x</td>
+<td style="text-align: left;">Come vengono coperte le passività correnti?</td>
+<td style="text-align: left;">valore: <code>OUT/piave_v2_contract03_history.csv</code>; scadenze: DOC09/DOC15, <strong>non disponibili</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PAT01/PAT08</td>
+<td style="text-align: left;">immobilizzazioni 76,2% dell’attivo</td>
+<td style="text-align: left;">Quali cespiti le compongono, quanto sono ammortizzati e qual è la vita residua?</td>
+<td style="text-align: left;">valore netto: <code>OUT/piave_v2_contract03_history.csv</code>; risposta: DOC06/DOC07, <strong>non disponibili</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PAS04</td>
+<td style="text-align: left;">altre passività 10,6M€</td>
+<td style="text-align: left;">Quanto deriva da TFR, Erario, INPS, dipendenti, fondi o infragruppo?</td>
+<td style="text-align: left;">aggregato: <code>OUT/piave_v2_contract03_history.csv</code>; risposta: DOC03/DOC05/DOC20-DOC23, <strong>non disponibili</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DEB01/DEB07</td>
+<td style="text-align: left;">debito 39,5M€ stabile; ICR 0,85x</td>
+<td style="text-align: left;">È revolving o bullet? Come sono pagati gli interessi non coperti dall’EBIT?</td>
+<td style="text-align: left;">valori: <code>OUT/piave_v2_contract03_history.csv</code>; contratti: DOC15/DOC16, <strong>non disponibili</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CR09/META07</td>
+<td style="text-align: left;">CR regolare ma bilancio in deterioramento</td>
+<td style="text-align: left;">Il bilancio anticipa una tensione non ancora visibile alle banche?</td>
+<td style="text-align: left;"><code>dgp_credit_registry_v01.csv</code> + storico sintetico</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CRE09/STR01</td>
+<td style="text-align: left;">crediti commerciali 8,9M€</td>
+<td style="text-align: left;">Quale quota è anticipabile verso clienti meritevoli?</td>
+<td style="text-align: left;">importo: storico sintetico; eleggibilità: DOC10/DOC12/DOC19, <strong>non disponibili</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PRJ01/PRJ02</td>
+<td style="text-align: left;">scenario export migliora i margini</td>
+<td style="text-align: left;">Quale contratto, volume, prezzo e margine giustificano l’assunzione?</td>
+<td style="text-align: left;">simulazione: <code>OUT/piave_v2_contract03_simulations.csv</code>; prova industriale: DOC12/DOC25/DOC26, <strong>non disponibile</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="valutazione-del-merito-di-credito" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Valutazione del merito di credito</h1>
+<p>Il profilo di bilancio 2025 è stato valutato con un <strong>modello di rischio unico e coerente</strong>, stimato su un ampio campione di bilanci sintetici calibrato su distribuzioni aggregate ufficiali delle imprese italiane. La probabilità di default a cinque anni è stimata con una regressione logistica regolarizzata su quattro driver non ridondanti — leva finanziaria (debito finanziario/attivo), copertura degli oneri (EBIT/oneri finanziari), redditività operativa (EBIT/attivo) e capitale circolante netto/attivo. I driver sono stati scelti per contenere la collinearità (fattore di inflazione della varianza inferiore a 5 per tutti) e per mantenere effetti parziali coerenti con la relazione univariata al default; il <strong>rating</strong> è derivato da bande convenzionali di PD a cinque anni (A ≤ 1%, B ≤ 2,5%, C ≤ 5%, D ≤ 10%, E &gt; 10%) e lo <strong>spread</strong> è stimato su due soli driver, leva e copertura degli oneri, quelli che nel campione portano informazione sul prezzo del rischio (gli altri due non aggiungono potere esplicativo e, essendo collineari, ne instabilizzano i segni). Rating, spread e PD sono quindi coerenti per costruzione e reagiscono tutti al costo del debito.</p>
+<p>La validazione del modello è parte del risultato, non un dettaglio: AUC 0,95 in cross-validazione stratificata a cinque fold (deviazione standard 0,03), Brier score 0,021, segni dei coefficienti tutti coerenti con le correlazioni univariate, risposta monotona a variazioni di ciascun driver. Sono queste condizioni a rendere legittima la lettura degli scenari come affermazioni direzionali; un modello senza questo controllo non le autorizza.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 59%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicatore</th>
+<th style="text-align: right;">Valore</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Patrimonio netto / Attivo</td>
+<td style="text-align: right;">22,3%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Debito finanziario / Attivo</td>
+<td style="text-align: right;">52,8%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Indice di copertura degli interessi (EBIT / oneri finanziari)</td>
+<td style="text-align: right;">0,85x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Rating stimato</strong></td>
+<td style="text-align: right;"><strong>D</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Spread creditizio stimato</strong></td>
+<td style="text-align: right;"><strong>486 punti base</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Probabilità di default a 5 anni</strong></td>
+<td style="text-align: right;"><strong>6,8%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Qui <strong>tutti</strong> gli indicatori convergono sulla stessa lettura: l’indice di copertura degli interessi è già sotto l’unità (0,85x, l’EBIT non copre gli oneri finanziari dell’esercizio), il rating è nel secondo gradino più basso della scala e la probabilità di default a cinque anni è nettamente superiore alla frequenza media di default del campione (2,8% su cinque anni).</p>
+<p>La proiezione su archetipi di bilancio standardizzati è <strong>coerente</strong> con il resto: il primo riferimento nella tassonomia a 7 gruppi è “Vulnerabile Patrimonializzata (margini bassi, cassa in calo)”, seguito da “Crisi/Deterioramento strutturale”.</p>
+</section>
+<section id="analisi-swot" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Analisi SWOT</h1>
+<p><strong>Punti di forza</strong></p>
+<ul>
+<li>Fatturato in crescita continua sui tre esercizi (+1,0% nel 2024, +2,4% nel 2025), segno di una domanda di mercato non in contrazione.</li>
+<li>Base patrimoniale non ancora esaurita (patrimonio netto 16,7M€, stabile in valore assoluto nonostante la perdita 2025).</li>
+<li>Struttura produttiva capital-intensive già in essere (immobilizzazioni 57,1M€, 76% dell’attivo), che riduce il fabbisogno di nuovo capex per mantenere l’attuale capacità produttiva.</li>
+<li>Nessun segnale di tensione in Centrale Rischi: utilizzo delle linee moderato (55-66%), nessuno sconfinamento o insoluto nei cinque esercizi, 9 banche affidanti stabili — un margine di manovra bancario non ancora eroso.</li>
+</ul>
+<p><strong>Punti di debolezza</strong></p>
+<ul>
+<li>Margine operativo lordo sui ricavi in calo costante per tre esercizi consecutivi (9,2% → 6,5%), con conseguente indice di copertura interessi sceso sotto l’unità (0,85x) nell’ultimo esercizio.</li>
+<li>Disponibilità liquide crollate del 53% in un anno (7,4M€ → 3,5M€), segnale di tensione di cassa più immediato del solo peggioramento reddituale.</li>
+<li>Debito finanziario invariato per cinque esercizi consecutivi (39,5M€): assenza di un percorso di deleveraging anche nelle annate migliori.</li>
+<li>Esercizio 2025 in perdita, dopo un 2024 già debole (ROE 3,8%).</li>
+<li>Il bilancio anticipa la Centrale Rischi: il deterioramento reddituale e di cassa non si è ancora tradotto in tensione comportamentale osservabile dalle banche affidanti — un margine di tempo utile per intervenire, non una rassicurazione strutturale.</li>
+</ul>
+<p><strong>Opportunità</strong></p>
+<ul>
+<li>Contesto territoriale (Nord-Est) storicamente associato a distretti manifatturieri export-oriented: possibilità di diversificare i canali di vendita verso mercati esteri a maggior marginalità rispetto alla fornitura B2B domestica, se il posizionamento di prodotto lo consente.</li>
+<li>Base impiantistica esistente sufficiente a sostenere un incremento di volumi senza nuovo capex produttivo pesante, riducendo il fabbisogno di nuova finanza rispetto a un progetto di espansione ex novo.</li>
+</ul>
+<p><strong>Minacce</strong></p>
+<ul>
+<li>Esposizione ai costi di produzione (quota energia e input non output-linked) in un contesto di inflazione dei costi, che ha già eroso il margine su tre esercizi.</li>
+<li>Livello di leva già elevato (53% debito/attivo) che limita il margine di manovra per assorbire un ulteriore shock reddituale senza intervento esterno.</li>
+<li>Rischio di ulteriore assottigliamento della liquidità se il trend 2023-2025 prosegue senza correzione.</li>
+</ul>
+</section>
+<section id="test-di-resistenza-quinquennale" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Test di resistenza quinquennale</h1>
+<p>Il bilancio 2025 è stato proiettato in avanti cinque anni con una metodologia contabile coerente, in scenario di base e in scenario avverso (rialzo tassi 200 punti base, erosione di margine 100 punti base, recessione della domanda).</p>
+<p>Le assunzioni non derivano da contratti aziendali osservati: sono <strong>shock di scenario sintetici</strong>. Lo scenario base applica la dinamica persistente del DGP ai sei assi latenti e mantiene il costo del debito esistente; lo scenario avverso riduce domanda e margini e aumenta di 200 punti base il costo del debito. La tabella seguente espone i nuovi valori assoluti dai quali sono calcolati i ratio, evitando di presentare soltanto gli indici finali.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 15%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 9%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Scenario e anno</th>
+<th style="text-align: right;">Valore produzione</th>
+<th style="text-align: right;">MOL</th>
+<th style="text-align: right;">EBIT</th>
+<th style="text-align: right;">Oneri finanziari</th>
+<th style="text-align: right;">Utile/perdita</th>
+<th style="text-align: right;">Cassa</th>
+<th style="text-align: right;">Debito finanziario</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Consuntivo 2025</td>
+<td style="text-align: right;">67.738.908</td>
+<td style="text-align: right;">4.300.111</td>
+<td style="text-align: right;">1.383.729</td>
+<td style="text-align: right;">1.620.805</td>
+<td style="text-align: right;">-237.076</td>
+<td style="text-align: right;">3.529.818</td>
+<td style="text-align: right;">39.544.414</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Base 2026</td>
+<td style="text-align: right;">70.445.902</td>
+<td style="text-align: right;">4.105.640</td>
+<td style="text-align: right;">1.189.257</td>
+<td style="text-align: right;">1.620.805</td>
+<td style="text-align: right;">-431.548</td>
+<td style="text-align: right;">2.805.843</td>
+<td style="text-align: right;">39.544.414</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Base 2027</td>
+<td style="text-align: right;">73.741.495</td>
+<td style="text-align: right;">5.027.952</td>
+<td style="text-align: right;">2.109.335</td>
+<td style="text-align: right;">1.620.805</td>
+<td style="text-align: right;">371.283</td>
+<td style="text-align: right;">2.805.843</td>
+<td style="text-align: right;">39.519.663</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Base 2028</td>
+<td style="text-align: right;">74.143.324</td>
+<td style="text-align: right;">4.223.928</td>
+<td style="text-align: right;">1.303.074</td>
+<td style="text-align: right;">1.619.791</td>
+<td style="text-align: right;">-316.716</td>
+<td style="text-align: right;">2.408.400</td>
+<td style="text-align: right;">39.519.663</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Avverso 2026</td>
+<td style="text-align: right;">68.677.480</td>
+<td style="text-align: right;">3.315.800</td>
+<td style="text-align: right;">399.418</td>
+<td style="text-align: right;">2.411.693</td>
+<td style="text-align: right;">-2.012.276</td>
+<td style="text-align: right;">1.504.229</td>
+<td style="text-align: right;">39.544.414</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Avverso 2027</td>
+<td style="text-align: right;">70.104.306</td>
+<td style="text-align: right;">4.078.913</td>
+<td style="text-align: right;">1.166.256</td>
+<td style="text-align: right;">2.411.693</td>
+<td style="text-align: right;">-1.245.438</td>
+<td style="text-align: right;">359.279</td>
+<td style="text-align: right;">39.703.162</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Avverso 2028</td>
+<td style="text-align: right;">68.620.561</td>
+<td style="text-align: right;">3.223.092</td>
+<td style="text-align: right;">314.154</td>
+<td style="text-align: right;">2.421.375</td>
+<td style="text-align: right;">-2.107.221</td>
+<td style="text-align: right;">357.344</td>
+<td style="text-align: right;">41.599.419</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: right;">Scenario di base</th>
+<th style="text-align: right;">Scenario avverso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Indice di copertura interessi, anno 1</td>
+<td style="text-align: right;">0,73x</td>
+<td style="text-align: right;">0,17x</td>
+</tr>
+<tr class="even">
+<td>Indice di copertura interessi, minimo sui 5 anni</td>
+<td style="text-align: right;">0,73x</td>
+<td style="text-align: right;">0,13x</td>
+</tr>
+<tr class="odd">
+<td>Patrimonio netto / Attivo, anno 5</td>
+<td style="text-align: right;">21,8%</td>
+<td style="text-align: right;">10,3%</td>
+</tr>
+<tr class="even">
+<td>Debito finanziario / Attivo, anno 5</td>
+<td style="text-align: right;">51,8%</td>
+<td style="text-align: right;">63,3%</td>
+</tr>
+<tr class="odd">
+<td>Anni in condizione di crisi finanziaria su 5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+</tr>
+</tbody>
+</table>
+<p>A differenza di un’impresa solo cautelativamente classificata a rischio, qui il test di resistenza conferma la fragilità già evidente a bilancio: anche nello <strong>scenario di base</strong>, l’indice di copertura interessi resta sotto l’unità per gran parte dell’orizzonte (minimo 0,73x) senza mai risalire in modo convincente, pur senza toccare la soglia di crisi conclamata. Nello <strong>scenario avverso</strong> la crisi è una condizione <strong>persistente per quattro dei cinque anni</strong>: il patrimonio netto sull’attivo scende sotto l’11% e la leva sale al 63%. Questo è il profilo per cui un test di resistenza serve davvero a distinguere un rischio reale da un eccesso di prudenza del modello.</p>
+</section>
+<section id="ipotesi-di-intervento-immissione-di-capitale" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Ipotesi di intervento: immissione di capitale</h1>
+<section id="impostazione-dellipotesi" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="impostazione-dellipotesi"><span class="header-section-number">5.1</span> Impostazione dell’ipotesi</h2>
+<p>A differenza di un’impresa con un problema prevalentemente di capitale circolante, qui la fragilità è strutturale: leva elevata e margine in erosione continua, non un temporaneo assorbimento di cassa da parte di rimanenze o crediti. La leva giusta non è quindi la gestione del circolante, ma un <strong>rafforzamento patrimoniale</strong>. Si ipotizza un’immissione di capitale di <strong>5,77M€</strong>, dimensionata per portare il rapporto patrimonio netto/attivo dal 22,3% al 30,0% — soglia convenzionale di adeguatezza patrimoniale per imprese manifatturiere di media-grande dimensione — utilizzata contestualmente per ridurre il debito finanziario in essere di pari importo (operazione di ricapitalizzazione con contestuale rimborso).</p>
+</section>
+<section id="effetto-sul-profilo-di-bilancio" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="effetto-sul-profilo-di-bilancio"><span class="header-section-number">5.2</span> Effetto sul profilo di bilancio</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicatore</th>
+<th style="text-align: right;">Prima dell’intervento</th>
+<th style="text-align: right;">Dopo l’immissione di capitale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Patrimonio netto / Attivo</td>
+<td style="text-align: right;">22,3%</td>
+<td style="text-align: right;">30,0%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Debito finanziario / Attivo</td>
+<td style="text-align: right;">52,8%</td>
+<td style="text-align: right;">45,1%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Indice di copertura interessi</td>
+<td style="text-align: right;">0,85x</td>
+<td style="text-align: right;">1,00x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Rating stimato</strong></td>
+<td style="text-align: right;"><strong>D</strong></td>
+<td style="text-align: right;"><strong>C</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spread creditizio stimato</td>
+<td style="text-align: right;">486 bps</td>
+<td style="text-align: right;">415 bps</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Probabilità di default a 5 anni</td>
+<td style="text-align: right;">6,8%</td>
+<td style="text-align: right;">3,5%</td>
+</tr>
+</tbody>
+</table>
+<p>Il rafforzamento patrimoniale migliora il rating di una classe (D→C), riduce lo spread stimato (486→415 bps) e più che dimezza la probabilità di default a cinque anni (6,8%→3,5%): rating e PD si muovono nello stesso verso, come deve accadere quando il modello è unico e validato. Porta però l’indice di copertura interessi esattamente alla soglia dell’unità (1,00x) — <strong>un pareggio, non un margine di sicurezza</strong>: l’EBIT (1,38M€) resta esile rispetto al livello di oneri finanziari anche a debito ridotto, il problema è di <strong>margine operativo</strong>, non solo di patrimonializzazione.</p>
+</section>
+</section>
+<section id="confronto-tra-tre-percorsi-di-intervento" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Confronto tra tre percorsi di intervento</h1>
+<p>Sono stati confrontati tre percorsi, tutti scorati con lo stesso modello, non stimati separatamente: la sola immissione di capitale già vista sopra, la sostituzione a parità del debito in scadenza al costo di mercato coerente con il rating attuale, e una nuova finanza dedicata a un canale di vendita export a maggior marginalità.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 15%">
+<col style="width: 31%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicatore</th>
+<th style="text-align: right;">Situazione attuale</th>
+<th style="text-align: right;">Sostituzione a parità (tasso di mercato)</th>
+<th style="text-align: right;">Nuova finanza 5M€ export (a regime)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Patrimonio netto / Attivo</td>
+<td style="text-align: right;">22,3%</td>
+<td style="text-align: right;">22,3%</td>
+<td style="text-align: right;">22,3%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Debito finanziario / Attivo</td>
+<td style="text-align: right;">52,8%</td>
+<td style="text-align: right;">52,8%</td>
+<td style="text-align: right;">59,4%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Indice di copertura interessi</td>
+<td style="text-align: right;">0,85x</td>
+<td style="text-align: right;">0,41x</td>
+<td style="text-align: right;">1,65x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Rating stimato</strong></td>
+<td style="text-align: right;"><strong>D</strong></td>
+<td style="text-align: right;"><strong>D</strong></td>
+<td style="text-align: right;"><strong>C</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spread creditizio stimato</td>
+<td style="text-align: right;">486 bps</td>
+<td style="text-align: right;">488 bps</td>
+<td style="text-align: right;">546 bps</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Probabilità di default a 5 anni</td>
+<td style="text-align: right;">6,8%</td>
+<td style="text-align: right;">7,3%</td>
+<td style="text-align: right;">4,2%</td>
+</tr>
+</tbody>
+</table>
+<p>Tre osservazioni, tutte rilevanti per il monitoraggio del credito:</p>
+<ol type="1">
+<li><strong>La sostituzione del debito in scadenza al tasso di mercato coerente con il rating attuale è l’opzione più pericolosa delle tre</strong>, non quella più prudente: portando il costo del debito dal 4,1% storico all’8,5% implicito nel rating D, l’indice di copertura interessi crolla a 0,41x. Tutti gli indicatori del modello unico si muovono di conseguenza e nello stesso verso: la PD sale (6,8%→7,3%), lo spread peggiora (486→488 bps), il rating resta nel gradino più debole. Il costo del debito entra nel modello attraverso la copertura degli oneri, quindi non è più invisibile all’analisi.</li>
+<li><strong>La nuova finanza per un canale export a maggiore marginalità è l’unica leva, tra le tre, che riporta l’indice di copertura sopra l’unità</strong> (1,65x) nell’ipotesi di piena messa a regime, e migliora il merito di credito (PD 6,8%→4,2%, rating D→C) nonostante l’aumento della leva al 59,4%. Lo spread però sale (486→546 bps): non è una contraddizione, perché spread e PD misurano grandezze diverse. La PD è la probabilità di insolvenza e pesa soprattutto redditività e copertura; lo spread è il prezzo del rischio e incorpora anzitutto la leva. Nel modello di spread l’aumento di debito contribuisce per circa +60 bps e il miglioramento di copertura per circa −13 bps: prevale la leva. Chiedersi se sia la PD o lo spread ad avere ragione è la domanda sbagliata — un progetto redditizio finanziato con nuovo debito può ridurre la probabilità di insolvenza e alzare il prezzo richiesto sul maggior debito.</li>
+<li><strong>Nessuno dei tre percorsi preso singolarmente risolve il problema</strong>: la sola immissione di capitale porta l’ICR esattamente a 1,00x senza margine, la sola nuova finanza migliora margine e PD ma non risolve la sottocapitalizzazione e allarga lo spread, la sostituzione a parità aggrava la fragilità. È la combinazione delle prime due — capitale per la struttura patrimoniale, nuova finanza mirata a un miglioramento di margine — a produrre il profilo più solido, come mostrato di seguito.</li>
+</ol>
+<section id="pacchetto-combinato-capitale-più-nuova-finanza-export" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="pacchetto-combinato-capitale-più-nuova-finanza-export"><span class="header-section-number">6.1</span> Pacchetto combinato: capitale più nuova finanza export</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicatore</th>
+<th style="text-align: right;">Situazione attuale</th>
+<th style="text-align: right;">Pacchetto combinato</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Patrimonio netto / Attivo</td>
+<td style="text-align: right;">22,3%</td>
+<td style="text-align: right;">30,0%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Debito finanziario / Attivo</td>
+<td style="text-align: right;">52,8%</td>
+<td style="text-align: right;">51,7%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Indice di copertura interessi</td>
+<td style="text-align: right;">0,85x</td>
+<td style="text-align: right;"><strong>1,88x</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Rating stimato</strong></td>
+<td style="text-align: right;"><strong>D</strong></td>
+<td style="text-align: right;"><strong>B</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spread creditizio stimato</td>
+<td style="text-align: right;">486 bps</td>
+<td style="text-align: right;">474 bps</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Probabilità di default a 5 anni</td>
+<td style="text-align: right;">6,8%</td>
+<td style="text-align: right;"><strong>2,1%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Il pacchetto combinato è la sola configurazione, tra tutte quelle testate, con un indice di copertura interessi solidamente sopra l’unità e una probabilità di default (2,1%) inferiore alla frequenza media del campione (2,8% su cinque anni); è anche l’unica che porta il rating fuori dai due gradini più deboli (D→B). Lo spread resta in linea con il livello di partenza (474 bps contro 486 bps): l’aumento di leva dell’export è compensato dal rafforzamento patrimoniale, senza il peggioramento che si osserva nella sola nuova finanza. Il miglioramento su ICR, PD e rating è netto e coerente tra gli indicatori; il giudizio di credito resta comunque multi-dimensionale.</p>
+<section id="test-di-resistenza-dopo-il-pacchetto-combinato" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="test-di-resistenza-dopo-il-pacchetto-combinato"><span class="header-section-number">6.1.1</span> Test di resistenza dopo il pacchetto combinato</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: right;">Scenario di base</th>
+<th style="text-align: right;">Scenario avverso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Indice di copertura interessi, minimo sui 5 anni</td>
+<td style="text-align: right;">1,81x</td>
+<td style="text-align: right;">0,85x</td>
+</tr>
+<tr class="even">
+<td>Anni in condizione di crisi finanziaria su 5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p>Nello scenario di base il pacchetto combinato rende l’impresa stabilmente fuori da condizioni di crisi per l’intero orizzonte quinquennale. Nello scenario avverso, l’indice di copertura interessi minimo scende a 0,85x (terzo anno) ma <strong>resta sempre sopra la soglia di crisi conclamata</strong> (0,80x combinato con l’esaurimento della cassa) — a differenza del profilo pre-intervento, che nello stesso scenario attraversava 4 anni su 5 in crisi. Il risultato è più favorevole di quanto un intervento di questa entità farebbe attendere a un primo sguardo: va letto con cautela, perché il margine sopra la soglia (0,85x contro 0,80x) è comunque stretto, non un cuscinetto ampio.</p>
+</section>
+</section>
+</section>
+<section id="apertura-a-mercati-esteri-ipotesi-narrativa" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Apertura a mercati esteri: ipotesi narrativa</h1>
+<p>Trattandosi di un’impresa fittizia, non esistono fonti di stampa da verificare. L’ipotesi di un canale export a maggiore marginalità è qui una <strong>costruzione narrativa esplicita</strong>, non un fatto verificato né un contratto acquisito. È ancorata a due soli elementi del profilo sintetico: collocazione nel Nord-Est e incidenza elevata dei costi di produzione. Il modello muove il margine operativo e la nuova finanza, ma non dispone ancora di un raccordo completo prezzo × volume × cliente × tempi di incasso: prima di usare questa ipotesi in una decisione reale servirebbero contratto, controparte, valore annuo, durata, marginalità incrementale, rampa produttiva e fabbisogno di circolante.</p>
+</section>
+<section id="sostenibilità-della-nuova-finanza-dscr-forward-looking" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Sostenibilità della nuova finanza: DSCR forward-looking</h1>
+<p>La valutazione prospettica del pacchetto di intervento richiede un business plan ipotizzato, con assunzioni dichiarate esplicitamente <span class="citation" data-cites="ebaGl202006"><a href="#ref-ebaGl202006" role="doc-biblioref">[1]</a></span>. Coerentemente con l’osservazione che il debito finanziario esistente non si è mai ridotto nei cinque anni di storico disponibile, l’ipotesi più prudente è trattarlo come <strong>rinnovato integralmente a ogni scadenza</strong> (non ammortizzante), e limitare l’ammortamento contrattuale alla sola nuova tranche export (5M€, 5 anni, tasso 6,5% scenario di base / 9,0% scenario avverso, coerente con il rating post-intervento).</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Anno</th>
+<th style="text-align: right;">DSCR, scenario di base</th>
+<th style="text-align: right;">DSCR, scenario avverso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">2,75x</td>
+<td style="text-align: right;">2,07x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">2,94x</td>
+<td style="text-align: right;">2,11x</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">3,14x</td>
+<td style="text-align: right;">2,17x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">3,38x</td>
+<td style="text-align: right;">2,24x</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: right;">3,63x</td>
+<td style="text-align: right;">2,32x</td>
+</tr>
+</tbody>
+</table>
+<p>Il servizio del debito è coperto ampiamente in entrambi gli scenari fin dal primo anno, senza mai avvicinarsi alla soglia dell’unità. Il risultato dipende in modo diretto dall’assunzione che il debito esistente resti rinnovato (interest-only) e non venga invece richiesto un piano di rientro: solo la nuova tranche export ammortizza. Se una controparte finanziatrice imponesse un ammortamento anche sul debito esistente, la copertura si ridurrebbe sensibilmente — un vincolo da verificare esplicitamente in sede di strutturazione, non da assumere per default. Il margine ampio qui osservato riflette anche l’effetto del rafforzamento patrimoniale e del miglioramento di margine già scontati nel pacchetto combinato su cui questo calcolo è costruito.</p>
+</section>
+<section id="profilo-di-centrale-rischi-sintetica" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Profilo di Centrale Rischi sintetica</h1>
+<p>Oltre al bilancio, l’infrastruttura di generazione dati del progetto produce una Centrale dei Rischi sintetica mensile — accordato/utilizzato, sconfinamenti, insoluti, numero di banche affidanti, richieste di prima informazione — costruita a partire dallo stesso profilo pluriennale. Non è una ricostruzione della Centrale dei Rischi di Banca d’Italia: è un modulo dimostrativo che genera traiettorie comportamentali coerenti con il profilo di bilancio dell’impresa, utile a mostrare come un secondo strato di segnale (comportamentale, non contabile) si combini con il primo.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 19%">
+<col style="width: 21%">
+<col style="width: 17%">
+<col style="width: 12%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Anno</th>
+<th style="text-align: right;">Utilizzo linee revocabili</th>
+<th style="text-align: right;">Utilizzo linee autoliquidanti</th>
+<th style="text-align: right;">Mesi con sconfinamento</th>
+<th style="text-align: right;">Banche affidanti</th>
+<th style="text-align: right;">Richieste prima informazione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2021</td>
+<td style="text-align: right;">63,6%</td>
+<td style="text-align: right;">62,1%</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">8,3</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2022</td>
+<td style="text-align: right;">66,1%</td>
+<td style="text-align: right;">65,0%</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9,0</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023</td>
+<td style="text-align: right;">56,9%</td>
+<td style="text-align: right;">58,2%</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9,0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2024</td>
+<td style="text-align: right;">56,9%</td>
+<td style="text-align: right;">63,5%</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9,0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2025</td>
+<td style="text-align: right;">59,6%</td>
+<td style="text-align: right;">61,4%</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9,0</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nessuno sconfinamento, nessun insoluto, nessun segnale di default acceso in cinque anni.</strong> Il dato più rilevante è la divergenza rispetto al bilancio: mentre gli indicatori reddituali e di cassa mostrano un deterioramento marcato e continuo, il comportamento osservabile in Centrale Rischi resta nella norma — utilizzo moderato delle linee (mai sopra il 66%), base di banche affidanti stabile (9, tipica di una grande impresa multi-affidata), nessuna tensione visibile. Questa divergenza non è una rassicurazione: nella prassi creditizia i dati comportamentali aggiornano più spesso ma reagiscono più lentamente al deterioramento strutturale rispetto al bilancio annuale, non il contrario — è un motivo in più, non in meno, per il monitoraggio infrannuale già raccomandato in chiusura.</p>
+</section>
+<section id="proiezione-su-scala-di-probabilità-di-default-ecaf" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Proiezione su scala di probabilità di default ECAF</h1>
+<p>Come ulteriore livello di lettura, il profilo di bilancio e comportamentale dell’impresa è stato proiettato su una scala di probabilità di default a un anno comparabile a quella che l’Eurosistema usa per classificare il merito di credito delle controparti nell’ambito della politica monetaria (Credit Quality Step, CQS) <span class="citation" data-cites="giovannelliIcasBankaItalia2020"><a href="#ref-giovannelliIcasBankaItalia2020" role="doc-biblioref">[2]</a></span>. Si tratta di un <strong>proxy dimostrativo</strong>, non di una replica del sistema di valutazione interno di una banca centrale: manca la segmentazione per fascia di esposizione e settore, manca il sistema esperto di revisione, e il campione sintetico su cui è stimato è troppo piccolo e troppo strutturato (un solo asse di fragilità dominante) perché il potere discriminante misurato sia generalizzabile — il proxy va letto come proiezione coerente del segnale già discusso sopra (rating, ICR, PD a cinque anni), non come una stima indipendente.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Anno</th>
+<th style="text-align: right;">PD proxy a un anno</th>
+<th style="text-align: left;">Classe (Credit Quality Step)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2021</td>
+<td style="text-align: right;">0,001%</td>
+<td style="text-align: left;">CQS2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2022</td>
+<td style="text-align: right;">0,003%</td>
+<td style="text-align: left;">CQS2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023</td>
+<td style="text-align: right;">&lt;0,001%</td>
+<td style="text-align: left;">CQS2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2024</td>
+<td style="text-align: right;">0,010%</td>
+<td style="text-align: left;">CQS2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2025</td>
+<td style="text-align: right;"><strong>0,105%</strong></td>
+<td style="text-align: left;"><strong>CQS3</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Nel 2025 il profilo attraversa la soglia minima di eleggibilità collaterale dell’Eurosistema (CQS3, PD 0,10%-0,40% a un anno) — coerente con il deterioramento già osservato su tutti gli altri indicatori nello stesso esercizio, non un segnale nuovo o indipendente.</p>
+</section>
+<section id="covenant-proposti" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Covenant proposti</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 30%">
+<col style="width: 13%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Covenant</th>
+<th style="text-align: right;">Valore attuale</th>
+<th style="text-align: right;">Soglia di allerta</th>
+<th style="text-align: right;">Soglia vincolante</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Indice di copertura interessi (EBIT / oneri finanziari)</td>
+<td style="text-align: right;">0,85x</td>
+<td style="text-align: right;">&lt; 1,00x</td>
+<td style="text-align: right;">&lt; 0,70x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Debito finanziario netto / EBITDA</td>
+<td style="text-align: right;">9,2x</td>
+<td style="text-align: right;">&gt; 8,0x</td>
+<td style="text-align: right;">&gt; 10,0x</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Patrimonio netto / Attivo</td>
+<td style="text-align: right;">22,3%</td>
+<td style="text-align: right;">&lt; 20,0%</td>
+<td style="text-align: right;">&lt; 15,0%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DSCR previsionale (in presenza di nuova finanza)</td>
+<td style="text-align: right;">2,07x (anno 1, ipotesi, scenario avverso)</td>
+<td style="text-align: right;">&lt; 1,50x</td>
+<td style="text-align: right;">&lt; 1,20x</td>
+</tr>
+</tbody>
+</table>
+<p>Le soglie di allerta su indice di copertura interessi e leva su EBITDA partono qui da un livello già superato dalla situazione attuale: è la conferma quantitativa che l’erogazione di nuova finanza non dovrebbe avvenire senza il contestuale rafforzamento patrimoniale discusso sopra — un covenant impostato sulla sola situazione corrente accoglierebbe un profilo già in violazione su questi due punti. La soglia DSCR, diversamente dalla versione precedente di questo dossier, è qui tarata sul profilo <strong>dopo</strong> il pacchetto combinato (DSCR forward-looking 2,1x-3,6x): una soglia &lt; 1,00x sarebbe, con i numeri aggiornati, sostanzialmente inerte.</p>
+</section>
+<section id="raccomandazioni" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Raccomandazioni</h1>
+<ol type="1">
+<li><strong>Non erogare nuova finanza senza un contestuale rafforzamento patrimoniale</strong>: la sola nuova finanza, per quanto destinata a un progetto a margine più alto, lascia l’impresa sottocapitalizzata; la sola immissione di capitale porta l’ICR esattamente a 1,00x, senza margine. Servono entrambe.</li>
+<li><strong>Non rinnovare il debito in scadenza al solo tasso di mercato corrente senza rivedere la struttura</strong>: a parità di importo, il solo aggiornamento del costo del debito al rating attuale porterebbe l’indice di copertura interessi a un livello di allarme grave (0,41x).</li>
+<li><strong>Subordinare l’erogazione della quota destinata al canale export a obiettivi di margine incrementale verificabili</strong>, non solo di fatturato: il beneficio sul merito di credito dipende dal miglioramento di marginalità, non dal solo incremento di volumi.</li>
+<li><strong>Monitorare la liquidità e il comportamento in Centrale Rischi con cadenza infrannuale</strong>: il crollo delle disponibilità liquide (-53% in un anno) precede ed eccede il deterioramento reddituale ed è il segnale più tempestivo di tensione; il fatto che la Centrale Rischi non mostri ancora sconfinamenti o insoluti non va letto come rassicurazione, ma come segnale non ancora emerso a livello comportamentale.</li>
+<li><strong>Verificare in sede di strutturazione se il debito esistente possa continuare a essere rinnovato senza piano di rientro</strong>: è l’assunzione su cui si regge l’intera valutazione di sostenibilità prospettica — qui il margine di sicurezza del DSCR (mai sotto 2x anche in scenario avverso) è ampio, ma dipende interamente da questa assunzione.</li>
+<li><strong>Valutare un autoliquidante soltanto dopo la verifica del portafoglio clienti</strong>: gli 8,9M€ di crediti commerciali rappresentano una base potenziale, ma il dossier non dispone di aging, concentrazione, nominativi, contestazioni o insoluti per fattura. Senza questi dati non è possibile qualificare i crediti come “clienti buoni” né dimensionare prudentemente un anticipo fatture. L’eventuale linea dovrebbe essere commisurata alle sole fatture eleggibili e prevedere limiti per debitore ceduto.</li>
+</ol>
+<hr>
+<p><strong>Nota metodologica</strong></p>
+<p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
+<p>Il presente caso di studio è costruito su un’impresa fittizia e su dati contabili interamente sintetici, generati per finalità dimostrative e metodologiche a partire da distribuzioni aggregate ufficiali delle imprese italiane: non fa riferimento ad alcuna impresa reale, né a dati di bilancio depositati, e non è pertanto soggetto a verifica di fonte primaria su un soggetto economico esistente. Le tabelle e i grafici sono elaborazioni dell’autore.</p>
+<p>La responsabilità per le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+<div id="quarto-appendix" class="default">
+<section id="quarto-bibliography" class="level2 quarto-appendix-heading" data-number="12.1">
+<h2 class="quarto-appendix-heading anchored" data-number="12.1" data-anchor-id="quarto-bibliography"><span class="header-section-number">12.1</span> Referenze</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-ebaGl202006" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[1]
+</div>
+<div class="csl-right-inline">
+European Banking Authority, «Guidelines on loan origination and monitoring (EBA/GL/2020/06)». 2020.
+</div>
+</div>
+<div id="ref-giovannelliIcasBankaItalia2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[2]
+</div>
+<div class="csl-right-inline">
+F. Giovannelli, A. Iannamorelli, A. Levy, e M. Orlandi, «The in-house credit assessment system of Banca d’Italia», <em>SSRN Electronic Journal (Banca d’Italia Questioni di Economia e Finanza n.&nbsp;586)</em>, 2020, doi: <a href="https://doi.org/10.2139/ssrn.3746228">10.2139/ssrn.3746228</a>.
+</div>
+</div>
+</div>
+</section>
+</div>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
