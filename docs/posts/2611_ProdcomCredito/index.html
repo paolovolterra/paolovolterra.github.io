@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="Prodcom, Eurostat, produzione industriale, credito PMI, analisi settoriale, early warning">
+<meta name="description" content="Eurostat pubblica ogni anno, tramite il sistema Prodcom, il valore e la quantità della produzione venduta in Europa per circa 4.500 prodotti industriali distinti, molto più dettagliati dei consueti indicatori settoriali aggregati.">
+
+<title>Dati Prodcom per il credito bancario – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Dati Prodcom per il credito bancario – Paolo Volterra">
+<meta property="og:description" content="Eurostat pubblica ogni anno, tramite il sistema Prodcom, il valore e la quantità della produzione venduta in Europa per circa 4.500 prodotti industriali distinti, molto più dettagliati dei consueti indicatori settoriali aggregati.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2611_ProdcomCredito/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Dati Prodcom per il credito bancario – Paolo Volterra">
+<meta name="twitter:description" content="Eurostat pubblica ogni anno, tramite il sistema Prodcom, il valore e la quantità della produzione venduta in Europa per circa 4.500 prodotti industriali distinti, molto più dettagliati dei consueti indicatori settoriali aggregati.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2611_ProdcomCredito/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/in_parole_semplici/"> <i class="bi bi-instagram" role="img" aria-label="Instagram">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#introduzione" id="toc-introduzione" class="nav-link active" data-scroll-target="#introduzione"><span class="header-section-number">1</span> Introduzione</a></li>
+  <li><a href="#il-dettaglio-del-dato-prodcom" id="toc-il-dettaglio-del-dato-prodcom" class="nav-link" data-scroll-target="#il-dettaglio-del-dato-prodcom"><span class="header-section-number">2</span> Il dettaglio del dato Prodcom</a></li>
+  <li><a href="#cinque-usi-pratici" id="toc-cinque-usi-pratici" class="nav-link" data-scroll-target="#cinque-usi-pratici"><span class="header-section-number">3</span> Cinque usi pratici</a>
+  <ul class="collapse">
+  <li><a href="#tensioni-sui-costi-di-produzione-prima-che-si-vedano-nei-margini-del-cliente" id="toc-tensioni-sui-costi-di-produzione-prima-che-si-vedano-nei-margini-del-cliente" class="nav-link" data-scroll-target="#tensioni-sui-costi-di-produzione-prima-che-si-vedano-nei-margini-del-cliente"><span class="header-section-number">3.1</span> Tensioni sui costi di produzione, prima che si vedano nei margini del cliente</a></li>
+  <li><a href="#piani-di-crescita-rispetto-al-mercato-di-riferimento" id="toc-piani-di-crescita-rispetto-al-mercato-di-riferimento" class="nav-link" data-scroll-target="#piani-di-crescita-rispetto-al-mercato-di-riferimento"><span class="header-section-number">3.2</span> Piani di crescita rispetto al mercato di riferimento</a></li>
+  <li><a href="#esposizione-a-filiere-in-transizione" id="toc-esposizione-a-filiere-in-transizione" class="nav-link" data-scroll-target="#esposizione-a-filiere-in-transizione"><span class="header-section-number">3.3</span> Esposizione a filiere in transizione</a></li>
+  <li><a href="#crescita-reale-o-solo-effetto-prezzo" id="toc-crescita-reale-o-solo-effetto-prezzo" class="nav-link" data-scroll-target="#crescita-reale-o-solo-effetto-prezzo"><span class="header-section-number">3.4</span> Crescita reale o solo effetto prezzo</a></li>
+  <li><a href="#concentrazione-settoriale-e-posizionamento-competitivo-del-portafoglio" id="toc-concentrazione-settoriale-e-posizionamento-competitivo-del-portafoglio" class="nav-link" data-scroll-target="#concentrazione-settoriale-e-posizionamento-competitivo-del-portafoglio"><span class="header-section-number">3.5</span> Concentrazione settoriale e posizionamento competitivo del portafoglio</a></li>
+  <li><a href="#il-caso-italia-struttura-e-concentrazione-della-produzione" id="toc-il-caso-italia-struttura-e-concentrazione-della-produzione" class="nav-link" data-scroll-target="#il-caso-italia-struttura-e-concentrazione-della-produzione"><span class="header-section-number">3.6</span> Il caso Italia: struttura e concentrazione della produzione</a></li>
+  </ul></li>
+  <li><a href="#un-precedente-già-esistente-sul-mercato" id="toc-un-precedente-già-esistente-sul-mercato" class="nav-link" data-scroll-target="#un-precedente-già-esistente-sul-mercato"><span class="header-section-number">4</span> Un precedente già esistente sul mercato</a></li>
+  <li><a href="#codice-prodotto-o-codice-ateco-quale-usare-per-la-filiera" id="toc-codice-prodotto-o-codice-ateco-quale-usare-per-la-filiera" class="nav-link" data-scroll-target="#codice-prodotto-o-codice-ateco-quale-usare-per-la-filiera"><span class="header-section-number">5</span> Codice prodotto o codice Ateco: quale usare per la filiera</a></li>
+  <li><a href="#limiti-del-dato" id="toc-limiti-del-dato" class="nav-link" data-scroll-target="#limiti-del-dato"><span class="header-section-number">6</span> Limiti del dato</a></li>
+  <li><a href="#conclusioni" id="toc-conclusioni" class="nav-link" data-scroll-target="#conclusioni"><span class="header-section-number">7</span> Conclusioni</a></li>
+  <li><a href="#fonti-dei-dati" id="toc-fonti-dei-dati" class="nav-link" data-scroll-target="#fonti-dei-dati"><span class="header-section-number">8</span> Fonti dei dati</a></li>
+  <li><a href="#quarto-bibliography" id="toc-quarto-bibliography" class="nav-link" data-scroll-target="#quarto-bibliography"><span class="header-section-number">9</span> Referenze</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Dati Prodcom per il credito bancario</h1>
+<p class="subtitle lead">Cosa dice la produzione venduta per prodotto sui settori affidati</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Banche e credito</div>
+    <div class="quarto-category">Imprese</div>
+    <div class="quarto-category">Dati e metodo</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Eurostat pubblica ogni anno, tramite il sistema Prodcom, il valore e la quantità della produzione venduta in Europa per circa 4.500 prodotti industriali distinti, molto più dettagliati dei consueti indicatori settoriali aggregati.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">24 agosto 2026</p>
+    </div>
+  </div>
+  
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.22089682">10.5281/zenodo.22089682</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>Eurostat pubblica ogni anno, tramite il sistema Prodcom, il valore e la quantità della produzione venduta in Europa per circa 4.500 prodotti industriali distinti, molto più dettagliati dei consueti indicatori settoriali aggregati. Questo documento ne illustra l’uso pratico per chi analizza il credito alle imprese in banca, con esempi numerici tratti dai dati 2015-2025: individuazione anticipata di tensioni settoriali, verifica di piani industriali presentati in istruttoria, misura della pressione sui costi di produzione, valutazione di esposizioni export e benchmark di concentrazione di portafoglio. Un confronto con un indicatore analogo già pubblicato da un’associazione industriale territoriale mostra che l’uso di indici di prezzo o di produzione per filiera manifatturiera non è un’idea ipotetica, ma una pratica già esistente sul mercato italiano. Il documento segnala anche i limiti del dato: valori nominali non deflazionati, quote per paese sottostimate per celle riservate, e un disallineamento fisiologico tra le versioni della classificazione dei prodotti da un anno all’altro.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>Prodcom, Eurostat, produzione industriale, credito PMI, analisi settoriale, early warning</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Versione citabile su Zenodo, con il PDF: <a href="https://doi.org/10.5281/zenodo.22089682">doi.org/10.5281/zenodo.22089682</a>.</p>
+</div>
+</div>
+</div>
+<section id="introduzione" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="introduzione"><span class="header-section-number">1</span> Introduzione</h2>
+<p>I dati di bilancio di un cliente affidato raccontano cosa è successo alla singola impresa. Non dicono, da soli, se quel risultato è in linea con il settore in cui l’impresa opera, se il settore sta accelerando o rallentando, o se un piano industriale presentato in istruttoria assume una crescita compatibile con la dimensione reale del mercato di riferimento. Per rispondere a queste domande serve un dato di contesto settoriale sufficientemente dettagliato da distinguere, ad esempio, un produttore di parti per autoveicoli da un produttore di autoveicoli completi, oppure un produttore di antibiotici da un produttore di integratori vitaminici.</p>
+<p>Il sistema Prodcom di Eurostat offre questo livello di dettaglio. Ogni anno gli Stati membri rilevano il valore e la quantità della produzione venduta per circa 4.500 prodotti industriali distinti, identificati da un codice a otto cifre che si annida in una gerarchia a cinque livelli: divisione, gruppo e classe di attività economica, seguiti da voce e sottovoce di prodotto <span class="citation" data-cites="eurostat_industrial_production_se"><a href="#ref-eurostat_industrial_production_se" role="doc-biblioref">[1]</a></span>. Questo documento illustra, con numeri tratti dai dati 2015-2025, alcuni usi pratici di questo dato per chi analizza il credito alle imprese in banca.</p>
+</section>
+<section id="il-dettaglio-del-dato-prodcom" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="il-dettaglio-del-dato-prodcom"><span class="header-section-number">2</span> Il dettaglio del dato Prodcom</h2>
+<p>Gli indicatori settoriali più diffusi (indice della produzione industriale mensile, valore aggiunto per branca di attività) si fermano al livello di divisione economica, circa trenta categorie che vanno dall’estrazione mineraria alla riparazione di macchinari. Prodcom scende molto più in profondità: la sola divisione della fabbricazione di autoveicoli si scompone in quattro classi distinte — autoveicoli completi, carrozzerie, parti e accessori, apparecchiature elettriche ed elettroniche per veicoli — ciascuna con un proprio valore di produzione venduta annuale.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 46%">
+<col style="width: 24%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Classe</th>
+<th style="text-align: right;">Valore 2025 (mld €)</th>
+<th style="text-align: left;">Quota sulla divisione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Autoveicoli</td>
+<td style="text-align: right;">430.4</td>
+<td style="text-align: left;">59.4%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Carrozzerie</td>
+<td style="text-align: right;">33.4</td>
+<td style="text-align: left;">4.6%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Apparecchiature elettriche/elettroniche</td>
+<td style="text-align: right;">28.0</td>
+<td style="text-align: left;">3.9%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Parti e accessori</td>
+<td style="text-align: right;">233.3</td>
+<td style="text-align: left;">32.2%</td>
+</tr>
+</tbody>
+</table>
+<p>Un produttore di apparecchiature elettriche ed elettroniche per autoveicoli opera in un segmento che vale meno del 4 per cento del valore totale della divisione autoveicoli nell’Unione Europea. Un piano industriale che, per un’impresa attiva in questo segmento, prevede una crescita di fatturato costruita su un’espansione generalizzata della domanda automobilistica va verificato contro la dimensione reale di questo mercato, non contro quella, molto più ampia, dell’intera filiera dell’auto.</p>
+</section>
+<section id="cinque-usi-pratici" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="cinque-usi-pratici"><span class="header-section-number">3</span> Cinque usi pratici</h2>
+<section id="tensioni-sui-costi-di-produzione-prima-che-si-vedano-nei-margini-del-cliente" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="tensioni-sui-costi-di-produzione-prima-che-si-vedano-nei-margini-del-cliente"><span class="header-section-number">3.1</span> Tensioni sui costi di produzione, prima che si vedano nei margini del cliente</h3>
+<p>Il rapporto tra valore e quantità venduta di un prodotto specifico restituisce un prezzo unitario implicito, un indicatore di pressione sui costi di produzione più granulare degli indici di inflazione aggregati. Il pane fresco a basso contenuto di zuccheri e grassi, un prodotto alimentare di base rilevato in tutti gli Stati membri, ne è un esempio:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Anno</th>
+<th style="text-align: right;">Prezzo (€/kg)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">1.78</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">1.50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">1.97</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">1.99</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">1.95</td>
+</tr>
+</tbody>
+</table>
+<p>Tra il 2022 e il 2023 il prezzo unitario del pane fresco è salito da 1,50 a 1,97 euro al chilo, un rincaro del 31 per cento in un solo anno, in un contesto di forte tensione sui prezzi dell’energia e delle materie prime agricole. Un’impresa panificatrice affidata che nello stesso periodo mostra margini in compressione sta verosimilmente subendo una pressione settoriale generalizzata, non necessariamente un problema di gestione specifico dell’azienda. La distinzione è rilevante in fase di revisione del rating: un margine in calo per shock di costo di filiera pesa in modo diverso da un margine in calo per perdita di competitività.</p>
+</section>
+<section id="piani-di-crescita-rispetto-al-mercato-di-riferimento" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="piani-di-crescita-rispetto-al-mercato-di-riferimento"><span class="header-section-number">3.2</span> Piani di crescita rispetto al mercato di riferimento</h3>
+<p>Come mostrato per la divisione degli autoveicoli, Prodcom consente di verificare se la crescita dichiarata da un’impresa in istruttoria è compatibile con l’andamento effettivo del suo segmento di mercato. Lo stesso confronto si applica in direzione opposta: quando un settore cresce in modo marcato, un’impresa che in portafoglio resta ferma merita una domanda sul perché non stia beneficiando dello stesso slancio.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Anno</th>
+<th style="text-align: right;">Resto principi attivi (mld €)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">31.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">28.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">38.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">49.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">70.0</td>
+</tr>
+</tbody>
+</table>
+<p>Il segmento residuale dei principi attivi farmaceutici di base, che esclude vitamine e antibiotici già seguiti separatamente da Eurostat, è più che raddoppiato tra il 2021 e il 2025, da 31,9 a 70,0 miliardi di euro nell’Unione Europea. Un fornitore affidato in questo comparto che nello stesso periodo non ha mostrato crescita comparabile opera in un contesto favorevole che non sta sfruttando, un elemento da approfondire in sede di revisione della relazione.</p>
+</section>
+<section id="esposizione-a-filiere-in-transizione" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="esposizione-a-filiere-in-transizione"><span class="header-section-number">3.3</span> Esposizione a filiere in transizione</h3>
+<p>Il numero di aerogeneratori prodotti nell’Unione Europea, rilevato in pezzi, offre un indicatore diretto della domanda della filiera eolica, utile per la due diligence di finanziamenti a fornitori di componenti per l’energia rinnovabile.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Anno</th>
+<th style="text-align: right;">Aerogeneratori prodotti (pezzi)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">6775</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">9100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">12000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">11210</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">15380</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">20000</td>
+</tr>
+</tbody>
+</table>
+<p>Dal minimo del 2020, condizionato dalla pandemia, al 2025 la produzione è quasi triplicata. Per una banca che finanzia fornitori di componenti per turbine eoliche, questo andamento è un riscontro di mercato utile a valutare la plausibilità delle proiezioni di crescita presentate nel piano industriale del cliente, prima di convalidare le assunzioni sottostanti a un finanziamento con finalità ambientali.</p>
+</section>
+<section id="crescita-reale-o-solo-effetto-prezzo" class="level3" data-number="3.4">
+<h3 data-number="3.4" class="anchored" data-anchor-id="crescita-reale-o-solo-effetto-prezzo"><span class="header-section-number">3.4</span> Crescita reale o solo effetto prezzo</h3>
+<p>Il valore complessivo della produzione venduta è espresso in termini nominali. Per capire se una crescita dichiarata riflette un aumento reale di volumi o solo un aumento dei prezzi alla produzione, è necessario confrontarla con un indice dei prezzi alla produzione dello stesso comparto.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 40%">
+<col style="width: 46%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Anno</th>
+<th style="text-align: right;">Valore produzione (2021=100)</th>
+<th style="text-align: right;">Prezzi alla produzione (2021=100)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">100.0</td>
+<td style="text-align: right;">100.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">113.9</td>
+<td style="text-align: right;">125.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">116.0</td>
+<td style="text-align: right;">124.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">114.1</td>
+<td style="text-align: right;">121.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">118.9</td>
+<td style="text-align: right;">122.2</td>
+</tr>
+</tbody>
+</table>
+<p>Tra il 2022 e il 2025 l’indice dei prezzi alla produzione dell’industria è sceso, mentre il valore nominale della produzione venduta ha tenuto e recuperato. Questo scarto è un <strong>indizio</strong>, non una dimostrazione, che la crescita del 2025 non sia spiegata soltanto dai prezzi: i due aggregati hanno coperture e pesi settoriali diversi (PPI a livello B-E36, Prodcom per singolo prodotto), quindi il confronto va letto come primo controllo di plausibilità, da affinare con una deflazione PPI coerente per NACE quando si valuta un singolo cliente o comparto.</p>
+</section>
+<section id="concentrazione-settoriale-e-posizionamento-competitivo-del-portafoglio" class="level3" data-number="3.5">
+<h3 data-number="3.5" class="anchored" data-anchor-id="concentrazione-settoriale-e-posizionamento-competitivo-del-portafoglio"><span class="header-section-number">3.5</span> Concentrazione settoriale e posizionamento competitivo del portafoglio</h3>
+<p>I dati per divisione economica permettono un confronto tra il peso di un settore nel portafoglio crediti di una banca e il suo peso nell’economia manifatturiera europea.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Divisione</th>
+<th style="text-align: right;">Quota su UE 2025 (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Alimentari</td>
+<td style="text-align: right;">18.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Autoveicoli</td>
+<td style="text-align: right;">11.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Macchinari</td>
+<td style="text-align: right;">9.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chimica</td>
+<td style="text-align: right;">7.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Prodotti in metallo</td>
+<td style="text-align: right;">6.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Metalli di base</td>
+<td style="text-align: right;">6.0</td>
+</tr>
+</tbody>
+</table>
+<p>Un portafoglio crediti corporate sovraesposto, ad esempio, al settore automotive rispetto all’11,2 per cento che questo rappresenta nell’economia manifatturiera europea segnala una concentrazione di rischio da leggere nel confronto con questo benchmark, non isolatamente.</p>
+<p>Lo stesso confronto vale a livello di paese. Sulla base della somma dei valori dichiarati dai singoli Stati membri, che sottostimano leggermente il totale per la presenza di celle riservate a livello nazionale, la Germania rappresenta il 29,3 per cento della produzione venduta dell’Unione Europea nel 2025, l’Italia il 17,6 per cento, la Francia l’11,7 per cento. Per un’impresa italiana che compete con controparti tedesche in una divisione specifica, questo dato indica il peso relativo dei due paesi in quella divisione, e quindi il grado di esposizione italiana a uno shock settoriale rispetto alla media del sistema.</p>
+</section>
+<section id="il-caso-italia-struttura-e-concentrazione-della-produzione" class="level3" data-number="3.6">
+<h3 data-number="3.6" class="anchored" data-anchor-id="il-caso-italia-struttura-e-concentrazione-della-produzione"><span class="header-section-number">3.6</span> Il caso Italia: struttura e concentrazione della produzione</h3>
+<p>Applicato al solo mercato italiano, il dato Prodcom restituisce un profilo coerente con l’andamento noto dell’industria manifatturiera nazionale nell’ultimo decennio.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Anno</th>
+<th style="text-align: right;">PRODVAL Italia (mld €)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">624.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">634.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">745.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">705.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">672.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">676.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">771.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">864.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">829.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">822.5</td>
+</tr>
+</tbody>
+</table>
+<p>Dopo il recupero del 2021-2022 dal minimo pandemico, il valore della produzione venduta italiana ha rallentato nel 2023 e nel 2024, in linea con la fase di debolezza dell’industria manifatturiera europea richiamata in apertura. Sul sottoinsieme di codici prodotto pubblicati sia nel 2024 sia nel 2025 — poco più di due terzi del totale, per via della copertura ancora parziale dell’anno più recente — il confronto a parità di prodotti indica una ripresa dell’1,6 per cento tra i due anni.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Divisione</th>
+<th style="text-align: right;">Quota su Italia 2024 (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Alimentari</td>
+<td style="text-align: right;">17.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Macchinari</td>
+<td style="text-align: right;">12.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Prodotti in metallo</td>
+<td style="text-align: right;">9.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Metalli di base</td>
+<td style="text-align: right;">8.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gomma e materie plastiche</td>
+<td style="text-align: right;">5.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chimica</td>
+<td style="text-align: right;">5.5</td>
+</tr>
+</tbody>
+</table>
+<p>Cinque divisioni concentrano oltre la metà del valore della produzione venduta italiana nel 2024. La concentrazione è marcata anche a livello di singolo prodotto: i primi 10 codici valgono il 7.4 per cento del totale, i primi 100 il 37.5 per cento, i primi 500 (su 3282 codici con valore pubblicato) il 73.9 per cento — una struttura a coda lunga tipica di un catalogo di circa 4.500 prodotti. Per chi analizza il credito in banca, questa gerarchia offre un termine di paragone diretto per valutare se la composizione settoriale del proprio portafoglio corporate italiano rispecchia la struttura reale dell’industria nazionale o ne diverge in modo significativo.</p>
+</section>
+</section>
+<section id="un-precedente-già-esistente-sul-mercato" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="un-precedente-già-esistente-sul-mercato"><span class="header-section-number">4</span> Un precedente già esistente sul mercato</h2>
+<p>L’idea di costruire indici di prezzo o di costo per filiera manifatturiera non è ipotetica: esistono già indicatori di questo tipo, distribuiti da associazioni industriali territoriali alle imprese associate per monitorare la pressione sui margini. Un esempio verificato è l’indice <strong>APPIA</strong> di Confindustria Verona, un indicatore mensile dei prezzi di acquisto delle materie prime per le imprese manifatturiere, scomposto per filiera — energia, alimentare, legno e carta, meccanica, metallurgia <span class="citation" data-cites="ConfindustriaVerona2026Appia"><a href="#ref-ConfindustriaVerona2026Appia" role="doc-biblioref">[2]</a></span>. Nell’edizione di agosto 2026 l’indice segnalava un rincaro del 2,5 per cento su base mensile, trainato per l’11,5 per cento dal comparto energia in seguito a tensioni geopolitiche in Medio Oriente.</p>
+<p>Un indice di questo tipo si presta a usi analoghi a quelli descritti per Prodcom in questo documento. Un’impresa associata lo utilizza per distinguere un aumento dei propri costi di acquisto dovuto a uno shock di filiera generalizzato da un problema di negoziazione specifico con i propri fornitori, per calibrare la tempistica di revisione dei listini di vendita, o per motivare in modo documentato una richiesta di rinegoziazione dei prezzi in un contratto di fornitura pluriennale. Chi analizza il credito in banca può leggere lo stesso dato in chiave di monitoraggio di portafoglio, per anticipare la pressione sui margini di più imprese affidate attive nella stessa filiera prima che si manifesti nei bilanci.</p>
+<p>La fonte dei dati è diversa da quella qui presentata: l’indice APPIA si basa su quotazioni di mercato delle materie prime, non sul valore della produzione venduta rilevato da Prodcom. La logica applicativa, tuttavia, è la stessa: un indicatore di prezzo o di costo scomposto per filiera manifatturiera, distribuito a supporto delle imprese associate. Questo conferma che l’uso di dati settoriali granulari a supporto delle decisioni di credito e di monitoraggio del portafoglio è una pratica già consolidata nel sistema italiano, non una proposta sperimentale.</p>
+</section>
+<section id="codice-prodotto-o-codice-ateco-quale-usare-per-la-filiera" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="codice-prodotto-o-codice-ateco-quale-usare-per-la-filiera"><span class="header-section-number">5</span> Codice prodotto o codice Ateco: quale usare per la filiera</h2>
+<p>Una domanda che si pone spesso in fase di analisi di filiera è se convenga mappare fornitori e clienti di un comparto per codice Ateco dell’impresa o per codice prodotto. Le due classificazioni rispondono a domande diverse. Il codice Ateco classifica l’attività economica prevalente dichiarata da un’impresa nel registro delle imprese; il codice Prodcom classifica il prodotto realizzato, indipendentemente dall’attività prevalente dell’impresa che lo produce.</p>
+<p>Una filiera è un flusso fisico di prodotti e componenti tra stadi produttivi, non un insieme di imprese accomunate da un’etichetta settoriale. Usare l’Ateco d’impresa per ricostruirla introduce due distorsioni sistematiche. Un’impresa la cui attività prevalente dichiarata è diversa dal nodo di filiera in esame, ma che realizza quel prodotto come produzione secondaria, non compare se si filtra per Ateco (falso negativo). Viceversa, un’impresa multi-prodotto compare per intero — fatturato e addetti compresi — in un solo codice Ateco, anche quando solo una frazione della sua produzione appartiene al nodo di filiera in esame (falso positivo, o rumore). Il codice prodotto evita entrambe le distorsioni perché segue il bene realizzato, non l’anagrafica dell’impresa che lo produce.</p>
+<p>Il limite pratico di questo approccio è la copertura: Prodcom rileva soltanto le sezioni Ateco B (estrazione di minerali) e C (attività manifatturiere), più il recupero di rifiuti (classe 38.21). Per gli stadi di filiera che ricadono nei servizi o in altre sezioni non esiste un equivalente altrettanto granulare, e non esiste una matrice pubblica impresa-per-prodotto che permetta di redistribuire in modo esatto fatturato e addetti Ateco sui singoli codici prodotto: quel dato è protetto da segreto statistico.</p>
+<p>Per l’analisi di filiera estesa a tutta l’economia — non solo alle sezioni B e C — lo strumento pensato appositamente non è l’Ateco d’impresa ma le tavole Input-Output/Supply-Use in classificazione CPA (le “tavole delle risorse e degli impieghi” nella tradizione statistica italiana, “Supply-Use Tables” in quella europea), che modellano direttamente i flussi intersettoriali — chi utilizza quale prodotto come input di chi. È la definizione stessa di filiera, non un’etichetta anagrafica d’impresa, anche se a un livello di dettaglio molto più aggregato e con una tempestività tipicamente inferiore.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 28%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">Prodcom</th>
+<th style="text-align: left;">Tavole Input-Output / Supply-Use (CPA)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Copertura</td>
+<td style="text-align: left;">Sezioni B e C (+ 38.21)</td>
+<td style="text-align: left;">Intera economia, beni e servizi</td>
+</tr>
+<tr class="even">
+<td>Granularità di prodotto</td>
+<td style="text-align: left;">~4.500 codici a 8 cifre</td>
+<td style="text-align: left;">~60 prodotti (circa NACE a 2 cifre)</td>
+</tr>
+<tr class="odd">
+<td>Livello di rilevazione</td>
+<td style="text-align: left;">Impresa/unità produttiva</td>
+<td style="text-align: left;">Matrice settore per settore, aggregata a livello nazionale</td>
+</tr>
+<tr class="even">
+<td>Tempestività</td>
+<td style="text-align: left;">Dati annuali recenti</td>
+<td style="text-align: left;">Ritardo tipico di 2-3 anni</td>
+</tr>
+<tr class="odd">
+<td>Doppio conteggio da produzione secondaria</td>
+<td style="text-align: left;">Possibile se non gestito esplicitamente</td>
+<td style="text-align: left;">Non si pone, per costruzione della matrice</td>
+</tr>
+</tbody>
+</table>
+<p>In pratica i due strumenti si completano: Prodcom per il dettaglio di prodotto dentro le sezioni B e C, le tavole Input-Output/CPA per la mappa intersettoriale a monte e a valle su tutta la filiera, servizi inclusi. Il codice Ateco d’impresa resta l’ultima risorsa, da usare solo dove mancano entrambe le fonti più granulari.</p>
+</section>
+<section id="limiti-del-dato" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="limiti-del-dato"><span class="header-section-number">6</span> Limiti del dato</h2>
+<p>Il valore della produzione venduta rilevato da Prodcom è espresso in termini <strong>nominali</strong>. Confrontarlo direttamente nel tempo, senza deflazionarlo, confonde l’effetto prezzo con l’effetto volume — la sezione precedente sul confronto con l’indice dei prezzi alla produzione mostra come mitigare questo limite quando rilevante.</p>
+<p>Le quote per singolo paese sono leggermente <strong>sottostimate</strong> rispetto al totale europeo: i dati riservati per motivi di segretezza statistica (poche imprese concentrano la produzione di un dato prodotto in un paese) sono esclusi dai dettagli per paese ma inclusi nell’aggregato europeo. Il divario osservato sul 2025 è di circa il 24 per cento tra la somma dei valori nazionali e il totale europeo dichiarato. Le quote nazionali qui riportate sono quindi quote sui dati <strong>pubblicati</strong>, non stime imparziali delle quote economiche reali: la soppressione per riservatezza può essere asimmetrica tra paesi e settori (un paese con pochi produttori concentrati in un dato prodotto è soppresso più spesso di uno con filiera frammentata), quindi il ranking tra paesi va trattato come indicativo, non come misura esatta, soprattutto quando gli scarti tra due paesi sono piccoli.</p>
+<p>Il sistema Prodcom classifica il <strong>prodotto realizzato</strong>, non l’attività economica dichiarata dall’impresa che lo produce: il codice Prodcom e il codice Ateco coincidono solo nelle prime quattro cifre (la classe NACE), oltre le quali le due classificazioni divergono. La rilevazione, inoltre, copre soltanto le sezioni Ateco B e C (più il recupero rifiuti, 38.21): per gli altri settori dell’economia — servizi in primis — non esiste un equivalente altrettanto granulare, come illustrato più sopra a proposito dell’analisi di filiera.</p>
+<p>Infine, la lista dei codici prodotto <strong>cambia composizione da un anno all’altro</strong>, per effetto di periodiche revisioni della classificazione europea dei prodotti. Il confronto tra il totale calcolato sui dati 2024 e il totale dichiarato da Eurostat per lo stesso anno mostra uno scarto di circa l’11 per cento, riconducibile a un numero limitato di codici prodotto non più validi con la classificazione più recente. Il confronto tra anni consecutivi resta affidabile a livello di divisione o di singolo prodotto stabile nel tempo; un confronto di lungo periodo sul totale aggregato richiede l’uso della lista di codici corretta per l’anno di riferimento.</p>
+</section>
+<section id="conclusioni" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="conclusioni"><span class="header-section-number">7</span> Conclusioni</h2>
+<p>Il sistema Prodcom di Eurostat offre un livello di dettaglio settoriale — fino al singolo prodotto — che gli indicatori congiunturali abituali non forniscono. Non sostituisce l’analisi di bilancio del singolo cliente, ma la colloca in un contesto settoriale verificabile: permette di distinguere shock di filiera da problemi aziendali specifici, di verificare la plausibilità dei piani industriali presentati in istruttoria, di misurare l’esposizione a filiere in trasformazione, di leggere la crescita del fatturato al netto dell’effetto prezzo, e di confrontare la concentrazione settoriale di un portafoglio crediti con la struttura dell’economia manifatturiera europea. La pubblicazione di indici analoghi da parte di associazioni di categoria italiane, basati su fonti diverse ma con la stessa logica applicativa, conferma che questo tipo di dato risponde a un’esigenza informativa già riconosciuta sul mercato.</p>
+</section>
+<section id="fonti-dei-dati" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="fonti-dei-dati"><span class="header-section-number">8</span> Fonti dei dati</h2>
+<p>I dati di produzione venduta per prodotto provengono dal sistema Prodcom di Eurostat, diffuso tramite l’infrastruttura Comext: la serie storica 2015-2024, classificata secondo la Nomenclatura statistica delle attività economiche NACE Rev.&nbsp;2.1 <span class="citation" data-cites="eurostat20260824"><a href="#ref-eurostat20260824" role="doc-biblioref">[3]</a></span>, e la serie 2025, classificata secondo la Classificazione dei prodotti per attività CPA 2.2 <span class="citation" data-cites="Eurostat2026Abgesetzte"><a href="#ref-Eurostat2026Abgesetzte" role="doc-biblioref">[4]</a></span>. Il confronto con i prezzi alla produzione utilizza l’indicatore armonizzato dei prezzi alla produzione industriale dell’Unione Europea. La metodologia di raccordo tra le classificazioni Prodcom nel tempo e la Nomenclatura Combinata doganale è discussa in <span class="citation" data-cites="VanBeveren2012Concording"><a href="#ref-VanBeveren2012Concording" role="doc-biblioref">[5]</a></span>. L’uso di microdati Prodcom per l’analisi della produttività e dell’eterogeneità di impresa è illustrato in <span class="citation" data-cites="DeLoecker2007Product"><a href="#ref-DeLoecker2007Product" role="doc-biblioref">[6]</a></span> e in <span class="citation" data-cites="DeRidder2023Market"><a href="#ref-DeRidder2023Market" role="doc-biblioref">[7]</a></span>; un’applicazione a livello di singolo impianto in Italia è in <span class="citation" data-cites="EspaFilipponi2014Decomposing"><a href="#ref-EspaFilipponi2014Decomposing" role="doc-biblioref">[8]</a></span>.</p>
+<hr>
+<p><strong>Trasparenza sull’uso dell’intelligenza artificiale</strong></p>
+<p>L’uso di strumenti di intelligenza artificiale generativa è dichiarato esplicitamente in quanto parte del processo di lavoro seguito nella redazione del presente documento. Tali strumenti sono stati impiegati a supporto della lettura, della sintesi, della riorganizzazione argomentativa e della revisione testuale, sempre nell’ambito di un processo pienamente controllato dall’autore.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le verifiche effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore.</p>
+<p>L’intelligenza artificiale è stata utilizzata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+</section>
+<div id="quarto-appendix" class="default">
+<section id="quarto-bibliography" class="level2 quarto-appendix-heading" data-number="9">
+<h2 class="quarto-appendix-heading anchored" data-number="9" data-anchor-id="quarto-bibliography"><span class="header-section-number">9</span> Referenze</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-eurostat_industrial_production_se" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[1]
+</div>
+<div class="csl-right-inline">
+Eurostat, «Statistics Explained: Industrial production statistics». 2026. Disponibile su: <a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Industrial_production_statistics" class="uri">https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Industrial_production_statistics</a>
+</div>
+</div>
+<div id="ref-ConfindustriaVerona2026Appia" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[2]
+</div>
+<div class="csl-right-inline">
+Confindustria Verona, «Report mensile APPIA — agosto 2026». agosto 2026. Disponibile su: <a href="https://www.confindustria.verona.it/gate/contents/documento?openform&amp;id=DC9008275B9BADB6C1258AC200537CA5" class="uri">https://www.confindustria.verona.it/gate/contents/documento?openform&amp;id=DC9008275B9BADB6C1258AC200537CA5</a>
+</div>
+</div>
+<div id="ref-eurostat20260824" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[3]
+</div>
+<div class="csl-right-inline">
+Eurostat, «EU industrial production rebounds in 2025». 24 agosto 2026. Disponibile su: <a href="https://ec.europa.eu/eurostat/en/web/products-eurostat-news/w/ddn-20260824-1" class="uri">https://ec.europa.eu/eurostat/en/web/products-eurostat-news/w/ddn-20260824-1</a>
+</div>
+</div>
+<div id="ref-Eurostat2026Abgesetzte" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[4]
+</div>
+<div class="csl-right-inline">
+Eurostat, «Abgesetzte Produktion, Aus- und Einfuhren nach PRODCOM-Liste (CPA 2.2)», <em>Publications Office of the European Union</em>, 2026, doi: <a href="https://doi.org/10.2908/ds-059367">10.2908/ds-059367</a>.
+</div>
+</div>
+<div id="ref-VanBeveren2012Concording" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[5]
+</div>
+<div class="csl-right-inline">
+I. V. Beveren, A. B. Bernard, e H. Vandenbussche, «Concording EU Trade and Production Data over Time», <em>National Bureau of Economic Research, Working Paper 18604</em>, 2012, doi: <a href="https://doi.org/10.3386/w18604">10.3386/w18604</a>.
+</div>
+</div>
+<div id="ref-DeLoecker2007Product" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[6]
+</div>
+<div class="csl-right-inline">
+J. D. Loecker, «Product Differentiation, Multi-product Firms and Estimating the Impact of Trade Liberalization on Productivity», <em>National Bureau of Economic Research, Working Paper 13155</em>, 2007, doi: <a href="https://doi.org/10.3386/w13155">10.3386/w13155</a>.
+</div>
+</div>
+<div id="ref-DeRidder2023Market" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[7]
+</div>
+<div class="csl-right-inline">
+M. de Ridder, «Market Power and Innovation in the Intangible Economy», <em>American Economic Review</em>, 2023, doi: <a href="https://doi.org/10.1257/aer.20201079">10.1257/aer.20201079</a>.
+</div>
+</div>
+<div id="ref-EspaFilipponi2014Decomposing" class="csl-entry" role="listitem">
+<div class="csl-left-margin">
+[8]
+</div>
+<div class="csl-right-inline">
+G. Espa, D. Filipponi, D. Giuliani, e D. Piacentino, «Decomposing regional business change at plant level in Italy: A novel spatial shift-share approach», <em>Papers of the Regional Science Association</em>, 2014, doi: <a href="https://doi.org/10.1111/pirs.12044">10.1111/pirs.12044</a>.
+</div>
+</div>
+</div>
+</section>
+</div>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
