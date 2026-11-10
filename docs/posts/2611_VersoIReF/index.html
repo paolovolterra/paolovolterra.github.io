@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paolo Volterra">
+<meta name="keywords" content="IReF, segnalazioni bancarie, Banca d’Italia, BCE, Matrice dei conti, AnaCredit, decadali, PUMA, BIRD">
+<meta name="description" content="Come cambia il reporting statistico delle banche italiane fra la semplificazione nazionale (Matrice dei conti, segnalazioni decadali) e l’armonizzazione europea dell’Integrated Reporting Framework della BCE.">
+
+<title>Verso IReF: la doppia transizione del reporting statistico bancario italiano – Paolo Volterra</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fa4f38eef25807c3a4d306831343ef48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script data-goatcounter="https://paolovolterra.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+<link rel="stylesheet" href="../../MCC.css">
+<meta property="og:title" content="Verso IReF: la doppia transizione del reporting statistico bancario italiano – Paolo Volterra">
+<meta property="og:description" content="Come cambia il reporting statistico delle banche italiane fra la semplificazione nazionale (Matrice dei conti, segnalazioni decadali) e l’armonizzazione europea dell’Integrated Reporting Framework della BCE.">
+<meta property="og:image" content="https://paolovolterra.com/posts/2611_VersoIReF/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Paolo Volterra">
+<meta name="twitter:title" content="Verso IReF: la doppia transizione del reporting statistico bancario italiano – Paolo Volterra">
+<meta name="twitter:description" content="Come cambia il reporting statistico delle banche italiane fra la semplificazione nazionale (Matrice dei conti, segnalazioni decadali) e l’armonizzazione europea dell’Integrated Reporting Framework della BCE.">
+<meta name="twitter:image" content="https://paolovolterra.com/posts/2611_VersoIReF/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Paolo Volterra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Studi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Chi sono</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/paolovolterra"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/paolo-volterra-08596b6"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/ghibbli.bsky.social"> <i class="bi bi-bluesky" role="img" aria-label="Bluesky">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/in_parole_semplici/"> <i class="bi bi-instagram" role="img" aria-label="Instagram">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#introduzione" id="toc-introduzione" class="nav-link active" data-scroll-target="#introduzione"><span class="header-section-number">1</span> Introduzione</a></li>
+  <li><a href="#il-progetto-iref-obiettivi-e-perimetro" id="toc-il-progetto-iref-obiettivi-e-perimetro" class="nav-link" data-scroll-target="#il-progetto-iref-obiettivi-e-perimetro"><span class="header-section-number">2</span> Il progetto IReF: obiettivi e perimetro</a>
+  <ul class="collapse">
+  <li><a href="#i-requisiti-nazionali-aggiuntivi" id="toc-i-requisiti-nazionali-aggiuntivi" class="nav-link" data-scroll-target="#i-requisiti-nazionali-aggiuntivi"><span class="header-section-number">2.1</span> I requisiti nazionali aggiuntivi</a></li>
+  <li><a href="#il-ruolo-del-dizionario-bird" id="toc-il-ruolo-del-dizionario-bird" class="nav-link" data-scroll-target="#il-ruolo-del-dizionario-bird"><span class="header-section-number">2.2</span> Il ruolo del dizionario BIRD</a></li>
+  </ul></li>
+  <li><a href="#le-tappe-del-progetto" id="toc-le-tappe-del-progetto" class="nav-link" data-scroll-target="#le-tappe-del-progetto"><span class="header-section-number">3</span> Le tappe del progetto</a>
+  <ul class="collapse">
+  <li><a href="#base-giuridica-e-natura-dellatto" id="toc-base-giuridica-e-natura-dellatto" class="nav-link" data-scroll-target="#base-giuridica-e-natura-dellatto"><span class="header-section-number">3.1</span> Base giuridica e natura dell’atto</a></li>
+  </ul></li>
+  <li><a href="#che-cosa-cambia-per-litalia" id="toc-che-cosa-cambia-per-litalia" class="nav-link" data-scroll-target="#che-cosa-cambia-per-litalia"><span class="header-section-number">4</span> Che cosa cambia per l’Italia</a>
+  <ul class="collapse">
+  <li><a href="#il-nucleo-europeo-della-matrice-dei-conti" id="toc-il-nucleo-europeo-della-matrice-dei-conti" class="nav-link" data-scroll-target="#il-nucleo-europeo-della-matrice-dei-conti"><span class="header-section-number">4.1</span> Il nucleo europeo della Matrice dei conti</a></li>
+  <li><a href="#i-dati-granulari-sul-credito-e-il-perimetro-del-credito" id="toc-i-dati-granulari-sul-credito-e-il-perimetro-del-credito" class="nav-link" data-scroll-target="#i-dati-granulari-sul-credito-e-il-perimetro-del-credito"><span class="header-section-number">4.2</span> I dati granulari sul credito e il perimetro del credito</a></li>
+  <li><a href="#le-segnalazioni-decadali-una-transizione-nazionale-anticipata" id="toc-le-segnalazioni-decadali-una-transizione-nazionale-anticipata" class="nav-link" data-scroll-target="#le-segnalazioni-decadali-una-transizione-nazionale-anticipata"><span class="header-section-number">4.3</span> Le segnalazioni decadali: una transizione nazionale anticipata</a></li>
+  </ul></li>
+  <li><a href="#un-quadro-di-doppia-transizione" id="toc-un-quadro-di-doppia-transizione" class="nav-link" data-scroll-target="#un-quadro-di-doppia-transizione"><span class="header-section-number">5</span> Un quadro di doppia transizione</a></li>
+  <li><a href="#questioni-aperte" id="toc-questioni-aperte" class="nav-link" data-scroll-target="#questioni-aperte"><span class="header-section-number">6</span> Questioni aperte</a></li>
+  <li><a href="#riferimenti" id="toc-riferimenti" class="nav-link" data-scroll-target="#riferimenti"><span class="header-section-number">7</span> Riferimenti</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Verso IReF: la doppia transizione del reporting statistico bancario italiano</h1>
+<p class="subtitle lead">Matrice dei conti, dati granulari sul credito e segnalazioni decadali tra semplificazione nazionale e armonizzazione europea</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Banche e credito</div>
+    <div class="quarto-category">Dati e metodo</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Come cambia il reporting statistico delle banche italiane fra la semplificazione nazionale (Matrice dei conti, segnalazioni decadali) e l’armonizzazione europea dell’Integrated Reporting Framework della BCE.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autore/Autrice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paolo Volterra <a href="https://orcid.org/0009-0004-2229-7519" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">19 settembre 2026</p>
+    </div>
+  </div>
+  
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.22842840">10.5281/zenodo.22842840</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Sommario</div>
+    <p>Il sistema segnaletico bancario italiano è interessato da due transizioni distinte per natura, base decisionale e calendario. La prima è una semplificazione nazionale, avviata nel 2026 e in larga parte prevista per il 2027, che riduce voci e frequenze di segnalazione e comprende la proposta di abrogazione delle segnalazioni statistiche decadali disciplinate dalla Circolare n.&nbsp;136. La seconda è la riforma europea dell’Integrated Reporting Framework (IReF), destinata a riunire in un unico quadro armonizzato i principali requisiti statistici oggi distribuiti fra bilanci, tassi di interesse, disponibilità in titoli e dati granulari sul credito, con avvio operativo previsto nel 2030-2031. Il documento ricostruisce obiettivi, perimetro, base giuridica e tappe di IReF e ne esamina le conseguenze per la Matrice dei conti, i dati granulari sul credito e i requisiti nazionali residui. L’analisi mostra che la possibile cessazione delle segnalazioni decadali appartiene alla semplificazione nazionale e precederebbe di circa quattro anni la prima segnalazione ufficiale IReF: non costituirebbe quindi un effetto giuridico del futuro regolamento europeo.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Parole chiave</div>
+    <p>IReF, segnalazioni bancarie, Banca d’Italia, BCE, Matrice dei conti, AnaCredit, decadali, PUMA, BIRD</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Versione citabile su Zenodo, con il PDF: <a href="https://doi.org/10.5281/zenodo.22842840">doi.org/10.5281/zenodo.22842840</a>.</p>
+</div>
+</div>
+</div>
+<section id="introduzione" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="introduzione"><span class="header-section-number">1</span> Introduzione</h2>
+<p>Le banche dell’area dell’euro trasmettono alle banche centrali nazionali e alla Banca centrale europea un insieme ampio di segnalazioni statistiche, disciplinate da regolamenti europei distinti e integrate, in ciascun paese, da requisiti informativi aggiuntivi di fonte nazionale. In Italia questo insieme di flussi è veicolato da alcune circolari della Banca d’Italia, fra cui la Circolare n.&nbsp;272 «Matrice dei conti», per la parte statistica mensile e trimestrale, e la Circolare n.&nbsp;297, per i dati granulari sul credito <span class="citation" data-cites="bdi_circ272 bdi_circ297 ecb_reg_anacredit"><a href="#ref-bdi_circ272" role="doc-biblioref">[1]</a>, <a href="#ref-bdi_circ297" role="doc-biblioref">[2]</a>, <a href="#ref-ecb_reg_anacredit" role="doc-biblioref">[3]</a></span>.</p>
+<p>Negli ultimi anni il Sistema europeo delle banche centrali ha avviato un progetto di riorganizzazione di questo assetto, l’<strong>Integrated Reporting Framework (IReF)</strong>, il cui obiettivo è riunire in un unico schema segnaletico armonizzato i requisiti statistici oggi distribuiti fra più regolamenti e fra diverse prassi nazionali <span class="citation" data-cites="bdi_iref_bird_page bdi_iref_aggiornamento"><a href="#ref-bdi_iref_bird_page" role="doc-biblioref">[4]</a>, <a href="#ref-bdi_iref_aggiornamento" role="doc-biblioref">[5]</a></span>. Il presente documento ricostruisce obiettivi, perimetro e tappe del progetto e analizza le conseguenze per il sistema segnaletico italiano, con particolare attenzione alle rilevazioni nazionali e alla sorte delle segnalazioni statistiche a cadenza decadale.</p>
+</section>
+<section id="il-progetto-iref-obiettivi-e-perimetro" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="il-progetto-iref-obiettivi-e-perimetro"><span class="header-section-number">2</span> Il progetto IReF: obiettivi e perimetro</h2>
+<p>Gli obiettivi dichiarati di IReF sono tre: integrare in un unico schema i requisiti informativi di tipo statistico oggi disciplinati da regolamenti distinti; armonizzare tra paesi le informazioni raccolte e le relative caratteristiche; assicurare parità di condizioni fra le banche europee anche nella standardizzazione di alcune fasi del processo di produzione dei dati, come scadenze, controlli, sistema delle deroghe e politiche di revisione <span class="citation" data-cites="bdi_iref_aggiornamento"><a href="#ref-bdi_iref_aggiornamento" role="doc-biblioref">[5]</a></span>. Il quadro comune è pensato per essere direttamente applicabile alle banche residenti nell’area dell’euro e adottabile anche dalle banche centrali di altri paesi dell’Unione europea <span class="citation" data-cites="bdi2026iref"><a href="#ref-bdi2026iref" role="doc-biblioref">[6]</a></span>.</p>
+<p>Il perimetro iniziale di IReF comprende quattro regolamenti vigenti, nel testo successivamente modificato ove applicabile (Tabella 1).</p>
+<div id="tbl-regolamenti" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-regolamenti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;1: I regolamenti europei ricompresi nel perimetro iniziale di IReF e il loro oggetto.
+</figcaption>
+<div aria-describedby="tbl-regolamenti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dominio</th>
+<th>Regolamento</th>
+<th>Oggetto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bilanci statistici</td>
+<td>Regolamento (UE) 2021/379 (BCE/2021/2)</td>
+<td>Attività e passività degli enti creditizi <span class="citation" data-cites="ecb_reg_bsi"><a href="#ref-ecb_reg_bsi" role="doc-biblioref">[7]</a></span></td>
+</tr>
+<tr class="even">
+<td>Tassi di interesse</td>
+<td>Regolamento (UE) n.&nbsp;1072/2013 (BCE/2013/34)</td>
+<td>Tassi applicati dalle istituzioni finanziarie monetarie <span class="citation" data-cites="ecb_reg_1072_2013"><a href="#ref-ecb_reg_1072_2013" role="doc-biblioref">[8]</a></span></td>
+</tr>
+<tr class="odd">
+<td>Disponibilità in titoli</td>
+<td>Regolamento (UE) n.&nbsp;1011/2012 (BCE/2012/24)</td>
+<td>Statistiche sulle disponibilità in titoli <span class="citation" data-cites="ecb_reg_shs"><a href="#ref-ecb_reg_shs" role="doc-biblioref">[9]</a></span></td>
+</tr>
+<tr class="even">
+<td>Dati granulari sul credito</td>
+<td>Regolamento (UE) 2016/867 (BCE/2016/13)</td>
+<td>Dati granulari su credito e rischio di credito (AnaCredit) <span class="citation" data-cites="ecb_reg_anacredit"><a href="#ref-ecb_reg_anacredit" role="doc-biblioref">[3]</a></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>A questi si aggiungono, per massimizzare i vantaggi dell’integrazione, alcuni requisiti informativi di altre istituzioni internazionali che si applicano in modo uniforme a livello internazionale e alcuni dati richiesti per finalità nazionali che sono risultati comuni a più paesi. Nella fase iniziale IReF esclude invece i dati che non si riferiscono direttamente alle attività e passività di bilancio delle banche, come i requisiti relativi ai pagamenti e alle statistiche sul mercato monetario <span class="citation" data-cites="bdi_iref_bird_page"><a href="#ref-bdi_iref_bird_page" role="doc-biblioref">[4]</a></span>.</p>
+<section id="i-requisiti-nazionali-aggiuntivi" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="i-requisiti-nazionali-aggiuntivi"><span class="header-section-number">2.1</span> I requisiti nazionali aggiuntivi</h3>
+<p>Un elemento centrale per i paesi con una tradizione segnaletica articolata, come l’Italia, è il trattamento dei requisiti informativi nazionali aggiuntivi, denominati <strong>Country Specific Requirements (CSR)</strong>. Tali requisiti restano disciplinati da normative nazionali e raccolti su piattaforme locali, ma seguono l’approccio segnaletico di IReF e ne adottano, per quanto possibile, il modello, il formato e il dizionario <span class="citation" data-cites="bdi_iref_aggiornamento bdi_faq_iref"><a href="#ref-bdi_iref_aggiornamento" role="doc-biblioref">[5]</a>, <a href="#ref-bdi_faq_iref" role="doc-biblioref">[10]</a></span>. Le banche centrali nazionali possono quindi estendere lo schema armonizzato per raccogliere informazioni complementari, mantenendo unitarietà nella produzione e nell’elaborazione dei dati.</p>
+</section>
+<section id="il-ruolo-del-dizionario-bird" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="il-ruolo-del-dizionario-bird"><span class="header-section-number">2.2</span> Il ruolo del dizionario BIRD</h3>
+<p>La produzione dei dati da parte delle banche è supportata dal <strong>Banks’ Integrated Reporting Dictionary (BIRD)</strong>, un dizionario integrato e standardizzato sviluppato in cooperazione fra il Sistema europeo delle banche centrali e l’industria bancaria su base volontaria <span class="citation" data-cites="bird_manual bdi2026iref"><a href="#ref-bdi2026iref" role="doc-biblioref">[6]</a>, <a href="#ref-bird_manual" role="doc-biblioref">[11]</a></span>. Il BIRD descrive quali informazioni estrarre dalle basi dati aziendali e quali trasformazioni applicare per produrre i flussi richiesti; la sua adozione è facoltativa. Per l’Italia, il progetto è analogo alla cooperazione PUMA, che da decenni accompagna gli intermediari nella produzione delle segnalazioni statistiche, di vigilanza e di risoluzione e che supporterà gli intermediari anche per la parte dei requisiti nazionali nell’ambito di IReF <span class="citation" data-cites="signorini2018tra bdi_qef693 bdi2026iref"><a href="#ref-bdi2026iref" role="doc-biblioref">[6]</a>, <a href="#ref-signorini2018tra" role="doc-biblioref">[12]</a>, <a href="#ref-bdi_qef693" role="doc-biblioref">[13]</a></span>.</p>
+</section>
+</section>
+<section id="le-tappe-del-progetto" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="le-tappe-del-progetto"><span class="header-section-number">3</span> Le tappe del progetto</h2>
+<p>Le principali tappe del progetto sono state annunciate dalla Banca centrale europea con il comunicato dell’8 giugno 2026 (Tabella 2) <span class="citation" data-cites="ecb_pr260608"><a href="#ref-ecb_pr260608" role="doc-biblioref">[14]</a></span>. I tempi sono espressamente subordinati all’adozione del futuro regolamento IReF, che sarà preceduta da una consultazione pubblica sulla bozza.</p>
+<div id="tbl-tappe" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tappe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;2: Tappe annunciate per l’implementazione di IReF.
+</figcaption>
+<div aria-describedby="tbl-tappe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Periodo</th>
+<th>Fase</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Secondo semestre 2027</td>
+<td>Consultazione pubblica sulla bozza di regolamento IReF</td>
+</tr>
+<tr class="even">
+<td>Secondo trimestre 2030</td>
+<td>Avvio della fase pilota, della durata di dodici mesi</td>
+</tr>
+<tr class="odd">
+<td>Secondo trimestre 2031</td>
+<td>Prima segnalazione ufficiale IReF</td>
+</tr>
+<tr class="even">
+<td>Dodici mesi successivi</td>
+<td>Segnalazione parallela delle rilevazioni vigenti e dei relativi controlli incrociati</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Durante il pilota gli intermediari segnalanti possono verificare il corretto funzionamento delle procedure di estrazione, confezionamento e invio dei dati, ricevendo i rilievi su dati di test; l’adesione è volontaria <span class="citation" data-cites="bdi_faq_iref"><a href="#ref-bdi_faq_iref" role="doc-biblioref">[10]</a></span>. È previsto un ambiente di diagnostica per testare la qualità delle segnalazioni prima dell’invio ufficiale. Nel periodo di parallelo, le attuali segnalazioni continuano a essere prodotte accanto a quelle IReF e ai relativi requisiti nazionali, con controlli incrociati <span class="citation" data-cites="bdi_iref_aggiornamento"><a href="#ref-bdi_iref_aggiornamento" role="doc-biblioref">[5]</a></span>.</p>
+<p>Va segnalata una piccola discrepanza fra le fonti ufficiali: la nota della Banca d’Italia e il comunicato della Banca centrale europea indicano l’avvio del pilota nel <strong>secondo trimestre</strong> del 2030, mentre il documento di domande frequenti della Banca d’Italia riporta «Q3-2030» <span class="citation" data-cites="bdi2026iref ecb_pr260608 bdi_faq_iref"><a href="#ref-bdi2026iref" role="doc-biblioref">[6]</a>, <a href="#ref-bdi_faq_iref" role="doc-biblioref">[10]</a>, <a href="#ref-ecb_pr260608" role="doc-biblioref">[14]</a></span>. Si tratta di una differenza redazionale di un trimestre, che non modifica la sostanza del calendario.</p>
+<p>La conferma del calendario è stata accolta favorevolmente dall’industria bancaria europea, che ha collegato il successo del progetto all’allineamento con il BIRD e all’adozione di un dizionario dati comune tra i diversi domini di segnalazione <span class="citation" data-cites="ebf_2026iref"><a href="#ref-ebf_2026iref" role="doc-biblioref">[15]</a></span>.</p>
+<section id="base-giuridica-e-natura-dellatto" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="base-giuridica-e-natura-dellatto"><span class="header-section-number">3.1</span> Base giuridica e natura dell’atto</h3>
+<p>IReF sarà adottato come <strong>regolamento della Banca centrale europea</strong>, fondato sull’articolo 5 dello Statuto del Sistema europeo delle banche centrali e della Banca centrale europea, che attribuisce alla Banca centrale europea, assistita dalle banche centrali nazionali, il compito di raccogliere le informazioni statistiche necessarie per i compiti del Sistema europeo delle banche centrali, e sul Regolamento (CE) n.&nbsp;2533/98 del Consiglio, in particolare sugli articoli 5 e 6; la potestà regolamentare della Banca centrale europea è prevista dall’articolo 34 dello Statuto <span class="citation" data-cites="statuto_sebc_bce reg_2533_98"><a href="#ref-statuto_sebc_bce" role="doc-biblioref">[16]</a>, <a href="#ref-reg_2533_98" role="doc-biblioref">[17]</a></span>. L’adozione del regolamento IReF comporterà la sostituzione o il conseguente adeguamento dei regolamenti oggi ricompresi nel suo perimetro, secondo le modalità che saranno definite nel testo finale <span class="citation" data-cites="ecb_iref_page"><a href="#ref-ecb_iref_page" role="doc-biblioref">[18]</a></span>. È opportuno sottolineare che i regolamenti della Banca centrale europea sono direttamente applicabili e non richiedono un recepimento nazionale in senso giuridico; le circolari della Banca d’Italia ne organizzano tuttavia la raccolta e l’integrazione nel sistema segnaletico nazionale.</p>
+<p>IReF costituisce inoltre il primo passo di un percorso più ampio di integrazione delle segnalazioni bancarie che, oltre al dominio statistico, abbraccia quello di vigilanza e di risoluzione, coordinato dal Joint Bank Reporting Committee, che riunisce Banca centrale europea, Autorità bancaria europea, Commissione europea e Comitato di risoluzione unico, costituito nel marzo 2024 <span class="citation" data-cites="ecb_jbrc_page ecb_pr260608"><a href="#ref-ecb_pr260608" role="doc-biblioref">[14]</a>, <a href="#ref-ecb_jbrc_page" role="doc-biblioref">[19]</a></span>. Su questo fronte è in preparazione un dizionario dati comune, i cui lavori preparatori sono avviati dal quarto trimestre 2025 <span class="citation" data-cites="ecb_pr260608"><a href="#ref-ecb_pr260608" role="doc-biblioref">[14]</a></span>.</p>
+</section>
+</section>
+<section id="che-cosa-cambia-per-litalia" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="che-cosa-cambia-per-litalia"><span class="header-section-number">4</span> Che cosa cambia per l’Italia</h2>
+<p>In Italia i requisiti dei regolamenti sui bilanci statistici, sui tassi di interesse e sulle disponibilità in titoli sono raccolti nella sezione statistica mensile e trimestrale della Circolare n.&nbsp;272 «Matrice dei conti»; i dati granulari sul credito sono raccolti con la Circolare n.&nbsp;297 <span class="citation" data-cites="bdi2026iref"><a href="#ref-bdi2026iref" role="doc-biblioref">[6]</a></span>. L’adozione di IReF tocca quindi entrambe, con modalità e tempi diversi.</p>
+<section id="il-nucleo-europeo-della-matrice-dei-conti" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="il-nucleo-europeo-della-matrice-dei-conti"><span class="header-section-number">4.1</span> Il nucleo europeo della Matrice dei conti</h3>
+<p>Il destino delle informazioni oggi contenute nella Matrice dei conti è differenziato. Le basi informative «A1» e «A2», che contengono i dettagli nazionali ulteriori di fenomeni già raccolti da IReF, saranno sottoposte a un attento scrutinio per verificare se l’esigenza informativa permanga e se le informazioni possano essere ricavate dallo schema comune o da altre fonti. Le informazioni che non verranno assorbite da IReF ma che dovranno essere mantenute per esigenze nazionali saranno disciplinate da una normativa segnaletica nazionale che farà ricorso, per quanto possibile, al medesimo framework operativo armonizzato, in termini di dizionario, modello, formato e scadenze <span class="citation" data-cites="bdi_faq_iref"><a href="#ref-bdi_faq_iref" role="doc-biblioref">[10]</a></span>. Dopo un periodo di parallelo con IReF, le raccolte nazionali riconducibili alle basi «A1» e «A2» verranno dismesse.</p>
+<p>Altre basi informative della Matrice dei conti sono invece fuori dal perimetro iniziale di IReF: è il caso espressamente indicato per la base «A3», relativa ai servizi di pagamento, e per la base «A5», relativa alla traslazione del rischio e ai canali distributivi <span class="citation" data-cites="bdi_faq_iref"><a href="#ref-bdi_faq_iref" role="doc-biblioref">[10]</a></span>. Restano inoltre estranei al perimetro IReF gli intermediari finanziari non bancari di cui all’articolo 106 del Testo unico bancario, anche se appartenenti a un gruppo bancario: per l’Italia il progetto riguarda principalmente le banche e gli istituti di moneta elettronica <span class="citation" data-cites="bdi_faq_iref"><a href="#ref-bdi_faq_iref" role="doc-biblioref">[10]</a></span>.</p>
+<p>La medesima consultazione nazionale propone inoltre l’abrogazione della base informativa «A4» della Matrice dei conti, con il trasferimento di due voci alla base «A3», con decorrenza dalla data di riferimento del 30 giugno 2027, nonché l’abrogazione delle segnalazioni previste dall’articolo 129 del Testo unico bancario, con decorrenza dalla data di riferimento del 31 dicembre 2026 <span class="citation" data-cites="bdi_consult2026_07 bdi_bozza_circ272_18"><a href="#ref-bdi_consult2026_07" role="doc-biblioref">[20]</a>, <a href="#ref-bdi_bozza_circ272_18" role="doc-biblioref">[21]</a></span>.</p>
+<div id="tbl-csr" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-csr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;3: Sintesi del trattamento previsto delle principali basi informative nazionali.
+</figcaption>
+<div aria-describedby="tbl-csr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Base informativa</th>
+<th>Contenuto / funzione richiamata</th>
+<th>Trattamento previsto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A1 e A2</td>
+<td>Dettagli nazionali ulteriori su fenomeni ricompresi nel perimetro IReF</td>
+<td>Scrutinio dei requisiti; mantenimento solo delle informazioni nazionali ancora necessarie e successiva dismissione delle raccolte riconducibili alle basi dopo il periodo di parallelo <span class="citation" data-cites="bdi_faq_iref"><a href="#ref-bdi_faq_iref" role="doc-biblioref">[10]</a></span></td>
+</tr>
+<tr class="even">
+<td>A3</td>
+<td>Servizi di pagamento</td>
+<td>Fuori dal perimetro iniziale di IReF; resta nell’ambito nazionale <span class="citation" data-cites="bdi_faq_iref"><a href="#ref-bdi_faq_iref" role="doc-biblioref">[10]</a></span></td>
+</tr>
+<tr class="odd">
+<td>A4</td>
+<td>Base oggetto della consultazione nazionale del 2026</td>
+<td>Proposta di abrogazione dal riferimento del 30 giugno 2027, con trasferimento di due voci ad A3 <span class="citation" data-cites="bdi_consult2026_07 bdi_bozza_circ272_18"><a href="#ref-bdi_consult2026_07" role="doc-biblioref">[20]</a>, <a href="#ref-bdi_bozza_circ272_18" role="doc-biblioref">[21]</a></span></td>
+</tr>
+<tr class="even">
+<td>A5</td>
+<td>Traslazione del rischio e canali distributivi</td>
+<td>Fuori dal perimetro iniziale di IReF; resta nell’ambito nazionale <span class="citation" data-cites="bdi_faq_iref"><a href="#ref-bdi_faq_iref" role="doc-biblioref">[10]</a></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Sul piano operativo, i dati armonizzati IReF saranno trasmessi a una nuova piattaforma di raccolta dell’Eurosistema, realizzata anche in un cloud europeo, sulla quale la banca centrale nazionale competente validerà le segnalazioni; i requisiti nazionali residui e le eventuali segnalazioni infratrimestrali continueranno invece a essere acquisiti tramite la piattaforma nazionale Infostat <span class="citation" data-cites="bdi_faq_iref ecb_pr260608"><a href="#ref-bdi_faq_iref" role="doc-biblioref">[10]</a>, <a href="#ref-ecb_pr260608" role="doc-biblioref">[14]</a></span>.</p>
+</section>
+<section id="i-dati-granulari-sul-credito-e-il-perimetro-del-credito" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="i-dati-granulari-sul-credito-e-il-perimetro-del-credito"><span class="header-section-number">4.2</span> I dati granulari sul credito e il perimetro del credito</h3>
+<p>La rilevazione dei dati granulari sul credito costituisce oggi la soluzione nazionale con cui l’Italia acquisisce i dati disciplinati dal regolamento AnaCredit. In base alle indicazioni della Banca d’Italia, dopo un periodo di parallelo con IReF la raccolta nazionale dei dati granulari sul credito verrà dismessa <span class="citation" data-cites="bdi_faq_iref"><a href="#ref-bdi_faq_iref" role="doc-biblioref">[10]</a></span>. Il modello IReF si applica a tutte le banche; gli istituti di moneta elettronica saranno soggetti a una segnalazione trimestrale a contenuto ridotto rispetto a quella delle banche, ed è previsto un sistema di deroghe in base alla dimensione del segnalante, con la possibilità, per le banche di piccola dimensione, di optare per lo schema completo a frequenza trimestrale anziché mensile <span class="citation" data-cites="bdi_faq_iref"><a href="#ref-bdi_faq_iref" role="doc-biblioref">[10]</a></span>.</p>
+<p>Il perimetro del credito resta però più ampio di IReF. La Centrale dei rischi non viene assorbita dal progetto: la Banca d’Italia ha indicato che, una volta consolidato il quadro IReF e definita la gestione dei dati nazionali nel framework comune, avvierà approfondimenti, coinvolgendo le banche, per valutare se, come e quando integrare le due raccolte <span class="citation" data-cites="bdi_faq_iref"><a href="#ref-bdi_faq_iref" role="doc-biblioref">[10]</a></span>. La segnalazione delle esposizioni a sofferenza continua a esistere separatamente, perché le logiche di soglia e l’approccio consolidato della rilevazione non consentono di raccogliere il dato in modo integrato <span class="citation" data-cites="bdi_faq_iref"><a href="#ref-bdi_faq_iref" role="doc-biblioref">[10]</a></span>. La raccolta di dati granulari anonimi sui prestiti alle persone fisiche è invece indicata come possibile estensione, subordinata alla conferma nell’ambito del progetto.</p>
+</section>
+<section id="le-segnalazioni-decadali-una-transizione-nazionale-anticipata" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="le-segnalazioni-decadali-una-transizione-nazionale-anticipata"><span class="header-section-number">4.3</span> Le segnalazioni decadali: una transizione nazionale anticipata</h3>
+<p>Il caso delle segnalazioni statistiche a cadenza decadale, disciplinate dalla Circolare n.&nbsp;136 dell’8 gennaio 1991 <span class="citation" data-cites="bdi_circ136"><a href="#ref-bdi_circ136" role="doc-biblioref">[22]</a></span>, merita un approfondimento specifico, perché la sua sorte non dipende dall’entrata in funzione di IReF.</p>
+<p>Va anzitutto chiarito che la rilevazione disciplinata dalla Circolare n.&nbsp;136 è cosa diversa dalla rilevazione armonizzata mensile dei tassi di interesse delle istituzioni finanziarie monetarie, disciplinata dal regolamento europeo sui tassi di interesse <span class="citation" data-cites="ecb_reg_1072_2013"><a href="#ref-ecb_reg_1072_2013" role="doc-biblioref">[8]</a></span>. Rispetto a quest’ultima, la Circolare n.&nbsp;136 costituisce un livello informativo aggiuntivo a frequenza infra-mensile, con tre date contabili al mese, alla quale si riconduce la base informativa della rilevazione sui tassi e sugli aggregati di intermediazione.</p>
+<p>Il 14 luglio 2026 la Banca d’Italia ha posto in consultazione pubblica, con termine al 14 settembre 2026, un pacchetto di aggiornamenti delle segnalazioni statistiche e di vigilanza, comprendente la proposta di <strong>abrogazione integrale della Circolare n.&nbsp;136</strong>, con entrata in vigore proposta al <strong>1° giugno 2027</strong> <span class="citation" data-cites="bdi_consult2026_07"><a href="#ref-bdi_consult2026_07" role="doc-biblioref">[20]</a></span>. Contestualmente, due voci (41026 e 41060) relative alle informazioni di stock e di flusso delle obbligazioni emesse e ai relativi tassi sarebbero trasferite nella base informativa «A1» della Circolare n.&nbsp;248, con frequenza <strong>mensile</strong> e invio entro l’undicesimo giorno lavorativo successivo alla data contabile di riferimento, anziché entro il quinto giorno lavorativo della decade successiva <span class="citation" data-cites="bdi_consult2026_07 bdi_bozza_circ248_5"><a href="#ref-bdi_consult2026_07" role="doc-biblioref">[20]</a>, <a href="#ref-bdi_bozza_circ248_5" role="doc-biblioref">[23]</a></span>. La frequenza di rilevazione passerebbe quindi, per queste informazioni, da decadale a mensile.</p>
+<p>La proposta di abrogazione della Circolare n.&nbsp;136 si inquadra in un piano nazionale di semplificazione degli obblighi segnaletici, autonomo rispetto al calendario di IReF <span class="citation" data-cites="bdi_report_semplificazione"><a href="#ref-bdi_report_semplificazione" role="doc-biblioref">[24]</a></span>. Il report di accompagnamento della consultazione stima che gli interventi proposti comportino una riduzione dei requisiti informativi di circa il 21 per cento per le banche con riferimento alle segnalazioni del 30 giugno 2027, e fino a circa il 35 per cento nel medio termine. All’interno del pacchetto, il diciottesimo aggiornamento della Circolare n.&nbsp;272 prevede l’eliminazione di 500 voci o sottovoci e la riduzione di frequenza di altre 56, per una riduzione del 25 per cento dei requisiti informativi imposti alle banche su base individuale <span class="citation" data-cites="bdi_report_semplificazione"><a href="#ref-bdi_report_semplificazione" role="doc-biblioref">[24]</a></span>. Le modifiche previste per la Circolare n.&nbsp;272 entrano in vigore in parte dal 1° gennaio 2027, in parte dal 30 giugno 2027 <span class="citation" data-cites="bdi_consult2026_07 bdi_bozza_circ272_18"><a href="#ref-bdi_consult2026_07" role="doc-biblioref">[20]</a>, <a href="#ref-bdi_bozza_circ272_18" role="doc-biblioref">[21]</a></span>. L’impatto dell’eliminazione della Circolare n.&nbsp;136 non è incluso in queste stime, trattandosi di una rilevazione su base campionaria <span class="citation" data-cites="bdi_report_semplificazione"><a href="#ref-bdi_report_semplificazione" role="doc-biblioref">[24]</a></span>.</p>
+<p>Se la proposta sarà adottata, la rilevazione della Circolare n.&nbsp;136 verrà quindi meno circa quattro anni prima della prima segnalazione ufficiale IReF. Ne consegue che la rilevazione disciplinata dalla Circolare n.&nbsp;136 non arriverebbe alla fase di avvio di IReF e non potrebbe quindi costituire, nella sua configurazione attuale, un Country Specific Requirement del futuro framework. Si tratterebbe di una semplificazione nazionale autonoma, non di un effetto giuridico del futuro regolamento IReF.</p>
+</section>
+</section>
+<section id="un-quadro-di-doppia-transizione" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="un-quadro-di-doppia-transizione"><span class="header-section-number">5</span> Un quadro di doppia transizione</h2>
+<p>Dall’insieme delle fonti emerge che il sistema segnaletico italiano attraversa due transizioni distinte, che si sovrappongono solo in apparenza e che conviene tenere separate.</p>
+<p>La prima è una <strong>semplificazione nazionale</strong>, avviata nel 2026 e in gran parte operativa dal 2027, che riduce il numero di voci e di frequenze di segnalazione, abrogherebbe la Circolare n.&nbsp;136 e aggiorna la Matrice dei conti; è motivata dal contenimento degli oneri, dall’allineamento ai principi contabili internazionali e dalla razionalizzazione delle informazioni poco utilizzate <span class="citation" data-cites="bdi_report_semplificazione bdi_consult2026_07"><a href="#ref-bdi_consult2026_07" role="doc-biblioref">[20]</a>, <a href="#ref-bdi_report_semplificazione" role="doc-biblioref">[24]</a></span>.</p>
+<p>La seconda è la <strong>riforma europea</strong>, che a partire dal 2030-2031 sostituirà il nucleo statistico armonizzato oggi veicolato dalla Matrice dei conti e la raccolta nazionale dei dati granulari sul credito, lasciando in vita uno strato nazionale per i dettagli informativi residui e per le raccolte fuori perimetro, secondo il modello dei Country Specific Requirements <span class="citation" data-cites="bdi_faq_iref ecb_pr260608"><a href="#ref-bdi_faq_iref" role="doc-biblioref">[10]</a>, <a href="#ref-ecb_pr260608" role="doc-biblioref">[14]</a></span>.</p>
+<p>Le due transizioni hanno ritmi e leve decisionali diversi: la prima dipende dalla Banca d’Italia e si svolge nel biennio immediatamente successivo; la seconda dipende dall’adozione di un regolamento europeo che sarà proposto in consultazione solo nel 2027 e che entrerà in funzione all’inizio del prossimo decennio. Per il lettore interessato alle rilevazioni nazionali la conseguenza pratica è che le informazioni a cadenza decadale cesserebbero prima che il nuovo quadro segnaletico entri in funzione.</p>
+</section>
+<section id="questioni-aperte" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="questioni-aperte"><span class="header-section-number">6</span> Questioni aperte</h2>
+<p>Diversi aspetti restano indeterminati nelle fonti pubbliche disponibili e sono da monitorare nel prosieguo del progetto.</p>
+<ul>
+<li><strong>Esito della consultazione nazionale.</strong> La consultazione sul pacchetto del 14 luglio 2026, comprendente la proposta di abrogazione della Circolare n.&nbsp;136 e il diciottesimo aggiornamento della Circolare n.&nbsp;272, si è chiusa il 14 settembre 2026. Alla data di chiusura redazionale del presente lavoro non risultano ancora pubblicati il resoconto della consultazione e il testo definitivo delle modifiche; il contenuto finale delle disposizioni resta pertanto da verificare.</li>
+<li><strong>Sorte delle rilevazioni e delle serie decadali.</strong> Non è dato sapere, dalle fonti consultate, se gli altri fenomeni decadali oltre alle obbligazioni siano ricavati da altre fonti o siano eliminati, né se le serie storiche pubblicate a cadenza decadale verranno chiuse o raccordate con le nuove serie mensili. Il destino operativo della rilevazione campionaria e del relativo flusso di ritorno è parimenti da chiarire.</li>
+<li><strong>Modellazione dei requisiti nazionali.</strong> Le modalità con cui i Country Specific Requirements saranno rappresentati nel nuovo schema saranno precisate nel piano di implementazione che la Banca centrale europea ha in preparazione <span class="citation" data-cites="ecb_pr260608"><a href="#ref-ecb_pr260608" role="doc-biblioref">[14]</a></span>.</li>
+<li><strong>Integrazione con la Centrale dei rischi e con le segnalazioni delle esposizioni a sofferenza.</strong> La loro integrazione in IReF è rinviata a valutazioni successive al consolidamento del quadro, con il coinvolgimento delle banche <span class="citation" data-cites="bdi_faq_iref"><a href="#ref-bdi_faq_iref" role="doc-biblioref">[10]</a></span>.</li>
+<li><strong>Perimetro ulteriore.</strong> Pagamenti e statistiche sul mercato monetario sono esclusi dalla fase iniziale; non è stabilito se e quando entreranno in un’estensione del progetto o nel più ampio processo di integrazione coordinato a livello europeo <span class="citation" data-cites="bdi_iref_bird_page ecb_pr260608"><a href="#ref-bdi_iref_bird_page" role="doc-biblioref">[4]</a>, <a href="#ref-ecb_pr260608" role="doc-biblioref">[14]</a></span>.</li>
+</ul>
+<p>Per comprendere l’impatto complessivo sulla produzione informativa italiana, inoltre, sarà decisivo disporre di una mappatura puntuale, voce per voce, dei requisiti attuali verso gli attributi IReF, i requisiti nazionali residui e le eventuali fonti alternative. Una mappatura di questo tipo non è ancora disponibile nelle fonti pubbliche consultate.</p>
+</section>
+<section id="riferimenti" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="riferimenti"><span class="header-section-number">7</span> Riferimenti</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-bdi_circ272" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">Banca d’Italia, <span>«Circolare n. 272 del 30 luglio 2008 – Matrice dei conti»</span>. 2008. Disponibile su: <a href="https://www.bancaditalia.it/compiti/vigilanza/normativa/archivio-norme/circolari/c272/index.html">https://www.bancaditalia.it/compiti/vigilanza/normativa/archivio-norme/circolari/c272/index.html</a></div>
+</div>
+<div id="ref-bdi_circ297" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">Banca d’Italia, <span>«Circolare n. 297 del 16 maggio 2017 – Rilevazione dei dati granulari sul credito»</span>. 2017. Disponibile su: <a href="https://www.bancaditalia.it/statistiche/raccolta-dati/segnalazioni/rilevazione-dati-granulari/">https://www.bancaditalia.it/statistiche/raccolta-dati/segnalazioni/rilevazione-dati-granulari/</a></div>
+</div>
+<div id="ref-ecb_reg_anacredit" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">European Central Bank, <span>«Regulation (<span>EU</span>) 2016/867 of the European Central Bank of 18 May 2016 on the collection of granular credit and credit risk data (<span>ECB</span>/2016/13)»</span>. 2016. Disponibile su: <a href="https://eur-lex.europa.eu/eli/reg/2016/867/oj">https://eur-lex.europa.eu/eli/reg/2016/867/oj</a></div>
+</div>
+<div id="ref-bdi_iref_bird_page" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">Banca d’Italia, <span>«L’approccio del <span>SEBC</span> al reporting statistico delle banche: i progetti <span>IReF</span> e <span>BIRD</span>»</span>. 2026. Disponibile su: <a href="https://www.bancaditalia.it/statistiche/iref-bird/index.html">https://www.bancaditalia.it/statistiche/iref-bird/index.html</a></div>
+</div>
+<div id="ref-bdi_iref_aggiornamento" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">Banca d’Italia, <span>«Aggiornamento sul progetto <span>SEBC</span> <span>Integrated Reporting Framework</span> (<span>IReF</span>)»</span>. 2026. Disponibile su: <a href="https://www.bancaditalia.it/statistiche/iref-bird/Aggiornamento_su_progetto_IReF.pdf">https://www.bancaditalia.it/statistiche/iref-bird/Aggiornamento_su_progetto_IReF.pdf</a></div>
+</div>
+<div id="ref-bdi2026iref" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">Banca d’Italia, <span>«Il progetto <span>Integrated Reporting Framework</span> (<span>IReF</span>) – le principali tappe per l’implementazione»</span>. luglio 2026. Disponibile su: <a href="https://www.bancaditalia.it/statistiche/iref-bird/IReF-le-principali-tappe-per-l-implementazione.pdf">https://www.bancaditalia.it/statistiche/iref-bird/IReF-le-principali-tappe-per-l-implementazione.pdf</a></div>
+</div>
+<div id="ref-ecb_reg_bsi" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">European Central Bank, <span>«Regulation (<span>EU</span>) 2021/379 of the European Central Bank of 22 January 2021 on the balance sheet items of credit institutions and of the monetary financial institutions sector (<span>recast</span>) (<span>ECB</span>/2021/2)»</span>. 2021. Disponibile su: <a href="https://eur-lex.europa.eu/eli/reg/2021/379/oj">https://eur-lex.europa.eu/eli/reg/2021/379/oj</a></div>
+</div>
+<div id="ref-ecb_reg_1072_2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">European Central Bank, <span>«Regulation (<span>EU</span>) No 1072/2013 of the European Central Bank of 24 September 2013 concerning statistics on interest rates applied by monetary financial institutions (<span>recast</span>) (<span>ECB</span>/2013/34)»</span>. 2013. Disponibile su: <a href="https://eur-lex.europa.eu/eli/reg/2013/1072/oj">https://eur-lex.europa.eu/eli/reg/2013/1072/oj</a></div>
+</div>
+<div id="ref-ecb_reg_shs" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">European Central Bank, <span>«Regulation (<span>EU</span>) No 1011/2012 of the European Central Bank of 17 October 2012 concerning statistics on holdings of securities (<span>ECB</span>/2012/24)»</span>. 2012. Disponibile su: <a href="https://eur-lex.europa.eu/eli/reg/2012/1011/oj">https://eur-lex.europa.eu/eli/reg/2012/1011/oj</a></div>
+</div>
+<div id="ref-bdi_faq_iref" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">Banca d’Italia, <span>«Domande frequenti sul progetto <span>IReF</span>»</span>. luglio 2026. Disponibile su: <a href="https://www.bancaditalia.it/statistiche/iref-bird/domande_frequenti_su_progetto_iref.pdf">https://www.bancaditalia.it/statistiche/iref-bird/domande_frequenti_su_progetto_iref.pdf</a></div>
+</div>
+<div id="ref-bird_manual" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">European Central Bank / Eurosystem, <span>«<span>Banks’ Integrated Reporting Dictionary (BIRD)</span> – metadata manual»</span>. Disponibile su: <a href="https://bird.ecb.europa.eu/">https://bird.ecb.europa.eu/</a></div>
+</div>
+<div id="ref-signorini2018tra" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">L. F. Signorini, <span>«Tra segnalazioni nazionali e reporting armonizzato europeo: rafforzare la cooperazione tra gli intermediari e le autorità»</span>. <span>Banca d’Italia</span>; Intervento al Workshop PUMA, Roma, Centro <span>«Donato Menichella»</span>, 15 maggio 2018. Disponibile su: <a href="https://www.bancaditalia.it/pubblicazioni/interventi-direttorio/int-dir-2018/Signorini-15052018.pdf">https://www.bancaditalia.it/pubblicazioni/interventi-direttorio/int-dir-2018/Signorini-15052018.pdf</a></div>
+</div>
+<div id="ref-bdi_qef693" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">G. D’Alessio <em>et al.</em>, <span>«Statistiche per l’analisi economica: l’esperienza della Banca d’Italia»</span>, <span>Banca d’Italia</span>, Questioni di Economia e Finanza (Occasional Papers) 693, giu. 2022. Disponibile su: <a href="https://www.bancaditalia.it/pubblicazioni/qef/2022-0693/index.html">https://www.bancaditalia.it/pubblicazioni/qef/2022-0693/index.html</a></div>
+</div>
+<div id="ref-ecb_pr260608" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">European Central Bank, <span>«<span>ECB</span> announces main milestones for roll-out of <span>Integrated Reporting Framework</span>»</span>. 8 giugno 2026. Disponibile su: <a href="https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260608~6766ec7154.en.html">https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260608~6766ec7154.en.html</a></div>
+</div>
+<div id="ref-ebf_2026iref" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">European Banking Federation, <span>«<span>EBF</span> welcomes the <span>ECB</span> confirmation of the implementation of the <span>Integrated Reporting Framework</span> (<span>IReF</span>)»</span>. 10 giugno 2026. Disponibile su: <a href="https://www.ebf.eu/ebf-media-centre/updates/ebf-welcomes-the-ecb-confirmation-of-the-implementation-of-the-integrated-reporting-framework-iref/">https://www.ebf.eu/ebf-media-centre/updates/ebf-welcomes-the-ecb-confirmation-of-the-implementation-of-the-integrated-reporting-framework-iref/</a></div>
+</div>
+<div id="ref-statuto_sebc_bce" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">Unione europea, <span>«Protocollo (n. 4) sullo Statuto del Sistema europeo di banche centrali e della Banca centrale europea – articolo 5 (raccolta di informazioni statistiche)»</span>. Disponibile su: <a href="https://eur-lex.europa.eu/eli/treaty/ties2012_1/oj">https://eur-lex.europa.eu/eli/treaty/ties2012_1/oj</a></div>
+</div>
+<div id="ref-reg_2533_98" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">Consiglio dell’Unione europea, <span>«Regolamento (CE) n. 2533/98 del Consiglio, del 23 novembre 1998, relativo alla raccolta di informazioni statistiche da parte della Banca centrale europea (testo consolidato)»</span>. 1998. Disponibile su: <a href="https://eur-lex.europa.eu/eli/reg/1998/2533/oj">https://eur-lex.europa.eu/eli/reg/1998/2533/oj</a></div>
+</div>
+<div id="ref-ecb_iref_page" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">European Central Bank, <span>«Integrated Reporting Framework (<span>IReF</span>)»</span>. 2026. Disponibile su: <a href="https://www.ecb.europa.eu/stats/ecb_statistics/reporting/IReF/html/index.en.html">https://www.ecb.europa.eu/stats/ecb_statistics/reporting/IReF/html/index.en.html</a></div>
+</div>
+<div id="ref-ecb_jbrc_page" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">European Central Bank, <span>«Joint Bank Reporting Committee (<span>JBRC</span>)»</span>. Disponibile su: <a href="https://www.ecb.europa.eu/stats/ecb_statistics/reporting/jbrc/html/index.en.html">https://www.ecb.europa.eu/stats/ecb_statistics/reporting/jbrc/html/index.en.html</a></div>
+</div>
+<div id="ref-bdi_consult2026_07" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">Banca d’Italia, <span>«Aggiornamento delle segnalazioni statistiche e di vigilanza delle banche e degli altri intermediari vigilati – documento per la consultazione pubblica»</span>. 14 luglio 2026. Disponibile su: <a href="https://www.bancaditalia.it/compiti/vigilanza/normativa/consultazioni/2026/2026.07.14-aggiornamento-segnalazioni-statistiche-vigilanza/index.html">https://www.bancaditalia.it/compiti/vigilanza/normativa/consultazioni/2026/2026.07.14-aggiornamento-segnalazioni-statistiche-vigilanza/index.html</a></div>
+</div>
+<div id="ref-bdi_bozza_circ272_18" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">Banca d’Italia, <span>«Bozza del 18o aggiornamento della Circolare n. 272 – Matrice dei conti»</span>. luglio 2026.</div>
+</div>
+<div id="ref-bdi_circ136" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline">Banca d’Italia, <span>«Circolare n. 136 dell’8 gennaio 1991 – Segnalazioni statistiche decadali»</span>. 1991. Disponibile su: <a href="https://www.bancaditalia.it/compiti/vigilanza/normativa/archivio-norme/circolari/c136/index.html">https://www.bancaditalia.it/compiti/vigilanza/normativa/archivio-norme/circolari/c136/index.html</a></div>
+</div>
+<div id="ref-bdi_bozza_circ248_5" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">Banca d’Italia, <span>«Bozza del 5o aggiornamento della Circolare n. 248 – Istruzioni per la compilazione delle segnalazioni statistiche relative ai tassi di interesse attivi e passivi»</span>. luglio 2026.</div>
+</div>
+<div id="ref-bdi_report_semplificazione" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[24] </div><div class="csl-right-inline">Banca d’Italia, <span>«Le iniziative di semplificazione in materia di reporting avviate dalla Banca d’Italia – report allegato alla consultazione del 14 luglio 2026»</span>. luglio 2026.</div>
+</div>
+</div>
+<hr>
+<p><strong>Nota metodologica</strong></p>
+<p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
+<p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale; l’analisi è pertanto integralmente auditabile e replicabile da terzi a partire da esse. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
+<p>La responsabilità per la selezione delle fonti, le elaborazioni, le interpretazioni e le conclusioni resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script>
+// Salto interno ai riferimenti [n] e ai rimandi #… indipendente dall'URL della pagina:
+// funziona anche quando l'HTML è aperto in un iframe, in un'anteprima o con un <base> diverso.
+document.addEventListener("click", function (e) {
+  var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+  if (!a) return;
+  var id = decodeURIComponent(a.getAttribute("href").slice(1));
+  var el = id && document.getElementById(id);
+  if (!el) return;
+  e.preventDefault();
+  el.scrollIntoView({ block: "start" });
+  try { history.replaceState(null, "", "#" + id); } catch (err) {}
+}, true);
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/paolovolterra\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Paolo Volterra</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/paolovolterra/paolovolterra.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>fatto con ︎♥️ &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
