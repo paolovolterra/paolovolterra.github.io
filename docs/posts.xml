@@ -417,6 +417,28 @@ font-style: inherit;">](&lt;zotero://open-pdf/library/items/YST2S4T7?page=4&amp;
 <figcaption>zlb porta i documenti dentro Zotero, ZotPush ne porta fuori le evidenze.</figcaption>
 </figure>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Che cos’è Zotero
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Zotero è un programma gratuito e open source per raccogliere, organizzare, annotare e citare le fonti di una ricerca, disponibile per Windows, macOS, Linux, iOS e Android <span class="citation" data-cites="zotero2026home">[1]</span>. È sviluppato da un’organizzazione senza scopo di lucro, Digital Scholar, e da una comunità internazionale.</p>
+<p>I pregi che contano di più per chi studia:</p>
+<ul>
+<li><strong>Raccolta con un clic.</strong> Mentre si naviga, Zotero riconosce articoli, libri, preprint e pagine web e ne salva i dati bibliografici, spesso con il PDF.</li>
+<li><strong>Organizzazione libera.</strong> Raccolte, tag e ricerche salvate che si aggiornano da sole.</li>
+<li><strong>Lettura e annotazione.</strong> I PDF si leggono ed evidenziano dentro Zotero; le annotazioni restano legate alla fonte.</li>
+<li><strong>Citazioni pronte.</strong> Riferimenti e bibliografie in qualsiasi editor e direttamente in Word, LibreOffice e Google Docs, con oltre 9.000 stili di citazione.</li>
+<li><strong>I dati restano propri.</strong> La libreria sta sul computer dell’utente; la sincronizzazione fra dispositivi è facoltativa, e le librerie di gruppo si condividono senza costi.</li>
+</ul>
+<p>Per zlb e ZotPush conta soprattutto l’ultimo punto: entrambi lavorano sulla libreria locale, senza passare da servizi esterni.</p>
+</div>
+</div>
 <section id="il-problema" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="il-problema"><span class="header-section-number">1</span> Il problema</h2>
 <p>Una ricerca bibliografica fatta con un LLM produce di solito un elenco di titoli e di link. Il lavoro vero comincia dopo: trovare i PDF, metterli nella libreria, leggerli, segnare i passi che servono e riportarli nel testo che si sta scrivendo. Sono passaggi manuali, ripetitivi, e soggetti a un errore preciso: la citazione che non si trova più nel documento da cui si pensava di averla presa.</p>
@@ -424,7 +446,7 @@ font-style: inherit;">](&lt;zotero://open-pdf/library/items/YST2S4T7?page=4&amp;
 </section>
 <section id="zlb-un-ponte-fra-un-llm-e-la-libreria" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="zlb-un-ponte-fra-un-llm-e-la-libreria"><span class="header-section-number">2</span> zlb: un ponte fra un LLM e la libreria</h2>
-<p>zlb (ZoteroLLMBridge) è un comando da terminale per Zotero 10, utilizzabile anche da script e da agenti LLM su Linux, macOS e Windows <span class="citation" data-cites="volterra2026zlb">[1]</span>. Parla con Zotero attraverso l’API locale che il programma espone sul computer quando è aperto <span class="citation" data-cites="zotero2026localapi">[2]</span>: nessun account, nessun servizio esterno.</p>
+<p>zlb (ZoteroLLMBridge) è un comando da terminale per Zotero 10, utilizzabile anche da script e da agenti LLM su Linux, macOS e Windows <span class="citation" data-cites="volterra2026zlb">[2]</span>. Parla con Zotero attraverso l’API locale che il programma espone sul computer quando è aperto <span class="citation" data-cites="zotero2026localapi">[3]</span>: nessun account, nessun servizio esterno.</p>
 <p>Il caso d’uso tipico è questo. Si chiede a un LLM di consigliare paper su un tema e di cercarne i PDF. L’LLM prepara un piccolo file JSON (il <em>manifest</em>) con titoli, DOI, chiavi Zotero o URL dei PDF. zlb esegue la parte locale:</p>
 <ul>
 <li>cerca ogni riferimento nell’intera libreria e collega alla raccolta le schede già presenti;</li>
@@ -459,7 +481,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 </section>
 <section id="zotpush-dalla-libreria-al-markdown" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="zotpush-dalla-libreria-al-markdown"><span class="header-section-number">3</span> ZotPush: dalla libreria al Markdown</h2>
-<p>ZotPush MD è un plugin di Zotero <span class="citation" data-cites="volterra2026zotpush">[3]</span>. Seleziono una o più fonti, scelgo <strong>Push selezione in Markdown…</strong> dal menu Strumenti o dal clic destro, e ottengo file Markdown con metadati in YAML, abstract, note, evidenze e immagini delle annotazioni. I file funzionano in Obsidian o in qualsiasi editor.</p>
+<p>ZotPush MD è un plugin di Zotero <span class="citation" data-cites="volterra2026zotpush">[4]</span>. Seleziono una o più fonti, scelgo <strong>Push selezione in Markdown…</strong> dal menu Strumenti o dal clic destro, e ottengo file Markdown con metadati in YAML, abstract, note, evidenze e immagini delle annotazioni. I file funzionano in Obsidian o in qualsiasi editor.</p>
 <p>Il comando <strong>Push evidenze filtrate in Markdown…</strong> fa una cosa più mirata: raccoglie da tutte le fonti selezionate solo le annotazioni di un certo colore o con un certo tag, in un unico dossier. Ogni evidenza porta con sé testo, pagina, commento, tag e un link che riapre il PDF esattamente su quell’annotazione.</p>
 <p>La garanzia di ZotPush è opposta a quella di zlb: <strong>non scrive mai nella libreria</strong>. Non modifica schede, note, tag o raccolte; l’unica scrittura avviene nella cartella scelta dall’utente, e un file con lo stesso nome non creato dal plugin non viene sovrascritto. Ogni <code>npm test</code> lancia un controllo automatico del codice che cerca chiamate capaci di modificare Zotero. Se si riesporta lo stesso dossier, le note personali scritte sotto il blocco generato restano dove sono.</p>
 </section>
@@ -508,14 +530,17 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 <section id="riferimenti" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="riferimenti">Riferimenti</h2>
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0">
+<div id="ref-zotero2026home" class="csl-entry">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">Zotero, <span>«Zotero: your personal research assistant»</span>. Sito ufficiale, consultato il 19 novembre 2026. Disponibile su: <a href="https://www.zotero.org/">https://www.zotero.org/</a></div>
+</div>
 <div id="ref-volterra2026zlb" class="csl-entry">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">P. Volterra, <em>ZoteroLLMBridge (zlb): local Zotero API CLI for LLM-assisted bibliography workflows</em>. (2026). Zenodo. doi: <a href="https://doi.org/10.5281/zenodo.24374740">10.5281/zenodo.24374740</a>.</div>
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">P. Volterra, <em>ZoteroLLMBridge (zlb): local Zotero API CLI for LLM-assisted bibliography workflows</em>. (2026). Zenodo. doi: <a href="https://doi.org/10.5281/zenodo.24374740">10.5281/zenodo.24374740</a>.</div>
 </div>
 <div id="ref-zotero2026localapi" class="csl-entry">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">Zotero, <span>«Zotero Local API»</span>. Documentazione per sviluppatori. Disponibile su: <a href="https://www.zotero.org/support/dev/web_api/v3/local_api">https://www.zotero.org/support/dev/web_api/v3/local_api</a></div>
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">Zotero, <span>«Zotero Local API»</span>. Documentazione per sviluppatori. Disponibile su: <a href="https://www.zotero.org/support/dev/web_api/v3/local_api">https://www.zotero.org/support/dev/web_api/v3/local_api</a></div>
 </div>
 <div id="ref-volterra2026zotpush" class="csl-entry">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline">P. Volterra, <em>ZotPush MD: read-only export of Zotero references and annotations to Markdown</em>. (2026). Zenodo. doi: <a href="https://doi.org/10.5281/zenodo.23875777">10.5281/zenodo.23875777</a>.</div>
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">P. Volterra, <em>ZotPush MD: read-only export of Zotero references and annotations to Markdown</em>. (2026). Zenodo. doi: <a href="https://doi.org/10.5281/zenodo.23875777">10.5281/zenodo.23875777</a>.</div>
 </div>
 </div>
 
