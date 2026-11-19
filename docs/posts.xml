@@ -10,7 +10,527 @@
 <atom:link href="https://paolovolterra.com/posts.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.36</generator>
-<lastBuildDate>Mon, 09 Nov 2026 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 18 Nov 2026 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Dalla bibliografia di un paper a un dossier di citazioni</title>
+  <dc:creator>Paolo Volterra</dc:creator>
+  <link>https://paolovolterra.com/posts/2611_zlbZotPushEsempio/</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="il-punto-di-partenza" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="il-punto-di-partenza"><span class="header-section-number">1</span> Il punto di partenza</h2>
+<p>Il documento di partenza è un mio paper di settembre, che replica il Policy Brief 6/2026 del Luiss Lab of European Affairs sulle priorità della politica industriale <span class="citation" data-cites="volterra2026Politica bontadini2026Priorita">[1], [2]</span>. Ha una bibliografia di 20 voci: articoli, working paper, regolamenti europei e banche dati.</p>
+<p>L’obiettivo dell’esempio è quello di chi riprende in mano un lavoro: avere in una raccolta Zotero tutte le fonti con il loro PDF, un BibTeX pulito, e i passi della fonte principale su cui il paper si appoggia, segnati nel PDF e raccolti in un file Markdown. Gli strumenti sono zlb 0.3.0 <span class="citation" data-cites="volterra2026zlb">[3]</span> e ZotPush MD 0.5.2 <span class="citation" data-cites="volterra2026zotpush">[4]</span>, presentati nel <a href="../../posts/2611_zlbZotPush/index.html">post precedente</a>. Il ruolo dell’LLM lo ha svolto Claude, in un terminale.</p>
+</section>
+<section id="passo-1-dalla-bibliografia-al-manifest" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="passo-1-dalla-bibliografia-al-manifest"><span class="header-section-number">2</span> Passo 1: dalla bibliografia al manifest</h2>
+<p>Delle 20 voci, 7 sono banche dati o siti (BACI-CEPII, OEC, Growth Lab, TiVA, ICIO, Strategic Trade Atlas, Registro Nazionale degli Aiuti): non c’è un PDF da mettere in Zotero e restano fuori. Le altre 13 diventano un <em>manifest</em>, un file JSON con titolo, autori, anno e, quando c’è, il DOI. A queste ho aggiunto due letture consigliate dall’LLM sul principio di <em>relatedness</em>, che è il cuore del metodo <span class="citation" data-cites="li2022Relatedness stojkoski2022Multidimensional">[5], [6]</span>.</p>
+<p>Tre voci richiedono il giudizio dell’LLM prima ancora di zlb, perché in libreria non coincidono con la bibliografia: un articolo è presente come <em>reprint</em> con un DOI diverso, un documento della Commissione europea è presente due volte, un regolamento è presente con il titolo italiano. Per queste il manifest indica direttamente la chiave Zotero verificata. Un estratto:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"id"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"4"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"citekey"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"balland2022Paradigm"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"type"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"article"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-2"> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"title"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"The new paradigm of economic complexity"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"year"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"2022"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-3"> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"doi"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"10.1016/j.respol.2021.104450"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"zotero_key"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"PHPJWSQ9"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"id"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"C1"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"citekey"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"li2022Relatedness"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"type"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"article"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-5"> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"title"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Evaluating the principle of relatedness: Estimation, drivers and implications for policy"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-6"> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"year"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"2022"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"pdf_url"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://arxiv.org/pdf/2205.02942"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div></div>
+</section>
+<section id="passo-2-la-raccolta-e-il-bibtex" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="passo-2-la-raccolta-e-il-bibtex"><span class="header-section-number">3</span> Passo 2: la raccolta e il BibTeX</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">zlb</span> ensure-collection <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--name</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"zlb-esempio LEAP"</span></span>
+<span id="cb2-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">zlb</span> apply <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--manifest</span> references.json <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--collection</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"zlb-esempio LEAP"</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--output</span> references.bib</span></code></pre></div></div>
+<p>Il risultato finale:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Esito</th>
+<th>Voci</th>
+<th>Che cosa significa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Già in libreria, aggiunte alla raccolta</td>
+<td>13</td>
+<td>zlb le trova per DOI, titolo o chiave e le collega alla raccolta, senza duplicare il PDF</td>
+</tr>
+<tr class="even">
+<td>Importata dal web</td>
+<td>1</td>
+<td>Li e Neffke 2022, scaricata da arXiv e importata con l’API locale</td>
+</tr>
+<tr class="odd">
+<td>Non reperita</td>
+<td>1</td>
+<td>il Chips Act: il sito EUR-Lex risponde con una pagina di controllo anti-bot invece del PDF</td>
+</tr>
+</tbody>
+</table>
+<p>In parole semplici: 14 fonti su 15 sono in Zotero con il loro PDF; l’unica mancante finisce in cima al BibTeX, da recuperare a mano.</p>
+<p>Il BibTeX comincia infatti così, senza chiavi o percorsi inventati:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">% Missing PDFs (1)</span></span>
+<span id="cb3-2"></span>
+<span id="cb3-3"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">@misc</span>{<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">eu2023ChipsAct</span>,</span>
+<span id="cb3-4">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">author</span>      = {European Union},</span>
+<span id="cb3-5">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">title</span>       = {Regulation (EU) 2023/1781 establishing a framework of measures for strengthening Europe's semiconductor ecosystem (Chips Act)},</span>
+<span id="cb3-6">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">year</span>        = {2023},</span>
+<span id="cb3-7">}</span>
+<span id="cb3-8"></span>
+<span id="cb3-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">% PDFs in Zotero (14)</span></span></code></pre></div></div>
+<p>Le altre voci portano la chiave del PDF in Zotero e il suo percorso sul disco. Tutte le schede avevano già la citation key uguale alla chiave del PDF, quindi zlb non ha dovuto cambiarla.</p>
+<section id="gli-intoppi-così-come-sono-andati" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="gli-intoppi-così-come-sono-andati"><span class="header-section-number">3.1</span> Gli intoppi, così come sono andati</h3>
+<p>Il giro completo ha richiesto quattro esecuzioni di <code>apply</code>. Le racconto perché dicono molto su come lavora lo strumento.</p>
+<ol type="1">
+<li><p><strong>Un doppione in libreria.</strong> Il paper di Fetzer e coautori sulle reti produttive <span class="citation" data-cites="fetzer2024AIPNET">[7]</span> era in Zotero due volte. zlb non ha scelto a caso: si è fermato con «multiple matches; set zotero_key explicitly». La verifica preliminare dell’LLM lo aveva mancato; l’ha corretta indicando la chiave della copia più vecchia, e il doppione è rimasto da cancellare a mano, perché zlb non cancella nulla. Il difetto vero è un altro: un’ambiguità su una voce ferma l’intero giro senza produrre il report delle voci già fatte. È il prossimo punto da correggere in zlb.</p>
+<p>Dopo questo giro l’LLM ha indicato la chiave verificata anche per altre quattro voci che zlb non aveva trovato da solo: due hanno in libreria un titolo diverso da quello della bibliografia; le altre due, fra cui una lettura consigliata, non sono emerse dalla ricerca anche se il titolo coincide.</p></li>
+<li><p><strong>Un tipo BibTeX non standard.</strong> Il manifest usava <code>report</code>; zlb accetta solo i tipi standard e si è fermato prima di scrivere il BibTeX, dopo aver già importato il PDF nuovo. Con <code>techreport</code> il problema è sparito.</p></li>
+<li><p><strong>Un timeout.</strong> L’API locale di Zotero non ha risposto entro due minuti, probabilmente perché nello stesso momento girava un altro comando sulla stessa libreria. Rilanciato da solo, il comando è andato a buon fine.</p></li>
+<li><p><strong>Un sito che rifiuta i programmi.</strong> EUR-Lex non consegna il PDF a un client automatico; zlb non aggira questi blocchi e segnala la voce come non reperita.</p></li>
+</ol>
+<p>I giri ripetuti non fanno danni: zlb riconosce le voci già nella raccolta e non duplica i PDF. I tempi sono stati di 2-8 minuti per giro, perché per le voci senza chiave zlb cerca nell’intera libreria, testo dei PDF compreso.</p>
+</section>
+<section id="i-tag-automatici" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="i-tag-automatici"><span class="header-section-number">3.2</span> I tag automatici</h3>
+<p>Per questo esempio i tag automatici erano accesi, con un massimo di 10. Il PDF importato, Li e Neffke 2022, ha ricevuto dieci tag, tutti scelti fra quelli già presenti nella libreria da un modello in esecuzione sul computer: <code>industrial policy</code>, <code>RCA</code>, <code>trade</code>, <code>industries</code>, <code>Growth</code>, <code>country</code>, <code>analysis</code>, <code>Data</code>, <code>Framework</code>, <code>candidate</code>. I primi sono pertinenti; gli ultimi tre sono generici e andrebbero tolti a mano. È il motivo per cui la funzione è spenta per default: richiede un LLM locale e il suo risultato va comunque riletto.</p>
+</section>
+</section>
+<section id="passo-3-evidenziare-i-passi-della-fonte" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="passo-3-evidenziare-i-passi-della-fonte"><span class="header-section-number">4</span> Passo 3: evidenziare i passi della fonte</h2>
+<p>La fonte principale è il Policy Brief. L’LLM ha individuato i cinque passi su cui il paper si appoggia e li ha scritti, parola per parola, in un secondo manifest con il numero di pagina. Prima l’anteprima, poi la scrittura:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">zlb</span> highlight <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--manifest</span> passages_leap.json           <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># anteprima</span></span>
+<span id="cb4-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">zlb</span> highlight <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--manifest</span> passages_leap.json <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--apply</span>   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># crea le evidenziazioni</span></span></code></pre></div></div>
+<p>L’anteprima ha trovato tutti e cinque i passi una sola volta nel PDF (<code>exact: 5, ambiguous: 0, not-found: 0</code>); la scrittura ha creato cinque evidenziazioni grigie con il tag <code>zlb-citazione</code>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Passo</th>
+<th>Pagina</th>
+<th>Che cosa sostiene nel paper</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>La prossimità come predittore dello sviluppo industriale<sup>1</sup></td>
+<td>4</td>
+<td>il metodo replicato</td>
+</tr>
+<tr class="even">
+<td>Distanza ridotta in macchinari e mezzi di trasporto, maggiore in chimica e metalli di base</td>
+<td>6</td>
+<td>il confronto per macrosettori</td>
+</tr>
+<tr class="odd">
+<td>Prossimità ai prodotti NZIA, distanza dai semiconduttori<sup>2</sup></td>
+<td>7</td>
+<td>il risultato principale confermato dalla replica</td>
+</tr>
+<tr class="even">
+<td>Definizione delle «opportunità produttive»<sup>3</sup></td>
+<td>8</td>
+<td>la classificazione in quadranti</td>
+</tr>
+<tr class="odd">
+<td>Definizione della misura di dipendenza commerciale</td>
+<td>8 (nota 7)</td>
+<td>la scelta della misura</td>
+</tr>
+</tbody>
+</table>
+<p>In parole semplici: ogni riga è un passo del Policy Brief ora evidenziato in Zotero, con la pagina stampata e la parte del paper che lo usa.</p>
+<p>L’ultimo passo merita una parola. Il brief definisce la dipendenza come rapporto fra la differenza tra importazioni ed esportazioni e la loro somma. Il paper usa la stessa misura «riscalato nell’intervallo unitario: valori sopra 0,5 indicano dipendenza netta dalle importazioni» (p.&nbsp;2), con il rimando al working paper del 2025 degli stessi autori <span class="citation" data-cites="bontadini2025Selective">[8]</span>. Avere la definizione originale evidenziata accanto a quella usata rende la scelta controllabile da chiunque riapra il PDF.</p>
+</section>
+<section id="passo-4-il-dossier-in-markdown" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="passo-4-il-dossier-in-markdown"><span class="header-section-number">5</span> Passo 4: il dossier in Markdown</h2>
+<p>L’ultimo passo è in Zotero: seleziono tutte le schede della raccolta, clic destro, <strong>Push evidenze filtrate in Markdown…</strong>, filtro <code>tag:zlb-citazione</code>. ZotPush scarta le fonti senza evidenze e produce un solo file, <code>Evidenze Zotero - tag-zlb-citazione.md</code>, con una fonte e cinque evidenze. Ecco l’inizio:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">## Le priorità della politica industriale</span></span>
+<span id="cb5-2"></span>
+<span id="cb5-3">Citation key: <span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">`YST2S4T7`</span> — Chiave Zotero: <span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">`CZDUNWAB`</span></span>
+<span id="cb5-4"></span>
+<span id="cb5-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">### highlight — p. 4</span></span>
+<span id="cb5-6"></span>
+<span id="cb5-7">Colore Zotero: <span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">`#aaaaaa`</span></span>
+<span id="cb5-8"></span>
+<span id="cb5-9"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">&gt; la prossimità tra settori costituisce il principale predittore delle traiettorie di sviluppo industriale.</span></span>
+<span id="cb5-10"></span>
+<span id="cb5-11">zlb highlight:d898ba9ec50e6393 — Volterra, Politica industriale e diversificazione produttiva in Italia, DOI 10.5281/zenodo.22803987 — metodo-prossimita</span>
+<span id="cb5-12"></span>
+<span id="cb5-13">Tag: #zlb-citazione</span>
+<span id="cb5-14"></span>
+<span id="cb5-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">Apri in Zotero</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">](&lt;zotero://open-pdf/library/items/YST2S4T7?page=4&amp;annotation=6QBHN9UD&gt;)</span></span></code></pre></div></div>
+<p>Tre dettagli si vedono bene. La citation key è la chiave del PDF, impostata da zlb. Il commento dell’evidenza dice da quale documento e da quale voce del manifest viene: chi la ritrova fra sei mesi sa perché è lì. Il link riapre il PDF esattamente su quell’evidenziazione.</p>
+<p>L’esempio ha mostrato anche un piccolo difetto di ZotPush: il frontmatter YAML del dossier esce con una riga vuota fra un campo e l’altro. Resta YAML valido, ma andrà sistemato nella prossima versione.</p>
+</section>
+<section id="che-cosa-resta-allautore" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="che-cosa-resta-allautore"><span class="header-section-number">6</span> Che cosa resta all’autore</h2>
+<p>Lo strumento ha fatto le parti meccaniche: cercare, collegare, scaricare, scrivere il BibTeX, trovare le frasi nel PDF. Le decisioni sono rimaste a chi scrive: quali voci della bibliografia sono documenti, quale copia del doppione tenere, quali passi contano davvero, quali tag automatici togliere, come recuperare il regolamento che il sito non consegna. È la divisione dei compiti per cui i due strumenti sono stati costruiti.</p>
+<hr>
+<p><strong>Nota metodologica</strong></p>
+<p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
+<p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale; l’analisi è pertanto integralmente auditabile e replicabile da terzi a partire da esse. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+</section>
+<section id="riferimenti" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="riferimenti">Riferimenti</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0">
+<div id="ref-volterra2026Politica" class="csl-entry">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">P. Volterra, <span>«Politica industriale e diversificazione produttiva in Italia: replica e verifica del LEAP Policy Brief 6/2026»</span>, Zenodo, 2026. doi: <a href="https://doi.org/10.5281/zenodo.22803987">10.5281/zenodo.22803987</a>.</div>
+</div>
+<div id="ref-bontadini2026Priorita" class="csl-entry">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">F. Bontadini e V. Meliciani, <span>«Le priorità della politica industriale: dove concentrare gli interventi»</span>, Luiss Lab of European Affairs (LEAP), Policy Brief 6/2026, 2026. Disponibile su: <a href="https://leap.luiss.it/wp-content/uploads/2026/09/PB6.26-Le-priorita%CC%80-della-politica-industriale.pdf">https://leap.luiss.it/wp-content/uploads/2026/09/PB6.26-Le-priorita%CC%80-della-politica-industriale.pdf</a></div>
+</div>
+<div id="ref-volterra2026zlb" class="csl-entry">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">P. Volterra, <em>ZoteroLLMBridge (zlb): local Zotero API CLI for LLM-assisted bibliography workflows</em>. (2026). Zenodo. doi: <a href="https://doi.org/10.5281/zenodo.24374740">10.5281/zenodo.24374740</a>.</div>
+</div>
+<div id="ref-volterra2026zotpush" class="csl-entry">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">P. Volterra, <em>ZotPush MD: read-only export of Zotero references and annotations to Markdown</em>. (2026). Zenodo. doi: <a href="https://doi.org/10.5281/zenodo.23875777">10.5281/zenodo.23875777</a>.</div>
+</div>
+<div id="ref-li2022Relatedness" class="csl-entry">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">Y. Li e F. Neffke, <span>«Evaluating the principle of relatedness: Estimation, drivers and implications for policy»</span>. 2022. Disponibile su: <a href="https://arxiv.org/abs/2205.02942">https://arxiv.org/abs/2205.02942</a></div>
+</div>
+<div id="ref-stojkoski2022Multidimensional" class="csl-entry">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">V. Stojkoski, P. Koch, e C. A. Hidalgo, <span>«Multidimensional Economic Complexity and Inclusive Green Growth»</span>. 2022. Disponibile su: <a href="https://arxiv.org/abs/2209.08382">https://arxiv.org/abs/2209.08382</a></div>
+</div>
+<div id="ref-fetzer2024AIPNET" class="csl-entry">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">T. Fetzer, P. J. Lambert, B. Feld, e P. Garg, <span>«AI-generated production networks: measurement and applications to global trade»</span>, University of Warwick, Warwick Economics Research Papers 1528, 2024.</div>
+</div>
+<div id="ref-bontadini2025Selective" class="csl-entry">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">F. Bontadini e V. Meliciani, <span>«Selective industrial policy for the EU open strategic autonomy: the role of products’ relatedness»</span>, European Commission, Single Market Economics Papers WP2025/30, 2025. doi: <a href="https://doi.org/10.2873/3267849">10.2873/3267849</a>.</div>
+</div>
+</div>
+
+
+</section>
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Note</h2>
+
+<ol>
+<li id="fn1"><p>«la prossimità tra settori costituisce il principale predittore delle traiettorie di sviluppo industriale» <span class="citation" data-cites="bontadini2026Priorita">[2, p. 4]</span>.↩︎</p></li>
+<li id="fn2"><p>«i settori italiani dei macchinari e dei componenti elettronici mostrano un’elevata prossimità ai prodotti NZIA, ma una distanza significativa rispetto a quelli destinati alla produzione di semiconduttori» <span class="citation" data-cites="bontadini2026Priorita">[2, p. 7]</span>.↩︎</p></li>
+<li id="fn3"><p>«Questi sono i prodotti che si trovano vicini alla struttura produttiva italiana e che hanno un’elevata complessità e quindi un potenziale per la crescita economica più elevato» <span class="citation" data-cites="bontadini2026Priorita">[2, p. 8]</span>.↩︎</p></li>
+</ol>
+</section></div><!-- vedi-anche:start -->
+<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2611_zlbZotPush/index.html">zlb e ZotPush: la ricerca dentro e fuori da Zotero</a><small>zlb è un comando da terminale che permette a un LLM di lavorare sulla libreria Zotero sotto il controllo dell’utente; ZotPush MD è un plugin che esporta riferimenti ed evidenze in Markdown senza mai scrivere nella librer</small></li><li><a href="../2611_StructuredEvidence/index.html">Structured Evidence Inference: un metodo grounded per l’analisi di documentazione istituzionale</a><small>This paper introduces structured evidence inference , a pipeline methodology for transforming heterogeneous institutional policy documentation into a multi-layer, computationally auditable evidence structure.</small></li><li><a href="../2412_ChatgptReverseEngineering/index.html">ChatGPT &amp; Reverse Engineering</a><small>Ricavare i valori di un grafico da un’immagine con un LLM: come far lavorare in gruppo modello, OCR e Python.</small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
+<!-- vedi-anche:end -->
+ ]]></description>
+  <category>Dati e metodo</category>
+  <category>Intelligenza artificiale</category>
+  <guid>https://paolovolterra.com/posts/2611_zlbZotPushEsempio/</guid>
+  <pubDate>Wed, 18 Nov 2026 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>zlb e ZotPush: la ricerca dentro e fuori da Zotero</title>
+  <dc:creator>Paolo Volterra</dc:creator>
+  <link>https://paolovolterra.com/posts/2611_zlbZotPush/</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://paolovolterra.com/posts/2611_zlbZotPush/zlb-zotpush.jpg" class="img-fluid figure-img" alt="Illustrazione: a sinistra zlb, ponte fra Zotero e un LLM; a destra ZotPush, da Zotero a Markdown."></p>
+<figcaption>zlb porta i documenti dentro Zotero, ZotPush ne porta fuori le evidenze.</figcaption>
+</figure>
+</div>
+<section id="il-problema" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="il-problema"><span class="header-section-number">1</span> Il problema</h2>
+<p>Una ricerca bibliografica fatta con un LLM produce di solito un elenco di titoli e di link. Il lavoro vero comincia dopo: trovare i PDF, metterli nella libreria, leggerli, segnare i passi che servono e riportarli nel testo che si sta scrivendo. Sono passaggi manuali, ripetitivi, e soggetti a un errore preciso: la citazione che non si trova più nel documento da cui si pensava di averla presa.</p>
+<p>zlb e ZotPush coprono le due metà di questo giro. zlb lavora <strong>verso</strong> Zotero: importa, organizza, evidenzia. ZotPush lavora <strong>da</strong> Zotero: esporta in Markdown ciò che è stato letto e segnato. In mezzo resta chi legge.</p>
+</section>
+<section id="zlb-un-ponte-fra-un-llm-e-la-libreria" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="zlb-un-ponte-fra-un-llm-e-la-libreria"><span class="header-section-number">2</span> zlb: un ponte fra un LLM e la libreria</h2>
+<p>zlb (ZoteroLLMBridge) è un comando da terminale per Zotero 10, utilizzabile anche da script e da agenti LLM su Linux, macOS e Windows <span class="citation" data-cites="volterra2026zlb">[1]</span>. Parla con Zotero attraverso l’API locale che il programma espone sul computer quando è aperto <span class="citation" data-cites="zotero2026localapi">[2]</span>: nessun account, nessun servizio esterno.</p>
+<p>Il caso d’uso tipico è questo. Si chiede a un LLM di consigliare paper su un tema e di cercarne i PDF. L’LLM prepara un piccolo file JSON (il <em>manifest</em>) con titoli, DOI, chiavi Zotero o URL dei PDF. zlb esegue la parte locale:</p>
+<ul>
+<li>cerca ogni riferimento nell’intera libreria e collega alla raccolta le schede già presenti;</li>
+<li>importa i PDF nuovi tramite l’API locale, senza duplicare quelli che esistono già;</li>
+<li>scrive il file BibTeX, mettendo <strong>in testa</strong> i riferimenti che non è riuscito a reperire, senza chiavi o percorsi inventati.</li>
+</ul>
+<p>Il secondo uso è la verifica delle citazioni. Il comando <code>highlight</code> riceve le frasi esatte che un testo cita, le cerca nel PDF e le evidenzia in Zotero, in grigio e con il tag <code>zlb-citazione</code>. Prima mostra un’anteprima: se una frase non si trova, o compare più di una volta, non scrive nulla.</p>
+<p>Le regole sono strette. zlb non cancella schede, raccolte o allegati: non ha un comando per farlo e rifiuta le richieste di cancellazione. Non scrive nel database di Zotero, passa sempre dall’API. Alla prima scrittura Zotero chiede all’utente di autorizzarla.</p>
+<section id="le-novità-della-0.3.0" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="le-novità-della-0.3.0"><span class="header-section-number">2.1</span> Le novità della 0.3.0</h3>
+<ul>
+<li><strong>Citation key = chiave del PDF.</strong> Quando importa un PDF sotto una scheda, zlb imposta la citation key della scheda alla chiave di otto caratteri del PDF in Zotero. La stessa fonte ha così la stessa chiave BibTeX in ogni progetto. I comandi <code>citekey</code> e <code>citekey-all</code> fanno lo stesso sulle schede già presenti.</li>
+<li><strong>Tag automatici, su richiesta.</strong> Per ogni nuovo PDF un modello locale può scegliere fino a N tag <strong>già presenti</strong> nella libreria: non può inventarne di nuovi.</li>
+</ul>
+</section>
+<section id="perché-i-tag-automatici-sono-spenti-per-default" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="perché-i-tag-automatici-sono-spenti-per-default"><span class="header-section-number">2.2</span> Perché i tag automatici sono spenti per default</h3>
+<p>I tag automatici richiedono un LLM in esecuzione sul computer (Ollama) e un modello scaricato: zlb accetta solo un Ollama locale, così il testo dei PDF non lascia la macchina. Chi non ha questa configurazione non deve trovarsi con un’importazione che fallisce. Per questo nella 0.3.0 sono spenti, e si accendono in tre modi: con l’opzione <code>--tag-count N</code> sul singolo comando, con la variabile <code>ZLB_TAG_COUNT</code>, oppure una volta per tutte con un file <code>config.json</code> accanto alla cache delle autorizzazioni:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"tag_count"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div></div>
+<p>Il numero è un massimo, non un obiettivo: se i tag pertinenti sono meno, ne vengono applicati meno. La scelta resta quella di un modello linguistico, e va controllata come tale.</p>
+</section>
+</section>
+<section id="zotpush-dalla-libreria-al-markdown" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="zotpush-dalla-libreria-al-markdown"><span class="header-section-number">3</span> ZotPush: dalla libreria al Markdown</h2>
+<p>ZotPush MD è un plugin di Zotero <span class="citation" data-cites="volterra2026zotpush">[3]</span>. Seleziono una o più fonti, scelgo <strong>Push selezione in Markdown…</strong> dal menu Strumenti o dal clic destro, e ottengo file Markdown con metadati in YAML, abstract, note, evidenze e immagini delle annotazioni. I file funzionano in Obsidian o in qualsiasi editor.</p>
+<p>Il comando <strong>Push evidenze filtrate in Markdown…</strong> fa una cosa più mirata: raccoglie da tutte le fonti selezionate solo le annotazioni di un certo colore o con un certo tag, in un unico dossier. Ogni evidenza porta con sé testo, pagina, commento, tag e un link che riapre il PDF esattamente su quell’annotazione.</p>
+<p>La garanzia di ZotPush è opposta a quella di zlb: <strong>non scrive mai nella libreria</strong>. Non modifica schede, note, tag o raccolte; l’unica scrittura avviene nella cartella scelta dall’utente, e un file con lo stesso nome non creato dal plugin non viene sovrascritto. Ogni <code>npm test</code> lancia un controllo automatico del codice che cerca chiamate capaci di modificare Zotero. Se si riesporta lo stesso dossier, le note personali scritte sotto il blocco generato restano dove sono.</p>
+</section>
+<section id="come-si-incastrano" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="come-si-incastrano"><span class="header-section-number">4</span> Come si incastrano</h2>
+<p>Il punto di contatto è un tag. <code>zlb highlight</code> segna i passi con <code>zlb-citazione</code>, e <code>tag:zlb-citazione</code> è il filtro che ZotPush propone per default. Il giro completo diventa: un LLM propone le fonti, zlb le porta in Zotero e segna i passi che il testo usa, chi scrive legge e controlla, ZotPush riporta le evidenze in un file Markdown con il link a ogni pagina.</p>
+<p>Un esempio eseguito davvero, dalla bibliografia di un mio paper al dossier finale, con tutti gli intoppi incontrati per strada, è nel post <a href="../../posts/2611_zlbZotPushEsempio/index.html">Dalla bibliografia di un paper a un dossier di citazioni</a>.</p>
+</section>
+<section id="dove-trovarli" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="dove-trovarli"><span class="header-section-number">5</span> Dove trovarli</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Strumento</th>
+<th>Versione</th>
+<th>Licenza</th>
+<th>Codice</th>
+<th>Archivio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>zlb</td>
+<td>0.3.0 (19/11/2026)</td>
+<td>0BSD</td>
+<td><a href="https://github.com/paolovolterra/zotero-llm-bridge">GitHub</a></td>
+<td><a href="https://doi.org/10.5281/zenodo.22900666">10.5281/zenodo.22900666</a></td>
+</tr>
+<tr class="even">
+<td>ZotPush MD</td>
+<td>0.5.2 (2/11/2026)</td>
+<td>MIT</td>
+<td><a href="https://github.com/paolovolterra/Zotpush">GitHub</a></td>
+<td><a href="https://doi.org/10.5281/zenodo.22901555">10.5281/zenodo.22901555</a></td>
+</tr>
+</tbody>
+</table>
+<p>In parole semplici: entrambi gli strumenti sono gratuiti, con il codice pubblico e una copia archiviata con DOI; i DOI in tabella portano sempre all’ultima versione.</p>
+<p>Entrambi sono stati provati dal vivo con Zotero 10 su Linux. Su macOS e Windows l’installazione di zlb è documentata ma non ancora provata dal vivo; ZotPush dichiara compatibilità anche con Zotero 9, non provata per la versione corrente.</p>
+<hr>
+<p><strong>Nota metodologica</strong></p>
+<p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
+<p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale; l’analisi è pertanto integralmente auditabile e replicabile da terzi a partire da esse. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
+<p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
+</section>
+<section id="riferimenti" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="riferimenti">Riferimenti</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0">
+<div id="ref-volterra2026zlb" class="csl-entry">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">P. Volterra, <em>ZoteroLLMBridge (zlb): local Zotero API CLI for LLM-assisted bibliography workflows</em>. (2026). Zenodo. doi: <a href="https://doi.org/10.5281/zenodo.24374740">10.5281/zenodo.24374740</a>.</div>
+</div>
+<div id="ref-zotero2026localapi" class="csl-entry">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">Zotero, <span>«Zotero Local API»</span>. Documentazione per sviluppatori. Disponibile su: <a href="https://www.zotero.org/support/dev/web_api/v3/local_api">https://www.zotero.org/support/dev/web_api/v3/local_api</a></div>
+</div>
+<div id="ref-volterra2026zotpush" class="csl-entry">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">P. Volterra, <em>ZotPush MD: read-only export of Zotero references and annotations to Markdown</em>. (2026). Zenodo. doi: <a href="https://doi.org/10.5281/zenodo.23875777">10.5281/zenodo.23875777</a>.</div>
+</div>
+</div>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a><!-- vedi-anche:start -->
+<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2603_AgentsMd/index.html">Agents.md aiuto oppure ostacolo?</a><small>La ricerca analizza l’efficacia dei file di contesto come AGENTS.md, strumenti teoricamente progettati per guidare gli agenti di programmazione AI all’interno dei repository software.</small></li><li><a href="../2611_zlbZotPushEsempio/index.html">Dalla bibliografia di un paper a un dossier di citazioni</a><small>Il giro completo, eseguito davvero: dalla bibliografia di un paper a una raccolta Zotero con BibTeX, ai passi della fonte evidenziati, a un dossier Markdown con il link a ogni pagina. Con i quattro intoppi incontrati per</small></li><li><a href="../2412_ChatgptReverseEngineering/index.html">ChatGPT &amp; Reverse Engineering</a><small>Ricavare i valori di un grafico da un’immagine con un LLM: come far lavorare in gruppo modello, OCR e Python.</small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
+<!-- vedi-anche:end -->
+ ]]></description>
+  <category>Dati e metodo</category>
+  <category>Intelligenza artificiale</category>
+  <guid>https://paolovolterra.com/posts/2611_zlbZotPush/</guid>
+  <pubDate>Wed, 18 Nov 2026 23:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Quanto pesano micro, piccole, medie e grandi imprese</title>
   <dc:creator>Paolo Volterra</dc:creator>
@@ -1709,7 +2229,10 @@ P. Volterra, <a href="https://doi.org/10.5281/zenodo.22803986">«Politica indust
 <li id="fn9"><p>«Modified GNI (GNI*) is an indicator that was recommended by the Economic Statistics Review Group and is designed to exclude globalisation effects that are disproportionally impacting the measurement of the size of the Irish economy.» <span class="citation" data-cites="cso2025gni">[11]</span>↩︎</p></li>
 <li id="fn10"><p>«The OP decomposition splits an index of industry-level productivity, defined as the weighted average of firm-level (log-)productivity, into an unweighted firm-level average and a covariance term.» <span class="citation" data-cites="bartelsman2009crosscountry">[14, p.&nbsp;4]</span>↩︎</p></li>
 </ol>
-</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Riutilizzare</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.it">CC BY 4.0</a></div></div></section></div> ]]></description>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Riutilizzare</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.it">CC BY 4.0</a></div></div></section></div><!-- vedi-anche:start -->
+<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2602_FallimentiItaliaGermania/index.html">Imprese e fallimenti in Italia e in Germania</a><small>Registrazioni e fallimenti di imprese in Italia e in Germania a confronto sui dati Eurostat, destagionalizzati e in indice 2015=100.</small></li><li><a href="../2611_ConvergenzaMargini/index.html">Convergenza dei margini fra settori: quanto dipende dagli anni scelti</a><small>I margini dei settori italiani si avvicinano? Nei servizi sì, con qualunque scelta di anni; nell’industria dipende dall’anno di partenza, e il 2024 indebolisce l’avvicinamento. Prova di sensibilità sulle figure 1.5 e 1.6</small></li><li><a href="../2610_BachEDA/index.html">BACH — analisi esplorativa dei bilanci aggregati delle imprese europee</a><small>Che cosa contiene BACH, la base dati dei bilanci aggregati delle società non finanziarie europee: paesi, settori, classi dimensionali, medie ponderate e quartili.</small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
+<!-- vedi-anche:end -->
+ ]]></description>
   <category>Imprese</category>
   <category>Europa e geopolitica</category>
   <category>Dati e metodo</category>
@@ -2369,7 +2892,10 @@ Figura&nbsp;10: Origine nelle branche italiane dei servizi del valore aggiunto a
 <li id="fn3"><p>«However, the scope of TEC is limited to the trade in goods.» <span class="citation" data-cites="eurostat2026TecMetadati">[12, p. 3]</span>↩︎</p></li>
 <li id="fn4"><p>«STEC use the enterprise as a statistical unit.» <span class="citation" data-cites="eurostat2026StecMetadati">[14, p. 2]</span>↩︎</p></li>
 </ol>
-</section></div> ]]></description>
+</section></div><!-- vedi-anche:start -->
+<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2610_ImpreseProdottiStrategici/index.html">Chi dipende davvero: le imprese italiane e i prodotti strategici importati</a><small>Il Rapporto di Geoeconomia del Centro Studi Confindustria misura quanto l’Italia dipende dall’estero per prodotti strategici; l’approfondimento curato dall’Istat si sposta dal “quanto” al “chi”, individuando le imprese c</small></li><li><a href="../2607_ExportRischioGeopolitico/index.html">Export italiano e rischio geopolitico — triangolazione PuntoSVIMEZ, Filiere strategiche e dati ICE-Istat</a><small>Il PuntoSVIMEZ di luglio 2026 fotografa un export italiano in crescita del 3,3% nel 2025 (643 miliardi di euro), ma con una dinamica fortemente asimmetrica: il Mezzogiorno arretra (-1,2% al lordo degli energetici) mentre</small></li><li><a href="../2604_MadeInItalyModello/index.html">Il Made in Italy come modello industriale</a><small>Il «Made in Italy» non è soltanto un’etichetta commerciale, ma un modello produttivo strutturato attorno a tre pilastri — la piccola e media impresa, la specializzazione distrettuale, la qualità come vantaggio competitiv</small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
+<!-- vedi-anche:end -->
+ ]]></description>
   <category>Commercio estero</category>
   <category>Imprese</category>
   <category>Mezzogiorno e territori</category>
@@ -6015,7 +6541,10 @@ S. Calligaris, M. Chaves, C. Criscuolo, J. De Lyon, A. Greppi, e O. Pallanch, «
 <li id="fn5"><p>«Nel caso italiano, l’aumento complessivo riflette invece soprattutto il recupero dei settori inizialmente caratterizzati da livelli di markup più bassi.» <span class="citation" data-cites="agcm2026Concorrenza">[1, p.&nbsp;15]</span>↩︎</p></li>
 <li id="fn6"><p>«Per le imprese fuori dalla top 4 la probabilità di entrarvi è virtualmente zero.» <span class="citation" data-cites="agcm2026Concorrenza">[1, p.&nbsp;40]</span>↩︎</p></li>
 </ol>
-</section></div> ]]></description>
+</section></div><!-- vedi-anche:start -->
+<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2611_ConvergenzaMargini/index.html">Convergenza dei margini fra settori: quanto dipende dagli anni scelti</a><small>I margini dei settori italiani si avvicinano? Nei servizi sì, con qualunque scelta di anni; nell’industria dipende dall’anno di partenza, e il 2024 indebolisce l’avvicinamento. Prova di sensibilità sulle figure 1.5 e 1.6</small></li><li><a href="../2404_Mediobanca/Python &amp; Mediobanca Opendata.html">Python &amp; Mediobanca Opendata</a><small>Mediobanca, Unioncamere e il Centro Studi Tagliacarne pubblicano annualmente il Rapporto sulle Medie imprese industriali italiane Si tratta di macro aggregati di informazioni economico patrimoniali…</small></li><li><a href="../2611_DimensioneImprese/index.html">Quanto pesano micro, piccole, medie e grandi imprese</a><small>In Italia, come in Germania, Francia e Spagna, quasi tutte le imprese hanno meno di 250 addetti: il tratto italiano è il basso peso delle grandi imprese, che si osserva dentro i singoli settori e in tutta l’Unione europe</small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
+<!-- vedi-anche:end -->
+ ]]></description>
   <category>Imprese</category>
   <category>Dati e metodo</category>
   <guid>https://paolovolterra.com/posts/2611_GuidaConcorrenza/</guid>
@@ -6360,7 +6889,10 @@ Eurostat, <a href="https://ec.europa.eu/eurostat/databrowser/view/sbs_ovw_act/de
 <li id="fn3"><p>«Al contrario, i settori nei quadranti (2) e (4) contribuiscono a un processo di convergenza, nella misura in cui livelli iniziali e crescita dei markup presentano scostamenti di segno opposto rispetto alla media settoriale, riducendo la distanza da quest’ultima.» <span class="citation" data-cites="agcm2026Concorrenza">[1, p.&nbsp;20]</span>↩︎</p></li>
 <li id="fn4"><p>«Nell’ambito dell’industria (pannello a), tra i comparti che hanno contribuito ad aumentare la dispersione settoriale si rilevano la fornitura di energia elettrica, gas, vapore e aria condizionata (35) – posizionata nel quadrante in alto a destra – l’industria alimentare (10), la metallurgia (24) e la fabbricazione di macchinari ed apparecchiature n.c.a. (28), questi ultimi collocati nel quadrante in basso a sinistra.» <span class="citation" data-cites="agcm2026Concorrenza">[1, p.&nbsp;20]</span>↩︎</p></li>
 </ol>
-</section></div> ]]></description>
+</section></div><!-- vedi-anche:start -->
+<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2611_GuidaConcorrenza/index.html">Come leggere il Rapporto sulla concorrenza in Italia</a><small>Guida per non specialisti al Rapporto AGCM-Banca d’Italia sulla concorrenza in Italia (ottobre 2026): le variabili, come si collegano e tutte le figure in ordine di pagina, sedici delle quali ricostruite dai dati Eurosta</small></li><li><a href="../2611_DimensioneImprese/index.html">Quanto pesano micro, piccole, medie e grandi imprese</a><small>In Italia, come in Germania, Francia e Spagna, quasi tutte le imprese hanno meno di 250 addetti: il tratto italiano è il basso peso delle grandi imprese, che si osserva dentro i singoli settori e in tutta l’Unione europe</small></li><li><a href="../2404_Mediobanca/Python &amp; Mediobanca Opendata.html">Python &amp; Mediobanca Opendata</a><small>Mediobanca, Unioncamere e il Centro Studi Tagliacarne pubblicano annualmente il Rapporto sulle Medie imprese industriali italiane Si tratta di macro aggregati di informazioni economico patrimoniali…</small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
+<!-- vedi-anche:end -->
+ ]]></description>
   <category>Imprese</category>
   <category>Dati e metodo</category>
   <guid>https://paolovolterra.com/posts/2611_ConvergenzaMargini/</guid>
@@ -7116,7 +7648,7 @@ Tabella&nbsp;2: Numeri riportati dalla stampa e dati ufficiali. Fonte: <span cla
 <li id="fn4"><p>«nel primo semestre del 2026 il 93% dei pagamenti al POS è avvenuto in modalità contactless, mentre quelli tramite smartphone e altri dispositivi mobili hanno raggiunto il 30% delle transazioni al punto vendita.» <span class="citation" data-cites="startupitalia2026Banca">[2]</span>↩︎</p></li>
 </ol>
 </section></div><!-- vedi-anche:start -->
-<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2603_SportelliFisici/index.html">Servono ancora gli sportelli fisici?</a><small>Il 43% dei comuni italiani non ha uno sportello bancario e 216 non hanno né banca né ufficio postale. Versione corretta del 31 ottobre 2026.</small></li><li><a href="../2606_PrevisioneTassiGuida/index.html">Come si costruisce una previsione sui tassi bancari</a><small>Guida in 7 passi per chi non è economista — con i numeri del ciclo 2022–2026</small></li><li><a href="../2610_CreditoPmi/index.html">Condizioni del credito e settore bancario</a><small>Il credito alle imprese torna a crescere nel 2026 ma non per tutte: si contrae per le imprese con meno di 20 addetti, mentre la qualità degli attivi bancari resta buona e meno favorevole nel portafoglio PMI.</small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
+<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2603_SportelliFisici/index.html">Servono ancora gli sportelli fisici?</a><small>Il 43% dei comuni italiani non ha uno sportello bancario e 216 non hanno né banca né ufficio postale. Versione corretta del 31 ottobre 2026.</small></li><li><a href="../2606_PrevisioneTassiGuida/index.html">Come si costruisce una previsione sui tassi bancari</a><small>Guida in 7 passi per chi non è economista — con i numeri del ciclo 2022–2026</small></li><li><a href="../2611_IndicatoreICC/index.html">L’indicatore ICC per le condizioni creditizie delle imprese italiane</a><small>L’indicatore ICC delle condizioni del credito alle imprese italiane: replica con dati pubblici e aggiornamento al secondo trimestre 2026.</small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
 <!-- vedi-anche:end -->
  ]]></description>
   <category>Banche e credito</category>
@@ -7236,7 +7768,7 @@ Figura&nbsp;3: Automobili per tipo di motore, gennaio–agosto 2026, milioni di 
 <li id="fn3"><p>«Other vehicles, with both spark-ignition internal combustion piston engine and electric motor as motors for propulsion, capable of being charged by plugging to external source of electric power» <span class="citation" data-cites="wco2022hs87">[2, p. 2]</span>↩︎</p></li>
 </ol>
 </section></div><!-- vedi-anche:start -->
-<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2608_GermaniaFranciaItalia/index.html">Germania, Francia, Italia: crescita e finanza pubblica nell’estate 2026</a><small>Un articolo di commento economico pubblicato il 29 agosto 2026 offre lo spunto per approfondire quattro sviluppi riguardanti Germania, Francia e Italia: la revisione del prodotto interno lordo tedesco, la decelerazione f</small></li><li><a href="../2607_ExportRischioGeopolitico/index.html">Export italiano e rischio geopolitico — triangolazione PuntoSVIMEZ, Filiere strategiche e dati ICE-Istat</a><small>Il PuntoSVIMEZ di luglio 2026 fotografa un export italiano in crescita del 3,3% nel 2025 (643 miliardi di euro), ma con una dinamica fortemente asimmetrica: il Mezzogiorno arretra (-1,2% al lordo degli energetici) mentre</small></li><li><a href="../2610_UsaStop/index.html">Se gli Stati Uniti interrompessero i rapporti con l’Unione europea</a><small>Che cosa significherebbe un’interruzione totale dei rapporti fra Stati Uniti e Unione europea: sei canali, strumenti giuridici, segnali precoci e costi per l’Europa e per l’Italia.</small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
+<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2611_DeficitCommercialeUE/index.html">Il ritorno al deficit commerciale dell’Unione europea nel Q2 2026</a><small>Nel secondo trimestre del 2026, la bilancia commerciale extra-UE di beni dell’Unione europea ha registrato un disavanzo di 21,8 miliardi di euro, interrompendo una serie di undici trimestri consecutivi in avanzo iniziata</small></li><li><a href="../2611_Chokepoint/index.html">Chokepoint</a><small>Un chokepoint è un punto attraverso cui deve necessariamente passare un flusso, che si tratti di merci, dati, capitale o decisioni: la sua importanza deriva dalla concentrazione strutturale del passaggio, non da un probl</small></li><li><a href="../2607_ExportRischioGeopolitico/index.html">Export italiano e rischio geopolitico — triangolazione PuntoSVIMEZ, Filiere strategiche e dati ICE-Istat</a><small>Il PuntoSVIMEZ di luglio 2026 fotografa un export italiano in crescita del 3,3% nel 2025 (643 miliardi di euro), ma con una dinamica fortemente asimmetrica: il Mezzogiorno arretra (-1,2% al lordo degli energetici) mentre</small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
 <!-- vedi-anche:end -->
  ]]></description>
   <category>Commercio estero</category>
@@ -12072,7 +12604,7 @@ Comune di Parma, <a href="https://www.comune.parma.it/it/novita/notizie/lo-youth
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a><!-- vedi-anche:start -->
-<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2610_EurostatSbsEDA/index.html">Eurostat sbs_ovw_act — analisi esplorativa delle statistiche strutturali sulle imprese</a><small>Le statistiche strutturali sulle imprese di Eurostat (sbs_ovw_act): imprese, occupati, fatturato e valore aggiunto per paese e attività economica dal 2021.</small></li><li><a href="../2610_CensimentoImpreseFinanza/index.html">Censimento permanente delle imprese 2025: le fonti di finanziamento, a confronto con BACH</a><small>Quante imprese usano fido, prestiti, leasing, garanzie pubbliche e capitale proprio secondo il Censimento Istat 2025, quanto pesano le stesse fonti nei bilanci delle società di capitali (BACH) se il credito va ai settori</small></li><li><a href="../2602_FallimentiItaliaGermania/index.html">Imprese e fallimenti in Italia e in Germania</a><small>Registrazioni e fallimenti di imprese in Italia e in Germania a confronto sui dati Eurostat, destagionalizzati e in indice 2015=100.</small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
+<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2610_EurostatSbsEDA/index.html">Eurostat sbs_ovw_act — analisi esplorativa delle statistiche strutturali sulle imprese</a><small>Le statistiche strutturali sulle imprese di Eurostat (sbs_ovw_act): imprese, occupati, fatturato e valore aggiunto per paese e attività economica dal 2021.</small></li><li><a href="../2611_DimensioneImprese/index.html">Quanto pesano micro, piccole, medie e grandi imprese</a><small>In Italia, come in Germania, Francia e Spagna, quasi tutte le imprese hanno meno di 250 addetti: il tratto italiano è il basso peso delle grandi imprese, che si osserva dentro i singoli settori e in tutta l’Unione europe</small></li><li><a href="../2610_CensimentoImpreseFinanza/index.html">Censimento permanente delle imprese 2025: le fonti di finanziamento, a confronto con BACH</a><small>Quante imprese usano fido, prestiti, leasing, garanzie pubbliche e capitale proprio secondo il Censimento Istat 2025, quanto pesano le stesse fonti nei bilanci delle società di capitali (BACH) se il credito va ai settori</small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
 <!-- vedi-anche:end -->
  ]]></description>
   <category>Imprese</category>
@@ -13181,7 +13713,7 @@ Comune di Parma, <a href="https://www.comune.parma.it/it/novita/notizie/lo-youth
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a><!-- vedi-anche:start -->
-<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2602_FallimentiItaliaGermania/index.html">Imprese e fallimenti in Italia e in Germania</a><small>Registrazioni e fallimenti di imprese in Italia e in Germania a confronto sui dati Eurostat, destagionalizzati e in indice 2015=100.</small></li><li><a href="../2610_BachEDA/index.html">BACH — analisi esplorativa dei bilanci aggregati delle imprese europee</a><small>Che cosa contiene BACH, la base dati dei bilanci aggregati delle società non finanziarie europee: paesi, settori, classi dimensionali, medie ponderate e quartili.</small></li><li><a href="../2610_IstatSbsnazEDA/index.html">ISTAT 161_267 — analisi esplorativa dei risultati economici delle imprese</a><small>I risultati economici delle imprese italiane dal 2008 al 2024 (Istat): imprese, occupati, conto economico e investimenti per attività e classe di addetti.</small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
+<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2610_BachEDA/index.html">BACH — analisi esplorativa dei bilanci aggregati delle imprese europee</a><small>Che cosa contiene BACH, la base dati dei bilanci aggregati delle società non finanziarie europee: paesi, settori, classi dimensionali, medie ponderate e quartili.</small></li><li><a href="../2602_FallimentiItaliaGermania/index.html">Imprese e fallimenti in Italia e in Germania</a><small>Registrazioni e fallimenti di imprese in Italia e in Germania a confronto sui dati Eurostat, destagionalizzati e in indice 2015=100.</small></li><li><a href="../2610_IstatSbsnazEDA/index.html">ISTAT 161_267 — analisi esplorativa dei risultati economici delle imprese</a><small>I risultati economici delle imprese italiane dal 2008 al 2024 (Istat): imprese, occupati, conto economico e investimenti per attività e classe di addetti.</small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
 <!-- vedi-anche:end -->
  ]]></description>
   <category>Imprese</category>
@@ -16442,7 +16974,7 @@ R. Ashley, C. W. J. Granger, e R. Schmalensee, <a href="https://doi.org/10.2307/
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a><!-- vedi-anche:start -->
-<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2604_SpecializzazioneShock/index.html">Specializzazione produttiva e vulnerabilità agli shock</a><small>I documenti pubblici sull’industria italiana — dai rapporti MIMIT alle analisi SVIMEZ, fino al lavoro di Intesa Sanpaolo sui distretti — descrivono bene la struttura produttiva del paese ma non rispondono a una domanda c</small></li><li><a href="../2603_TotalFactorProductivity/index.html">Total Factor Productivity</a><small>Analisi comparata IT, DE, FR, ES, US (1954–2023)</small></li><li><a href="../2606_CanaliTrasmissioneShock/index.html">Canali di trasmissione degli shock</a><small>I meccanismi che il β lineare non cattura — mappa e letteratura</small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
+<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2604_SpecializzazioneShock/index.html">Specializzazione produttiva e vulnerabilità agli shock</a><small>I documenti pubblici sull’industria italiana — dai rapporti MIMIT alle analisi SVIMEZ, fino al lavoro di Intesa Sanpaolo sui distretti — descrivono bene la struttura produttiva del paese ma non rispondono a una domanda c</small></li><li><a href="../2603_TotalFactorProductivity/index.html">Total Factor Productivity</a><small>Analisi comparata IT, DE, FR, ES, US (1954–2023)</small></li><li><a href="../2611_CicloAreaEuro/index.html">Il ciclo dell’area euro visto attraverso i principali paesi</a><small>Banca d’Italia pubblica due indicatori ciclici coincidenti costruiti con la stessa metodologia: €-coin per l’area euro e Ita-coin per l’Italia.</small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
 <!-- vedi-anche:end -->
  ]]></description>
   <category>Macroeconomia</category>
@@ -18333,606 +18865,13 @@ Eurostat, <a href="https://ec.europa.eu/eurostat/databrowser/view/demo_r_pjanagg
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a><!-- vedi-anche:start -->
-<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2610_ImpresePerMilleAbitanti/index.html">Imprese per mille abitanti</a><small>Il numero di imprese attive per mille abitanti è una misura di densità del tessuto produttivo.</small></li><li><a href="../2603_ImpreseSicilia/index.html">Imprese in Sicilia</a><small>Imprese attive, nate e cessate in Sicilia per provincia e settore, dai dati Opendata Marche di InfoCamere.</small></li><li><a href="../2603_DesertificazioneCommerciale/index.html">Desertificazione commerciale nei centri storici italiani</a><small>Confcommercio ha pubblicato il 12 marzo 2026 un’analisi sulla demografia d’impresa nei centri urbani italiani, documentando la scomparsa di 156mila attività commerciali tra il 2012 e il 2025.</small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
+<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2610_ImpresePerMilleAbitanti/index.html">Imprese per mille abitanti</a><small>Il numero di imprese attive per mille abitanti è una misura di densità del tessuto produttivo.</small></li><li><a href="../2603_ImpreseSicilia/index.html">Imprese in Sicilia</a><small>Imprese attive, nate e cessate in Sicilia per provincia e settore, dai dati Opendata Marche di InfoCamere.</small></li><li><a href="../2611_MappaArtigianato/index.html">Mappa dell’artigianato italiano</a><small>Quadro strutturale delle imprese artigiane italiane, con perimetro nazionale e fonti amministrative 2007-2026: stock di imprese e mestieri ATECO da InfoCamere/Camere di commercio, redditi e demografia da INPS, credito e </small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
 <!-- vedi-anche:end -->
  ]]></description>
   <category>Imprese</category>
   <category>Mezzogiorno e territori</category>
   <guid>https://paolovolterra.com/posts/2610_DensitaImprese/</guid>
   <pubDate>Wed, 07 Oct 2026 22:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Condizioni del credito e settore bancario</title>
-  <dc:creator>Paolo Volterra</dc:creator>
-  <link>https://paolovolterra.com/posts/2610_CreditoPmi/</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="quadro-generale" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Quadro generale</h1>
-<p>La sezione I.2.5 del <em>Documento Programmatico di finanza pubblica 2026</em> riunisce quattro aspetti che devono essere letti insieme: quantità di credito, prezzo dei nuovi finanziamenti, comportamento di domanda e offerta e solidità dei bilanci di imprese e banche <span class="citation" data-cites="mef2026DPFP">[1]</span>. L’espansione dell’aggregato non implica infatti che il credito cresca per tutte le classi dimensionali. Allo stesso modo, una buona qualità complessiva degli attivi bancari può convivere con un rischio relativamente maggiore nel portafoglio delle piccole e medie imprese.</p>
-<p>La letteratura economica interpreta questa differenza come un tratto strutturale del mercato del credito. Le imprese minori tendono a dipendere maggiormente dalle banche, dispongono di meno fonti alternative e affrontano linee più brevi, maggiore ricorso alle garanzie e spread più elevati <span class="citation" data-cites="chodorowreich2020Liquidity">[2]</span>.<sup>1</sup></p>
-</section>
-<section id="credito-e-costo-dei-nuovi-finanziamenti" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Credito e costo dei nuovi finanziamenti</h1>
-<section id="testo-del-dpfp" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="testo-del-dpfp"><span class="header-section-number">2.1</span> Testo del DPFP</h2>
-<blockquote class="blockquote">
-<p>Nei mesi più recenti il credito bancario al settore privato ha continuato a espandersi, e a ritmi più sostenuti per le imprese. A luglio 2026 i prestiti alle società non finanziarie sono aumentati del 4,1 per cento sui dodici mesi, dal 2,8 per cento di marzo, nonostante una temporanea decelerazione in giugno. La crescita di quelli alle famiglie è rimasta sostanzialmente stabile intorno a valori leggermente superiori al 2,5 per cento. Il costo del credito ha mostrato una tendenza alla risalita, anche se con andamenti differenziati. <span class="citation" data-cites="mef2026DPFP">[1]</span></p>
-</blockquote>
-<p><strong>Note 59–60 del DPFP.</strong> La fonte è <em>Banche e moneta: serie nazionali</em> della Banca d’Italia e le serie sui prestiti sono corrette per cartolarizzazioni e altre cessioni. Tra marzo e luglio il tasso sui nuovi prestiti alle società non finanziarie è salito dal 3,4 al 3,8%, risultando più elevato per i finanziamenti fino a un milione di euro. Il tasso annuo effettivo globale sui nuovi mutui alle famiglie è salito dal 3,8% di marzo al 4,0% in maggio ed è tornato in luglio al livello iniziale, mentre quello sul credito al consumo è rimasto intorno al 10,4% <span class="citation" data-cites="mef2026DPFP">[1]</span>.</p>
-</section>
-<section id="la-composizione-per-dimensione" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="la-composizione-per-dimensione"><span class="header-section-number">2.2</span> La composizione per dimensione</h2>
-<p>La crescita del 4,1% è una misura corretta per cartolarizzazioni e cessioni e riguarda le società non finanziarie. Una seconda tavola della Banca d’Italia consente di osservare gli stock di prestiti, esclusi pronti contro termine e sofferenze, distinguendo le imprese con meno di 20 addetti da quelle più grandi.<sup>2</sup> Le due statistiche hanno perimetri diversi e non devono coincidere; la seconda mostra però con chiarezza chi partecipa alla ripresa <span class="citation" data-cites="bancaditalia2026BancheMoneta">[3]</span>.</p>
-<div id="tbl-credito-dimensione" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-credito-dimensione-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Tabella&nbsp;1: Prestiti alle imprese per classe di addetti, luglio 2026. Fonte: elaborazioni su dati Banca d’Italia <span class="citation" data-cites="bancaditalia2026BancheMoneta">[3]</span>.
-</figcaption>
-<div aria-describedby="tbl-credito-dimensione-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Classe dimensionale</th>
-<th style="text-align: right;">Stock (miliardi di euro)</th>
-<th style="text-align: right;">Variazione annua (%)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Almeno 20 addetti</td>
-<td style="text-align: right;">570,2</td>
-<td style="text-align: right;">3,65</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Totale imprese</td>
-<td style="text-align: right;">662,8</td>
-<td style="text-align: right;">2,45</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Meno di 20 addetti</td>
-<td style="text-align: right;">92,6</td>
-<td style="text-align: right;">−4,33</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-<p><em>In parole semplici:</em> il credito cresce per le imprese con almeno 20 addetti e diminuisce per quelle più piccole. La crescita dell’aggregato è quindi concentrata nella componente dimensionale maggiore.</p>
-<div id="fig-credito-dimensione" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-credito-dimensione-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://paolovolterra.com/posts/2610_CreditoPmi/fig_credito_dimensione.svg" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-credito-dimensione-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;1: Prestiti alle imprese per classe di addetti, variazioni sui dodici mesi. Fonte: elaborazioni su dati Banca d’Italia.
-</figcaption>
-</figure>
-</div>
-<p><em>In parole semplici:</em> dalla fine del 2024 le due classi dimensionali prendono direzioni opposte. Nel luglio 2026 la distanza fra la crescita delle imprese con almeno 20 addetti e quella delle imprese più piccole raggiunge quasi otto punti percentuali.</p>
-</section>
-<section id="il-differenziale-per-importo" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="il-differenziale-per-importo"><span class="header-section-number">2.3</span> Il differenziale per importo</h2>
-<p>Il tasso medio del 3,79% sui nuovi prestiti di luglio 2026 nasconde un differenziale significativo. Le operazioni fino a un milione costano il 4,37%, contro il 3,55% di quelle oltre un milione, con uno scarto di circa 82 punti base <span class="citation" data-cites="bancaditalia2026BancheMoneta">[3]</span>. La classe d’importo non coincide con la dimensione dell’impresa, ma descrive una penalizzazione economica delle operazioni minori.</p>
-<div id="fig-tassi-importo" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-tassi-importo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://paolovolterra.com/posts/2610_CreditoPmi/fig_tassi_importo.svg" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tassi-importo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;2: Tassi sui nuovi prestiti alle società non finanziarie per classe d’importo. Fonte: elaborazioni su dati Banca d’Italia.
-</figcaption>
-</figure>
-</div>
-<p><em>In parole semplici:</em> i finanziamenti più piccoli costano sistematicamente più di quelli superiori a un milione di euro. Nel 2026 il divario torna ad ampliarsi mentre risale il costo medio del credito.</p>
-</section>
-</section>
-<section id="domanda-e-offerta-di-credito" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Domanda e offerta di credito</h1>
-<section id="testo-del-dpfp-1" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="testo-del-dpfp-1"><span class="header-section-number">3.1</span> Testo del DPFP</h2>
-<blockquote class="blockquote">
-<p>Nell’indagine sul credito bancario relativa al secondo trimestre, le banche italiane hanno segnalato un lieve allentamento dei criteri di offerta dei prestiti alle imprese, per la prima volta in un anno e in controtendenza rispetto all’irrigidimento segnalato nell’area dell’euro. Per le famiglie, le banche hanno indicato criteri invariati sui mutui e un ulteriore inasprimento sul credito al consumo. Le banche hanno inoltre riferito una ripresa della domanda di credito delle imprese, dopo la flessione del trimestre precedente. Secondo gli intermediari, la domanda è stata sostenuta principalmente dalle esigenze di finanziamento di scorte e capitale circolante, dalle operazioni di rifinanziamento, ristrutturazione e rinegoziazione del debito. Vi ha contribuito anche l’anticipo delle richieste in previsione di ulteriori aumenti del costo dei finanziamenti. Per il terzo trimestre le banche si attendevano criteri invariati e un lieve rafforzamento della domanda di credito delle imprese, in particolare nel comparto manifatturiero. I rischi di rifinanziamento restano nel complesso circoscritti, ma differenziati tra categorie di imprese. <span class="citation" data-cites="mef2026DPFP">[1]</span></p>
-</blockquote>
-<p><strong>Nota 61 del DPFP.</strong> L’analisi utilizza l’<em>Indagine sul credito bancario nell’area dell’euro: principali risultati per le banche italiane</em> della Banca d’Italia e la corrispondente indagine della Banca centrale europea per il confronto con l’area dell’euro <span class="citation" data-cites="bancaditalia2026BLS">[4]</span>.</p>
-</section>
-<section id="cosa-misurano-i-saldi-dellindagine" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="cosa-misurano-i-saldi-dellindagine"><span class="header-section-number">3.2</span> Cosa misurano i saldi dell’indagine</h2>
-<p>L’indagine non misura euro erogati, ma la percentuale netta delle banche che segnala un cambiamento rispetto al trimestre precedente. Per l’offerta i valori positivi indicano irrigidimento e quelli negativi allentamento; per la domanda i valori positivi indicano espansione. Nel secondo trimestre 2026 l’offerta alle imprese si allenta lievemente, mentre la domanda torna positiva soprattutto per scorte, capitale circolante e ristrutturazione del debito <span class="citation" data-cites="bancaditalia2026BLS">[4]</span>.</p>
-<div id="fig-bls" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-bls-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://paolovolterra.com/posts/2610_CreditoPmi/fig_bls_ufficiale.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bls-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;3: Condizioni dell’offerta e andamento della domanda di credito in Italia. Fonte: Banca d’Italia, indagine sul credito bancario, luglio 2026.
-</figcaption>
-</figure>
-</div>
-<p><em>In parole semplici:</em> le banche dichiarano di avere allentato leggermente i criteri, mentre le imprese chiedono più credito. La nuova domanda serve soprattutto a finanziare il ciclo operativo e a riorganizzare debiti esistenti, più che a una netta accelerazione degli investimenti fissi.</p>
-</section>
-</section>
-<section id="bilanci-delle-imprese-ed-eterogeneità-del-rischio" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Bilanci delle imprese ed eterogeneità del rischio</h1>
-<section id="testo-del-dpfp-2" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="testo-del-dpfp-2"><span class="header-section-number">4.1</span> Testo del DPFP</h2>
-<blockquote class="blockquote">
-<p>Nel complesso, le imprese italiane affrontano l’attuale fase con bilanci più solidi rispetto agli anni precedenti, grazie al miglioramento della redditività, alla riduzione della leva e alla maggiore capacità di generare cassa. Tale situazione sottende tuttavia una significativa eterogeneità, con persistenti vulnerabilità tra le imprese più indebitate e con minore capacità di coprire gli oneri finanziari. L’eterogeneità si riscontra anche a livello settoriale e per dimensione d’impresa. <span class="citation" data-cites="mef2026DPFP">[1]</span></p>
-</blockquote>
-<p><strong>Note 62–64 del DPFP.</strong> Il quadro dei bilanci rinvia ai <em>Conti finanziari</em> della Banca d’Italia del 16 luglio 2026 <span class="citation" data-cites="bancaditalia2026Conti">[5]</span>. Nel primo semestre le banche hanno lievemente irrigidito i criteri soltanto per la manifattura ad alta intensità energetica, mentre l’allentamento del secondo trimestre ha interessato le grandi imprese ma non le piccole e medie imprese. Le pressioni sono maggiori per le imprese minori e nei comparti in cui aumento dei costi energetici, debolezza della domanda, maggiore fabbisogno di capitale circolante e rinnovo del debito a condizioni meno favorevoli si sovrappongono. Chimica, carta e stampa e trasporti presentano il maggiore incremento atteso del rischio di credito <span class="citation" data-cites="bancaditalia2026BLS cerved2026Outlook">[4], [6]</span>.</p>
-</section>
-<section id="una-media-più-solida-una-dispersione-maggiore" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="una-media-più-solida-una-dispersione-maggiore"><span class="header-section-number">4.2</span> Una media più solida, una dispersione maggiore</h2>
-<p>Cerved stima che la probabilità media di default delle imprese italiane salga dal 4,7% al 5,0% nello scenario di base e al 5,7% nello scenario avverso. Il punto rilevante non è l’avvio di una crisi sistemica, che lo studio considera poco probabile, ma l’aumento della distanza tra soggetti resilienti e vulnerabili <span class="citation" data-cites="cerved2026Outlook">[6]</span>.</p>
-<p>Il quadro del 2026 prolunga una tendenza già visibile nel biennio precedente. L’OCSE rileva che nel 2023–2024 la contrazione dei prestiti alle piccole e medie imprese è stata più intensa di quella osservata per le grandi imprese e che il successivo allentamento delle politiche di offerta ha beneficiato soprattutto queste ultime <span class="citation" data-cites="oecd2026Financing">[7]</span>. Il miglioramento medio dei bilanci e la selettività dimensionale del credito sono quindi due aspetti compatibili della stessa fase.</p>
-</section>
-</section>
-<section id="qualità-degli-attivi-e-solidità-bancaria" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Qualità degli attivi e solidità bancaria</h1>
-<section id="testo-del-dpfp-3" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="testo-del-dpfp-3"><span class="header-section-number">5.1</span> Testo del DPFP</h2>
-<blockquote class="blockquote">
-<p>La qualità degli attivi delle banche significative italiane è rimasta complessivamente buona. Nel secondo trimestre l’incidenza lorda dei prestiti deteriorati era pari al 2,1 per cento, in aumento di 0,1 punti percentuali rispetto al periodo precedente, lievemente inferiore al 2,2 per cento dell’insieme delle banche significative sottoposte alla vigilanza europea. Il confronto era più favorevole per i prestiti alle famiglie e per quelli garantiti da immobili residenziali, mentre l’incidenza dei deteriorati sui finanziamenti alle PMI risultava più elevata della media di vigilanza (5,1 contro 4,7 per cento). Anche la quota dei prestiti in Stage 2, caratterizzati da un aumento significativo del rischio di credito senza essere ancora deteriorati, era inferiore a quella dell’aggregato europeo (7,7 contro 9,2 per cento). Nel secondo trimestre si è inoltre rafforzata la redditività delle banche significative italiane, con un rendimento del capitale proprio salito dal 14,7 al 14,9 per cento, superiore a quello dell’aggregato di vigilanza, mentre il CET1 ratio è aumentato dal 15,6 al 15,7 per cento, mantenendosi lievemente inferiore alla media europea, pari al 16,0 per cento. <span class="citation" data-cites="mef2026DPFP">[1]</span></p>
-</blockquote>
-<p><strong>Note 65–66 del DPFP.</strong> I confronti provengono dalle <em>Supervisory Banking Statistics</em> della Banca centrale europea e riguardano le banche significative. Le serie utilizzate sono il rapporto tra prestiti deteriorati e prestiti al netto della liquidità presso banche centrali, il rapporto riferito alle piccole e medie imprese, il rendimento annualizzato del capitale proprio e il coefficiente di capitale primario di classe 1 <span class="citation" data-cites="ecb2026Supervisory">[8]</span>.</p>
-<p>Nella tabella, NPL indica i prestiti deteriorati (<em>non-performing loans</em>), SSM l’insieme degli intermediari sottoposti al Meccanismo di vigilanza unico europeo, ROE il rendimento del capitale proprio e CET1 il capitale primario di classe 1. I crediti in Stage 2 sono esposizioni ancora regolari per le quali il rischio di credito è aumentato significativamente dopo la concessione.</p>
-<div id="tbl-banche" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-banche-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Tabella&nbsp;2: Indicatori delle banche significative, secondo trimestre 2026. Fonte: dati riportati nel DPFP su statistiche BCE <span class="citation" data-cites="mef2026DPFP ecb2026Supervisory">[1], [8]</span>.
-</figcaption>
-<div aria-describedby="tbl-banche-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Indicatore</th>
-<th style="text-align: right;">Italia (%)</th>
-<th style="text-align: right;">Insieme SSM (%)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">NPL complessivi</td>
-<td style="text-align: right;">2,1</td>
-<td style="text-align: right;">2,2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">NPL PMI</td>
-<td style="text-align: right;">5,1</td>
-<td style="text-align: right;">4,7</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Stage 2</td>
-<td style="text-align: right;">7,7</td>
-<td style="text-align: right;">9,2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">ROE</td>
-<td style="text-align: right;">14,9</td>
-<td style="text-align: right;">—</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">CET1</td>
-<td style="text-align: right;">15,7</td>
-<td style="text-align: right;">16,0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-<p><em>In parole semplici:</em> il sistema bancario italiano presenta meno deteriorati e meno crediti in Stage 2 rispetto all’insieme sottoposto alla vigilanza europea. Il confronto è però meno favorevole quando si osservano specificamente i finanziamenti alle piccole e medie imprese.</p>
-<div id="fig-qualita-attivi" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-qualita-attivi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://paolovolterra.com/posts/2610_CreditoPmi/fig_qualita_attivi.svg" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qualita-attivi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4: Qualità degli attivi delle banche significative italiane e dell’insieme sottoposto alla vigilanza europea. Fonte: elaborazione dei dati riportati nel DPFP su statistiche BCE.
-</figcaption>
-</figure>
-</div>
-<p><em>In parole semplici:</em> le banche italiane hanno una qualità complessiva degli attivi leggermente migliore della media di vigilanza, ma un’incidenza dei deteriorati più alta nel portafoglio delle piccole e medie imprese. La differenza sfavorevole riguarda dunque il portafoglio PMI e non l’indicatore complessivo della qualità degli attivi.</p>
-</section>
-</section>
-<section id="sintesi" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Sintesi</h1>
-<p>La ripresa del credito alle imprese nel 2026 è reale ma concentrata. A luglio i prestiti alle imprese con almeno 20 addetti aumentano del 3,65% sui dodici mesi, mentre quelli alle imprese con meno di 20 addetti diminuiscono del 4,33%. Anche il prezzo segnala una differenza: le nuove operazioni fino a un milione costano circa 82 punti base più di quelle maggiori.</p>
-<p>L’indagine sul credito descrive contemporaneamente un lieve allentamento dell’offerta complessiva e una ripresa della domanda legata a capitale circolante e rifinanziamento. Le note del DPFP precisano che l’allentamento ha riguardato le grandi imprese e non le piccole e medie imprese. La distinzione dimensionale non è quindi un dettaglio statistico, ma la condizione necessaria per interpretare correttamente l’espansione dell’aggregato.</p>
-<p>La buona redditività e patrimonializzazione delle banche rendono meno plausibile che la selettività osservata derivi da una debolezza generalizzata degli intermediari. Resta tuttavia un portafoglio PMI con deteriorati superiori al confronto europeo e una distribuzione del rischio sempre più differenziata per dimensione e settore.</p>
-</section>
-<section id="riferimenti" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Riferimenti</h1>
-<div id="refs" class="references csl-bib-body" data-entry-spacing="0">
-<div id="ref-mef2026DPFP" class="csl-entry">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">Ministero dell’Economia e delle Finanze, <span>«Documento Programmatico di finanza pubblica 2026»</span>, Ministero dell’Economia e delle Finanze, ott. 2026. Consultato: 4 ottobre 2026. [Online]. Disponibile su: <a href="https://media2-col.corriereobjects.it/pdf/2026/economia/10/DPFP26_FILE_UNICO.pdf">https://media2-col.corriereobjects.it/pdf/2026/economia/10/DPFP26_FILE_UNICO.pdf</a></div>
-</div>
-<div id="ref-chodorowreich2020Liquidity" class="csl-entry">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">G. Chodorow-Reich, O. Darmouni, S. Luck, e M. C. Plosser, <span>«Bank Liquidity Provision Across the Firm Size Distribution»</span>, National Bureau of Economic Research, 27945, ott. 2020. doi: <a href="https://doi.org/10.3386/w27945">10.3386/w27945</a>.</div>
-</div>
-<div id="ref-bancaditalia2026BancheMoneta" class="csl-entry">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline">Banca d’Italia, <span>«Banche e moneta: serie nazionali — luglio 2026»</span>, Banca d’Italia, set. 2026. Consultato: 6 ottobre 2026. [Online]. Disponibile su: <a href="https://www.bancaditalia.it/pubblicazioni/moneta-banche/2026-moneta/statistiche_BAM_20260909.pdf">https://www.bancaditalia.it/pubblicazioni/moneta-banche/2026-moneta/statistiche_BAM_20260909.pdf</a></div>
-</div>
-<div id="ref-bancaditalia2026BLS" class="csl-entry">
-<div class="csl-left-margin">[4] </div><div class="csl-right-inline">Banca d’Italia, <span>«Indagine sul credito bancario nell’area dell’euro: principali risultati per le banche italiane»</span>, Banca d’Italia, lug. 2026. Consultato: 6 ottobre 2026. [Online]. Disponibile su: <a href="https://www.bancaditalia.it/statistiche/tematiche/moneta-intermediari-finanza/intermediari-finanziari/indagine-credito-bancario/risultati/BLS_luglio_2026.pdf">https://www.bancaditalia.it/statistiche/tematiche/moneta-intermediari-finanza/intermediari-finanziari/indagine-credito-bancario/risultati/BLS_luglio_2026.pdf</a></div>
-</div>
-<div id="ref-bancaditalia2026Conti" class="csl-entry">
-<div class="csl-left-margin">[5] </div><div class="csl-right-inline">Banca d’Italia, <span>«Conti finanziari — primo trimestre 2026»</span>, Banca d’Italia, lug. 2026. Consultato: 6 ottobre 2026. [Online]. Disponibile su: <a href="https://www.bancaditalia.it/pubblicazioni/conti-finanziari/2026-conti-finanziari/index.html">https://www.bancaditalia.it/pubblicazioni/conti-finanziari/2026-conti-finanziari/index.html</a></div>
-</div>
-<div id="ref-cerved2026Outlook" class="csl-entry">
-<div class="csl-left-margin">[6] </div><div class="csl-right-inline">Cerved Rating Agency, <span>«Credit Outlook 2026: Mid-Year Review»</span>. Consultato: 6 ottobre 2026. [Online]. Disponibile su: <a href="https://ratingagency.cerved.com/credit-outlook/a/credit-outlook-2026/credit-outlook-2026">https://ratingagency.cerved.com/credit-outlook/a/credit-outlook-2026/credit-outlook-2026</a></div>
-</div>
-<div id="ref-oecd2026Financing" class="csl-entry">
-<div class="csl-left-margin">[7] </div><div class="csl-right-inline">OECD, <span>«Financing SMEs and Entrepreneurs 2026: An OECD Scoreboard»</span>, OECD Publishing, mar. 2026. doi: <a href="https://doi.org/10.1787/075d8058-en">10.1787/075d8058-en</a>.</div>
-</div>
-<div id="ref-ecb2026Supervisory" class="csl-entry">
-<div class="csl-left-margin">[8] </div><div class="csl-right-inline">European Central Bank, <span>«ECB publishes supervisory banking statistics on significant institutions for the second quarter of 2026»</span>. Consultato: 6 ottobre 2026. [Online]. Disponibile su: <a href="https://www.bankingsupervision.europa.eu/press/pr/date/2026/html/ssm.pr260915~7917ca1416.en.html">https://www.bankingsupervision.europa.eu/press/pr/date/2026/html/ssm.pr260915~7917ca1416.en.html</a></div>
-</div>
-</div>
-<hr>
-<p><strong>Nota metodologica</strong></p>
-<p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
-<p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale; l’analisi è pertanto integralmente auditabile e replicabile da terzi a partire da esse. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
-<p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
-
-
-</section>
-
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Note</h2>
-
-<ol>
-<li id="fn1"><p>Lo studio citato utilizza dati creditizi statunitensi. È impiegato come riscontro comparativo dei meccanismi associati alla dimensione d’impresa, non come evidenza diretta riferita all’Italia.↩︎</p></li>
-<li id="fn2"><p>La soglia dei 20 addetti è una classificazione statistica della Banca d’Italia e non coincide con la definizione europea di piccola e media impresa, che considera anche addetti, fatturato e totale di bilancio. Nel documento questa serie è pertanto descritta come riferita alle imprese minori, non all’intero universo delle PMI.↩︎</p></li>
-</ol>
-</section></div><!-- vedi-anche:start -->
-<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2512_FactChecking/index.html">Interrogazione di Bagnai alla Camera dei deputati su PMI e Banche</a><small>costruzione di una pagina di test sui callout e sulle verifiche fatte con ChatGPT</small></li><li><a href="../2603_CreditoArtigianiPuglia/index.html">Credito alle imprese artigiane pugliesi</a><small>Analisi quantitativa su dati Banca d’Italia e Fondo di Garanzia PMI</small></li><li><a href="../2607_CreditoMicroimprese/index.html">Molte, piccole, sottofinanziate: il credito alle microimprese</a><small>Le micro e piccole imprese sono circa il 99% delle imprese italiane ma ricevono poco più del 15% del credito bancario alle imprese.</small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
-<!-- vedi-anche:end -->
- ]]></description>
-  <category>Banche e credito</category>
-  <category>Imprese</category>
-  <category>Finanza pubblica</category>
-  <guid>https://paolovolterra.com/posts/2610_CreditoPmi/</guid>
-  <pubDate>Mon, 05 Oct 2026 22:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Valutazione della spesa e riordino degli incentivi alle imprese: origine europea, assetto istituzionale e attuazione dei PAVS</title>
-  <dc:creator>Paolo Volterra</dc:creator>
-  <link>https://paolovolterra.com/posts/2610_PAVS/</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="lorigine-europea-della-revisione-della-spesa-e-la-genesi-dei-pavs" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> L’origine europea della revisione della spesa e la genesi dei PAVS</h1>
-<p>La programmazione della finanza pubblica italiana registra dal 2024 una transizione metodologica rilevante: l’affiancamento, e la progressiva sostituzione, dei tradizionali obiettivi quantitativi di risparmio assegnati ai Ministeri con valutazioni sistematiche di impatto ed efficacia delle singole politiche di spesa. Tale innovazione prende il nome di <strong>Piani di analisi e valutazione della spesa</strong> (PAVS).</p>
-<p>L’adozione dei PAVS non costituisce un’iniziativa isolata dell’amministrazione nazionale, ma rappresenta il punto di arrivo di una prolungata pressione esercitata dalle istituzioni dell’Unione europea per ancorare la revisione della spesa al ciclo ordinario di bilancio <span class="citation" data-cites="hoogeland2024spending">[1]</span>. Tra il 2012 e il 2016, il Consiglio dell’Unione europea ha rivolto all’Italia specifiche raccomandazioni (CSR) volte a garantire che la spending review divenisse parte integrante e permanente del processo contabile <span class="citation" data-cites="consiglioUE2019CSR">[2]</span>. Tali indicazioni hanno trovato una prima formalizzazione comunitaria nei principi comuni concordati in sede di Eurogruppo il 9 settembre 2016, con cui gli Stati membri dell’area euro si impegnavano a condurre revisioni regolari della spesa per orientare le scelte allocative di bilancio <span class="citation" data-cites="eurogroup2016spending">[3]</span>. Sul piano dell’ordinamento interno, tale spinta ha determinato l’introduzione dell’articolo 22-bis nella legge di contabilità e finanza pubblica (legge 196/2009), ad opera del decreto legislativo 90/2016 <span class="citation" data-cites="legge2009n196">[4]</span>.</p>
-<p>L’esperienza applicativa dell’articolo 22-bis ha tuttavia evidenziato limiti strutturali: la fissazione di risparmi programmatici definiti con decreto del Presidente del Consiglio dei ministri si è tradotta prevalentemente in rimodulazioni contabili e riduzioni orizzontali di stanziamento, prive di un’indagine approfondita sulla rispondenza dei programmi agli obiettivi di politica economica <span class="citation" data-cites="mef2025RelazioneM1C1115">[5]</span>. Il superamento di tale impostazione è stato avviato nell’ambito del Piano nazionale di ripresa e resilienza (PNRR), con la Riforma 1.13 della Missione 1, Componente 1 («Riforma del quadro di revisione della spesa pubblica»). L’articolo 9 del decreto-legge 152/2021 ha istituito presso la Ragioneria generale dello Stato il Comitato scientifico per la revisione della spesa e l’Unità di missione per l’analisi e valutazione della spesa, coinvolgendo esperti di Banca d’Italia, ISTAT e Corte dei conti <span class="citation" data-cites="dl2021n152">[6]</span>.</p>
-<p>Il 16 novembre 2023 il Comitato scientifico ha adottato il documento «Criteri e metodologie per la definizione dei processi e delle attività di analisi e valutazione della spesa», che fissa le regole dei Piani triennali delle amministrazioni centrali <span class="citation" data-cites="rgs2023CriteriMetodologie mef2025RelazioneM1C1115">[5], [7]</span>. Il documento definisce l’analisi e valutazione della spesa come l’insieme delle tecniche volte a verificare l’attuazione e i risultati delle politiche, e la colloca a monte della revisione della spesa dell’articolo 22-bis, cui fornisce le evidenze per le scelte allocative <span class="citation" data-cites="rgs2023CriteriMetodologie">[7]</span>. Attraverso questo quadro metodologico, ciascun Ministero è chiamato a formulare progetti valutativi che si concludono con specifiche «opzioni di riforma» da sottoporre alle decisioni della legge di bilancio. Il perimetro comprende esplicitamente le agevolazioni concesse tramite crediti d’imposta; dal 2025 ciascun Piano deve coprire almeno il 20 per cento della spesa ammissibile del Ministero nel triennio; i Report di valutazione e le opzioni di riforma vanno trasmessi al MEF entro il 31 maggio <span class="citation" data-cites="rgs2023CriteriMetodologie">[7]</span>.</p>
-<div id="tbl-cronologia" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cronologia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Tabella&nbsp;1: Tappe normative e istituzionali dell’evoluzione della spending review in Italia
-</figcaption>
-<div aria-describedby="tbl-cronologia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Fase temporale</th>
-<th style="text-align: left;">Provvedimento o atto</th>
-<th style="text-align: left;">Oggetto</th>
-<th style="text-align: left;">Fonte</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">2012–2016</td>
-<td style="text-align: left;">Raccomandazioni specifiche per Paese (CSR)</td>
-<td style="text-align: left;">Richiesta di integrazione permanente della spending review nel bilancio</td>
-<td style="text-align: left;">Consiglio UE <span class="citation" data-cites="consiglioUE2019CSR hoogeland2024spending">[1], [2]</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">9 settembre 2016</td>
-<td style="text-align: left;">Dichiarazione Eurogruppo sui principi comuni</td>
-<td style="text-align: left;">Mandato di sorveglianza ordinaria sulle spending review nazionali</td>
-<td style="text-align: left;">Eurogruppo <span class="citation" data-cites="eurogroup2016spending">[3]</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">12 maggio 2016</td>
-<td style="text-align: left;">Decreto legislativo n.&nbsp;90/2016 (art. 22-bis L. 196/2009)</td>
-<td style="text-align: left;">Obiettivi di risparmio per Ministero definiti via DPCM</td>
-<td style="text-align: left;">Normattiva <span class="citation" data-cites="legge2009n196">[4]</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">6 novembre 2021</td>
-<td style="text-align: left;">Decreto-legge n.&nbsp;152/2021 (art. 9, c.&nbsp;8-10)</td>
-<td style="text-align: left;">Istituzione Comitato scientifico e Unità di missione RGS (PNRR M1C1-100)</td>
-<td style="text-align: left;">Normattiva <span class="citation" data-cites="dl2021n152">[6]</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">16 novembre 2023</td>
-<td style="text-align: left;">Documento del Comitato scientifico RGS</td>
-<td style="text-align: left;">«Criteri e metodologie» per i PAVS</td>
-<td style="text-align: left;">RGS / MEF <span class="citation" data-cites="rgs2023CriteriMetodologie">[7]</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2024</td>
-<td style="text-align: left;">Circolari RGS e piani ministeriali</td>
-<td style="text-align: left;">Avvio della prima tornata sperimentale dei PAVS (16 ministeri, 17 progetti)</td>
-<td style="text-align: left;">RGS / MIMIT <span class="citation" data-cites="mef2025RelazioneM1C1115 mimit2024PAVS">[5], [8]</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">15 ottobre 2024</td>
-<td style="text-align: left;">Appendice VI del Piano strutturale di bilancio (PSBMT)</td>
-<td style="text-align: left;">Impegno formale di riforma della spesa per estensione a sette anni</td>
-<td style="text-align: left;">MEF <span class="citation" data-cites="mef2024PSBMT">[9]</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">21 gennaio 2025</td>
-<td style="text-align: left;">Raccomandazione del Consiglio UE (GU C/2025/651)</td>
-<td style="text-align: left;">Vincolo vincolante: copertura cumulata del 10% della spesa diretta (2027-2029)</td>
-<td style="text-align: left;">Consiglio UE <span class="citation" data-cites="consiglioUE2025PSBMT">[10]</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">30 dicembre 2025</td>
-<td style="text-align: left;">Legge n.&nbsp;199/2025 (art. 1, commi 747-749)</td>
-<td style="text-align: left;">Obbligo per ogni Ministero di valutare una politica entro il 30 giugno 2026</td>
-<td style="text-align: left;">Normattiva <span class="citation" data-cites="legge2025n199">[11]</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-<p><em>In parole semplici:</em> la revisione della spesa nasce dalle richieste dell’Unione europea dopo la crisi finanziaria, si trasforma nel PNRR con la nascita di un comitato scientifico dedicato, e diventa infine un obbligo vincolante per l’Italia nel 2025 in cambio di tempi più lunghi per il rientro del debito.</p>
-</section>
-<section id="il-vincolo-macro-fiscale-del-piano-strutturale-di-bilancio-psbmt" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Il vincolo macro-fiscale del Piano strutturale di bilancio (PSBMT)</h1>
-<p>Il passaggio decisivo con cui i PAVS sono stati trasformati da prassi amministrativa sperimentale in vincolo comunitario primario si è compiuto con la riforma della governance economica europea del 2024 (Regolamento UE 2024/1263). L’Italia ha richiesto l’estensione del periodo di aggiustamento della spesa primaria netta da quattro a sette anni, presentando il Piano strutturale di bilancio di medio termine 2025-2029 (PSBMT) <span class="citation" data-cites="mef2024PSBMT">[9]</span>.</p>
-<p>Per ottenere l’assenso comunitario all’estensione del sentiero di rientro, gli Stati membri devono assumere impegni puntuali di riforma strutturale e investimento che migliorino la sostenibilità delle finanze pubbliche e la resilienza economica <span class="citation" data-cites="upb2024audizionePSB">[12]</span>. Tra le riforme abilitanti, l’Italia ha inserito nell’Appendice VI del PSBMT l’impegno a rendere strutturali i PAVS. Tale pacchetto è stato ratificato dal Consiglio dell’Unione europea con la Raccomandazione del 21 gennaio 2025 <span class="citation" data-cites="consiglioUE2025PSBMT">[10]</span>.</p>
-<p>L’allegato alla Raccomandazione comunitaria specifica il cronoprogramma e l’intensità del vincolo (Riforma R1.13, Step 1): 1. Adozione, entro il secondo trimestre del 2027, del 2028 e del 2029, di piani annuali di monitoraggio e valutazione della spesa da parte di tutte le amministrazioni centrali; 2. Raggiungimento progressivo di una copertura valutativa pari ad almeno il 10% della spesa di diretta competenza dei Ministeri; 3. Presentazione di una relazione annuale al Parlamento e alla Commissione europea sullo stato di attuazione delle riforme e sui risparmi o riallocazioni conseguiti <span class="citation" data-cites="consiglioUE2025PSBMT mef2026DPFP">[10], [13]</span>.</p>
-<p>Come chiarito dall’Ufficio parlamentare di bilancio, il vincolo non ha natura meramente programmatica: il mancato rispetto delle riforme poste a fondamento dell’estensione a sette anni comporta la revoca del periodo allungato e l’immediata prescrizione di un piano di aggiustamento quadriennale, con un incremento severo della correzione di bilancio richiesta <span class="citation" data-cites="upb2024audizionePSB">[12]</span>. Le raccomandazioni per Paese del 2025 annoverano il rafforzamento della revisione annuale della spesa fra le misure già adottate per la sostenibilità di bilancio <span class="citation" data-cites="consiglioUE2025CSR">[14]</span>. Quelle del 2026 richiamano i nuovi Piani e indicano come cruciale attuare a fondo il nuovo quadro di valutazione e darvi seguito con azioni basate sui risultati; la raccomandazione n.&nbsp;1 chiede di intensificare gli sforzi per migliorare efficienza ed efficacia della spesa pubblica <span class="citation" data-cites="consiglioUE2026CSR">[15]</span>. La Commissione osserva che l’ampio lavoro analitico prodotto dalle revisioni della spesa non si è ancora riflesso nel ciclo di bilancio <span class="citation" data-cites="commissione2026IDRItaly">[16]</span>.</p>
-<p>L’ordinamento italiano ha recepito tempestivamente tale quadro con la legge 30 dicembre 2025, n.&nbsp;199 (legge di bilancio 2026), i cui commi 747-749 dell’articolo 1 hanno anticipato la cadenza comunitaria, obbligando ciascun Ministero a realizzare entro il 30 giugno 2026 la valutazione di almeno una politica di spesa nell’ambito dei PAVS, sotto il coordinamento della Ragioneria generale dello Stato <span class="citation" data-cites="legge2025n199">[11]</span>.</p>
-<p>Le valutazioni previste per il 2026 sono sedici, una per amministrazione, su una spesa di circa 9,2 miliardi di euro, di cui 8,4 nazionali, pari a circa il 3 per cento della spesa di diretta competenza delle amministrazioni centrali <span class="citation" data-cites="mef2026DPFP">[13]</span>. Il DPFP le classifica per tipologia: cinque valutazioni di efficacia, condotte con metodologie controfattuali, cinque di implementazione, quattro sui processi organizzativi e due di performance <span class="citation" data-cites="mef2026DPFP">[13]</span>. Fra gli incentivi alle imprese, il Fondo di garanzia per le PMI e gli incentivi all’occupazione sono valutati sotto il profilo dell’efficacia, il Fondo per la sovranità alimentare sotto quello dell’implementazione <span class="citation" data-cites="mef2026DPFP">[13]</span>. La valutazione dei processi gestionali non è quindi una deviazione dallo strumento: fin dai criteri del 2023 i PAVS hanno il duplice oggetto dell’efficacia delle politiche e dell’efficienza dei processi <span class="citation" data-cites="rgs2023CriteriMetodologie">[7]</span>.</p>
-</section>
-<section id="larchitettura-dei-controlli-sullefficienza-degli-incentivi" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> L’architettura dei controlli sull’efficienza degli incentivi</h1>
-<p>L’esigenza di una valutazione rigorosa della spesa si manifesta con particolare intensità nel campo degli aiuti di Stato e degli incentivi alle imprese. In questo comparto operano quattro livelli convergenti di controllo, distinti per finalità istituzionale e orizzonte temporale.</p>
-<pre><code>                    ┌────────────────────────────────────────────────────────┐
-                    │                      LIVELLO UE                        │
-                    │                                                        │
-                    │   Commissione europea          Corte dei conti europea │
-                    │   (DG COMP: piani GBER,        (SR 21/2024, SR 09/2025,│
-                    │   State Aid Scoreboard)        SR 14/2026: audit RRF)  │
-                    └───────────────────┬────────────────────────────────────┘
-                                        │ condizionalità e riscontri
-                                        ▼
-                    ┌────────────────────────────────────────────────────────┐
-                    │                   LIVELLO NAZIONALE                    │
-                    │                                                        │
-                    │   Governo e Ministeri          Corte dei conti         │
-                    │   (PAVS, Codice incentivi      (Controllo concomitante:│
-                    │   D.lgs 184/25, Riordino 138)  ZES del. 36/24, PREPAC) │
-                    └────────────────────────────────────────────────────────┘</code></pre>
-<p>Il primo livello è costituito dalla disciplina comunitaria della concorrenza (DG COMP). Ai sensi del regolamento generale di esenzione per categoria (GBER), i regimi di aiuto di maggiore entità finanziaria — con bilancio medio annuo superiore a 150 milioni di euro — sono soggetti all’obbligo di un Piano di valutazione indipendente, approvato dalla Commissione europea e assistito dal controllo di qualità del Joint Research Centre (JRC) <span class="citation" data-cites="jrc2025evalsa2024">[17]</span>. Un esempio emblematico è rappresentato dalla decisione C(2025) 6947 della Commissione, relativa al regime italiano «Investimenti sostenibili 4.0» (caso SA.118990), che subordina la prosecuzione dell’esenzione alla consegna di un rapporto di valutazione controfattuale <span class="citation" data-cites="commissione2025SA118990">[18]</span>. Parallelamente, lo State Aid Scoreboard documenta che l’Italia si colloca stabilmente tra i primi tre Paesi dell’Unione per volume complessivo di aiuti erogati <span class="citation" data-cites="mef2026DPFP">[13]</span>.</p>
-<p>Il secondo livello è rappresentato dall’audit esterno della Corte dei conti europea (ECA). Nella Relazione speciale 21/2024, la Corte ha accertato che, a fronte della triplicazione degli aiuti di Stato durante le crisi pandemica ed energetica, la Commissione ha ridotto l’intensità del monitoraggio ex post, basando i riscontri prevalentemente sulle autocertificazioni trasmesse dagli Stati membri <span class="citation" data-cites="eca2024sr21">[19]</span>. Successivamente, la Relazione speciale 09/2025 ha evidenziato come i controlli sulla conformità agli aiuti di Stato nell’RRF siano stati condotti dalle autorità nazionali solo a ridosso o successivamente alle richieste di pagamento <span class="citation" data-cites="eca2025sr09">[20]</span>. Da ultimo, la Relazione speciale 14/2026 ha riscontrato lacune diffuse nella tracciabilità dei fondi RRF fino ai destinatari finali e l’assenza di dati armonizzati sui costi effettivi delle misure, precludendo una valutazione comparativa dell’efficienza degli investimenti <span class="citation" data-cites="eca2026sr14 eca2026sr06">[21], [22]</span>.</p>
-<p>Il terzo livello risiede nell’amministrazione nazionale, dove i PAVS forniscono la base empirica per la razionalizzazione degli strumenti di incentivazione <span class="citation" data-cites="governo2026schemaIncentivi">[23]</span>.</p>
-<p>Il quarto livello corrisponde al controllo esterno della magistratura contabile italiana. Il Collegio del controllo concomitante della Corte dei conti, istituito per verificare in corso d’opera i grandi piani di investimento, è intervenuto sulla governance della ZES unica con la deliberazione n.&nbsp;36/2024, rilevando la mancanza iniziale di indicatori di avanzamento fisico e finanziario e l’inadeguatezza del monitoraggio procedurale <span class="citation" data-cites="cortedeiconti2024delibera36">[24]</span>. Nella Relazione annuale 2025 e nella Programmazione 2026 delle Sezioni riunite in sede di controllo, la Corte dei conti ha espressamente annunciato che i PAVS adottati dalle amministrazioni centrali saranno oggetto di verifica sistematica per accertare l’effettiva realizzazione delle opzioni di riforma prospettate <span class="citation" data-cites="cortedeiconti2026relazioneCCC cortedeiconti2026programmazione">[25], [26]</span>.</p>
-</section>
-<section id="lattuazione-empirica-i-piani-di-analisi-e-valutazione-del-mimit" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> L’attuazione empirica: i Piani di analisi e valutazione del MIMIT</h1>
-<p>L’applicazione concreta del nuovo modello di valutazione emerge dall’esame dei Piani adottati dal Ministero delle Imprese e del Made in Italy per il 2024 e per il triennio 2025-2027 <span class="citation" data-cites="mimit2024PAVS mimit2025PAVS">[8], [27]</span>.</p>
-<section id="il-piano-sperimentale-2024-il-fondo-crescita-sostenibile" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="il-piano-sperimentale-2024-il-fondo-crescita-sostenibile"><span class="header-section-number">4.1</span> Il Piano sperimentale 2024: il Fondo Crescita Sostenibile</h2>
-<p>Il Piano 2024 del MIMIT ha riguardato, in via sperimentale, le misure di sostegno all’attività di ricerca e sviluppo a valere sul Fondo Crescita Sostenibile (FCS) <span class="citation" data-cites="mimit2024PAVS">[8]</span>. L’esercizio ha previsto: 1. L’istituzione, presso il Dipartimento per le politiche per le imprese, della struttura «Analisi delle politiche pubbliche e coordinamento statistico», competente per l’elaborazione di proposte e valutazioni di politiche pubbliche, anche in raccordo con università e centri di ricerca; 2. L’affidamento della valutazione d’impatto a un nucleo esterno composto da un coordinatore senior, un esperto tematico in progetti di R&amp;S e un econometra specializzato in metodi controfattuali; 3. La verifica della capacità del Fondo di promuovere investimenti addizionali rispetto a quelli che le imprese avrebbero effettuato autonomamente <span class="citation" data-cites="mimit2024PAVS">[8]</span>.</p>
-<p>Le evidenze raccolte hanno evidenziato la solidità della struttura del FCS, suggerendone l’adozione come modello unificato per la concentrazione degli interventi di incentivazione alle imprese <span class="citation" data-cites="mef2026DPFP">[13]</span>.</p>
-</section>
-<section id="il-piano-triennale-2025-2027-il-fondo-di-garanzia-pmi-e-la-transizione-industriale" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="il-piano-triennale-2025-2027-il-fondo-di-garanzia-pmi-e-la-transizione-industriale"><span class="header-section-number">4.2</span> Il Piano triennale 2025-2027: il Fondo di Garanzia PMI e la Transizione Industriale</h2>
-<p>Il Piano di analisi e valutazione della spesa 2025-2027 articola la strategia valutativa del MIMIT su tre progetti consecutivi <span class="citation" data-cites="mimit2025PAVS">[27]</span>. Il Ministero ha individuato come area di spesa di primaria rilevanza gli incentivi al sistema produttivo e ha scelto le misure secondo tre criteri: la rilevanza finanziaria, la rilevanza strategica rispetto ai fabbisogni delle imprese e il grado di maturità dello strumento; dichiara inoltre di voler fornire evidenze al processo di razionalizzazione degli interventi in corso <span class="citation" data-cites="mimit2025PAVS">[27]</span>. Ne risulta una sequenza che va dallo strumento più maturo, il Fondo di garanzia, al più recente, il Fondo per la transizione industriale, per il quale il Piano riconosce che nel 2027 non sarà ancora possibile stimare gli impatti in modo rigoroso <span class="citation" data-cites="mimit2025PAVS">[27]</span>. Analogamente, il Piano 2024 motivava la scelta del Fondo crescita sostenibile con la rilevanza strategica della ricerca e sviluppo e con l’ammontare delle risorse dedicate, e indicava che l’oggetto era stato individuato in accordo con l’autorità politica del Ministero <span class="citation" data-cites="mimit2024PAVS">[8]</span>.</p>
-<p>Il Progetto 2025 ha per oggetto il Fondo di Garanzia per le PMI, istituito dalla legge 662/1996 e operativo dal 2000. Il Piano lo descrive come lo strumento governativo principale contro il razionamento del credito alle PMI, con venticinque anni di operatività e un importo garantito complessivo di oltre 377 miliardi di euro al 31 dicembre 2024 <span class="citation" data-cites="mimit2025PAVS">[27]</span>.</p>
-<div id="tbl-fcg" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-fcg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Tabella&nbsp;2: Indicatori di dimensione operativa del Fondo di Garanzia per le PMI e del perimetro PAVS
-</figcaption>
-<div aria-describedby="tbl-fcg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Ambito di rilevazione</th>
-<th style="text-align: left;">Indicatore operativo</th>
-<th style="text-align: left;">Consuntivo 2024</th>
-<th style="text-align: left;">Fonte dei dati</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Domande e beneficiari</td>
-<td style="text-align: left;">Operazioni accolte</td>
-<td style="text-align: left;">228.909</td>
-<td style="text-align: left;">Soggetto gestore del Fondo <span class="citation" data-cites="mimit2025PAVS">[27]</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Imprese coinvolte</td>
-<td style="text-align: left;">Imprese garantite</td>
-<td style="text-align: left;">153.854</td>
-<td style="text-align: left;">Soggetto gestore del Fondo <span class="citation" data-cites="mimit2025PAVS">[27]</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Credito mobilitato</td>
-<td style="text-align: left;">Finanziamenti garantiti</td>
-<td style="text-align: left;">42.525.372.469,51 €</td>
-<td style="text-align: left;">Soggetto gestore del Fondo <span class="citation" data-cites="mimit2025PAVS">[27]</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Esposizione pubblica</td>
-<td style="text-align: left;">Importo garantito</td>
-<td style="text-align: left;">29.895.286.592,79 €</td>
-<td style="text-align: left;">Soggetto gestore del Fondo <span class="citation" data-cites="mimit2025PAVS">[27]</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Spesa valutata PAVS 2026</td>
-<td style="text-align: left;">Spesa diretta oggetto di valutazione</td>
-<td style="text-align: left;">9.156.000.000,00 €</td>
-<td style="text-align: left;">Tav. III.2.6 DPFP 2026 <span class="citation" data-cites="mef2026DPFP">[13]</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-<p><em>In parole semplici:</em> nel solo 2024 il Fondo ha garantito quasi 30 miliardi di euro di garanzie su oltre 42 miliardi di prestiti a circa 154 mila imprese, rappresentando lo strumento pubblico di sostegno finanziario più rilevante del Paese.</p>
-<p>Il disegno valutativo formalizzato nel Piano 2025-2027 affronta un nodo classico della teoria del credito agevolato: l’individuazione del profilo ottimale di impresa beneficiaria <span class="citation" data-cites="mimit2025PAVS">[27]</span>. Il Piano esplicita che l’efficacia del supporto pubblico è massima quando si indirizza verso il segmento intermedio di rischiosità: - Escludendo le imprese finanziariamente floride (classi di rating più elevate), per le quali l’intervento pubblico determina mero spiazzamento del credito ordinario senza generare investimenti addizionali; - Escludendo al contempo le imprese decotte o destinate al fallimento, per le quali la garanzia statale produce un prolungamento artificiale dell’attività sul mercato con dispersione di risorse pubbliche <span class="citation" data-cites="mimit2025PAVS">[27]</span>.</p>
-<p>Il Piano stima in 154.500 euro le risorse per la valutazione del Fondo di Garanzia, tra attività amministrativa e consulenza esterna, e prevede nel cronoprogramma l’analisi dei dati tra novembre 2025 e febbraio 2026, il rapporto di valutazione a marzo 2026 e le opzioni di riforma entro maggio 2026 <span class="citation" data-cites="mimit2025PAVS">[27]</span>.</p>
-<p>Gli esiti di questo esercizio sono sintetizzati nel Documento Programmatico di finanza pubblica 2026, che classifica la valutazione del Fondo tra quelle di efficacia condotte con metodologie controfattuali <span class="citation" data-cites="mef2026DPFP">[13]</span>. Per le imprese beneficiarie il DPFP riporta: 1. Una riduzione del costo del credito; 2. Una riallocazione dell’indebitamento verso scadenze a medio-lungo termine; 3. Un effetto che si attenua per le imprese del Mezzogiorno e per quelle con profili di rischio più elevati; 4. Una tendenza a utilizzare la garanzia pubblica anche per imprese che avrebbero potuto ottenere credito senza di essa <span class="citation" data-cites="mef2026DPFP">[13]</span>.</p>
-<p>Il Piano 2025-2027 indicava per questo progetto tecniche statistiche basate sugli indicatori di rischiosità delle imprese beneficiarie e interviste agli intermediari, senza menzionare un disegno controfattuale <span class="citation" data-cites="mimit2025PAVS">[27]</span>; in assenza del rapporto completo non è possibile verificare quale metodo sia stato infine adottato.</p>
-<p>Completano il ciclo triennale il Progetto 2026, dedicato all’efficienza operativa degli interventi di R&amp;S del Fondo Crescita Sostenibile, e il Progetto 2027, incentrato sul Fondo per la Transizione Industriale. Il Progetto 2026 nasce dagli esiti della valutazione 2024: i tempi dell’iter, in media circa tre anni e mezzo tra decreto di concessione e saldo finale, sono indicati come l’elemento critico che riduce l’efficacia dello strumento; la valutazione riguarda quindi procedure, criteri di selezione e adempimenti richiesti alle imprese <span class="citation" data-cites="mimit2025PAVS">[27]</span>. Quest’ultimo, dotato di 400 milioni di euro di risorse PNRR, ha registrato nella fase istruttoria dello sportello 2025 l’ammissione di 95 imprese per 738,6 milioni di euro di investimenti candidati e 266 milioni di agevolazioni richieste, con domande valutative specificamente rivolte a misurare il risparmio energetico e la riduzione delle emissioni climalteranti in rapporto alle risorse erogate <span class="citation" data-cites="mimit2025PAVS">[27]</span>.</p>
-</section>
-</section>
-<section id="la-convergenza-tra-pavs-e-riordino-del-sistema-degli-incentivi" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> La convergenza tra PAVS e riordino del sistema degli incentivi</h1>
-<p>L’elemento di maggiore rilievo sistemico risiede nella connessione tra i risultati dei PAVS e la riforma della legislazione sugli aiuti alle imprese, attuata in conformità alla legge delega 27 ottobre 2023, n.&nbsp;160.</p>
-<p>La revisione dell’ordinamento ha prodotto due provvedimenti legislativi organici: - Il <strong>Codice degli incentivi</strong> (decreto legislativo 27 novembre 2025, n.&nbsp;184), entrato in vigore il 1° gennaio 2026 <span class="citation" data-cites="dlgs2025n184">[28]</span>; - Il decreto sul <strong>riordino del sistema degli incentivi</strong> (decreto legislativo 26 giugno 2026, n.&nbsp;138), entrato in vigore il 18 agosto 2026 <span class="citation" data-cites="dlgs2026n138">[29]</span>.</p>
-<p>L’articolo 21 del Codice degli incentivi stabilisce il principio secondo cui ogni amministrazione centrale adotta un programma pluriennale di valutazione in itinere ed ex post delle proprie misure agevolative, condotto da valutatori indipendenti e integrato con la programmazione della politica di bilancio europea <span class="citation" data-cites="dlgs2025n184">[28]</span>. I risultati delle valutazioni sono resi pubblici sulla piattaforma Incentivi Italia e alimentano la Relazione annuale sugli interventi di sostegno alle attività economiche e produttive (legge 266/1997), la quale deve identificare duplicazioni, sovrapposizioni e indicazioni per la soppressione o il rifinanziamento dei regimi <span class="citation" data-cites="dlgs2025n184">[28]</span>.</p>
-<p>Sul piano allocativo, il decreto legislativo 138/2026 recepisce l’esperienza valutativa maturata nei PAVS concentrando gli incentivi del MIMIT su tre strumenti prioritari: il <strong>Fondo per la crescita sostenibile</strong>, il <strong>Fondo di garanzia per le PMI</strong> e il <strong>Fondo nazionale per l’innovazione</strong> (venture capital) <span class="citation" data-cites="dlgs2026n138">[29]</span>. In particolare, gli articoli 4-8 riorganizzano il Fondo Crescita Sostenibile in quattro sezioni tematiche: 1. Ricerca, sviluppo e innovazione; 2. Nascita e consolidamento di start-up innovative; 3. Investimenti produttivi per la transizione ecologica e digitale; 4. Rafforzamento patrimoniale, accesso al credito e mercati dei capitali <span class="citation" data-cites="dlgs2026n138">[29]</span>.</p>
-<p>L’efficacia di questa architettura dipende in misura determinante dalla gestione informativa dei dati di monitoraggio. L’articolo 20 del Codice degli incentivi ha introdotto l’obbligo di associare il Codice Unico di Progetto (CUP) a ciascuna domanda di agevolazione accolta, rendendolo l’identificativo primario e non modificabile dell’intero ciclo di vita della spesa <span class="citation" data-cites="dlgs2025n184">[28]</span>. L’interoperabilità tra il Registro Nazionale Aiuti (RNA), la banca dati OpenCUP e le piattaforme gestionali delle singole amministrazioni risponde direttamente ai rilievi formulati dalla Corte dei conti europea (Relazioni 21/2024 e 14/2026) e dalla magistratura contabile nazionale circa l’opacità dei beneficiari finali e l’assenza di indicatori tempestivi di costo effettivo <span class="citation" data-cites="cortedeiconti2024delibera36 eca2026sr14">[21], [24]</span>.</p>
-</section>
-<section id="punti-aperti-e-prospettive-20262029" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Punti aperti e prospettive (2026–2029)</h1>
-<p>Nonostante l’avanzamento del quadro normativo, l’efficacia del nuovo sistema di valutazione presenta diversi elementi critici aperti.</p>
-<p>In primo luogo, si rileva una discrepanza tra la produzione delle valutazioni e la loro effettiva accessibilità pubblica. I rapporti analitici completi — quali il rapporto finale del regime SA.118990 o il report dettagliato sul Fondo di Garanzia redatto nel primo trimestre del 2026 — non risultano tempestivamente consultabili nei canali telematici dedicati, essendo resi noti esclusivamente per il tramite di sintesi aggregate all’interno del DPFP. Tale circostanza limita la verificabilità indipendente dei modelli econometrici adottati e delle relative stime di addizionalità. I criteri del Comitato scientifico prevedono invece la pubblicazione di Piani, Relazioni annuali, Report di valutazione e opzioni di riforma, in formato elaborabile, orientativamente entro quindici giorni dalle rispettive scadenze, sul sito del Ministero e in una sezione dedicata del sito della Ragioneria generale dello Stato <span class="citation" data-cites="rgs2023CriteriMetodologie">[7]</span>. Resta inoltre da chiarire il rapporto tra la soglia del 20 per cento della spesa ammissibile fissata da quei criteri e la soglia del 10 per cento della spesa di diretta competenza assunta nel PSBMT, che si riferiscono a basi di calcolo diverse.</p>
-<p>In secondo luogo, la piena attuazione del Codice degli incentivi è subordinata all’emanazione dei decreti attuativi ministeriali: - Il decreto del Ministro delle imprese e del made in Italy di concerto con il Ministro dell’economia sul modello uniforme di Programma degli incentivi (art. 4, comma 4, d.lgs. 184/2025); - Il decreto direttoriale MEF-MIMIT sulle regole tecniche di interoperabilità delle piattaforme basate sul CUP (art. 20, comma 4, d.lgs. 184/2025).</p>
-<p>In terzo luogo, resta da compiere la convergenza tra il calendario nazionale e quello europeo. Se la legge di bilancio per il 2026 ha anticipato al 30 giugno 2026 la valutazione di una politica per Ministero, il rispetto degli impegni stabiliti nell’Appendice VI del PSBMT impone l’adozione di piani annuali sistematici dal secondo trimestre del 2027 al 2029, a presidio del 10% della spesa ministeriale di diretta competenza <span class="citation" data-cites="consiglioUE2025PSBMT">[10]</span>. Dal rigore metodologico di questi esercizi e dalla capacità di tradurre le risultanze in concrete riduzioni e riallocazioni delle agevolazioni dipenderà non soltanto la qualità della politica industriale, ma la tenuta complessiva del percorso di aggiustamento macro-fiscale concordato con l’Unione europea.</p>
-<hr>
-<p><strong>Nota metodologica</strong></p>
-<p>Questo documento nasce dall’interazione di tre componenti. L’autore definisce le domande, esercita il giudizio critico e assume la responsabilità scientifica ed editoriale del risultato. Strumenti di intelligenza artificiale generativa sono impiegati a supporto della ricerca bibliografica, della lettura, della sintesi, della riorganizzazione argomentativa e della revisione del testo. Un’infrastruttura open source sviluppata dall’autore automatizza il reperimento, l’armonizzazione e il controllo dei dati dalle fonti statistiche ufficiali, e mantiene l’elaborazione documentata e riproducibile.</p>
-<p>Le fonti sono pubblicamente accessibili e citate con la loro denominazione ufficiale; l’analisi è pertanto integralmente auditabile e replicabile da terzi a partire da esse. Le tabelle e i grafici sono elaborazioni dell’autore: calcoli, aggregazioni, trasformazioni e scelte di rappresentazione sono attribuibili all’autore e non agli enti produttori dei dati.</p>
-<p>La responsabilità per le fonti utilizzate, le analisi condotte, le elaborazioni effettuate, le interpretazioni proposte e le conclusioni formulate resta interamente in capo all’autore. L’intelligenza artificiale è stata impiegata come ambiente di supporto cognitivo ed editoriale, non come fonte primaria, autore autonomo o sostituto del giudizio critico.</p>
-
-
-
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referenze</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0">
-<div id="ref-hoogeland2024spending" class="csl-entry">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">M. Hoogeland, L. Dimitriadis, e M. Mandl, <span>«How Have Spending Reviews Recently Evolved Through EU Initiatives?»</span>, European Commission, DG ECFIN, European Economy Discussion Paper 200, mag. 2024. doi: <a href="https://doi.org/10.2765/469224">10.2765/469224</a>.</div>
-</div>
-<div id="ref-consiglioUE2019CSR" class="csl-entry">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">Consiglio dell’Unione europea, <span>«Council Recommendation on the 2019 National Reform Programme of Italy (10165/19)»</span>, 2019. Disponibile su: <a href="https://data.consilium.europa.eu/doc/document/ST-10165-2019-INIT/en/pdf">https://data.consilium.europa.eu/doc/document/ST-10165-2019-INIT/en/pdf</a></div>
-</div>
-<div id="ref-eurogroup2016spending" class="csl-entry">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline">Eurogroup, <span>«Eurogroup statement: Spending reviews – common principles»</span>. 9 settembre 2016. Disponibile su: <a href="https://www.consilium.europa.eu/it/press/press-releases/2016/09/09/eurogroup-statement/pdf/">https://www.consilium.europa.eu/it/press/press-releases/2016/09/09/eurogroup-statement/pdf/</a></div>
-</div>
-<div id="ref-legge2009n196" class="csl-entry">
-<div class="csl-left-margin">[4] </div><div class="csl-right-inline"><em>Legge 31 dicembre 2009, n. 196. Legge di contabilità e finanza pubblica</em>. 2009. Disponibile su: <a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2009;196">https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2009;196</a></div>
-</div>
-<div id="ref-mef2025RelazioneM1C1115" class="csl-entry">
-<div class="csl-left-margin">[5] </div><div class="csl-right-inline">Ministero dell’Economia e delle Finanze - Ragioneria generale dello Stato, <span>«Relazione sull’attuazione della revisione della spesa per l’esercizio 2024 (PNRR M1C1 R1.13, milestone M1C1-115)»</span>, 2025. Disponibile su: <a href="https://www.camera.it/temiap/allegati/2025/07/14/OCD177-8240.pdf">https://www.camera.it/temiap/allegati/2025/07/14/OCD177-8240.pdf</a></div>
-</div>
-<div id="ref-dl2021n152" class="csl-entry">
-<div class="csl-left-margin">[6] </div><div class="csl-right-inline"><em>Decreto-legge 6 novembre 2021, n. 152, convertito dalla legge 29 dicembre 2021, n. 233</em>. 2021. Disponibile su: <a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2021;152">https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2021;152</a></div>
-</div>
-<div id="ref-rgs2023CriteriMetodologie" class="csl-entry">
-<div class="csl-left-margin">[7] </div><div class="csl-right-inline">Ministero dell’Economia e delle Finanze - Ragioneria generale dello Stato, Comitato scientifico per le attività inerenti alla revisione della spesa, <span>«Criteri e metodologie per la definizione dei processi e delle attività di analisi e valutazione della spesa»</span>, nov. 2023. Disponibile su: <a href="https://www.rgs.mef.gov.it/_Documenti/VERSIONE-I/Pubblicazioni/Analisi_e_valutazione_della_Spesa/Documenti/Criteri_metodologie_23_11_2023_CS_AVS_UV.pdf">https://www.rgs.mef.gov.it/_Documenti/VERSIONE-I/Pubblicazioni/Analisi_e_valutazione_della_Spesa/Documenti/Criteri_metodologie_23_11_2023_CS_AVS_UV.pdf</a></div>
-</div>
-<div id="ref-mimit2024PAVS" class="csl-entry">
-<div class="csl-left-margin">[8] </div><div class="csl-right-inline">Ministero delle Imprese e del Made in Italy, <span>«Piano di Analisi e Valutazione della Spesa 2024: misure di sostegno all’attività di ricerca e innovazione di rilevanza strategica sostenute dal Fondo Crescita Sostenibile (FCS)»</span>, Ministero delle Imprese e del Made in Italy, lug. 2024.</div>
-</div>
-<div id="ref-mef2024PSBMT" class="csl-entry">
-<div class="csl-left-margin">[9] </div><div class="csl-right-inline">Ministero dell’Economia e delle Finanze, <span>«Piano strutturale di bilancio di medio termine - Italia 2025-2029»</span>, 2024.</div>
-</div>
-<div id="ref-consiglioUE2025PSBMT" class="csl-entry">
-<div class="csl-left-margin">[10] </div><div class="csl-right-inline">Consiglio dell’Unione europea, <span>«Council Recommendation of 21 January 2025 endorsing the national medium-term fiscal-structural plan of Italy»</span>, 2025.</div>
-</div>
-<div id="ref-legge2025n199" class="csl-entry">
-<div class="csl-left-margin">[11] </div><div class="csl-right-inline"><em>Legge 30 dicembre 2025, n. 199. Bilancio di previsione dello Stato per l’anno finanziario 2026 e bilancio pluriennale per il triennio 2026-2028</em>. 2025. Disponibile su: <a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2025;199">https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2025;199</a></div>
-</div>
-<div id="ref-upb2024audizionePSB" class="csl-entry">
-<div class="csl-left-margin">[12] </div><div class="csl-right-inline">Ufficio parlamentare di bilancio, <span>«Audizione della Presidente dell’Ufficio parlamentare di bilancio in ordine all’esame del Piano strutturale di bilancio di medio termine 2025-2029»</span>. Commissioni riunite V Camera e 5a Senato, 7 ottobre 2024.</div>
-</div>
-<div id="ref-mef2026DPFP" class="csl-entry">
-<div class="csl-left-margin">[13] </div><div class="csl-right-inline">Ministero dell’Economia e delle Finanze, <span>«Documento Programmatico di finanza pubblica 2026»</span>, Ministero dell’Economia e delle Finanze, 2026. Disponibile su: <a href="https://media2-col.corriereobjects.it/pdf/2026/economia/10/DPFP26_FILE_UNICO.pdf">https://media2-col.corriereobjects.it/pdf/2026/economia/10/DPFP26_FILE_UNICO.pdf</a></div>
-</div>
-<div id="ref-consiglioUE2025CSR" class="csl-entry">
-<div class="csl-left-margin">[14] </div><div class="csl-right-inline">Consiglio dell’Unione europea, <span>«Council Recommendation on the economic, social, employment, structural and budgetary policies of Italy (10972/25)»</span>, 2025. Disponibile su: <a href="https://data.consilium.europa.eu/doc/document/ST-10972-2025-INIT/en/pdf">https://data.consilium.europa.eu/doc/document/ST-10972-2025-INIT/en/pdf</a></div>
-</div>
-<div id="ref-consiglioUE2026CSR" class="csl-entry">
-<div class="csl-left-margin">[15] </div><div class="csl-right-inline">Consiglio dell’Unione europea, <span>«Council Recommendation on the economic, social, employment, structural and budgetary policies of Italy (11124/26)»</span>, 2026. Disponibile su: <a href="https://data.consilium.europa.eu/doc/document/ST-11124-2026-INIT/en/pdf">https://data.consilium.europa.eu/doc/document/ST-11124-2026-INIT/en/pdf</a></div>
-</div>
-<div id="ref-commissione2026IDRItaly" class="csl-entry">
-<div class="csl-left-margin">[16] </div><div class="csl-right-inline">Commissione europea, <span>«2026 In-Depth Review Italy»</span>, 2026.</div>
-</div>
-<div id="ref-jrc2025evalsa2024" class="csl-entry">
-<div class="csl-left-margin">[17] </div><div class="csl-right-inline">European Commission, Joint Research Centre, <span>«Quality assessment of evaluation plans and reports in the area of State aid (EVALSA III): the 2024 activity report»</span>, Publications Office of the European Union, JRC141213, 2025. Disponibile su: <a href="https://iris.unito.it/handle/2318/2060614">https://iris.unito.it/handle/2318/2060614</a></div>
-</div>
-<div id="ref-commissione2025SA118990" class="csl-entry">
-<div class="csl-left-margin">[18] </div><div class="csl-right-inline">Commissione europea, <span>«State Aid SA.118990 (2025/EV) – Italy. Evaluation Plan for the aid scheme SA.109440 ’Sustainable investments 4.0’, C(2025) 6947 final»</span>, ott. 2025. Disponibile su: <a href="https://ec.europa.eu/competition/state_aid/cases1/202548/SA_118990_31.pdf">https://ec.europa.eu/competition/state_aid/cases1/202548/SA_118990_31.pdf</a></div>
-</div>
-<div id="ref-eca2024sr21" class="csl-entry">
-<div class="csl-left-margin">[19] </div><div class="csl-right-inline">Corte dei conti europea, <span>«Relazione speciale 21/2024: Aiuti di Stato in tempi di crisi – La reazione è stata rapida, ma esistono carenze nel monitoraggio effettuato dalla Commissione e incoerenze nel quadro a sostegno degli obiettivi della politica industriale dell’UE»</span>, 2024. Disponibile su: <a href="https://www.eca.europa.eu/it/publications/sr-2024-21">https://www.eca.europa.eu/it/publications/sr-2024-21</a></div>
-</div>
-<div id="ref-eca2025sr09" class="csl-entry">
-<div class="csl-left-margin">[20] </div><div class="csl-right-inline">Corte dei conti europea, <span>«Relazione speciale 09/2025: Verificare se i finanziamenti dell’RRF sono spesi in conformità alle norme in materia di appalti pubblici e di aiuti di Stato – I sistemi di controllo migliorano, ma restano insufficienti»</span>, mar. 2025. Disponibile su: <a href="https://www.eca.europa.eu/en/publications/sr-2025-09">https://www.eca.europa.eu/en/publications/sr-2025-09</a></div>
-</div>
-<div id="ref-eca2026sr14" class="csl-entry">
-<div class="csl-left-margin">[21] </div><div class="csl-right-inline">Corte dei conti europea, <span>«Relazione speciale 14/2026: Tracciabilità e trasparenza dei fondi RRF – Permangono lacune»</span>, 2026. Disponibile su: <a href="https://www.eca.europa.eu/it/publications/SR-2026-14">https://www.eca.europa.eu/it/publications/SR-2026-14</a></div>
-</div>
-<div id="ref-eca2026sr06" class="csl-entry">
-<div class="csl-left-margin">[22] </div><div class="csl-right-inline">Corte dei conti europea, <span>«Relazione speciale 06/2026: Lotta alle frodi nell’RRF – Lavori in corso»</span>, 2026. Disponibile su: <a href="https://www.eca.europa.eu/it/publications/sr-2026-06">https://www.eca.europa.eu/it/publications/sr-2026-06</a></div>
-</div>
-<div id="ref-governo2026schemaIncentivi" class="csl-entry">
-<div class="csl-left-margin">[23] </div><div class="csl-right-inline">Governo italiano, <span>«Schema di decreto legislativo recante revisione del sistema degli incentivi, in attuazione della legge 27 ottobre 2023, n. 160»</span>, 2026. Disponibile su: <a href="https://www.senato.it/service/PDF/PDFServer/BGT/1499105.pdf">https://www.senato.it/service/PDF/PDFServer/BGT/1499105.pdf</a></div>
-</div>
-<div id="ref-cortedeiconti2024delibera36" class="csl-entry">
-<div class="csl-left-margin">[24] </div><div class="csl-right-inline">Corte dei conti, Collegio del controllo concomitante, <span>«Delibera n. 36/2024/CCC – Piano strategico ZES unica»</span>, ott. 2024.</div>
-</div>
-<div id="ref-cortedeiconti2026relazioneCCC" class="csl-entry">
-<div class="csl-left-margin">[25] </div><div class="csl-right-inline">Corte dei conti, Collegio del controllo concomitante, <span>«Relazione annuale 2025»</span>, mar. 2026.</div>
-</div>
-<div id="ref-cortedeiconti2026programmazione" class="csl-entry">
-<div class="csl-left-margin">[26] </div><div class="csl-right-inline">Corte dei conti, Sezioni riunite in sede di controllo, <span>«Programmazione dei controlli e delle analisi della Corte dei conti per il 2026»</span>, 2026. Disponibile su: <a href="https://www.corteconti.it/Download?id=68097418-804b-4093-b658-7cba2e296bb6">https://www.corteconti.it/Download?id=68097418-804b-4093-b658-7cba2e296bb6</a></div>
-</div>
-<div id="ref-mimit2025PAVS" class="csl-entry">
-<div class="csl-left-margin">[27] </div><div class="csl-right-inline">Ministero delle Imprese e del Made in Italy, <span>«Piano di Analisi e Valutazione della Spesa 2025-2027»</span>, Ministero delle Imprese e del Made in Italy, lug. 2025.</div>
-</div>
-<div id="ref-dlgs2025n184" class="csl-entry">
-<div class="csl-left-margin">[28] </div><div class="csl-right-inline"><em>Decreto legislativo 27 novembre 2025, n. 184. Codice degli incentivi, in attuazione dell’articolo 3, commi 1 e 2, lettera b), della legge 27 ottobre 2023, n. 160</em>. 2025. Disponibile su: <a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2025-11-27;184">https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2025-11-27;184</a></div>
-</div>
-<div id="ref-dlgs2026n138" class="csl-entry">
-<div class="csl-left-margin">[29] </div><div class="csl-right-inline"><em>Decreto legislativo 26 giugno 2026, n. 138. Revisione del sistema degli incentivi, in attuazione dell’articolo 3, commi 1 e 2, lettera a), della legge 27 ottobre 2023, n. 160</em>. 2026. Disponibile su: <a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto-legislativo:2026;138">https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto-legislativo:2026;138</a></div>
-</div>
-</div></section></div><!-- vedi-anche:start -->
-<section id="vedi-anche" aria-labelledby="vedi-anche-titolo"><h2 id="vedi-anche-titolo">Vedi anche</h2><ul><li><a href="../2519_FondoAI/20250209_FondoAI.html">Fondo Intelligenza Artificiale</a><small>#Infratel</small></li><li><a href="../2504_FTI/FTI.html">Fondo per il sostegno alla transizione industriale</a><small>5 rows × 21 columns</small></li><li><a href="../2610_BuyEuropean/index.html">La preferenza europea negli appalti pubblici</a><small>Il 9 settembre 2026 la Commissione europea ha proposto un Regolamento unico sugli appalti pubblici che sostituisce le tre direttive del 2014, introduce come standard di aggiudicazione il miglior rapporto qualità-prezzo e</small></li></ul></section><style>#vedi-anche{margin-top:3rem;padding-top:1rem;border-top:2px solid #007a53}#vedi-anche h2{font-size:1.3rem;border:0;margin-bottom:.6rem}#vedi-anche ul{list-style:none;padding:0;margin:0}#vedi-anche li{margin:0 0 .8rem}#vedi-anche a{font-weight:600}#vedi-anche small{display:block;color:#555}</style>
-<!-- vedi-anche:end -->
- ]]></description>
-  <category>Finanza pubblica</category>
-  <category>Agevolazioni e garanzie</category>
-  <category>Europa e geopolitica</category>
-  <guid>https://paolovolterra.com/posts/2610_PAVS/</guid>
-  <pubDate>Sun, 04 Oct 2026 22:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
